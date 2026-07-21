@@ -29,7 +29,7 @@ public:
 	virtual ~lua_jailbreak_exception() noexcept {}
 
 	/** Depth of recursive luaW_pcall_internal() function calls. */
-	static int jail_depth;
+	static inline int jail_depth = 0;
 
 	/** Stores a copy the current exception to be rethrown. */
 	void store() const noexcept;
@@ -44,7 +44,7 @@ public:
 protected:
 
 	/** The exception to be rethrown. */
-	static lua_jailbreak_exception* jailbreak_exception;
+	static inline lua_jailbreak_exception* jailbreak_exception = nullptr;
 
 private:
 

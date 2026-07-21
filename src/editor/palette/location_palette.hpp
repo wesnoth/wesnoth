@@ -43,9 +43,8 @@ public:
 	std::size_t start_num(void) override { return items_start_; }
 
 	/** Menu expanding for palette group list */
-	void expand_palette_groups_menu(std::vector<config>& items, int i) override
+	void expand_palette_groups_menu(std::vector<config>& /*items*/) override
 	{
-		items.erase(items.begin() + i);
 	}
 
 	virtual void set_group(std::size_t /*index*/) override {}
@@ -63,7 +62,7 @@ public:
 	 *
 	 * Use if the size_specs have changed.
 	 */
-	void adjust_size(const SDL_Rect& target) override;
+	void adjust_size(const rect& target) override;
 
 	virtual bool scroll_up() override;
 	virtual bool can_scroll_up() override;

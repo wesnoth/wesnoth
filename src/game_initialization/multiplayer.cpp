@@ -108,7 +108,6 @@ private:
 				for(const config& queue : cfg.mandatory_child("queues").child_range("queue")) {
 					queue_info info;
 					info.id = queue["id"].to_int();
-					info.scenario_id = queue["scenario_id"].str();
 					info.display_name = queue["display_name"].str();
 					info.players_required = queue["players_required"].to_int();
 					info.current_players = utils::split_set(queue["current_players"].str());
@@ -135,9 +134,8 @@ private:
 
 	/**
 	 * Opens the MP Create screen for hosts to configure a new game.
-	 * @param preset_scenario contains a scenario id if present
 	 */
-	void enter_create_mode(utils::optional<std::string> preset_scenario = utils::nullopt, utils::optional<config> server_preset = utils::nullopt, int queue_id = 0);
+	void enter_create_mode(utils::optional<config> preset = utils::nullopt, int queue_id = 0);
 
 	/** Opens the MP Staging screen for hosts to wait for players. */
 	void enter_staging_mode(queue_type::type queue_type, int queue_id = 0);
@@ -318,11 +316,9 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(const std::stri
 		}
 
 		if(data.has_child("version")) {
-			config res;
-			config& cfg = res.add_child("version");
-			cfg["version"] = game_config::wesnoth_version.str();
-			cfg["client_source"] = game_config::dist_channel_id();
-			conn->send_data(res);
+			std::string version = game_config::wesnoth_version;
+			std::string channel = game_config::dist_channel_id();
+			conn->send_data(config{"version", config{"version", version, "client_source", channel}});
 		}
 
 		if(const auto error = data.optional_child("error")) {
@@ -338,11 +334,7 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(const std::stri
 		while(true) {
 			std::string login = prefs::get().login();
 
-			config response;
-			config& sp = response.add_child("login");
-			sp["username"] = login;
-
-			conn->send_data(response);
+			conn->send_data(config{"login", config{"username", login}});
 			conn->wait_and_receive_data(data);
 
 			gui2::dialogs::loading_screen::progress(loading_stage::login_response);
@@ -394,10 +386,8 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(const std::stri
 					// 2) TLS encryption is not enabled, in which case the server should not be requesting a password in the first place
 					// 3) This is being used for local testing/development, so using an insecure connection is enabled manually
 
-					sp["password"] = password;
-
 					// Once again send our request...
-					conn->send_data(response);
+					conn->send_data(config{"login", config{"username", login, "password", password}});
 					conn->wait_and_receive_data(data);
 
 					gui2::dialogs::loading_screen::progress(loading_stage::login_response);
@@ -532,7 +522,7 @@ void mp_manager::run_lobby_loop()
 
 		lobby_info.refresh_installed_addons_cache();
 
-		connection->send_data(config("refresh_lobby"));
+		connection->send_data(config{"refresh_lobby"});
 	}
 }
 
@@ -565,7 +555,6 @@ bool mp_manager::enter_lobby_mode()
 			gui2::dialogs::mp_lobby dlg(lobby_info, *connection, dlg_joined_game_id);
 			dlg.show();
 			dlg_retval = dlg.get_retval();
-			preset_scenario = dlg.queue_game_scenario_id();
 			server_preset = dlg.queue_game_server_preset();
 			queue_id = dlg.queue_id();
 		}
@@ -573,7 +562,7 @@ bool mp_manager::enter_lobby_mode()
 		try {
 			switch(dlg_retval) {
 			case gui2::dialogs::mp_lobby::CREATE_PRESET:
-				enter_create_mode(utils::make_optional(preset_scenario), utils::make_optional(server_preset), queue_id);
+				enter_create_mode(utils::make_optional(server_preset), queue_id);
 				break;
 			case gui2::dialogs::mp_lobby::CREATE:
 				enter_create_mode();
@@ -596,34 +585,26 @@ bool mp_manager::enter_lobby_mode()
 			}
 
 			// Update lobby content
-			connection->send_data(config("refresh_lobby"));
+			connection->send_data(config{"refresh_lobby"});
 		}
 	}
 
 	return true;
 }
 
-void mp_manager::enter_create_mode(utils::optional<std::string> preset_scenario, utils::optional<config> server_preset, int queue_id)
+void mp_manager::enter_create_mode(utils::optional<config> preset, int queue_id)
 {
 	DBG_MP << "entering create mode";
 
 	// if this is using pre-determined settings and the settings came from the server, use those
 	// else look for them locally
-	if(preset_scenario && server_preset) {
-		gui2::dialogs::mp_create_game::quick_mp_setup(state, server_preset.value());
-		enter_staging_mode(queue_type::type::server_preset, queue_id);
-	} else if(preset_scenario && !server_preset) {
-		for(const config& game : game_config_manager::get()->game_config().mandatory_child("game_presets").child_range("game")) {
-			if(game["scenario"].str() == preset_scenario.value()) {
-				gui2::dialogs::mp_create_game::quick_mp_setup(state, game);
-				enter_staging_mode(queue_type::type::client_preset);
-				return;
-			}
-		}
+	if(preset) {
+		gui2::dialogs::mp_create_game::quick_mp_setup(state, preset.value());
+		enter_staging_mode(queue_id >= 0 ? queue_type::type::server_preset : queue_type::type::normal, queue_id);
 	} else if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
 		enter_staging_mode(queue_type::type::normal);
 	} else if(connection) {
-		connection->send_data(config("refresh_lobby"));
+		connection->send_data(config{"refresh_lobby"});
 	}
 }
 
@@ -655,7 +636,7 @@ void mp_manager::enter_staging_mode(queue_type::type queue_type, int queue_id)
 	}
 
 	if(connection) {
-		connection->send_data(config("leave_game"));
+		connection->send_data(config{"leave_game"});
 	}
 }
 
@@ -683,7 +664,7 @@ void mp_manager::enter_wait_mode(int game_id, bool observe)
 		gui2::dialogs::mp_join_game dlg(state, *connection, true, observe);
 
 		if(!dlg.fetch_game_config()) {
-			connection->send_data(config("leave_game"));
+			connection->send_data(config{"leave_game"});
 			return;
 		}
 
@@ -696,7 +677,7 @@ void mp_manager::enter_wait_mode(int game_id, bool observe)
 		controller.play_game();
 	}
 
-	connection->send_data(config("leave_game"));
+	connection->send_data(config{"leave_game"});
 }
 
 bool mp_manager::post_scenario_staging(ng::connect_engine& engine)
@@ -709,7 +690,7 @@ bool mp_manager::post_scenario_wait(bool observe)
 	gui2::dialogs::mp_join_game dlg(state, *connection, false, observe);
 
 	if(!dlg.fetch_game_config()) {
-		connection->send_data(config("leave_game"));
+		connection->send_data(config{"leave_game"});
 		return false;
 	}
 

@@ -17,6 +17,7 @@
 
 #include "config.hpp"
 #include "gettext.hpp"
+#include "utils/general.hpp"
 
 std::ostream& operator<<(std::ostream& s, const tod_color& c)
 {
@@ -66,9 +67,7 @@ void time_of_day::write(config& cfg, const std::string& textdomain) const
 	cfg["sound"].write_if_not_empty(sounds);
 }
 
-void time_of_day::parse_times(const config& cfg, std::vector<time_of_day>& times)
+std::vector<time_of_day> time_of_day::parse_times(const config& cfg)
 {
-	for(const config& t : cfg.child_range("time")) {
-		times.emplace_back(t);
-	}
+	return utils::from_range<time_of_day>(cfg.child_range("time"));
 }

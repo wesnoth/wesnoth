@@ -147,7 +147,7 @@ void positional_source::update(const std::chrono::steady_clock::time_point& time
 		// If no locations have been specified, treat the source as if
 		// it was present everywhere on the map
 		if(locations_.empty()) {
-			sound::play_sound_positioned(files_, id_, loops_, 0);	// max volume
+			sound::play_sound_positioned(files_, loops_, 0, id_);	// max volume
 			return;
 		}
 
@@ -162,7 +162,7 @@ void positional_source::update(const std::chrono::steady_clock::time_point& time
 		if(distance_volume >= DISTANCE_SILENT)
 			return;
 
-		sound::play_sound_positioned(files_, id_, loops_, distance_volume);
+		sound::play_sound_positioned(files_, loops_, distance_volume, id_);
 	}
 }
 
@@ -195,7 +195,7 @@ int positional_source::calculate_volume(const map_location &loc, const display &
 	if((check_shrouded_ && disp.shrouded(loc)) || (check_fogged_ && disp.fogged(loc)))
 		return DISTANCE_SILENT;
 
-	SDL_Rect area = disp.map_area();
+	rect area = disp.map_area();
 	map_location center = disp.hex_clicked_on(area.x + area.w / 2, area.y + area.h / 2);
 	int distance = distance_between(loc, center);
 
@@ -248,9 +248,8 @@ sourcespec::sourcespec(const config& cfg)
 	, faderange_(cfg["fade_range"].to_int(14))
 	, check_fogged_(cfg["check_fogged"].to_bool(true))
 	, check_shrouded_(cfg["check_shrouded"].to_bool(true))
-	, locations_()
+	, locations_(read_locations(cfg))
 {
-	read_locations(cfg, locations_);
 }
 
 } // namespace soundsource

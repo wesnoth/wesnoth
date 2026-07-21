@@ -356,7 +356,7 @@ protected:
 
 	//more managers
 	std::unique_ptr<font::floating_label_context> labels_manager_;
-	help::help_manager help_manager_;
+	std::shared_ptr<help::help_manager> help_manager_;
 	events::mouse_handler mouse_handler_;
 	events::menu_handler menu_handler_;
 	std::unique_ptr<hotkey_handler> hotkey_handler_;

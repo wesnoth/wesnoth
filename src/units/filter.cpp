@@ -36,6 +36,7 @@
 #include "formula/string_utils.hpp"
 #include "resources.hpp"
 #include "deprecation.hpp"
+#include "utils/general.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -129,30 +130,47 @@ struct unit_filter_adjacent : public unit_filter_base
 	{
 		const unit_map& units = args.context().get_disp_context().units();
 		const auto adjacent = get_adjacent_tiles(args.loc);
-		int match_count=0;
+		int match_count = 0;
+		std::size_t radius = cfg_["radius"].to_int(1);
 
 		config::attribute_value i_adjacent = cfg_["adjacent"];
 		std::vector<map_location::direction> dirs;
-		if (i_adjacent.empty()) {
-			dirs = map_location::all_directions();
-		} else {
-			dirs = map_location::parse_directions(i_adjacent);
-		}
-		for (map_location::direction dir : dirs) {
-			unit_map::const_iterator unit_itor = units.find(adjacent[static_cast<int>(dir)]);
-			if (unit_itor == units.end() || !child_.matches(unit_filter_args{*unit_itor, unit_itor->get_location(), &args.u, args.fc, args.use_flat_tod} )) {
+		for(const unit& u : units) {
+			const map_location& from_loc = u.get_location();
+			std::size_t distance = distance_between(from_loc, args.loc);
+			if(u.underlying_id() == args.u.underlying_id() || distance > radius || !child_.matches(unit_filter_args{u, from_loc, &args.u, args.fc, args.use_flat_tod} )) {
 				continue;
 			}
+			int dir = 0;
+			for(unsigned j = 0; j < adjacent.size(); ++j) {
+				bool adj_or_dist = distance != 1 ? distance_between(adjacent[j], from_loc) == (distance - 1) : adjacent[j] == from_loc;
+				if(adj_or_dist) {
+					dir = j;
+					break;
+				}
+			}
+			assert(dir >= 0 && dir <= 5);
+			map_location::direction direction{ dir };
+			if(!i_adjacent.empty()) { //key adjacent defined
+				if(!utils::contains(map_location::parse_directions(i_adjacent), direction)) {
+					continue;
+				}
+			}
 			auto is_enemy = cfg_["is_enemy"];
-			if (!is_enemy.empty() && is_enemy.to_bool() != args.context().get_disp_context().get_team(args.u.side()).is_enemy(unit_itor->side())) {
+			if (!is_enemy.empty() && is_enemy.to_bool() != args.context().get_disp_context().get_team(args.u.side()).is_enemy(u.side())) {
 				continue;
 			}
 			++match_count;
 		}
 
-		static std::vector<std::pair<int,int>> default_counts = utils::parse_ranges_unsigned("1-6");
 		config::attribute_value i_count = cfg_["count"];
-		return in_ranges(match_count, !i_count.blank() ? utils::parse_ranges_unsigned(i_count) : default_counts);
+		if(i_count.empty() && match_count == 0) {
+			return false;
+		}
+		if(!i_count.empty() && !in_ranges<int>(match_count, utils::parse_ranges_unsigned(i_count.str()))) {
+			return false;
+		}
+		return true;
 	}
 
 	const unit_filter_compound child_;
@@ -309,7 +327,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			[](const config::attribute_value& c) { return utils::split(c.str()); },
 			[](const std::vector<std::string>& id_list, const unit_filter_args& args)
 			{
-				return std::find(id_list.begin(), id_list.end(), args.u.id()) != id_list.end();
+				return utils::contains(id_list, args.u.id());
 			}
 		);
 
@@ -317,7 +335,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			[](const config::attribute_value& c) { return utils::split(c.str()); },
 			[](const std::vector<std::string>& types, const unit_filter_args& args)
 			{
-				return std::find(types.begin(), types.end(), args.u.type_id()) != types.end();
+				return utils::contains(types, args.u.type_id());
 			}
 		);
 
@@ -336,7 +354,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 						types_expanded.insert(type);
 					}
 				}
-				return types_expanded.find(args.u.type_id()) != types_expanded.end();
+				return utils::contains(types_expanded, args.u.type_id());
 			}
 		);
 
@@ -344,7 +362,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			[](const config::attribute_value& c) { return utils::split(c.str()); },
 			[](const std::vector<std::string>& types, const unit_filter_args& args)
 			{
-				return std::find(types.begin(), types.end(), args.u.variation()) != types.end();
+				return utils::contains(types, args.u.variation());
 			}
 		);
 
@@ -395,38 +413,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			[](const config::attribute_value& c) { return utils::split_set(c.str()); },
 			[](const std::set<std::string>& abilities, const unit_filter_args& args)
 			{
-				const unit_map& units = args.context().get_disp_context().units();
-				for(const auto [key, cfg] : args.u.abilities().all_children_view()) {
-					if(abilities.count(cfg["id"]) != 0 && args.u.get_self_ability_bool(cfg, key, args.loc)) {
-						return true;
-					}
-				}
-
-				for(const unit& unit : units) {
-					if(!unit.has_ability_distant() || unit.incapacitated() || &unit == args.u.shared_from_this().get()) {
-						continue;
-					}
-					const map_location& from_loc = unit.get_location();
-					std::size_t distance = distance_between(from_loc, args.loc);
-					if(distance > *unit.has_ability_distant()) {
-						continue;
-					}
-					utils::optional<int> dir;
-					const auto adjacent = get_adjacent_tiles(from_loc);
-					for(std::size_t j = 0; j < adjacent.size(); ++j) {
-						bool adj_or_dist = distance != 1 ? distance_between(adjacent[j], args.loc) == (distance - 1) : adjacent[j] == args.loc;
-						if(adj_or_dist) {
-							dir = j;
-							break;
-						}
-					}
-					for(const auto [key, cfg] : unit.abilities().all_children_view()) {
-						if(abilities.count(cfg["id"]) != 0 && args.u.get_adj_ability_bool(cfg, key, distance, *dir, args.loc, unit, from_loc)) {
-							return true;
-						}
-					}
-				}
-				return false;
+				return utils::find_if(abilities, [&](const std::string& abilitiy_id) { return specials_context_t::has_active_ability_id(args.u, args.loc, abilitiy_id);  });
 			}
 		);
 
@@ -466,7 +453,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			[](const config::attribute_value& c) { return utils::split(c.str()); },
 			[](const std::vector<std::string>& races, const unit_filter_args& args)
 			{
-				return std::find(races.begin(), races.end(), args.u.race()->id()) != races.end();
+				return utils::contains(races, args.u.race()->id());
 			}
 		);
 
@@ -508,7 +495,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			},
 			[](const std::vector<int>& sides, const unit_filter_args& args)
 			{
-				return std::find(sides.begin(), sides.end(), args.u.side()) != sides.end();
+				return utils::contains(sides, args.u.side());
 			}
 		);
 
@@ -724,7 +711,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 					/* Check if the filter only cares about variables.
 					   If so, no need to serialize the whole unit. */
 					config::all_children_itors ci = fwml.all_children_range();
-					if (fwml.all_children_count() == 1 && fwml.attribute_count() == 1 && ci.front().key == "variables") {
+					if (fwml.all_children_count() == 1 && fwml.attribute_count() == 0 && ci.front().key == "variables") {
 						return args.u.variables().matches(ci.front().cfg);
 					} else {
 						config ucfg;
@@ -767,51 +754,17 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			}
 			else if ((child.first == "filter_ability") || (child.first == "experimental_filter_ability")) {
 				if(child.first == "experimental_filter_ability"){
-					deprecated_message("experimental_filter_ability", DEP_LEVEL::INDEFINITE, "", "Use filter_ability instead.");
+					deprecated_message("experimental_filter_ability", DEP_LEVEL::FOR_REMOVAL, {1, 21, 0}, "Use filter_ability instead.");
 				}
 				create_child(child.second, [](const vconfig& c, const unit_filter_args& args) {
 					if(!(c.get_parsed_config())["active"].to_bool()){
-						for(const auto [key, cfg] : args.u.abilities().all_children_view()) {
-							if(args.u.ability_matches_filter(cfg, key, c.get_parsed_config())) {
+						for(const ability_ptr& p_ab : args.u.abilities()) {
+							if(p_ab->matches_filter(c.get_parsed_config())) {
 								return true;
 							}
 						}
 					} else {
-						const unit_map& units = args.context().get_disp_context().units();
-						for(const auto [key, cfg] : args.u.abilities().all_children_view()) {
-							if(args.u.ability_matches_filter(cfg, key, c.get_parsed_config())) {
-								if (args.u.get_self_ability_bool(cfg, key, args.loc)) {
-									return true;
-								}
-							}
-						}
-
-						if(c.get_parsed_config()["affect_adjacent"].to_bool(true)) {
-							for(const unit& unit : units) {
-								if(!unit.has_ability_distant() || unit.incapacitated() || &unit == args.u.shared_from_this().get()) {
-									continue;
-								}
-								const map_location& from_loc = unit.get_location();
-								std::size_t distance = distance_between(from_loc, args.loc);
-								if(distance > *unit.has_ability_distant()) {
-									continue;
-								}
-								utils::optional<int> dir;
-								const auto adjacent = get_adjacent_tiles(from_loc);
-								for(std::size_t j = 0; j < adjacent.size(); ++j) {
-									bool adj_or_dist = distance != 1 ? distance_between(adjacent[j], args.loc) == (distance - 1) : adjacent[j] == args.loc;
-									if(adj_or_dist) {
-										dir = j;
-										break;
-									}
-								}
-								for(const auto [key, cfg] : unit.abilities().all_children_view()) {
-									if(args.u.get_adj_ability_bool(cfg, key, distance, *dir, args.loc, unit, from_loc)) {
-										return true;
-									}
-								}
-							}
-						}
+						return specials_context_t::has_active_ability_matching_filter(args.u, args.loc, c.get_parsed_config());
 					}
 				return false;
 				});

@@ -82,20 +82,6 @@ bool modal_dialog::show(const unsigned auto_close_time)
 		window::show(auto_close_time);
 	}
 
-	/*
-	 * It can happen that when two clicks follow each other fast that the event
-	 * handling code in events.cpp generates a DOUBLE_CLICK_EVENT. For some
-	 * reason it can happen that this event gets pushed in the queue when the
-	 * window is shown, but processed after the window is closed. This causes
-	 * the next window to get this pending event.
-	 *
-	 * This caused a bug where double clicking in the campaign selection dialog
-	 * directly selected a difficulty level and started the campaign. In order
-	 * to avoid that problem, filter all pending DOUBLE_CLICK_EVENT events after
-	 * the window is closed.
-	 */
-	SDL_FlushEvent(DOUBLE_CLICK_EVENT);
-
 	finalize_fields(get_retval() == retval::OK || always_save_fields_);
 
 	post_show();

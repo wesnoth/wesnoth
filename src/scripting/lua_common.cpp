@@ -41,7 +41,6 @@
 static const char gettextKey[] = "gettext";
 static const char vconfigKey[] = "vconfig";
 static const char vconfigpairsKey[] = "vconfig pairs";
-static const char vconfigipairsKey[] = "vconfig ipairs";
 static const char tstringKey[] = "translatable string";
 static const char executeKey[] = "err";
 
@@ -203,6 +202,8 @@ static int impl_tstring_tostring(lua_State *L)
  */
 static int impl_vconfig_get(lua_State *L)
 {
+	static const lua_named_tuple_builder tuple_builder{ {"tag", "contents"} };
+
 	vconfig *v = static_cast<vconfig *>(lua_touserdata(L, 1));
 
 	if (lua_isnumber(L, 2))
@@ -213,7 +214,7 @@ static int impl_vconfig_get(lua_State *L)
 		if (pos >= len) return 0;
 		std::advance(i, pos);
 
-		lua_createtable(L, 2, 0);
+		tuple_builder.push(L);
 		lua_pushstring(L, i.get_key().c_str());
 		lua_rawseti(L, -2, 1);
 		luaW_pushvconfig(L, i.get_child());
@@ -250,8 +251,8 @@ static int impl_vconfig_get(lua_State *L)
 		}
 		for (int j = 1; i != i_end; ++i, ++j)
 		{
-			luaW_push_namedtuple(L, {"tag", "contents"});
-			lua_pushstring(L, i.get_key().c_str());
+			tuple_builder.push(L);
+			lua_pushlstring(L, i.get_key().c_str(), i.get_key().size());
 			lua_rawseti(L, -2, 1);
 			luaW_pushvconfig(L, i.get_child());
 			lua_rawseti(L, -2, 2);
@@ -353,56 +354,6 @@ static int impl_vconfig_pairs(lua_State *L)
 	return 2;
 }
 
-typedef std::pair<vconfig::all_children_iterator, vconfig::all_children_iterator> vconfig_child_range;
-
-/**
- * Iterate through the subtags of a vconfig
- */
-static int impl_vconfig_ipairs_iter(lua_State *L)
-{
-	luaW_checkvconfig(L, 1);
-	int i = luaL_checkinteger(L, 2);
-	void* p = luaL_checkudata(L, lua_upvalueindex(1), vconfigipairsKey);
-	vconfig_child_range& range = *static_cast<vconfig_child_range*>(p);
-	if (range.first == range.second) {
-		return 0;
-	}
-	std::pair<std::string, vconfig> value = *range.first++;
-	lua_pushinteger(L, i + 1);
-	lua_createtable(L, 2, 0);
-	lua_pushlstring(L, value.first.c_str(), value.first.length());
-	lua_rawseti(L, -2, 1);
-	luaW_pushvconfig(L, value.second);
-	lua_rawseti(L, -2, 2);
-	return 2;
-}
-
-/**
- * Destroy a vconfig ipairs iterator
- */
-static int impl_vconfig_ipairs_collect(lua_State *L)
-{
-	void* p = lua_touserdata(L, 1);
-	vconfig_child_range* vcr = static_cast<vconfig_child_range*>(p);
-	vcr->~vconfig_child_range();
-	return 0;
-}
-
-/**
- * Construct an iterator to iterate through the subtags of a vconfig
- */
-static int impl_vconfig_ipairs(lua_State *L)
-{
-	vconfig cfg = luaW_checkvconfig(L, 1);
-	new(L) vconfig_child_range(cfg.ordered_begin(), cfg.ordered_end());
-	luaL_newmetatable(L, vconfigipairsKey);
-	lua_setmetatable(L, -2);
-	lua_pushcclosure(L, &impl_vconfig_ipairs_iter, 1);
-	lua_pushvalue(L, 1);
-	lua_pushinteger(L, 0);
-	return 3;
-}
-
 /**
  * Creates a vconfig containing the WML table.
  * - Arg 1: WML table.
@@ -480,7 +431,6 @@ std::string register_vconfig_metatable(lua_State *L)
 		{ "__dir",          &impl_vconfig_dir},
 		{ "__len",          &impl_vconfig_size},
 		{ "__pairs",        &impl_vconfig_pairs},
-		{ "__ipairs",       &impl_vconfig_ipairs},
 		{ nullptr, nullptr }
 	};
 	luaL_setfuncs(L, callbacks, 0);
@@ -498,15 +448,27 @@ std::string register_vconfig_metatable(lua_State *L)
 	lua_pushcfunction(L, &impl_vconfig_pairs_collect);
 	lua_rawset(L, -3);
 
-	luaL_newmetatable(L, vconfigipairsKey);
-	lua_pushstring(L, "__gc");
-	lua_pushcfunction(L, &impl_vconfig_ipairs_collect);
-	lua_rawset(L, -3);
-
 	return "Adding vconfig metatable...\n";
 }
 
 } // end namespace lua_common
+
+scoped_lua_argument::scoped_lua_argument(lua_State* L, int arg_index)
+	: state_(L)
+{
+	lua_geti(state_, -1, arg_index);
+}
+
+scoped_lua_argument::scoped_lua_argument(lua_State* L, int value_index, int arg_index)
+	: state_(L)
+{
+	lua_geti(state_, value_index, arg_index);
+}
+
+scoped_lua_argument::~scoped_lua_argument()
+{
+	lua_pop(state_, 1);
+}
 
 void* operator new(std::size_t sz, lua_State *L, int nuv)
 {
@@ -653,13 +615,15 @@ bool luaW_iststring(lua_State* L, int index)
 
 void luaW_filltable(lua_State *L, const config& cfg)
 {
+	static const lua_named_tuple_builder tuple_builder{ {"tag", "contents"} };
+
 	if (!lua_checkstack(L, LUA_MINSTACK))
 		return;
 
 	int k = 1;
 	for(const auto [child_key, child_cfg] : cfg.all_children_view())
 	{
-		luaW_push_namedtuple(L, {"tag", "contents"});
+		tuple_builder.push(L);
 		lua_pushstring(L, child_key.c_str());
 		lua_rawseti(L, -2, 1);
 		lua_newtable(L);
@@ -674,7 +638,7 @@ void luaW_filltable(lua_State *L, const config& cfg)
 	}
 }
 
-static int impl_namedtuple_get(lua_State* L)
+int lua_named_tuple_builder::impl_get(lua_State* L)
 {
 	if(lua_type(L, 2) == LUA_TSTRING) {
 		std::string k = lua_tostring(L, 2);
@@ -690,7 +654,7 @@ static int impl_namedtuple_get(lua_State* L)
 	return 0;
 }
 
-static int impl_namedtuple_set(lua_State* L)
+int lua_named_tuple_builder::impl_set(lua_State* L)
 {
 	if(lua_type(L, 2) == LUA_TSTRING) {
 		std::string k = lua_tostring(L, 2);
@@ -710,13 +674,13 @@ static int impl_namedtuple_set(lua_State* L)
 	return 0;
 }
 
-static int impl_namedtuple_dir(lua_State* L)
+int lua_named_tuple_builder::impl_dir(lua_State* L)
 {
 	luaL_getmetafield(L, 1, "__names");
 	return 1;
 }
 
-static int impl_namedtuple_tostring(lua_State* L)
+int lua_named_tuple_builder::impl_tostring(lua_State* L)
 {
 	std::vector<std::string> elems;
 	for(unsigned i = 1; i <= lua_rawlen(L, 1); i++) {
@@ -729,7 +693,7 @@ static int impl_namedtuple_tostring(lua_State* L)
 	return 1;
 }
 
-static int impl_namedtuple_compare(lua_State* L) {
+int lua_named_tuple_builder::impl_compare(lua_State* L) {
 	// Comparing a named tuple with any other table is always false.
 	if(lua_type(L, 1) != LUA_TTABLE || lua_type(L, 2) != LUA_TTABLE) {
 		NOT_EQUAL:
@@ -748,7 +712,7 @@ static int impl_namedtuple_compare(lua_State* L) {
 	if(lnames != rnames) goto NOT_EQUAL;
 	lua_pop(L, 2);
 	// They are equal if all of the corresponding members in each tuple are equal.
-	for(size_t i = 1; i <= lnames.size(); i++) {
+	for(std::size_t i = 1; i <= lnames.size(); i++) {
 		lua_rawgeti(L, 1, i);
 		lua_rawgeti(L, 2, i);
 		if(!lua_compare(L, 3, 4, LUA_OPEQ)) goto NOT_EQUAL;
@@ -760,36 +724,49 @@ static int impl_namedtuple_compare(lua_State* L) {
 	return 1;
 }
 
-void luaW_push_namedtuple(lua_State* L, const std::vector<std::string>& names)
+lua_named_tuple_builder::lua_named_tuple_builder(const std::vector<std::string>& names)
+	: names_{ names }
+	, key_{ build_key(names) }
 {
-	lua_createtable(L, names.size(), 0);
-	lua_createtable(L, 0, 8);
-	static luaL_Reg callbacks[] = {
-		{ "__index", &impl_namedtuple_get },
-		{ "__newindex", &impl_namedtuple_set },
-		{ "__dir", &impl_namedtuple_dir },
-		{ "__eq", &impl_namedtuple_compare },
-		{ "__tostring", &impl_namedtuple_tostring },
-		{ nullptr, nullptr }
-	};
-	luaL_setfuncs(L, callbacks, 0);
-	static const char baseName[] = "named tuple";
+}
+
+void lua_named_tuple_builder::push(lua_State *L) const
+{
+	lua_createtable(L, names_.size(), 0);
+
+	if (luaL_newmetatable(L, key_.c_str()) != 0) {
+		static luaL_Reg callbacks[] = {
+			{ "__index", &impl_get },
+			{ "__newindex", &impl_set },
+			{ "__dir", &impl_dir },
+			{ "__eq", &impl_compare },
+			{ "__tostring", &impl_tostring },
+			{ nullptr, nullptr }
+		};
+		luaL_setfuncs(L, callbacks, 0);
+
+		lua_pushlstring(L, key_.c_str(), key_.size());
+		lua_setfield(L, -2, "__metatable");
+		lua_push(L, names_);
+		lua_setfield(L, -2, "__names");
+		// __name has already been set to KEY by luaL_newmetatable
+	}
+
+	lua_setmetatable(L, -2);
+}
+
+std::string lua_named_tuple_builder::build_key(const std::vector<std::string>& names)
+{
 	std::ostringstream str;
-	str << baseName << '(';
+	str << base_name_ << '(';
 	if(!names.empty()) {
 		str << names[0];
 	}
-	for(size_t i = 1; i < names.size(); i++) {
+	for(std::size_t i = 1; i < names.size(); i++) {
 		str << ", " << names[i];
 	}
 	str << ')';
-	lua_push(L, str.str());
-	lua_setfield(L, -2, "__metatable");
-	lua_push(L, names);
-	lua_setfield(L, -2, "__names");
-	lua_pushstring(L, "named tuple");
-	lua_setfield(L, -2, "__name");
-	lua_setmetatable(L, -2);
+	return str.str();
 }
 
 std::vector<std::string> luaW_to_namedtuple(lua_State* L, int idx) {
@@ -807,7 +784,9 @@ std::vector<std::string> luaW_to_namedtuple(lua_State* L, int idx) {
 
 void luaW_pushlocation(lua_State *L, const map_location& ml)
 {
-	luaW_push_namedtuple(L, {"x", "y"});
+	static const lua_named_tuple_builder tuple_builder{ {"x", "y"} };
+
+	tuple_builder.push(L);
 
 	lua_pushinteger(L, ml.wml_x());
 	lua_rawseti(L, -2, 1);
@@ -894,9 +873,8 @@ std::set<map_location> luaW_check_locationset(lua_State* L, int idx)
 	lua_len(L, idx);
 	int len = luaL_checkinteger(L, -1);
 	for(int i = 1; i <= len; i++) {
-		lua_geti(L, idx, i);
+		const auto arg = scoped_lua_argument{L, idx, i};
 		locs.insert(luaW_checklocation(L, -1));
-		lua_pop(L, 1);
 	}
 	return locs;
 
@@ -1169,7 +1147,7 @@ bool luaW_tableget(lua_State *L, int index, const char* key)
 
 std::string_view luaW_tostring(lua_State *L, int index)
 {
-	size_t len = 0;
+	std::size_t len = 0;
 	const char* str = lua_tolstring(L, index, &len);
 	if(!str) {
 		throw luaL_error (L, "not a string");
@@ -1179,7 +1157,7 @@ std::string_view luaW_tostring(lua_State *L, int index)
 
 std::string_view luaW_tostring_or_default(lua_State *L, int index, std::string_view def)
 {
-	size_t len = 0;
+	std::size_t len = 0;
 	const char* str = lua_tolstring(L, index, &len);
 	if(!str) {
 		return def;

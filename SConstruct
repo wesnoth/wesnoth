@@ -77,7 +77,6 @@ opts.AddVariables(
     PathVariable('desktopdir', 'sets the desktop entry directory to a non-default location', "$datarootdir/applications", PathVariable.PathAccept),
     PathVariable('icondir', 'sets the icons directory to a non-default location', "$datarootdir/icons", PathVariable.PathAccept),
     PathVariable('appdatadir', 'sets the appdata directory to a non-default location', "$datarootdir/metainfo", PathVariable.PathAccept),
-    BoolVariable('internal_data', 'Set to put data in Mac OS X application fork', False),
     PathVariable('localedirname', 'sets the locale data directory to a non-default location', "translations", PathVariable.PathAccept),
     PathVariable('mandir', 'sets the man pages directory to a non-default location', "$datarootdir/man", PathVariable.PathAccept),
     PathVariable('docdir', 'sets the doc directory to a non-default location', "$datarootdir/doc/wesnoth", PathVariable.PathAccept),
@@ -107,6 +106,9 @@ opts.AddVariables(
     BoolVariable('system_lua', 'Enable use of system Lua ' + lua_ver + ' (compiled as C++, only for non-Windows systems).', False),
     PathVariable('luadir', 'Directory where Lua binary package is unpacked.', "", OptionalPath),
     ('host', 'Cross-compile host.', ''),
+    PathVariable('ndkdir', 'Root directory of android NDK to use', "", OptionalPath),
+    PathVariable('android_home', 'Root directory of android SDK to use', "", OptionalPath),
+    ('android_api', 'Target android api', 31),
     EnumVariable('multilib_arch', 'Address model for multilib compiler: 32-bit or 64-bit', "", ["", "32", "64"]),
     ('jobs', 'Set the number of parallel compilations', "1", lambda key, value, env: int(value), int),
     BoolVariable('distcc', 'Use distcc', False),
@@ -371,9 +373,9 @@ if env["prereqs"]:
 
     def have_sdl_other():
         return \
-            conf.CheckSDL2('2.0.18') & \
-            conf.CheckSDL2Mixer() & \
-            conf.CheckSDL2Image()
+            conf.CheckSDL3('3.4.0') & \
+            conf.CheckSDL3Mixer() & \
+            conf.CheckSDL3Image()
 
     if sys.platform == "msys":
         env["PKG_CONFIG_FLAGS"] = "--dont-define-prefix"
@@ -664,9 +666,6 @@ for env in [test_env, client_env, env]:
 # End setting options for release build
 # #
 
-    if env['internal_data']:
-        env.Append(CPPDEFINES = "USE_INTERNAL_DATA")
-
     if have_X:
         env.Append(CPPDEFINES = "_X11")
 
@@ -700,7 +699,7 @@ if env['autorevision']:
         pass
 
 Export(Split("env client_env test_env have_client_prereqs have_server_prereqs have_test_prereqs"))
-SConscript(dirs = Split("po doc packaging/windows packaging/systemd"))
+SConscript(dirs = Split("po doc packaging/windows packaging/systemd packaging/android"))
 
 binaries = Split("wesnoth wesnothd campaignd boost_unit_tests")
 builds = {

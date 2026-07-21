@@ -338,4 +338,18 @@ void editor_action_shuffle_area::perform_without_undo(map_context& mc) const
 	mc.set_needs_terrain_rebuild();
 }
 
+IMPLEMENT_ACTION(time_area_move_all)
+
+std::unique_ptr<editor_action> editor_action_time_area_move_all::perform(map_context& mc) const
+{
+	auto undo = std::make_unique<editor_action_time_area_move_all>(-x_offset_, -y_offset_);
+	perform_without_undo(mc);
+	return undo;
+}
+
+void editor_action_time_area_move_all::perform_without_undo(map_context& mc) const
+{
+	mc.get_time_manager()->move_all_areas(x_offset_, y_offset_);
+}
+
 } // end namespace editor

@@ -141,7 +141,7 @@ action_spectator& synced_context::get_default_spectator()
 	public:
 		void error(const std::string& message)
 		{
-			ERR_REPLAY << "Unexpected Error during synced execution" << message;
+			ERR_REPLAY << "Unexpected Error during synced execution: '" << message << "'";
 			assert(!"Unexpected Error during synced execution, more info in stderr.");
 		}
 

@@ -21,13 +21,7 @@
 #include <unordered_map>
 #include <vector>
 
-//These macros interfere with MS VC++
-#ifdef _MSC_VER
-	#undef max
-	#undef min
-#endif
-
-using color_range_map = std::unordered_map<color_t, color_t>;
+using color_mapping = std::unordered_map<color_t, color_t>;
 
 /**
  * A color range definition is made of four reference RGB colors, used
@@ -43,7 +37,7 @@ using color_range_map = std::unordered_map<color_t, color_t>;
  *      (default: same as the provided average shade, or gray #808080)
  *
  * The first three reference colors are used for converting a source palette
- * with the external recolor_range() method.
+ * with the external generate_color_mapping() method.
  */
 class color_range
 {
@@ -98,15 +92,6 @@ public:
 		return mid_ == b.mid() && max_ == b.max() && min_ == b.min() && rep_ == b.rep();
 	}
 
-	bool operator<(const color_range& b) const
-	{
-		if(mid_ != b.mid()) { return mid_.to_rgba_bytes() < b.mid().to_rgba_bytes(); }
-		if(max_ != b.max()) { return max_.to_rgba_bytes() < b.max().to_rgba_bytes(); }
-		if(min_ != b.min()) { return min_.to_rgba_bytes() < b.min().to_rgba_bytes(); }
-
-		return rep_.to_rgba_bytes() < b.rep().to_rgba_bytes();
-	}
-
 	/** Return a string describing the color range for debug output. */
 	std::string debug() const;
 
@@ -117,7 +102,7 @@ private:
 /**
  * Creates a reference color palette from a color range.
  */
-std::vector<color_t> palette(const color_range& cr);
+std::vector<color_t> generate_reference_palette(const color_range& cr);
 
 /**
  * Converts a source palette using the specified color_range object.
@@ -130,4 +115,4 @@ std::vector<color_t> palette(const color_range& cr);
  * @return       A STL map of colors, with the keys being source palette elements, and the values
  *               are the result of applying the color range conversion on it.
  */
-color_range_map recolor_range(const color_range& new_rgb, const std::vector<color_t>& old_rgb);
+color_mapping generate_color_mapping(const color_range& new_rgb, const std::vector<color_t>& old_rgb);

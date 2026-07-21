@@ -57,7 +57,7 @@ static lg::log_domain log_engine("engine");
 
 namespace actions {
 
-const std::set<std::string> get_recruits(int side, const map_location &recruit_loc)
+std::set<std::string> get_recruits(int side, const map_location &recruit_loc)
 {
 	const team & current_team = resources::gameboard->get_team(side);
 

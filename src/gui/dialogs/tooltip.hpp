@@ -15,11 +15,11 @@
 
 #pragma once
 
-#include <SDL2/SDL_rect.h>
 #include <string>
 
 class t_string;
 struct point;
+struct rect;
 
 namespace gui2::dialogs::tip
 {
@@ -37,7 +37,7 @@ namespace gui2::dialogs::tip
 void show(const std::string& window_id,
 		  const t_string& message,
 		  const point& mouse,
-		  const SDL_Rect& source_rect);
+		  const rect& source_rect);
 
 /**
  * Removes a tip.

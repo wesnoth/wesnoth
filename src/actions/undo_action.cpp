@@ -14,6 +14,7 @@
 */
 
 #include "actions/undo_action.hpp"
+#include "actions/undo_move_action.hpp"
 #include "game_board.hpp"
 #include "log.hpp"                   // for LOG_STREAM, logger, etc
 #include "scripting/game_lua_kernel.hpp"
@@ -60,6 +61,38 @@ bool undo_action_container::undo(int side)
 void undo_action_container::add(t_step_ptr&& action)
 {
 	steps_.emplace_back(std::move(action));
+}
+
+/**
+ * Merges runs of consecutive undo::move_action steps that together form one continuous
+ * path (each one picking up exactly where the previous left off) into a single step
+ * covering the whole stretch.
+ *
+ * move_unit() records one move_action per hex so that, when undoing, any [on_undo] event
+ * handlers interleaved between hexes still fire in the correct order relative to the
+ * unit's position. That splitting serves no purpose across a stretch where nothing was
+ * interleaved, so this collapses those stretches back into one step - which both undoes
+ * (and later animates) as a single continuous motion, and avoids writing one redundant
+ * step per hex to the save file.
+ */
+void undo_action_container::combine_moves()
+{
+	for(auto it = steps_.begin(); it != steps_.end(); ++it) {
+		auto* first = dynamic_cast<undo::move_action*>(it->get());
+		if(!first) {
+			continue;
+		}
+
+		auto next = std::next(it);
+		while(next != steps_.end()) {
+			auto* second = dynamic_cast<undo::move_action*>(next->get());
+			if(!second || second->route.front() != first->route.back()) {
+				break;
+			}
+			first->route.insert(first->route.end(), second->route.begin() + 1, second->route.end());
+			next = steps_.erase(next);
+		}
+	}
 }
 
 

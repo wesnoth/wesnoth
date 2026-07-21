@@ -1,13 +1,14 @@
 # Pepe <donpepe1963@gmail.com>, 2017.
 # Toranks <toranksmervat@gmail.com>, 2023.
+# Sebastián Lecchini <sebas38760@gmail.com>,  2026.
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: wesnoth-wc\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-04-28 03:22 UTC\n"
-"PO-Revision-Date: 2023-03-05 08:43+0100\n"
-"Last-Translator: Toranks <toranksmervat@gmail.com>\n"
-"Language-Team: none\n"
+"POT-Creation-Date: 2026-06-23 03:16 UTC\n"
+"PO-Revision-Date: 2026-03-04 20:21-0300\n"
+"Last-Translator: Sebastián Lecchini <sebas38760@gmail.com>\n"
+"Language-Team: es\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -160,7 +161,7 @@ msgid "The Hand"
 msgstr "La mano"
 
 #. [world_conquest_data]
-#: data/campaigns/World_Conquest/era/factions/The_Hand.cfg:17
+#: data/campaigns/World_Conquest/era/factions/The_Hand.cfg:16
 msgid "Dune Rider, Knalgan Alliance and Drakes"
 msgstr "Jinete barján, Alianza Knalga y Dracos"
 
@@ -295,7 +296,6 @@ msgstr "Obtener este ítem"
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:327
 #: data/campaigns/World_Conquest/gui/invest_tellunit.cfg:58
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:236
 msgid "OK"
 msgstr "De acuerdo"
 
@@ -320,63 +320,66 @@ msgid "No"
 msgstr "No"
 
 #. [label]: id=title
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:29
-msgid "Map Settings"
-msgstr "Configuración del mapa"
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:48
+msgid "Map Generator Settings"
+msgstr "Configuración del generador de mapas"
 
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:50
-msgid " players: "
-msgstr " jugadores: "
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:57
+msgid "Players:"
+msgstr "Jugadores:"
 
-#. [label]
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:58
+msgid "Scenario:"
+msgstr "Escenario:"
+
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:59
+msgid "Map:"
+msgstr "Mapa:"
+
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:60
+msgid "Map Size:"
+msgstr "Tamaño del mapa:"
+
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:61
+msgid "Village Density:"
+msgstr "Densidad de aldeas:"
+
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:62
+msgid "Keep Size:"
+msgstr "Tamaño del torreón:"
+
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:63
+msgid "Iterations:"
+msgstr "Iteraciones:"
+
+#. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:64
-msgid " scenario: "
-msgstr " escenario: "
+msgid "Terrain Factor:"
+msgstr "Factor de terreno:"
 
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:85
-msgid " map: "
-msgstr " mapa: "
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:65
+msgid "Island Factor:"
+msgstr "Factor de isla:"
 
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:112
-msgid "map size"
-msgstr "tamaño del mapa"
+#. [grid]
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:66
+msgid "Number of Keeps:"
+msgstr "Número de torreones:"
 
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:128
-msgid "village density"
-msgstr "densidad de aldeas"
-
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:144
-msgid "keep size"
-msgstr "mantener tamaño"
-
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:160
-msgid "iterations"
-msgstr "iteraciones"
-
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:176
-msgid "terrain factor"
-msgstr "factor de terreno"
-
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:192
-msgid "island factor"
-msgstr "factor de isla"
-
-#. [label]
-#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:208
-msgid "number of keeps"
-msgstr "número de torreones"
+#. [button]: id=ok
+#: data/campaigns/World_Conquest/gui/settings_dialog.cfg:76
+msgid "Close"
+msgstr "Cerrar"
 
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
-#, fuzzy
-#| msgid "$name|'s pet"
 msgid "$name|’s pet"
 msgstr "Mascota de $name"
 
@@ -401,7 +404,7 @@ msgstr ""
 #. [lua]: carryover.remaining_gold_message
 #: data/campaigns/World_Conquest/lua/campaign/scenario.lua:87
 msgid "Average remaining gold: "
-msgstr ""
+msgstr "Promedio de oro restante:"
 
 #: data/campaigns/World_Conquest/lua/era/era.lua:12
 msgid "Tell me how my recruit works"
@@ -2268,16 +2271,12 @@ msgstr "Estupendo. Siempre es de utilidad tener más poder aéreo."
 
 #. a Drake Fighter joins a player's side; they will have their standard weapon (a "war blade" in English)
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:252
-#, fuzzy
-#| msgid ""
-#| "The ancient spirits tell me my destiny lies with yours. My sword is at "
-#| "your command."
 msgid ""
 "The ancient spirits tell me my destiny lies with yours. My blade is at your "
 "command."
 msgstr ""
-"Los espíritus ancestrales me dicen que mi destino conecta con el vuestro. Mi "
-"espada está a vuestro servicio."
+"Los espíritus ancestrales me dicen que mi destino está ligado al tuyo. Mi "
+"espada está a tu servicio."
 
 #. a Drake Clasher joins a player's side
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:258
@@ -2657,8 +2656,6 @@ msgstr "Inicio"
 
 #. [lua]: wc_ii_generate_scenario
 #: data/campaigns/World_Conquest/lua/map/main.lua:127
-#, fuzzy
-#| msgid "Scenario"
 msgid "Scenario "
 msgstr "Escenario"
 
@@ -2961,7 +2958,7 @@ msgid "Enemies"
 msgstr "Enemigos"
 
 #. [lua]: add_player_side
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:60
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:61
 msgid "Allies"
 msgstr "Aliados"
 
@@ -3173,8 +3170,12 @@ msgstr ""
 
 #. [leadership]: id=forcefield
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:249
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:250
 msgid "forcefield"
+msgstr "campo de fuerza"
+
+#. [leadership]: id=forcefield
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:250
+msgid "female^forcefield"
 msgstr "campo de fuerza"
 
 #. [leadership]: id=forcefield
@@ -3295,7 +3296,7 @@ msgstr "Yerbas medicinales"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:420
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:5
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:4
 msgid "heals +8, cures"
 msgstr "sana +8, cura"
 
@@ -3470,8 +3471,12 @@ msgstr ""
 
 #. [berserk]: id=wct_fury
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:624
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:625
 msgid "fury"
+msgstr "furia"
+
+#. [berserk]: id=wct_fury
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:625
+msgid "female^fury"
 msgstr "furia"
 
 #. [berserk]: id=wct_fury
@@ -3526,8 +3531,12 @@ msgstr ""
 
 #. [illuminates]: id=darkness
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:674
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:675
 msgid "darkness"
+msgstr "oscuridad"
+
+#. [illuminates]: id=darkness
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:675
+msgid "female^darkness"
 msgstr "oscuridad"
 
 #. [illuminates]: id=darkness
@@ -3544,8 +3553,12 @@ msgstr ""
 
 #. [dummy]: id=wc2_corruption
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:681
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
 msgid "corruption"
+msgstr "corrupción"
+
+#. [dummy]: id=wc2_corruption
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
+msgid "female^corruption"
 msgstr "corrupción"
 
 #. [dummy]: id=wc2_corruption
@@ -3638,13 +3651,17 @@ msgstr ""
 "impartiendo una bonificación de daño a las unidades aliadas que lo rodean."
 
 #. [leadership]: id=banner
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:785
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:786
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:784
 msgid "banner"
 msgstr "pendón"
 
 #. [leadership]: id=banner
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:787
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:785
+msgid "female^banner"
+msgstr "estandarte"
+
+#. [leadership]: id=banner
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:786
 msgid ""
 "This unit can lead ~allied~ units that are next to it, making them fight "
 "better. Adjacent allied units will do 20% more damage. This is cumulative "
@@ -3655,12 +3672,12 @@ msgstr ""
 "daño. Esto es acumulativo con el liderazgo."
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:798
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:797
 msgid "Winged scepter"
 msgstr "Cetro alado"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:800
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:799
 msgid ""
 "Full movement and up to 50% defense in all terrains but cave or mushroom "
 "grove."
@@ -3669,7 +3686,7 @@ msgstr ""
 "en cuevas o setas."
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:801
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:800
 msgid ""
 "This wondrous rod imparts the user the ability to soar through the skies, "
 "making it a breeze to move through most terrain. Units that can already fly "
@@ -3680,17 +3697,17 @@ msgstr ""
 "terrenos. Las unidades que ya pueden volar obtienen defensas mejoradas."
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:841
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:840
 msgid "Winter’s bloom"
 msgstr "Flor invernal"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:843
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:842
 msgid "+15 HP, up to 20% resistance vs cold"
 msgstr "+15 PV, hasta 20% de resistencia al frío"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:844
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:843
 msgid ""
 "This delicate blossom rarely found in snowy peaks, is strongly appreciated "
 "for its beneficial effects on health."
@@ -3699,17 +3716,17 @@ msgstr ""
 "ocasiones, es muy apreciada por sus efectos beneficiosos para la salud."
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:859
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:858
 msgid "Zephyr cloak"
 msgstr "Capa de céfiro"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:861
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:860
 msgid "skirmisher, ambush, nightstalk, +2 moves"
 msgstr "hostigador, emboscada, nocturnidad, +2 movimiento"
 
 #. [artifact]
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:862
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:861
 msgid ""
 "This lightweight cloak renders its wearer almost invisible in the darkness "
 "and lets them move with fluid grace past enemies with ease."
@@ -3739,13 +3756,6 @@ msgstr "Movimiento"
 
 #. [trainer]: type=Duelist
 #: data/campaigns/World_Conquest/resources/data/training.cfg:61
-#, fuzzy
-#| msgid ""
-#| "What, you want me to join the fight? Quite out of the question, old boy! "
-#| "I’m afraid battlefields just aren’t my scene - no drama, no style, no "
-#| "romance! No finesse at all! You probably wouldn’t understand, so let me "
-#| "show you. I’ll teach you how to break out of those dreary marching "
-#| "formations and step light as a feather!"
 msgid ""
 "What, you want me to join the fight? Quite out of the question, old boy! I’m "
 "afraid battlefields just aren’t my scene — no drama, no style, no romance! "
@@ -3865,7 +3875,6 @@ msgstr "$range|: $special|"
 #. [skirmisher]: id=distract
 #: data/campaigns/World_Conquest/resources/data/training.cfg:378
 #: data/campaigns/World_Conquest/resources/data/training.cfg:403
-#: data/campaigns/World_Conquest/resources/data/training.cfg:404
 msgid "distract"
 msgstr "distrae"
 
@@ -3873,9 +3882,13 @@ msgstr "distrae"
 #. [resistance]: id=tenacity
 #: data/campaigns/World_Conquest/resources/data/training.cfg:390
 #: data/campaigns/World_Conquest/resources/data/training.cfg:427
-#: data/campaigns/World_Conquest/resources/data/training.cfg:428
 msgid "tenacity"
 msgstr "tenacidad"
+
+#. [skirmisher]: id=distract
+#: data/campaigns/World_Conquest/resources/data/training.cfg:404
+msgid "female^distract"
+msgstr "distrae"
 
 #. [skirmisher]: id=distract
 #: data/campaigns/World_Conquest/resources/data/training.cfg:405
@@ -3883,6 +3896,11 @@ msgid "Allied units ignore enemy zones of control adjacent to this unit."
 msgstr ""
 "Las unidades aliadas ignoran las zonas de control enemigas adyacentes a esta "
 "unidad."
+
+#. [resistance]: id=tenacity
+#: data/campaigns/World_Conquest/resources/data/training.cfg:428
+msgid "female^tenacity"
+msgstr "tenacidad"
 
 #. [resistance]: id=tenacity
 #: data/campaigns/World_Conquest/resources/data/training.cfg:429
@@ -3981,19 +3999,19 @@ msgstr "Conquista Mundial 4j"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:17
 msgid "WC1p"
-msgstr ""
+msgstr "WC1j"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:20
 msgid "WC2p"
-msgstr ""
+msgstr "WC2j"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:23
 msgid "WC3p"
-msgstr ""
+msgstr "WC3j"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:26
 msgid "WC4p"
-msgstr ""
+msgstr "WC4j"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:29
 msgid ""
@@ -4025,17 +4043,12 @@ msgstr ""
 "(Nivel experto, 5 escenarios)."
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:41
-#, fuzzy
-#| msgid ""
-#| "A randomly generated cooperative campaign for 2 players. It has 6 levels "
-#| "of difficulty.\n"
-#| "(Expert level, 5 scenarios.)"
 msgid ""
 "A randomly generated cooperative campaign for 4 players. It has 6 levels of "
 "difficulty.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
-"Una campaña generada aleatoriamente para 2 jugadores. Tiene 6 niveles de "
+"Una campaña generada aleatoriamente para 4 jugadores. Tiene 6 niveles de "
 "dificultad.\n"
 "(Nivel experto, 5 escenarios)."
 
@@ -4123,6 +4136,15 @@ msgstr "Pruebas de juego"
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:177
 msgid "Campaign Maintenance"
 msgstr "Mantenimiento de la Campaña"
+
+#~ msgid " scenario: "
+#~ msgstr " escenario: "
+
+#~ msgid " map: "
+#~ msgstr " mapa: "
+
+#~ msgid "map size"
+#~ msgstr "tamaño del mapa"
 
 #~ msgid "WC"
 #~ msgstr "CM"

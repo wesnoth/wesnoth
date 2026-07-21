@@ -194,7 +194,7 @@ void menu_button::set_values(const std::vector<::config>& values, unsigned selec
 	values_ = values;
 	selected_ = selected;
 
-	set_label(values_[selected_]["label"]);
+	set_label(values_[selected_]["label"].t_str());
 }
 
 void menu_button::set_selected(unsigned selected, bool fire_event)
@@ -208,7 +208,7 @@ void menu_button::set_selected(unsigned selected, bool fire_event)
 
 	selected_ = selected;
 
-	set_label(values_[selected_]["label"]);
+	set_label(values_[selected_]["label"].t_str());
 	if (fire_event) {
 		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}

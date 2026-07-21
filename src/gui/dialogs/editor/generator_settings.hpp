@@ -17,11 +17,7 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "generators/default_map_generator.hpp"
 
-namespace gui2
-{
-
-
-namespace dialogs
+namespace gui2::dialogs
 {
 
 class generator_settings : public modal_dialog
@@ -43,9 +39,6 @@ private:
 	field_integer* players_;
 	field_integer* width_;
 	field_integer* height_;
-
-	std::function<void()> update_width_label_, update_height_label_;
 };
 
-} // namespace dialogs
-} // namespace gui2
+} // namespace gui2::dialogs

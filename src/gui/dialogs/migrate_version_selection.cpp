@@ -136,6 +136,9 @@ void migrate_version_selection::post_show()
 		// otherwise the copied files won't be used and also will get overwritten/deleted when Wesnoth closes
 
 		prefs::get().reload_preferences();
+
+		// TODO: remove after 1.20. (Not used after that. Needs no replacement.)
+		prefs::get().set_campaign_rng_mode_default_for_migration();
 	}
 }
 

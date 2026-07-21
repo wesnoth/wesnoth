@@ -107,9 +107,6 @@ formula::formula(const std::string& text, function_symbol_table* symbols, bool m
 	std::vector<tk::token> tokens;
 	std::string::const_iterator i1 = text.begin(), i2 = text.end();
 
-	// Set true when 'fai' keyword is found
-	bool fai_keyword = false;
-
 	// Set true when 'wfl' keyword is found
 	bool wfl_keyword = false;
 
@@ -148,21 +145,9 @@ formula::formula(const std::string& text, function_symbol_table* symbols, bool m
 			} else if(current_type == tk::token_type::eol) {
 				files.back().second++;
 				tokens.pop_back();
-			} else if((current_type == tk::token_type::keyword) && (std::string(tokens.back().begin, tokens.back().end) == "fai")) {
-				fai_keyword = true;
-				tokens.pop_back();
 			} else if((current_type == tk::token_type::keyword) && (std::string(tokens.back().begin, tokens.back().end) == "wfl")) {
 				wfl_keyword = true;
 				tokens.pop_back();
-			} else if((current_type == tk::token_type::keyword) && (std::string(tokens.back().begin, tokens.back().end) == "faiend")) {
-				if(files.size() > 1) {
-					files.pop_back();
-					filenames_it = filenames.find(files.back().first);
-
-					tokens.pop_back();
-				} else {
-					throw formula_error("Unexpected 'faiend' found", "", "", 0);
-				}
 			} else if((current_type == tk::token_type::keyword) && (std::string(tokens.back().begin, tokens.back().end) == "wflend")) {
 				if(files.size() > 1) {
 					files.pop_back();
@@ -172,7 +157,7 @@ formula::formula(const std::string& text, function_symbol_table* symbols, bool m
 				} else {
 					throw formula_error("Unexpected 'wflend' found", "", "", 0);
 				}
-			} else if(fai_keyword || wfl_keyword) {
+			} else if(wfl_keyword) {
 				if(current_type == tk::token_type::string_literal) {
 					std::string str = std::string(tokens.back().begin, tokens.back().end);
 					files.emplace_back(str , 1);
@@ -182,22 +167,13 @@ formula::formula(const std::string& text, function_symbol_table* symbols, bool m
 					if(success) {
 						filenames_it = pos;
 					} else {
-						if(fai_keyword) {
-							throw formula_error("Faifile already included", "fai" + str, "", 0);
-						} else {
-							throw formula_error("Wflfile already included", "wfl" + str, "", 0);
-						}
+						throw formula_error("Wflfile already included", "wfl" + str, "", 0);
 					}
 
 					tokens.pop_back();
-					fai_keyword = false;
 					wfl_keyword = false;
 				} else {
-					if(fai_keyword) {
-						throw formula_error("Expected string after the 'fai'", "fai", "", 0);
-					} else {
-						throw formula_error("Expected string after the 'wfl'", "wfl", "", 0);
-					}
+					throw formula_error("Expected string after the 'wfl'", "wfl", "", 0);
 				}
 			} else {
 				// In every token not specified above, store line number and name of file it came from
@@ -317,7 +293,7 @@ private:
 			res.emplace_back(fcn_name);
 		}
 
-		return variant(res);
+		return variant(std::move(res));
 	}
 
 	function_symbol_table* symbols_;
@@ -339,7 +315,7 @@ private:
 			res.push_back(i->evaluate(variables, add_debug_info(fdb, 0, "[list element]")));
 		}
 
-		return variant(res);
+		return variant(std::move(res));
 	}
 
 	std::vector<expression_ptr> items_;
@@ -391,14 +367,14 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger*fdb) const
 	{
-		std::map<variant,variant> res;
+		std::map<variant ,variant> res;
 		for(std::vector<expression_ptr>::const_iterator i = items_.begin(); (i != items_.end()) && (i + 1 != items_.end()) ; i += 2) {
 			variant key = (*i)->evaluate(variables, add_debug_info(fdb, 0, "key ->"));
 			variant value = (*(i+1))->evaluate(variables, add_debug_info(fdb, 1, "-> value"));
 			res[key] = value;
 		}
 
-		return variant(res);
+		return variant(std::move(res));
 	}
 
 	std::vector<expression_ptr> items_;
@@ -433,7 +409,7 @@ private:
 		const variant res = operand_->evaluate(variables, add_debug_info(fdb, 0, op_str_ + " unary"));
 		switch(op_) {
 		case NOT:
-			return res.as_bool() ? variant(0) : variant(1);
+			return variant(!res.as_bool());
 		case SUB:
 		default:
 			return -res;
@@ -472,7 +448,7 @@ public:
 				chars.emplace_back(std::string(1, c));
 			}
 
-			return variant(chars);
+			return variant(std::move(chars));
 		} else if(key == "word" || key == "words") {
 			std::vector<variant> words;
 			const std::string& str = string_.as_string();
@@ -484,7 +460,7 @@ public:
 				next_space = str.find_first_not_of(" \t", next_space);
 			} while(next_space != std::string::npos);
 
-			return variant(words);
+			return variant(std::move(words));
 		} else if(key == "item" || key == "items") {
 			std::vector<std::string> split = utils::parenthetical_split(string_.as_string(), ',');
 			std::vector<variant> items;
@@ -493,7 +469,7 @@ public:
 				items.emplace_back(s);
 			}
 
-			return variant(items);
+			return variant(std::move(items));
 		}
 
 		return variant();
@@ -768,17 +744,17 @@ private:
 		case OP_CAT:
 			return left.concatenate(right);
 		case EQ:
-			return left == right ? variant(1) : variant(0);
+			return variant(left == right);
 		case NEQ:
-			return left != right ? variant(1) : variant(0);
+			return variant(left != right);
 		case LTE:
-			return left <= right ? variant(1) : variant(0);
+			return variant(left <= right);
 		case GTE:
-			return left >= right ? variant(1) : variant(0);
+			return variant(left >= right);
 		case LT:
-			return left < right ? variant(1) : variant(0);
+			return variant(left < right);
 		case GT:
-			return left > right ? variant(1) : variant(0);
+			return variant(left > right);
 		case MOD:
 			return left % right;
 		case RAN:

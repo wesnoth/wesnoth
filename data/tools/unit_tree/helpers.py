@@ -3,11 +3,15 @@
 """
 Various helpers for use by the wmlunits tool.
 """
-import sys, os, re, glob, shutil, copy, subprocess, traceback
+import sys, os, re, glob, shutil, copy, subprocess, traceback, datetime
 
 import wesnoth.wmlparser3 as wmlparser3
 from unit_tree.team_colorizer import colorize
 import wesnoth.base64url as base64url
+
+
+def printtime(*args, **kwargs):
+    print(str(datetime.datetime.now()), *args, **kwargs)
 
 class Image:
     def __init__(self, id_name, ipath, bases, no_tc):
@@ -171,6 +175,8 @@ class WesnothList:
         self.race_lookup = {}
         self.terrain_lookup = {}
         self.movetype_lookup = {}
+        # includes weapon specials since they have same structure
+        self.ability_registry_lookup = {}
         self.era_lookup = {}
         self.campaign_lookup = {}
         self.parser = wmlparser3.Parser(wesnoth_exe, config_dir, data_dir)
@@ -318,6 +324,13 @@ class WesnothList:
             mtname = movetype.get_text_val("name")
             if mtname is None: continue
             self.movetype_lookup[mtname] = movetype
+        
+        for registry_tag in ["abilities", "weapon_specials"]:
+            for registry in getall(registry_tag):
+                for ability in registry.get_all(tag=""):
+                    rid = ability.get_text_val("unique_id", ability.get_text_val("id"))
+                    if rid is not None:
+                        self.ability_registry_lookup[rid] = ability
 
         # Store race/movetype/faction of each unit for easier access later.
         for unit in newunits:

@@ -1,6 +1,6 @@
 /*
 	Copyright (C) 2023 - 2025
-	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
+	by Subhraman Sarkar (babaissarkar) <sbmskmm@protonmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -134,7 +134,7 @@ void scroll_text::place(const point& origin, const point& size) {
 	scrollbar_container::place(origin, size);
 
 	if(multiline_text* widget = get_internal_text_box()) {
-		const SDL_Rect& visible_area = content_visible_area();
+		const rect& visible_area = content_visible_area();
 
 		if (widget->get_cursor_pos().x < visible_area.w/2.0) {
 			scroll_horizontal_scrollbar(scrollbar_base::BEGIN);

@@ -15,18 +15,13 @@
 
 #pragma once
 
-#include <SDL2/SDL.h>
 #include <string>
-//forces to call Unicode winapi functions instead of ASCII (default)
-#ifndef UNICODE
-#define UNICODE
-#endif
-// ShellAPI.h should be included after Windows.h only!
-#include <windows.h>
-#include <shellapi.h>
 
-class windows_tray_notification {
-public:
+// Win32 API forward declaration (full definition in WinUser.h)
+typedef struct tagMSG MSG;
+
+namespace windows_tray_notification
+{
 	/**
 	* Displays a tray notification.
 	* When user clicks on the notification popup, the user switches to the wesnoth window.
@@ -38,33 +33,15 @@ public:
 	*
 	* @return True if message was shown successfully, False otherwise.
 	*/
-	static bool show(std::string title, std::string message);
+	bool show(std::string title, std::string message);
 
 	/**
 	* Frees resources when a notification disappears, switches user to the wesnoth
 	* window if the notification popup was clicked by user.
 	*
-	* @param event System event.
+	* @param msg Windows message payload.
+	*
+	* @return True if the message was handled.
 	*/
-	static void handle_system_event(const SDL_Event& event);
-
-private:
-	static NOTIFYICONDATA* nid;
-	static bool message_reset;
-	static const int ICON_ID = 1007; // just a random number
-	static const unsigned int WM_TRAYNOTIFY = 32868; // WM_APP+100
-	static const std::size_t MAX_TITLE_LENGTH = 63; // 64 including the terminating null character
-	static const std::size_t MAX_MESSAGE_LENGTH = 255; // 256 including the terminating null character
-
-	static bool create_tray_icon();
-	static void destroy_tray_icon();
-	static bool set_tray_message(const std::string& title, const std::string& message);
-	static void adjust_length(std::string& title, std::string& message);
-	static HWND get_window_handle();
-	static void switch_to_wesnoth_window();
-	static std::wstring string_to_wstring(const std::string& string, std::size_t maxlength);
-
-	explicit windows_tray_notification();
-	windows_tray_notification(const windows_tray_notification& w);
-	windows_tray_notification& operator=(const windows_tray_notification& w);
+	bool message_hook(const MSG& msg);
 };

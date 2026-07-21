@@ -58,10 +58,10 @@ void core_selection::pre_show()
 		/*** Add list item ***/
 		grid* grid = &list.add_row(widget_data{
 			{ "image", {
-				{ "label", core["image"] }
+				{ "label", core["image"].t_str() }
 			}},
 			{ "name", {
-				{ "label", core["name"] }
+				{ "label", core["name"].t_str() }
 			}}
 		});
 		assert(grid);
@@ -69,7 +69,7 @@ void core_selection::pre_show()
 		/*** Add detail item ***/
 		pages.add_page({
 			{ "description", {
-				{ "label", core["description"] },
+				{ "label", core["description"].t_str() },
 				{ "use_markup", "true" }
 			}}
 		});

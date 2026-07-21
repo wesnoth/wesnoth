@@ -22,14 +22,16 @@
 #include "sdl/utils.hpp"
 #include "color.hpp"
 #include "log.hpp"
+#include "utils_simd.hpp"
 #include "xBRZ/xbrz.hpp"
 
 #include <algorithm>
 #include <cassert>
 #include <cstring>
+#include "utils/ranges.hpp"
 #include "utils/span.hpp"
 
-#include <SDL2/SDL_version.h>
+#include <SDL3/SDL_version.h>
 
 #include <boost/circular_buffer.hpp>
 #include <boost/math/constants/constants.hpp>
@@ -39,22 +41,20 @@ static lg::log_domain log_display("display");
 
 version_info sdl::get_version()
 {
-	SDL_version sdl_version;
-	SDL_GetVersion(&sdl_version);
-	return version_info(sdl_version.major, sdl_version.minor, sdl_version.patch);
+	int linked_sdl_version = SDL_GetVersion();
+	return version_info(SDL_VERSIONNUM_MAJOR(linked_sdl_version), SDL_VERSIONNUM_MINOR(linked_sdl_version), SDL_VERSIONNUM_MICRO(linked_sdl_version));
 }
 
 bool sdl::runtime_at_least(uint8_t major, uint8_t minor, uint8_t patch)
 {
-	SDL_version ver;
-	SDL_GetVersion(&ver);
-	if(ver.major < major) return false;
-	if(ver.major > major) return true;
+	int linked_sdl_version = SDL_GetVersion();
+	if(SDL_VERSIONNUM_MAJOR(linked_sdl_version) < major) return false;
+	if(SDL_VERSIONNUM_MAJOR(linked_sdl_version) > major) return true;
 	// major version equal
-	if(ver.minor < minor) return false;
-	if(ver.minor > minor) return true;
+	if(SDL_VERSIONNUM_MINOR(linked_sdl_version) < minor) return false;
+	if(SDL_VERSIONNUM_MINOR(linked_sdl_version) > minor) return true;
 	// major and minor version equal
-	if(ver.patch < patch) return false;
+	if(SDL_VERSIONNUM_MICRO(linked_sdl_version) < patch) return false;
 	return true;
 }
 
@@ -405,15 +405,17 @@ surface scale_surface_sharp(const surface& surf, int w, int h)
 void adjust_surface_color(surface& nsurf, int red, int green, int blue)
 {
 	if(nsurf && (red != 0 || green != 0 || blue != 0)) {
+		// Attempt SIMD
+		std::size_t simd_processed = simd::is_enabled() ? adjust_surface_color_simd(nsurf, red, green, blue) : 0;
+
+		// SCALAR fallback: process remaining pixels (either all pixels if SIMD unavailable, or just the remainder)
 		surface_lock lock(nsurf);
-
-		for(auto& pixel : lock.pixel_span()) {
+		utils::span pixel_span = lock.pixel_span();
+		for(auto& pixel : pixel_span.subspan(simd_processed)) {
 			auto [r, g, b, alpha] = color_t::from_argb_bytes(pixel);
-
 			r = std::clamp(static_cast<int>(r) + red, 0, 255);
 			g = std::clamp(static_cast<int>(g) + green, 0, 255);
 			b = std::clamp(static_cast<int>(b) + blue, 0, 255);
-
 			pixel = (alpha << 24) + (r << 16) + (g << 8) + b;
 		}
 	}
@@ -631,7 +633,7 @@ void swap_channels_image(surface& nsurf, channel r, channel g, channel b, channe
 	}
 }
 
-void recolor_image(surface& nsurf, const color_range_map& map_rgb)
+void recolor_image(surface& nsurf, const color_mapping& map_rgb)
 {
 	if(nsurf == nullptr)
 		return;
@@ -645,7 +647,7 @@ void recolor_image(surface& nsurf, const color_range_map& map_rgb)
 	for(auto& pixel : lock.pixel_span()) {
 		auto color = color_t::from_argb_bytes(pixel);
 
-		// Palette use only RGB channels, so remove alpha
+		// Palette uses only RGB channels, so remove alpha
 		uint8_t old_alpha = color.a;
 		color.a = ALPHA_OPAQUE;
 
@@ -703,17 +705,16 @@ void adjust_surface_alpha_add(surface& nsurf, int amount)
 	}
 }
 
-void mask_surface(surface& nsurf, const surface& nmask, bool* empty_result, const std::string& filename)
+bool mask_surface(surface& nsurf, const surface& nmask, const std::string& filename)
 {
 	if(nsurf == nullptr) {
-		*empty_result = true;
-		return;
+		return true;
 	}
 	if(nmask == nullptr) {
-		return;
+		return false;
 	}
 
-	if (nsurf->w != nmask->w) {
+	if(nsurf->w != nmask->w) {
 		// we don't support efficiently different width.
 		// (different height is not a real problem)
 		// This function is used on all hexes and usually only for that
@@ -724,37 +725,32 @@ void mask_surface(surface& nsurf, const surface& nmask, bool* empty_result, cons
 		ss << nsurf->w << "x" << nsurf->h;
 		PLAIN_LOG << ss.str();
 		PLAIN_LOG << "It will not be masked, please use: "<< nmask->w << "x" << nmask->h;
-		return;
+		return false;
 	}
 
-	bool empty = true;
+	uint32_t cumulative_alpha{0};
 	{
+		// Attempt SIMD
+		bool simd_empty = true;
+		std::size_t simd_processed = simd::is_enabled() ? mask_surface_simd(nsurf, nmask, simd_empty) : 0;
+		if(simd_processed > 0) {
+			cumulative_alpha = simd_empty ? 0 : 1;
+		}
+
+		// SCALAR fallback: process remaining pixels (either all pixels if SIMD unavailable, or just the remainder)
 		surface_lock lock(nsurf);
 		const_surface_lock mlock(nmask);
-
-		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf.area();
-		const uint32_t* mbeg = mlock.pixels();
-		const uint32_t* mend = mbeg + nmask->w*nmask->h;
-
-		while(beg != end && mbeg != mend) {
-			auto [r, g, b, alpha] = color_t::from_argb_bytes(*beg);
-
-			uint8_t malpha = (*mbeg) >> 24;
-			if (alpha > malpha) {
-				alpha = malpha;
-			}
-			if(alpha)
-				empty = false;
-
-			*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
-
-			++beg;
-			++mbeg;
+		const utils::span surf_px = lock.pixel_span();
+		const utils::span mask_px = mlock.pixel_span();
+		const utils::span surf_sub = surf_px.subspan(simd_processed);
+		const utils::span mask_sub = mask_px.subspan(simd_processed);
+		for(std::size_t i = 0; i < surf_sub.size(); ++i) {
+			const uint32_t min_alpha = std::min(surf_sub[i] & SDL_ALPHA_MASK, mask_sub[i] & SDL_ALPHA_MASK);
+			surf_sub[i] = (surf_sub[i] & ~SDL_ALPHA_MASK) | min_alpha;
+			cumulative_alpha |= min_alpha;
 		}
 	}
-	if(empty_result)
-		*empty_result = empty;
+	return cumulative_alpha == 0;
 }
 
 bool in_mask_surface(const surface& nsurf, const surface& nmask)
@@ -771,24 +767,20 @@ bool in_mask_surface(const surface& nsurf, const surface& nmask)
 		return false;
 	}
 
-	{
-		const_surface_lock lock(nsurf);
-		const_surface_lock mlock(nmask);
+	const_surface_lock lock(nsurf);
+	const_surface_lock mlock(nmask);
 
-		const uint32_t* mbeg = mlock.pixels();
-		const uint32_t* mend = mbeg + nmask->w*nmask->h;
-		const uint32_t* beg = lock.pixels();
-		// no need for 'end', because both surfaces have same size
+	utils::span surf_pixels = lock.pixel_span();
+	utils::span mask_pixels = mlock.pixel_span();
 
-		while(mbeg != mend) {
-			uint8_t malpha = (*mbeg) >> 24;
-			if(malpha == 0) {
-				uint8_t alpha = (*beg) >> 24;
-				if (alpha)
-					return false;
-			}
-			++mbeg;
-			++beg;
+	// Note: unlike in mask_surface, both ranges here have the same size.
+	for(std::size_t i = 0; i < surf_pixels.size(); ++i) {
+		const uint32_t surf_alpha = surf_pixels[i] & SDL_ALPHA_MASK;
+		const uint32_t mask_alpha = mask_pixels[i] & SDL_ALPHA_MASK;
+
+		// A visible pixel (non-zero alpha) which the mask would otherwise hide.
+		if(surf_alpha && mask_alpha == 0) {
+			return false;
 		}
 	}
 
@@ -843,7 +835,7 @@ void light_surface(surface& nsurf, const surface &lightmap)
 	}
 }
 
-void blur_surface(surface& surf, SDL_Rect rect, int depth)
+void blur_surface(surface& surf, rect rect, int depth)
 {
 	if(surf == nullptr) {
 		return;
@@ -1097,7 +1089,7 @@ void blur_alpha_surface(surface& res, int depth)
 	}
 }
 
-surface cut_surface(const surface &surf, const SDL_Rect& r)
+surface cut_surface(const surface &surf, const rect& r)
 {
 	if(surf == nullptr)
 		return nullptr;
@@ -1109,14 +1101,16 @@ surface cut_surface(const surface &surf, const SDL_Rect& r)
 		return nullptr;
 	}
 
-	std::size_t sbpp = surf->format->BytesPerPixel;
+	const SDL_PixelFormatDetails* details = SDL_GetPixelFormatDetails(surf->format);
+
+	std::size_t sbpp = details->bytes_per_pixel;
 	std::size_t spitch = surf->pitch;
-	std::size_t rbpp = res->format->BytesPerPixel;
+	std::size_t rbpp = details->bytes_per_pixel;
 	std::size_t rpitch = res->pitch;
 
 	// compute the areas to copy
-	SDL_Rect src_rect = r;
-	SDL_Rect dst_rect { 0, 0, r.w, r.h };
+	rect src_rect = r;
+	rect dst_rect { 0, 0, r.w, r.h };
 
 	if (src_rect.x < 0) {
 		if (src_rect.x + src_rect.w <= 0)
@@ -1323,14 +1317,21 @@ surface rotate_90_surface(const surface& surf, bool clockwise)
 void flip_surface(surface& nsurf)
 {
 	if(nsurf) {
+
+		// Attempt SIMD
+		std::size_t simd_x_processed = simd::is_enabled() ? flip_image_simd(nsurf) : 0;
+
+		// SCALAR fallback: process remaining columns (either all if SIMD unavailable, or just the remainder)
 		surface_lock lock(nsurf);
 		uint32_t* const pixels = lock.pixels();
-
-		for(int y = 0; y != nsurf->h; ++y) {
-			for(int x = 0; x != nsurf->w/2; ++x) {
-				const int index1 = y*nsurf->w + x;
-				const int index2 = (y+1)*nsurf->w - x - 1;
-				std::swap(pixels[index1],pixels[index2]);
+		const std::size_t width = static_cast<std::size_t>(nsurf->w);
+		const std::size_t height = static_cast<std::size_t>(nsurf->h);
+		const std::size_t half_width = width / 2;
+		for(std::size_t y = 0; y < height; ++y) {
+			for(std::size_t x = simd_x_processed; x < half_width; ++x) {
+				const std::size_t index1 = y * width + x;
+				const std::size_t index2 = y * width + (width - x - 1);
+				std::swap(pixels[index1], pixels[index2]);
 			}
 		}
 	}
@@ -1352,7 +1353,7 @@ void flop_surface(surface& nsurf)
 	}
 }
 
-surface get_surface_portion(const surface &src, SDL_Rect &area)
+surface get_surface_portion(const surface &src, rect &area)
 {
 	if (src == nullptr) {
 		return nullptr;
@@ -1388,71 +1389,109 @@ surface get_surface_portion(const surface &src, SDL_Rect &area)
 	return dst;
 }
 
+void apply_surface_opacity(surface& surf, float opacity)
+{
+	if(surf == nullptr) return;
+
+	// Convert float opacity to integer modifier (0-255)
+	uint8_t alpha_mod = float_to_color(opacity);
+	if(alpha_mod == 255) return;
+
+	// Attempt SIMD
+	std::size_t simd_processed = simd::is_enabled() ? apply_surface_opacity_simd(surf, alpha_mod) : 0;
+
+	// SCALAR fallback: process remaining pixels (either all pixels if SIMD unavailable, or just the remainder)
+	surface_lock lock(surf);
+	utils::span pixel_span = lock.pixel_span();
+	for(auto& pixel : pixel_span.subspan(simd_processed)) {
+		uint8_t alpha = pixel >> 24;
+		if(alpha) {
+			auto [r, g, b, old_alpha] = color_t::from_argb_bytes(pixel);
+			alpha = color_multiply(old_alpha, alpha_mod);
+			pixel = (alpha << 24) | (r << 16) | (g << 8) | b;
+		}
+	}
+}
+
 namespace
 {
-constexpr bool not_alpha(uint32_t pixel)
+template<typename Range>
+bool contains_non_transparent_pixel(const Range& span)
 {
-	return (pixel >> 24) != 0x00;
-}
+	return std::any_of(span.begin(), span.end(),
+		[](uint32_t pixel) { return (pixel & SDL_ALPHA_MASK) != 0; });
 }
 
-rect get_non_transparent_portion(const surface& nsurf)
+/**
+ * Calculates the inclusive distance between two array indices.
+ *
+ * For example, two adjacent columns of pixels should have a
+ * distance of two even though their indices are one apart.
+ *
+ * @pre @a i2 > @a i1
+ */
+auto cover_distance(int i1, int i2)
 {
-	rect res {0,0,0,0};
+	return (i2 - i1) + 1;
+}
 
-	const_surface_lock lock(nsurf);
-	const uint32_t* const pixels = lock.pixels();
+} // namespace
 
-	int n;
-	for(n = 0; n != nsurf->h; ++n) {
-		const uint32_t* const start_row = pixels + n*nsurf->w;
-		const uint32_t* const end_row = start_row + nsurf->w;
+rect get_non_transparent_portion(const surface& surf)
+{
+	auto lock = const_surface_lock{surf};
+	utils::span pixels = lock.pixel_span();
 
-		if(std::find_if(start_row,end_row,not_alpha) != end_row)
+	const auto row_is_not_transparent = [&](std::size_t y) {
+		utils::span row_span = pixels.subspan(y * surf->w, surf->w);
+		return contains_non_transparent_pixel(row_span);
+	};
+
+	const auto column_is_not_transparent = [&](std::size_t x) {
+		// Striding ahead by width yields all pixels in the x'th column.
+		utils::span offset = pixels.subspan(x);
+		auto column_span = offset | utils::views::stride(surf->w);
+		return contains_non_transparent_pixel(column_span);
+	};
+
+	rect res;
+
+	// Find the first non-transparent row from the top.
+	for(int y = 0; y < surf->h; ++y) {
+		if(row_is_not_transparent(y)) {
+			res.y = y;
 			break;
-	}
-
-	res.y = n;
-
-	for(n = 0; n != nsurf->h-res.y; ++n) {
-		const uint32_t* const start_row = pixels + (nsurf->h-n-1)*nsurf->w;
-		const uint32_t* const end_row = start_row + nsurf->w;
-
-		if(std::find_if(start_row,end_row,not_alpha) != end_row)
-			break;
-	}
-
-	// The height is the height of the surface,
-	// minus the distance from the top and
-	// the distance from the bottom.
-	res.h = nsurf->h - res.y - n;
-
-	for(n = 0; n != nsurf->w; ++n) {
-		int y;
-		for(y = 0; y != nsurf->h; ++y) {
-			const uint32_t pixel = pixels[y*nsurf->w + n];
-			if(not_alpha(pixel))
-				break;
 		}
-
-		if(y != nsurf->h)
-			break;
 	}
 
-	res.x = n;
-
-	for(n = 0; n != nsurf->w-res.x; ++n) {
-		int y;
-		for(y = 0; y != nsurf->h; ++y) {
-			const uint32_t pixel = pixels[y*nsurf->w + nsurf->w - n - 1];
-			if(not_alpha(pixel))
-				break;
+	// Find the first non-transparent row from the bottom.
+	for(int y = surf->h - 1; y >= res.y; --y) {
+		if(row_is_not_transparent(y)) {
+			res.h = cover_distance(res.y, y);
+			break;
 		}
-
-		if(y != nsurf->h)
-			break;
 	}
 
-	res.w = nsurf->w - res.x - n;
+	// Discard fully transparent top and bottom rows.
+	pixels = pixels.subspan(
+		static_cast<std::size_t>(res.y) * surf->w,
+		static_cast<std::size_t>(res.h) * surf->w);
+
+	// Find the first non-transparent column from the left.
+	for(int x = 0; x < surf->w; ++x) {
+		if(column_is_not_transparent(x)) {
+			res.x = x;
+			break;
+		}
+	}
+
+	// Find the first non-transparent column from the right.
+	for(int x = surf->w - 1; x >= res.x; --x) {
+		if(column_is_not_transparent(x)) {
+			res.w = cover_distance(res.x, x);
+			break;
+		}
+	}
+
 	return res;
 }

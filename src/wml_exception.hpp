@@ -97,13 +97,22 @@
 
 /** Helper class, don't construct this directly. */
 struct wml_exception final
-	: public lua_jailbreak_exception
+	: public std::exception
 {
-	wml_exception(const std::string& user_msg, const std::string& dev_msg)
+	enum class error_type {
+		INVALID_WML = 0,
+		GUI_LAYOUT_FAILURE = -1
+	};
+
+	wml_exception(
+		const std::string& user_msg,
+		const std::string& dev_msg,
+		const error_type error_type = error_type::INVALID_WML
+	)
 		: user_message(user_msg)
 		, dev_message(dev_msg)
+		, type(error_type)
 	{
-		this->store();
 	}
 
 	~wml_exception() noexcept {}
@@ -122,11 +131,16 @@ struct wml_exception final
 	std::string dev_message;
 
 	/**
+	 *  Indicates the category of the error handled by this expection.
+	 *  Useful to detect the type of error without checking the detailed
+	 *  messages, especially in unit tests.
+	 */
+	error_type type;
+
+	/**
 	 * Shows the error in a dialog.
 	 */
 	void show() const;
-private:
-	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(wml_exception)
 };
 
 /**

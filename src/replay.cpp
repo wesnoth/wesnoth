@@ -37,6 +37,7 @@
 #include "serialization/chrono.hpp"
 #include "synced_context.hpp"
 #include "units/unit.hpp"
+#include "utils/general.hpp"
 #include "whiteboard/manager.hpp"
 #include "wml_exception.hpp"
 
@@ -140,7 +141,7 @@ static std::chrono::system_clock::time_point get_time(const config& speak)
 }
 
 chat_msg::chat_msg(const config &cfg)
-	: color_()
+	: color_() // use default white for observers
 	, nick_()
 	, text_(cfg["message"].str())
 	, time_(get_time(cfg))
@@ -153,10 +154,8 @@ chat_msg::chat_msg(const config &cfg)
 	}
 	int side = cfg["side"].to_int(0);
 	LOG_REPLAY << "side in message: " << side;
-	if (side==0) {
-		color_ = "white";//observers
-	} else {
-		color_ = team::get_side_highlight_pango(side);
+	if(side != 0) {
+		color_ = team::get_side_color(side);
 	}
 }
 
@@ -324,7 +323,7 @@ bool replay::add_chat_message_location()
 bool replay::add_chat_message_location(int pos)
 {
 	assert(base_->get_command_at(pos).has_child("speak"));
-	if(std::find(message_locations.begin(), message_locations.end(), pos) == message_locations.end()) {
+	if(!utils::contains(message_locations, pos)) {
 		message_locations.push_back(pos);
 		return true;
 	}
@@ -449,8 +448,8 @@ static bool fix_rename_command(const config& c, config& async_child)
 		std::vector<map_location> steps;
 
 		try {
-			read_locations(child.value(), steps);
-		} catch(const bad_lexical_cast &) {
+			steps = read_locations(child.value());
+		} catch(const std::invalid_argument&) {
 			WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child->debug();
 		}
 

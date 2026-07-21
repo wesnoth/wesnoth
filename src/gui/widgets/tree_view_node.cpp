@@ -99,7 +99,7 @@ tree_view_node::tree_view_node(const std::string& id,
 			std::bind(&tree_view_node::signal_handler_label_left_button_click, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
 			event::dispatcher::front_pre_child);
 
-		if(!get_tree_view().selected_item_) {
+		if(get_tree_view().has_minimum() && !get_tree_view().selected_item_) {
 			get_tree_view().selected_item_ = this;
 			label_->set_value(true);
 		}
@@ -615,7 +615,7 @@ unsigned tree_view_node::place(const unsigned indentation_step_size, point origi
 	return origin.y - offset;
 }
 
-void tree_view_node::set_visible_rectangle(const SDL_Rect& rectangle)
+void tree_view_node::set_visible_rectangle(const rect& rectangle)
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 	DBG_GUI_L << LOG_HEADER << " rectangle " << rectangle << ".";

@@ -126,7 +126,7 @@ function gui.add_widget_definition(type, id, content) end
 ---@field text_alignment "'left'"|"'right'"|"'center'"
 ---@field ellipsize_mode "'none'"|"'start'"|"'middle'"|"'end'"
 ---@field overflow_to_tooltip boolean
----@field on_left_click fun()
+---@field on_left_click fun() a function that is called when the widget is left clicked once
 
 ---The window widget is a container that contains all other widgets in the dialog
 ---@class window : widget
@@ -147,6 +147,7 @@ function gui.add_widget_definition(type, id, content) end
 ---@class toggle_panel : widget
 ---@field selected boolean
 ---@field selected_index integer
+---@field on_double_click fun() a function that is called when the widget is left clicked twice
 ---@field on_modified fun()
 
 ---A dynamic list of items, shown with a scrollbar
@@ -187,6 +188,8 @@ function gui.add_widget_definition(type, id, content) end
 ---@field hint_text tstring
 ---@field history string
 ---@field max_input_length integer
+---@field selection_start integer Cursor position in the text. Index of the first selected code point, or the code point just after the insertion point. Can be one greater than the length of the text, if the insertion point is at the end.
+---@field selection_length integer Number of code points in the selected text. If negative, counts back from the start position instead of forward.
 ---@field on_modified fun()
 
 ---A label that wraps its text and also has a vertical scrollbar

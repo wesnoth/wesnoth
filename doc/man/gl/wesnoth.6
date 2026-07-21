@@ -1,0 +1,452 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTH 6 2022 wesnoth "A batalla polo Noroeste"
+.
+.SH NOME
+wesnoth — A batalla polo Noroeste, un xogo de estratexia por roldas
+ambientado nun mundo fantástico.
+.
+.SH SINOPSE
+.
+\fBwesnoth\fP [\fIOPCIÓNS\fP] [\fIRUTA_AOS_DATOS\fP]
+.
+.SH DESCRICIÓN
+.
+A batalla polo \fBNoroeste\fP é un xogo de estratexia por roldas ambientado nun
+mundo fantástico.
+
+Derrota a todos os líderes inimigos escollendo sabiamente as tropas e
+xestionando coidadosamente os recursos de ouro e vilas. Todas as unidades
+teñen fortalezas e debilidades de seu. Para gañar, desprega as túas forzas
+de xeito que aproveiten completamente o seu potencial, e impide que os
+inimigos fagan o mesmo. A medida que as unidades consigan experiencia,
+adquirirán novas habilidades e volveranse máis fortes. Xoga na lingua que
+queiras e pon a proba as túas habilidades contra a intelixencia artificial,
+ou únete á enorme comunidade internacional de xogadores que se reúne en
+internet. Crea unidades, escenarios ou campañas personalizadas, e compárteo
+todo co resto da comunidade.
+.
+.SH OPCIÓNS
+.
+.TP 
+\fB\-\-addon\-info\fP
+Mostra un botón no xestor de complementos para consultar o servidor de
+complementos para obter diversa información.
+.TP 
+\fB\-\-all\-translations\fP
+Mostrar todas as traducións na lista de selección de idiomas do xogo, mesmo
+se se consideran insuficientemente completas.
+.TP 
+\fB\-c[\fP\fIidentificador_de_campaña\fP\fB],\ \-\-campaign[\fP\fI=identificador_de_campaña\fP\fB]\fP
+Vai directamente á campaña co identificador \fIidentificador_de_campaña\fP. Se
+non indica un identificador, aparece un menú de escolla.
+.TP 
+\fB\-\-campaign\-difficulty[\fP\fI=difficulty\fP\fB]\fP
+A dificultade da campaña indicada (do 1 ao máximo). Se non se especificase,
+aparecería un diálogo de escolla da dificultade da campaña.
+.TP 
+\fB\-\-campaign\-scenario\fP\fI\ identificador_de_escenario\fP
+O identificador do escenario da campaña indicada. De omitirse o parámetro,
+empregarase o primeiro escenario.
+.TP 
+\fB\-\-campaign\-skip\-story\fP
+Salta as pantallas [historia] e o diálogo ata o final do evento \fBstart\fP.
+.TP 
+\fB\-\-clock\fP
+Engade a opción de mostrar un reloxo para probar o temporizador de
+debuxo. Tamén engade a opción de mostrar o diálogo de proba da GUI.
+.TP 
+\fB\-\-core\fP\fI\ identificador_de_núcleo\fP
+Substitúe o núcleo cargado por aquel cuxo id. se especifica.
+.TP 
+\fB\-\-data\-dir\fP\fI\ cartafol\fP
+Substitúe o directorio de datos polo especificado. O directorio de datos é o
+que contén os subdirectorios "data", "fonts", "images" e outros.
+.TP 
+\fB\-\-data\-path\fP
+Mostra a ruta do cartafol dos datos.
+.TP 
+\fB\-d, \-\-debug\fP
+Activa opcións adicionais no modo de ordes do xogo. Consulta o wiki en
+«https://wiki.wesnoth.org/CommandMode» (en inglés) para máis información
+sobre o modo de ordes do xogo.
+.TP 
+\fB\-\-debug\-lua\fP
+activa algúns mecanismos de depuración de Lua
+.TP 
+\fB\-\-strict\-lua\fP
+non permitir chamadas obsoletas da API de Lua
+.TP 
+\fB\-D,\-\-diff\fP\fI\ ficheiro\-esquerda\fP\fB\ \fP\fIright\-file\fP
+diferencia os dous ficheiros WML; non os preprocesa primeiro (para facelo,
+primeiro execúteos a través de \fB\-p\fP). Sae a diferenza como DiffWML na saída
+estándar ou no ficheiro indicado por \fI\-\-output\fP.
+.TP 
+\fB\-e[\fP\fIfile\fP\fB],\ \-\-editor[\fP\fI=file\fP\fB]\fP
+Inicia directamente o editor de mapas do xogo. Se se especifica \fIfile\fP,
+equivalente a \fB\-l\fP \fB\-\-load\fP.
+.TP 
+\fB\-\-fps\fP
+mostra o número de fotogramas por segundo aos que se está a executar o xogo
+nun recuncho da pantalla e tamén escribe estes valores nun ficheiro no
+directorio userdata.
+.TP 
+\fB\-f, \-\-fullscreen\fP
+Executa o xogo a pantalla completa.
+.TP 
+\fB\-h, \-\-help\fP
+Devolve un resumo das opcións da liña de ordes.
+.TP 
+\fB\-l,\ \-\-load\fP\fI\ ficheiro\fP
+Carga a partida \fIfile\fP do directorio de partidas estándar. Se tamén se usan
+as opcións \fB\-e\fP ou \fB\-\-editor\fP, iníciase o editor co mapa do \fIfile\fP
+aberto. Se é un directorio, o editor iniciarase cun diálogo de carga de
+mapas aberto en dito directorio.
+.TP 
+\fB\-L,\ \-\-language\fP\fI\ lang\fP
+usa a lingua \fIlang\fP (símbolo) nesta sesión. Exemplo: \fB\-\-language ang_GB@latin\fP
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
+define o nivel de gravidade dos dominios de rexistro. O comodín \fB*\fP pódese
+usar para coincidir cun subconxunto de dominios, por exemplo, gui/* ou conf*
+ou * (este último coincide con todos os dominios). Niveis dispoñibles:
+\fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP. Por defecto, o nivel
+\fBwarning\fP úsase para a maioría dos dominios, pero \fBdeprecation\fP elíxese
+por defecto en \fBnone\fP a menos que se combine coa opción \fB\-d\fP. Esta opción
+pódese especificar varias veces.
+.TP 
+\fB\-\-log\-precise\fP
+mostra as marcas de tempo na saída do rexistro con máis precisión.
+.TP 
+\fB\-\-log\-strict\fP\fI\ Nivel\fP
+define o \fIlevel\fP estrito do rexistrador. Calquera mensaxe enviada a
+dominios de rexistro deste \fIlevel\fP ou máis grave fará que a proba unitaria
+falle independentemente do resultado da vitoria. Só é relevante cando se usa
+con \fB\-u\fP.
+.TP 
+\fB\-\-logdomains[\fP\fI=filtro\fP\fB]\fP
+Devolve os dominios do rexistro definidos (só os que conteñan o \fIfilter\fP se
+se usa).
+.TP 
+\fB\-\-no\-log\-to\-file\fP
+impide redirixir a saída rexistrada a un ficheiro. A variable de ambiente
+WESNOTH_NO_LOG_FILE tamén se pode definir como alternativa. Os ficheiros de
+rexistro créanse no directorio logs, dentro do cartafol userdata.
+.TP 
+\fB\-\-log\-to\-file\fP
+a saída do rexistro escríbese nun ficheiro. Cancela o efecto de
+\-\-no\-log\-to\-file xa sexa implícito ou explícito.
+.TP 
+\fB\-\-no\-log\-sanitize\fP
+desactiva a anonimización que se aplica normalmente ao iniciar sesión, por
+exemplo, substituíndo nomes de usuario por USUARIO.
+.TP 
+\fB\-\-wnoconsole\fP
+Para Windows, cando se usa con \-\-no\-log\-to\-file, a saída se escribe en
+cerr/cout en lugar de CONOUT. En caso contrario, non fai nada.
+.TP 
+\fB\-\-max\-fps\fP\fI\ fps\fP
+o número de fotogramas por segundo que o xogo pode mostrar; o valor debe
+estar entre \fB1\fP e \fB1000\fP; o valor predeterminado é a taxa de actualización
+do monitor.
+.TP 
+\fB\-m, \-\-multiplayer\fP
+Executa unha partida de varios xogadores. Hai opcións adicionais que poden
+empregarse xunto con \fB\-\-multiplayer\fP tal e como se explica máis abaixo.
+.TP 
+\fB\-\-mp\-test\fP
+Cargar os escenarios de varios xogadores de probas.
+.TP 
+\fB\-\-new\-widgets\fP
+hai un novo conxunto de ferramentas de widgets WIP, esta opción
+permíteo. Isto é moi experimental, non enche informes de erros xa que a
+maioría son coñecidos. As partes da biblioteca considéranse estables e
+funcionarán sen este cambio.
+.TP 
+\fB\-\-noaddons\fP
+Desactiva a carga de complementos do usuario.
+.TP 
+\fB\-\-nocache\fP
+Desactiva a caché de datos do xogo.
+.TP 
+\fB\-\-nogui\fP
+Executa o xogo sen a interface gráfica. Só está dispoñíbel en combinación
+con \fB\-\-multiplayer\fP, \fB\-\-screenshot\fP ou \fB\-\-plugin\fP.
+.TP 
+\fB\-\-nobanner\fP
+suprimir o banner de inicio.
+.TP 
+\fB\-\-nomusic\fP
+Executa o xogo sen música.
+.TP 
+\fB\-\-noreplaycheck\fP
+Non intentar validar a repetición da proba unitaria. Só é relevante cando se
+usa con \fB\-u\fP.
+.TP 
+\fB\-\-nosound\fP
+Executa o xogo sen sons e sen música.
+.TP 
+\fB\-\-output\fP\fI\ ficheiro\fP
+saída ao ficheiro especificado. Aplicable a operacións diferentes.
+.TP 
+\fB\-\-password\fP\fI\ contrasinal\fP
+Emprega o \fIpassword\fP indicado ao conectarse ao servidor, ignorando a
+configuración. É pouco seguro.
+.TP 
+\fB\-\-plugin\fP\fI\ script\fP
+cargar un \fIscript\fP que define un complemento de Wesnoth. O ficheiro Lua
+debería devolver unha función que se executará como unha corrutina e se
+activará periodicamente con actualizacións.
+.TP 
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
+aplica un parche DiffWML a un ficheiro WML; non preprocesa ningún dos
+ficheiros. Envía o WML parcheado á saída estándar ou ao ficheiro indicado
+por \fI\-\-output\fP.
+.TP 
+\fB\-p,\ \-\-preprocess\fP\fI\ ficheiro_ou_cartafol_de_orixe\fP\fB\ \fP\fIcartafol_de_destino\fP
+preprocesa un ficheiro/cartafol especificado. Para cada ficheiro(s),
+escribirase un ficheiro .cfg simple e un ficheiro .cfg procesado no
+directorio de destino especificado. Se se especifica un cartafol,
+preprocesarase recursivamente segundo as regras coñecidas do
+preprocesador. As macros comúns do directorio "data/core/macros"
+preprocesaranse antes dos recursos especificados. Exemplo: \fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP Para obter máis detalles sobre
+o preprocesador, visite:
+https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
+.TP 
+\fB\-\-preprocess\-string\fP\fI\ ficheiro\-de\-orixe\fP
+preprocesa unha cadea de caracteres dada e escribe a saída en stdout.
+.TP 
+\fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI…\fP
+Lista de definicións separadas por comas que vai usar o comando
+\fB\-\-preprocess\fP ou \fB\-\-preprocess\-string\fP. Se \fBSKIP_CORE\fP está na lista de
+definicións, o directorio "data/core" non se preprocesará.
+.TP 
+\fB\-\-preprocess\-input\-macros\fP\fI\ ficheiro\-de\-orixe\fP
+usado só polo comando \fB\-\-preprocess\fP ou \fB\-\-preprocess\-string\fP. Especifica
+un ficheiro que contén \fB[preproc_define]\fP que se incluirán antes do
+preprocesamento.
+.TP 
+\fB\-\-preprocess\-output\-macros[\fP\fI=ficheiro_de_destino\fP\fB]\fP
+Usado só polo comando \fB\-\-preprocess\fP (pero non polo comando
+\fB\-\-preprocess\-string\fP). Mostrará todas as macros preprocesadas no ficheiro
+de destino. Se non se especifica o ficheiro, a saída será o ficheiro
+\&'_MACROS_.cfg' no directorio de destino do comando preprocess. O ficheiro de
+saída pódese pasar a \fB\-\-preprocess\-input\-macros\fP. Este modificador debe
+escribirse antes do comando \fB\-\-preprocess\fP.
+.TP 
+\fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
+Establece a resolución do xogo. Por exemplo: \fB800x600\fP.
+.TP 
+\fB\-\-render\-image\fP\fI\ imaxe\fP\fB\ \fP\fIoutput\fP
+Toma unha "cadea de ruta de imaxe" válida de Wesnoth con funcións de ruta de
+imaxe e envía a saída a un ficheiro .png. As funcións de ruta de imaxe están
+documentadas en https://wiki.wesnoth.org/ImagePathFunctionWML.
+.TP 
+\fB\-R,\ \-\-report\fP
+Prepara os cartafoles do xogo, imprime información da construción que poder
+usar en informes de erros, e sae.
+.TP 
+\fB\-\-rng\-seed\fP\fI\ número\fP
+sementa o xerador de números aleatorios con \fInumber\fP. Exemplo:
+\fB\-\-rng\-seed\fP \fB0\fP.
+.TP 
+\fB\-\-screenshot\fP\fI\ mapa\fP\fB\ \fP\fIoutput\fP
+Garda unha captura de pantalla do \fImap\fP na \fIoutput\fP sen preparar unha
+pantalla.
+.TP 
+\fB\-s[\fP\fIservidor\fP\fB],\ \-\-server[\fP\fI=servidor\fP\fB]\fP
+Conéctase ao servidor especificado se o houber; se non, conéctase ao
+primeiro servidor nas preferencias. Exemplo: \fB\-\-server\fP
+\fBserver.wesnoth.org\fP.
+.TP 
+\fB\-\-showgui\fP
+Executa o xogo coa interface gráfica, substituíndo calquera \fB\-\-nogui\fP
+implícito.
+.TP 
+\fB\-\-strict\-validation\fP
+Os erros de corrección trátanse coma erros graves.
+.TP 
+\fB\-t[\fP\fIidentificador_de_escenario\fP\fB],\ \-\-test[\fP\fI=identificador_de_escenario\fP\fB]\fP
+executa o xogo nun pequeno escenario de proba. O escenario debería estar
+definido cunha etiqueta WML \fB[test]\fP. O valor predeterminado é
+\fBtest\fP. Pódese iniciar unha demostración da funcionalidade \fB[micro_ai]\fP
+con \fBmicro_ai_test\fP.
+.TP 
+\fB\-\-translations\-over\fP\fI\ porcentaxe\fP
+Establece o estándar para considerar que unha tradución é o suficientemente
+completa como para mostrarse na lista de idiomas do xogo en \fIpercent\fP.  Os
+valores válidos son de 0 a 100.
+.TP 
+\fB\-u,\ \-\-unit\fP\fI\ identificador_de_escenario\fP
+Executa o escenario de probas indicado como proba unitaria. O uso de
+\fB\-\-nogui\fP vai implícito.
+.TP 
+\fB\-\-unsafe\-scripts\fP
+fai que o paquete \fBpackage\fP estea dispoñible para os scripts lua, para que
+poidan cargar paquetes arbitrarios. Non o fagas con scripts non
+fiables. Esta acción outorga a lua os mesmos permisos que o executable
+wesnoth.
+.TP 
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+define o esquema WML para o seu uso con \fB\-V,\ \-\-validate\fP.
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ nome\fP
+Define \fIname\fP coma o nome do cartafol dos datos do usuario no seu cartafol
+persoal («$HOME») ou «Os meus documentos\eOs meus xogos» en Windows.  Tamén
+podes indicar unha ruta absoluta para o cartafol dos datos fóra dos antes
+mencionados. En Windows tamén podes prefixar a ruta con ".\e" or "..\e "
+para indicar un cartafol relativo ao cartafol de traballo do proceso.
+.TP 
+\fB\-\-userdata\-path\fP
+Devolve a ruta do directorio dos datos do usuario.
+.TP 
+\fB\-\-username\fP\fI\ nome\-de\-usuario\fP
+Emprega o \fIusername\fP indicado ao conectarse ao servidor, ignorando a
+configuración.
+.TP 
+\fB\-\-validate\fP\fI\ camiño\fP
+valida un ficheiro contra o esquema WML.
+.TP 
+\fB\-\-validate\-addon\fP\fI\ adddon_id\fP
+valida o WML do complemento dado mentres xogas.
+.TP 
+\fB\-\-validate\-core\fP
+valida o núcleo WML mentres xogas.
+.TP 
+\fB\-\-validate\-schema\fP\fI\ camiño\fP
+valida un ficheiro como esquema WML.
+.TP 
+\fB\-\-validcache\fP
+Asume que a caché está ben (perigoso).
+.TP 
+\fB\-v, \-\-version\fP
+mostra o número de versión e sae.
+.TP 
+\fB\-\-simple\-version\fP
+mostra o número de versión e nada máis e despois sae.
+.TP 
+\fB\-w, \-\-windowed\fP
+Executa o xogo nunha xanela.
+.TP 
+\fB\-\-with\-replay\fP
+Reproduce a partida cargada coa opción \fB\-\-load\fP.
+.
+.SH "Opcións para \-\-multixogador"
+.
+As opcións para partidas con varios xogadores específicas dun bando márcanse
+cun \fInumber\fP.  \fInumber\fP tense que substituír polo número do
+bando. Normalmente é 1 ou 2, pero depende do número de xogadores que permita
+o escenario escollido.
+.TP 
+\fB\-\-ai\-config\fP\fI\ número\fP\fB:\fP\fIvalue\fP
+Escolle un ficheiro de configuración a cargar para a intelixencia artificial
+que controla o bando especificado.
+.TP 
+\fB\-\-algorithm\fP\fI\ número\fP\fB:\fP\fIvalue\fP
+selecciona un algoritmo non estándar para ser usado polo controlador de IA
+para este lado. O algoritmo defínese mediante unha etiqueta \fB[ai]\fP, que
+pode ser unha etiqueta central en "data/ai/ais" ou "data/ai/dev" ou un
+algoritmo definido por un complemento. Os valores dispoñibles inclúen:
+\fBidle_ai\fP e \fBexperimental_ai\fP.
+.TP 
+\fB\-\-controller\fP\fI\ número\fP\fB:\fP\fIvalue\fP
+selecciona o controlador para este lado. Valores dispoñibles: \fBhuman\fP,
+\fBai\fP e \fBnull\fP.
+.TP 
+\fB\-\-era\fP\fI\ valor\fP
+Usa esta opción para xogar na era seleccionada en vez de na era
+predeterminada (\fBDefault\fP). A era elíxese mediante un identificador. As
+eras descríbense no ficheiro \fBdata/multiplayer/eras.cfg\fP.
+.TP 
+\fB\-\-exit\-at\-end\fP
+Sae do xogo unha vez se remate o escenario, sen mostrar un diálogo de
+vitoria ou derrota que normalmente require que o usuario prema
+«Finalizar». Isto tamén se emprega para probas de rendemento automatizadas
+mediante scripts.
+.TP 
+\fB\-\-ignore\-map\-settings\fP
+Non usar a configuración do mapa, senón os valores predeterminados.
+.TP 
+\fB\-\-label\fP\fI\ etiqueta\fP
+establece o \fIlabel\fP para as IAs.
+.TP 
+\fB\-\-multiplayer\-repeat\fP\fI\ valor\fP
+Repite unha partida de varios xogadores \fIvalue\fP veces. Recoméndase usar
+esta opción xunto con \fB\-\-nogui\fP para probas de rendemento executadas con
+scripts.
+.TP 
+\fB\-\-parm\fP\fI\ número\fP\fB:\fP\fIname\fP\fB:\fP\fIvalue\fP
+Establece parámetros adicionais para o bando. Este parámetro depende das
+opcións usadas con \fB\-\-controller\fP e \fB\-\-algorithm\fP. Só debería resultarlle
+útil a quen estea a deseñar a súa propia intelixencia artificial (aínda non
+está completamente documentado).
+.TP 
+\fB\-\-scenario\fP\fI\ valor\fP
+Selecciona un escenario con varios xogadores polo seu identificador. O
+identificador do escenario por omisión é \fBmultiplayer_The_Freelands\fP.
+.TP 
+\fB\-\-side\fP\fI\ número\fP\fB:\fP\fIvalue\fP
+Escoller unha facción da era actual para bando número \fBnúmero\fP. A facción
+elíxese mediante un identificador. As faccións descríbense no ficheiro
+«data/multiplayer.cfg».
+.TP 
+\fB\-\-turns\fP\fI\ valor\fP
+Establece o número de roldas para o escenario elixido. De maneira
+predeterminada non hai límite.
+.
+.SH "ESTADO AO SAÍR"
+.
+Se a situación ao saír é normal, o estado ao saír será «0». «1»
+correspóndese cun erro de inicialización —ben do SDL, da configuración de
+vídeo, dos tipos de letra, etc—. «2» indica que o erro se produciu coas
+opcións da liña de ordes.
+.br
+Ao executar probas unitarias (con \fB\ \-u\fP), o estado de saída é
+diferente. Un estado de saída de 0 indica que a proba se superou e 1 indica
+que a proba fallou. Un estado de saída de 3 indica que a proba se superou,
+pero produciu un ficheiro de reprodución non válido. Un estado de saída de 4
+indica que a proba se superou, pero a reprodución produciu erros. Estes dous
+últimos só se devolven se non se supera \fB\-\-noreplaycheck\fP.
+.
+.SH AUTORES
+.
+Autor orixinal: David White <davidnwhite@verizon.net>.
+.br
+Modificacións posteriores: Nils Kneuper <crazy\-ivanovic@gmx.net>,
+ott <ott@gaon.net> e Soliton <soliton.de@gmail.com>.
+.br
+Esta páxina de manual foi escrita orixinalmente por Cyril Bouthors
+<cyril@bouthors.org>.
+.br
+Visite o sitio web oficial: https://www.wesnoth.org/
+.
+.SH "DEREITOS DE AUTOR"
+.
+Dereitos reservados 2003\-2025 David White <davidnwhite@verizon.net>
+.br
+Isto é software libre. Este software está protexido polos termos da versión
+2 da licenza GNU GPL, tal e como foi publicada pola Free Software
+Foundation.  Non existe NINGUNHA garantía. Nin sequera para o seu USO
+COMERCIAL ou ADECUACIÓN PARA UN PROPÓSITO PARTICULAR.
+.
+.SH "VÉXASE TAMÉN"
+.
+\fBwesnothd\fP(6)

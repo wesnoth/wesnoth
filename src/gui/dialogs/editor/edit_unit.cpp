@@ -1,6 +1,6 @@
 /*
 	Copyright (C) 2023 - 2025
-	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
+	by Subhraman Sarkar (babaissarkar) <sbmskmm@protonmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -41,7 +41,7 @@
 #include "picture.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
-#include "serialization/preprocessor.hpp"
+#include "serialization/string_utils.hpp"
 #include "units/types.hpp"
 
 #include <boost/algorithm/string/replace.hpp>
@@ -59,18 +59,12 @@ editor_edit_unit::editor_edit_unit(const game_config_view& game_config, const st
 	, game_config_(game_config)
 	, addon_id_(addon_id)
 {
-	//TODO some weapon specials can have args (PLAGUE_TYPE)
-	io::read(*preprocess_file(game_config::path+"/data/core/macros/weapon_specials.cfg", &specials_map_));
-	for (const auto& x : specials_map_) {
-		specials_list_.emplace_back("label", x.first, "checkbox", false);
+	for (const auto& [id, cfg] : unit_types.specials()) {
+		specials_list_.emplace_back("label", id, "checkbox", false);
 	}
 
-	io::read(*preprocess_file(game_config::path+"/data/core/macros/abilities.cfg", &abilities_map_));
-	for (const auto& x : abilities_map_) {
-		// Don't add any macros that have INTERNAL
-		if (x.first.find("INTERNAL") == std::string::npos) {
-			abilities_list_.emplace_back("label", x.first, "checkbox", false);
-		}
+	for (const auto& [id, cfg] : unit_types.abilities()) {
+		abilities_list_.emplace_back("label", id, "checkbox", false);
 	}
 
 	connect_signal<event::SDL_KEY_DOWN>(std::bind(
@@ -88,8 +82,6 @@ void editor_edit_unit::pre_show() {
 	// Main Stats tab
 	//
 
-	tabs.select_tab(0);
-
 	menu_button& alignments = find_widget<menu_button>("alignment_list");
 	for (auto& align : unit_alignments::values) {
 		// Show the user the translated strings,
@@ -100,9 +92,8 @@ void editor_edit_unit::pre_show() {
 	alignments.set_values(align_list_);
 
 	menu_button& races = find_widget<menu_button>("race_list");
-	for(const race_map::value_type& i : unit_types.races()) {
-		const std::string& race_name = i.second.id();
-		race_list_.emplace_back("label", race_name, "icon", i.second.get_icon_path_stem() + "_30.png");
+	for(const auto& [_, race] : unit_types.races()) {
+		race_list_.emplace_back("label", race.id(), "icon", race.get_icon_path_stem() + "_30.png");
 	}
 
 	if (!race_list_.empty()) {
@@ -143,11 +134,10 @@ void editor_edit_unit::pre_show() {
 	//
 	// Advanced Tab
 	//
-	tabs.select_tab(1);
 
 	menu_button& movetypes = find_widget<menu_button>("movetype_list");
-	for(const auto& mt : unit_types.movement_types()) {
-		movetype_list_.emplace_back("label", mt.first);
+	for(const auto& [name, _] : unit_types.movement_types()) {
+		movetype_list_.emplace_back("label", name);
 	}
 
 	if (!movetype_list_.empty()) {
@@ -251,7 +241,7 @@ void editor_edit_unit::pre_show() {
 	//
 	// Attack Tab
 	//
-	tabs.select_tab(2);
+
 	multimenu_button& specials = find_widget<multimenu_button>("weapon_specials_list");
 	specials.set_values(specials_list_);
 
@@ -284,8 +274,6 @@ void editor_edit_unit::pre_show() {
 		std::bind(&editor_edit_unit::prev_attack, this));
 
 	update_index();
-
-	tabs.select_tab(0);
 
 	// Disable OK button at start, since ID and Name boxes are empty
 	button_state_change();
@@ -346,15 +334,13 @@ void editor_edit_unit::select_file(const std::string& default_dir, const std::st
 void editor_edit_unit::load_unit_type() {
 	const auto& all_type_list = unit_types.types_list();
 	const auto& type_select = gui2::dialogs::units_dialog::build_create_dialog(all_type_list);
+	type_select->set_ok_label("Load");
 
 	if (!type_select->show() && !type_select->is_selected()) {
 		return;
 	}
 
 	const auto& type = all_type_list[type_select->get_selected_index()];
-
-	tab_container& tabs = find_widget<tab_container>("tabs");
-	tabs.select_tab(0);
 
 	find_widget<text_box>("id_box").set_value(type->id());
 	find_widget<text_box>("name_box").set_value(type->type_name().base_str());
@@ -391,7 +377,17 @@ void editor_edit_unit::load_unit_type() {
 
 	update_image("unit_image");
 
-	tabs.select_tab(1);
+	boost::dynamic_bitset<> enabled_abilities(abilities_list_.size());
+	for (size_t i = 0; i < abilities_list_.size(); i++) {
+		for (auto special : type->abilities()) {
+			const std::string id = special->cfg()["unique_id"].str(special->id());
+			if (abilities_list_[i]["label"] == id) {
+				enabled_abilities[i] = true;
+			}
+		}
+	}
+	find_widget<multimenu_button>("abilities_list").select_options(enabled_abilities);
+
 	find_widget<text_box>("path_small_profile_image").set_value(type->small_profile());
 
 	set_selected_from_string(
@@ -447,12 +443,10 @@ void editor_edit_unit::load_unit_type() {
 
 	update_image("small_profile_image");
 
-	tabs.select_tab(2);
 	attacks_.clear();
 	for(const auto& atk : type->attacks())
 	{
 		config attack;
-		boost::dynamic_bitset<> enabled(specials_list_.size());
 		attack["name"] = atk.id();
 		attack["description"] = atk.name().base_str();
 		attack["icon"] = atk.icon();
@@ -460,7 +454,19 @@ void editor_edit_unit::load_unit_type() {
 		attack["damage"] = atk.damage();
 		attack["number"] = atk.num_attacks();
 		attack["type"] = atk.type();
-		attacks_.push_back(std::make_pair(enabled, attack));
+
+		boost::dynamic_bitset<> enabled_specials(specials_list_.size());
+
+		for (size_t i = 0; i < specials_list_.size(); i++) {
+			for (auto special : atk.specials()) {
+				const std::string id = special->cfg()["unique_id"].str(special->id());
+				if (specials_list_[i]["label"] == id) {
+					enabled_specials[i] = true;
+				}
+			}
+		}
+
+		attacks_.push_back(std::make_pair(enabled_specials, attack));
 	}
 
 	if (!type->attacks().empty()) {
@@ -469,8 +475,6 @@ void editor_edit_unit::load_unit_type() {
 	}
 
 	update_index();
-
-	tabs.select_tab(0);
 
 	button_state_change();
 	invalidate_layout();
@@ -482,47 +486,41 @@ void editor_edit_unit::save_unit_type() {
 	type_cfg_.clear();
 
 	// Textdomain
-	std::string current_textdomain = "wesnoth-"+addon_id_;
-
-	tab_container& tabs = find_widget<tab_container>("tabs");
-
-	// Page 1
-	grid* grid = tabs.get_tab_grid(0);
+	std::string current_textdomain = "wesnoth-" + addon_id_;
 
 	config& utype = type_cfg_.add_child("unit_type");
-	utype["id"] = grid->find_widget<text_box>("id_box").get_value();
-	utype["name"] = t_string(grid->find_widget<text_box>("name_box").get_value(), current_textdomain);
-	utype["image"] = grid->find_widget<text_box>("path_unit_image").get_value();
-	utype["profile"] = grid->find_widget<text_box>("path_portrait_image").get_value();
-	utype["level"] = grid->find_widget<spinner>("level_box").get_value();
-	utype["advances_to"] = grid->find_widget<text_box>("adv_box").get_value();
-	utype["hitpoints"] = grid->find_widget<slider>("hp_slider").get_value();
-	utype["experience"] = grid->find_widget<slider>("xp_slider").get_value();
-	utype["cost"] = grid->find_widget<slider>("cost_slider").get_value();
-	utype["movement"] = grid->find_widget<slider>("move_slider").get_value();
-	utype["description"] = t_string(grid->find_widget<scroll_text>("desc_box").get_value(), current_textdomain);
-	utype["race"] = grid->find_widget<menu_button>("race_list").get_value_string();
-	utype["alignment"] = unit_alignments::values[grid->find_widget<menu_button>("alignment_list").get_value()];
+	utype["id"] = find_widget<text_box>("id_box").get_value();
+	utype["name"] = t_string(find_widget<text_box>("name_box").get_value(), current_textdomain);
+	utype["image"] = find_widget<text_box>("path_unit_image").get_value();
+	utype["profile"] = find_widget<text_box>("path_portrait_image").get_value();
+	utype["level"] = find_widget<spinner>("level_box").get_value();
+	utype["advances_to"] = find_widget<text_box>("adv_box").get_value();
+	utype["hitpoints"] = find_widget<slider>("hp_slider").get_value();
+	utype["experience"] = find_widget<slider>("xp_slider").get_value();
+	utype["cost"] = find_widget<slider>("cost_slider").get_value();
+	utype["movement"] = find_widget<slider>("move_slider").get_value();
+	utype["description"] = t_string(find_widget<scroll_text>("desc_box").get_value(), current_textdomain);
+	utype["race"] = find_widget<menu_button>("race_list").get_value_string();
+	utype["alignment"] = unit_alignments::values[find_widget<menu_button>("alignment_list").get_value()];
 
 	// Gender
-	if (grid->find_widget<toggle_button>("gender_male").get_value()) {
-		if (grid->find_widget<toggle_button>("gender_female").get_value()) {
+	if (find_widget<toggle_button>("gender_male").get_value()) {
+		if (find_widget<toggle_button>("gender_female").get_value()) {
 			utype["gender"] = "male,female";
 		} else {
 			utype["gender"] = "male";
 		}
 	} else {
-		if (grid->find_widget<toggle_button>("gender_female").get_value()) {
+		if (find_widget<toggle_button>("gender_female").get_value()) {
 			utype["gender"] = "female";
 		}
 	}
 
 	// Page 2
-	grid = tabs.get_tab_grid(1);
 
-	utype["small_profile"] = grid->find_widget<text_box>("path_small_profile_image").get_value();
-	utype["movement_type"] = grid->find_widget<menu_button>("movetype_list").get_value_string();
-	utype["usage"] = grid->find_widget<menu_button>("usage_list").get_value_string();
+	utype["small_profile"] = find_widget<text_box>("path_small_profile_image").get_value();
+	utype["movement_type"] = find_widget<menu_button>("movetype_list").get_value_string();
+	utype["usage"] = find_widget<menu_button>("usage_list").get_value_string();
 
 	if (res_toggles_.any()) {
 		config& resistances = utype.add_child("resistance");
@@ -557,24 +555,33 @@ void editor_edit_unit::save_unit_type() {
 		}
 	}
 
-	const auto& abilities_states = grid->find_widget<multimenu_button>("abilities_list").get_toggle_states();
+	std::vector<std::string> selected_abilities;
+	const auto& abilities_states = find_widget<multimenu_button>("abilities_list").get_toggle_states();
 	if (abilities_states.any()) {
-		unsigned int i = 0;
-		sel_abilities_.clear();
-		for (const auto& x : abilities_map_) {
-			if (i >= abilities_states.size()) {
-				break;
+		for (size_t i = 0; i < abilities_states.size(); i++) {
+			if (abilities_states[i]) {
+				selected_abilities.push_back(abilities_list_[i]["label"]);
 			}
-
-			if (abilities_states[i] == true) {
-				sel_abilities_.push_back(x.first);
-			}
-
-			i++;
 		}
 	}
+	if (!selected_abilities.empty()) {
+		utype["abilities_list"] = utils::join(selected_abilities);
+	}
 
-	// Note : attacks and abilities are not written to the config, since they have macros.
+	// Page 3 (Attacks)
+
+	for (const auto& [special_bits, cfg] : attacks_) {
+		config& atk = utype.add_child("attack", cfg);
+		std::vector<std::string> selected_specials;
+		for (size_t i = 0; i < special_bits.size(); i++) {
+			if (special_bits[i]) {
+				selected_specials.push_back(specials_list_[i]["label"]);
+			}
+		}
+		if (!selected_specials.empty()) {
+			atk["specials_list"] = utils::join(selected_specials);
+		}
+	}
 }
 
 void editor_edit_unit::update_resistances() {
@@ -655,12 +662,7 @@ void editor_edit_unit::store_attack() {
 		return;
 	}
 
-	config& attack = attacks_.at(selected_attack_-1).second;
-
-	tab_container& tabs = find_widget<tab_container>("tabs");
-	int prev_tab = tabs.get_active_tab_index();
-	tabs.select_tab(2);
-
+	config attack;
 	attack["name"] = find_widget<text_box>("atk_id_box").get_value();
 	attack["description"] = t_string(find_widget<text_box>("atk_name_box").get_value(), current_textdomain);
 	attack["icon"] = find_widget<text_box>("path_attack_image").get_value();
@@ -669,9 +671,10 @@ void editor_edit_unit::store_attack() {
 	attack["number"] = find_widget<slider>("dmg_num_box").get_value();
 	attack["range"] = find_widget<combobox>("range_list").get_value();
 
-	attacks_.at(selected_attack_-1).first = find_widget<multimenu_button>("weapon_specials_list").get_toggle_states();
-
-	tabs.select_tab(prev_tab);
+	attacks_.at(selected_attack_-1) = {
+		find_widget<multimenu_button>("weapon_specials_list").get_toggle_states(),
+		attack
+	};
 }
 
 void editor_edit_unit::update_attacks() {
@@ -681,10 +684,6 @@ void editor_edit_unit::update_attacks() {
 	}
 
 	config& attack = attacks_.at(selected_attack_-1).second;
-
-	tab_container& tabs = find_widget<tab_container>("tabs");
-	int prev_tab = tabs.get_active_tab_index();
-	tabs.select_tab(2);
 
 	find_widget<text_box>("atk_id_box").set_value(attack["name"]);
 	find_widget<text_box>("atk_name_box").set_value(attack["description"]);
@@ -699,15 +698,9 @@ void editor_edit_unit::update_attacks() {
 
 	find_widget<multimenu_button>("weapon_specials_list")
 		.select_options(attacks_.at(selected_attack_-1).first);
-
-	tabs.select_tab(prev_tab);
 }
 
 void editor_edit_unit::update_index() {
-	tab_container& tabs = find_widget<tab_container>("tabs");
-	int prev_tab = tabs.get_active_tab_index();
-	tabs.select_tab(2);
-
 	find_widget<button>("atk_prev").set_active(selected_attack_ > 1);
 	find_widget<button>("atk_delete").set_active(selected_attack_ > 0);
 	find_widget<button>("atk_next").set_active(selected_attack_ != attacks_.size());
@@ -722,23 +715,16 @@ void editor_edit_unit::update_index() {
 		atk_list.set_selected(selected_attack_-1, false);
 	}
 
-	//Set index
+	// Set index
 	const std::string new_index_str = formatter() << selected_attack_ << "/" << attacks_.size();
 	find_widget<label>("atk_number").set_label(new_index_str);
-
-	tabs.select_tab(prev_tab);
 }
 
 void editor_edit_unit::add_attack() {
 	// Textdomain
 	std::string current_textdomain = "wesnoth-"+addon_id_;
 
-	tab_container& tabs = find_widget<tab_container>("tabs");
-	int prev_tab = tabs.get_active_tab_index();
-	tabs.select_tab(2);
-
 	config attack;
-
 	attack["name"] = find_widget<text_box>("atk_id_box").get_value();
 	attack["description"] = t_string(find_widget<text_box>("atk_name_box").get_value(), current_textdomain);
 	attack["icon"] = find_widget<text_box>("path_attack_image").get_value();
@@ -754,16 +740,9 @@ void editor_edit_unit::add_attack() {
 		, std::make_pair(find_widget<multimenu_button>("weapon_specials_list").get_toggle_states(), attack));
 
 	update_index();
-
-	tabs.select_tab(prev_tab);
 }
 
 void editor_edit_unit::delete_attack() {
-	tab_container& tabs = find_widget<tab_container>("tabs");
-	int prev_tab = tabs.get_active_tab_index();
-	tabs.select_tab(2);
-
-	//remove attack
 	if (!attacks_.empty()) {
 		attacks_.erase(attacks_.begin() + selected_attack_ - 1);
 	}
@@ -781,8 +760,6 @@ void editor_edit_unit::delete_attack() {
 	}
 
 	update_index();
-
-	tabs.select_tab(prev_tab);
 }
 
 void editor_edit_unit::next_attack() {
@@ -818,10 +795,6 @@ void editor_edit_unit::select_attack() {
 
 //TODO Check if works with non-mainline movetypes
 void editor_edit_unit::load_movetype() {
-	tab_container& tabs = find_widget<tab_container>("tabs");
-	int prev_tab = tabs.get_active_tab_index();
-	tabs.select_tab(1);
-
 	for(const auto& movetype : game_config_
 		.mandatory_child("units")
 		.child_range("movetype")) {
@@ -837,30 +810,16 @@ void editor_edit_unit::load_movetype() {
 			update_movement_costs();
 		}
 	}
-
-	tabs.select_tab(prev_tab);
-}
-
-void editor_edit_unit::write_macro(std::ostream& out, unsigned level, const std::string& macro_name)
-{
-	for(unsigned i = 0; i < level; i++)
-	{
-		out << "\t";
-	}
-	out << "{" << macro_name << "}\n";
 }
 
 void editor_edit_unit::update_wml_view() {
 	store_attack();
 	save_unit_type();
 
-	tab_container& tabs = find_widget<tab_container>("tabs");
-	tabs.select_tab(3);
-
 	std::stringstream wml_stream;
 
 	// Textdomain
-	std::string current_textdomain = "wesnoth-"+addon_id_;
+	std::string current_textdomain = "wesnoth-" + addon_id_;
 
 	wml_stream
 	    << "#textdomain " << current_textdomain << "\n"
@@ -868,108 +827,49 @@ void editor_edit_unit::update_wml_view() {
 		<< "# This file was generated using the scenario editor.\n"
 		<< "#\n";
 
+	config_writer out(wml_stream, false);
+
+	config& utype_cfg = type_cfg_.mandatory_child("unit_type");
+
+	// Update movement, defense and resistance in cfg
+	if (!movement_.empty() && (move_toggles_.size() <= movement_.attribute_count()) && move_toggles_.any())
 	{
-		config_writer out(wml_stream, false);
-		int level = 0;
-
-		out.open_child("unit_type");
-
-		level++;
-		for (const auto& [key, value] : type_cfg_.mandatory_child("unit_type").attribute_range()) {
-			io::write_key_val(wml_stream, key, value, level, current_textdomain);
-		}
-
-		// Abilities
-		if (!sel_abilities_.empty()) {
-			out.open_child("abilities");
-			level++;
-			for (const std::string& ability : sel_abilities_) {
-				write_macro(wml_stream, level, ability);
+		config& mvt_cfg = utype_cfg.add_child("movement_costs");
+		int i = 0;
+		for (const auto& [key, value] : movement_.attribute_range()) {
+			if (move_toggles_[i] == 1) {
+				mvt_cfg[key] = value;
 			}
-			level--;
-			out.close_child("abilities");
+			i++;
 		}
-
-		// Attacks
-		if (!attacks_.empty()) {
-			for (const auto& atk : attacks_) {
-				out.open_child("attack");
-				level++;
-				for (const auto& [key, value] : atk.second.attribute_range()) {
-					if (!value.empty()) {
-						io::write_key_val(wml_stream, key, value, level, current_textdomain);
-					}
-				}
-
-				if(atk.first.any()) {
-					out.open_child("specials");
-					level++;
-					int i = 0;
-					for (const auto& attr : specials_map_) {
-						if (atk.first[i]) {
-							write_macro(wml_stream, level, attr.first);
-						}
-						i++;
-					}
-					level--;
-					out.close_child("specials");
-
-				}
-				level--;
-				out.close_child("attack");
-			}
-		}
-
-		if (!movement_.empty() && (move_toggles_.size() <= movement_.attribute_count()) && move_toggles_.any())
-		{
-			out.open_child("movement_costs");
-			level++;
-			int i = 0;
-			for (const auto& [key, value] : movement_.attribute_range()) {
-				if (move_toggles_[i] == 1) {
-					io::write_key_val(wml_stream, key, value, level, current_textdomain);
-				}
-				i++;
-			}
-			level--;
-			out.close_child("movement_costs");
-		}
-
-		if (!defenses_.empty() && def_toggles_.any()  && (def_toggles_.size() <= defenses_.attribute_count()))
-		{
-			out.open_child("defense");
-			level++;
-			int i = 0;
-			for (const auto& [key, value] : defenses_.attribute_range()) {
-				if (def_toggles_[i] == 1) {
-					io::write_key_val(wml_stream, key, value, level, current_textdomain);
-				}
-				i++;
-			}
-			level--;
-			out.close_child("defense");
-		}
-
-		if (!resistances_.empty() && res_toggles_.any()  && (res_toggles_.size() <= resistances_.attribute_count()))
-		{
-			out.open_child("resistance");
-			level++;
-			int i = 0;
-			for (const auto& [key, value] : resistances_.attribute_range()) {
-				if (res_toggles_[i] == 1) {
-					io::write_key_val(wml_stream, key, value, level, current_textdomain);
-				}
-				i++;
-			}
-			level--;
-			out.close_child("resistance");
-		}
-
-		out.close_child("unit_type");
 	}
 
-	generated_wml = wml_stream.str();
+	if (!defenses_.empty() && def_toggles_.any()  && (def_toggles_.size() <= defenses_.attribute_count()))
+	{
+		config& def_cfg = utype_cfg.add_child("defense");
+		int i = 0;
+		for (const auto& [key, value] : defenses_.attribute_range()) {
+			if (def_toggles_[i] == 1) {
+				def_cfg[key] = value;
+			}
+			i++;
+		}
+	}
 
+	if (!resistances_.empty() && res_toggles_.any()  && (res_toggles_.size() <= resistances_.attribute_count()))
+	{
+		config& res_cfg = utype_cfg.add_child("resistance");
+		int i = 0;
+		for (const auto& [key, value] : resistances_.attribute_range()) {
+			if (res_toggles_[i] == 1) {
+				res_cfg[key] = value;
+			}
+			i++;
+		}
+	}
+
+	out.write(type_cfg_);
+	generated_wml = wml_stream.str();
 	find_widget<scroll_text>("wml_view").set_label(generated_wml);
 }
 
@@ -1014,10 +914,8 @@ bool editor_edit_unit::check_id(const std::string& id) {
 }
 
 void editor_edit_unit::button_state_change() {
-	grid* grid = find_widget<tab_container>("tabs").get_tab_grid(0);
-
-	std::string id = grid->find_widget<text_box>("id_box").get_value();
-	std::string name = grid->find_widget<text_box>("name_box").get_value();
+	std::string id = find_widget<text_box>("id_box").get_value();
+	std::string name = find_widget<text_box>("name_box").get_value();
 
 	find_widget<button>("ok").set_active(!id.empty() && !name.empty() && check_id(id));
 
@@ -1058,16 +956,16 @@ void editor_edit_unit::signal_handler_sdl_key_down(const event::ui_event /*event
 {
 	#ifdef __APPLE__
 		// Idiomatic modifier key in macOS computers.
-		const SDL_Keycode modifier_key = KMOD_GUI;
+		const SDL_Keycode modifier_key = SDL_KMOD_GUI;
 	#else
 		// Idiomatic modifier key in Microsoft desktop environments. Common in
 		// GNU/Linux as well, to some extent.
-		const SDL_Keycode modifier_key = KMOD_CTRL;
+		const SDL_Keycode modifier_key = SDL_KMOD_CTRL;
 	#endif
 
 	// Ctrl+O shortcut for Load Unit Type
 	switch(key) {
-		case SDLK_o:
+		case SDLK_0:
 			if (modifier & modifier_key) {
 				handled = true;
 				load_unit_type();

@@ -91,6 +91,9 @@ namespace translation
 	 * default language" is represented by an empty string.
 	 */
 	const boost::locale::info& get_effective_locale_info();
+
+	/** Translates the passed timestamp and returns it in the requested format. */
+	std::string translate_timestamp(time_t time, std::string_view format = "%F %T");
 }
 
 //#define _(String) translation::dsgettext(GETTEXT_DOMAIN,String)

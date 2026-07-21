@@ -21,7 +21,6 @@
 #include "utils/math.hpp"
 #include "game_version.hpp"
 
-#include <cstdlib>
 #include <string>
 
 struct rect;
@@ -105,14 +104,20 @@ enum channel { RED, GREEN, BLUE, ALPHA };
 void swap_channels_image(surface& surf, channel r, channel g, channel b, channel a);
 
 /**
+ * Applies an opacity modification to a surface.
+ * @param surf The surface to modify.
+ * @param opacity The new opacity (0.0 to 1.0).
+ */
+void apply_surface_opacity(surface& surf, float opacity);
+
+/**
  * Recolors a surface using a map with source and converted palette values.
  * This is most often used for team-coloring.
- *
  * @param surf               The source surface.
  * @param map_rgb            Map of color values, with the keys corresponding to the
  *                           source palette, and the values to the recolored palette.
  */
-void recolor_image(surface& surf, const color_range_map& map_rgb);
+void recolor_image(surface& surf, const color_mapping& map_rgb);
 
 void brighten_image(surface& surf, int32_t amount);
 
@@ -124,15 +129,32 @@ void brighten_image(surface& surf, int32_t amount);
  *                           No RLE or Alpha bits are set.
  *  @retval 0                if error or the portion is outside of the surface.
  */
-surface get_surface_portion(const surface &surf, SDL_Rect &rect);
+surface get_surface_portion(const surface &surf, rect &rect);
 
 void adjust_surface_alpha(surface& surf, uint8_t alpha_mod);
 void adjust_surface_alpha_add(surface& surf, int amount);
 
-/** Applies a mask on a surface. */
-void mask_surface(surface& surf, const surface& mask, bool* empty_result = nullptr, const std::string& filename = std::string());
+/**
+ * Applies a mask to the source surface by calculating the minimum alpha channel
+ * value for every corresponding pixel. This operation ensures that the resulting
+ * surface is only visible where BOTH the original surface AND the mask were visible.
+ * Mostly used to remove any pixels outside a hex shape.
+ * @param surf            The surface to be modified (the destination).
+ * @param mask            The mask surface (read-only).
+ * if the resulting surface contains no visible pixels (i.e., is fully transparent).
+ * @param filename        Optional string for logging purposes.
+ */
+bool mask_surface(surface& surf, const surface& mask, const std::string& filename = std::string());
 
-/** Check if a surface fit into a mask */
+/**
+ * Checks if the source surface is entirely covered by the visible area of the mask.
+ * If a visible pixel is found outside the mask's visible area, the function immediately
+ * returns false. Mostly used to see if an image has all visable pixels within a hex shape.
+ * @param surf The source surface (whose visibility is being checked).
+ * @param mask The mask surface (whose visible area defines the boundary).
+ * @return true if all visible pixels of @p surf are contained within the non-transparent
+ * area of @p mask (i.e., the surface is fully covered). Returns false otherwise.
+ */
 bool in_mask_surface(const surface& surf, const surface& mask);
 
 /**
@@ -152,7 +174,7 @@ void light_surface(surface& surf, const surface &lightmap);
  * @param rect                    The part of the surface to blur.
  * @param depth                   The depth of the blurring.
  */
-void blur_surface(surface& surf, SDL_Rect rect, int depth = 1);
+void blur_surface(surface& surf, rect rect, int depth = 1);
 
 /**
  * Cross-fades a surface with alpha channel.
@@ -163,7 +185,7 @@ void blur_surface(surface& surf, SDL_Rect rect, int depth = 1);
 void blur_alpha_surface(surface& surf, int depth = 1);
 
 /** Cuts a rectangle from a surface. */
-surface cut_surface(const surface &surf, const SDL_Rect& r);
+surface cut_surface(const surface &surf, const rect& r);
 
 /**
  * Blends a surface with a color.

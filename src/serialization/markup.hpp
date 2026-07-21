@@ -66,12 +66,12 @@ using tag_attributes = std::vector<std::pair<std::string_view, std::string_view>
  *                  an empty string is returned in lieu of formatting tags.
  */
 template<typename... Args>
-std::string tag(std::string_view tag, const tag_attributes& attrs, Args&&... data)
+std::string tag_attr(std::string_view tag, const tag_attributes& attrs, Args&&... data)
 {
 	std::string input = (formatter() << ... << data);
 	if(input.empty()) return {};
 	std::stringstream ss;
-	ss << "<" << tag << " ";
+	ss << "<" << tag << (attrs.empty() ? "" : " ");
 	for (const auto& [key, value] : attrs) {
 		ss << key << "='" << value << "' ";
 	}
@@ -91,7 +91,7 @@ std::string tag(std::string_view tag, const tag_attributes& attrs, Args&&... dat
 template<typename Value, typename... Args>
 std::string span_attribute(std::string_view key, const Value& value, Args&&... data)
 {
-	return tag("span", {{ key, value }}, std::forward<Args>(data)...);
+	return tag_attr("span", {{ key, value }}, std::forward<Args>(data)...);
 }
 
 /**
@@ -211,7 +211,16 @@ std::string make_link(const std::string& text, const std::string& dst);
 /** Thrown when the help system fails to parse something. */
 struct parse_error : public game::error
 {
-	parse_error(const std::string& msg) : game::error(msg) {}
+	parse_error(const std::string::const_iterator& error_loc, const std::string& error_msg)
+		: game::error(error_msg)
+		, error_position_(error_loc)
+	{ }
+
+public:
+	std::string::const_iterator error_location() { return error_position_; }
+
+private:
+	std::string::const_iterator error_position_;
 };
 
 /**
@@ -219,6 +228,8 @@ struct parse_error : public game::error
  * text. Each markup item is a separate part while the text between
  * markups are separate parts.
  */
-config parse_text(const std::string &text);
+config parse_text(const std::string& text);
+
+std::string help_to_pango_markup(const std::string& help_markup);
 
 } // namespace markup

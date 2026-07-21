@@ -9,14 +9,36 @@
 # This is, after all, the behavior that we want.
 
 # threading and subprocess are needed to run wmllint without freezing the window
-# codecs is used to save files as UTF8
 # locale and gettext provides internationalization and localization (i18n, l10n)
 # queue is needed to exchange information between threads
 # if we use the run_tool thread to do GUI stuff we obtain weird crashes
 # This happens because Tk is a single-thread GUI
 
+# TODO to add suppport for the new features in Tcl/Tk 9.0:
+# For Python 3.14, the Tcl/Tk version bundled on Windows is 8.6.15
+# For Python 3.15, starting with beta 2 the bundled version on Windows is 9.0.3
+# This is the same as MacOS, which started to use it on alpha 6
+# Ubuntu 26.04.1 offers both tcl8.6 (default, 8.6.17) and tcl9.0 (9.0.3)
+# Tcl/Tk 9.0 has several improvements over 8.5/8.6.
+# These are the ones that will need to be implemented for this script
+# * built-in themes and widgets are scaling-aware - finally!
+# * tk sysnotify - send a system notification when a script finishes running
+# * tk systray - maybe put an icon in the system tray, to show a balloon with
+#   the status and allow recalling the window?
+# * tk print - obviously add a "Print" button and allow printing the content of
+#   the text widget (tools output)
+# * ttk::progressbar option: -text - that would be useful for displaying
+#   percentages, but our tools just aren't designed for this
+# * ttk::combobox and ttk::entry options: -placeholder and
+#   -placeholderforeground - use in the text cells
+# * partial SVG support - icons will have to use SVG to make the interface
+#   scalable. The PNG icons will have to stay for compatibility until Tk 8.6
+#   is phased out
+# Tcl/Tk 9.1 will probably be released in September 2026; its main feature, for
+# what concerns this script, seems to be the "new widget ttk::toggleswitch".
+# However I don't think it'll be a real improvement over regular checkbuttons.
+
 import argparse
-import codecs
 import gettext
 import locale
 import os
@@ -1646,7 +1668,7 @@ Error code: {1}""".format(queue_item[0], queue_item[1])))
         fn = asksaveasfilename(defaultextension=".txt", filetypes=[(_("Text file"), "*.txt")], initialdir=".")
         if fn:
             try:
-                with codecs.open(fn, "w", "utf-8") as out:
+                with open(fn, "w", encoding="utf-8") as out:
                     out.write(self.text.get(1.0, END)[:-1])  # exclude the double endline at the end
                 # the output is saved, if we close we don't lose anything
                 self.text.edit_modified(False)

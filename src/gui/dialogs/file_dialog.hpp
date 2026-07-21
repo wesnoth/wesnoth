@@ -267,8 +267,10 @@ private:
 
 	/**
 	 * Check if the filename is valid and disable save button if invalid
+	 *
+	 * @returns Whether the filename passed all validation checks.
 	 */
-	void check_filename();
+	bool check_filename();
 
 	/**
 	 * Updates the bookmarks bar state to reflect the internal state.

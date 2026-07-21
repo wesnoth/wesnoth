@@ -157,7 +157,7 @@ display::display(const display_context* dc,
 	, fake_unit_man_(new fake_unit_manager(*this))
 	, builder_(new terrain_builder(level, (dc_ ? &context().map() : nullptr), theme_.border().tile_image, theme_.border().show_border))
 	, minimap_renderer_(nullptr)
-	, minimap_location_(sdl::empty_rect)
+	, minimap_location_()
 	, redraw_background_(false)
 	, invalidateAll_(true)
 	, diagnostic_label_(0)
@@ -516,7 +516,7 @@ rect display::map_outside_area() const
 	}
 }
 
-bool display::outside_area(const SDL_Rect& area, const int x, const int y)
+bool display::outside_area(const rect& area, const int x, const int y)
 {
 	const int x_thresh = hex_size();
 	const int y_thresh = hex_size();
@@ -667,9 +667,12 @@ bool display::fogged(const map_location& loc) const
 
 point display::get_location(const map_location& loc) const
 {
+	// Two possible regressions to be aware of when changing this code:
+	// https://github.com/wesnoth/wesnoth/issues/10903 (faulty hex offset) and
+	// https://github.com/wesnoth/wesnoth/issues/10676 (Grid overlay flickering)
 	return {
-		static_cast<int>(map_area().x + (loc.x + theme_.border().size) * hex_width() - viewport_origin_.x),
-		static_cast<int>(map_area().y + (loc.y + theme_.border().size) * zoom_ - viewport_origin_.y + (is_odd(loc.x) ? zoom_/2 : 0))
+		map_area().x - viewport_origin_.x + static_cast<int>(std::ceil((loc.x + theme_.border().size) * hex_width())),
+		map_area().y - viewport_origin_.y + static_cast<int>(std::ceil((loc.y + theme_.border().size) * zoom_ + (is_odd(loc.x) ? zoom_ / 2.0 : 0.0)))
 	};
 }
 
@@ -728,7 +731,7 @@ surface display::screenshot(bool map_screenshot)
 	viewport_origin_ = {0, 0};
 
 	// Reroute render output to a separate texture until the end of scope.
-	SDL_Rect area = max_map_area();
+	rect area = max_map_area();
 	if (area.w > 1 << 16 || area.h > 1 << 16) {
 		WRN_DP << "Excessively large map screenshot area";
 	}
@@ -2047,10 +2050,16 @@ submerge_data display::get_submerge_data(const rect& dest, double submerge, cons
 	data.unsub_src = {0, 0, size.x, submersion_line};
 
 	// Set up shader vertices
-	const color_t c_mid(255, 255, 255, 0.3 * alpha);
+	// alpha comes in as 0-255 but with SDL3 it's a float, so need to convert it
+	float mid_alpha = 0.3 * (alpha/ALPHA_OPAQUE);
+	const SDL_FColor c_mid{1.0, 1.0, 1.0, mid_alpha};
 	const int pixels_submerged = size.y * submerge;
-	const int bot_alpha = std::max(0.3 - pixels_submerged * 0.015, 0.0) * alpha;
-	const color_t c_bot(255, 255, 255, bot_alpha);
+	float bot_alpha = 1.0;
+	// be more transparent the more pixels are underwater
+	bot_alpha -= (pixels_submerged * 0.035) * (alpha/ALPHA_OPAQUE);
+
+	// fully transparent seems to be -1.0 instead of 0.0 for some reason, so make sure it doesn't end up below -1.0
+	const SDL_FColor c_bot{1.0, 1.0, 1.0, std::max(bot_alpha, -1.0f)};
 	const SDL_FPoint pML{float(dest.x), float(dest_y_mid)};
 	const SDL_FPoint pMR{float(dest.x + dest.w), float(dest_y_mid)};
 	const SDL_FPoint pBL{float(dest.x), float(dest.y + dest.h)};
@@ -2588,7 +2597,7 @@ void display::draw_hex(const map_location& loc)
 		// a stringstream, a temp string, and attempting to trim it for every hex even
 		// when none of these flags are set. This gives us a temp object with all bits
 		// past the first three zeroed out.
-		if((std::as_const(debug_flags_) << (__NUM_DEBUG_FLAGS - DEBUG_FOREGROUND)).none()) {
+		if((std::as_const(debug_flags_) << (NUM_DEBUG_FLAGS - DEBUG_FOREGROUND)).none()) {
 			return;
 		}
 
@@ -2997,7 +3006,7 @@ bool display::propagate_invalidation(const std::set<map_location>& locs)
 			// propagate invalidation
 			// 'i' is already in, but I suspect that splitting the range is bad
 			// especially because locs are often adjacents
-			size_t previous_size = invalidated_.size();
+			std::size_t previous_size = invalidated_.size();
 			invalidated_.insert(locs.begin(), locs.end());
 			result = previous_size < invalidated_.size();
 		}
@@ -3005,12 +3014,12 @@ bool display::propagate_invalidation(const std::set<map_location>& locs)
 	return result;
 }
 
-bool display::invalidate_visible_locations_in_rect(const SDL_Rect& rect)
+bool display::invalidate_visible_locations_in_rect(const rect& rect)
 {
 	return invalidate_locations_in_rect(map_area().intersect(rect));
 }
 
-bool display::invalidate_locations_in_rect(const SDL_Rect& rect)
+bool display::invalidate_locations_in_rect(const rect& rect)
 {
 	if(invalidateAll_ && !map_screenshot_)
 		return false;

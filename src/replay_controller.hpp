@@ -47,7 +47,7 @@ public:
 	bool is_controlling_view() const {
 		return vision_.has_value();
 	}
-	bool allow_reset_replay() const { return reset_state_.get() != nullptr; }
+	bool allow_reset_replay() const { return reset_state_ != nullptr; }
 	const std::shared_ptr<config>& get_reset_state() const { return reset_state_; }
 	void return_to_play_side(bool r = true) { return_to_play_side_ = r; }
 	void replay_show_everything();

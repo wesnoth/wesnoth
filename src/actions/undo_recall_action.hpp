@@ -23,6 +23,8 @@ namespace actions::undo
 struct recall_action : undo_action, shroud_clearing_action
 {
 	std::string id;
+	int prev_mp;
+	int prev_ap;
 	map_location recall_from;
 
 

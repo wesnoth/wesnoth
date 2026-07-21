@@ -37,8 +37,7 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一款回合制奇幻策略游
 .
 .TP 
 \fB\-\-addon\-info\fP
-Shows a button on the add\-ons manager to query the add\-ons server for
-various information.
+在附加组件管理器上显示一个按钮，用于从附加组件服务器处查询各类信息。
 .TP 
 \fB\-\-all\-translations\fP
 在游戏中的语言选择列表中显示所有翻译，哪怕这些翻译被认为不够完整，也一样显示。
@@ -56,15 +55,13 @@ various information.
 在\fBstart\fP事件最后跳过[故事]画面和对话框。
 .TP 
 \fB\-\-clock\fP
-Adds the option to show a clock for testing the drawing timer. Also adds the
-option for showing the GUI Test Dialog.
+增加一个选项，以显示用于测试画面绘制计时器的时钟。同时也增加另一个选项，以显示GUI测试对话框。
 .TP 
 \fB\-\-core\fP\fI\ id_core\fP
-Overrides the loaded core with the one whose id is specified.
+使用指定ID对应的核心作为应读取的核心。
 .TP 
 \fB\-\-data\-dir\fP\fI\ directory\fP
-Overrides the data directory with the one specified. The data directory is
-the one that contains subdirectories 'data', 'fonts', 'images' and others.
+以指定目录为数据目录，覆盖默认值。数据目录是包含“data”、“fonts”、“images”和其他子目录的目录。
 .TP 
 \fB\-\-data\-path\fP
 打印数据目录的路径并退出。
@@ -101,39 +98,29 @@ the one that contains subdirectories 'data', 'fonts', 'images' and others.
 在本次游戏期间使用语言 \fIlang\fP （符号）。例如： \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
-sets the severity level of the log domains. The wildcard \fB*\fP may be used to
-match a subset of domains, e.g. gui/* or conf* or * (the latter matches all
-domains).  Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default, the \fBwarning\fP level is used for most domains, but
-\fBdeprecation\fP defaults to \fBnone\fP unless combined with the \fB\-d\fP option.
-This option can be specified multiple times.
+设置日志域的严重度级别。通配符\fB*\fP可用于匹配日志域的子集，例如：gui/*或conf*或*（最后一个匹配全部域）。可选的级别有：\fBerror\fP，\ \fBwarning\fP，\ \fBinfo\fP，\ \fBdebug\fP, \ \fBnone\fP。对大多数日志域而言，默认日志级别是\fBwarning\fP，但\fBdeprecation\fP的默认级别是\fBnone\fP，除非和\fB\-d\fP选项并用。此选项可以指定多次。
 .TP 
 \fB\-\-log\-precise\fP
 在日志输出中显示更高精度的时间戳。
 .TP 
 \fB\-\-log\-strict\fP\fI\ level\fP
-sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
-this \fIlevel\fP or more severe will cause the unit test to fail regardless of
-the victory result. Only relevant when used with \fB\-u\fP.
+设置日志记录器的严格度等级（\fIlevel\fP）。若有任何信息记入此等级（\fIlevel\fP）或更高等级日志域，则不论测试结果如何，单元测试都将失败。只有在和
+\fB\-u\fP 共同使用时才有意义。
 .TP 
 \fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
 列出游戏中定义的日志域（如果使用了 \fIfilter\fP 则只列出饱含该字符串的日志域）而后退出
 .TP 
 \fB\-\-no\-log\-to\-file\fP
-prevents redirecting logged output to a file. The environment variable
-WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created
-in the logs directory under the userdata folder.
+不将日志输出重定向到文件。或者也可以设置环境变量WESNOTH_NO_LOG_FILE，效果与此选项相同。日志文件创建于userdata文件夹下的logs目录中。
 .TP 
 \fB\-\-log\-to\-file\fP
-log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
-whether implicit or explicit.
+将日志输出写入文件中。抵消\-\-no\-log\-to\-file选项的效果，不论该选项是显式的还是隐式的。
 .TP 
 \fB\-\-no\-log\-sanitize\fP
-disables the anonymization that's normally applied when logging, for example
-replacing usernames with USER.
+禁用登录时通常会执行的匿名化操作，例如将用户名替换为USER。
 .TP 
 \fB\-\-wnoconsole\fP
-For Windows, when used with \-\-no\-log\-to\-file, results in output being
-written to cerr/cout instead of CONOUT. Otherwise, does nothing.
+在Windows中，当此选项和\-\-no\-log\-to\-file一起使用时，将使输出被写入到cerr/cout，而不是CONOUT。在其他系统中，此选项无任何效果。
 .TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
 游戏每秒能显示的帧数，这个值应该在\fB1\fP和\fB1000\fP之间，默认为显示器的刷新率。
@@ -175,9 +162,7 @@ written to cerr/cout instead of CONOUT. Otherwise, does nothing.
 在连接服务器时使用 \fIpassword\fP ，忽略其他首选项。不安全。
 .TP 
 \fB\-\-plugin\fP\fI\ script\fP
-load a \fIscript\fP which defines a Wesnoth plugin. Lua file should return a
-function which will be run as a coroutine and periodically woken up with
-updates.
+读取定义了韦诺插件的脚本（\fIscript\fP）。此Lua文件应返回一个函数，该函数将作为协程运行，并周期性地被更新后的参数唤起。
 .TP 
 \fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 将DiffWML补丁应用到WML文件上，不会预处理这两个文件中的任何一个。将打过补丁的WML输出到标准输出或由\fI\-\-output\fP指定的文件中。
@@ -188,25 +173,20 @@ updates.
 有关预处理器的详情请见：http://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor。
 .TP 
 \fB\-\-preprocess\-string\fP\fI\ source\-string\fP
-preprocesses a given string and writes the output to stdout.
+预处理指定的字符串，并将结果输出到stdout。
 .TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
-comma separated list of defines to be used by the \fB\-\-preprocess\fP or
-\fB\-\-preprocess\-string\fP command. If \fBSKIP_CORE\fP is in the define list the
-"data/core" directory won't be preprocessed.
+由逗号分隔的定义列表，用于 \fB\-\-preprocess\fP
+或\fB\-\-preprocess\-string\fP命令。如果\fBSKIP_CORE\fP在定义列表中，则“data/core”目录不会被预处理。
 .TP 
 \fB\-\-preprocess\-input\-macros\fP\fI\ source\-file\fP
-used only by the \fB\-\-preprocess\fP or \fB\-\-preprocess\-string\fP
-command. Specifies a file that contains \fB[preproc_define]\fPs to be included
-before preprocessing.
+仅供 \fB\-\-preprocess\fP 或 \fB\-\-preprocess\-string\fP 命令使用。用于指定一个包含了一个或多个
+\fB[preproc_define]\fP 的文件，其内容将在预处理开始前被包含。
 .TP 
 \fB\-\-preprocess\-output\-macros[\fP\fI=target\-file\fP\fB]\fP
-used only by the \fB\-\-preprocess\fP command (But not by the
-\fB\-\-preprocess\-string\fP command). Will output all preprocessed macros in the
-target file. If the file is not specified the output will be file
-\&'_MACROS_.cfg' in the target directory of preprocess's command. The output
-file can be passed to \fB\-\-preprocess\-input\-macros\fP.  This switch should be
-typed before the \fB\-\-preprocess\fP command.
+仅供 \fB\-\-preprocess\fP 命令使用（但 \fB\-\-preprocess\-string\fP
+命令不使用）。将会输出目标文件中所有经过了预处理的宏。如果没有指定文件，那么目标文件将是preprocess命令所指定的目标目录中的“_MACROS_.cfg”。输出文件可传递给
+\fB\-\-preprocess\-input\-macros\fP 。这个开关选项必须出现在 \fB\-\-preprocess\fP 命令之前。
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 设定屏幕分辨率。例如：\fB\-r\fP \fB800x600\fP。
@@ -233,9 +213,8 @@ typed before the \fB\-\-preprocess\fP command.
 将验证错误视为致命错误。
 .TP 
 \fB\-t[\fP\fIscenario_id\fP\fB],\ \-\-test[\fP\fI=scenario_id\fP\fB]\fP
-runs the game in a small test scenario. The scenario should be one defined
-with a \fB[test]\fP WML tag. The default is \fBtest\fP.  A demonstration of the
-\fB[micro_ai]\fP feature can be started with \fBmicro_ai_test\fP.
+在小型测试场景中运行游戏。该场景应使用 \fB[test]\fP WML标签定义。默认为 \fBtest\fP 。可使用 \fBmicro_ai_test\fP 启动对
+\fB[micro_ai]\fP 特性的演示。
 .TP 
 \fB\-\-translations\-over\fP\fI\ percent\fP
 将确认翻译是否足够完整的判断标准设为\fIpercent\fP，合法的值为0到100。
@@ -247,7 +226,7 @@ with a \fB[test]\fP WML tag. The default is \fBtest\fP.  A demonstration of the
 使得\fBpackage\fP包在Lua脚本中可用，这样一来Lua脚本就可以载入任意包了。请不要对不可信的脚本使用此选项！此操作将赋予Lua与韦诺可执行文件相同的权限。
 .TP 
 \fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
-sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
+设置 \fB\-V,\ \-\-validate\fP 所使用的WML schema。
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ name\fP
 设置用户数据目录为$HOME或者Windows下“我的文档\我的游戏（My Documents\eMy
@@ -350,7 +329,7 @@ Soliton <soliton.de@gmail.com> 编辑。
 .
 .SH 版权
 .
-Copyright \(co 2003\-2025 David White <davidnwhite@verizon.net>
+版权所有 \(co 2003\-2025 David White <davidnwhite@verizon.net>
 .br
 这是一款自由软件，使用由自由软件基金会发布的GPL版本2协议授权。使用本软件时*不*提供任何保证，甚至没有对“可销售性”和“针对某一特别目的之可用性”的保证。本段中文翻译不具有法律效力，只有GPL英文原本才具有法律效力。
 .

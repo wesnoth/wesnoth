@@ -46,16 +46,9 @@ def generate(env):
             return env.MsgInit(target, source, **kw)
     env.AddMethod(MsgInitMerge)
 
-    env["PO4A_UPDATEPO"] = WhereIs("po4a-updatepo")
-    po4a_update_po = Builder(
-        action = "$PO4A_UPDATEPO -f $PO4A_FORMAT ${''.join([' -m ' + str(source) for source in SOURCES])} -p $TARGET",
+    env["PO4A"] = WhereIs("po4a")
+    env["BUILDERS"]["Po4a"] = Builder(
+        action = "$PO4A $SOURCE"
         )
-    env["BUILDERS"]["Po4aUpdatePo"] = po4a_update_po
-
-    env["PO4A_TRANSLATE"] = WhereIs("po4a-translate")
-    po4a_translate = Builder(
-        action = "$PO4A_TRANSLATE -f $PO4A_FORMAT -L $PO4A_CHARSET -m ${SOURCES[0]} -p ${SOURCES[1]} -l $TARGET"
-        )
-    env["BUILDERS"]["Po4aTranslate"] = po4a_translate
 
 config_checks = {}

@@ -111,11 +111,11 @@ void editor_edit_pbl::pre_show()
 	name->set_value(pbl["title"]);
 	keyboard_capture(name);
 
-	find_widget<scroll_text>("description").set_value(pbl["description"]);
+	find_widget<scroll_text>("description").set_value(pbl["description"].t_str());
 	find_widget<text_box>("icon").set_value(pbl["icon"]);
 	if(!pbl["icon"].empty()) {
 		drawing& img = find_widget<drawing>("preview");
-		img.set_label(pbl["icon"]);
+		img.set_label(pbl["icon"].str());
 	}
 	find_widget<text_box>("author").set_value(pbl["author"]);
 	find_widget<text_box>("version").set_value(pbl["version"]);
@@ -123,7 +123,7 @@ void editor_edit_pbl::pre_show()
 	multimenu_button& dependencies = find_widget<multimenu_button>("dependencies");
 	std::vector<config> addons_list;
 	filesystem::get_files_in_dir(filesystem::get_addons_dir(), nullptr, &dirs_, filesystem::name_mode::FILE_NAME_ONLY);
-	if(dirs_.size() > 0 && std::find(dirs_.begin(), dirs_.end(), current_addon_) != dirs_.end()) {
+	if(dirs_.size() > 0 && utils::contains(dirs_, current_addon_)) {
 		utils::erase(dirs_, current_addon_);
 	}
 
@@ -134,7 +134,7 @@ void editor_edit_pbl::pre_show()
 
 	std::vector<std::string> existing_dependencies = utils::split(pbl["dependencies"].str(), ',');
 	for(unsigned i = 0; i < dirs_.size(); i++) {
-		if(std::find(existing_dependencies.begin(), existing_dependencies.end(), dirs_[i]) != existing_dependencies.end()) {
+		if(utils::contains(existing_dependencies, dirs_[i])) {
 			dependencies.select_option(i);
 		}
 	}
@@ -166,7 +166,7 @@ void editor_edit_pbl::pre_show()
 
 	unsigned selected = 0;
 	for(unsigned i = 0; i < type_values.size(); i++) {
-		if(type_values[i] == pbl["type"]) {
+		if(pbl["type"] == type_values[i]) {
 			selected = i;
 			break;
 		}
@@ -203,7 +203,7 @@ void editor_edit_pbl::pre_show()
 
 	std::vector<std::string> chosen_tags = utils::split(pbl["tags"].str(), ',');
 	for(unsigned i = 0; i < tag_values.size(); i++) {
-		if(std::find(chosen_tags.begin(), chosen_tags.end(), tag_values[i]) != chosen_tags.end()) {
+		if(utils::contains(chosen_tags, tag_values[i])) {
 			tags.select_option(i);
 		}
 	}

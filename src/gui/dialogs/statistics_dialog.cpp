@@ -224,39 +224,14 @@ static hitrate_table_element tally(const statistics_t::stats::hitrate_map& by_ct
 
 	// Compute the a priori probability of this actual result, by simulating many attacks against a single defender.
 	{
-		config defender_cfg(
-			"id", "statistics_dialog_dummy_defender",
-			"hide_help", true,
-			"do_not_list", true,
-			"hitpoints", overall_strikes
-		);
-		unit_type defender_type(defender_cfg);
-		unit_types.build_unit_type(defender_type, unit_type::BUILD_STATUS::FULL);
-
-		battle_context_unit_stats defender_bc(&defender_type, nullptr, false, nullptr, nullptr, 0 /* not used */);
+		auto defender_bc = battle_context_unit_stats(0, 0, overall_strikes, overall_strikes, 0);
 		auto current_defender = std::make_unique<combatant>(defender_bc);
 
 		for(const auto& i : by_cth) {
 			int cth = i.first;
-			config attacker_cfg(
-				"id", "statistics_dialog_dummy_attacker" + std::to_string(cth),
-				"hide_help", true,
-				"do_not_list", true,
-				"hitpoints", 1
-			);
-			unit_type attacker_type(attacker_cfg);
-			unit_types.build_unit_type(attacker_type, unit_type::BUILD_STATUS::FULL);
 
-			auto attack = std::make_shared<attack_type>(config(
-				"type", "blade",
-				"range", "melee",
-				"name", "dummy attack",
-				"damage", 1,
-				"number", i.second.strikes
-			));
-
-			battle_context_unit_stats attacker_bc(&attacker_type, attack, true, &defender_type, nullptr, 100 - cth);
-			defender_bc = battle_context_unit_stats(&defender_type, nullptr, false, &attacker_type, attack, 0 /* not used */);
+			auto attacker_bc= battle_context_unit_stats(1, i.second.strikes, 1, 1, cth);
+			defender_bc = battle_context_unit_stats(0, 0, overall_strikes, overall_strikes, 0);
 
 			// Update current_defender with the new defender_bc.
 			current_defender.reset(new combatant(*current_defender, defender_bc));

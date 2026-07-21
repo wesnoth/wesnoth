@@ -24,7 +24,8 @@ struct level_type_defines
 	static constexpr const char* const random_map = "random_map";
 	static constexpr const char* const campaign = "campaign";
 	static constexpr const char* const sp_campaign = "sp_campaign";
+	static constexpr const char* const preset = "preset";
 
-	ENUM_AND_ARRAY(scenario, user_map, user_scenario, random_map, campaign, sp_campaign)
+	ENUM_AND_ARRAY(scenario, user_map, user_scenario, random_map, campaign, sp_campaign, preset)
 };
 using level_type = string_enums::enum_base<level_type_defines>;

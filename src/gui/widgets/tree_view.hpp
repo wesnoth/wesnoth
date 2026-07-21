@@ -95,6 +95,16 @@ public:
 		return indentation_step_size_;
 	}
 
+	/**
+	 * If true, adding an item when no item is selected will automatically select that item.
+	 *
+	 * Name chosen for similarity to list_view::has_minimum().
+	 */
+	bool has_minimum() const
+	{
+		return has_minimum_;
+	}
+
 	tree_view_node* selected_item()
 	{
 		return selected_item_;
@@ -138,6 +148,8 @@ private:
 
 	unsigned indentation_step_size_;
 
+	bool has_minimum_;
+
 	bool need_layout_;
 
 	tree_view_node* root_node_;
@@ -179,8 +191,7 @@ public:
 	/** Optionally returns the node definition with the given id, or nullopt if not found. */
 	utils::optional<decltype(node_definitions_)::const_iterator> get_node_definition(const std::string& id) const
 	{
-		const auto def = std::find_if(
-			node_definitions_.begin(), node_definitions_.end(), [&id](const auto& d) { return d.id == id; });
+		const auto def = utils::ranges::find(node_definitions_, id, &node_definition::id);
 		return def != node_definitions_.end() ? utils::make_optional(def) : utils::nullopt;
 	}
 
@@ -211,6 +222,7 @@ struct tree_view_definition : public styled_widget_definition
 		explicit resolution(const config& cfg);
 
 		builder_grid_ptr grid;
+		bool has_minimum;
 	};
 };
 
@@ -228,6 +240,8 @@ struct builder_tree_view : public builder_scrollbar_container
 	virtual std::unique_ptr<widget> build() const override;
 
 	unsigned indentation_step_size;
+
+	bool has_minimum;
 
 	/**
 	 * The types of nodes in the tree view.

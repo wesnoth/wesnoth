@@ -23,7 +23,7 @@
 
 #include <cassert>
 namespace {
-	const SDL_Rect EmptyRect {-1234,-1234,0,0};
+	const rect EmptyRect {-1234,-1234,0,0};
 }
 
 namespace gui {
@@ -66,7 +66,7 @@ bool widget::mouse_locked() const
 	return mouse_lock_ && !mouse_lock_local_;
 }
 
-void widget::set_location(const SDL_Rect& rect)
+void widget::set_location(const rect& rect)
 {
 	if(rect_ == rect) {
 		return;
@@ -151,7 +151,7 @@ void widget::hide(bool value)
 	}
 }
 
-void widget::set_clip_rect(const SDL_Rect& rect)
+void widget::set_clip_rect(const rect& rect)
 {
 	clip_rect_ = rect;
 	clip_ = true;

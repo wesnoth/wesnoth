@@ -47,8 +47,8 @@ compártalas con otros.
 .
 .TP 
 \fB\-\-addon\-info\fP
-Shows a button on the add\-ons manager to query the add\-ons server for
-various information.
+Muestra un botón en el gestor de complementos para consultar al servidor de
+complementos y obtener información diversa.
 .TP 
 \fB\-\-all\-translations\fP
 Muestra todas las traducciones en la lista de selección de idioma del juego,
@@ -72,15 +72,17 @@ Omite las pantallas de [story] y los diálogos hasta el final del evento
 \fBstart\fP.
 .TP 
 \fB\-\-clock\fP
-Adds the option to show a clock for testing the drawing timer. Also adds the
-option for showing the GUI Test Dialog.
+Añade la opción de mostrar un reloj para probar el temporizador de
+dibujo. También añade la opción de mostrar el Diálogo de Prueba de la
+Interfaz.
 .TP 
 \fB\-\-core\fP\fI\ id_modulo\fP
-Overrides the loaded core with the one whose id is specified.
+Reemplaza el módulo cargado con aquel cuya id se especifica.
 .TP 
 \fB\-\-data\-dir\fP\fI\ directorio\fP
-Overrides the data directory with the one specified. The data directory is
-the one that contains subdirectories 'data', 'fonts', 'images' and others.
+Sobrescribe el directorio de datos con el que se especifique. El directorio
+de datos es aquel que contiene los subdirectorios 'data', 'fonts', 'images'
+y otros.
 .TP 
 \fB\-\-data\-path\fP
 imprime la ruta del directorio de datos y sale.
@@ -127,41 +129,45 @@ editor mostrará un diálogo de selección de archivos apuntando a éste.
 usa el idioma \fIlang\fP en esta sesión.  Ejemplo: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fInivel\fP\fB=\fP\fIdominio1\fP\fB,\fP\fIdominio2\fP\fB,\fP\fI...\fP
-sets the severity level of the log domains. The wildcard \fB*\fP may be used to
-match a subset of domains, e.g. gui/* or conf* or * (the latter matches all
-domains).  Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default, the \fBwarning\fP level is used for most domains, but
-\fBdeprecation\fP defaults to \fBnone\fP unless combined with the \fB\-d\fP option.
-This option can be specified multiple times.
+Establece el nivel de severidad de los dominios de registro. El comodín \fB*\fP
+puede usarse para coincidir con un subconjunto de dominios, por ejemplo
+gui/* o conf* o * (este último coincide con todos los dominios). Niveles
+disponibles: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP. Por
+defecto, el nivel \fBwarning\fP se usa para la mayoría de los dominios, pero
+\fBdeprecation\fP tiene como valor por defecto \fBnone\fP a menos que se combine
+con la opción \fB\-d\fP. Esta opción puede especificarse varias veces.
 .TP 
 \fB\-\-log\-precise\fP
 muestra los marcadores de tiempo del archivo de registro con mayor
 precisión.
 .TP 
 \fB\-\-log\-strict\fP\fI\ level\fP
-sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
-this \fIlevel\fP or more severe will cause the unit test to fail regardless of
-the victory result. Only relevant when used with \fB\-u\fP.
+Establece el nivel estricto \fIlevel\fP del registrador. Cualquier mensaje
+enviado a dominios de registro de este \fIlevel\fP o más severo provocará que
+la prueba unitaria falle independientemente del resultado de la
+victoria. Solo es relevante cuando se usa con \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=filtro\fP\fB]\fP
 muestra una lista de dominios de registro definidos (únicamente aquéllos
 conteniendo \fIfiltro\fP si es indicado) y regresa
 .TP 
 \fB\-\-no\-log\-to\-file\fP
-prevents redirecting logged output to a file. The environment variable
-WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created
-in the logs directory under the userdata folder.
+Evita redirigir la salida registrada a un archivo. También se puede
+establecer la variable de entorno WESNOTH_NO_LOG_FILE como alternativa. Los
+archivos de registro se crean en el directorio de registros dentro de la
+carpeta de datos de usuario.
 .TP 
 \fB\-\-log\-to\-file\fP
-log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
-whether implicit or explicit.
+La salida del registro se escribe en un archivo. Cancela el efecto de
+\-\-no\-log\-to\-file, ya sea implícito o explícito.
 .TP 
 \fB\-\-no\-log\-sanitize\fP
-disables the anonymization that's normally applied when logging, for example
-replacing usernames with USER.
+Desactiva la anonimización que normalmente se aplica al registrar datos, por
+ejemplo, reemplazando los nombres de usuario con USER.
 .TP 
 \fB\-\-wnoconsole\fP
-For Windows, when used with \-\-no\-log\-to\-file, results in output being
-written to cerr/cout instead of CONOUT. Otherwise, does nothing.
+En Windows, cuando se usa con \-\-no\-log\-to\-file, hace que la salida se
+escriba en cerr/cout en lugar de CONOUT. De lo contrario, no hace nada.
 .TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
 el número de fotogramas por segundo que el juego puede mostrar, el valor
@@ -212,9 +218,9 @@ utiliza \fIpassword\fP cuando se conecta a un servidor, ignorando otras
 preferencias. Método inseguro.
 .TP 
 \fB\-\-plugin\fP\fI\ script\fP
-load a \fIscript\fP which defines a Wesnoth plugin. Lua file should return a
-function which will be run as a coroutine and periodically woken up with
-updates.
+(experimental) carga un \fIscript\fP que define un complemento para Wesnoth. El
+archivo Lua debe devolver una función que se ejecutará como una corutina y
+será activada periódicamente con actualizaciones.
 .TP 
 \fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 aplica un arreglo DiffWML a un archivo WML; no preprocesa ninguno de los
@@ -232,25 +238,25 @@ con el preprocesador visite:
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
 \fB\-\-preprocess\-string\fP\fI\ source\-string\fP
-preprocesses a given string and writes the output to stdout.
+Preprocesa una cadena dada y escribe la salida en stdout.
 .TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
-comma separated list of defines to be used by the \fB\-\-preprocess\fP or
-\fB\-\-preprocess\-string\fP command. If \fBSKIP_CORE\fP is in the define list the
-"data/core" directory won't be preprocessed.
+Lista separada por comas de definiciones que se usarán con el comando
+\fB\-\-preprocess\fP o \fB\-\-preprocess\-string\fP. Si \fBSKIP_CORE\fP está en la lista,
+el directorio «data/core» no se preprocesará.
 .TP 
 \fB\-\-preprocess\-input\-macros\fP\fI\ source\-file\fP
-used only by the \fB\-\-preprocess\fP or \fB\-\-preprocess\-string\fP
-command. Specifies a file that contains \fB[preproc_define]\fPs to be included
-before preprocessing.
+Solo se usa con el comando \fB\-\-preprocess\fP o
+\fB\-\-preprocess\-string\fP. Especifica un archivo que contiene
+\fB[preproc_define]\fPs que se incluirán antes del preprocesamiento.
 .TP 
 \fB\-\-preprocess\-output\-macros[\fP\fI=target\-file\fP\fB]\fP
-used only by the \fB\-\-preprocess\fP command (But not by the
-\fB\-\-preprocess\-string\fP command). Will output all preprocessed macros in the
-target file. If the file is not specified the output will be file
-\&'_MACROS_.cfg' in the target directory of preprocess's command. The output
-file can be passed to \fB\-\-preprocess\-input\-macros\fP.  This switch should be
-typed before the \fB\-\-preprocess\fP command.
+Solo se usa con el comando \fB\-\-preprocess\fP (no con
+\fB\-\-preprocess\-string\fP). Escribirá todas las macros preprocesadas en el
+archivo de destino. Si no se especifica archivo, la salida será el archivo
+«_MACROS_.cfg» en el directorio de destino del comando preprocess. El
+archivo de salida puede ser pasado a \fB\-\-preprocess\-input\-macros\fP. Esta
+opción debe colocarse antes del comando \fB\-\-preprocess\fP.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 establece la resolución de la pantalla. Por ejemplo: \fB\-r\fP \fB800x600\fP.
@@ -286,9 +292,10 @@ cualquier \fB\-\-nogui.\fP implícito.
 trata los errores de validación como fatales.
 .TP 
 \fB\-t[\fP\fIscenario_id\fP\fB],\ \-\-test[\fP\fI=scenario_id\fP\fB]\fP
-runs the game in a small test scenario. The scenario should be one defined
-with a \fB[test]\fP WML tag. The default is \fBtest\fP.  A demonstration of the
-\fB[micro_ai]\fP feature can be started with \fBmicro_ai_test\fP.
+Ejecuta el juego en un pequeño escenario de prueba. El escenario debe estar
+definido con una etiqueta WML \fB[test]\fP. Por defecto es \fBtest\fP. Una
+demostración de la función \fB[micro_ai]\fP puede iniciarse con
+\fBmicro_ai_test\fP. Implica \fB\-\-nogui\fP.
 .TP 
 \fB\-\-translations\-over\fP\fI\ percent\fP
 Establece a \fIpercent\fP el estándar para considerar que una traducción está
@@ -306,7 +313,7 @@ confiables! Esta acción da a los lua los mismos permisos que el ejecutable
 de wesnoth.
 .TP 
 \fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
-sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
+configura el patrón WML para su uso con \fB\-V,\ \-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ nombre\fP
 establece el directorio de datos del usuario como \fInombre\fP en $HOME o "Mis

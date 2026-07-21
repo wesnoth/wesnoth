@@ -94,8 +94,7 @@ default_ai_context& default_ai_context_impl::get_default_ai_context(){
 int default_ai_context_impl::rate_terrain(const unit& u, const map_location& loc) const
 {
 	const gamemap &map_ = resources::gameboard->map();
-	const t_translation::terrain_code terrain = map_.get_terrain(loc);
-	const int defense = u.defense_modifier(terrain);
+	const int defense = u.defense_modifier(map_.get_terrain(loc));
 	int rating = 100 - defense;
 
 	const int healing_value = 10;
@@ -103,11 +102,11 @@ int default_ai_context_impl::rate_terrain(const unit& u, const map_location& loc
 	const int neutral_village_value = 10;
 	const int enemy_village_value = 15;
 
-	if(map_.gives_healing(terrain) && u.get_ability_bool("regenerate", loc) == false) {
+	if(map_.gives_healing(loc) && u.get_ability_bool("regenerate", loc) == false) {
 		rating += healing_value;
 	}
 
-	if(map_.is_village(terrain)) {
+	if(map_.is_village(loc)) {
 		int owner = resources::gameboard->village_owner(loc);
 
 		if(owner == get_side()) {

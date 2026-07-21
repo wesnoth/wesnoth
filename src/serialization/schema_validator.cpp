@@ -277,7 +277,7 @@ bool schema_validator::read_config_file(const std::string& filename)
 			validator.reset(new schema_self_validator());
 		}
 		preproc_map preproc(game_config::config_cache::instance().get_preproc_map());
-		filesystem::scoped_istream stream = preprocess_file(filename, &preproc);
+		filesystem::scoped_istream stream = preprocess_file(filename, preproc);
 		cfg = io::read(*stream, validator.get());
 	} catch(const config::error& e) {
 		ERR_VL << "Failed to read file " << filename << ":\n" << e.what();
@@ -317,13 +317,13 @@ void schema_validator::detect_link_cycles(const std::string& filename) {
 
 	boost::depth_first_search(link_graph,
 		boost::visitor(utils::back_edge_detector([&](const link_graph_t::edge_descriptor edge) {
-			const auto source = std::find_if(link_map.begin(), link_map.end(),
-				[&](const auto& link) { return link.second == boost::source(edge, link_graph); });
+			const auto source = utils::ranges::find(link_map, boost::source(edge, link_graph),
+				[](const auto& link) { return link.second; });
 
 			assert(source != link_map.end());
 
-			const auto target = std::find_if(link_map.begin(), link_map.end(),
-				[&](const auto& link) { return link.second == boost::target(edge, link_graph); });
+			const auto target = utils::ranges::find(link_map, boost::target(edge, link_graph),
+				[](const auto& link) { return link.second; });
 
 			assert(target != link_map.end());
 
@@ -518,7 +518,7 @@ utils::optional<std::map<std::string, wml_key>> schema_validator::find_mandatory
 	const wml_tag* tag, const config& cfg, std::vector<const wml_tag*>& visited) const
 {
 	// Return an empty optional if a super cycle is detected.
-	if(std::find(visited.begin(), visited.end(), tag) != visited.end()) {
+	if(utils::contains(visited, tag)) {
 		return utils::nullopt;
 	}
 
@@ -572,7 +572,7 @@ void schema_validator::validate_mandatory_keys(const std::map<std::string, wml_k
 	std::vector<const wml_tag*>& visited)
 {
 	// Skip validation if a super cycle is detected.
-	if(std::find(visited.begin(), visited.end(), tag) != visited.end()) {
+	if(utils::contains(visited, tag)) {
 		return;
 	}
 
@@ -592,13 +592,13 @@ void schema_validator::detect_derivation_cycles()
 {
 	boost::depth_first_search(derivation_graph_,
 		boost::visitor(utils::back_edge_detector([&](const derivation_graph_t::edge_descriptor edge) {
-			const auto source = std::find_if(derivation_map_.begin(), derivation_map_.end(),
-				[&](const auto& derivation) { return derivation.second == boost::source(edge, derivation_graph_); });
+			const auto source = utils::ranges::find(derivation_map_, boost::source(edge, derivation_graph_),
+				[](const auto& derivation) { return derivation.second; });
 
 			assert(source != derivation_map_.end());
 
-			const auto target = std::find_if(derivation_map_.begin(), derivation_map_.end(),
-				[&](const auto& derivation) { return derivation.second == boost::target(edge, derivation_graph_); });
+			const auto target = utils::ranges::find(derivation_map_, boost::target(edge, derivation_graph_),
+				[](const auto& derivation) { return derivation.second; });
 
 			assert(target != derivation_map_.end());
 

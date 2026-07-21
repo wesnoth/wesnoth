@@ -208,7 +208,7 @@ struct take_village_step : undo_action
 			get_village(loc, original_village_owner, nullptr, false);
 			// MP_COUNTDOWN take away capture bonus
 			if(take_village_timebonus) {
-				current_team.set_action_bonus_count(current_team.action_bonus_count() - 1);
+				current_team.decrement_action_bonus_count();
 			}
 		}
 		return true;
@@ -251,7 +251,7 @@ game_events::pump_result_t get_village(const map_location& loc, int side, bool *
 	}
 
 	if(grants_timebonus) {
-		t->set_action_bonus_count(1 + t->action_bonus_count());
+		t->increment_action_bonus_count();
 		*action_timebonus = true;
 	}
 
@@ -360,10 +360,10 @@ namespace { // Private helpers for move_unit()
 		/** Moves the unit the next step. */
 		inline bool do_move(const route_iterator & step_from,
 		                    const route_iterator & step_to,
-		                    unit_display::unit_mover & animator);
+		                    unit_display::unit_movement_animator & animator);
 
 		/** Teleports the unit. */
-		inline bool do_teleport(unit_display::unit_mover& animator);
+		inline bool do_teleport(unit_display::unit_movement_animator& animator);
 
 		/** Clears fog/shroud and handles units being sighted. */
 		inline void handle_fog(const map_location & hex, bool new_animation);
@@ -382,7 +382,7 @@ namespace { // Private helpers for move_unit()
 		const bool skip_sighting_;
 		const bool skip_ally_sighting_;
 		const bool playing_team_is_viewing_;
-		// Needed to interface with unit_display::unit_mover.
+		// Needed to interface with unit_display::unit_mover_animation.
 		const std::vector<map_location> & route_;
 
 		// The route to traverse.
@@ -586,12 +586,12 @@ namespace { // Private helpers for move_unit()
 	 * @a step_to is the hex being moved to.
 	 * @a step_from is the hex before that in the route.
 	 * (The unit is actually at *move_loc_.)
-	 * @a animator is the unit_display::unit_mover being used.
+	 * @a animator is the unit_display::unit_mover_animation being used.
 	 * @return whether or not we started a new animation.
 	 */
 	inline bool unit_mover::do_move(const route_iterator & step_from,
 	                                const route_iterator & step_to,
-	                                unit_display::unit_mover & animator)
+	                                unit_display::unit_movement_animator & animator)
 	{
 		game_display &disp = *game_display::get_singleton();
 
@@ -635,10 +635,10 @@ namespace { // Private helpers for move_unit()
 
 	/**
 	 * Teleports the unit to begin_ + 1.
-	 * @a animator is the unit_display::unit_mover being used.
+	 * @a animator is the unit_display::unit_mover_animation being used.
 	 * @return whether or not we started a new animation.
 	 */
-	inline bool unit_mover::do_teleport(unit_display::unit_mover& animator)
+	inline bool unit_mover::do_teleport(unit_display::unit_movement_animator& animator)
 	{
 		game_display& disp = *game_display::get_singleton();
 		const route_iterator step_to = begin_ + 1;
@@ -965,9 +965,9 @@ namespace { // Private helpers for move_unit()
 	 */
 	std::string unit_mover::read_ambush_string(const unit & ambusher)
 	{
-		for(const unit_ability &hide : ambusher.get_abilities("hides"))
+		for(const active_ability &hide : ambusher.get_abilities("hides"))
 		{
-			const std::string & ambush_string = (*hide.ability_cfg)["alert"].str();
+			const std::string & ambush_string = hide.ability_cfg()["alert"].str();
 			if (!ambush_string.empty()) {
 				return ambush_string;
 			}
@@ -1068,7 +1068,7 @@ namespace { // Private helpers for move_unit()
 			std::vector<int> not_seeing = get_sides_not_seeing(*move_it_);
 
 			// Prepare to animate.
-			unit_display::unit_mover animator(route_, show);
+			unit_display::unit_movement_animator animator(route_, show);
 			animator.start(move_it_.get_shared_ptr());
 
 			// Traverse the route to the hex where we need to stop.
@@ -1153,7 +1153,7 @@ namespace { // Private helpers for move_unit()
 		std::vector<int> not_seeing = get_sides_not_seeing(*move_it_);
 
 		// Prepare to animate.
-		unit_display::unit_mover animator(route_, show);
+		unit_display::unit_movement_animator animator(route_, show);
 		animator.start(move_it_.get_shared_ptr());
 		fire_hex_event("exit hex", step_from, begin_);
 
@@ -1320,7 +1320,7 @@ namespace { // Private helpers for move_unit()
 		// Suggest "continue move"?
 		if ( playing_team_is_viewing_ && sighted_stop_ && !resources::whiteboard->is_executing_actions() ) {
 			// See if the "Continue Move" action has an associated hotkey
-			std::string name = hotkey::get_names(hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_CONTINUE_MOVE).id);
+			std::string name = hotkey::get_names(hotkey::get_hotkey_command(hotkey::HOTKEY_CONTINUE_MOVE).id);
 			if ( !name.empty() ) {
 				utils::string_map symbols;
 				symbols["hotkey"] = name;

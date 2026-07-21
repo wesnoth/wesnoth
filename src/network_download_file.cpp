@@ -19,7 +19,17 @@
 #include "gui/dialogs/message.hpp"
 #include "log.hpp"
 
+#if defined(__APPLE__)
+#include <TargetConditionals.h>
+#endif
+
+#ifdef __ANDROID__
+#include <SDL3/SDL_system.h>
+#endif
+
+#if !(defined(__APPLE__) && TARGET_OS_IPHONE)
 #include <curl/curl.h>
+#endif
 
 static lg::log_domain log_network("network");
 #define ERR_NW LOG_STREAM(err, log_network)
@@ -27,15 +37,20 @@ static lg::log_domain log_network("network");
 
 namespace network
 {
-	static size_t write_callback(char* contents, size_t size, size_t nmemb, void* buffer)
+	static std::size_t write_callback(char* contents, std::size_t size, std::size_t nmemb, void* buffer)
 	{
-		size_t amount = size * nmemb;
+		std::size_t amount = size * nmemb;
 		static_cast<std::string*>(buffer)->append(contents, amount);
 		DBG_NW << "Downloaded " << amount << " bytes.";
 		return amount;
 	}
 
-	void gui_download(const std::string& url, const std::string& local_path) {
+	void gui_download([[maybe_unused]] const std::string& url, [[maybe_unused]] const std::string& local_path) {
+#if defined(__APPLE__) && TARGET_OS_IPHONE
+		gui2::show_message(_("Download unavailable"), _("Standalone file downloads are not currently supported on iOS."), gui2::dialogs::message::button_style::auto_close);
+		return;
+#endif
+
 		if(filesystem::file_exists(local_path)) {
 			const int res = gui2::show_message(_("Confirm overwrite"), _("Overwrite existing file?"), gui2::dialogs::message::yes_no_buttons);
 			if(res != gui2::retval::OK) {
@@ -49,8 +64,12 @@ namespace network
 		}
 	}
 
-	bool download(const std::string& url, const std::string& local_path)
+	bool download([[maybe_unused]] const std::string& url, [[maybe_unused]] const std::string& local_path)
 	{
+#if defined(__APPLE__) && TARGET_OS_IPHONE
+		ERR_NW << "Standalone file downloads are currently disabled for iOS builds.";
+		return false;
+#else
 		std::unique_ptr<CURL, decltype(&curl_easy_cleanup)> curl(curl_easy_init(), curl_easy_cleanup);
 		std::string buffer;
 		// curl doesn't initialize the error buffer until version 7.60.0, which isn't currently available on all supported macOS versions
@@ -64,7 +83,12 @@ namespace network
 		}
 
 		CURLcode res;
-		if((res = curl_easy_setopt(curl.get(), CURLOPT_URL, url.c_str())) != CURLE_OK ||
+
+		if(
+#ifdef __ANDROID__
+			(res = curl_easy_setopt(curl.get(), CURLOPT_CAINFO, (game_config::path + "/certificates/cacert.pem").c_str()) ) != CURLE_OK ||
+#endif
+			(res = curl_easy_setopt(curl.get(), CURLOPT_URL, url.c_str())) != CURLE_OK ||
 			(res = curl_easy_setopt(curl.get(), CURLOPT_WRITEFUNCTION, write_callback)) != CURLE_OK ||
 			(res = curl_easy_setopt(curl.get(), CURLOPT_WRITEDATA, &buffer)) != CURLE_OK ||
 			(res = curl_easy_setopt(curl.get(), CURLOPT_ERRORBUFFER, error)) != CURLE_OK ||
@@ -98,5 +122,6 @@ namespace network
 			return false;
 		}
 		return true;
+#endif
 	}
 }

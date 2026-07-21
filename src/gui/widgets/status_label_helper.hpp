@@ -24,8 +24,10 @@
 
 namespace gui2
 {
+namespace implementation
+{
 template<typename T>
-t_string default_status_value_getter(const T& w)
+t_string get_status_label(const T& w)
 {
 	// Menu Buttons
 	if constexpr(std::is_same_v<menu_button, T>) {
@@ -46,48 +48,84 @@ t_string default_status_value_getter(const T& w)
 }
 
 /**
- * Creates a bound status label that will reflect the label state of a widget. The initial label
- * value is set here, and then again any time the widget is modified. A function is also returned
- * that can be called to update the label manually.
+ * Searches for the status target, starting with the source widget's parent.
+ * and walking backwards up the parent tree until the target is found.
  *
- * This relies on hooking into the NOTIFY_MODIFIED event, so can only be used with widgets that fire
- * that event.
- *
- * @param find_in                  The containing widget (usually a window or grid) in which to find
- *                                 the source and status label widgets.
- * @param source_id                The ID of the source widget.
- * @param value_getter             Functor to process the value of the source widget.
- * @param label_id                 The ID of the status label widget.
- *
- * @returns                        The callback function used to update the status label's value.
+ * @todo this is a more powerful version of find_widget. Investigate whether
+ * we want this behavior exposed more broadly.
  */
-template<typename W>
-std::function<void()> bind_status_label(
-		widget* find_in,
-		const std::string& source_id,
-		const std::function<t_string(const W&)> value_getter = default_status_value_getter<W>,
-		const std::string& label_id = "")
+inline auto& find_target(std::string_view target_id, widget& source)
 {
-	// If no label ID is provided, use the format source ID + '_label'.
-	const std::string label_id_ = label_id.empty() ? source_id + "_label" : label_id;
+	widget* parent = source.parent();
+	widget* target = nullptr;
 
-	// Find the source value widget.
-	W& source = find_in->find_widget<W>(source_id);
+	while(parent) {
+		target = parent->find(target_id, false);
+		parent = parent->parent();
 
-	// Find the target status label.
-	styled_widget& label = find_in->find_widget<styled_widget>(label_id_);
+		if(target) {
+			break;
+		}
+	}
 
-	const auto update_label = [&, value_getter](auto&&...) {
-		label.set_label(value_getter(source));
-	};
+	VALIDATE(target, missing_widget(std::string(target_id)));
+	return dynamic_cast<styled_widget&>(*target);
+}
 
-	// Bind the callback.
-	connect_signal_notify_modified(source, update_label);
+/** Returns the dereferenced target pointer if valid, else the default target. */
+inline auto& validate_target(styled_widget* target, widget& source)
+{
+	if(target) {
+		return *target;
+	}
+
+	return find_target(source.id() + "_label", source);
+}
+
+} // namespace implementation
+
+/**
+ * Binds a given target widget to reflect another widget's label.
+ *
+ * The initial status label value will be set here and updated whenever the source
+ * widget is modified (specifically, when a NOTIFY_MODIFIED event is fired).
+ *
+ * @param source           The widget whose value will be represented in the target.
+ * @param value_getter     Functor to process the value of the source widget.
+ *                         The expected signature is [](const W&) -> [t_]string.
+ * @param target_ptr       Pointer to the status widget. If no target is specified,
+ *                         the default with ID [sourceID + "_label"] will be used.
+ */
+template<typename W, typename F>
+void bind_status_label(W& source, const F& value_getter, styled_widget* target_ptr = nullptr)
+{
+	// Get fallback if necessary.
+	styled_widget& target = implementation::validate_target(target_ptr, source);
+
+	connect_signal_notify_modified(source,
+		[&, value_getter](auto&&...) { target.set_label(value_getter(source)); });
 
 	// Set initial value.
-	update_label();
+	source.fire(event::NOTIFY_MODIFIED, source, nullptr);
+}
 
-	return update_label;
+/**
+ * Binds a status label using the default value getter and default target ID.
+ */
+template<typename W>
+void bind_default_status_label(W& source)
+{
+	bind_status_label(source, implementation::get_status_label<W>, nullptr);
+}
+
+/**
+ * Binds a status label using the default value getter and the given ID.
+ */
+template<typename W>
+void bind_default_status_label(W& source, std::string_view target_id)
+{
+	auto& target = implementation::find_target(target_id, source);
+	bind_status_label(source, implementation::get_status_label<W>, &target);
 }
 
 } // namespace gui2

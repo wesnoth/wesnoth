@@ -6,16 +6,19 @@ set(NORMAL_DOMAINS
 	wesnoth
 	wesnoth-anl
 	wesnoth-did
+	wesnoth-dod
 	wesnoth-dw
 	wesnoth-editor
 	wesnoth-ei
 	wesnoth-help
+	wesnoth-h2tt
 	wesnoth-httt
 	wesnoth-l
 	wesnoth-lib
 	wesnoth-low
 	wesnoth-multiplayer
 	wesnoth-nr
+	wesnoth-pap
 	wesnoth-sof
 	wesnoth-sota
 	wesnoth-sotbe

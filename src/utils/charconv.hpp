@@ -20,6 +20,7 @@
 #include <assert.h>
 #include <cctype>
 #include <charconv>
+#include "utils/optional_fwd.hpp"
 #include <string_view>
 #include <string>
 #include <stdexcept>
@@ -76,7 +77,7 @@ namespace utils::charconv
 
 	// the maximum size of a string that to_chars produces for type T, with the default chars_format
 	template<class T>
-	constexpr size_t buffer_size = 50;
+	constexpr std::size_t buffer_size = 50;
 }
 
 namespace utils
@@ -98,7 +99,7 @@ namespace utils
 	struct charconv_buffer
 	{
 		std::array<char, utils::charconv::buffer_size<TNum>> buffer;
-		size_t size;
+		std::size_t size;
 
 		charconv_buffer()
 			: size(0)
@@ -143,12 +144,13 @@ namespace utils
 		double res;
 		auto [ptr, ec] = utils::charconv::from_chars(str.data(), str.data() + str.size(), res);
 		if(ec == std::errc::invalid_argument) {
-			throw std::invalid_argument("");
-		} else if(ec == std::errc::result_out_of_range) {
-			throw std::out_of_range("");
+			throw std::invalid_argument("Failed to convert string to double: input contains invalid characters or is not a valid number.");
+		} else  if(ec == std::errc::result_out_of_range) {
+			throw std::out_of_range("Failed to convert string to double: input value is out of the representable range for a double.");
 		}
 		return res;
 	}
+
 	/// Same interface as std::stoi and meant as a drop in replacement, except:
 	/// - It takes a std::string_view
 	inline int stoi(std::string_view str) {
@@ -156,10 +158,40 @@ namespace utils
 		int res;
 		auto [ptr, ec] = utils::charconv::from_chars(str.data(), str.data() + str.size(), res);
 		if(ec == std::errc::invalid_argument) {
-			throw std::invalid_argument("");
-		} else if(ec == std::errc::result_out_of_range) {
-			throw std::out_of_range("");
+			throw std::invalid_argument("Failed to convert string to int: input contains invalid characters or is not a valid number.");
+		} else  if(ec == std::errc::result_out_of_range) {
+			throw std::out_of_range("Failed to convert string to int: input value is out of the representable range for an int.");
 		}
 		return res;
+	}
+
+#ifdef __cpp_concepts
+	template<std::integral T>
+	inline auto from_chars(std::string_view str, int base = 10) -> utils::optional<T>
+#else
+	template<typename T>
+	inline auto from_chars(std::string_view str, int base = 10) -> std::enable_if_t<std::is_integral_v<T>, utils::optional<T>>
+#endif
+	{
+		trim_for_from_chars(str);
+		T result{};
+		const auto [_, ec] = utils::charconv::from_chars(str.data(), str.data() + str.size(), result, base);
+		return ec == std::errc{} ? utils::make_optional(result) : utils::nullopt;
+	}
+
+#ifdef __cpp_concepts
+	template<std::floating_point T>
+	inline auto from_chars(std::string_view str,
+		utils::charconv::chars_format fmt = utils::charconv::chars_format::general) -> utils::optional<T>
+#else
+	template<typename T>
+	inline auto from_chars(std::string_view str,
+		utils::charconv::chars_format fmt = utils::charconv::chars_format::general) -> std::enable_if_t<std::is_floating_point_v<T>, utils::optional<T>>
+#endif
+	{
+		trim_for_from_chars(str);
+		T result{};
+		const auto [_, ec] = utils::charconv::from_chars(str.data(), str.data() + str.size(), result, fmt);
+		return ec == std::errc{} ? utils::make_optional(result) : utils::nullopt;
 	}
 }

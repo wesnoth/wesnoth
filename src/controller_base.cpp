@@ -19,6 +19,7 @@
 #include "display.hpp"
 #include "events.hpp"
 #include "game_config_manager.hpp"
+#include "gui/widgets/settings.hpp"
 #include "hotkey/command_executor.hpp"
 #include "log.hpp"
 #include "mouse_handler_base.hpp"
@@ -34,11 +35,9 @@ static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
 using namespace std::chrono_literals;
-static constexpr auto long_touch_duration = 800ms;
 
 controller_base::controller_base()
 	: game_config_(game_config_manager::get()->game_config())
-	, key_()
 	, scrolling_(false)
 	, scroll_up_(false)
 	, scroll_down_(false)
@@ -48,7 +47,6 @@ controller_base::controller_base()
 	, scroll_carry_x_(0.0)
 	, scroll_carry_y_(0.0)
 	, key_release_listener_(*this)
-	, last_mouse_is_touch_(false)
 	, long_touch_timer_(0)
 {
 }
@@ -64,8 +62,8 @@ controller_base::~controller_base()
 void controller_base::long_touch_callback(int x, int y)
 {
 	if(long_touch_timer_ != 0 && !get_mouse_handler_base().dragging_started()) {
-		int x_now;
-		int y_now;
+		float x_now;
+		float y_now;
 		uint32_t mouse_state = sdl::get_mouse_state(&x_now, &y_now);
 
 #ifdef MOUSE_TOUCH_EMULATION
@@ -82,13 +80,9 @@ void controller_base::long_touch_callback(int x, int y)
 		bool yes_actually_dragging = dx * dx + dy * dy >= threshold * threshold;
 
 		if(!yes_actually_dragging
-		   && (mouse_state & SDL_BUTTON(SDL_BUTTON_LEFT)) != 0
-		   && get_display().map_area().contains(x_now, y_now))
+		   && (mouse_state & SDL_BUTTON_MASK(SDL_BUTTON_LEFT)) != 0)
 		{
-			const theme::menu* const m = get_mouse_handler_base().gui().get_theme().context_menu();
-			if(m != nullptr) {
-				show_menu(get_display().get_theme().context_menu()->items(), x_now, y_now, true, get_display());
-			}
+			show_menu(get_display().get_theme().context_menu(), { static_cast<int>(x_now), static_cast<int>(y_now) }, true);
 		}
 	}
 
@@ -106,27 +100,29 @@ void controller_base::handle_event(const SDL_Event& event)
 	SDL_Event new_event = {};
 
 	switch(event.type) {
-	case SDL_TEXTINPUT:
+	case SDL_EVENT_TEXT_INPUT:
 		if(have_keyboard_focus()) {
 			hotkey::key_event(event, get_hotkey_command_executor());
 		}
 		break;
 
-	case SDL_TEXTEDITING:
+	case SDL_EVENT_TEXT_EDITING:
 		if(have_keyboard_focus()) {
 			SDL_Event evt = event;
-			evt.type = SDL_TEXTINPUT;
+			evt.type = SDL_EVENT_TEXT_INPUT;
 			hotkey::key_event(evt, get_hotkey_command_executor());
-			SDL_StopTextInput();
-			SDL_StartTextInput();
+			SDL_StopTextInput(video::get_window());
+			SDL_StartTextInput(video::get_window());
 		}
 		break;
 
-	case SDL_KEYDOWN:
+	case SDL_EVENT_KEY_DOWN:
 		// Detect key press events, unless there something that has keyboard focus
 		// in which case the key press events should go only to it.
 		if(have_keyboard_focus()) {
-			if(event.key.keysym.sym == SDLK_ESCAPE) {
+			if(event.key.key == SDLK_ESCAPE
+				|| event.key.key == SDLK_AC_BACK)
+			{
 				get_hotkey_command_executor()->execute_quit_command();
 				break;
 			}
@@ -139,37 +135,37 @@ void controller_base::handle_event(const SDL_Event& event)
 		}
 		break;
 
-	case SDL_KEYUP:
+	case SDL_EVENT_KEY_UP:
 		process_keyup_event(event);
 		hotkey::key_event(event, get_hotkey_command_executor());
 		break;
 
-	case SDL_JOYBUTTONDOWN:
+	case SDL_EVENT_JOYSTICK_BUTTON_DOWN:
 		hotkey::jbutton_event(event, get_hotkey_command_executor());
 		break;
 
-	case SDL_JOYHATMOTION:
+	case SDL_EVENT_JOYSTICK_HAT_MOTION:
 		hotkey::jhat_event(event, get_hotkey_command_executor());
 		break;
 
-	case SDL_MOUSEMOTION:
+	case SDL_EVENT_MOUSE_MOTION:
 		// Ignore old mouse motion events in the event queue
-		if(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0) {
-			while(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_MOUSEMOTION, SDL_MOUSEMOTION) > 0) {
-			};
-			if(new_event.motion.which != SDL_TOUCH_MOUSEID) {
+		if(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_EVENT_MOUSE_MOTION, SDL_EVENT_MOUSE_MOTION) > 0) {
+			while(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_EVENT_MOUSE_MOTION, SDL_EVENT_MOUSE_MOTION) > 0) {};
+
+			if(!events::is_touch(new_event.motion)) {
 				mh_base.mouse_motion_event(new_event.motion, is_browsing());
 			}
 		} else {
-			if(new_event.motion.which != SDL_TOUCH_MOUSEID) {
+			if(!events::is_touch(new_event.motion)) {
 				mh_base.mouse_motion_event(event.motion, is_browsing());
 			}
 		}
 		break;
 
-	case SDL_FINGERMOTION:
-		if(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_FINGERMOTION, SDL_FINGERMOTION) > 0) {
-			while(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_FINGERMOTION, SDL_FINGERMOTION) > 0) {
+	case SDL_EVENT_FINGER_MOTION:
+		if(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_EVENT_FINGER_MOTION, SDL_EVENT_FINGER_MOTION) > 0) {
+			while(SDL_PeepEvents(&new_event, 1, SDL_GETEVENT, SDL_EVENT_FINGER_MOTION, SDL_EVENT_FINGER_MOTION) > 0) {
 			};
 			mh_base.touch_motion_event(new_event.tfinger, is_browsing());
 		} else {
@@ -177,98 +173,57 @@ void controller_base::handle_event(const SDL_Event& event)
 		}
 		break;
 
-	case SDL_MOUSEBUTTONDOWN:
-		last_mouse_is_touch_ = event.button.which == SDL_TOUCH_MOUSEID;
+	case SDL_EVENT_MOUSE_BUTTON_DOWN:
+		if(events::is_touch(event.button)) {
+			int x = event.button.x;
+			int y = event.button.y;
 
-		if(last_mouse_is_touch_ && long_touch_timer_ == 0) {
-			long_touch_timer_ = gui2::add_timer(
-					long_touch_duration,
-					std::bind(&controller_base::long_touch_callback, this, event.button.x, event.button.y));
+			if(long_touch_timer_ == 0) {
+				long_touch_timer_ = gui2::add_timer(gui2::settings::popup_show_delay,
+					std::bind(&controller_base::long_touch_callback, this, x, y));
+			}
 		}
 
 		mh_base.mouse_press(event.button, is_browsing());
 		hotkey::mbutton_event(event, get_hotkey_command_executor());
 		break;
 
-	case SDL_FINGERDOWN:
+	case SDL_EVENT_FINGER_DOWN:
 		// handled by mouse case
 		break;
 
-	case SDL_MOUSEBUTTONUP:
+	case SDL_EVENT_MOUSE_BUTTON_UP:
 		if(long_touch_timer_ != 0) {
 			gui2::remove_timer(long_touch_timer_);
 			long_touch_timer_ = 0;
 		}
 
-		last_mouse_is_touch_ = event.button.which == SDL_TOUCH_MOUSEID;
-
 		mh_base.mouse_press(event.button, is_browsing());
 		if(mh_base.get_show_menu()) {
-			show_menu(get_display().get_theme().context_menu()->items(), event.button.x, event.button.y, true,
-					get_display());
-		}
-		break;
-	case DOUBLE_CLICK_EVENT:
-		{
-			int x = static_cast<int>(reinterpret_cast<std::intptr_t>(event.user.data1));
-			int y = static_cast<int>(reinterpret_cast<std::intptr_t>(event.user.data2));
-			if(event.user.code == static_cast<int>(SDL_TOUCH_MOUSEID)
-			   // TODO: Move to right_click_show_menu?
-			   && get_display().map_area().contains(x, y)
-			   // TODO: This chain repeats in several places, move to a method.
-			   && get_display().get_theme().context_menu() != nullptr) {
-				show_menu(get_display().get_theme().context_menu()->items(),
-						  x,
-						  y,
-						  true,
-						  get_display());
-			}
+			show_menu(get_display().get_theme().context_menu(), { static_cast<int>(event.button.x), static_cast<int>(event.button.y) }, true);
 		}
 		break;
 
-	case SDL_FINGERUP:
+	case SDL_EVENT_FINGER_UP:
 		// handled by mouse case
 		break;
 
-	case SDL_MOUSEWHEEL:
+	case SDL_EVENT_MOUSE_WHEEL:
 		// Right and down are positive in Wesnoth's map.
-		// Right and up are positive in SDL_MouseWheelEvent on all platforms:
-		//     https://wiki.libsdl.org/SDL2/SDL_MouseWheelEvent
+		// Right and up are positive in SDL_MouseWheelEvent on all platforms
 #if defined(_WIN32) || defined(__APPLE__)
 		mh_base.mouse_wheel(event.wheel.x, -event.wheel.y, is_browsing());
 #else
-		// Except right is wrongly negative on X11 in SDL < 2.0.18:
-		//     https://github.com/libsdl-org/SDL/pull/4700
-		//     https://github.com/libsdl-org/SDL/commit/515b7e9
-		// and on Wayland in SDL < 2.0.20:
-		//     https://github.com/libsdl-org/SDL/commit/3e1b3bc
-		// Fixes issues #3362 and #7404, which are a regression caused by pull #2481 that fixed issue #2218.
 		{
-			static int xmul = 0;
-			if(xmul == 0) {
-				xmul = 1;
-				const char* video_driver = SDL_GetCurrentVideoDriver();
-				SDL_version ver;
-				SDL_GetVersion(&ver);
-				if(video_driver != nullptr && ver.major <= 2 && ver.minor <= 0) {
-					if(std::strcmp(video_driver, "x11") == 0 && ver.patch < 18) {
-						xmul = -1;
-					} else if(std::strcmp(video_driver, "wayland") == 0 && ver.patch < 20) {
-						xmul = -1;
-					}
-				}
-			}
-			mh_base.mouse_wheel(xmul * event.wheel.x, -event.wheel.y, is_browsing());
+			mh_base.mouse_wheel(event.wheel.x, -event.wheel.y, is_browsing());
 		}
 #endif
 		break;
 
 	case TIMER_EVENT:
-		gui2::execute_timer(reinterpret_cast<size_t>(event.user.data1));
+		gui2::execute_timer(reinterpret_cast<std::size_t>(event.user.data1));
 		break;
 
-	// TODO: Support finger specifically, like pan the map. For now, SDL's "shadow mouse" events will do.
-	case SDL_MULTIGESTURE:
 	default:
 		break;
 	}
@@ -285,7 +240,7 @@ void controller_base::process()
 
 void controller_base::keyup_listener::handle_event(const SDL_Event& event)
 {
-	if(event.type == SDL_KEYUP) {
+	if(event.type == SDL_EVENT_KEY_UP) {
 		hotkey::keyup_event(event, controller_.get_hotkey_command_executor());
 	}
 }
@@ -358,26 +313,24 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 
 	// Scroll with middle-mouse if enabled
 	if((mouse_flags & SDL_BUTTON_MMASK) != 0 && prefs::get().middle_click_scrolls()) {
-		const SDL_Point original_loc = mh_base.get_scroll_start();
+		const point original_loc = mh_base.get_scroll_start();
 
-		if(mh_base.scroll_started()) {
-			if(get_display().map_outside_area().contains(mousex, mousey)
-				&& mh_base.scroll_started())
-			{
-				// Scroll speed is proportional from the distance from the first
-				// middle click and scrolling speed preference.
-				const double speed = 0.01 * scroll_amount;
-				const double snap_dist = 16; // Snap to horizontal/vertical scrolling
-				const double x_diff = (mousex - original_loc.x);
-				const double y_diff = (mousey - original_loc.y);
+		if(mh_base.scroll_started()
+			&& get_display().map_outside_area().contains(mousex, mousey))
+		{
+			// Scroll speed is proportional from the distance from the first
+			// middle click and scrolling speed preference.
+			const double speed = 0.01 * scroll_amount;
+			const double snap_dist = 16; // Snap to horizontal/vertical scrolling
+			const double x_diff = (mousex - original_loc.x);
+			const double y_diff = (mousey - original_loc.y);
 
-				if(std::fabs(x_diff) > snap_dist || std::fabs(y_diff) <= snap_dist) {
-					dx += speed * x_diff;
-				}
+			if(std::fabs(x_diff) > snap_dist || std::fabs(y_diff) <= snap_dist) {
+				dx += speed * x_diff;
+			}
 
-				if(std::fabs(y_diff) > snap_dist || std::fabs(x_diff) <= snap_dist) {
-					dy += speed * y_diff;
-				}
+			if(std::fabs(y_diff) > snap_dist || std::fabs(x_diff) <= snap_dist) {
+				dy += speed * y_diff;
 			}
 		} else { // Event may fire mouse down out of order with respect to initial click
 			mh_base.set_scroll_start(mousex, mousey);
@@ -408,8 +361,6 @@ bool controller_base::handle_scroll(int mousex, int mousey, int mouse_flags)
 
 void controller_base::play_slice()
 {
-	CKey key;
-
 	if(plugins_context* l = get_plugins_context()) {
 		l->play_slice();
 	}
@@ -426,28 +377,25 @@ void controller_base::play_slice()
 	const theme::menu* const m = get_display().menu_pressed();
 	if(m != nullptr) {
 		const rect& menu_loc = m->location(video::game_canvas());
-		show_menu(m->items(), menu_loc.x + 1, menu_loc.y + menu_loc.h + 1, false, get_display());
-
+		show_menu(m, { menu_loc.x + 1, menu_loc.y + menu_loc.h + 1 }, false);
 		return;
 	}
 
 	const theme::action* const a = get_display().action_pressed();
 	if(a != nullptr) {
-		const rect& action_loc = a->location(video::game_canvas());
-		execute_action(a->items(), action_loc.x + 1, action_loc.y + action_loc.h + 1, false);
-
+		execute_action(a->items());
 		return;
 	}
 
 	auto str_vec = additional_actions_pressed();
 	if(!str_vec.empty()) {
-		execute_action(str_vec, 0, 0, false);
+		execute_action(str_vec);
 		return;
 	}
 
 	bool was_scrolling = scrolling_;
 
-	int mousex, mousey;
+	float mousex, mousey;
 	uint8_t mouse_flags = sdl::get_mouse_state(&mousex, &mousey);
 
 	scrolling_ = handle_scroll(mousex, mousey, mouse_flags);
@@ -460,54 +408,29 @@ void controller_base::play_slice()
 	}
 }
 
-void controller_base::show_menu(
-		const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
+bool controller_base::show_menu(const theme::menu* menu, const point& loc, bool context_menu)
 {
 	hotkey::command_executor* cmd_exec = get_hotkey_command_executor();
-	if(!cmd_exec) {
-		return;
+	if(!menu || !cmd_exec) {
+		return false;
 	}
 
-	std::vector<config> items;
-	for(const config& c : items_arg) {
-		const std::string& id = c["id"];
-		const hotkey::ui_command cmd = hotkey::ui_command(id);
-
-		if(cmd_exec->can_execute_command(cmd) && (!context_menu || in_context_menu(cmd))) {
-			items.emplace_back(c);
-		}
+	// context menus cannot appear outside map area,
+	// but main top-panel menus can.
+	if(context_menu && !get_display().map_area().contains(loc)) {
+		return false;
 	}
 
-	if(items.empty()) {
-		return;
-	}
-
-	cmd_exec->show_menu(items, xloc, yloc, context_menu, disp);
-}
-
-void controller_base::execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu)
-{
-	hotkey::command_executor* cmd_exec = get_hotkey_command_executor();
-	if(!cmd_exec) {
-		return;
-	}
-
-	std::vector<std::string> items;
-	for(const std::string& item : items_arg) {
-		hotkey::ui_command cmd = hotkey::ui_command(item);
-		if(cmd_exec->can_execute_command(cmd)) {
-			items.push_back(item);
-		}
-	}
-
-	if(items.empty()) {
-		return;
-	}
-
-	cmd_exec->execute_action(items, xloc, yloc, context_menu, get_display());
-}
-
-bool controller_base::in_context_menu(const hotkey::ui_command& /*command*/) const
-{
+	cmd_exec->show_menu(menu->items(), loc, context_menu);
 	return true;
+}
+
+void controller_base::execute_action(const std::vector<std::string>& items)
+{
+	hotkey::command_executor* cmd_exec = get_hotkey_command_executor();
+	if(!cmd_exec) {
+		return;
+	}
+
+	cmd_exec->execute_action(items);
 }

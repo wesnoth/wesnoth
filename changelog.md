@@ -1,19 +1,539 @@
-## Version 1.19.12+dev
+## Version 1.19.25+dev
 ### Add-ons client
 ### Add-ons server
 ### Campaigns
+   * Of Pearls and Pirates
+     * Don’t show the tutorial hint about save-loading when Biased RNG is active
+   * The Deceivers Gambit
+     * Fix missing siphon attack sound, which would cause a crash anytime the attack was used.
+   * The South Guard
+     * Don’t show some of the tutorial hints about RNG when Biased RNG is active
 ### Editor
 ### Multiplayer
 ### Lua API
-   * add_overlay_text now accepts a padding parameter
+   * `text_box` gui widget now has the gettable and settable properties `selection_start` and `selection_length` for cursor position/selection start and length of text selection respectively. 
+   * Added getter `wesnoth.game_config.random_mode`, which is only intended to be used for the tutorial hints.
+   * add_overlay_text now accepts a border parameter
 ### Packaging
 ### Terrain
 ### Translations
-   * Updated translations: Bengali, British English, Italian
+   * Updated translations: Bengali, British English, Bulgarian, Czech, French, Galician, German, Hungarian, Italian, Polish, Russian, Serbian
 ### Units
 ### User interface
+   * Fix sound effect slider which was incorrectly affecting the music track volume.
 ### WML Engine
 ### Miscellaneous and Bug Fixes
+### Android
+
+## Version 1.19.25
+### Campaigns
+   * Heir to the Throne
+     * S01 "The Elves Besieged": reduced starting gold, but added gold pickups near enemy keeps. Added more swamp hexes.
+     * S03 "Blackwater Port": added a secondary, coastal entry point for this scenario, so Konrad can make better use of Merfolk if he has them.
+     * S10 "The Siege of Elensefar": rebalanced gold, income, and AI. Maddock's AI is now less likely to defend unthreatened bridges or idle his ships.
+     * On the overworld, the waters around Elensefar now better connect to the rest of the passable coast.
+     * After completing either Elensefar scenario, Elensefar now provides Konrad with a port on the overworld.
+     * Slightly increased Li'sar's hitpoints. Li'sar "march" ability is no longer hidden.
+   * Eastern Invasion
+     * S13 "Spoils of War": removed the map's keep, to prevent player recruitment and stay consistent with the intro and victory dialogue.
+   * Heir to the Throne
+     * Enemy leaders should now behave more intelligently if Konrad tries to assassinate them with skirmisher and the Scepter of Fire.
+     * S02 "Flight of the Elves": fixed Konrad gaining the wrong recruit if between 11 and 15 elves had died.
+     * Konrad's advancements now deal more ranged damage, but less melee damage.
+     * S04 "The Bay of Pearls": villages can no longer be destroyed during the victory cutscene, as that would affect gold carryover.
+   * The Deceivers Gambit
+     * S07 "The Great River": adjusted map, enemies, and starting XP. Patrol paths should now be more obvious, and more strategies should now be viable on Hard/Deadly (Easy/Normal were already very straightforward).
+     * S08 "Ruins of Saurgrath", S10 "Houses of the Dead": spell selection is now delayed until Delfador learns what kind of enemies he's fighting.
+   * Winds of Fate
+     * S06 "Landfall": all new map of Elense Island and surrounding river delta by Dalas.
+### Packaging
+   * The Mac Compile Stuff repository of dependencies for macOS is no longer supported. The primary supported way to get dependencies on macOS is now to use vcpkg; to check how to do that see the macOS CI job and related scripts
+   * The migration from SDL2 to SDL3 has been completed. For distros without all the required SDL3 dependencies (probably mixer), these will need to be built and installed manually
+### Translations
+   * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Finnish, French, German, Italian, Polish, Russian, Spanish
+### Units
+   * Forest Lion:
+     * 9-2 charge attack changed to 11-2 marksman
+     * cost reduced from 30 -> 25
+   * Redtail Cat:
+     * cost reduced from 30 -> 28
+   * Elvish Hero: added idle animation
+   * Jumpcat: added attack, defend, and various other animations
+### WML Engine
+   * Add a [overwrite_abilities] to abilities that use the value attribute with the exception of abilities used as weapons ([damage], [chance_to_hit], etc... implemented in the [abilities] tag).
+   * Because overwrite_specials cannot be applied to other abilities and its design and functionality leave something to be desired, an [overwrite_specials] subtag will be added to eventually replace it.
+     * Add to [overwrite_specials] an affect attribute to suppress special abilities affecting a unit applied to a particular side (apply_to=self or opponent) and which discriminates special abilities that affect self/student from special abilities belonging to the opponent, even if apply_to=attacker/defender is used.
+   * The use of 'overwrite_specials' attribute and [overwrite] subtag in specials are deprecated
+   * Added new version macros:
+     * WESNOTH_VERSION_MAJOR (e.g. "1")
+     * WESNOTH_VERSION_MINOR (e.g. "19")
+     * WESNOTH_VERSION_REVISION (e.g. "23")
+     * WESNOTH_VERSION_SPECIAL (e.g. "dev")
+### Miscellaneous and Bug Fixes
+   * The wmllint tool has been updated to handle a several new deprecations and now runs on mainline without outputting warnings or changing any files
+   * Fixed the manual link not working for non-English languages
+
+## Version 1.19.24
+### Campaigns
+   * The South Guard
+     * S04 "Choice in the Fog": both choices should now be more similar in difficulty
+     * S06a "Vengeance": increased the survival turns, but decreased initial enemy gold/units.
+   * Heir to the Throne
+     * S07 "Muff Malal's Peninsula": fixed incorrect portrait for Muff Malal in the time over event.
+     * S28 "The Lost General": fixed "Cavefish" achievement triggering if you didn't recruit/recall any units at all.
+     * S50 "The Battle For Wesnoth": Asheviere should now more intelligently resist assassination strategies.
+     * S50 "The Battle For Wesnoth": fix "Canon" achievement being awarded even if you hadn't played "The Dwarven Doors".
+     * Fix replays with Li'sar's Heavy Infantrymen causing desyncs.
+   * The Deceivers Gambit
+     * S04 "The Sylvan Seer": use new Silverback image from Renlie_Cocoa.
+### Multiplayer
+   * Added new "Undead Siege" song by Tomek Szczęsny.
+### Translations
+   * Updated translations: Bengali, British English, Czech, French, German, Italian, Polish, Portuguese (Brazil), Spanish
+### Miscellaneous and Bug Fixes
+   * Resolved not all translations being available for selection on Windows builds. (GitHub #11112)
+   * Fixed movement and attacks remaining not being reset after undoing a recall.
+   * Fixed intermittent crashes due to using an invalid cache reference.
+### Android
+   * Fixed automatic language selection not working.
+
+## Version 1.19.23
+### Campaigns
+   * Heir to the Throne
+     * Granite Golem: added "regenerates +4" ability, cost reduced from 35 -> 30, damage reduced from 35 -> 32
+     * Fix Elrian's Tath event triggering even if you hadn't yet completed Isle of Alduin.
+     * Fix Elrian's Tath event not trigering after completing The Sceptre of Fire.
+     * S06 "Isle of Alduin": fix Konrad and Elrian discussing Seimus too early.
+     * S22 "Glamdrol": end when turns run out, not when side 1's last turn ends.
+     * S30 "The Sceptre of Fire": made Giant Spider AI more predictable.
+     * S43 "Cliffs of Thoria": fix the Horn of Glamdrol healing Warven before he's been spotted.
+     * S50 "The Battle For Wesnoth": rebalanced to encourage dominating the map rather than rushing Asheviere.
+### Translations
+   * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Finnish, French, German, Italian, Portuguese (Brazil), Spanish
+### WML Engine
+   * WFL: fixed serialization of empty map literals
+   * WFL: fixed double multiplication when converting a config attribute to a decimal value
+   * Removed deprecated macros
+     * `EARLY_FINISH_BONUS_NOTE`
+     * `NO_EARLY_FINISH_BONUS_NOTE`
+     * `NO_GOLD_CARRYOVER_NOTE`
+     * `NEW_GOLD_CARRYOVER_NOTE_100`
+     * `NEW_GOLD_CARRYOVER_NOTE_40`
+     * `NEW_GOLD_CARRYOVER_NOTE_20`
+     * `MISSILE_FRAME_FIREBALL`
+     * `MESSAGE`
+     * `STORY_PART_SPEECH`
+     * `LOYAL_UNDEAD_UNIT`
+     * `ON_SIGHTING`
+     * `MAKE_AI_SIDE_PERSISTENT`
+     * `DRAKE_FLYING_ANIM`
+     * `NO_INTERRUPT_NO_UNDO`
+     * `ENABLE_NIGHTBLADE`
+### Miscellaneous and Bug Fixes
+   * Fixed crashes when starting some campaigns when playing on Steam+Linux
+
+## Version 1.19.22
+### Campaigns
+   * Heir to the Throne
+     * S22 "Glamdrol": fixed a lua error that would occur if Konrad completed the scenario without pledging any gold to the Stoneskins.
+   * Liberty
+     * S04 "Unlawful Orders": Kestrel's keep no longer gets blocked by his Lieutenant on turn 4.
+     * S04 "Unlawful Orders": fix enemy soldiers having names.
+   * The Deceivers Gambit
+     * S04 "The Sylvan Seer": Silverback image is now smaller at lower difficulties.
+     * S04 "The Sylvan Seer": fix Delfador being counterspelled even when outside the counterspell AOE.
+     * S04 "The Sylvan Seer": mirror Kalenz now transforms into a Lich when you move adjacent, not after your first attack (fixes an issue with inconsistent strikes/attack type).
+     * S04 "The Sylvan Seer": fix Delfador's familiar retaining 100% hit / 0% defense even after this scenario had ended.
+     * S04 "The Sylvan Seer": fix final kill not awarding XP.
+     * S04 "The Sylvan Seer": fix mirror magical attacks not displaying 100% hit chance.
+     * S05 "The Deceiver": fix your first recall being non-undoable.
+     * S05 "The Deceiver": Garard now waits one more turn before attacking the orcs.
+     * S10 "Houses of the Dead": Malal's zombie spawns now scale over time.
+     * S14 "Long Live the Queen": Wesnoth now autosaves at the start of the boss fight.
+     * S14 "Long Live the Queen": boss fight terrain now uses cobble instead of tile hexes, to be easier to distinguish through the red tint.
+     * S14 "Long Live the Queen": fix Delfador's first move being non-undoable.
+     * S14 "Long Live the Queen": fix Delfador's magical attacks sometimes being usable with 0% accuracy even when counterspelled.
+     * Spells: fix Blizzard freezing chasm hexes.
+     * Spells: fix Time Dilation affecting units on your recall list.
+### Translations
+   * Updated translations: Bengali, British English, Czech, French, Hungarian, Italian, Portuguese (Brazil), Spanish
+### Miscellaneous and Bug Fixes
+   * Fixed the minimap not displaying on absurdly large maps.
+   * Fixed AI behavior when fighting a unit with 0 max XP.
+   * Fixed the :fps command causing Wesnoth to crash.
+   * Fixed multiple bugs in [set_variables] caused by replacing its C++ implementation with a lua implementation.
+
+## Version 1.19.21
+### Campaigns
+   * A Tale of Two Brothers
+     * Add achievements and relevant code.
+   * Dead Water
+     * S05 "Tirigaz": the orcs now use real ship units, instead of static images. Orcish gold reduced to compensate.
+   * Dusk of Dawn
+     * S02 "A Dream": remove "fearless" trait, but spawn more higher-level woses instead.
+   * Eastern Invasion
+     * S02 "Escape Tunnel": Now uses the core Dwarvish Miner unit, instead of a modified 8 gold version.
+     * S04b "Ill Humours": AI Dunefolk are no longer immune to the swamp's poison (although their AI shouldn't let them move into poison range regardless).
+     * S04b "Ill Humours": Gweddry now gains control of the Dunefolk villages when they switch sides.
+     * S05 "Northern Outpost": Randomness no longer influences the minimum/maximum number of bandits who spawn.
+     * S06b "Soradoc": Removed a mechanic that wasn't explained in the objectives - Yannic will no longer be rescued automatically after you've defeated three enemy leaders.
+     * S07a "Capturing the Ogres": Gweddry can no longer gain gold, in addition to his preexisting 0 upkeep.
+     * S07a "Capturing the Ogres": Ogres will now become more aggressive after 10 turns, preventing an infinite turn gold/XP exploit.
+     * S07b "Ogre Crossing": Suriving AI ogres now flee if Grug is killed.
+     * S07b "Ogre Crossing": Objectives now explain that the ogres will join you once you reach the north shore.
+     * S09 "Castle in the Ice": slightly reduce number of wolves and drakes.
+     * S10 "Dark Sanctuary": Orc spawn now scale even further after many turns have elapsed (especially on Skirmish/Easy difficulty), making infinite survival impossible.
+     * S11 "Captured": Reinforcement orcs now use income, not a one-time gold boost.
+     * S11 "Captured": The Skirmisher ability no longer lets you to bypass the orcish guards.
+     * S11 "Captured": Dacyn can no longer be healed without alerting the orcs.
+     * S13 "Spoils of War": Changed dialogue to clarify what's going on before the scenario start.
+     * S13 "Spoils of War": Owaec can no longer recall units (he's separated from the army), even if you manage to claim a keep.
+   * The Hammer of Thursagan
+     * Shortened turn limits on several long scenarios.
+     * Decreased player gold from 100 to 80 on most scenarios.
+     * S08 "The Siege of Kal Kartha": increased enemy gold.
+     * S10 "The Underlevels": Karrag can now be optionally fought before you kill all other leaders, and the scenario has been rebalanced accordingly.
+   * Heir to the Throne
+     * Fixed a serious issue where the "Replacement Weapons" tweak would trigger on all sides' recruits, not just Konrad's.
+     * If Konrad reaches Elensefar while Delfador is still with him, the player is no longer forced to give up Delfador in return for his raven.
+     * If Konrad completes his first battle without gaining any recruits, Delfador now gifts Konrad his raven.
+     * Moremirmu: significantly increased hitpoints, but decreased speed and damage.
+     * Jeniver: increased gold generation from 4 to 5, increased blowgun damage from 4 to 5.
+     * Clarify and expand a number of dialogue hints relating to special events and interactions.
+     * S01 "The Elves Besieged": added a turn limit and rebalanced enemies.
+     * S02 "Flight of the Elves": made enemy gold more predictable. Fixed Konrad winning after killing only 2 enemy leaders, instead of all of them.
+     * S03 "Blackwater Port": Haldiel and Simyr are now loyal companions, but killing all enemy leaders is much harder.
+     * S06 "The Isle of Alduin": Elrian is now a loyal companion, but the scenario requires you to choose between gaining Elrian or learning to recruit Mages.
+     * S07 "Muff Malal's Peninsula": Moremirmu is now in a safer position, and much less likely to get bad RNG and die early.
+     * S15a "Valley of Death I": added a new item reward, to 1) make this scenario a more viable pick and 2) allow for item-heavy playthroughs.
+     * S22 "Glamdrol": allying with the Stoneskins now costs less gold, but Konrad will lose if he doesn't pillage enough gold to meet his pledge.
+     * S30 "The Sceptre of Fire": made Li'sar more difficult to assassinate with Fire Wraiths. This strategy should still be possible, but it should now require more significant investment.
+     * S30 "The Sceptre of Fire": Delfador can now continue recruiting even while searching for the Sceptre.
+     * S47, S48, and S50: a few enemy units will now defect when the Sceptre is first used against human opponents.
+     * S50 "The Battle for Wesnoth": added an epilogue for Blackwing the raven.
+   * Heir to the Throne, Classic
+     * Fix unachievable tutorial achievement.
+   * Of Pearls and Pirates
+     * Added to mainline.
+     * This is a new peasants + merfolk campaign, and an extension to the tutorial.
+     * 5 scenarios, novice level.
+   * Son of the Black-Eye
+     * Jetto now starts as Orcish Slayer.
+   * Winds of Fate
+     * Lower recall costs further.
+     * Adjust and replace some characters that tie-in with the other campaigns.
+     * S01 "The Hunt": fewer forest lions.
+     * S06 "Landfall": tweak enemy starting gold
+     * S08 "Overlook": more consistent enemy spawn recognition
+     * S09 "Ancestor": add wind ambience by Alexandr Zhelanov
+     * S11 "Crosswind": fix issues with non-clasher units attempting to read their secrets
+### Translations
+   * Updated translations: Bengali, British English, Chinese (Simplified), Czech, French, Greek, Hungarian, Italian, Spanish
+### Units
+   * Ships:
+     * Adjusted gold costs for most ships.
+     * Removed the "naval" weapon special, allowing ships to ram targets on coastal land.
+   * Wose Shaman
+     * Hitpoints: 56hp -> 60hp
+     * Cost: 27g -> 31g
+     * Swamp defense: 30% -> 40%
+     * Melee damage: 12-2 impact -> 14-2 impact
+     * Ranged damage: 11-2 impact slows -> 6-3 impact slows
+   * Added the Redtail Cat.
+### User interface
+   * The campaign menu now has a landing page instead of defaulting to the first campaign (PR #10825)
+   * Abbreviated “vision” and “jamming” in the sidebar, so that the number fits on-screen
+   * Fixed the in-game help not showing a list of units with a particular weapon special.
+
+## Version 1.19.20
+### Campaigns
+   * Dusk of Dawn
+     * Remove custom "Troll Earth-Shaker" Rocklobber advancement to avoid confusing beginners.
+   * Eastern Invasion
+     * Add weather effects to several scenarios.
+   * The Deceivers Gambit
+     * S13 "Revelry, Revisited": fixed way too many enemies spawning after many turns had elapsed.
+     * S13 "Revelry, Revisited": added more dialogue between the orcs and humans.
+   * The Hammer of Thursagan
+     * The first scenario is now slightly easier.
+### Terrain
+   * Added graphics for rails going over water and chasm.
+### Translations
+   * Updated translations: Bengali, British English, Czech, French, German, Greek, Hungarian, Italian, Spanish
+
+## Version 1.19.19
+### Campaigns
+   * Heir to the Throne
+     * The finale's farm burning difficulty option now explains which option is the standard and which option is especially challenging.
+     * The finale's farm burning difficulty option will now trigger automatically if you miss it.
+     * Once unlocked, Carcyn now also includes a port on the north shore.
+     * Fix Li'sar not using her elite recruits in Crossroads and Siege of Elensefar.
+### Lua API
+   * Add new wml.valid_var function to validate a WML variable path
+   * Bugfix: Indexing a vconfig now returns a table with tag/contents keys
+### Translations
+   * Updated translations: Bengali, British English, Catalan, Czech, French, Finnish, Galician, Hungarian, Italian, Spanish
+### WML Engine
+   * Add a 'priority' attribute to abilities and weapon specials with values (`[chance_to_hit]`, `[damage]`, etc).
+     * Values set by lower priority specials are considered as the base value for higher priority specials' calculations.
+   * Using `[chance_to_hit]` with a negative priority is now preferred over giving weapons `parry` and `accuracy` attributes, as the sidebar UI shows it.
+   * You can now test if a WML variable is empty with `[variable]blank=yes`
+   * It is now possible to place `[set_variables]` (note the plural) in `[modify_side]` and `[modify_unit]`
+### Miscellaneous and Bug Fixes
+   * Fixed giving quick trait to leaders with 4 moves in multiplayer.
+   * Removed the `SPECIAL_NOTES_ARCANE` macro, the note is automatically added to any unit with an arcane attack.
+   * Fixed a crash when a unit has no random traits available.
+
+## Version 1.19.18
+### Campaigns
+   * Dusk of Dawn
+     * Added to mainline.
+     * This is a new troll campaign.
+     * 4 scenarios, novice level.
+   * Heir to the Throne
+     * Add new "Heir to the Throne" revision to mainline.
+     * Rename existing HttT campaign to "Heir to the Throne, Classic"
+     * Merge "Battle Training" into HttTC.
+   * The Deceiver's Gambit
+     * Revised Delfador and Garard's dialogue (again)
+     * "Stirrings of War" and "The Ambassador" are now regular battle scenarios.
+     * "Fort Garard" now grants all Loyalist recruits; Delfador no longer has to wait until "Ring of Swords"
+     * "The Sylvan Seer" part 1 puzzle now varies with campaign difficulty.
+     * "Ring of Swords" now has a slightly larger map.
+     * "Galcadar" no longer restores your recall list from TDG part I.
+     * "The Traitor" no longer has special village razing mechanics.
+     * Deoran is now a battle unit, not a support unit with complicated abilities.
+     * Most AI allies now go last in the turn order, so they're more predictable.
+     * Various other adjustments and bugfixes.
+   * The South Guard
+     * Restored S01's intro storytext.
+     * Moved some S03/S04 scenario hints to S01/S02.
+     * Added some additional hints to S03/S04.
+     * Replaced most maps' ford terrain with bridge.
+     * Added a more stylish UI for S02x's companion selection choice.
+     * Allied sides are now at the end of the turn order.
+     * Fixed several RNG-related tips not triggering.
+     * Various minor bugfixes and tweaks.
+### Translations
+   * Updated translations: Bengali, British English, Czech, Finnish, Galician, Hungarian, Italian, Polish, Spanish
+### Units
+   * Dwarvish Miner:
+     * hitpoints 25hp->22hp
+     * experience 20xp->24xp
+     * cost 11g->10g
+   * Merman Hoplite:
+     * hitpoints 52hp->58hp
+     * cost 45g->44g
+   * Merman Triton
+     * cost 46g->41g
+   * Merman Netcaster:
+     * ranged damage 9-2 -> 8-2
+     * cost 26g->25g
+   * Merman Entangler:
+     * cost 42g->37g
+   * Merman Spearman:
+     * hitpoints 43hp->47hp
+     * cost 22g->25g
+   * Merman Javelineer:
+     * hitpoints 58hp->60hp
+     * melee damage 8-2 -> 9-2
+     * cost 55g->48g
+   * Mermaid Enchantress:
+     * experience 46xp->75xp
+   * Mermaid Siren:
+     * ranged damage 15-3 -> 14-3
+     * cost 42g->58g
+   * Mermaid Priestess:
+     * experience 61xp->73xp
+   * Mermaid Diviner:
+     * cost 49g->57g
+   * Skeleton Rider:
+     * axe damage 6-3 -> 10-2
+     * hitpoints 36hp->38hp
+     * experience 33xp->46xp
+     * cost 14g->17g
+     * resistances now identical to Chocobone
+     * improved movement costs and defense
+   * Bone Knight
+     * trample damage 7-2(charge) -> 10-2(charge)
+     * hitpoints 50hp->58hp
+     * movement 8mp->7mp
+     * cost 26g->32g
+     * resistances now identical to Chocobone
+     * improved movement costs and defense
+   * A registry for abilities has been added as `[units][abilities]`. Any ability defined there can be added to a `[unit_type]` by just specifying their `unique_id` in the new key `[unit_type]abilities_list`, like this: `abilities_list=heals_8,cures`. The unique id for an ability is the value of its new `unique_id` key which falls back to `id` if unspecified. The `abilities` key is also supported under `[effect]apply_to=new_ability`.
+   * A similar registry for weapon specials has also been added as `[units][weapon_specials]`. The corresponding key is `specials_list` and is supported inside `[unit_type][attack]` as well as in EffectWML `apply_to=new_attack` and `apply_to=attack`'s `[set_specials]`. `unique_id` is also supported inside weapon special definitions.
+### User interface
+   * New key `title_position` added to `[part]` that allows changing the position of the title text.
+   * Enemies that can't be attacked are not highlighted when showing a unit's potential movement.
+### WML Engine
+   * Remove [filter_adjacent_student] and [filter_adjacent_student_location] from abilities used like weapons because shorthand from existing filters[filter_student][filter_adjacent] and [filter_student][filter_location][filter_adjacent_location].
+   * Deprecate [filter_adjacent] and [filter_adjacent_location] from abilities and weapons specials because shorthand from existing filters[filter][filter_adjacent] and [filter][filter_location][filter_adjacent_location] for abilities or [filter_self][filter_adjacent] and [filter_self][filter_location][filter_adjacent_location] for weapon specials.
+   * Fixed [resistance_defaults] leaking on random maps, causing OOS errors in unrelated content.
+   * Fixed a crash when the sides defined for a scenario are not all consecutive.
+### Miscellaneous and Bug Fixes
+   * Build System:
+     * Changed CMake to not directly pull in boost-system (fixing build issues on archlinux using boost-libs >1.89.0-2)
+
+## Version 1.19.17
+### Editor
+   * Move items/unit/labels when map is resized
+### Translations
+   * Updated translations: Bengali, British English, Czech, Polish, Spanish
+### Units
+   * Sergeant:
+     * Crossbow damage changed from 4-3 to 6-2
+   * Lieutenant:
+     * Crossbow damage changed from 5-3 to 7-2
+   * General:
+     * Crossbow damage changed from 7-3 to 10-2
+   * Grand Marshal:
+     * Crossbow damage changed from 8-3 to 12-2
+### WML Engine
+   * ~PAD() added as an IPF (image path function). It allows the sides of an image to be padded with transparent pixels. Can be used to artificially offset images.
+   * WML formulas can be used in abilities/specials 'max_value' and 'min_value'.
+   * Add [clear_chat], [store_zoom], and optional scrolling support to [scroll_to] and [scroll_to_unit]
+
+## Version 1.19.16
+### Campaigns
+   * Liberty
+     * Changed some of Maddock's dialogue to stay consistent with The Deceiver's Gambit.
+     * Difficulty scaling now follows the same pattern as the other beginner campaigns: 1x enemies, 2x enemies, 3x enemies.
+     * Use the new Elensefar map from the revised Heir to the Throne.
+     * Various minor bugfixes and tweaks.
+   * Son of the Black Eye
+     * Units now have access to customized AMLA.
+     * Units granted AMLA: Orcish Sovereign, Great Troll, Orcish Warlord, Orcish Slurbow, Direwolf Rider, Goblin Pillager, Troll Warrior, Troll Rocklobber, Orcish Nightblade, Saurian Flanker, Saurian Javelineer, Saurian Seer, Saurian Prophet
+     * Please note that the AMLAs are only active inside the campaign.
+   * The Deceiver's Gambit
+     * S11x, S13, S14: Eldred's dialogue is now "small" instead of "x-small"
+     * S13: tweaked the opening cutscene to give Garard and Eldred more privacy.
+     * S13: changed some of Eldred and the orcs' dialogue.
+     * S14: revert ruffians to orcs.
+     * Credits: "Story continued in" changed from "Asheviere's Dogs" to "Liberty"
+   * Winds of Fate
+     * Full redesign of recall costs (most importantly this brings down the recall cost for level 3 veterans to two-thirds of what it was)
+     * Add random walk to spawned wildlife AI
+     * replace leopard with forest lion
+     * replace dolphin with core monsters
+     * S2: slightly more gold for a bigger battle
+     * S3: simplify win and lose conditions
+     * S4: give naga side same gold as either mermish side and give player side some more gold on easier difficulties
+     * S6: more gold on all sides for a much bigger battle
+     * S7: move sapphire of ice beside diary
+     * S8: quicker elf spawning on easy to better depict the story events
+     * S9: Full rebalance
+     * S10: smaller dwarf castle for fewer gryphons
+     * S10 + S11: cut all level 2 recruits
+### Multiplayer
+   * 5p - The Wilderlands:
+     * Fixed lag during AI turn (issue #10419)
+### Translations
+   * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Spanish
+### User interface
+   * On Android, back button now works similarly to Escape on desktop.
+   * Updated the load-game dialog support for other versions' files, ready for 1.20
+### WML Engine
+   * Changing the weapon special [defense] into an ability which modifies the value of [defense] in certain exceptional situations.
+### Miscellaneous and Bug Fixes
+   * On Android, in-game command prompt now correctly shows on-screen keyboard.
+   * Fixed delays and visual glitches when animated terrain scrolls onto screen (issue #9220)
+
+## Version 1.19.15
+### Lua API
+   * Toggle panel now have the event handler `on_double_click`. If set, it will be fired when the user left double clicks on that widget. For other widgets, they can be wrapped inside a toggle panel for this to work.
+### Translations
+   * Updated translations: Ancient Greek, Bengali, British English, Chinese (Simplified), Czech, Galician, Hungarian
+### Units
+   * Arcane resistance of all Drake race units changed from -10% to -20%
+   * Dune Soldier:
+     * Blade resistace decreased form 20% to 10%.
+   * Dune Rover:
+     * Blade resistace increased form 0% to 10%.
+     * Hp decreased from 33 to 32.
+   * Dune Explorer:
+     * Blade resistace increased form 0% to 10%.
+     * Gold cost increased from 29 to 31.
+   * Dune Wayfarer:
+     * Blade resistace increased form 0% to 10%.
+     * Gold cost increased from 55 to 58.
+   * Dune Burner - line:
+     *  +1 mp, +10% pierce resistance, +20% impact resistance, cold resistance set to 0%.
+   * Dune Burner:
+     * Ranged damage decreased from 7 to 6.
+     * Xp increased from 36 to 40.
+   * Dune Scorcher:
+     * Xp increased from 60 to 64.
+     * Gold cost increased from 23 to 30.
+     * Hp increased from 47 to 51.
+   * Dune Firetrooper:
+     * Gold cost increased from 41 to 44.
+   * Elvish Sylph:
+     * The Elvish Sylph, Shyde, and Enchantress received massive buffs in 1.18. Those have been partially walked back in #8749, but these units still remain outliers in power at their respective levels - especially now that most undead have -40% arcane resist.
+     * A dexterous Sylph, for example, is better than a Great Mage in almost every possible aspect - damage, movement, hitpoints, melee, support (slows), and defense.
+     * This change brings most of their stats back down to their 1.16 levels (or slightly stronger), but deliberately leaves the Sylph and Enchantress's slowing attacks unnerfed; I think those attacks are somewhat weak in comparison to their much more deadly arcane attacks.
+     * cost 135 -> 110, hitpoints 68 -> 60, faerie fire 13-5 -> 10-5 (ranged arcane).
+   * Elvish Enchantress:
+     * Same reasoning as the Sylph changes, but much smaller in magnitude.
+     * cost 62 -> 57, faerie fire 11-4 -> 10-4 (ranged arcane).
+   * Elvish Shyde:
+     * Same reasoning as the Sylph changes. As a flying, slowing, magical healer with 6mp, the Shyde was powerful even before the numerous buffs she received in 1.18. This is a reversion to her 1.16 values.
+     * cost 58 -> 52, hitpoints 51 -> 46, entangle 7-3 -> 6-3 (ranged impact), thorns 10-3 -> 8-3 (ranged pierce), faerie touch 7-2 -> 6-2 (melee impact).
+   * Added resting, defense, and standing animations for the Fire Dragon.
+### WML Engine
+   * Add 'radius' attribute to [illuminates] abilities
+   * Added [defense] special to modify the base cth while being overridable by chance_to_hit using value (allows to combine an addition with marsksman without increasing value when base value remains below 60).
+
+## Version 1.19.14
+### Campaigns
+   * Eastern Invasion
+     * Terraent arcane resistance from 30% to 40%, melee arcane 9-5 to 8-5, cost: 82 -> 80
+### Editor
+   * Fixed side default income getting incremented to 2 each time a scenario is saved
+### Multiplayer
+   * Add presets to allow saving and easily reusing game settings.
+### Translations
+   * Updated translations: Ancient Greek, Arabic, Bengali, British English, Chinese (Simplified), Czech, Finnish, Hungarian
+   * Added new Japanese font that has support for bolding text and fix font order so italics works.
+### Units
+   * Arcane Resistance of all Skeletal Type Undead changed from -20 % to -40%.
+      * The list for core skeletal Undead units includes: Skeleton, Revenant, Deathblade, Draug, Death Squire, Death Knight, Skeleton Archer, Bone Shooter, Banebow, Lich, Ancient Lich, Skeleton Rider, Bone Knight
+      * Campaign units include: Pyre Wight and Barrow Wight from *Eastern Invasion*.
+   * Dwarvish Thunderer: cost decreased from 17 gold to 16 gold.
+   * Ghoul, Necrophage, Ghast: pierce resistance changed from 30% to 10%, impact resistance changed from 0% to 20%, arcane resistance changed from 10% to 30%.
+   * Paladin: arcane resistance from 30% to 40%, melee arcane 9-5 to 8-5, cost: 82 -> 80
+   * Dunefolk Horse Archer, Marauder, Raider, Rider, and Windbolt sprites were cleaned up and various animations added.
+   * Cleanup and add defend animations for the Dunefolk Firetrooper and Scorcher.
+### User interface
+   * On touch devices, double tap no longer shows context menu. It can still be accessed via long press. Single tap selects the unit. Another single tap on a hex shows hover info, which was previously not available. Single tap select followed by double tap on a hex moves the unit. Dragging now indicates the path and defense.
+   * Fixed various graphical bugs with ship units.
+   * Fixed units' weapons tooltip to correctly account for effects from the [damage_type] ability
+   * Various UI refinements, primarily to the new Celes theme
+### WML Engine
+   * The legacy FormulaAI API has been removed.
+   * Added new WFL functions: `nearest_loc`, `run_file`, `debug_label`, `is_shrouded`, `is_fogged`
+### Miscellaneous and Bug Fixes
+   * Fixed a WML error being printed in Secrets of the Ancients.
+   * Fixed non-permanent multiplayer server bans not working.
+
+## Version 1.19.13
+### Translations
+   * Updated translations: Bengali, British English, Czech, Italian
+### Units
+   * Added Dune Rover attack, defend, and standing animations
+### User interface
+   * Fixed sidebar unit tooltip no longer taking damage resistances into account
+   * Fixed the progress bar for sub achievements not updating correctly
+### WML Engine
+   * Added [era] auto_sort key to control automatic alphabetical sorting.
+   * add 'name_affected' and 'description_affected' that are displayed in unit sidebar for abilities used like specials.
+   * modify [affect_adjacent] tag to allow abilities to affect all units in a given radius who is to 1 by default
+   * modify [filter_adjacent] tag to allow to filter all units in a given radius who is to 1 by default
+   * Abilities with id=poison that aren't in a [poison] tag will no longer inflict poison
+### Miscellaneous and Bug Fixes
+   * Fixed opening the map editor or starting a campaign crashing on some systems
+   * Hovering over the grey bat in SotA no longer causes a crash
+   * Li'sar is no longer a disco queen
 
 ## Version 1.19.12
 ### Add-ons client

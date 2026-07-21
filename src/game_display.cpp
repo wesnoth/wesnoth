@@ -469,9 +469,7 @@ void game_display::draw_movement_info(const map_location& loc)
 						wb->get_temp_move_unit() : context().units().find(route_.steps.front());
 		if(un != context().units().end()) {
 			// Display the def% of this terrain
-			int move_cost = un->movement_cost(context().map().get_terrain(loc));
-			int def = (move_cost == movetype::UNREACHABLE ?
-						0 : 100 - un->defense_modifier(context().map().get_terrain(loc)));
+			int def = 100 - un->defense_modifier(context().map().get_terrain(loc), loc);
 			std::stringstream def_text;
 			def_text << def << "%";
 
@@ -514,9 +512,7 @@ void game_display::draw_movement_info(const map_location& loc)
 		const unit_map::const_iterator mouseoveredUnit = resources::gameboard->find_visible_unit(mouseoverHex_,viewing_team());
 		if(selectedUnit != context().units().end() && mouseoveredUnit == context().units().end()) {
 			// Display the def% of this terrain
-			int move_cost = selectedUnit->movement_cost(context().map().get_terrain(loc));
-			int def = (move_cost == movetype::UNREACHABLE ?
-						0 : 100 - selectedUnit->defense_modifier(context().map().get_terrain(loc)));
+			int def = 100 - selectedUnit->defense_modifier(context().map().get_terrain(loc), loc);
 			std::stringstream def_text;
 			def_text << def << "%";
 
@@ -600,12 +596,18 @@ void game_display::float_label(const map_location& loc, const std::string& text,
 
 	rect loc_rect = get_location_rect(loc);
 
+	using namespace std::chrono_literals;
+	const auto lifetime = 1s / turbo_speed();
+
+	// Base speed is 100 pixels per second, taken in milliseconds
+	const double pixels_per_millisecond = 0.1 * turbo_speed() * get_zoom_factor();
+
 	font::floating_label flabel(text);
 	flabel.set_font_size(int(font::SIZE_FLOAT_LABEL * get_zoom_factor()));
 	flabel.set_color(color);
 	flabel.set_position(loc_rect.center().x, loc_rect.y); // middle of top edge
-	flabel.set_move(0, -0.1 * turbo_speed() * get_zoom_factor());
-	flabel.set_lifetime(std::chrono::milliseconds{static_cast<int>(1000 / turbo_speed())});
+	flabel.set_move(0, -pixels_per_millisecond); // moving up
+	flabel.set_lifetime(0ms, std::chrono::round<std::chrono::milliseconds>(lifetime));
 	flabel.set_scroll_mode(font::ANCHOR_LABEL_MAP);
 
 	font::add_floating_label(flabel);
@@ -684,8 +686,8 @@ std::vector<texture> game_display::get_reachmap_images(const map_location& loc) 
 			tiles[i] = CLEAR;
 		}
 		// Grab the reachmap-context team index updated in "display::process_reachmap_changes()" and test for adjacent enemy units
-		else if(u != nullptr && resources::gameboard->get_team(display::reach_map_team_index_).is_enemy(u->side())) {
-			DBG_DP << test_location << " has an ENEMY";
+		else if(u != nullptr && !u->incapacitated() && resources::gameboard->get_team(display::reach_map_team_index_).is_enemy(u->side())) {
+			DBG_DP << test_location << " has an attackable ENEMY";
 			tiles[i] = ENEMY;
 		} else {
 			DBG_DP << test_location << " is NOT REACHABLE";

@@ -104,7 +104,7 @@ static void set_global_variable(persist_context &ctx, const vconfig &pcfg)
 		if (arraylen == 0) {
 			try
 			{
-				val = pack_scalar(global,resources::gamedata->get_variable(local));
+				val = pack_scalar(global, resources::gamedata->get_variable(local).t_str());
 			}
 			catch(const invalid_variablename_exception&)
 			{

@@ -111,14 +111,14 @@ cave_map_generator::cave_map_generator_job::cave_map_generator_job(const cave_ma
 	generate_chambers();
 
 	LOG_NG << "placing chambers...";
-	for(std::vector<chamber>::const_iterator c = chambers_.begin(); c != chambers_.end(); ++c) {
-		place_chamber(*c);
+	for(const chamber& c : chambers_) {
+		place_chamber(c);
 	}
 
 	LOG_NG << "placing passages...";
 
-	for(std::vector<passage>::const_iterator p = passages_.begin(); p != passages_.end(); ++p) {
-		place_passage(*p);
+	for(const passage& p : passages_) {
+		place_passage(p);
 	}
 	LOG_NG << "outputting map....";
 
@@ -217,8 +217,8 @@ void cave_map_generator::cave_map_generator_job::generate_chambers()
 
 void cave_map_generator::cave_map_generator_job::place_chamber(const chamber& c)
 {
-	for(std::set<map_location>::const_iterator i = c.locs.begin(); i != c.locs.end(); ++i) {
-		set_terrain(*i,params.clear_);
+	for(const map_location& loc : c.locs) {
+		set_terrain(loc, params.clear_);
 	}
 
 	if (c.items == nullptr || c.locs.empty()) return;
@@ -325,11 +325,11 @@ void cave_map_generator::cave_map_generator_job::place_passage(const passage& p)
 	int width = std::max<int>(1, p.cfg["width"].to_int());
 	int jagged = p.cfg["jagged"].to_int();
 
-	for(std::vector<map_location>::const_iterator i = rt.steps.begin(); i != rt.steps.end(); ++i) {
+	for(const map_location& step : rt.steps) {
 		std::set<map_location> locs;
-		build_chamber(*i,locs,width,jagged);
-		for(std::set<map_location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
-			set_terrain(*j, params.clear_);
+		build_chamber(step, locs, width, jagged);
+		for(const map_location& loc : locs) {
+			set_terrain(loc, params.clear_);
 		}
 	}
 }

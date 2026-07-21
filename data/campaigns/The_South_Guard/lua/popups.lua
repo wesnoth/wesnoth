@@ -29,82 +29,78 @@ local T = wml.tag
 
 
 --###########################################################################################################################################################
---                                                                 SCENARIO PREVIEW
+--                                                                     DISPLAY TIP
 --###########################################################################################################################################################
 function display_tip(cfg)
-	local tutor_title = cfg.title
-	local tutor_message = cfg.message
-	local tutor_image = cfg.image
-
-	--###############################
-	-- DEFINE GRID
-	--###############################
-	local grid = T.grid{ T.row{
-		T.column{ T.label{  use_markup=true,  label="<span size='40000'> </span>"  }},
-		T.column{ border="right,left,bottom", border_size=18, T.grid{
-			-------------------------
-			-- TITLE
-			-------------------------
-			T.row{ T.column{ T.image{  label="icons/banner3.png"  }}},
-			T.row{ T.column{ T.label{  use_markup=true,  label="<span size='8000'> </span>"  }}},
-			T.row{ T.column{
-				horizontal_alignment="center",
-				T.label{  definition="title",  label=_"Tip: "..tutor_title,  }
-			}},
-			T.row{ T.column{ T.label{  use_markup=true,  label="<span size='15000'> </span>"  }}},
-			-------------------------
-			-- INFO
-			-------------------------
-			T.row{ T.column{ T.grid{ T.row{
-				T.column{
-					horizontal_alignment="left",
-					T.label{
-						use_markup=true,
-						label=tutor_message,
-					}
-				},
-				T.column{ T.label{  use_markup=true,  label="<span size='80000'> </span>"  }},
-				T.column{
-					T.image{  label=tutor_image  }
-				},
-			}}}},
-			T.row{ T.column{ T.label{  use_markup=true,  label="<span size='15000'> </span>"  }}},
-			T.row{ T.column {T.image{  label="icons/banner2.png"  }}},
-			T.row{ T.column{ T.label{  use_markup=true,  label="<span size='15000'> </span>"  }}},
-			-------------------------
-			-- BUTTONS
-			-------------------------
-			T.row{T.column{ T.grid{ T.row{
-				T.column{ T.button{
-					return_value=1, use_markup=true,
-					label=_"Understood",
-				}},
-				T.column{ T.label{  use_markup=true,  label="<span size='15000'>     </span>"  }},
-				T.column{ T.button{
-					return_value=2, use_markup=true,
-					label=_"Disable Tip Popups &amp; Dialogue",
-				}},
-			}}}},
-		}},
-		T.column{ T.label{  use_markup=true,  label="<span size='40000'> </span>"  }},
-	}}
-
 	--###############################
 	-- CREATE DIALOG
 	--###############################
 	local result = wesnoth.sync.evaluate_single(function()
-		local button = gui.show_dialog({
-			definition="menu",
-			T.helptip{ id="tooltip_large" }, -- mandatory field
-			T.tooltip{ id="tooltip_large" }, -- mandatory field
-			grid
-		})
+		local dialog_cfg = wml.load "campaigns/The_South_Guard/gui/display_tip.cfg"
+		local dialog_wml = wml.get_child(dialog_cfg, 'resolution')
+		local button = gui.show_dialog(dialog_wml, function(dialog)
+			dialog["title"        ].label = _"Tip: "..cfg.title
+			dialog["tutor_message"].label = cfg.message
+			dialog["tutor_image"  ].label = cfg.image
+		end)
 		if (button==2) then wml.variables['enable_tutorial_elements']='no' end
 		return { button=button }
 	end)
 end
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+--###########################################################################################################################################################
+--                                                                 CHOOSE COMPANION
+--###########################################################################################################################################################
+function choose_companion(cfg)
+	--###############################
+	-- SHOW/HIDE SELECTION BUTTONS
+	--###############################
+	local function preshow(dialog)
+		if (not wml.variables['asked_gerrick']) then dialog["leave_with_gerrick"].visible=false end
+		if (not wml.variables['asked_mari']   ) then dialog["leave_with_mari"   ].visible=false end
+		if (not wml.variables['asked_hylas']  ) then dialog["leave_with_hylas"  ].visible=false end
+
+		dialog["characters"].on_modified = function()
+			wesnoth.interface.skip_messages(false) -- each time the player picks an option, clear the skip_message flag
+			if dialog["characters"].selected_index==1 then wesnoth.game_events.fire('ask_about_gerrick' ) end
+			if dialog["characters"].selected_index==2 then wesnoth.game_events.fire('ask_about_mari'    ) end
+			if dialog["characters"].selected_index==3 then wesnoth.game_events.fire('ask_about_hylas'   ) end
+			dialog:close()
+		end
+	end
+
+	--###############################
+	-- CREATE DIALOG
+	--###############################
+	local result = wesnoth.sync.evaluate_single(function()
+		local dialog_cfg = wml.load "campaigns/The_South_Guard/gui/choose_companion.cfg"
+		local dialog_wml = wml.get_child(dialog_cfg, 'resolution')
+		local button = gui.show_dialog(dialog_wml, preshow)
+
+		wesnoth.interface.skip_messages(false) -- each time the player picks an option, clear the skip_message flag
+		if     button==1 then wesnoth.game_events.fire('leave_with_gerrick')
+		elseif button==2 then wesnoth.game_events.fire('leave_with_mari')
+		elseif button==3 then wesnoth.game_events.fire('leave_with_hylas')
+		elseif button==-1 or button==-2 then
+			-- if we close the dialog with enter or escape, open it back up. Wait for the player to select a companion.
+			wesnoth.wml_actions.choose_companion()
+		end
+		return { button=button }
+	end)
+end
 
 
 
@@ -130,5 +126,6 @@ end
 function wesnoth.wml_actions.display_tip(cfg)
 	display_tip(cfg)
 end
-
-
+function wesnoth.wml_actions.choose_companion(cfg)
+	choose_companion(cfg)
+end

@@ -18,7 +18,6 @@
 #include "color_range.hpp"
 #include "config.hpp"
 #include "defeat_condition.hpp"
-#include "game_config.hpp"
 #include "game_events/fwd.hpp"
 #include "map/location.hpp"
 #include "recall_list_manager.hpp"
@@ -180,29 +179,63 @@ public:
 	int side() const { return info_.side; }
 	int gold() const { return info_.gold; }
 	int start_gold() const { return info_.start_gold; }
-	int base_income() const { return info_.income + game_config::base_income; }
+
+	/**
+	 * @return The income for this side exactly as defined in the [side] tag.
+	 */
+	int raw_income() const { return info_.income; }
+
+	/**
+	 * @return The income for this side as defined in the [side] tag
+	 *         with base income from [game_config] added.
+	 */
+	int base_income() const;
+
 	int village_gold() const { return info_.income_per_village; }
 	int recall_cost() const { return info_.recall_cost; }
 	void set_village_gold(int income) { info_.income_per_village = income; }
 	void set_recall_cost(int cost) { info_.recall_cost = cost; }
 	int total_income() const { return base_income() + static_cast<int>(villages_.size()) * info_.income_per_village; }
-	/** @return The number of unit levels each village can support,
-	    i.e. how much upkeep each village can bear. */
+
+	/**
+	 *  @return The number of unit levels each village can support,
+	 *          i.e. how much upkeep each village can bear.
+	 */
 	int village_support() const { return info_.support_per_village; }
-	/** @param support The number of unit levels each village can support */
+
+	/**
+	 *  @param support   The number of unit levels each village can support
+	 */
 	void set_village_support(int support) { info_.support_per_village = support; }
-	/** Calculate total support capacity, based on support_per_village. */
+
+	/**
+	 *  @return Calculated total support capacity, based on support_per_village.
+	 */
 	int support() const { return static_cast<int>(villages_.size()) * village_support(); }
 	void new_turn() { info_.gold += total_income(); }
-	void get_shared_maps();
 	void set_gold(int amount) { info_.gold = amount; }
 	void set_start_gold(const int amount) { info_.start_gold = amount; }
 	void spend_gold(const int amount) { info_.gold -= amount; }
-	void set_base_income(int amount) { info_.income = amount - game_config::base_income; }
+
+	/**
+	 *  Sets the income of this side to the given value.
+	 *  Base income from `[game_config]` is not added.
+	 *  @param amount   The income amount
+	 */
+	void set_raw_income(int amount) { info_.income = amount; }
+
+	/**
+	 *  Sets the income of this side to the given value with
+	 *  base income from `[game_config]` added to it.
+	 *  @param amount   The income amount
+	 */
+	void set_base_income(int amount);
 	std::chrono::milliseconds countdown_time() const { return countdown_time_; }
 	void set_countdown_time(const std::chrono::milliseconds& amount) const { countdown_time_ = amount; }
 	int action_bonus_count() const { return action_bonus_count_; }
 	void set_action_bonus_count(const int count) { action_bonus_count_ = count; }
+	void increment_action_bonus_count() { ++action_bonus_count_; }
+	void decrement_action_bonus_count() { --action_bonus_count_; }
 	recall_list_manager& recall_list() {return recall_list_;}
 	const recall_list_manager & recall_list() const {return recall_list_;}
 	void set_current_player(const std::string& player)
@@ -217,7 +250,7 @@ public:
 	void set_recruits(const std::set<std::string>& recruits);
 	int minimum_recruit_price() const;
 	const std::string& last_recruit() const { return last_recruit_; }
-	void last_recruit(const std::string & u_type) { last_recruit_ = u_type; }
+	void set_last_recruit(const std::string & u_type) { last_recruit_ = u_type; }
 
 	const std::string& save_id() const { return info_.save_id; }
 	std::string save_id_or_number() const { return info_.save_id.empty() ? std::to_string(info_.side) : info_.save_id; }
@@ -320,7 +353,8 @@ public:
 	/** Merge a WML shroud map with the shroud data of this player. */
 	void merge_shroud_map_data(const std::string& shroud_data) { shroud_.merge(shroud_data); }
 
-	bool knows_about_team(std::size_t index) const;
+	/** Whether @a other's count of villages, units, upkeep and income should be visible in the status table. */
+	bool knows_upkeep(const team &other) const;
 	/** Records hexes that were cleared of fog via WML. */
 	void add_fog_override(const std::set<map_location> &hexes) { fog_clearer_.insert(hexes.begin(), hexes.end()); }
 	/** Removes the record of hexes that were cleared of fog via WML. */
@@ -357,15 +391,14 @@ public:
 	void set_no_turn_confirmation(bool value) { info_.no_turn_confirmation = value; }
 
 	//function which, when given a 1-based side will return the color used by that side.
-	static const color_range get_side_color_range(int side);
+	static color_range get_side_color_range(int side);
 
 	static color_t get_side_color(int side);
 	static color_t get_minimap_color(int side);
 
 	static std::string get_side_color_id(unsigned side);
-	static const t_string get_side_color_name_for_UI(unsigned side);
+	static t_string get_side_color_name_for_UI(unsigned side);
 	static std::string get_side_color_id_from_config(const config& cfg);
-	static std::string get_side_highlight_pango(int side);
 
 	void log_recruitable() const;
 

@@ -141,7 +141,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game)
 	, whiteboard_manager_()
 	, plugins_context_()
 	, labels_manager_(new font::floating_label_context())
-	, help_manager_(&game_config_)
+	, help_manager_(help::help_manager::get_instance())
 	, mouse_handler_(*this)
 	, menu_handler_(*this)
 	, hotkey_handler_(new hotkey_handler(*this, saved_game_))
@@ -576,10 +576,11 @@ void play_controller::do_init_side()
 
 void play_controller::init_side_end()
 {
-	if(	did_tod_sound_this_turn_) {
+	if(!did_tod_sound_this_turn_) {
 		did_tod_sound_this_turn_ = true;
 		const time_of_day& tod = gamestate().tod_manager_.get_time_of_day();
-		sound::play_sound(tod.sounds, sound::SOUND_SOURCES);
+		LOG_NG << "playing ToD sound: " << tod.sounds;
+		sound::play_sound(tod.sounds, sound_tracks::type::sound_source);
 	}
 	whiteboard_manager_->on_init_side();
 }
@@ -840,22 +841,22 @@ bool play_controller::have_keyboard_focus()
 
 void play_controller::process_focus_keydown_event(const SDL_Event& event)
 {
-	if(event.key.keysym.sym == SDLK_ESCAPE) {
+	if(event.key.key == SDLK_ESCAPE || event.key.key == SDLK_AC_BACK) {
 		menu_handler_.get_textbox().close();
-	} else if(event.key.keysym.sym == SDLK_TAB) {
+	} else if(event.key.key == SDLK_TAB) {
 		tab();
-	} else if(event.key.keysym.sym == SDLK_UP) {
+	} else if(event.key.key == SDLK_UP) {
 		textbox_move_vertically(true);
-	} else if(event.key.keysym.sym == SDLK_DOWN) {
+	} else if(event.key.key == SDLK_DOWN) {
 		textbox_move_vertically(false);
-	} else if(event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_KP_ENTER) {
+	} else if(event.key.key == SDLK_RETURN || event.key.key == SDLK_KP_ENTER) {
 		enter_textbox();
 	}
 }
 
 void play_controller::process_keydown_event(const SDL_Event& event)
 {
-	if(event.key.keysym.sym == SDLK_TAB) {
+	if(event.key.key == SDLK_TAB) {
 		whiteboard_manager_->set_invert_behavior(true);
 	}
 }
@@ -864,8 +865,8 @@ void play_controller::process_keyup_event(const SDL_Event& event)
 {
 	// If the user has pressed 1 through 9, we want to show
 	// how far the unit can move in that many turns
-	if(event.key.keysym.sym >= '1' && event.key.keysym.sym <= '9') {
-		const int new_path_turns = (event.type == SDL_KEYDOWN) ? event.key.keysym.sym - '1' : 0;
+	if(event.key.key >= '1' && event.key.key <= '9') {
+		const int new_path_turns = (event.type == SDL_EVENT_KEY_DOWN) ? event.key.key - '1' : 0;
 
 		if(new_path_turns != mouse_handler_.get_path_turns()) {
 			mouse_handler_.set_path_turns(new_path_turns);
@@ -884,7 +885,7 @@ void play_controller::process_keyup_event(const SDL_Event& event)
 				mouse_handler_.select_hex(mouse_handler_.get_selected_hex(), false, false, false);
 			}
 		}
-	} else if(event.key.keysym.sym == SDLK_TAB) {
+	} else if(event.key.key == SDLK_TAB) {
 		CKey keys;
 		if(!keys[SDLK_TAB]) {
 			whiteboard_manager_->set_invert_behavior(false);
@@ -935,8 +936,7 @@ void play_controller::save_map()
 
 void play_controller::load_game()
 {
-	savegame::loadgame load(savegame::save_index_class::default_saves_dir(), saved_game_);
-	load.load_game_ingame();
+	savegame::load_interactive_by_exception();
 }
 
 void play_controller::undo()
@@ -1151,7 +1151,6 @@ void play_controller::start_game()
 		set_scontext_synced sync;
 
 		// So that the code knows it can send choices immidiateley
-		// todo: im not sure whetrh this is actually needed.
 		synced_context::block_undo();
 		fire_prestart();
 		if(is_regular_game_end()) {

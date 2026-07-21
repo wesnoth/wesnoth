@@ -67,12 +67,13 @@ def CheckBoost(context, boost_lib, require_version = None, header_only = False):
                       "iostreams" : "iostreams/constants.hpp",
                       "locale" : "locale/info.hpp",
                       "unit_test_framework" : "test/unit_test.hpp",
-                      "filesystem" : "filesystem/operations.hpp",
+                      "filesystem" : "filesystem.hpp",
                       "random" : "random/random_number_generator.hpp",
                       "system" : "system/error_code.hpp",
                       "context" : "context/continuation.hpp",
                       "charconv" : "charconv.hpp",
                       "coroutine" : "coroutine/coroutine.hpp",
+                      "process" : "process/shell.hpp",
                       "graph" : "graph/graph_traits.hpp" }
 
     header_name = boost_headers.get(boost_lib, boost_lib + ".hpp")
@@ -85,7 +86,7 @@ def CheckBoost(context, boost_lib, require_version = None, header_only = False):
             env.AppendUnique(CPPPATH = [boostdir], LIBPATH = [boostlibdir])
     if not header_only:
         env.PrependUnique(LIBS = [libname])
-    if boost_lib == "thread" and env["PLATFORM"] == "posix":
+    if (boost_lib == "thread" or boost_lib == "asio") and env["PLATFORM"] == "posix":
         env.AppendUnique(CCFLAGS = ["-pthread"], LINKFLAGS = ["-pthread"])
 
     test_program = """
@@ -112,16 +113,29 @@ def CheckBoost(context, boost_lib, require_version = None, header_only = False):
         }
         \n"""
 
-    test_program += """
-        // Workaround for sdl #defining main breaking non sdl programs
-        #ifdef main
-        #undef main
-        #endif
-        int main()
-        {
-            return 0;
-        }
-        \n"""
+    if boost_lib == "filesystem":
+        test_program += """
+            // Workaround for sdl #defining main breaking non sdl programs
+            #ifdef main
+            #undef main
+            #endif
+            int main()
+            {
+                boost::filesystem::path test_path(".");
+                return 0;
+            }
+            \n"""
+    else:
+        test_program += """
+            // Workaround for sdl #defining main breaking non sdl programs
+            #ifdef main
+            #undef main
+            #endif
+            int main()
+            {
+                return 0;
+            }
+            \n"""
     if context.TryLink(test_program, ".cpp"):
         context.Result("yes")
         return True

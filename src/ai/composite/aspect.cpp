@@ -31,7 +31,7 @@ static lg::log_domain log_ai_aspect("ai/aspect");
 
 aspect::aspect(readonly_context &context, const config &cfg, const std::string &id):
 	time_of_day_(cfg["time_of_day"]),turns_(cfg["turns"]),
-	valid_(false), valid_variant_(false), valid_lua_(false), cfg_(cfg),
+	valid_(false), valid_lua_(false), cfg_(cfg),
 	invalidate_on_turn_start_(cfg["invalidate_on_turn_start"].to_bool(true)),
 	invalidate_on_tod_change_(cfg["invalidate_on_tod_change"].to_bool(true)),
 	invalidate_on_gamestate_change_(cfg["invalidate_on_gamestate_change"].to_bool()),
@@ -81,7 +81,6 @@ bool aspect::redeploy(const config &cfg, const std::string& /*id*/)
 	}
 
 	valid_ = false;
-	valid_variant_ =false;
 	valid_lua_ = false;
 	cfg_ = cfg;
 	invalidate_on_turn_start_ = cfg["invalidate_on_turn_start"].to_bool(true);

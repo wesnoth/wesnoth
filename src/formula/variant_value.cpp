@@ -15,13 +15,27 @@
 #include "formula/variant.hpp"
 #include "formula/variant_value.hpp"
 
+#include "utils/ranges.hpp"
 #include <utility>
 
 #include "formula/callable.hpp"
 #include "formula/function.hpp"
+#include "serialization/string_utils.hpp"
 
 namespace wfl
 {
+namespace implementation
+{
+template<typename Range>
+auto make_iterator_range(const variant_value_base* val, const Range& range) -> boost::iterator_range<variant_iterator>
+{
+	return {
+		variant_iterator{val, std::cbegin(range)},
+		variant_iterator{val, std::cend(range)}
+	};
+}
+
+} // namespace implementation
 
 boost::iterator_range<variant_iterator> variant_value_base::make_iterator() const
 {
@@ -44,7 +58,7 @@ variant variant_int::build_range_variant(int limit) const
 		res.emplace_back(i);
 	}
 
-	return variant(res);
+	return variant(std::move(res));
 }
 
 std::string variant_decimal::to_string_impl(const bool sign_value) const
@@ -86,7 +100,8 @@ variant_callable::variant_callable(const_formula_callable_ptr callable)
 	}
 }
 
-variant_callable::~variant_callable() {
+variant_callable::~variant_callable()
+{
 	if(callable_) {
 		callable_->unsubscribe_dtor(this);
 	}
@@ -94,13 +109,11 @@ variant_callable::~variant_callable() {
 
 std::string variant_callable::get_serialized_string() const
 {
-	// TODO: make serialize return a string.
-	std::string str;
 	if(callable_) {
-		callable_->serialize(str);
+		return callable_->serialize();
 	}
 
-	return str;
+	return {};
 }
 
 std::string variant_callable::get_debug_string(formula_seen_stack& seen, bool verbose) const
@@ -110,7 +123,7 @@ std::string variant_callable::get_debug_string(formula_seen_stack& seen, bool ve
 
 	if(!callable_) {
 		ss << "null";
-	} else if(std::find(seen.begin(), seen.end(), callable_) == seen.end()) {
+	} else if(!utils::contains(seen, callable_)) {
 		if(!verbose) {
 			seen.push_back(callable_);
 		}
@@ -143,15 +156,15 @@ std::string variant_callable::get_debug_string(formula_seen_stack& seen, bool ve
 	return ss.str();
 }
 
-bool variant_callable::equals(variant_value_base& other) const
+bool variant_callable::equals(const variant_value_base& other) const
 {
-	variant_callable& other_ref = value_ref_cast<variant_callable>(other);
+	const variant_callable& other_ref = utils::cast_as(*this, other);
 	return callable_ ? callable_->equals(*other_ref.callable_) : callable_ == other_ref.callable_;
 }
 
-bool variant_callable::less_than(variant_value_base& other) const
+bool variant_callable::less_than(const variant_value_base& other) const
 {
-	variant_callable& other_ref = value_ref_cast<variant_callable>(other);
+	const variant_callable& other_ref = utils::cast_as(*this, other);
 	return callable_ ? callable_->less(*other_ref.callable_) : other_ref.callable_ != nullptr;
 }
 
@@ -165,7 +178,7 @@ boost::iterator_range<variant_iterator> variant_callable::make_iterator() const
 		callable_->get_inputs(inputs);
 	}
 
-	return {variant_iterator(this, inputs.cbegin()), variant_iterator(this, inputs.cend())};
+	return implementation::make_iterator_range(this, inputs);
 }
 
 variant variant_callable::deref_iterator(const utils::any& iter) const
@@ -214,171 +227,124 @@ std::string variant_string::get_serialized_string() const
 	return ss.str();
 }
 
-template<typename T>
-std::string variant_container<T>::to_string_impl(bool annotate, bool annotate_empty, mod_func_t mod_func) const
+namespace implementation
+{
+namespace detail
+{
+template<typename Func>
+std::string serialize_value(const Func& op, const variant& value)
+{
+	return std::invoke(op, value);
+}
+
+template<typename Func>
+std::string serialize_value(const Func& op, const std::pair<variant, variant>& value)
 {
 	std::ostringstream ss;
 
-	if(annotate) {
-		ss << "[";
-	}
-
-	bool first_time = true;
-
-	for(const auto& member : container_) {
-		if(!first_time) {
-			ss << ", ";
-		}
-
-		first_time = false;
-
-		ss << to_string_detail(member, mod_func);
-	}
-
-	// TODO: evaluate if this really needs to be separately conditional.
-	if(annotate_empty && container_.empty()) {
-		ss << "->";
-	}
-
-	if(annotate) {
-		ss << "]";
-	}
+	ss << std::invoke(op, value.first);
+	ss << "->";
+	ss << std::invoke(op, value.second);
 
 	return ss.str();
 }
 
+template<typename Range, typename Func>
+auto make_serialized_range(const Range& range, const Func& op)
+{
+	return range | utils::views::transform([&op](auto&& value) { return serialize_value(op, value); });
+}
+
+/** WFL empty list literal */
+std::string serialize_empty(const std::vector<variant>&)
+{
+	return "[]";
+}
+
+/** WFL empty map literal */
+std::string serialize_empty(const std::map<variant, variant>&)
+{
+	return "[->]";
+}
+
+} // namespace detail
+
+template<typename Range, typename Func>
+std::string to_string(const Range& range, const Func& op)
+{
+	return utils::join(detail::make_serialized_range(range, op), ", ");
+}
+
+template<typename Range, typename Func>
+std::string as_literal(const Range& range, const Func& op)
+{
+	if(range.empty()) {
+		return detail::serialize_empty(range);
+	}
+
+	std::ostringstream ss;
+	ss << "[" << to_string(range, op) << "]";
+	return ss.str();
+}
+
+} // namespace implementation
+
 template<typename T>
 std::string variant_container<T>::string_cast() const
 {
-	return to_string_impl(false, false, [](const variant& v) { return v.string_cast(); });
+	return implementation::to_string(container_, &variant::string_cast);
 }
 
 template<typename T>
 std::string variant_container<T>::get_serialized_string() const
 {
-	return to_string_impl(true, true,   [](const variant& v) { return v.serialize_to_string(); });
+	return implementation::as_literal(container_, &variant::serialize_to_string);
 }
 
 template<typename T>
 std::string variant_container<T>::get_debug_string(formula_seen_stack& seen, bool verbose) const
 {
-	return to_string_impl(true, false, [&](const variant& v) { return v.to_debug_string(verbose, &seen); });
+	return implementation::as_literal(container_,
+		[&seen, verbose](const variant& v) { return v.to_debug_string(verbose, &seen); });
 }
 
 template<typename T>
 boost::iterator_range<variant_iterator> variant_container<T>::make_iterator() const
 {
-	return {variant_iterator(this, get_container().cbegin()), variant_iterator(this, get_container().cend())};
+	return implementation::make_iterator_range(this, container_);
 }
 
 template<typename T>
 void variant_container<T>::iterator_inc(utils::any& iter) const
 {
-	++utils::any_cast<typename T::const_iterator&>(iter);
+	++as_container_iterator(iter);
 }
 
 template<typename T>
 void variant_container<T>::iterator_dec(utils::any& iter) const
 {
-	--utils::any_cast<typename T::const_iterator&>(iter);
+	--as_container_iterator(iter);
 }
 
 template<typename T>
 bool variant_container<T>::iterator_equals(const utils::any& first, const utils::any& second) const
 {
-	return utils::any_cast<typename T::const_iterator>(first) == utils::any_cast<typename T::const_iterator>(second);
+	return as_container_iterator(first) == as_container_iterator(second);
 }
 
 // Force compilation of the following template instantiations
-template class variant_container<variant_vector>;
-template class variant_container<variant_map_raw>;
-
-variant_list::variant_list(const variant_vector& vec)
-	: variant_container<variant_vector>(vec)
-{
-}
-
-variant variant_list::list_op(value_base_ptr second, const std::function<variant(variant&, variant&)>& op_func)
-{
-	const auto& other_list = value_cast<variant_list>(std::move(second));
-
-	if(num_elements() != other_list->num_elements()) {
-		throw type_error("List op requires two lists of the same length");
-	}
-
-	std::vector<variant> res;
-	res.reserve(num_elements());
-
-	for(std::size_t i = 0; i < num_elements(); ++i) {
-		res.push_back(op_func(get_container()[i], other_list->get_container()[i]));
-	}
-
-	return variant(res);
-}
-
-bool variant_list::equals(variant_value_base& other) const
-{
-	const auto& other_container = value_ref_cast<variant_list>(other).get_container();
-
-	if(num_elements() != other.num_elements()) {
-		return false;
-	}
-
-	for(std::size_t n = 0; n < num_elements(); ++n) {
-		if(get_container()[n] != other_container[n]) {
-			return false;
-		}
-	}
-
-	return true;
-}
-
-bool variant_list::less_than(variant_value_base& other) const
-{
-	const auto& other_container = value_ref_cast<variant_list>(other).get_container();
-
-	for(std::size_t n = 0; n != num_elements() && n != other.num_elements(); ++n) {
-		if(get_container()[n] < other_container[n]) {
-			return true;
-		} else if(get_container()[n] > other_container[n]) {
-			return false;
-		}
-	}
-
-	return num_elements() < other.num_elements();
-}
+template class variant_container<std::vector<variant>>;
+template class variant_container<std::map<variant, variant>>;
 
 variant variant_list::deref_iterator(const utils::any& iter) const
 {
-	return *utils::any_cast<const variant_vector::const_iterator&>(iter);
-}
-
-std::string variant_map::to_string_detail(const variant_map_raw::value_type& container_val, mod_func_t mod_func) const
-{
-	std::ostringstream ss;
-
-	ss << mod_func(container_val.first);
-	ss << "->";
-	ss << mod_func(container_val.second);
-
-	return ss.str();
-}
-
-bool variant_map::equals(variant_value_base& other) const
-{
-	return get_container() == value_ref_cast<variant_map>(other).get_container();
-}
-
-bool variant_map::less_than(variant_value_base& other) const
-{
-	return get_container() < value_ref_cast<variant_map>(other).get_container();
+	return *as_container_iterator(iter);
 }
 
 variant variant_map::deref_iterator(const utils::any& iter) const
 {
-	const variant_map_raw::value_type& p = *utils::any_cast<const variant_map_raw::const_iterator&>(iter);
-	auto the_pair = std::make_shared<key_value_pair>(p.first, p.second);
-	return variant(the_pair);
+	const auto& [key, value] = *as_container_iterator(iter);
+	return make_callable<key_value_pair>(key, value);
 }
 
 } // namespace wfl

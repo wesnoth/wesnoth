@@ -113,8 +113,13 @@ void server_base::serve(const boost::asio::yield_context& yield, boost::asio::ip
 			acceptor.listen();
 		}
 	} catch(const boost::system::system_error& e) {
-		ERR_SERVER << "Exception when trying to bind port: " << e.code().message();
-		BOOST_THROW_EXCEPTION(server_shutdown("Port binding failed", e.code()));
+		if(endpoint.protocol() == boost::asio::ip::tcp::v6() && e.code() == boost::asio::error::address_family_not_supported) {
+			WRN_SERVER << "Failed to bind port with IPv6 because IPv6 is not supported. Will try with IPv4 too.";
+			return;
+		} else {
+			ERR_SERVER << "Exception when trying to bind port: " << e.code().message();
+			BOOST_THROW_EXCEPTION(server_shutdown("Port binding failed", e.code()));
+		}
 	}
 
 	socket_ptr socket = std::make_shared<socket_ptr::element_type>(io_service_);
@@ -428,7 +433,7 @@ void server_base::coro_send_file(const socket_ptr& socket, const std::string& fi
 				|| ec == boost::asio::error::try_again)
 		{
 			// We have to wait for the socket to become ready again.
-			socket->async_write_some(boost::asio::null_buffers(), yield[ec]);
+			socket->async_wait(boost::asio::socket_base::wait_type::wait_write, yield[ec]);
 			if(check_error(ec, socket)) return;
 			continue;
 		}
@@ -495,7 +500,7 @@ void server_base::coro_send_file(const socket_ptr& socket, const std::string& fi
 		if(WSAGetLastError() == WSA_IO_PENDING) {
 			while(true) {
 				// The request is pending. Wait until it completes.
-				socket->async_write_some(boost::asio::null_buffers(), yield);
+				socket->async_wait(boost::asio::socket_base::wait_type::wait_write, yield);
 
 				DWORD win_ec = GetLastError();
 				if (win_ec != ERROR_IO_PENDING && win_ec != ERROR_SUCCESS)

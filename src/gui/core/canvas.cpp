@@ -26,6 +26,8 @@
 #include "draw.hpp"
 #include "draw_manager.hpp"
 #include "font/text.hpp"
+#include "font/attributes.hpp"
+#include "font/font_options.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/typed_formula.hpp"
@@ -39,6 +41,7 @@
 #include "sdl/surface.hpp"
 #include "sdl/texture.hpp"
 #include "sdl/utils.hpp" // blur_surface
+#include "utils/general.hpp"
 #include "video.hpp" // read_pixels_low_res, only used for blurring
 #include "wml_exception.hpp"
 
@@ -99,6 +102,18 @@ rectangle_shape::rectangle_shape(const config& cfg)
 	if(!debug.empty()) {
 		DBG_GUI_P << "Rectangle: found debug message '" << debug << "'.";
 	}
+}
+
+rectangle_shape::rectangle_shape(
+	const rect& bounds,
+	const color_t& border_color,
+	const unsigned thickness,
+	const color_t& fill_color)
+	: rect_bounded_shape(bounds)
+	, border_thickness_(thickness)
+	, border_color_(border_color)
+	, fill_color_(fill_color)
+{
 }
 
 void rectangle_shape::draw(wfl::map_formula_callable& variables)
@@ -240,15 +255,31 @@ image_shape::image_shape(const config& cfg, wfl::action_function_symbol_table& f
 	, y_(cfg["y"])
 	, w_(cfg["w"])
 	, h_(cfg["h"])
-	, image_name_(cfg["name"])
+	, image_name_(cfg["name"], "")  // avoid ambiguous ctor error
 	, resize_mode_(get_resize_mode(cfg["resize_mode"]))
 	, mirror_(cfg.get_old_attribute("mirror", "vertical_mirror", "image"))
 	, actions_formula_(cfg["actions"], &functions)
+	, failure_logged_(false)
 {
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
 		DBG_GUI_P << "Image: found debug message '" << debug << "'.";
 	}
+}
+
+image_shape::image_shape(
+	const point& origin,
+	const std::string& img_path)
+	: shape()
+	, x_(origin.x)
+	, y_(origin.y)
+	, w_("(image_width)")
+	, h_("(image_height)")
+	, image_name_(img_path, img_path) // avoid ambiguous ctor error
+	, resize_mode_(get_resize_mode("scale_sharp"))
+	, mirror_(false)
+	, actions_formula_("")
+{
 }
 
 void image_shape::dimension_validation(unsigned value, const std::string& name, const std::string& key)
@@ -264,15 +295,16 @@ void image_shape::draw(wfl::map_formula_callable& variables)
 {
 	DBG_GUI_D << "Image: draw.";
 
-	/**
-	 * @todo formulas are now recalculated every draw cycle which is a  bit
-	 * silly unless there has been a resize. So to optimize we should use an
-	 * extra flag or do the calculation in a separate routine.
-	 */
+	// The name will be passed to the texture loading code on each draw, any caching is left to the
+	// image loading code itself. A name can point to a different image file due to i18n support,
+	// even when the image_name_ isn't a formula.
 	const std::string& name = image_name_(variables);
 
 	if(name.empty()) {
-		DBG_GUI_D << "Image: name is empty or contains invalid formula, will not be drawn.";
+		if(!failure_logged_) {
+			DBG_GUI_D << "Image: name is empty or contains invalid formula, will not be drawn.";
+			failure_logged_ = true;
+		}
 		return;
 	}
 
@@ -287,7 +319,10 @@ void image_shape::draw(wfl::map_formula_callable& variables)
 	texture tex = image::get_texture(image::locator(name), scale_quality);
 
 	if(!tex) {
-		ERR_GUI_D << "Image: '" << name << "' not found and won't be drawn.";
+		if(!failure_logged_) {
+			ERR_GUI_D << "Image: '" << name << "' not found and won't be drawn.";
+			failure_logged_ = true;
+		}
 		return;
 	}
 
@@ -320,13 +355,13 @@ void image_shape::draw(wfl::map_formula_callable& variables)
 	}
 
 	// Execute the provided actions for this context.
-	wfl::variant(variables.fake_ptr()).execute_variant(actions_formula_.evaluate(local_variables));
+	wfl::execute_actions(actions_formula_.evaluate(local_variables), wfl::variant(variables.fake_ptr()));
 
 	// If w or h is 0, assume it means the whole image.
 	if (!w) { w = tex.w(); }
 	if (!h) { h = tex.h(); }
 
-	const SDL_Rect dst_rect { x, y, w, h };
+	const rect dst_rect { x, y, w, h };
 
 	// What to do with the image depends on whether we need to tile it or not.
 	switch(resize_mode_) {
@@ -477,6 +512,107 @@ text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& fun
 	}
 }
 
+text_shape::text_shape(
+	const point& origin,
+	font::family_class family,
+	const unsigned size,
+	font::pango_text::FONT_STYLE style,
+	const std::string& align,
+	const unsigned width)
+	: rect_bounded_shape(origin, "(text_width)", "(text_height)")
+	, font_family_(family)
+	, font_size_(size)
+	, font_style_(style)
+	, text_alignment_(align)
+	, color_(font::NORMAL_COLOR)
+	, parse_text_as_formula_(false)
+	, text_markup_(false)
+	, link_aware_(false)
+	, link_color_(font::YELLOW_COLOR)
+	, maximum_width_(width)
+	, characters_per_line_(0)
+	, maximum_height_(-1)
+	, highlight_start_("")
+	, highlight_end_("")
+	, highlight_color_(color_t::from_hex_string("215380"))
+	, line_spacing_(0)
+	, outline_(false)
+	, actions_formula_("")
+	, text_attributes_()
+{
+}
+
+t_string text_shape::get_text() const {
+	return text_.t_str();
+}
+
+void text_shape::set_text(const t_string& text) {
+	text_ = text;
+}
+
+std::pair<std::size_t, std::size_t> text_shape::add_text(const t_string& text)
+{
+	t_string old_text = get_text();
+	std::size_t start = old_text.size();
+	set_text(old_text + text);
+	std::size_t end = start + text.size();
+	return { start, end };
+}
+
+void text_shape::set_wrap_width(const unsigned wrap_width) {
+	maximum_width_.set_value(wrap_width);
+}
+
+void text_shape::add_attribute(
+	const std::string& name,
+	const std::string& extra_data,
+	std::size_t start,
+	std::size_t end)
+{
+	if(name.empty()) {
+		return;
+	}
+
+	// Attributes with start == end set won't do anything, so skip
+	if (start == end) {
+		WRN_GUI_D << "attribute " << name << " has equal start and end indices, will not be added.";
+		return;
+	}
+
+	if (name == "color" || name == "fgcolor" || name == "foreground") {
+		add_attribute_fg_color(text_attributes_, start, end, extra_data.empty() ? font::NORMAL_COLOR : font::string_to_color(extra_data));
+	} else if (name == "bgcolor" || name == "background") {
+		add_attribute_bg_color(text_attributes_, start, end, extra_data.empty() ? font::GOOD_COLOR : font::string_to_color(extra_data));
+	} else if (name == "font_size" || name == "size") {
+		add_attribute_size(text_attributes_, start, end, std::stoi(extra_data));
+	} else if (name == "font_family" || name == "face") {
+		add_attribute_font_family(text_attributes_, start, end, font::decode_family_class(extra_data));
+	} else if (name == "weight") {
+		add_attribute_weight(text_attributes_, start, end, decode_text_weight(extra_data));
+	} else if (name == "style") {
+		add_attribute_style(text_attributes_, start, end, decode_text_style(extra_data));
+	} else if (name == "bold" || name == "b") {
+		add_attribute_weight(text_attributes_, start, end, PANGO_WEIGHT_BOLD);
+	} else if (name == "italic" || name == "i") {
+		add_attribute_style(text_attributes_, start, end, PANGO_STYLE_ITALIC);
+	} else if (name == "underline" || name == "u") {
+		add_attribute_underline(text_attributes_, start, end, PANGO_UNDERLINE_SINGLE);
+	} else if (name == "line_height") {
+		add_attribute_line_height(text_attributes_, start, end, std::stod(extra_data));
+	} else if (name == "image") { // An inline image that behave as a custom text glyph
+		add_attribute_image_shape(text_attributes_, start, end, extra_data);
+	} else {
+		// Unsupported formatting or normal text
+		add_attribute_weight(text_attributes_, start, end, PANGO_WEIGHT_NORMAL);
+		add_attribute_style(text_attributes_, start, end, PANGO_STYLE_NORMAL);
+	}
+}
+
+void text_shape::add_attributes_from(text_shape& tshape2, const unsigned attr_start)
+{
+	text_attributes_.splice_into(tshape2.text_attributes_, attr_start);
+}
+
 void text_shape::draw(wfl::map_formula_callable& variables)
 {
 	assert(variables.has_key("text"));
@@ -549,7 +685,7 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	rect dst_rect{x, y, w, h};
 
 	// Execute the provided actions for this context.
-	wfl::variant(variables.fake_ptr()).execute_variant(actions_formula_.evaluate(local_variables));
+	wfl::execute_actions(actions_formula_.evaluate(local_variables), wfl::variant(variables.fake_ptr()));
 
 	texture tex = text_renderer.render_and_get_texture();
 	if(!tex) {
@@ -568,7 +704,7 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 canvas::canvas(const config& cfg)
 	: shapes_()
 	, blur_depth_(0)
-	, blur_region_(sdl::empty_rect)
+	, blur_region_()
 	, deferred_(false)
 	, w_(0)
 	, h_(0)
@@ -663,6 +799,7 @@ void canvas::draw()
 
 	// Draw items
 	for(auto& shape : shapes_) {
+		assert(shape);
 		const lg::scope_logger inner_scope_logging_object__{log_gui_draw, "Canvas: draw shape."};
 		shape->draw(variables_);
 	}

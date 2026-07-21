@@ -29,7 +29,7 @@
 
 namespace
 {
-std::vector<color_t> recolor_range_impl(const color_range& new_range, utils::span<const color_t> old_rgb)
+std::vector<color_t> recolor_palette(const color_range& new_range, utils::span<const color_t> old_rgb)
 {
 	std::vector<color_t> clist;
 	clist.reserve(old_rgb.size());
@@ -86,14 +86,14 @@ constexpr auto base_palette = []() {
 	return res;
 }();
 
-} // end anon namespace
+} // namespace
 
-color_range_map recolor_range(const color_range& new_range, const std::vector<color_t>& old_rgb)
+color_mapping generate_color_mapping(const color_range& new_range, const std::vector<color_t>& old_rgb)
 {
-	auto new_rgb = recolor_range_impl(new_range, old_rgb);
+	std::vector new_rgb = recolor_palette(new_range, old_rgb);
 	assert(new_rgb.size() == old_rgb.size());
 
-	color_range_map res;
+	color_mapping res;
 	for(std::size_t i = 0; i < new_rgb.size(); ++i) {
 		res[old_rgb[i]] = new_rgb[i];
 	}
@@ -101,9 +101,9 @@ color_range_map recolor_range(const color_range& new_range, const std::vector<co
 	return res;
 }
 
-std::vector<color_t> palette(const color_range& cr)
+std::vector<color_t> generate_reference_palette(const color_range& cr)
 {
-	return recolor_range_impl(cr, base_palette);
+	return recolor_palette(cr, base_palette);
 }
 
 std::string color_range::debug() const

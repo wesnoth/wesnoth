@@ -20,6 +20,7 @@ import yaml
 
 import unit_tree.animations as animations
 import unit_tree.helpers as helpers
+from unit_tree.helpers import printtime
 import unit_tree.html_output as html_output
 import unit_tree.overview
 import unit_tree.wiki_output as wiki_output
@@ -28,7 +29,7 @@ import wesnoth.wmlparser3 as wmlparser3
 TIMEOUT = 20
 
 def copy_images():
-    print("Recolorizing pictures...")
+    printtime("Recolorizing pictures...")
     image_collector.copy_and_color_images(options.output)
     shutil.copy2(os.path.join(os.path.dirname(os.path.realpath(__file__)), "unit_tree", "menu.js"),
                  options.output)
@@ -45,8 +46,8 @@ def shell_out(wesnoth_exe, com):
 
 def symlink(f, t, name):
     if os.path.exists(os.path.join(f, name + ".cfg")):
-        os.symlink(os.path.join(f, name + ".cfg"), os.path.join(t, name + ".cfg"))
-    os.symlink(os.path.join(f, name), os.path.join(t, name))
+        os.symlink(os.path.abspath(os.path.join(f, name + ".cfg")), os.path.join(t, name + ".cfg"))
+    os.symlink(os.path.abspath(os.path.join(f, name)), os.path.join(t, name))
 
 def rm_symlink(f, name):
     if os.path.exists(os.path.join(f, name + ".cfg")):
@@ -89,13 +90,14 @@ def get_dependencies(addon):
         else:
             deps1 = []
         for d in deps1:
+            d = d.strip()
             if d == addon:
-                print("Addon " + addon + " depends on itself.")
+                printtime("Addon " + addon + " depends on itself.")
                 continue
             if d in global_addons:
                 _deps[addon].append(d)
             else:
-                print("Missing dependency for " + addon + ": " + d)
+                printtime("Missing dependency for " + addon + ": " + d)
     except Exception as e:
         print(e)
     return _deps[addon]
@@ -129,7 +131,7 @@ def sorted_by_dependencies(addons):
                 n += 1
                 continue
         if n == 0:
-            print("Cannot sort dependencies for these addons: " + str(unsorted))
+            printtime("Cannot sort dependencies for these addons: " + str(unsorted))
             sorted += unsorted
             break
     return sorted
@@ -229,19 +231,24 @@ def list_contents():
             except Exception as e:
                 q.put(("e", e))
 
-        q = multiprocessing.Queue()
-        p = multiprocessing.Process(target=f, args=(options, wml, defines, q))
-        p.start()
-        try:
-            s, local.wesnoth = q.get(timeout=TIMEOUT)
-        except queue.Empty:
-            p.terminate()
-            raise
-        #print("local", s, local.wesnoth)
-        p.join()
-        if s == "e":
-            remote_exception = local.wesnoth
-            raise remote_exception
+        if os.name != 'nt':
+            q = multiprocessing.Queue()
+            p = multiprocessing.Process(target=f, args=(options, wml, defines, q))
+            p.start()
+            try:
+                s, local.wesnoth = q.get(timeout=TIMEOUT)
+            except queue.Empty:
+                p.terminate()
+                raise
+            #print("local", s, local.wesnoth)
+            p.join()
+            if s == "e":
+                remote_exception = local.wesnoth
+                raise remote_exception
+        else:
+            # multiprocessing does not work on windows
+            q = multiprocessing.Queue()
+            f(options, wml, defines, q)
 
     def get_version(addon):
         parser = get_info(addon)
@@ -259,7 +266,7 @@ def list_contents():
     except IOError:
         batchlist = []
 
-    print("mainline")
+    printtime("mainline")
 
     info = search(batchlist, "mainline")
     info["version"] = "mainline"
@@ -273,12 +280,17 @@ def list_contents():
     append(info["campaigns"], "mainline", "", name="Units", domain="wesnoth-help")
 
     if not options.addons_only:
-        parse("{core}{campaigns}", "__WMLUNITS__,SKIP_CORE")
+        parse("{themes}{core}{campaigns}", "__WMLUNITS__,SKIP_CORE,NORMAL")
         info["campaigns"] += list_campaigns(batchlist, "mainline")
 
     addons = []
     if options.addons:
         addons = os.listdir(options.addons)
+        try:
+            addons.remove("mainline")
+            print("Ignoring addon named \"mainline\"")
+        except: pass
+
     global global_addons
     global_addons = set(addons)
 
@@ -300,6 +312,7 @@ def list_contents():
             pass
         sys.stdout.write("%4d/%4d " % (1 + i, len(addons)) + addon + " [" + mem + "] ... ")
         sys.stdout.flush()
+        printtime("%4d/%4d " % (1 + i, len(addons)) + addon + " [" + mem + "] ... ")
         d = os.path.join(options.output, addon)
         logname = os.path.join(d, "error.log")
         try:
@@ -318,29 +331,29 @@ def list_contents():
                 continue
             info["parsed"] = False
             info["dependencies"] = all_dependencies
-            parse("{themes}{core}{multiplayer}{multiplayer/eras.cfg}{~add-ons}", "__WMLUNITS__,MULTIPLAYER,SKIP_CORE")
+            parse("{themes}{core}{multiplayer}{multiplayer/eras.cfg}{~add-ons}", "__WMLUNITS__,MULTIPLAYER,SKIP_CORE,NORMAL")
             info["eras"] = list_eras(batchlist, addon)
             info["campaigns"] = list_campaigns(batchlist, addon)
             info["version"] = version
-            print("ok")
+            printtime("succesfully parsed " + addon + " " + str(all_dependencies))
         except wmlparser3.WMLError as e:
             with open(logname, "w") as ef:
                 ef.write("<PARSE ERROR>\n")
                 ef.write(str(e))
                 ef.write("\n</PARSE ERROR>\n")
-            print("failed")
+            printtime("failed to parse " + addon + " " + str(all_dependencies))
         except queue.Empty as e:
             with open(logname, "w") as ef:
                 ef.write("<TIMEOUT ERROR>\n")
                 ef.write("Failed to parse the WML within " + str(TIMEOUT) + " seconds.")
                 ef.write("\n</TIMEOUT ERROR>\n")
-            print("failed")
+            printtime("timed out while parsing " + addon + " " + str(all_dependencies))
         except Exception as e:
             with open(logname, "w") as ef:
                 ef.write("<INTERNAL ERROR>\n")
                 ef.write(repr(e))
                 ef.write("\n</INTERNAL ERROR>\n")
-            print("failed")
+            printtime("internal error while parsing " + addon + " " + str(all_dependencies))
         finally:
             rm_symlink(os.path.join(options.config_dir, "data", "add-ons"), addon)
             for d in all_dependencies:
@@ -352,7 +365,7 @@ def list_contents():
 def process_campaign_or_era(addon, cid, define, batchlist):
     n = 0
 
-    print(str(addon) + ": " + str(cid) + " " + str(define))
+    printtime("processing " + str(addon) + ": " + str(cid) + " " + str(define))
 
     if not define:
         define = ""
@@ -369,12 +382,12 @@ def process_campaign_or_era(addon, cid, define, batchlist):
     wesnoth.add_units("mainline")
 
     if define == "MULTIPLAYER":
-        wesnoth.parser.parse_text("{themes}{core}{multiplayer}{multiplayer/eras.cfg}{~add-ons}", "__WMLUNITS__,MULTIPLAYER,SKIP_CORE")
+        wesnoth.parser.parse_text("{themes}{core}{multiplayer}{multiplayer/eras.cfg}{~add-ons}", "__WMLUNITS__,MULTIPLAYER,SKIP_CORE,NORMAL")
         wesnoth.add_units(cid)
     else:
         if addon == "mainline":
             if cid != "mainline":
-                wesnoth.parser.parse_text("{core}{campaigns}", "__WMLUNITS__,SKIP_CORE,NORMAL," + define)
+                wesnoth.parser.parse_text("{themes}{core}{campaigns}", "__WMLUNITS__,SKIP_CORE,NORMAL," + define)
                 wesnoth.add_units(cid)
         else:
             wesnoth.parser.parse_text("{themes}{core}{~add-ons}", "__WMLUNITS__,SKIP_CORE," + define)
@@ -458,7 +471,7 @@ def batch_process():
 
         try:
             if not worked:
-                print(name + " not found")
+                printtime("addon " + name + " not found")
                 continue
 
             for era in addon.get("eras", []):
@@ -476,7 +489,7 @@ def batch_process():
                 campaign["units"] = n
 
         except wmlparser3.WMLError as e:
-            print("    " + name + " failed")
+            printtime("processing " + name + " failed with a WMLError")
             with open(logname, "a") as ef:
                 ef.write("<WML ERROR>\n")
                 ef.write(str(e))
@@ -484,7 +497,7 @@ def batch_process():
         except (AttributeError, KeyError, TypeError) as e:
             # Common logic errors.
             traceback.print_exc()
-            print("    " + name + " failed")
+            printtime("processing " + name + " failed with an internal logic error")
             with open(logname, "a") as ef:
                 ef.write("<INTERNAL ERROR>\n")
                 ef.write("please report as bug\n")
@@ -493,7 +506,7 @@ def batch_process():
                 ef.write("\n</INTERNAL ERROR>\n")
         except Exception as e:
             traceback.print_exc()
-            print("    " + name + " failed")
+            printtime("processing " + name + " failed with an exception")
             with open(logname, "a") as ef:
                 ef.write("<INTERNAL ERROR>\n")
                 ef.write("please report as bug\n")

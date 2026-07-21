@@ -48,7 +48,7 @@ unit_map& unit_map::operator=(const unit_map& that)
 	return *this;
 }
 
-void unit_map::swap(unit_map& o)
+void unit_map::swap(unit_map& o) noexcept
 {
 	assert(num_iters() == 0 && o.num_iters() == 0);
 
@@ -437,7 +437,7 @@ bool unit_map::has_unit_at(const map_location& loc) const
 	return find(loc) != end();
 }
 
-void swap(unit_map& lhs, unit_map& rhs)
+void swap(unit_map& lhs, unit_map& rhs) noexcept
 {
 	lhs.swap(rhs);
 }

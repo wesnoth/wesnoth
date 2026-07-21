@@ -15,15 +15,25 @@
 
 #pragma once
 
-#include "formula/variant_value.hpp"
+#include "exceptions.hpp"
+#include "formula/callable_fwd.hpp"
+#include "formula/formula_variant.hpp"
 
+#include "utils/any.hpp"
 #include <map>
 #include <vector>
 
 namespace wfl
 {
 class formula_callable;
+class variant;
+class variant_value_base;
 class variant_iterator;
+
+struct type_error : public game::error
+{
+	explicit type_error(const std::string& str);
+};
 
 class variant
 {
@@ -35,17 +45,14 @@ public:
 	variant(int n, DECIMAL_VARIANT_TYPE /*type*/);
 	variant(double n, DECIMAL_VARIANT_TYPE /*type*/);
 	explicit variant(const std::vector<variant>& array);
+	explicit variant(std::vector<variant>&& array);
 	explicit variant(const std::string& str);
+	explicit variant(std::string&& str);
 	explicit variant(const std::map<variant, variant>& map);
+	explicit variant(std::map<variant, variant>&& map);
+	explicit variant(const_formula_callable_ptr callable);
 	variant(const variant& v) = default;
 	variant(variant&& v) = default;
-
-	template<typename T>
-	variant(std::shared_ptr<T> callable)
-		: value_(std::make_shared<variant_callable>(callable))
-	{
-		assert(value_.get());
-	}
 
 	variant& operator=(const variant& v) = default;
 	variant& operator=(variant&& v) = default;
@@ -67,10 +74,17 @@ public:
 	bool is_string()   const { return type() == formula_variant::type::string; }
 	bool is_map()      const { return type() == formula_variant::type::map; }
 
-	int as_int() const;
+	/**
+	 * Returns the variant's value as an integer.
+	 * If @ref is_null() is true, returns @a fallback.
+	 */
+	int as_int(int fallback = 0) const;
 
-	/** Returns variant's internal representation of decimal number: ie, 1.234 is represented as 1234 */
-	int as_decimal() const;
+	/**
+	 * Returns the variant's internal representation of decimal number: ie, 1.234 is represented as 1234.
+	 * If @ref is_null() is true, returns @a fallback.
+	 */
+	int as_decimal(int fallback = 0) const;
 
 	/** Returns a boolean state of the variant value. The implementation is type-dependent. */
 	bool as_bool() const;
@@ -80,32 +94,7 @@ public:
 
 	const std::string& as_string() const;
 
-	const_formula_callable_ptr as_callable() const
-	{
-		must_be(formula_variant::type::object);
-		return value_cast<variant_callable>()->get_callable();
-	}
-
-	template<typename T>
-	std::shared_ptr<T> try_convert() const
-	{
-		if(!is_callable()) {
-			return nullptr;
-		}
-
-		return std::dynamic_pointer_cast<T>(std::const_pointer_cast<formula_callable>(as_callable()));
-	}
-
-	template<typename T>
-	std::shared_ptr<T> convert_to() const
-	{
-		std::shared_ptr<T> res = std::dynamic_pointer_cast<T>(std::const_pointer_cast<formula_callable>(as_callable()));
-		if(!res) {
-			throw type_error("could not convert type");
-		}
-
-		return res;
-	}
+	const_formula_callable_ptr as_callable() const;
 
 	variant operator+(const variant&) const;
 	variant operator-(const variant&) const;
@@ -144,36 +133,20 @@ public:
 
 	std::string to_debug_string(bool verbose = false, formula_seen_stack* seen = nullptr) const;
 
-	/** Gets string name of the current value type */
-	std::string type_string() const
-	{
-		return formula_variant::get_string(type());
-	}
-
-	variant execute_variant(const variant& to_exec);
+	formula_variant::type type() const;
 
 private:
 	template<typename T>
-	std::shared_ptr<T> value_cast() const
-	{
-		return wfl::value_cast<T>(value_);
-	}
+	friend std::shared_ptr<T> value_cast(const variant& v);
 
-	void must_be(formula_variant::type t) const;
-
-	void must_both_be(formula_variant::type t, const variant& second) const;
-
-	formula_variant::type type() const
-	{
-		return value_->get_type();
-	}
-
-	/**
-	 * Variant value.
-	 * Each of the constructors initialized this with the appropriate helper class.
-	 */
-	value_base_ptr value_;
+	/** @invariant Never null. */
+	std::shared_ptr<variant_value_base> value_;
 };
+
+/**
+ * Executes all action_callables in @a execute using the provided context.
+ */
+variant execute_actions(const variant& execute, const variant& context);
 
 /**
  * Iterator class for the variant.

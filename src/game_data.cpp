@@ -85,7 +85,7 @@ config& game_data::get_variable_cfg(const std::string& key)
 	return get_variable_access_write(key).as_container();
 }
 
-void game_data::set_variable(const std::string& key, const t_string& value)
+void game_data::set_variable(const std::string& key, const config::attribute_value& value)
 {
 	try
 	{

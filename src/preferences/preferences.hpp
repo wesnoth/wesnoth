@@ -30,6 +30,7 @@
 struct point;
 class unit_map;
 class game_board;
+class terrain_type;
 
 namespace pref_constants
 {
@@ -207,6 +208,7 @@ public:
 	void write_preferences();
 	void load_advanced_prefs(const game_config_view& gc);
 	void migrate_preferences(const std::string& prefs_dir);
+	void set_campaign_rng_mode_default_for_migration(); // TODO: remove after 1.20. (Not used after that. Needs no replacement.)
 	void reload_preferences();
 	std::set<std::string> all_attributes();
 
@@ -369,6 +371,11 @@ public:
 	bool is_campaign_completed(const std::string& campaign_id);
 	bool is_campaign_completed(const std::string& campaign_id, const std::string& difficulty_level);
 
+	void add_game_preset(config&& preset_data);
+	void remove_game_preset(int id);
+	config::child_itors get_game_presets();
+	optional_const_config get_game_preset(int id);
+
 	const std::vector<game_config::server_info>& builtin_servers_list();
 	std::vector<game_config::server_info> user_servers_list();
 	void set_user_servers_list(const std::vector<game_config::server_info>& value);
@@ -444,6 +451,9 @@ public:
 
 	// Add all terrains on the map as encountered terrains.
 	void encounter_map_terrain(const gamemap& map);
+
+	// Mark the given terrain type as encountered.
+	void encounter_map_terrain(const terrain_type& terrain);
 
 	// Calls all of the above functions on the current game board
 	void encounter_all_content(const game_board& gb);
@@ -532,6 +542,7 @@ public:
 	PREF_GETTER_SETTER(grid, bool, false)
 	PREF_GETTER_SETTER(disable_auto_moves, bool, false)
 	PREF_GETTER_SETTER(damage_prediction_allow_monte_carlo_simulation, bool, true)
+	PREF_GETTER_SETTER(campaign_rng_mode, std::string, std::string("biased"))
 	PREF_GETTER_SETTER(addon_manager_saved_order_name, std::string, std::string(""))
 	PREF_GETTER_SETTER(selected_achievement_group, std::string, std::string(""))
 	/** The most recently selected add-on id from the editor. May be an empty string. */
@@ -607,6 +618,8 @@ public:
 	PREF_GETTER_SETTER(game_created_lobby, bool, desktop::notifications::available())
 	PREF_GETTER_SETTER(game_created_notif, bool, true)
 	PREF_GETTER_SETTER(editor_help_text_shown, bool, true)
+	PREF_GETTER_SETTER(show_attack_miss_indicator, bool, false)
+	PREF_GETTER_SETTER(simd_enabled, bool, true)
 #undef PREF_GETTER_SETTER
 	void clear_mp_alert_prefs();
 
@@ -723,6 +736,7 @@ private:
 		prefs_list::ally_sighted_interrupts,
 		prefs_list::auto_save_max,
 		prefs_list::blindfold_replay,
+		prefs_list::campaign_rng_mode,
 		prefs_list::campaign_server,
 		prefs_list::chat_lines,
 		prefs_list::chat_timestamp,
@@ -819,6 +833,7 @@ private:
 		prefs_list::show_all_units_in_help,
 		prefs_list::show_combat,
 		prefs_list::show_deprecation,
+		prefs_list::show_attack_miss_indicator,
 		prefs_list::use_twelve_hour_clock_format,
 		prefs_list::mp_era,
 		prefs_list::mp_level,
@@ -840,6 +855,7 @@ private:
 		prefs_list::history,
 		prefs_list::options,
 		prefs_list::server,
+		prefs_list::game_preset,
 	};
 	static constexpr std::array unsynced_attributes_{
 		prefs_list::auto_pixel_scale,
@@ -859,6 +875,7 @@ private:
 		prefs_list::font_scale,
 		prefs_list::bell_volume,
 		prefs_list::music_volume,
+		prefs_list::simd_enabled,
 		prefs_list::sound_volume,
 		prefs_list::ui_volume,
 		prefs_list::fullscreen,

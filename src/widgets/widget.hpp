@@ -28,7 +28,7 @@ class widget : public events::sdl_handler, public gui2::top_level_drawable
 {
 public:
 	const rect& location() const;
-	virtual void set_location(const SDL_Rect& rect);
+	virtual void set_location(const rect& rect);
 	void set_location(int x, int y);
 	void set_width(int w);
 	void set_height(int h);
@@ -46,7 +46,7 @@ public:
 	virtual void enable(bool new_val = true);
 	bool enabled() const;
 
-	void set_clip_rect(const SDL_Rect& rect);
+	void set_clip_rect(const rect& rect);
 
 	/** Indicate that the widget should be redrawn. */
 	void queue_redraw();
@@ -85,7 +85,7 @@ private:
 
 protected:
 	virtual void draw_contents() {}
-	virtual void update_location(const SDL_Rect&) {};
+	virtual void update_location(const rect&) {};
 
 	virtual void handle_event(const SDL_Event&) override {};
 	bool focus_;		// Should user input be ignored?

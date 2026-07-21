@@ -50,6 +50,22 @@ static lg::log_domain log_addons_client("addons-client");
 
 namespace {
 
+std::string format_remote_disconnect_message(const network_asio::error& e)
+{
+	std::string message = _("Remote host disconnected.");
+	const std::string details = e.what();
+
+	if(details.empty()) {
+		return message;
+	}
+
+	message += "\n\n";
+	message += _("Raw network error:");
+	message += "\n";
+	message += details;
+	return message;
+}
+
 bool get_addons_list(addons_client& client, addons_list& list)
 {
 	list.clear();
@@ -81,7 +97,7 @@ bool addons_manager_ui(const std::string& remote_address)
 		gui2::show_error_message(_("Network communication error."));
 	} catch(const network_asio::error& e) {
 		ERR_NET << "network_asio::error thrown during transaction with add-on server; \""<< e.what() << "\"";
-		gui2::show_error_message(_("Remote host disconnected."));
+		gui2::show_error_message(format_remote_disconnect_message(e));
 	} catch(const filesystem::io_exception& e) {
 		ERR_FS << "filesystem::io_exception thrown while installing an addon; \"" << e.what() << "\"";
 		gui2::show_error_message(_("A problem occurred when trying to create the files necessary to install this add-on."));
@@ -287,9 +303,7 @@ bool ad_hoc_addon_fetch_session(const std::vector<std::string>& addon_ids)
 				// if _info.cfg exists, compare the local vs remote add-on versions to determine whether a download is needed
 				if(filesystem::file_exists(info_cfg)) {
 					game_config::config_cache& cache = game_config::config_cache::instance();
-					config info;
-					cache.get_config(info_cfg, info);
-					version_info installed_addon_version(info.child_or_empty("info")["version"]);
+					version_info installed_addon_version(cache.get_config(info_cfg).child_or_empty("info")["version"]);
 
 					// if the installed version is outdated, download the most recent version from the add-ons server
 					if(installed_addon_version >= addon.current_version) {
@@ -322,7 +336,7 @@ bool ad_hoc_addon_fetch_session(const std::vector<std::string>& addon_ids)
 		gui2::show_error_message(_("Network communication error."));
 	} catch(const network_asio::error& e) {
 		ERR_NET << "network_asio::error thrown during transaction with add-on server; \""<< e.what() << "\"";
-		gui2::show_error_message(_("Remote host disconnected."));
+		gui2::show_error_message(format_remote_disconnect_message(e));
 	} catch(const filesystem::io_exception& e) {
 		ERR_FS << "io_exception thrown while installing an addon; \"" << e.what() << "\"";
 		gui2::show_error_message(_("A problem occurred when trying to create the files necessary to install this add-on."));

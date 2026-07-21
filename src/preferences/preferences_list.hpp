@@ -58,6 +58,8 @@ struct preferences_list_defines
 	ADDPREF(bell_volume)
 	/** whether to show the map before being given a side in online multiplayer */
 	ADDPREF(blindfold_replay)
+	/** the most recently selected RNG mode in the campaign selection dialog */
+	ADDPREF(campaign_rng_mode)
 	/** the add-ons server name, ie: add-ons.wesnoth.org */
 	ADDPREF(campaign_server)
 	/** the number of lines of chat to display in-game */
@@ -117,6 +119,8 @@ struct preferences_list_defines
 	ADDPREF(floating_labels)
 	/** whether to use fullscreen mode */
 	ADDPREF(fullscreen)
+	/** saved options for game creation */
+	ADDPREF(game_preset)
 	/** whether to show a hex grid overlay on the map */
 	ADDPREF(grid)
 	/** the gui2 theme name */
@@ -395,6 +399,10 @@ struct preferences_list_defines
 	ADDPREF(show_combat)
 	/** whether to show deprecation warnings for WML, lua, etc APIs */
 	ADDPREF(show_deprecation)
+	/** whether to show an indicator above defenders when an attack misses */
+	ADDPREF(show_attack_miss_indicator)
+	/** whether to use SIMD hardware acceleration for pixel operations */
+	ADDPREF(simd_enabled)
 	/** whether to use a 12 hour vs 24 hours clock in various places on the UI */
 	ADDPREF(use_twelve_hour_clock_format)
 
@@ -414,6 +422,7 @@ struct preferences_list_defines
 		auto_save_max,
 		bell_volume,
 		blindfold_replay,
+		campaign_rng_mode,
 		campaign_server,
 		chat_lines,
 		chat_timestamp,
@@ -441,6 +450,7 @@ struct preferences_list_defines
 		fi_vacant_slots,
 		floating_labels,
 		fullscreen,
+		game_preset,
 		grid,
 		gui2_theme,
 		hide_whiteboard,
@@ -540,6 +550,8 @@ struct preferences_list_defines
 		show_all_units_in_help,
 		show_combat,
 		show_deprecation,
+		show_attack_miss_indicator,
+		simd_enabled,
 		use_twelve_hour_clock_format,
 		player_joins_sound,
 		player_joins_notif,

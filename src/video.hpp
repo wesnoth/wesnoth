@@ -21,7 +21,7 @@
 #include "sdl/rect.hpp"
 #include "sdl/texture.hpp"
 
-#include <SDL2/SDL_render.h>
+#include <SDL3/SDL_render.h>
 
 #include <vector>
 
@@ -88,9 +88,6 @@ bool testing();
 /** Whether the game has set up a window to render into */
 bool has_window();
 
-/** Whether we are currently in fullscreen mode */
-bool is_fullscreen();
-
 /**
  * Set the fullscreen state.
  *
@@ -145,6 +142,9 @@ int current_refresh_rate();
 
 /** The native refresh rate of display, not taking any user preferences into account. */
 int native_refresh_rate();
+float content_scaling();
+float pixel_density();
+float display_scaling();
 
 /** True iff the window is not hidden. */
 bool window_is_visible();
@@ -239,6 +239,11 @@ rect input_area();
 int get_pixel_scale();
 
 /**
+ * @returns     Scale factor corresponding to maximum possible scale.
+ */
+int get_max_pixel_scale();
+
+/**
  * Convert coordinates in draw space to coordinates in render space.
  */
 rect to_output(const rect& draw_space_rect);
@@ -265,7 +270,7 @@ rect to_output(const rect& draw_space_rect);
  *                If not null, this will be modified to reflect the
  *                portion of the draw area that has been returned.
  */
-surface read_pixels(SDL_Rect* r = nullptr);
+surface read_pixels(rect* r = nullptr);
 
 /**
  * The same as read_pixels, but returns a low-resolution surface
@@ -273,7 +278,7 @@ surface read_pixels(SDL_Rect* r = nullptr);
  *
  * This should be considered deprecated, and phased out ASAP.
  */
-surface read_pixels_low_res(SDL_Rect* r = nullptr);
+surface read_pixels_low_res(rect* r = nullptr);
 
 
 /****************************/
@@ -338,14 +343,14 @@ private:
 /***************/
 
 /**
+ * Returns a list of all available renderers
+ */
+std::vector<std::string> get_available_renderers();
+
+/**
  * Provides diagnostic information about the current renderer for the @a build_info API.
  */
 std::vector<std::pair<std::string, std::string>> renderer_report();
-
-/**
- * Retrieves the current game screen DPI for the @a build_info API.
- */
-std::pair<float, float> get_dpi();
 
 
 /**************************/

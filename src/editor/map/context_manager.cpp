@@ -15,22 +15,23 @@
 
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
+#include "editor/map/context_manager.hpp"
+
+#include "addon/validation.hpp"
+#include "editor/action/action.hpp"
+#include "editor/action/action_item.hpp"
+#include "editor/action/action_label.hpp"
+#include "editor/action/action_unit.hpp"
+#include "editor/controller/editor_controller.hpp"
+#include "editor/editor_display.hpp"
+#include "editor/map/map_context.hpp"
+
+#include "filesystem.hpp"
+#include "formula/string_utils.hpp"
+#include "gettext.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 
-#include "addon/validation.hpp"
-
-#include "editor/map/context_manager.hpp"
-#include "editor/map/map_context.hpp"
-#include "filesystem.hpp"
-#include "formula/string_utils.hpp"
-#include "generators/map_create.hpp"
-#include "generators/map_generator.hpp"
-#include "gettext.hpp"
-#include "video.hpp"
-
-#include "editor/action/action.hpp"
-#include "editor/controller/editor_controller.hpp"
 #include "preferences/preferences.hpp"
 
 #include "gui/dialogs/edit_text.hpp"
@@ -51,6 +52,9 @@
 #include "serialization/markup.hpp"
 #include "terrain/translation.hpp"
 
+#include "units/unit.hpp"
+#include "video.hpp"
+
 #include <memory>
 #include <boost/algorithm/string.hpp>
 #include <boost/filesystem.hpp>
@@ -60,7 +64,7 @@ namespace {
 std::vector<std::unique_ptr<editor::map_context>> saved_contexts_;
 int last_context_ = 0;
 
-const std::string get_menu_marker(const bool changed)
+std::string get_menu_marker(const bool changed)
 {
 	if (changed) {
 		return "[" + markup::span_color("#f00", font::unicode_bullet) + "]";
@@ -69,18 +73,15 @@ const std::string get_menu_marker(const bool changed)
 	}
 }
 
-}
+} // namespace
 
 namespace editor {
 
-context_manager::context_manager(editor_display& gui, const game_config_view& game_config, const std::string& addon_id)
+context_manager::context_manager(editor_display& gui, const std::string& addon_id)
 	: locs_(nullptr)
 	, gui_(gui)
-	, game_config_(game_config)
 	, default_dir_(filesystem::get_dir(filesystem::get_legacy_editor_dir()))
 	, current_addon_(addon_id)
-	, map_generators_()
-	, last_map_generator_(nullptr)
 	, current_context_index_(0)
 	, auto_update_transitions_(prefs::get().editor_auto_update_transitions())
 	, map_contexts_()
@@ -88,7 +89,6 @@ context_manager::context_manager(editor_display& gui, const game_config_view& ga
 {
 	resources::filter_con = this;
 	create_default_context();
-	init_map_generators(game_config);
 }
 
 context_manager::~context_manager()
@@ -137,8 +137,8 @@ void context_manager::refresh_all()
 		if(!get_map_context().is_pure_map()) {
 			// If the scenario has more than 9 teams, add locations for them
 			// (First 9 teams are always in the list)
-			size_t n_teams = get_map_context().teams().size();
-			for(size_t i = 10; i <= n_teams; i++) {
+			std::size_t n_teams = get_map_context().teams().size();
+			for(std::size_t i = 10; i <= n_teams; i++) {
 				locs_->add_item(std::to_string(i));
 			}
 		}
@@ -214,7 +214,7 @@ void context_manager::load_map_dialog(bool force_same_context /* = false */)
 
 	gui2::dialogs::file_dialog dlg;
 
-	dlg.set_title(_("Load Map"))
+	dlg.set_title(_("Load Map or Scenario"))
 	   .set_path(fn);
 
 	if(dlg.show()) {
@@ -329,11 +329,8 @@ void context_manager::new_scenario_dialog()
 	}
 }
 
-void context_manager::expand_open_maps_menu(std::vector<config>& items, int i)
+void context_manager::expand_open_maps_menu(std::vector<config>& items) const
 {
-	auto pos = items.erase(items.begin() + i);
-	std::vector<config> contexts;
-
 	for(std::size_t mci = 0; mci < map_contexts_.size(); ++mci) {
 		map_context& mc = *map_contexts_[mci];
 
@@ -363,50 +360,32 @@ void context_manager::expand_open_maps_menu(std::vector<config>& items, int i)
 			ss << " (E)";
 		}
 
-		const std::string label = ss.str();
-		const std::string details = get_menu_marker(changed);
-
-		contexts.emplace_back("label", label, "details", details);
+		items.emplace_back("label", ss.str(), "details", get_menu_marker(changed));
 	}
-
-	items.insert(pos, contexts.begin(), contexts.end());
 }
 
-void context_manager::expand_load_mru_menu(std::vector<config>& items, int i)
+void context_manager::expand_load_mru_menu(std::vector<config>& items) const
 {
 	std::vector<std::string> mru = prefs::get().recent_files();
-
-	auto pos = items.erase(items.begin() + i);
-
 	if(mru.empty()) {
-		items.insert(pos, config {"label", _("No Recent Files")});
+		items.emplace_back("label", _("No Recent Files"));
 		return;
 	}
 
-	for(std::string& path : mru) {
+	for(const std::string& path : mru) {
 		// TODO: add proper leading ellipsization instead, since otherwise
 		// it'll be impossible to tell apart files with identical names and
 		// different parent paths.
-		path = filesystem::base_name(path);
+		items.emplace_back("label", filesystem::base_name(path));
 	}
-
-	std::vector<config> temp;
-	std::transform(mru.begin(), mru.end(), std::back_inserter(temp), [](const std::string& str) {
-		return config {"label", str};
-	});
-
-	items.insert(pos, temp.begin(), temp.end());
 }
 
-void context_manager::expand_areas_menu(std::vector<config>& items, int i)
+void context_manager::expand_areas_menu(std::vector<config>& items) const
 {
-	tod_manager* tod = get_map_context().get_time_manager();
+	const tod_manager* tod = get_map_context().get_time_manager();
 	if(!tod) {
 		return;
 	}
-
-	auto pos = items.erase(items.begin() + i);
-	std::vector<config> area_entries;
 
 	std::vector<std::string> area_ids = tod->get_area_ids();
 
@@ -414,7 +393,7 @@ void context_manager::expand_areas_menu(std::vector<config>& items, int i)
 		const std::string& area = area_ids[mci];
 
 		std::stringstream ss;
-		ss << "[" << mci + 1 << "] ";\
+		ss << "[" << mci + 1 << "] ";
 
 		if(area.empty()) {
 			ss << markup::italic(_("Unnamed Area"));
@@ -426,20 +405,12 @@ void context_manager::expand_areas_menu(std::vector<config>& items, int i)
 			mci == static_cast<std::size_t>(get_map_context().get_active_area())
 			&& tod->get_area_by_index(mci) != get_map_context().map().selection();
 
-		const std::string label = ss.str();
-		const std::string details = get_menu_marker(changed);
-
-		area_entries.emplace_back("label", label, "details", details);
+		items.emplace_back("label", ss.str(), "details", get_menu_marker(changed));
 	}
-
-	items.insert(pos, area_entries.begin(), area_entries.end());
 }
 
-void context_manager::expand_sides_menu(std::vector<config>& items, int i)
+void context_manager::expand_sides_menu(std::vector<config>& items) const
 {
-	auto pos = items.erase(items.begin() + i);
-	std::vector<config> contexts;
-
 	for(std::size_t mci = 0; mci < get_map_context().teams().size(); ++mci) {
 
 		const team& t = get_map_context().teams()[mci];
@@ -453,46 +424,29 @@ void context_manager::expand_sides_menu(std::vector<config>& items, int i)
 			label << teamname;
 		}
 
-		contexts.emplace_back("label", label.str());
+		items.emplace_back("label", label.str());
 	}
-
-	items.insert(pos, contexts.begin(), contexts.end());
 }
 
-void context_manager::expand_time_menu(std::vector<config>& items, int i)
+void context_manager::expand_time_menu(std::vector<config>& items) const
 {
-	auto pos = items.erase(items.begin() + i);
-	std::vector<config> times;
-
-	tod_manager* tod_m = get_map_context().get_time_manager();
-
+	const tod_manager* tod_m = get_map_context().get_time_manager();
 	assert(tod_m != nullptr);
 
 	for(const time_of_day& time : tod_m->times()) {
-		times.emplace_back(
-			"details", time.name, // Use 'details' field here since the image will take the first column
-			"image", time.image
-		);
+		// Use 'details' field here since the image will take the first column
+		items.emplace_back("details", time.name, "image", time.image);
 	}
-
-	items.insert(pos, times.begin(), times.end());
 }
 
-void context_manager::expand_local_time_menu(std::vector<config>& items, int i)
+void context_manager::expand_local_time_menu(std::vector<config>& items) const
 {
-	auto pos = items.erase(items.begin() + i);
-	std::vector<config> times;
-
-	tod_manager* tod_m = get_map_context().get_time_manager();
+	const tod_manager* tod_m = get_map_context().get_time_manager();
 
 	for(const time_of_day& time : tod_m->times(get_map_context().get_active_area())) {
-		times.emplace_back(
-			"details", time.name, // Use 'details' field here since the image will take the first column
-			"image", time.image
-		);
+		// Use 'details' field here since the image will take the first column
+		items.emplace_back("details", time.name, "image", time.image);
 	}
-
-	items.insert(pos, times.begin(), times.end());
 }
 
 void context_manager::apply_mask_dialog()
@@ -509,7 +463,7 @@ void context_manager::apply_mask_dialog()
 
 	if(dlg.show()) {
 		try {
-			map_context mask(game_config_, dlg.path(), current_addon_);
+			map_context mask(dlg.path(), current_addon_);
 			editor_action_apply_mask a(mask.map());
 			perform_refresh(a);
 		} catch (const editor_map_load_exception& e) {
@@ -552,7 +506,7 @@ void context_manager::create_mask_to_dialog()
 
 	if(dlg.show()) {
 		try {
-			map_context map(game_config_, dlg.path(), current_addon_);
+			map_context map(dlg.path(), current_addon_);
 			editor_action_create_mask a(map.map());
 			perform_refresh(a);
 		} catch (const editor_map_load_exception& e) {
@@ -668,8 +622,50 @@ void context_manager::resize_map_dialog()
 				break;
 		}
 
-		editor_action_resize_map a(w, h, x_offset, y_offset, fill);
-		perform_refresh(a);
+		auto chain = std::make_unique<editor_action_chain>();
+		auto units = get_map_context().units();
+		for (const auto& u : units) {
+			map_location l{u.get_location().x - x_offset, u.get_location().y - y_offset};
+			chain->append_action(std::make_unique<editor_action_unit_replace>(u.get_location(), l));
+		}
+
+		chain->append_action(std::make_unique<editor_action_item_move_all>(x_offset, y_offset));
+		chain->append_action(std::make_unique<editor_action_time_area_move_all>(x_offset, y_offset));
+
+		// TODO Reduces the number of editor actions in the following loop.
+		// It can be a lot if the map has a lot of labels (say hundreds).
+		map_labels& labels = get_map_context().get_labels();
+		get_map_context().map().for_each_loc([&](const map_location& loc) {
+			map_location new_loc{loc.x - x_offset, loc.y - y_offset};
+			const terrain_label* old_label = labels.get_label(loc);
+
+			if (old_label == nullptr) {
+				return;
+			}
+
+			// Create action chain to:
+			// 1. Delete label in initial hex
+			// 2. Delete label in target hex if it exists, otherwise will no-op
+			// 3. Create label in target hex
+			chain->append_action(std::make_unique<editor_action_label_delete>(loc));
+			chain->append_action(std::make_unique<editor_action_label_delete>(new_loc));
+			chain->append_action(
+				std::make_unique<editor_action_label>(
+					new_loc,
+					old_label->text(),
+					old_label->team_name(),
+					old_label->color(),
+					old_label->visible_in_fog(),
+					old_label->visible_in_shroud(),
+					old_label->immutable(),
+					old_label->category()
+				)
+			);
+		});
+
+		chain->append_action(
+			std::make_unique<editor_action_resize_map>(w, h, x_offset, y_offset, fill));
+		perform_refresh(*chain);
 	}
 }
 
@@ -706,7 +702,7 @@ void context_manager::save_map_as_dialog()
 		&& first_pick
 		&& (gui2::show_message(
 				_("Error"),
-				VGETTEXT("Do you really want to save $type1 in $type2 folder?", {{"type1", "map"}, {"type2", "scenarios"}}),
+				_("Do you really want to save a map in the scenarios folder?"),
 				gui2::dialogs::message::yes_no_buttons) != gui2::retval::OK))
 	{
 		return;
@@ -755,7 +751,7 @@ void context_manager::save_scenario_as_dialog()
 		&& first_pick
 		&& (gui2::show_message(
 				_("Error"),
-				VGETTEXT("Do you really want to save $type1 in $type2 folder?", {{"type1", "scenario"}, {"type2", "maps"}}),
+				_("Do you really want to save a scenario in the maps folder?"),
 				gui2::dialogs::message::yes_no_buttons) != gui2::retval::OK))
 	{
 		return;
@@ -777,31 +773,15 @@ void context_manager::save_scenario_as_dialog()
 	}
 }
 
-void context_manager::init_map_generators(const game_config_view& game_config)
+void context_manager::generate_map_dialog(const std::vector<std::unique_ptr<map_generator>>& map_generators)
 {
-	for(const config& i : game_config.child_range("multiplayer")) {
-		if(i["map_generation"].empty() && i["scenario_generation"].empty()) {
-			continue;
-		}
-
-		if(const auto generator_cfg = i.optional_child("generator")) {
-			map_generators_.emplace_back(create_map_generator(i["map_generation"].empty() ? i["scenario_generation"] : i["map_generation"], generator_cfg.value()));
-		} else {
-			ERR_ED << "Scenario \"" << i["name"] << "\" with id " << i["id"]
-					<< " has map_generation= but no [generator] tag";
-		}
-	}
-}
-
-void context_manager::generate_map_dialog()
-{
-	if(map_generators_.empty()) {
+	if(map_generators.empty()) {
 		gui2::show_error_message(_("No random map generators found."));
 		return;
 	}
 
-	gui2::dialogs::editor_generate_map dialog(map_generators_);
-	dialog.select_map_generator(last_map_generator_);
+	gui2::dialogs::editor_generate_map dialog(map_generators);
+	dialog.select_map_generator(get_map_context().last_used_generator());
 
 	if(dialog.show()) {
 		std::string map_string;
@@ -822,7 +802,7 @@ void context_manager::generate_map_dialog()
 			perform_refresh(a);
 		}
 
-		last_map_generator_ = map_generator;
+		get_map_context().set_last_used_generator(map_generator);
 	}
 }
 
@@ -957,7 +937,7 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 	LOG_ED << "Load map: " << filename << (new_context ? " (new)" : " (same)");
 	try {
 		{
-			auto mc = std::make_unique<map_context>(game_config_, filename, current_addon_);
+			auto mc = std::make_unique<map_context>(filename, current_addon_);
 			if(mc->get_filename() != filename) {
 				if(new_context && check_switch_open_map(mc->get_filename())) {
 					return;
@@ -1002,14 +982,13 @@ void context_manager::revert_map()
 }
 
 void context_manager::init_context(int width, int height, const t_translation::terrain_code& fill, bool new_context, bool is_pure_map) {
-	const config& default_schedule = game_config_.find_mandatory_child("editor_times", "id", "empty");
 	editor_map m(width, height, fill);
 
 	if(new_context) {
-		int new_id = add_map_context(m, is_pure_map, default_schedule, current_addon_);
+		int new_id = add_map_context(m, is_pure_map, current_addon_);
 		switch_context(new_id);
 	} else {
-		replace_map_context(m, is_pure_map, default_schedule, current_addon_);
+		replace_map_context(m, is_pure_map, current_addon_);
 	}
 }
 
@@ -1031,8 +1010,7 @@ void context_manager::new_scenario(int width, int height, const t_translation::t
 
 void context_manager::map_to_scenario()
 {
-	const config& default_schedule = game_config_.find_mandatory_child("editor_times", "id", "empty");
-	replace_map_context(get_map_context().map(), false, default_schedule, current_addon_);
+	replace_map_context(get_map_context().map(), false, current_addon_);
 
 	// Give the converted scenario a number of sides
 	// equal to the number of valid starting positions.
@@ -1053,9 +1031,9 @@ void context_manager::map_to_scenario()
 //
 
 template<typename... T>
-int context_manager::add_map_context(const T&... args)
+int context_manager::add_map_context(T&&... args)
 {
-	map_contexts_.emplace_back(std::make_unique<map_context>(args...));
+	map_contexts_.emplace_back(new map_context(std::forward<T>(args)...));
 	return map_contexts_.size() - 1;
 }
 
@@ -1066,9 +1044,10 @@ int context_manager::add_map_context_of(std::unique_ptr<map_context>&& mc)
 }
 
 template<typename... T>
-void context_manager::replace_map_context(const T&... args)
+void context_manager::replace_map_context(T&&... args)
 {
-	replace_map_context_with(std::move(std::make_unique<map_context>(args...)));
+	map_contexts_[current_context_index_].reset(new map_context(std::forward<T>(args)...));
+	refresh_on_context_change();
 }
 
 void context_manager::replace_map_context_with(std::unique_ptr<map_context>&& mc)
@@ -1094,8 +1073,7 @@ void context_manager::create_blank_context()
 	t_translation::terrain_code default_terrain =
 			t_translation::read_terrain_code(game_config::default_terrain);
 
-	const config& default_schedule = game_config_.find_mandatory_child("editor_times", "id", "empty");
-	add_map_context(editor_map(44, 33, default_terrain), true, default_schedule, current_addon_);
+	add_map_context(editor_map(44, 33, default_terrain), true, current_addon_);
 }
 
 void context_manager::close_current_context()

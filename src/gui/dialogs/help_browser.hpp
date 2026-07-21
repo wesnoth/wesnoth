@@ -63,7 +63,7 @@ private:
 	bool add_topics_for_section(const help::section& parent_section, tree_view_node& parent_node, const std::string& filter_text = "");
 	tree_view_node& add_topic(const std::string& topic_id, const std::string& topic_title,
 			bool expands, tree_view_node& parent);
-	void show_topic(std::string topic_id, bool add_to_history = true);
+	void show_topic(std::string topic_id, bool add_to_history = true, bool reshow = false);
 };
 
 } // namespace dialogs

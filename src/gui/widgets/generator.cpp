@@ -188,7 +188,7 @@ void horizontal_list::set_origin(const point& origin)
 	}
 }
 
-void horizontal_list::set_visible_rectangle(const SDL_Rect& rectangle)
+void horizontal_list::set_visible_rectangle(const rect& rectangle)
 {
 	/*
 	 * Note for most implementations this function could work only for the
@@ -399,7 +399,7 @@ void vertical_list::set_origin(const point& origin)
 	}
 }
 
-void vertical_list::set_visible_rectangle(const SDL_Rect& rectangle)
+void vertical_list::set_visible_rectangle(const rect& rectangle)
 {
 	/*
 	 * Note for most implementations this function could work only for the
@@ -688,7 +688,7 @@ void table::set_origin(const point& origin)
 	}
 }
 
-void table::set_visible_rectangle(const SDL_Rect& rectangle)
+void table::set_visible_rectangle(const rect& rectangle)
 {
 	/*
 	 * Note for most implementations this function could work only for the
@@ -1002,7 +1002,7 @@ const widget* independent::find(const std::string_view id, const bool must_be_ac
 	return nullptr;
 }
 
-void independent::set_visible_rectangle(const SDL_Rect& rectangle)
+void independent::set_visible_rectangle(const rect& rectangle)
 {
 	/*
 	 * Set the visible rectangle for every item.

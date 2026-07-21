@@ -23,6 +23,7 @@
 #include "ai/manager.hpp"
 #include "color.hpp"
 #include "formula/string_utils.hpp"     // for VGETTEXT
+#include "game_config.hpp"
 #include "game_data.hpp"
 #include "game_events/pump.hpp"
 #include "lexical_cast.hpp"
@@ -34,6 +35,7 @@
 #include "serialization/string_utils.hpp"
 #include "synced_context.hpp"
 #include "units/types.hpp"
+#include "utils/general.hpp"
 #include "whiteboard/side_actions.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -172,20 +174,20 @@ void team::team_info::read(const config& cfg)
 {
 	gold = cfg["gold"].to_int();
 	income = cfg["income"].to_int();
-	team_name = cfg["team_name"].str();
-	user_team_name = cfg["user_team_name"];
-	side_name = cfg["side_name"];
+	team_name = cfg["team_name"].str(cfg["side"].str());
+	user_team_name = cfg["user_team_name"].t_str();
+	side_name = cfg["side_name"].t_str();
 	faction = cfg["faction"].str();
-	faction_name = cfg["faction_name"];
-	save_id = cfg["save_id"].str();
+	faction_name = cfg["faction_name"].t_str();
+	id = cfg["id"].str();
+	save_id = cfg["save_id"].str(id);
 	current_player = cfg["current_player"].str();
 	countdown_time = cfg["countdown_time"].str();
 	action_bonus_count = cfg["action_bonus_count"].to_int();
 	flag = cfg["flag"].str();
 	flag_icon = cfg["flag_icon"].str();
-	id = cfg["id"].str();
 	scroll_to_leader = cfg["scroll_to_leader"].to_bool(true);
-	objectives = cfg["objectives"];
+	objectives = cfg["objectives"].t_str();
 	objectives_changed = cfg["objectives_changed"].to_bool();
 	disallow_observers = cfg["disallow_observers"].to_bool();
 	allow_player = cfg["allow_player"].to_bool(true);
@@ -222,20 +224,7 @@ void team::team_info::read(const config& cfg)
 
 	// at the start of a scenario "start_gold" is not set, we need to take the
 	// value from the gold setting (or fall back to the gold default)
-	if(!cfg["start_gold"].empty()) {
-		start_gold = cfg["start_gold"].to_int();
-	} else {
-		start_gold = gold;
-	}
-
-	if(team_name.empty()) {
-		team_name = cfg["side"].str();
-	}
-
-	if(save_id.empty()) {
-		save_id = id;
-	}
-
+	start_gold = cfg["start_gold"].to_int(gold);
 	income_per_village = cfg["village_gold"].to_int(game_config::village_income);
 	recall_cost = cfg["recall_cost"].to_int(game_config::recall_cost);
 
@@ -411,13 +400,22 @@ void team::write(config& cfg) const
 	cfg["action_bonus_count"] = action_bonus_count_;
 }
 
+int team::base_income() const
+{
+	return raw_income() + game_config::base_income;
+}
+
+void team::set_base_income(int amount)
+{
+	set_raw_income(amount - game_config::base_income);
+}
+
 void team::fix_villages(const gamemap &map)
 {
 	for (auto it = villages_.begin(); it != villages_.end(); ) {
 		if (map.is_village(*it)) {
 			++it;
-		}
-		else {
+		} else {
 			it = villages_.erase(it);
 		}
 	}
@@ -483,10 +481,8 @@ int team::minimum_recruit_price() const
 		const unit_type* ut = unit_types.find(recruit);
 		if(!ut) {
 			continue;
-		} else {
-			if(ut->cost() < min) {
-				min = ut->cost();
-			}
+		} else if(ut->cost() < min) {
+			min = ut->cost();
 		}
 	}
 
@@ -522,7 +518,7 @@ bool team::calculate_is_enemy(std::size_t index) const
 			<< "]" << std::endl;
 
 	for(const std::string& t : our_teams) {
-		if(std::find(their_teams.begin(), their_teams.end(), t) != their_teams.end()) {
+		if(utils::contains(their_teams, t)) {
 			LOG_NGE << "team " << info_.side << " found same team name [" << t << "] in team " << index + 1;
 			return false;
 		} else {
@@ -690,10 +686,8 @@ const std::vector<const shroud_map*>& team::ally_fog(const std::vector<team>& te
 	return ally_fog_;
 }
 
-bool team::knows_about_team(std::size_t index) const
+bool team::knows_upkeep(const team& t) const
 {
-	const team& t = resources::gameboard->teams()[index];
-
 	// We know about our own team
 	if(this == &t) {
 		return true;
@@ -705,7 +699,7 @@ bool team::knows_about_team(std::size_t index) const
 	}
 
 	// We don't know about enemies
-	if(is_enemy(index + 1)) {
+	if(is_enemy(t.side())) {
 		return false;
 	}
 
@@ -934,13 +928,13 @@ bool shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
 	return cleared;
 }
 
-const color_range team::get_side_color_range(int side)
+color_range team::get_side_color_range(int side)
 {
 	std::string index = get_side_color_id(side);
-	auto gp = game_config::team_rgb_range.find(index);
+	auto iter = game_config::team_rgb_range.find(index);
 
-	if(gp != game_config::team_rgb_range.end()) {
-		return (gp->second);
+	if(iter != game_config::team_rgb_range.end()) {
+		return iter->second;
 	}
 
 	return color_range({255, 0, 0}, {255, 255, 255}, {0, 0, 0}, {255, 0, 0});
@@ -985,7 +979,7 @@ std::string team::get_side_color_id(unsigned side)
 	}
 }
 
-const t_string team::get_side_color_name_for_UI(unsigned side)
+t_string team::get_side_color_name_for_UI(unsigned side)
 {
 	const std::string& color_id = team::get_side_color_id(side);
 	const auto& rgb_name = game_config::team_rgb_name[color_id];
@@ -1015,11 +1009,6 @@ std::string team::get_side_color_id_from_config(const config& cfg)
 
 	// Else, we should have a color id at this point. Return it.
 	return c.str();
-}
-
-std::string team::get_side_highlight_pango(int side)
-{
-	return get_side_color_range(side).mid().to_hex_string();
 }
 
 void team::log_recruitable() const

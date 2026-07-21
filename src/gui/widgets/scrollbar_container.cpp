@@ -459,7 +459,7 @@ void scrollbar_container::set_origin(const point& origin)
 	content_grid_->set_visible_rectangle(content_visible_area_);
 }
 
-void scrollbar_container::set_visible_rectangle(const SDL_Rect& rectangle)
+void scrollbar_container::set_visible_rectangle(const rect& rectangle)
 {
 	// Inherited.
 	container_base::set_visible_rectangle(rectangle);
@@ -825,7 +825,7 @@ void scrollbar_container::set_content_size(const point& origin, const point& siz
 	content_grid_->place(origin, size);
 }
 
-void scrollbar_container::show_content_rect(const SDL_Rect& rect)
+void scrollbar_container::show_content_rect(const rect& rect)
 {
 	assert(content_);
 	assert(horizontal_scrollbar_ && vertical_scrollbar_);

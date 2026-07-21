@@ -55,8 +55,8 @@ public:
 protected:
 	// scrollarea overrides
 	virtual void draw_contents() override;
-	virtual void update_location(const SDL_Rect& rect) override;
-	virtual void set_inner_location(const SDL_Rect& ) override;
+	virtual void update_location(const rect& rect) override;
+	virtual void set_inner_location(const rect& ) override;
 	virtual void scroll(unsigned int pos) override;
 
 private:

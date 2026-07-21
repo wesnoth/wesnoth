@@ -518,6 +518,10 @@ int compare(const std::string& s1, const std::string& s2)
 
 int icompare(const std::string& s1, const std::string& s2)
 {
+#ifdef __ANDROID__
+	return ascii_to_lowercase(s1).compare(ascii_to_lowercase(s2));
+#endif
+
 	// todo: maybe we should replace this preprocessor check with a std::has_facet<bl::collator<char>> check?
 #ifdef __APPLE__
 	// https://github.com/wesnoth/wesnoth/issues/2094
@@ -568,5 +572,13 @@ bool ci_search(utils::span<const std::string> s1, const std::string& s2)
 const boost::locale::info& get_effective_locale_info()
 {
 	return std::use_facet<boost::locale::info>(get_manager().get_locale());
+}
+
+std::string translate_timestamp(time_t time, std::string_view format)
+{
+	std::ostringstream ss;
+	ss.imbue(get_manager().get_locale());
+	ss << bl::as::ftime(format.data()) << time;
+	return ss.str();
 }
 }

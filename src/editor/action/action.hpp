@@ -409,4 +409,22 @@ public:
 	const std::string& get_name() const override;
 };
 
+class editor_action_time_area_move_all: public editor_action
+{
+public:
+	editor_action_time_area_move_all(int x_offset, int y_offset)
+		: x_offset_(x_offset)
+		, y_offset_(y_offset)
+	{
+	}
+
+	std::unique_ptr<editor_action> clone() const override;
+	std::unique_ptr<editor_action> perform(map_context& mc) const override;
+	void perform_without_undo(map_context& mc) const override;
+	const std::string& get_name() const override;
+
+protected:
+	int x_offset_, y_offset_;
+};
+
 } // end namespace editor

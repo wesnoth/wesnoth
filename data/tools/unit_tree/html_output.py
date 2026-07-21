@@ -10,6 +10,7 @@ import time
 import traceback
 import urllib.parse
 import unit_tree.helpers as helpers
+from unit_tree.helpers import printtime
 import wesnoth.wmlparser3 as wmlparser3
 
 PICS_LOCATION = os.path.join("..", "..", "pics")
@@ -775,6 +776,16 @@ class HTMLOutput:
                 # complex ones.
                 if name:
                     anames.append(name)
+        abilities_list = u.get_text_val("abilities_list")
+        if abilities_list:
+            for ability_ref in abilities_list.split(","):
+                ability_ref = ability_ref.strip()
+                if ability_ref in self.wesnoth.ability_registry_lookup:
+                    aname = T(self.wesnoth.ability_registry_lookup[ability_ref], "name")
+                    if aname:
+                        anames.append(aname)
+                else:
+                    anames.append(special_ref)
         return anames
 
     def get_recursive_attacks(self, this_unit):
@@ -956,6 +967,16 @@ class HTMLOutput:
                                         sname = T(special, "name")
                                         if sname:
                                             s.append(sname)
+                                specials_list = attack.get_text_val("specials_list")
+                                if specials_list:
+                                    for special_ref in specials_list.split(","):
+                                        special_ref = special_ref.strip()
+                                        if special_ref in self.wesnoth.ability_registry_lookup:
+                                            sname = T(self.wesnoth.ability_registry_lookup[special_ref], "name")
+                                            if sname:
+                                                s.append(sname)
+                                        else:
+                                            s.append(special_ref)
                                 accuracy = attack.get_text_val("accuracy", default="0")
                                 parry = attack.get_text_val("parry", default="0")
                                 if accuracy != "0":
@@ -1237,6 +1258,16 @@ class HTMLOutput:
                         sname = T(special, "name")
                         if sname:
                             s.append(cleantext(sname, quote=False))
+                specials_list = attack.get_text_val("specials_list")
+                if specials_list:
+                    for special_ref in specials_list.split(","):
+                        special_ref = special_ref.strip()
+                        if special_ref in self.wesnoth.ability_registry_lookup:
+                            sname = T(self.wesnoth.ability_registry_lookup[special_ref], "name")
+                            if sname:
+                                s.append(cleantext(sname, quote=False))
+                        else:
+                            s.append(cleantext(special_ref, quote=False))
                 accuracy = attack.get_text_val("accuracy", default="0")
                 parry = attack.get_text_val("parry", default="0")
                 if accuracy != "0":
@@ -1255,7 +1286,13 @@ class HTMLOutput:
         row = 0
         for rid, ricon in RESISTANCES:
             special, resist_str = find_attr("resistance", rid)
-            r = 100 if resist_str == '-' else 100 - int(resist_str)
+            r = 100
+            if resist_str != '-':
+                try:
+                    r = 100 - int(resist_str)
+                except ValueError:
+                    error_message("Warning: Invalid %s resistance string %s for %s.\n" % (rid, resist_str, uid))
+
             resist_classes = ['num']
             resist_rating = resistance_rating_color_class(r)
             if resist_rating:
@@ -1263,8 +1300,7 @@ class HTMLOutput:
             try:
                 resist_str = '<i>%d%%</i>' % r
             except ValueError:
-                error_message("Warning: Invalid resistance %s for %s.\n" % (
-                    r, uid))
+                error_message("Warning: Invalid %s resistance %s for %s.\n" % (rid, r, uid))
             rcell = "td"
             if special:
                 rcell += ' class="special"'
@@ -1386,7 +1422,7 @@ def generate_campaign_report(addon, isocode, campaign, wesnoth):
     if not cid:
         cid = "%s_%s" % (addon, campaign.get_text_val("define"))
 
-    print("campaign %s %s %s" % (addon, cid, isocode))
+    printtime("campaign %s %s %s" % (addon, cid, isocode))
 
     path = os.path.join(options.output, addon, isocode)
     if not os.path.isdir(path):
@@ -1412,7 +1448,7 @@ def generate_campaign_report(addon, isocode, campaign, wesnoth):
 def generate_era_report(addon, isocode, era, wesnoth):
     eid = era.get_text_val("id")
 
-    print("era %s %s %s" % (addon, eid, isocode))
+    printtime("era %s %s %s" % (addon, eid, isocode))
 
     path = os.path.join(options.output, addon, isocode)
     if not os.path.isdir(path):
@@ -1545,7 +1581,7 @@ def html_postprocess_file(filename, isocode, batchlist):
     f.close()
 
 def html_postprocess_all(batchlist):
-    print("Postprocessing HTML...")
+    printtime("Postprocessing HTML...")
     for isocode, filename in all_written_html_files:
         html_postprocess_file(filename, isocode, batchlist)
 

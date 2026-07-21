@@ -6,10 +6,11 @@ wmltools.py -- Python routines for working with a Battle For Wesnoth WML tree
 """
 
 from functools import total_ordering
-import collections, codecs
+import collections
 import sys, os, re, sre_constants, hashlib, glob, gzip
 import string
 import enum
+import bisect
 
 # Extensions
 # Ordering is important, see default extensions below
@@ -297,7 +298,7 @@ def issave(filename):
                 return False
     else:
         try:
-            with codecs.open(filename, "r", "utf8") as content:
+            with open(filename, "r", encoding="utf8") as content:
                 firstline = content.readline()
         except UnicodeDecodeError:
             # our saves are in UTF-8, so this file shouldn't be one
@@ -647,9 +648,33 @@ class CrossRef:
     macro_reference = re.compile(r"\{([A-Z_][A-Za-z0-9_:]*)(?!\.)\b")
     file_reference = re.compile(r"([A-Za-z0-9{}.][A-Za-z0-9_/+{}.@\-\[\],~\*]*?\.(" + "|".join(resource_extensions) + r"))((~[A-Z]+\(.*\))*)(:([0-9]+|\[[0-9,*~]*\]))?")
     tag_parse = re.compile(r"\s*([a-z_]+)\s*=(.*)")
+    postfix_parse = re.compile(r"[a-zA-Z0-9/\+\-\.]*$")
+    regex_to_escape = re.compile(r"([\+\*\.\?\$\{\}\[\]\(\)])")
+    def postfix_files_range(self, postfix):
+        "Get the range of strings and definitions to consider for the given postfix"
+        if postfix:
+            postfix = postfix[::-1]
+            next_postfix = postfix[:-1]
+            next_postfix += chr(ord(postfix[-1]) + 1)
+            first = bisect.bisect_left(self.fileref_reversed, (postfix, "", None))
+            last = bisect.bisect_left(self.fileref_reversed, (next_postfix, "", None))
+            return self.fileref_reversed[first:last]
+        else:
+            return self.fileref_reversed
     def mark_matching_resources(self, pattern, fn, n):
         "Mark all definitions matching a specified pattern with a reference."
-        pattern = pattern.replace("+", r"\+")
+        # repetitions of .* are pointless but potentially expensive
+        while ".*.*" in pattern:
+            pattern = pattern.replace(".*.*", ".*")
+        # we'll use the literal tail (if any) as a quick pre-filter
+        postfix = CrossRef.postfix_parse.search(pattern).group(0)
+        # insert necessary escape sequences and markers
+        # Note:
+        # We use regex simply as a convenient way to implement wildcard matching.
+        # The only regex operator that is actually used intentionally is ".*".
+        # Everything else shall be treated as a literal.
+        pattern = CrossRef.regex_to_escape.sub(r"\\\1", pattern)
+        pattern = pattern.replace(r"\.\*", ".*") # the one pattern we allow
         pattern = os.sep + pattern + "$"
         if os.sep == "\\":
             pattern = pattern.replace("\\", "\\\\")
@@ -658,12 +683,11 @@ class CrossRef:
         except sre_constants.error:
             print("wmlscope: confused by %s" % pattern, file=sys.stderr)
             return None
-        key = None
-        for trial in self.fileref:
+        # only examine the strings whose last few characters match
+        # the postfix required by the pattern
+        for _, trial, defn in self.postfix_files_range(postfix):
             if pattern.search(trial) and self.visible_from(trial, fn, n):
-                key = trial
-                self.fileref[key].append(fn, n)
-        return key
+                defn.append(fn, n)
     def visible_from(self, defn, fn, n):
         "Is specified definition visible from the specified file and line?"
         if isinstance(defn, str):
@@ -693,7 +717,7 @@ class CrossRef:
         temp_docstrings = {}
         current_docstring = None
         try:
-            with codecs.open(filename, "r", "utf8") as dfp:
+            with open(filename, "r", encoding="utf8") as dfp:
                 state = States.OUTSIDE
                 latch_unit = in_base_unit = in_theme = False
                 for (n, line) in enumerate(dfp):
@@ -900,10 +924,11 @@ class CrossRef:
             # All specified files share the same namespace
             self.filelist = [("src", filename) for filename in filelist]
             self.dirpath = ["src"]
-            
+
         self.warnlevel = warnlevel
         self.xref = {}
         self.fileref = {}
+        self.fileref_reversed = []
         self.noxref = False
         self.properties = {}
         self.unit_ids = {}
@@ -924,9 +949,12 @@ class CrossRef:
             elif filename.endswith(".def"):
                 # It's a list of names to be considered defined
                 self.noxref = True
-                with codecs.open(filename, "r", "utf8") as dfp:
+                with open(filename, "r", encoding="utf8") as dfp:
                     for line in dfp:
                         self.xref[line.strip()] = True
+        # Index fileref by tail / postfix
+        # Elements are ( reversed(name), name, defn )
+        self.fileref_reversed = sorted([ (name[::-1], name, self.fileref[name]) for name in self.fileref ])
         # Next, decorate definitions with all references from the filelist.
         self.unresolved = []
         self.missing = []
@@ -941,7 +969,7 @@ class CrossRef:
                 print(fn)
             if iswml(fn):
                 try:
-                    with codecs.open(fn, "r", "utf8") as rfp:
+                    with open(fn, "r", encoding="utf8") as rfp:
                         attack_name = None
                         have_icon = False
                         beneath = 0
@@ -1009,7 +1037,7 @@ class CrossRef:
                                             if defn.deprecated:
                                                 self.deprecated.append((name,Reference(ns,fn,n+1)))
                                     if len(candidates) > 1:
-                                        print("%s: more than one definition of %s is visible here (%s)." % (Reference(ns, fn, n), name, "; ".join(candidates)))
+                                        print("%s: more than one definition of %s is visible here (%s)." % (Reference(ns, fn, n), name, "; ".join(sorted(candidates))))
                                 if len(candidates) == 0:
                                     self.unresolved.append((name,Reference(ns,fn,n+1)))
                             # Don't be fooled by HTML image references in help strings.
@@ -1037,18 +1065,17 @@ class CrossRef:
                                         # could potentially match.
                                         elif '{' in name or '@' in name:
                                             pattern = re.sub(r"(\{[^}]*\}|@R[0-5]|@V)", '.*', name)
-                                            key = self.mark_matching_resources(pattern, fn,n+1)
-                                            if key:
-                                                self.fileref[key].append(fn, n+1)
+                                            self.mark_matching_resources(pattern, fn,n+1)
                                         else:
                                             candidates = []
-                                            for trial in self.fileref:
-                                                if trial.endswith(os.sep + name) and self.visible_from(trial, fn, n):
+                                            postfix = os.sep + name
+                                            for _, trial, defn in self.postfix_files_range(postfix):
+                                                if self.visible_from(defn, fn, n):
                                                     key = trial
-                                                    self.fileref[trial].append(fn, n+1)
+                                                    defn.append(fn, n+1)
                                                     candidates.append(trial)
                                             if len(candidates) > 1:
-                                                print("%s: more than one resource matching %s is visible here (%s)." % (Reference(ns,fn, n), name, ", ".join(candidates)))
+                                                print("%s: more than one resource matching %s is visible here (%s)." % (Reference(ns,fn, n), name, ", ".join(sorted(candidates))))
                                         if not key:
                                             self.missing.append((name, Reference(ns,fn,n+1)))
                             # Notice implicit references through attacks
@@ -1066,13 +1093,14 @@ class CrossRef:
                                     if attack_name and not have_icon:
                                         candidates = []
                                         key = None
-                                        for trial in self.fileref:
-                                            if trial.endswith(os.sep + default_icon) and self.visible_from(trial, fn, n):
+                                        postfix = os.sep + default_icon
+                                        for _, trial, defn in self.postfix_files_range(postfix):
+                                            if self.visible_from(defn, fn, n):
                                                 key = trial
-                                                self.fileref[trial].append(fn, n+1)
+                                                defn.append(fn, n+1)
                                                 candidates.append(trial)
                                         if len(candidates) > 1:
-                                            print("%s: more than one definition of %s is visible here (%s)." % (Reference(ns,fn, n), name, ", ".join(candidates)))
+                                            print("%s: more than one definition of %s is visible here (%s)." % (Reference(ns,fn, n), name, ", ".join(sorted(candidates))))
                                     if not key:
                                         self.missing.append((default_icon, Reference(ns,fn,n+1)))
                                 elif line.strip().startswith("[/"):

@@ -667,7 +667,7 @@ void t_string::reset_translations()
 	++language_counter;
 }
 
-void swap(t_string& lhs, t_string& rhs)
+void swap(t_string& lhs, t_string& rhs) noexcept
 {
 	lhs.swap(rhs);
 }

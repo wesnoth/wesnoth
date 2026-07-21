@@ -52,6 +52,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "help/help.hpp"
+#include "quit_confirmation.hpp"
 #include "sdl/surface.hpp"
 #include "serialization/unicode.hpp"
 #include "video.hpp"
@@ -86,15 +87,29 @@ title_screen::~title_screen()
 {
 }
 
-void title_screen::register_button(const std::string& id, hotkey::HOTKEY_COMMAND hk, const std::function<void()>& callback)
+void title_screen::register_button(
+	const std::string& id,
+	hotkey::HOTKEY_COMMAND hk,
+	const std::function<void()>& callback)
+{
+	register_button(id, hk, callback, callback);
+}
+
+void title_screen::register_button(
+	const std::string& id,
+	hotkey::HOTKEY_COMMAND hk,
+	const std::function<void()>& callback_btn,
+	const std::function<void()>& callback_hotkey)
 {
 	if(hk != hotkey::HOTKEY_NULL) {
-		register_hotkey(hk, [callback](auto&&...) { callback(); return true; });
+		register_hotkey(hk, [callback_hotkey](auto&&...) { callback_hotkey(); return true; });
 	}
 
 	try {
 		button& btn = find_widget<button>(id);
-		connect_signal_mouse_left_click(btn, [callback](auto&&...) { std::invoke(callback); });
+		connect_signal_mouse_left_click(btn, [callback_btn](auto&&...) {
+			std::invoke(callback_btn);
+		});
 	} catch(const wml_exception& e) {
 		ERR_GUI_P << e.user_message;
 		prefs::get().set_gui2_theme("default");
@@ -245,10 +260,7 @@ void title_screen::init_callbacks()
 	//
 	// Help
 	//
-	register_button("help", hotkey::HOTKEY_HELP, []() {
-		help::help_manager help_manager(&game_config_manager::get()->game_config());
-		help::show_help();
-	});
+	register_button("help", hotkey::HOTKEY_HELP, [] { help::show_help(); });
 
 	//
 	// About
@@ -281,11 +293,11 @@ void title_screen::init_callbacks()
 	// Load game
 	//
 	register_button("load", hotkey::HOTKEY_LOAD_GAME, [this]() {
-		if(game_.load_game()) {
+		if(game_.load_game_prompt()) {
 			// Suspend drawing of the title screen,
 			// so it doesn't flicker in between loading screens.
 			hide();
-			set_retval(LAUNCH_GAME);
+			set_retval(LOAD_GAME);
 		}
 	});
 
@@ -338,7 +350,13 @@ void title_screen::init_callbacks()
 	//
 	// Quit
 	//
+#ifdef __ANDROID__
+	register_button("quit", hotkey::HOTKEY_QUIT_TO_DESKTOP,
+		[this]() { set_retval(QUIT_GAME); },
+		[this]() { quit_confirmation().quit_to_desktop(); });
+#else
 	register_button("quit", hotkey::HOTKEY_QUIT_TO_DESKTOP, [this]() { set_retval(QUIT_GAME); });
+#endif
 	// A sanity check, exit immediately if the .cfg file didn't have a "quit" button.
 	find_widget<button>("quit", false, true);
 
@@ -390,24 +408,21 @@ void title_screen::update_static_labels()
 		const auto& locale = translation::get_effective_locale_info();
 		// Just assume everything is UTF-8 (it should be as long as we're called Wesnoth)
 		// and strip the charset from the Boost locale identifier.
-		const auto& boost_name = boost::algorithm::erase_first_copy(locale.name(), ".UTF-8");
-		const auto& langs = get_languages(true);
+		const auto& locale_id = boost::algorithm::erase_first_copy(locale.name(), ".UTF-8");
 
-		auto lang_def = std::find_if(langs.begin(), langs.end(), [&](language_def const& lang) {
-			return lang.localename == boost_name;
-		});
-
-		if(lang_def != langs.end()) {
-			lang_button->set_label(lang_def->language.str());
-		} else if(boost_name == "c" || boost_name == "C") {
-			// HACK: sometimes System Default doesn't match anything on the list. If you fork
-			// Wesnoth and change the neutral language to something other than US English, you
-			// want to change this too.
+		if(locale_id == "c" || locale_id == "C") {
+			// If you fork Wesnoth and change the neutral language to something other than US English,
+			// you want to change this too.
 			lang_button->set_label("English (US)");
 		} else {
-			// If somehow the locale doesn't match a known translation, use the
-			// locale identifier as a last resort
-			lang_button->set_label(boost_name);
+			std::string lname = get_translation_name(locale_id);
+			if(!lname.empty()) {
+				lang_button->set_label(lname);
+			} else {
+				// If somehow the locale doesn't match a known locale,
+				// use the locale identifier as a last resort
+				lang_button->set_label(locale_id);
+			}
 		}
 	}
 }

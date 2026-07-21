@@ -150,7 +150,13 @@ void units_dialog::pre_show()
 		find_widget<button>("show_help"),
 		std::bind(&units_dialog::show_help, this));
 
+#ifdef __IPHONEOS__
+	// On iOS, opening these dialogs should not immediately summon the software
+	// keyboard just because the optional filter box exists.
+	keyboard_capture(&list);
+#else
 	keyboard_capture(&filter);
+#endif
 	add_to_keyboard_chain(&list);
 
 	show_list(list);
@@ -188,32 +194,31 @@ void units_dialog::show_list(listbox& list)
 
 	for(std::size_t i = 0; i < num_rows_; i++) {
 		widget_data row_data;
-		widget_item column;
-		// generate tooltip for ith row
-		if (tooltip_gen_) {
-			column["tooltip"] = tooltip_gen_(i);
+
+		// If custom filter text generator exists, use it to generate the filter text
+		if(filter_gen_) {
+			filter_options_.emplace_back(filter_gen_(i));
+		} else {
+			filter_options_.emplace_back();
 		}
 
-		// if custom filter text generator exists, use it to generate the filter text
-		if (filter_gen_) {
-			filter_options_.push_back(filter_gen_(i));
-		}
+		for(const auto& [id, generator] : column_generators_) {
+			auto result = std::invoke(generator, i);
 
-		std::vector<std::string> filter_keys;
-		for (const auto& [id, gen] : column_generators_) {
-			column["use_markup"] = "true";
-			// generate label for ith row and column with 'id'
-			column["label"] = gen(i);
-			if (!filter_gen_ && id != "unit_image") {
-				filter_keys.emplace_back(column["label"]);
+			// Register labels to be filtered upon provided no filter generator exists
+			if(!filter_gen_ && id != "unit_image") {
+				filter_options_.back().push_back(result);
 			}
-			row_data.emplace(id, column);
+
+			row_data.emplace(id, widget_item{{ "use_markup", "true" }, { "label", std::move(result) }});
 		}
 
-		if (!filter_gen_) {
-			filter_options_.push_back(filter_keys);
+		grid& row_grid = list.add_row(row_data);
+
+		// Generate tooltip for ith row
+		if(tooltip_gen_) {
+			row_grid.find_widget<styled_widget>("row_panel").set_tooltip(tooltip_gen_(i));
 		}
-		list.add_row(row_data);
 	}
 
 	const auto [sorter_id, order] = sort_last.value_or(sort_order_);
@@ -368,9 +373,7 @@ void units_dialog::post_show()
 		sort_last.reset();
 	}
 
-	if(get_retval() == retval::OK) {
-		selected_index_ = list.get_selected_row();
-	}
+	selected_index_ = get_retval() == retval::OK ? list.get_selected_row() : -1;
 }
 
 void units_dialog::filter_text_changed(const std::string& text)
@@ -426,7 +429,7 @@ std::unique_ptr<units_dialog> units_dialog::build_create_dialog(const std::vecto
 		return type->race()->plural_name();
 	};
 
-	const auto populate_variations = [&dlg](const unit_type& ut) {
+	const auto populate_variations = [](units_dialog* dlg, const unit_type& ut) {
 		// Populate variations box
 		menu_button& var_box = dlg->find_widget<menu_button>("variation_box");
 		std::vector<config> var_box_values;
@@ -478,7 +481,7 @@ std::unique_ptr<units_dialog> units_dialog::build_create_dialog(const std::vecto
 	set_column("unit_name", type_gen, sort_type::generator);
 	set_column("unit_details", race_gen, sort_type::generator);
 
-	dlg->on_modified([populate_variations, &dlg, &types_list](std::size_t index) -> const auto& {
+	dlg->on_modified([populate_variations, &types_list](units_dialog* dlg, std::size_t index) -> const auto& {
 		const unit_type* ut = types_list[index];
 
 		if (dlg->is_selected() && (static_cast<int>(index) == dlg->get_selected_index())) {
@@ -488,7 +491,7 @@ std::unique_ptr<units_dialog> units_dialog::build_create_dialog(const std::vecto
 				[ut](const unit_race::GENDER& gender) { return ut->has_gender_variation(gender); });
 		}
 
-		populate_variations(*ut);
+		populate_variations(dlg, *ut);
 
 		const auto& g = dlg->gender();
 		if(ut->has_gender_variation(g)) {
@@ -547,7 +550,7 @@ std::unique_ptr<units_dialog> units_dialog::build_recruit_dialog(
 		return err_msgs_map[recruit_list[index]];
 	});
 
-	dlg->on_modified([&recruit_list](std::size_t index) -> const auto& { return *recruit_list[index]; });
+	dlg->on_modified([&recruit_list](units_dialog*, std::size_t index) -> const auto& { return *recruit_list[index]; });
 
 	return dlg;
 }
@@ -676,7 +679,7 @@ std::unique_ptr<units_dialog> units_dialog::build_unit_list_dialog(std::vector<u
 		return filter_keys;
 	});
 
-	dlg->on_modified([&unit_list, &rename](std::size_t index) -> const auto& {
+	dlg->on_modified([&unit_list, &rename](units_dialog*, std::size_t index) -> const auto& {
 		auto& unit = unit_list[index];
 		rename.set_active(!unit->unrenamable());
 		return *unit;
@@ -689,11 +692,7 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 	std::vector<unit_const_ptr>& recall_list,
 	const team& team)
 {
-	int wb_gold = 0;
-	if(resources::controller && resources::controller->get_whiteboard()) {
-		wb::future_map future; // So gold takes into account planned spending
-		wb_gold = resources::controller->get_whiteboard()->get_spent_gold_for(team.side());
-	}
+	int wb_gold = unit_helper::planned_gold_spent(team.side());
 
 	// Lambda to check if a unit is recallable
 	const auto recallable = [wb_gold, &team](const unit& unit) {
@@ -807,9 +806,7 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 			}
 		},
 		[](const auto& unit) {
-			// this allows 0/35, 0/100 etc to be sorted
-			// also sorts 23/35 before 0/35, after which 0/100 comes
-			return unit->experience() + unit->max_experience();
+			return std::tuple(static_cast<int>(unit->experience_to_advance()), unit->max_experience());
 		});
 
 	set_column("unit_traits",
@@ -861,7 +858,7 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 		return filter_keys;
 	});
 
-	dlg->on_modified([&recall_list, &rename](std::size_t index) -> const auto& {
+	dlg->on_modified([&recall_list, &rename](units_dialog*, std::size_t index) -> const auto& {
 		const auto& unit = recall_list[index];
 		rename.set_active(!unit->unrenamable());
 		return *unit;

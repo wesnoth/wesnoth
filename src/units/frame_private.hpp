@@ -177,7 +177,7 @@ public:
 				}
 			}
 
-			// Fun Fact: since size_t is unsigned, template argument deduction does not yield chrono::milliseconds,
+			// Fun Fact: since std::size_t is unsigned, template argument deduction does not yield chrono::milliseconds,
 			// but rather duration<unsigned long long, std::milli>. That's why we explicitly cast to milliseconds.
 			std::chrono::milliseconds new_time_chunk{(duration - total_specified_time) / first_pass.size()};
 			time_chunk = std::max(new_time_chunk, 1ms);

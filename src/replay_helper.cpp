@@ -117,10 +117,11 @@ config replay_helper::get_attack(const map_location& a, const map_location& b,
 /**
  * Records that the player has toggled automatic shroud updates.
  */
-config replay_helper::get_auto_shroud(bool turned_on)
+config replay_helper::get_auto_shroud(bool turned_on, bool block_undo)
 {
 	config child;
 	child["active"] = turned_on;
+	child["block_undo"] = block_undo;
 	return child;
 }
 

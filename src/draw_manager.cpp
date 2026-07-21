@@ -200,7 +200,7 @@ static void wait_for_vsync()
 
 static void update()
 {
-	for (size_t i = 0; i < top_level_drawables_.size(); ++i) {
+	for (std::size_t i = 0; i < top_level_drawables_.size(); ++i) {
 		top_level_drawable* tld = top_level_drawables_[i];
 		if (tld) { tld->update(); }
 	}
@@ -208,7 +208,7 @@ static void update()
 
 static void layout()
 {
-	for (size_t i = 0; i < top_level_drawables_.size(); ++i) {
+	for (std::size_t i = 0; i < top_level_drawables_.size(); ++i) {
 		top_level_drawable* tld = top_level_drawables_[i];
 		if (tld) { tld->layout(); }
 	}
@@ -216,7 +216,7 @@ static void layout()
 
 static void render()
 {
-	for (size_t i = 0; i < top_level_drawables_.size(); ++i) {
+	for (std::size_t i = 0; i < top_level_drawables_.size(); ++i) {
 		top_level_drawable* tld = top_level_drawables_[i];
 		if (tld) { tld->render(); }
 	}

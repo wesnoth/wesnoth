@@ -8,9 +8,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.16\n"
+"Project-Id-Version: wesnoth-1.20\n"
 "POT-Creation-Date: 2025-04-27 22:22-0500\n"
-"PO-Revision-Date: 2023-09-10 09:01+0800\n"
+"PO-Revision-Date: 2026-05-24 10:32+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.9\n"
 
 #. type: TH
 #: doc/man/wesnoth.6:16
@@ -103,17 +103,16 @@ msgstr "选项"
 
 #. type: TP
 #: doc/man/wesnoth.6:45
-#, fuzzy, no-wrap
-#| msgid "B<--noaddons>"
+#, no-wrap
 msgid "B<--addon-info>"
-msgstr "B<--noaddons>"
+msgstr "B<--addon-info>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:48
 msgid ""
 "Shows a button on the add-ons manager to query the add-ons server for "
 "various information."
-msgstr ""
+msgstr "在附加组件管理器上显示一个按钮，用于从附加组件服务器处查询各类信息。"
 
 #. type: TP
 #: doc/man/wesnoth.6:48
@@ -190,12 +189,12 @@ msgstr "B<--clock>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:72
-#, fuzzy
-#| msgid "Adds the option to show a clock for testing the drawing timer."
 msgid ""
 "Adds the option to show a clock for testing the drawing timer. Also adds the "
 "option for showing the GUI Test Dialog."
-msgstr "增加一个选项，显示一个时钟，用于测试画面绘制计时器。"
+msgstr ""
+"增加一个选项，以显示用于测试画面绘制计时器的时钟。同时也增加另一个选项，以显"
+"示GUI测试对话框。"
 
 #. type: TP
 #: doc/man/wesnoth.6:72
@@ -205,8 +204,6 @@ msgstr "B<--core>I<\\ id_core>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:75
-#, fuzzy
-#| msgid "overrides the loaded core with the one whose id is specified."
 msgid "Overrides the loaded core with the one whose id is specified."
 msgstr "使用指定ID对应的核心作为应读取的核心。"
 
@@ -222,6 +219,8 @@ msgid ""
 "Overrides the data directory with the one specified. The data directory is "
 "the one that contains subdirectories 'data', 'fonts', 'images' and others."
 msgstr ""
+"以指定目录为数据目录，覆盖默认值。数据目录是包含“data”、“fonts”、“images”和其"
+"他子目录的目录。"
 
 #. type: TP
 #: doc/man/wesnoth.6:78
@@ -274,10 +273,9 @@ msgstr "禁用已废弃的Lua API调用"
 
 #. type: TP
 #: doc/man/wesnoth.6:92
-#, fuzzy, no-wrap
-#| msgid "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
+#, no-wrap
 msgid "B<-D,\\ --diff>I<\\ left-file>B<\\ >I<right-file>"
-msgstr "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
+msgstr "B<-D,\\ --diff>I<\\ left-file>B<\\ >I<right-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:98
@@ -383,13 +381,6 @@ msgstr "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:151
-#, fuzzy
-#| msgid ""
-#| "sets the severity level of the log domains.  B<all> can be used to match "
-#| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>,\\ B<none>.  By default the B<warning> level is used for most "
-#| "domains, but B<deprecation> defaults to B<none> unless combined with the "
-#| "B<-d> option."
 msgid ""
 "sets the severity level of the log domains. The wildcard B<*> may be used to "
 "match a subset of domains, e.g. gui/* or conf* or * (the latter matches all "
@@ -398,10 +389,11 @@ msgid ""
 "B<deprecation> defaults to B<none> unless combined with the B<-d> option.  "
 "This option can be specified multiple times."
 msgstr ""
-"设置日志域的严重度级别。B<all>可以用来匹配任意日志域。可选的级别有："
-"B<error>，\\ B<warning>，\\ B<info>，\\ B<debug>, \\ B<none>。对大多数日志域"
-"而言，默认日志级别是B<warning>，但B<deprecation>的默认级别是B<none>，除非和"
-"B<-d>选项并用。"
+"设置日志域的严重度级别。通配符B<*>可用于匹配日志域的子集，例如：gui/*或conf*"
+"或*（最后一个匹配全部域）。可选的级别有：B<error>，\\ B<warning>，\\ "
+"B<info>，\\ B<debug>, \\ B<none>。对大多数日志域而言，默认日志级别是"
+"B<warning>，但B<deprecation>的默认级别是B<none>，除非和B<-d>选项并用。此选项"
+"可以指定多次。"
 
 #. type: TP
 #: doc/man/wesnoth.6:151
@@ -416,25 +408,20 @@ msgstr "在日志输出中显示更高精度的时间戳。"
 
 #. type: TP
 #: doc/man/wesnoth.6:154
-#, fuzzy, no-wrap
-#| msgid "B<--log-strict>"
+#, no-wrap
 msgid "B<--log-strict>I<\\ level>"
-msgstr "B<--log-strict>"
+msgstr "B<--log-strict>I<\\ level>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:163
-#, fuzzy
-#| msgid ""
-#| "sets the strict level of the logger. Any messages sent to log domains of "
-#| "this level or more severe will cause the unit test to fail regardless of "
-#| "the victory result. Only relevant when used with B<-u>."
 msgid ""
 "sets the strict I<level> of the logger. Any messages sent to log domains of "
 "this I<level> or more severe will cause the unit test to fail regardless of "
 "the victory result. Only relevant when used with B<-u>."
 msgstr ""
-"设置日志记录器的严格度等级。若有任何信息记入此等级或更高等级日志域，则不论测"
-"试结果如何，单元测试都将失败。只有在和 B<-u> 共同使用时才有意义。"
+"设置日志记录器的严格度等级（I<level>）。若有任何信息记入此等级（I<level>）或"
+"更高等级日志域，则不论测试结果如何，单元测试都将失败。只有在和 B<-u> 共同使用"
+"时才有意义。"
 
 #. type: TP
 #: doc/man/wesnoth.6:163
@@ -453,10 +440,9 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:168
-#, fuzzy, no-wrap
-#| msgid "B<--log-strict>"
+#, no-wrap
 msgid "B<--no-log-to-file>"
-msgstr "B<--log-strict>"
+msgstr "B<--no-log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:171
@@ -465,13 +451,14 @@ msgid ""
 "WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created "
 "in the logs directory under the userdata folder."
 msgstr ""
+"不将日志输出重定向到文件。或者也可以设置环境变量WESNOTH_NO_LOG_FILE，效果与此"
+"选项相同。日志文件创建于userdata文件夹下的logs目录中。"
 
 #. type: TP
 #: doc/man/wesnoth.6:171
-#, fuzzy, no-wrap
-#| msgid "B<--log-strict>"
+#, no-wrap
 msgid "B<--log-to-file>"
-msgstr "B<--log-strict>"
+msgstr "B<--log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:174
@@ -479,27 +466,27 @@ msgid ""
 "log output is written to a file. Cancels the effect of --no-log-to-file "
 "whether implicit or explicit."
 msgstr ""
+"将日志输出写入文件中。抵消--no-log-to-file选项的效果，不论该选项是显式的还是"
+"隐式的。"
 
 #. type: TP
 #: doc/man/wesnoth.6:174
-#, fuzzy, no-wrap
-#| msgid "B<--log-strict>"
+#, no-wrap
 msgid "B<--no-log-sanitize>"
-msgstr "B<--log-strict>"
+msgstr "B<--no-log-sanitize>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:177
 msgid ""
 "disables the anonymization that's normally applied when logging, for example "
 "replacing usernames with USER."
-msgstr ""
+msgstr "禁用登录时通常会执行的匿名化操作，例如将用户名替换为USER。"
 
 #. type: TP
 #: doc/man/wesnoth.6:177
-#, fuzzy, no-wrap
-#| msgid "B<--noaddons>"
+#, no-wrap
 msgid "B<--wnoconsole>"
-msgstr "B<--noaddons>"
+msgstr "B<--wnoconsole>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:180
@@ -507,6 +494,8 @@ msgid ""
 "For Windows, when used with --no-log-to-file, results in output being "
 "written to cerr/cout instead of CONOUT. Otherwise, does nothing."
 msgstr ""
+"在Windows中，当此选项和--no-log-to-file一起使用时，将使输出被写入到cerr/"
+"cout，而不是CONOUT。在其他系统中，此选项无任何效果。"
 
 #. type: TP
 #: doc/man/wesnoth.6:180
@@ -679,25 +668,19 @@ msgstr "B<--plugin>I<\\ script>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:239
-#, fuzzy
-#| msgid ""
-#| "(experimental) load a I<script> which defines a Wesnoth plugin. Similar "
-#| "to B<--script>, but Lua file should return a function which will be run "
-#| "as a coroutine and periodically woken up with updates."
 msgid ""
 "load a I<script> which defines a Wesnoth plugin. Lua file should return a "
 "function which will be run as a coroutine and periodically woken up with "
 "updates."
 msgstr ""
-"（实验性）读取定义了韦诺插件的 I<script>。与B<--script>类似，但Lua文件应返回"
-"一个函数，该函数将作为协程运行，并周期性地使用更新地参数唤起。"
+"读取定义了韦诺插件的脚本（I<script>）。此Lua文件应返回一个函数，该函数将作为"
+"协程运行，并周期性地被更新后的参数唤起。"
 
 #. type: TP
 #: doc/man/wesnoth.6:239
-#, fuzzy, no-wrap
-#| msgid "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
+#, no-wrap
 msgid "B<-P,\\ --patch>I<\\ base-file>B<\\ >I<patch-file>"
-msgstr "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
+msgstr "B<-P,\\ --patch>I<\\ base-file>B<\\ >I<patch-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:244
@@ -735,15 +718,14 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:254
-#, fuzzy, no-wrap
-#| msgid "B<--preprocess-input-macros>I<\\ source-file>"
+#, no-wrap
 msgid "B<--preprocess-string>I<\\ source-string>"
-msgstr "B<--preprocess-input-macros>I<\\ source-file>"
+msgstr "B<--preprocess-string>I<\\ source-string>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:257
 msgid "preprocesses a given string and writes the output to stdout."
-msgstr ""
+msgstr "预处理指定的字符串，并将结果输出到stdout。"
 
 #. type: TP
 #: doc/man/wesnoth.6:257
@@ -753,18 +735,13 @@ msgstr "B<--preprocess-defines=>I<DEFINE1>B<,>I<DEFINE2>B<,>I<...>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:266
-#, fuzzy
-#| msgid ""
-#| "comma separated list of defines to be used by the B<--preprocess> "
-#| "command. If B<SKIP_CORE> is in the define list the \"data/core\" "
-#| "directory won't be preprocessed."
 msgid ""
 "comma separated list of defines to be used by the B<--preprocess> or B<--"
 "preprocess-string> command. If B<SKIP_CORE> is in the define list the \"data/"
 "core\" directory won't be preprocessed."
 msgstr ""
-"由逗号分隔的定义列表，用于 B<--preprocess> 命令。如果B<SKIP_CORE>在定义列表"
-"中，则“data/core”目录不会被预处理。"
+"由逗号分隔的定义列表，用于 B<--preprocess> 或B<--preprocess-string>命令。如果"
+"B<SKIP_CORE>在定义列表中，则“data/core”目录不会被预处理。"
 
 #. type: TP
 #: doc/man/wesnoth.6:266
@@ -774,17 +751,13 @@ msgstr "B<--preprocess-input-macros>I<\\ source-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:275
-#, fuzzy
-#| msgid ""
-#| "used only by the B<--preprocess> command. Specifies a file that contains "
-#| "B<[preproc_define]>s to be included before preprocessing."
 msgid ""
 "used only by the B<--preprocess> or B<--preprocess-string> command. "
 "Specifies a file that contains B<[preproc_define]>s to be included before "
 "preprocessing."
 msgstr ""
-"仅供 B<--preprocess> 命令使用。用于指定一个包含了一个或多个 "
-"B<[preproc_define]> 的文件，其中的定义将在预处理开始前生效。"
+"仅供 B<--preprocess> 或 B<--preprocess-string> 命令使用。用于指定一个包含了一"
+"个或多个 B<[preproc_define]> 的文件，其内容将在预处理开始前被包含。"
 
 #. type: TP
 #: doc/man/wesnoth.6:275
@@ -794,13 +767,6 @@ msgstr "B<--preprocess-output-macros[>I<=target-file>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:288
-#, fuzzy
-#| msgid ""
-#| "used only by the B<--preprocess> command. Will output all preprocessed "
-#| "macros in the target file. If the file is not specified the output will "
-#| "be file '_MACROS_.cfg' in the target directory of preprocess's command. "
-#| "The output file can be passed to B<--preprocess-input-macros>.  This "
-#| "switch should be typed before the B<--preprocess> command."
 msgid ""
 "used only by the B<--preprocess> command (But not by the B<--preprocess-"
 "string> command). Will output all preprocessed macros in the target file. If "
@@ -809,10 +775,10 @@ msgid ""
 "B<--preprocess-input-macros>.  This switch should be typed before the B<--"
 "preprocess> command."
 msgstr ""
-"仅供 B<--preprocess> 命令使用。将会输出目标文件中所有经过了预处理的宏。如果没"
-"有指定文件，那么目标文件将是preprocess命令所指定的目标目录中的“_MACROS_."
-"cfg”。输出文件可传递给 B<--preprocess-input-macros> 。这个开关选项必须出现在 "
-"B<--preprocess> 命令之前。"
+"仅供 B<--preprocess> 命令使用（但 B<--preprocess-string> 命令不使用）。将会输"
+"出目标文件中所有经过了预处理的宏。如果没有指定文件，那么目标文件将是"
+"preprocess命令所指定的目标目录中的“_MACROS_.cfg”。输出文件可传递给 B<--"
+"preprocess-input-macros> 。这个开关选项必须出现在 B<--preprocess> 命令之前。"
 
 #. type: TP
 #: doc/man/wesnoth.6:288
@@ -835,8 +801,8 @@ msgstr "B<--render-image>I<\\ image>B<\\ >I<output>"
 #: doc/man/wesnoth.6:296
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
-"outputs to a .png file. Image path functions are documented at https://wiki."
-"wesnoth.org/ImagePathFunctionWML."
+"outputs to a .png file. Image path functions are documented at https://"
+"wiki.wesnoth.org/ImagePathFunctionWML."
 msgstr ""
 "以一个合法的包含图像路径函数的韦诺“图像路径字符串”作为传入值，并输出一个.png"
 "文件。图像路径函数的文档位于https://wiki.wesnoth.org/ImagePathFunctionWML。"
@@ -924,20 +890,13 @@ msgstr "B<-t[>I<scenario_id>B<],\\ --test[>I<=scenario_id>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:335
-#, fuzzy
-#| msgid ""
-#| "runs the game in a small test scenario. The scenario should be one "
-#| "defined with a B<[test]> WML tag. The default is B<test>.  A "
-#| "demonstration of the B<[micro_ai]> feature can be started with "
-#| "B<micro_ai_test>.  Implies B<--nogui>."
 msgid ""
 "runs the game in a small test scenario. The scenario should be one defined "
 "with a B<[test]> WML tag. The default is B<test>.  A demonstration of the "
 "B<[micro_ai]> feature can be started with B<micro_ai_test>."
 msgstr ""
 "在小型测试场景中运行游戏。该场景应使用 B<[test]> WML标签定义。默认为 "
-"B<test> 。可使用 B<micro_ai_test> 启动对 B<[micro_ai]> 特性的演示。此选项隐"
-"含 B<--nogui> 。"
+"B<test> 。可使用 B<micro_ai_test> 启动对 B<[micro_ai]> 特性的演示。"
 
 #. type: TP
 #: doc/man/wesnoth.6:335
@@ -981,17 +940,14 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:350
-#, fuzzy, no-wrap
-#| msgid "B<-S,--use-schema>I<\\ path>"
+#, no-wrap
 msgid "B<-S,\\ --use-schema>I<\\ path>"
-msgstr "B<-S,--use-schema>I<\\ path>"
+msgstr "B<-S,\\ --use-schema>I<\\ path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:354
-#, fuzzy
-#| msgid "sets the WML schema for use with B<-V,--validate>."
 msgid "sets the WML schema for use with B<-V,\\ --validate>."
-msgstr "设置B<-V,--validate>所使用的WML schema。"
+msgstr "设置 B<-V,\\ --validate> 所使用的WML schema。"
 
 #. type: TP
 #: doc/man/wesnoth.6:354
@@ -1071,10 +1027,9 @@ msgstr "在游戏过程中，验证核心WML。"
 
 #. type: TP
 #: doc/man/wesnoth.6:380
-#, fuzzy, no-wrap
-#| msgid "B<--validate-schema \\ path>"
+#, no-wrap
 msgid "B<--validate-schema>I<\\ path>"
-msgstr "B<--validate-schema \\ path>"
+msgstr "B<--validate-schema>I<\\ path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:383
@@ -1364,8 +1319,8 @@ msgstr "由David White E<lt>davidnwhite@verizon.netE<gt> 编写。"
 #. type: Plain text
 #: doc/man/wesnoth.6:497
 msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
-"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
 "经Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>，ott E<lt>ott@gaon.netE<gt> "
 "和 Soliton E<lt>soliton.de@gmail.comE<gt> 编辑。"
@@ -1390,11 +1345,8 @@ msgstr "版权"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:505 doc/man/wesnothd.6:286
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2025 David White E<lt>davidnwhite@verizon.netE<gt>"
-msgstr "版权所有 \\(co 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgstr "版权所有 \\(co 2003-2025 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:508 doc/man/wesnothd.6:289
@@ -1454,14 +1406,9 @@ msgstr "wesnothd - 韦诺之战（Battle for B<Wesnoth>）多人网络守护进�
 
 #. type: Plain text
 #: doc/man/wesnothd.6:32
-#, fuzzy
-#| msgid ""
-#| "B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] "
-#| "[\\|B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
 msgid "B<wesnothd> [\\|B<-dvw>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|]"
 msgstr ""
-"B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] [\\|"
-"B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
+"B<wesnothd> [\\|B<-dvw>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|]"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:35
@@ -1661,21 +1608,15 @@ msgstr "B<disallow_names>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:118
-#, fuzzy
-#| msgid ""
-#| "Names/nicks that are not accepted by the server. B<*> and B<?> from "
-#| "wildcard patterns are supported. See B<glob>(7)  for more details.  "
-#| "Default values (used if nothing is specified) are: B<*admin*,*admln*,"
-#| "*server*,ai,ai?,computer,human,network,player>."
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: B<*admin*,*admln*,*moderator*,*server*,"
-"ai,ai?,computer,human,network,player>."
+"(used if nothing is specified) are: "
+"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
 msgstr ""
 "服务器不允许使用的用户名/昵称。可以使用B<*>和B<?>通配符。更多详细信息请查看"
-"B<glob>(7)。默认值（如果用户没有指定则自动使用）是：B<*admin*,*admln*,"
-"*server*,ai,ai?,computer,human,network,player>。"
+"B<glob>(7)。默认值（如果用户没有指定具体用户名/昵称，则自动使用）是："
+"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>。"
 
 #. type: TP
 #: doc/man/wesnothd.6:118
@@ -1698,7 +1639,7 @@ msgstr ""
 #: doc/man/wesnothd.6:122
 #, no-wrap
 msgid "B<id>"
-msgstr ""
+msgstr "B<id>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:125
@@ -1707,6 +1648,8 @@ msgid ""
 "information. Generally is the major.minor version of accepted clients, such "
 "as 1.16 or 1.17."
 msgstr ""
+"当使用数据库功能来存储游戏信息时，服务器的ID。通常是服务器可接受的客户端版本"
+"（大版本.小版本），如1.16或1.17。"
 
 #. type: TP
 #: doc/man/wesnothd.6:125
@@ -1806,40 +1749,40 @@ msgstr "设置服务器是否自动保存游戏录像。（默认值：B<false>�
 #: doc/man/wesnothd.6:146
 #, no-wrap
 msgid "B<tls_enabled>"
-msgstr ""
+msgstr "B<tls_enabled>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:149
 msgid "Enable use of TLS. If true, requires 3 following options to be set too."
-msgstr ""
+msgstr "启用TLS。如果使用本选项，则接下去的三个选项必须设置。"
 
 #. type: TP
 #: doc/man/wesnothd.6:149
 #, no-wrap
 msgid "B<tls_fullchain>"
-msgstr ""
+msgstr "B<tls_fullchain>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:152
 msgid "TLS full certificate chain in .pem format"
-msgstr ""
+msgstr ".pem格式的TLS完整证书链"
 
 #. type: TP
 #: doc/man/wesnothd.6:152
 #, no-wrap
 msgid "B<tls_private_key>"
-msgstr ""
+msgstr "B<tls_private_key>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:155
 msgid "private key for TLS in .pem format"
-msgstr ""
+msgstr ".pem格式的TLS私钥"
 
 #. type: TP
 #: doc/man/wesnothd.6:155
 #, no-wrap
 msgid "B<tls_dh>"
-msgstr ""
+msgstr "B<tls_dh>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:158
@@ -1847,6 +1790,8 @@ msgid ""
 "TLS DH parameters, as .pem file. Generate with B<openssl dhparam -out "
 "filename.pem 4096>"
 msgstr ""
+".pem格式的TLS DH参数文件。可用 B<openssl dhparam -out filename.pem 4096>来生"
+"成"
 
 #. type: TP
 #: doc/man/wesnothd.6:158
@@ -2037,16 +1982,12 @@ msgstr "B<db_users_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:233
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user data. "
-#| "Most likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forum saves its user data. Most "
 "likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgstr ""
-"你的phpbb论坛中存放用户数据的表名。很可能是E<lt>table-prefixE<gt>_users（例如"
-"phpbb3_users）。"
+"你的phpbb论坛用于存放用户数据的表名。很可能是E<lt>table-prefixE<gt>_users（例"
+"如phpbb3_users）。"
 
 #. type: TP
 #: doc/man/wesnothd.6:233
@@ -2087,22 +2028,18 @@ msgstr "用于保存wesnothd自有数据的表名，其中是与单场游戏中�
 
 #. type: TP
 #: doc/man/wesnothd.6:242
-#, fuzzy, no-wrap
-#| msgid "B<db_game_info_table>"
+#, no-wrap
 msgid "B<db_game_content_info_table>"
-msgstr "B<db_game_info_table>"
+msgstr "B<db_game_content_info_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:245
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which wesnothd will save its own data about the "
-#| "modifications used in a game."
 msgid ""
 "The name of the table in which wesnothd will save its own data about game "
 "content (scenario/era/modifications) used in a game."
 msgstr ""
-"用于保存wesnothd自有数据的表名，其中是与单场游戏中使用的模组相关的数据。"
+"用于保存wesnothd自有数据的表名，其中是与游戏中使用内容（场景/时代/模组）相关"
+"的数据。"
 
 #. type: TP
 #: doc/man/wesnothd.6:245
@@ -2112,25 +2049,19 @@ msgstr "B<db_user_group_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:248
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user group "
-#| "data. Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
-#| "phpbb3_user_group)."
 msgid ""
 "The name of the table in which your phpbb forum saves its user group data. "
 "Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
 "phpbb3_user_group)."
 msgstr ""
-"你的phpbb论坛中存放用户组数据的表名。很可能是E<lt>table-"
+"你的phpbb论坛用于存放用户组数据的表名。很可能是E<lt>table-"
 "prefixE<gt>_users_group（例如phpbb3_users_group）。"
 
 #. type: TP
 #: doc/man/wesnothd.6:248
-#, fuzzy, no-wrap
-#| msgid "B<db_name>"
+#, no-wrap
 msgid "B<db_tournament_query>"
-msgstr "B<db_name>"
+msgstr "B<db_tournament_query>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:251
@@ -2138,62 +2069,53 @@ msgid ""
 "The SQL query to find tournaments to announce on login. Should return "
 "tournament B<title>, B<status> and B<url>."
 msgstr ""
+"SQL查询，用于查找登录时公布给玩家看的锦标赛。此查询应返回锦标赛的B<title>（标"
+"题），B<status>（状态）和B<url>（网址）。"
 
 #. type: TP
 #: doc/man/wesnothd.6:251
-#, fuzzy, no-wrap
-#| msgid "B<connections_allowed>"
+#, no-wrap
 msgid "B<db_connection_history_table>"
-msgstr "B<connections_allowed>"
+msgstr "B<db_connection_history_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:254
 msgid ""
 "The name of the table in which to store login/logout times. Also used for "
 "matching IPs to users and vice versa."
-msgstr ""
+msgstr "存放登入/登出时间的表名。也用于用户与IP的双向匹配。"
 
 #. type: TP
 #: doc/man/wesnothd.6:254
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_topics_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_topics_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:257
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user data. "
-#| "Most likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forum saves its topic (thread) "
 "information. Most likely this will be E<lt>table-prefixE<gt>_topics (e.g. "
 "phpbb3_topics)."
 msgstr ""
-"你的phpbb论坛中存放用户数据的表名。很可能是E<lt>table-prefixE<gt>_users（例如"
-"phpbb3_users）。"
+"你的phpbb论坛用于存放主题（讨论串）信息的表名。很可能是E<lt>table-"
+"prefixE<gt>_topics（例如phpbb3_topics）。"
 
 #. type: TP
 #: doc/man/wesnothd.6:257
-#, fuzzy, no-wrap
-#| msgid "B<db_users_table>"
+#, no-wrap
 msgid "B<db_banlist_table>"
-msgstr "B<db_users_table>"
+msgstr "B<db_banlist_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:260
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which your phpbb forums saves its user data. "
-#| "Most likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgid ""
 "The name of the table in which your phpbb forum saves its user bans data. "
 "Most likely this will be E<lt>table-prefixE<gt>_banlist (e.g. "
 "phpbb3_banlist)."
 msgstr ""
-"你的phpbb论坛中存放用户数据的表名。很可能是E<lt>table-prefixE<gt>_users（例如"
-"phpbb3_users）。"
+"你的phpbb论坛用于存放用户封禁数据的表名。很可能是E<lt>table-"
+"prefixE<gt>_banlist（例如phpbb3_banlist）。"
 
 #. type: TP
 #: doc/man/wesnothd.6:260
@@ -2209,27 +2131,22 @@ msgstr "论坛用户组ID，该组将被视为拥有管理员权限。"
 
 #. type: TP
 #: doc/man/wesnothd.6:263
-#, fuzzy, no-wrap
-#| msgid "B<mp_mod_group>"
+#, no-wrap
 msgid "B<forum_admin_group>"
-msgstr "B<mp_mod_group>"
+msgstr "B<forum_admin_group>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:266 doc/man/wesnothd.6:269
-#, fuzzy
-#| msgid ""
-#| "The ID of the forum group to be considered as having moderation authority."
 msgid ""
 "The ID of one of the forum groups to be considered as having admin authority "
 "on the add-ons server."
-msgstr "论坛用户组ID，该组将被视为拥有管理员权限。"
+msgstr "论坛用户组ID，该组将被视为在附加组件服务器上拥有管理员权限。"
 
 #. type: TP
 #: doc/man/wesnothd.6:266
-#, fuzzy, no-wrap
-#| msgid "B<mp_mod_group>"
+#, no-wrap
 msgid "B<site_admin_group>"
-msgstr "B<mp_mod_group>"
+msgstr "B<site_admin_group>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:274
@@ -2244,182 +2161,17 @@ msgstr ""
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
-"Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt>.  This manual page was originally "
+"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "由 David White E<lt>davidnwhite@verizon.netE<gt> 编写。经 Nils Kneuper "
 "E<lt>crazy-ivanovic@gmx.netE<gt>，ott E<lt>ott@gaon.netE<gt>，Soliton "
-"E<lt>soliton.de@gmail.comE<gt> 和 Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt> 编辑。这个手册页最初由 Cyril Bouthors "
+"E<lt>soliton.de@gmail.comE<gt> 和 Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt> 编辑。这个手册页最初由 Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt> 编写。"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:293
 msgid "B<wesnoth>(6)"
 msgstr "B<wesnoth>(6)"
-
-#~ msgid "overrides the data directory with the one specified"
-#~ msgstr "使用指定的目录作为数据目录"
-
-#, no-wrap
-#~ msgid "B<--bunzip2>I<\\ infile.bz2>"
-#~ msgstr "B<--bunzip2>I<\\ infile.bz2>"
-
-#~ msgid ""
-#~ "decompresses a file which should be in bzip2 format and stores it without "
-#~ "the .bz2 suffix. The I<infile.bz2> will be removed."
-#~ msgstr ""
-#~ "解压缩应为bzip2格式的文件，解压后去掉.bz2后缀。文件I<infile.bz2>将被删除。"
-
-#, no-wrap
-#~ msgid "B<--bzip2>I<\\ infile>"
-#~ msgstr "B<--bzip2>I<\\ infile>"
-
-#~ msgid ""
-#~ "compresses a file in bzip2 format, stores it as I<infile>.bz2 and removes "
-#~ "I<infile>."
-#~ msgstr ""
-#~ "将I<infile>压缩为bzip2格式文件，文件名为I<infile>.bz2。文件I<infile>将被删"
-#~ "除。"
-
-#, no-wrap
-#~ msgid "B<--config-dir>I<\\ name>"
-#~ msgstr "B<--config-dir>I<\\ name>"
-
-#~ msgid "Deprecated, use B<--userdata-dir>."
-#~ msgstr "已废弃，请使用B<--userdata-dir>。"
-
-#, no-wrap
-#~ msgid "B<--config-path>"
-#~ msgstr "B<--config-path>"
-
-#~ msgid "Deprecated, use B<--userdata-path>."
-#~ msgstr "已废弃，请使用B<--userdata-path>。"
-
-#, no-wrap
-#~ msgid "B<--gunzip>I<\\ infile.gz>"
-#~ msgstr "B<--gunzip>I<\\ infile.gz>"
-
-#~ msgid ""
-#~ "decompresses a file which should be in gzip format and stores it without "
-#~ "the .gz suffix. The I<infile.gz> will be removed."
-#~ msgstr ""
-#~ "解压缩应为gzip格式的文件，解压后去掉.gz后缀。文件I<infile.gz>将被删除。"
-
-#, no-wrap
-#~ msgid "B<--gzip>I<\\ infile>"
-#~ msgstr "B<--gzip>I<\\ infile>"
-
-#~ msgid ""
-#~ "compresses a file in gzip format, stores it as I<infile>.gz and removes "
-#~ "I<infile>."
-#~ msgstr ""
-#~ "将I<infile>压缩为gzip格式文件，文件名为I<infile>.gz。文件I<infile>将被删"
-#~ "除。"
-
-#, no-wrap
-#~ msgid "B<--nodelay>"
-#~ msgstr "B<--nodelay>"
-
-#~ msgid ""
-#~ "runs the game without any delays for graphic benchmarking. This is "
-#~ "automatically enabled by B<--nogui>."
-#~ msgstr ""
-#~ "无延迟地运行游戏，以执行图像基准测试。使用 B<--nogui> 时会自动启用本选项。"
-
-#, no-wrap
-#~ msgid "B<--script>I<\\ file>"
-#~ msgstr "B<--script>I<\\ file>"
-
-#~ msgid ""
-#~ "(experimental)  I<file> containing a Lua script to control the client."
-#~ msgstr "（试验性）指定一个B<文件>，其中包含了用于控制客户端的Lua脚本。"
-
-#, no-wrap
-#~ msgid "B<--userconfig-dir>I<\\ name>"
-#~ msgstr "B<--userconfig-dir>I<\\ name>"
-
-#~ msgid ""
-#~ "sets the user configuration directory to I<name> under $HOME or \"My "
-#~ "Documents\\eMy Games\" for windows.  You can also specify an absolute "
-#~ "path for the configuration directory outside the $HOME or \"My "
-#~ "Documents\\eMy Games\". On Windows it is also possible to specify a "
-#~ "directory relative to the process working directory by using path "
-#~ "starting with \".\\e\" or \"..\\e\".  Under X11 this defaults to "
-#~ "$XDG_CONFIG_HOME or $HOME/.config/wesnoth, on other systems to the "
-#~ "userdata path."
-#~ msgstr ""
-#~ "设置用户配置目录为$HOME或者Windows下“我的文档\\我的游戏（My "
-#~ "Documents\\eMy Games）”下的I<name>目录。也可以为配置目录指定一条绝对路径，"
-#~ "此路径可以在$HOME或者“My Documents\\eMy Games”之外。在Windows下，也可以使"
-#~ "用以“.\\e”或“..\\e”开头的路径来指定相对于游戏进程工作目录的目录。在X11下，"
-#~ "配置目录默认为$XDG_CONFIG_HOME或者$HOME/.config/wesnoth。在其他系统上，配"
-#~ "置目录默认为用户数据目录。"
-
-#, no-wrap
-#~ msgid "B<--userconfig-path>"
-#~ msgstr "B<--userconfig-path>"
-
-#~ msgid "prints the path of the user configuration directory and exits."
-#~ msgstr "输出用户配置目录的路径并退出。"
-
-#, no-wrap
-#~ msgid "B<-t\\ >I<number>B<,\\ --threads>I<\\ number>"
-#~ msgstr "B<-t\\ >I<number>B<,\\ --threads>I<\\ number>"
-
-#~ msgid ""
-#~ "sets the maximum number of waiting worker threads for network I/O to n "
-#~ "(default: B<5>,\\ max:\\ B<30>)."
-#~ msgstr ""
-#~ "设置网络I/O中等待状态的工作线程的最大数量为n（默认值：B<5>，\\ 最大值：\\ "
-#~ "B<30>）。"
-
-#, no-wrap
-#~ msgid "B<-T\\ >I<number>B<,\\ --max-threads>I<\\ number>"
-#~ msgstr "B<-T\\ >I<number>B<,\\ --max-threads>I<\\ number>"
-
-#~ msgid ""
-#~ "sets the maximum number of worker threads that will be created.  If set "
-#~ "to B<0> there will be no limit (default: B<0>)."
-#~ msgstr ""
-#~ "设置允许创建的最大工作线程数。如果设置为B<0>则不限制线程数（默认值：B<0>）"
-
-#, no-wrap
-#~ msgid "B<compress_stored_rooms>"
-#~ msgstr "B<compress_stored_rooms>"
-
-#~ msgid ""
-#~ "Determines whether the rooms file should be read and written to in "
-#~ "compressed form. Defaults to B<yes>."
-#~ msgstr "指定房间文件是否应该以压缩形式读写。默认值为B<yes>。"
-
-#, no-wrap
-#~ msgid "B<new_room_policy>"
-#~ msgstr "B<new_room_policy>"
-
-#~ msgid ""
-#~ "Determines who can create new rooms on the server. Available values are "
-#~ "B<everyone>, B<registered>, B<admin> and B<nobody>, and give the "
-#~ "permission respectively to everyone, registered users, admin users or "
-#~ "disables new room creation. Default value is B<everyone>."
-#~ msgstr ""
-#~ "指定谁能在服务器上创建新房间。可选值为 B<everyone>，B<registered>，"
-#~ "B<admin>和B<nobody>，分别代表所有人，注册用户，管理员或者禁止创建新房间。"
-#~ "默认值为 B<everyone>。"
-
-#, no-wrap
-#~ msgid "B<room_save_file>"
-#~ msgstr "B<room_save_file>"
-
-#~ msgid ""
-#~ "Path to a file where the room info should be stored. This file is read on "
-#~ "server startup and written to later. If empty or not set, rooms are not "
-#~ "loaded and not saved."
-#~ msgstr ""
-#~ "指定存放房间信息的文件的路径。这个文件在服务器启动时读取，之后会写入。如果"
-#~ "设为空或者不设置，则房间不会被读取或保存。"
-
-#, no-wrap
-#~ msgid "B<db_game_modification_info_table>"
-#~ msgstr "B<db_game_modification_info_table>"

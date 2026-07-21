@@ -39,8 +39,7 @@ unit_attack::unit_attack(const unit_map::iterator& attacker_itor,
 						   const unit_map::iterator& defender_itor,
 						   std::vector<battle_context>&& weapons,
 						   const int best_weapon,
-						   std::vector<gui2::widget_data>& bc_widget_data_vector,
-						   const int leadership_bonus)
+						   std::vector<gui2::widget_data>& bc_widget_data_vector)
 	: modal_dialog(window_id())
 	, selected_weapon_(-1)
 	, attacker_itor_(attacker_itor)
@@ -48,14 +47,13 @@ unit_attack::unit_attack(const unit_map::iterator& attacker_itor,
 	, weapons_(std::move(weapons))
 	, best_weapon_(best_weapon)
 	, bc_widget_data_vector_(bc_widget_data_vector)
-	, leadership_bonus_(leadership_bonus)
 {
 }
 
 void unit_attack::damage_calc_callback()
 {
 	const std::size_t index = find_widget<listbox>("weapon_list").get_selected_row();
-	attack_predictions::display(weapons_[index], attacker_itor_.get_shared_ptr(), defender_itor_.get_shared_ptr(), leadership_bonus_);
+	attack_predictions::display(weapons_[index], attacker_itor_.get_shared_ptr(), defender_itor_.get_shared_ptr());
 }
 
 void unit_attack::pre_show()

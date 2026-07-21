@@ -20,7 +20,7 @@
 #include "gui/widgets/widget.hpp"
 #include "utils/ranges.hpp"
 
-#include <SDL2/SDL_events.h>
+#include <SDL3/SDL_events.h>
 
 #include <cassert>
 

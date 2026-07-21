@@ -79,7 +79,10 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 		bool attacking,
 		nonempty_unit_const_ptr oppp,
 		const map_location& opp_loc,
-		const const_attack_ptr& opp_weapon)
+		const const_attack_ptr& opp_weapon,
+		utils::optional<int> opp_terrain_defense,
+		utils::optional<int> lawful_bonus
+	)
 	: weapon(nullptr)
 	, attack_num(u_attack_num)
 	, is_attacker(attacking)
@@ -93,6 +96,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	, swarm(false)
 	, firststrike(false)
 	, disable(false)
+	, leadership_bonus(0)
 	, experience(up->experience())
 	, max_experience(up->max_experience())
 	, level(up->level())
@@ -133,12 +137,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	}
 
 	// Get the weapon characteristics as appropriate.
-	auto ctx = weapon->specials_context(up, oppp, u_loc, opp_loc, attacking, opp_weapon);
-	utils::optional<decltype(ctx)> opp_ctx;
-
-	if(opp_weapon) {
-		opp_ctx.emplace(opp_weapon->specials_context(oppp, up, opp_loc, u_loc, !attacking, weapon));
-	}
+	auto ctx = specials_context_t::make({ up, u_loc, weapon }, { oppp, opp_loc, opp_weapon }, attacking);
 
 	slows = weapon->has_special_or_ability("slow") && !opp.get_state("unslowable") ;
 	drains = !opp.get_state("undrainable") && weapon->has_special_or_ability("drains");
@@ -155,12 +154,12 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	}
 
 	// Handle plague.
-	unit_ability_list plague_specials = weapon->get_specials_and_abilities("plague");
+	active_ability_list plague_specials = weapon->get_specials_and_abilities("plague");
 	plagues = !opp.get_state("unplagueable") && !plague_specials.empty() &&
 		opp.undead_variation() != "null" && !resources::gameboard->map().is_village(opp_loc);
 
 	if(plagues) {
-		plague_type = (*plague_specials.front().ability_cfg)["type"].str();
+		plague_type = plague_specials.front().ability_cfg()["type"].str();
 
 		if(plague_type.empty()) {
 			plague_type = u.type().parent_id();
@@ -168,13 +167,9 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	}
 
 	// Compute chance to hit.
-	signed int cth = opp.defense_modifier(resources::gameboard->map().get_terrain(opp_loc)) + weapon->accuracy()
-		- (opp_weapon ? opp_weapon->parry() : 0);
 
-	cth = std::clamp(cth, 0, 100);
-
-	cth = weapon->composite_value(weapon->get_specials_and_abilities("chance_to_hit"), cth);
-
+	int opp_base_cth = opp_terrain_defense ? (100 - *opp_terrain_defense) : opp.defense_modifier(resources::gameboard->map().get_terrain(opp_loc));
+	signed int cth = weapon->modified_chance_to_hit(opp_base_cth);
 
 	if(opp.get_state("invulnerable")) {
 		cth = 0;
@@ -190,17 +185,25 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 
 	// Time of day bonus.
 	unit_alignments::type alignment = weapon->alignment().value_or(u.alignment());
-	damage_multiplier += combat_modifier(
+	if (lawful_bonus) {
+		damage_multiplier += generic_combat_modifier(*lawful_bonus, alignment, u.is_fearless(), 0);
+	}
+	else {
+		damage_multiplier += combat_modifier(
 			resources::gameboard->units(), resources::gameboard->map(), u_loc, alignment, u.is_fearless());
+	}
+
 
 	// Leadership bonus.
-	int leader_bonus = under_leadership(u, u_loc, weapon, opp_weapon);
-	if(leader_bonus != 0) {
-		damage_multiplier += leader_bonus;
+	leadership_bonus = under_leadership(u, ctx);
+	if(leadership_bonus != 0) {
+		damage_multiplier += leadership_bonus;
 	}
 
 	// Resistance modifier.
-	damage_multiplier *= opp.damage_from(*weapon, !attacking, opp_loc, opp_weapon);
+
+	const auto [damage_type, resistance_modifier] = weapon->effective_damage_type();
+	damage_multiplier *= resistance_modifier;
 
 	// Compute both the normal and slowed damage.
 	damage = round_damage(base_damage, damage_multiplier, 10000);
@@ -225,122 +228,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	weapon->modified_attacks(swarm_min, swarm_max);
 	swarm = swarm_min != swarm_max;
 	num_blows = calc_blows(hp);
-}
-
-battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
-		const_attack_ptr att_weapon,
-		bool attacking,
-		const unit_type* opp_type,
-		const const_attack_ptr& opp_weapon,
-		unsigned int opp_terrain_defense,
-		int lawful_bonus)
-	: weapon(std::move(att_weapon))
-	, attack_num(-2) // This is and stays invalid. Always use weapon when using this constructor.
-	, is_attacker(attacking)
-	, is_poisoned(false)
-	, is_slowed(false)
-	, slows(false)
-	, drains(false)
-	, petrifies(false)
-	, plagues(false)
-	, poisons(false)
-	, swarm(false)
-	, firststrike(false)
-	, disable(false)
-	, experience(0)
-	, max_experience(0)
-	, level(0)
-	, rounds(1)
-	, hp(0)
-	, max_hp(0)
-	, chance_to_hit(0)
-	, damage(0)
-	, slow_damage(0)
-	, drain_percent(0)
-	, drain_constant(0)
-	, num_blows(0)
-	, swarm_min(0)
-	, swarm_max(0)
-	, plague_type()
-{
-	if(!u_type || !opp_type) {
-		return;
-	}
-
-	// Get the current state of the unit.
-	if(u_type->hitpoints() < 0) {
-		hp = 0;
-	} else {
-		hp = u_type->hitpoints();
-	}
-
-	max_experience = u_type->experience_needed();
-	level = (u_type->level());
-	max_hp = (u_type->hitpoints());
-
-	// Exit if no weapon.
-	if(!weapon) {
-		return;
-	}
-
-	// Get the weapon characteristics as appropriate.
-	auto ctx = weapon->specials_context(*u_type, map_location::null_location(), attacking);
-	utils::optional<decltype(ctx)> opp_ctx;
-
-	if(opp_weapon) {
-		opp_ctx.emplace(opp_weapon->specials_context(*opp_type, map_location::null_location(), !attacking));
-	}
-
-	slows = weapon->has_special("slow");
-	drains = !opp_type->musthave_status("undrainable") && weapon->has_special("drains");
-	petrifies = weapon->has_special("petrifies");
-	poisons = !opp_type->musthave_status("unpoisonable") && weapon->has_special("poison");
-	rounds = weapon->get_specials("berserk").highest("value", 1).first;
-	firststrike = weapon->has_special("firststrike");
-	disable = weapon->has_special("disable");
-
-	unit_ability_list plague_specials = weapon->get_specials("plague");
-	plagues = !opp_type->musthave_status("unplagueable") && !plague_specials.empty() &&
-		opp_type->undead_variation() != "null";
-
-	if(plagues) {
-		plague_type = (*plague_specials.front().ability_cfg)["type"].str();
-		if(plague_type.empty()) {
-			plague_type = u_type->parent_id();
-		}
-	}
-
-	signed int cth = 100 - opp_terrain_defense + weapon->accuracy() - (opp_weapon ? opp_weapon->parry() : 0);
-	cth = std::clamp(cth, 0, 100);
-
-	cth = weapon->composite_value(weapon->get_specials("chance_to_hit"), cth);
-
-	chance_to_hit = std::clamp(cth, 0, 100);
-
-	double base_damage = weapon->modified_damage();
-	int damage_multiplier = 100;
-	unit_alignments::type alignment = weapon->alignment().value_or(u_type->alignment());
-	damage_multiplier
-			+= generic_combat_modifier(lawful_bonus, alignment, u_type->musthave_status("fearless"), 0);
-	damage_multiplier *= opp_type->resistance_against(weapon->type(), !attacking);
-
-	damage = round_damage(base_damage, damage_multiplier, 10000);
-	slow_damage = round_damage(base_damage, damage_multiplier, 20000);
-
-	if(drains) {
-		// Compute the drain percent (with 50% as the base for backward compatibility)
-		drain_percent = weapon->composite_value(weapon->get_specials("drains"), 50);
-	}
-
-	// Add heal_on_hit (the drain constant)
-	drain_constant += weapon->composite_value(weapon->get_specials("heal_on_hit"), 0);
-
-	drains = drain_constant || drain_percent;
-
-	// Compute the number of blows and handle swarm.
-	weapon->modified_attacks(swarm_min, swarm_max);
-	swarm = swarm_min != swarm_max;
-	num_blows = calc_blows(hp);
+	can_advance = u.advances();
 }
 
 
@@ -360,8 +248,8 @@ battle_context::battle_context(
 	, attacker_combatant_()
 	, defender_combatant_()
 {
-	size_t a_wep_uindex = static_cast<size_t>(a_wep_index);
-	size_t d_wep_uindex = static_cast<size_t>(d_wep_index);
+	std::size_t a_wep_uindex = static_cast<std::size_t>(a_wep_index);
+	std::size_t d_wep_uindex = static_cast<std::size_t>(d_wep_index);
 
 	const_attack_ptr a_wep(a_wep_uindex < attacker->attacks().size() ? attacker->attacks()[a_wep_index].shared_from_this() : nullptr);
 	const_attack_ptr d_wep(d_wep_uindex < defender->attacks().size() ? defender->attacks()[d_wep_index].shared_from_this() : nullptr);
@@ -372,7 +260,7 @@ battle_context::battle_context(
 
 void battle_context::simulate(const combatant* prev_def)
 {
-	assert((attacker_combatant_.get() != nullptr) == (defender_combatant_.get() != nullptr));
+	assert((attacker_combatant_ != nullptr) == (defender_combatant_ != nullptr));
 	assert(attacker_stats_);
 	assert(defender_stats_);
 	if(!attacker_combatant_) {
@@ -535,8 +423,9 @@ battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr at
 	std::vector<battle_context> choices;
 
 	// What options does attacker have?
-	for(size_t i = 0; i < attacker->attacks().size(); ++i) {
-		const attack_type& att = attacker->attacks()[i];
+	const auto attacks = attacker->attacks();
+	for(std::size_t i = 0; i < attacks.size(); ++i) {
+		const attack_type& att = attacks[i];
 
 		if(att.attack_weight() <= 0) {
 			continue;
@@ -585,15 +474,17 @@ battle_context battle_context::choose_defender_weapon(nonempty_unit_const_ptr at
 		const combatant* prev_def)
 {
 	log_scope2(log_attack, "choose_defender_weapon");
-	VALIDATE(attacker_weapon < attacker->attacks().size(), _("An invalid attacker weapon got selected."));
+	const auto attackers_attacks = attacker->attacks();
+	VALIDATE(attacker_weapon < attackers_attacks.size(), _("An invalid attacker weapon got selected."));
 
-	const attack_type& att = attacker->attacks()[attacker_weapon];
+	const attack_type& att = attackers_attacks[attacker_weapon];
 	auto no_weapon = [&]() { return battle_context(attacker, attacker_loc, attacker_weapon, defender, defender_loc, -1); };
 	std::vector<battle_context> choices;
 
 	// What options does defender have?
-	for(size_t i = 0; i < defender->attacks().size(); ++i) {
-		const attack_type& def = defender->attacks()[i];
+	const auto defenses = defender->attacks();
+	for(std::size_t i = 0; i < defenses.size(); ++i) {
+		const attack_type& def = defenses[i];
 		if(def.range() != att.range() || def.defense_weight() <= 0) {
 			//no need to calculate the battle_context here.
 			continue;
@@ -629,16 +520,16 @@ battle_context battle_context::choose_defender_weapon(nonempty_unit_const_ptr at
 		double max_weight = 0.0;
 
 		for(const auto& choice : choices) {
-			const attack_type& def = defender->attacks()[choice.defender_stats_->attack_num];
+			const double d_weight = choice.defender_stats_->weapon->defense_weight();
 
-			if(def.defense_weight() >= max_weight) {
+			if(d_weight >= max_weight) {
 				const battle_context_unit_stats& def_stats = *choice.defender_stats_;
 
-				max_weight = def.defense_weight();
+				max_weight = d_weight;
 				int rating = static_cast<int>(
-						def_stats.num_blows * def_stats.damage * def_stats.chance_to_hit * def.defense_weight());
+						def_stats.num_blows * def_stats.damage * def_stats.chance_to_hit * d_weight);
 
-				if(def.defense_weight() > max_weight || rating < min_rating) {
+				if(d_weight > max_weight || rating < min_rating) {
 					min_rating = rating;
 				}
 			}
@@ -648,13 +539,13 @@ battle_context battle_context::choose_defender_weapon(nonempty_unit_const_ptr at
 	battle_context* best_choice = nullptr;
 	// Multiple options: simulate them, save best.
 	for(auto& choice : choices) {
-		const attack_type& def = defender->attacks()[choice.defender_stats_->attack_num];
+		const double d_weight = choice.defender_stats_->weapon->defense_weight();
 
 		choice.simulate(prev_def);
 
 
 		int simple_rating = static_cast<int>(
-				choice.defender_stats_->num_blows * choice.defender_stats_->damage * choice.defender_stats_->chance_to_hit * def.defense_weight());
+				choice.defender_stats_->num_blows * choice.defender_stats_->damage * choice.defender_stats_->chance_to_hit * d_weight);
 
 		//FIXME: make sure there is no mostake in the better_combat call-
 		if(simple_rating >= min_rating && (!best_choice || choice.better_defense(*best_choice, 1.0))) {
@@ -771,8 +662,8 @@ private:
 
 	bool use_prng_;
 
-	std::vector<bool> prng_attacker_;
-	std::vector<bool> prng_defender_;
+	int bias_attacker_;
+	int bias_defender_;
 };
 
 attack::unit_info::unit_info(const map_location& loc, int weapon, unit_map& units)
@@ -846,8 +737,8 @@ attack::attack(const map_location& attacker,
 
 	//new experimental prng mode.
 	, use_prng_(resources::classification->random_mode == "biased" && randomness::generator->is_networked() == false)
-	, prng_attacker_()
-	, prng_defender_()
+	, bias_attacker_(0)
+	, bias_defender_(0)
 {
 	if(use_prng_) {
 		LOG_NG << "Using experimental PRNG for combat";
@@ -862,6 +753,8 @@ void attack::fire_event(const std::string& n)
 void attack::fire_event_impl(const std::string& n, bool reverse)
 {
 	LOG_NG << "attack: firing '" << n << "' event";
+	// FIXME: this passes nullptr to the specials_context, i assume it's to avoid binding the context to the concrete c++ unit objects in case the unit gets replaced by wml
+	// But that doesn't really work, see the related comment in attack_type::special_active_impl
 
 	// prepare the event data for weapon filtering
 	config ev_data;
@@ -869,23 +762,13 @@ void attack::fire_event_impl(const std::string& n, bool reverse)
 	config& d_weapon_cfg = ev_data.add_child(reverse ? "first" : "second");
 
 	// Need these to ensure weapon filters work correctly
-	utils::optional<attack_type::specials_context_t> a_ctx, d_ctx;
+	auto ctx = specials_context_t::make({ nullptr, a_.loc_, a_stats_->weapon }, { nullptr, d_.loc_, d_stats_->weapon }, true);
 
 	if(a_stats_->weapon != nullptr && a_.valid()) {
-		if(d_stats_->weapon != nullptr && d_.valid()) {
-			a_ctx.emplace(a_stats_->weapon->specials_context(nullptr, nullptr, a_.loc_, d_.loc_, true, d_stats_->weapon));
-		} else {
-			a_ctx.emplace(a_stats_->weapon->specials_context(nullptr, a_.loc_, true));
-		}
 		a_stats_->weapon->write(a_weapon_cfg);
 	}
 
 	if(d_stats_->weapon != nullptr && d_.valid()) {
-		if(a_stats_->weapon != nullptr && a_.valid()) {
-			d_ctx.emplace(d_stats_->weapon->specials_context(nullptr, nullptr, d_.loc_, a_.loc_, false, a_stats_->weapon));
-		} else {
-			d_ctx.emplace(d_stats_->weapon->specials_context(nullptr, d_.loc_, false));
-		}
 		d_stats_->weapon->write(d_weapon_cfg);
 	}
 
@@ -983,33 +866,18 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 	int ran_num;
 
 	if(use_prng_) {
-
-		std::vector<bool>& prng_seq = attacker_turn ? prng_attacker_ : prng_defender_;
-
-		if(prng_seq.empty()) {
-			const int ntotal = attacker.cth_*attacker.n_attacks_;
-			int num_hits = ntotal/100;
-			const int additional_hit_chance = ntotal%100;
-			if(additional_hit_chance > 0 && randomness::generator->get_random_int(0, 99) < additional_hit_chance) {
-				++num_hits;
-			}
-
-			std::vector<int> indexes;
-			for(int i = 0; i != attacker.n_attacks_; ++i) {
-				prng_seq.push_back(false);
-				indexes.push_back(i);
-			}
-
-			for(int i = 0; i != num_hits; ++i) {
-				int n = randomness::generator->get_random_int(0, static_cast<int>(indexes.size())-1);
-				prng_seq[indexes[n]] = true;
-				indexes.erase(indexes.begin() + n);
-			}
+		if(attacker.cth_ == 0 || attacker.cth_ == 100) {
+			// if cth is 0/100 we never/always want to hit, even if bias would give us a chance to do so. We also don't want to modify bias
+			// TODO: should we call randomness::generator->get_random_int() anyways to stay in sync? (doing so would mean we are calling rng the same amount of times in the biased and defaultmode
+			ran_num = 50;
+		} else {
+			int& bias = attacker_turn ? bias_attacker_ : bias_defender_;
+			// attacker.n_attacks_ is the number of strikes left.
+			int expected_hits = attacker.cth_ * attacker.n_attacks_ + bias;
+			bool does_hit = randomness::generator->get_random_int(0,  100 * attacker.n_attacks_ - 1) < expected_hits;
+			bias += (attacker.cth_ - 100 * int(does_hit));
+			ran_num = does_hit ? 0 : 99;
 		}
-
-		bool does_hit = prng_seq.back();
-		prng_seq.pop_back();
-		ran_num = does_hit ? 0 : 99;
 	} else {
 		ran_num = randomness::generator->get_random_int(0, 99);
 	}
@@ -1080,6 +948,10 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 						   << '\n';
 
 				extra_hit_sounds.push_back(game_config::sounds::status::petrified);
+			}
+		} else {
+			if(prefs::get().show_attack_miss_indicator()) {
+				float_text << _("attack^miss");
 			}
 		}
 
@@ -1590,9 +1462,16 @@ void attack_unit_and_advance(const map_location& attacker,
 	}
 }
 
-int under_leadership(const unit &u, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon)
+int under_leadership(const unit& u, const map_location& loc)
 {
-	unit_ability_list abil = u.get_abilities_weapons("leadership", loc, std::move(weapon), std::move(opp_weapon));
+	active_ability_list abil = u.get_abilities("leadership", loc);
+	unit_abilities::effect leader_effect(abil, 0, nullptr, unit_abilities::EFFECT_CUMULABLE);
+	return leader_effect.get_composite_value();
+}
+
+int under_leadership(const unit& u, const specials_context_t& context)
+{
+	active_ability_list abil = context.get_abilities_weapons("leadership", u);
 	unit_abilities::effect leader_effect(abil, 0, nullptr, unit_abilities::EFFECT_CUMULABLE);
 	return leader_effect.get_composite_value();
 }

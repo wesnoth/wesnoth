@@ -19,6 +19,7 @@
 #include "utils/config_filters.hpp"
 
 #include "serialization/string_utils.hpp" // for utils::split
+#include "utils/general.hpp"
 #include "utils/math.hpp"                 // for in_ranges
 
 bool utils::config_filters::bool_matches_if_present(const config& filter, const config& cfg, const std::string& attribute, bool def)
@@ -37,9 +38,7 @@ bool utils::config_filters::string_matches_if_present(
 		return true;
 	}
 
-	const std::vector<std::string> filter_attribute = utils::split(filter[attribute]);
-	return (
-		std::find(filter_attribute.begin(), filter_attribute.end(), cfg[attribute].str(def)) != filter_attribute.end());
+	return utils::contains(utils::split(filter[attribute]), cfg[attribute].str(def));
 }
 
 bool utils::config_filters::set_includes_if_present(const config& filter, const config& cfg, const std::string& attribute)

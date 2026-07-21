@@ -138,7 +138,8 @@ public:
 	{
 	}
 
-	void serialize_to_string(std::string& str) const override;
+	/** Inherited from formula_callable */
+	std::string serialize_to_string() const override;
 
 private:
 	variant key_;

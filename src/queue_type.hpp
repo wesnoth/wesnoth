@@ -19,9 +19,8 @@
 struct queue_type_defines
 {
 	static constexpr const char* const normal = "normal";
-	static constexpr const char* const client_preset = "client_preset";
 	static constexpr const char* const server_preset = "server_preset";
 
-	ENUM_AND_ARRAY(normal, client_preset, server_preset)
+	ENUM_AND_ARRAY(normal, server_preset)
 };
 using queue_type = string_enums::enum_base<queue_type_defines>;

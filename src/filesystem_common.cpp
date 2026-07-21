@@ -236,21 +236,10 @@ std::string get_core_images_dir()
 
 std::string get_intl_dir()
 {
-#ifdef _WIN32
+#if HAS_RELATIVE_LOCALEDIR
 	return game_config::path + "/" LOCALEDIR;
 #else
-
-#ifdef USE_INTERNAL_DATA
-	return get_cwd() + "/" LOCALEDIR;
-#endif
-
-#if HAS_RELATIVE_LOCALEDIR
-	std::string res = game_config::path + "/" LOCALEDIR;
-#else
-	std::string res = LOCALEDIR;
-#endif
-
-	return res;
+	return LOCALEDIR;
 #endif
 }
 
@@ -285,42 +274,43 @@ bool file_tree_checksum::operator==(const file_tree_checksum &rhs) const
 		modified == rhs.modified;
 }
 
+namespace implementation
+{
+std::string get_file_by_type(const std::string& name, const std::string& type)
+{
+	if(utils::optional map_location = get_wml_location(name)) {
+		return *map_location;
+	}
+
+	// Consult [binary_path] as well.
+	if(utils::optional map_location = get_binary_file_location(type, name)) {
+		return *map_location;
+	}
+
+	// TODO: should really be using fs::path
+	return get_legacy_editor_dir() + "/" + type + "/" + base_name(name);
+}
+
+} // implementation
+
+std::string get_map_file(const std::string& name)
+{
+	return implementation::get_file_by_type(name, "maps");
+}
+
+std::string get_scenario_file(const std::string& name)
+{
+	return implementation::get_file_by_type(name, "scenarios");
+}
+
 std::string read_map(const std::string& name)
 {
-	std::string res;
-	auto map_location = get_wml_location(name);
-	if(!map_location) {
-		// Consult [binary_path] for maps as well.
-		map_location = get_binary_file_location("maps", name);
-	}
-	if(map_location) {
-		res = read_file(map_location.value());
-	}
-
-	if(res.empty()) {
-		res = read_file(get_legacy_editor_dir() + "/maps/" + name);
-	}
-
-	return res;
+	return read_file(get_map_file(name));
 }
 
 std::string read_scenario(const std::string& name)
 {
-	std::string res;
-	auto file_location = get_wml_location(name);
-	if(!file_location) {
-		// Consult [binary_path] for scenarios as well.
-		file_location = get_binary_file_location("scenarios", name);
-	}
-	if(file_location) {
-		res = read_file(file_location.value());
-	}
-
-	if(res.empty()) {
-		res = read_file(get_legacy_editor_dir() + "/scenarios/" + name);
-	}
-
-	return res;
+	return read_file(get_scenario_file(name));
 }
 
 static void get_file_tree_checksum_internal(const std::string& path, file_tree_checksum& res)

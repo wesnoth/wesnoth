@@ -34,7 +34,7 @@ public:
 	panel(const implementation::builder_styled_widget& builder, const std::string& control_type = "");
 
 	/** See @ref container_base::get_client_rect. */
-	virtual SDL_Rect get_client_rect() const override;
+	virtual rect get_client_rect() const override;
 
 	/** See @ref styled_widget::get_active. */
 	virtual bool get_active() const override;

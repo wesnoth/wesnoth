@@ -164,7 +164,7 @@ void multimenu_button::update_label()
 			continue;
 		}
 
-		selected.push_back(values_[i]["label"]);
+		selected.push_back(values_[i]["label"].t_str());
 	}
 
 	if(selected.size() == values_.size()) {

@@ -23,7 +23,7 @@ jobs:
         run: |
           sudo apt-get install --assume-yes exiftool
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
         env:

@@ -22,6 +22,7 @@
 
 #include "serialization/unicode_cast.hpp"
 #include "random.hpp"
+#include "utils/general.hpp"
 
 static void add_prefixes(const std::u32string& str, std::size_t length, markov_prefix_map& res)
 {
@@ -108,8 +109,7 @@ static std::u32string markov_generate_name(const markov_prefix_map& prefixes,
 		if (i == prefixes.end() || i->second.empty()) {
 			return res;
 		}
-		if (std::find(i->second.begin(), i->second.end(), static_cast<char32_t>(0))
-				!= i->second.end()) {
+		if (utils::contains(i->second, static_cast<char32_t>(0))) {
 			// This ending is valid.
 			return res;
 		}

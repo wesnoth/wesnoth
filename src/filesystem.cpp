@@ -49,6 +49,10 @@
 
 #endif
 
+#ifdef __ANDROID__
+#include <SDL3/SDL_system.h>
+#endif
+
 #ifdef _WIN32
 #include <boost/locale.hpp>
 
@@ -77,7 +81,7 @@
 #if defined(__APPLE__) && defined(__MACH__) && defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__)
 
 #define WESNOTH_BOOST_OS_IOS (__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__*1000)
-#include <SDL2/SDL_filesystem.h>
+#include <SDL3/SDL_filesystem.h>
 
 #endif
 
@@ -272,6 +276,9 @@ bool is_filename_case_correct(const std::string& /*fname*/, const boost::iostrea
 
 namespace filesystem
 {
+const std::string map_extension {".map"};
+const std::string mask_extension {".mask"};
+const std::string wml_extension {".cfg"};
 
 const blacklist_pattern_list default_blacklist{
 	{
@@ -643,7 +650,7 @@ const std::string& get_version_path_suffix()
 	return suffix;
 }
 
-#if defined(__APPLE__) && !defined(__IPHONEOS__)
+#if defined(__APPLE__) && !defined(SDL_PLATFORM_IOS)
 	// Starting from Wesnoth 1.14.6, we have to use sandboxing function on macOS
 	// The problem is, that only signed builds can use sandbox. Unsigned builds
 	// would use other config directory then signed ones. So if we don't want
@@ -675,9 +682,10 @@ const std::string& get_version_path_suffix()
 
 static void setup_user_data_dir()
 {
-#if defined(__APPLE__) && !defined(__IPHONEOS__)
+#if defined(__APPLE__) && !defined(SDL_PLATFORM_IOS)
 	migrate_apple_config_directory_for_unsandboxed_builds();
 #endif
+
 	if(!file_exists(user_data_dir / "logs")) {
 		game_config::check_migration = true;
 	}
@@ -753,6 +761,8 @@ void set_user_data_dir(std::string newprefdir)
 		} else {
 			newprefdir = "~/.wesnoth" + get_version_path_suffix();
 		}
+#elif defined(__ANDROID__)
+		newprefdir = SDL_GetAndroidExternalStoragePath();
 #else
 		const char* h = std::getenv("HOME");
 		std::string home = h ? h : "";
@@ -836,7 +846,7 @@ static const bfs::path& get_user_data_path()
 	return user_data_dir;
 }
 
-utils::optional<std::string> get_game_manual_file(const std::string& locale_code)
+utils::optional<std::string> get_game_manual_file(const std::string& locale_code, const std::string& short_locale_code)
 {
 	utils::optional<std::string> manual_path_opt;
 	const std::string& manual_dir(game_config::path + "/doc/manual/");
@@ -847,12 +857,7 @@ utils::optional<std::string> get_game_manual_file(const std::string& locale_code
 		return "file://" + bfs::canonical(manual_path).string();
 	}
 
-	// Split the given locale code: "en_GB" -> "en", "GB"
-	// If the result of split() is empty then locale_code is empty (likely using System Language)
-	// Assume en is always available as a fall-back
-	const auto& split_locale_code = utils::split(locale_code, '_');
-	const std::string& language_code = split_locale_code.empty() ? "en" : split_locale_code[0];
-	manual_path = (manual_template % language_code).str();
+	manual_path = (manual_template % short_locale_code).str();
 
 	if(bfs::exists(manual_path)) {
 		// If a filename like manual.en_GB.html is not found, try manual.en.html
@@ -938,12 +943,18 @@ std::vector<other_version_dir> find_other_version_saves_dirs()
 		//
 
 #if defined(_WIN32)
-		path = get_user_data_path().parent_path() / ("Wesnoth" + suffix) / "saves";
+		path = get_user_data_path().parent_path() / ("Wesnoth" + suffix);
 #elif defined(_X11)
-		path = get_user_data_path().parent_path() / suffix / "saves";
+		path = get_user_data_path().parent_path() / suffix;
 #elif defined(__APPLE__)
-		path = get_user_data_path().parent_path() / ("Wesnoth_" + suffix) / "saves";
+		path = get_user_data_path().parent_path() / ("Wesnoth_" + suffix);
 #endif
+
+		// 1.19.2 added get_sync_dir() and changed the path to the save directory.
+		if(minor >= 19) {
+			path /= "sync";
+		}
+		path /= "saves";
 
 		if(bfs::exists(path)) {
 			result.emplace_back(suffix, path.string());
@@ -1411,7 +1422,7 @@ bool is_root(const std::string& path)
 	//
 	// See also: <https://googleprojectzero.blogspot.com/2016/02/the-definitive-guide-on-win32-to-nt.html>
 	//
-	const std::wstring& wpath = bfs::path{path}.make_preferred().wstring();
+	const std::wstring wpath = bfs::path{path}.make_preferred().wstring();
 	return PathIsRootW(wpath.c_str()) == TRUE;
 #endif
 }
@@ -1510,10 +1521,6 @@ static void init_binary_paths()
 	}
 }
 
-binary_paths_manager::binary_paths_manager()
-	: paths_()
-{
-}
 
 binary_paths_manager::binary_paths_manager(const game_config_view& cfg)
 	: paths_()
@@ -1849,6 +1856,17 @@ utils::optional<std::string> get_localized_path(const std::string& file, const s
 	}
 
 	return utils::nullopt;
+}
+
+utils::optional<std::string> get_localized_path(const utils::optional<std::string>& base_path)
+{
+	if(base_path) {
+		if(auto localized = get_localized_path(*base_path)) {
+			return localized;
+		}
+	}
+
+	return base_path;
 }
 
 utils::optional<std::string> get_addon_id_from_path(const std::string& location)

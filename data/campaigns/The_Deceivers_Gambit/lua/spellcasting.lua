@@ -101,8 +101,8 @@ function display_skills_dialog(selecting)
         -- skill row
         table.insert( skill_grid[2], T.row{
             T.column{ border="left",  border_size=15, button},
-            T.column{                                 T.label{label="  "}},  T.column{  horizontal_alignment="left", T.image{id="image"..i                }  },
-            T.column{ border="right", border_size=15, T.label{label="  "}},  T.column{  horizontal_alignment="left", T.label{id="label"..i,use_markup=true}  },
+            T.column{                                 T.label{label="  "}},  T.column{  horizontal_alignment="left", T.image{      id="image"..i          }  },
+            T.column{ border="right", border_size=15, T.label{label="  "}},  T.column{  horizontal_alignment="left", T.rich_label{ id="label"..i, width=0 }  },
         } )
 
         -- subskill row
@@ -169,6 +169,9 @@ function display_skills_dialog(selecting)
                     if (not skill_set_copy[i][1]) then return end
                     dialog2["image"..i].label = skill_set_copy[i][button.selected_index].image
                     dialog2["label"..i].label = skill_set_copy[i][button.selected_index].description
+                    dialog2["label"..i].on_link_click = function(dest)
+                        gui.show_help(dest)
+                    end
 
                     -- also update variables
                     for j,skill in pairs(skill_set_copy[i]) do
@@ -190,6 +193,9 @@ function display_skills_dialog(selecting)
                     dialog2["button"..i].visible = true
                     dialog2["image" ..i].label = skill2.image
                     dialog2["label" ..i].label = skill2.description
+                    dialog2["label" ..i].on_link_click = function(dest)
+                        gui.show_help(dest)
+                    end
 
                     -- if the button is clickable (i.e. a castable spell), set on_button_click
                     local function initialize_button( buttonid, skill, small )
@@ -213,7 +219,7 @@ function display_skills_dialog(selecting)
                             elseif (wesnoth.units.find_on_map{ id='Delfador', T.filter_location{radius=3, T.filter{id='delfador_mirror3'}} }[1]) then   -- mirror delfador counterspell
                                 dialog2[buttonid].label = small and _"<span size='small'>Counterspelled</span>" or _"<span>  Blocked by\n Counterspell</span>"
                                 dialog2[buttonid].enabled = false
-                            elseif (wml.variables['counterspell_active']) then -- delfador counterspell
+                            elseif (wml.variables['counterspell_active'] and not wesnoth.units.find_on_map{ id='delfador_mirror3' }[1]) then -- delfador counterspell
                                 dialog2[buttonid].label = small and _"<span size='small'>Counterspelled</span>" or _"<span>  Blocked by\n Counterspell</span>"
                                 dialog2[buttonid].enabled = false
                             elseif (skill.xp_cost and skill.xp_cost>delfador.experience) then
@@ -250,7 +256,6 @@ function display_skills_dialog(selecting)
                     ::continue::
                 end
             end
-
         end
     end
 
@@ -329,16 +334,18 @@ function wml_actions.display_skills_dialog(cfg)
     end
 end
 
-
 -------------------------
 -- DETECT DOUBLECLICKS
 -------------------------
 local last_click = os.clock()
-wesnoth.game_events.on_mouse_action = function(x,y)
+
+local old_on_mouse_action = wesnoth.game_events.on_mouse_action
+wesnoth.game_events.on_mouse_action = function(x,y,button,event)
     local selected_unit = wesnoth.units.find_on_map{ x=x, y=y }
     if (not selected_unit[1] or selected_unit[1].id~='Delfador') then return end
 
     if (os.clock()-last_click<0.25) then
+        -- same logic in spellcasting.cfg's TDG_spellcasting [menu_item]
         if (wml.variables['wait_to_select_spells']) then
             wml_actions.select_delfador_skills()
         else
@@ -348,14 +355,17 @@ wesnoth.game_events.on_mouse_action = function(x,y)
     else
         last_click = os.clock()
     end
+    return old_on_mouse_action(x,y,button,event)
 end
 
 -------------------------
 -- DETECT MOUSEMOVES
 -------------------------
 function wml_actions.listen_for_mousemove(cfg)
-    wesnoth.game_events.on_mouse_move = function(x,y)
-         wesnoth.game_events.fire('mousemove_synced', x, y)
-         wesnoth.game_events.on_mouse_move = nil --only trigger once
+    local old_on_mouse_move = wesnoth.game_events.on_mouse_move
+    wesnoth.game_events.on_mouse_move = function(x,y,button,event)
+        wesnoth.game_events.fire('mousemove_synced', x, y)
+        wesnoth.game_events.on_mouse_move = old_on_mouse_move --only trigger 'mousemove_synced' once
+        return old_on_mouse_move(x,y,button,event)
     end
 end

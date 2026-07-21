@@ -27,6 +27,7 @@
 #include "generators/map_generator.hpp" // mapgen_exception
 #include "pathfind/pathfind.hpp"
 #include "pathutils.hpp"
+#include "utils/general.hpp"
 #include "utils/name_generator_factory.hpp"
 #include "utils/optimer.hpp"
 #include "seed_rng.hpp"
@@ -139,7 +140,7 @@ namespace {
 			return false;
 		}
 
-		return std::find(terrain_.begin(),terrain_.end(),map_[x][y]) != terrain_.end();
+		return utils::contains(terrain_, map_[x][y]);
 	}
 
 
@@ -217,7 +218,7 @@ namespace {
 	bool terrain_converter::convert_terrain(const t_translation::terrain_code & terrain,
 			const int height, const int temperature) const
 	{
-		return std::find(from.begin(),from.end(),terrain) != from.end() && height >= min_height && height <= max_height && temperature >= min_temp && temperature <= max_temp && to != t_translation::NONE_TERRAIN;
+		return utils::contains(from, terrain) && height >= min_height && height <= max_height && temperature >= min_temp && temperature <= max_temp && to != t_translation::NONE_TERRAIN;
 	}
 
 	t_translation::terrain_code terrain_converter::convert_to() const
@@ -253,10 +254,10 @@ default_map_generator_job::default_map_generator_job(uint32_t seed)
  * the center of the map will be inverted (i.e. be valleys).  'island_size' as
  * 0 indicates no island.
  */
-height_map default_map_generator_job::generate_height_map(size_t width, size_t height, size_t iterations, size_t hill_size, size_t island_size, size_t island_off_center)
+height_map default_map_generator_job::generate_height_map(std::size_t width, std::size_t height, std::size_t iterations, std::size_t hill_size, std::size_t island_size, std::size_t island_off_center)
 {
-	size_t center_x = width/2;
-	size_t center_y = height/2;
+	std::size_t center_x = width/2;
+	std::size_t center_y = height/2;
 
 	LOG_NG << "off-centering...";
 
@@ -287,7 +288,7 @@ height_map default_map_generator_job::generate_height_map(size_t width, size_t h
 	return generate_height_map(width, height, iterations, hill_size, island_size, center_x, center_y);
 }
 
-height_map default_map_generator_job::generate_height_map(size_t width, size_t height, size_t iterations, size_t hill_size, size_t island_size, size_t center_x, size_t center_y)
+height_map default_map_generator_job::generate_height_map(std::size_t width, std::size_t height, std::size_t iterations, std::size_t hill_size, std::size_t island_size, std::size_t center_x, std::size_t center_y)
 {
 	height_map res(width, std::vector<int>(height,0));
 
@@ -965,7 +966,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 				throw mapgen_exception(error);
 			}
 
-			assert(std::find(castles.begin(), castles.end(), best_loc) == castles.end());
+			assert(!utils::contains(castles, best_loc));
 			castles.push_back(best_loc);
 
 			// Make sure the location can't get a second castle.

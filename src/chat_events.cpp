@@ -105,9 +105,14 @@ void chat_handler::send_command(const std::string& cmd, const std::string& args 
 	send_to_server(data);
 }
 
+// Return value of true represents a successful command completion and closure of the text box
+// Return value of false represents an unsuccessful input and leaves the text box open
 bool chat_handler::do_speak(const std::string& message, bool allies_only)
 {
-	if (message.empty() || message == "/") {
+	if(message.empty()) {
+		return true;
+	}
+	if(message == "/") {
 		return false;
 	}
 	bool is_command = (message[0] == '/');
@@ -132,12 +137,9 @@ void chat_handler::user_relation_changed(const std::string& /*name*/)
 
 void chat_handler::send_whisper(const std::string& receiver, const std::string& message)
 {
-	config cwhisper, data;
-	cwhisper["receiver"] = receiver;
-	cwhisper["message"] = message;
-	cwhisper["sender"] = prefs::get().login();
-	data.add_child("whisper", std::move(cwhisper));
-	send_to_server(data);
+	send_to_server(config{"whisper", config{
+		"receiver", receiver, "message", message, "sender", prefs::get().login()
+	}});
 }
 
 void chat_handler::add_whisper_sent(const std::string& receiver, const std::string& message)
@@ -157,12 +159,9 @@ void chat_handler::add_whisper_received(const std::string& sender, const std::st
 void chat_handler::send_chat_room_message(const std::string& room,
 	const std::string& message)
 {
-	config cmsg, data;
-	cmsg["room"] = room;
-	cmsg["message"] = message;
-	cmsg["sender"] = prefs::get().login();
-	data.add_child("message", std::move(cmsg));
-	send_to_server(data);
+	send_to_server(config{"message", config{
+		"room", room, "message", message, "sender", prefs::get().login()
+	}});
 }
 
 void chat_handler::add_chat_room_message_sent(const std::string &room, const std::string &message)

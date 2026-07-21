@@ -18,10 +18,10 @@
  * Editor item action class
  */
 
-// TODO is a textdomain needed?
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "editor/action/action_item.hpp"
+#include "editor/map/map_context.hpp"
 
 
 namespace editor
@@ -101,6 +101,26 @@ void editor_action_item_replace::perform_without_undo(map_context& /*mc*/) const
 	// TODO: check if that is useful
 	//  	game_display::get_singleton()->invalidate_item_after_move(loc_, new_loc_);
 	//  	display::get_singleton()->draw();
+}
+
+IMPLEMENT_ACTION(item_move_all)
+
+std::unique_ptr<editor_action> editor_action_item_move_all::perform(map_context& mc) const
+{
+	auto undo = std::make_unique<editor_action_item_move_all>(-x_offset_, -y_offset_);
+	perform_without_undo(mc);
+	return undo;
+}
+
+void editor_action_item_move_all::perform_without_undo(map_context& mc) const
+{
+	auto ovls = mc.get_overlays();
+	decltype(ovls) new_overlays_map;
+	for (auto ov: ovls) {
+		map_location new_loc{ov.first.x - x_offset_, ov.first.y - y_offset_};
+		new_overlays_map.emplace(new_loc, ov.second);
+	}
+	mc.set_overlays(new_overlays_map);
 }
 
 IMPLEMENT_ACTION(item_facing)

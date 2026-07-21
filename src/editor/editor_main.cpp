@@ -124,7 +124,17 @@ EXIT_STATUS start(bool clear_id, const std::string& filename, bool take_screensh
 
 		editor_controller editor(clear_id);
 
-		if (!filename.empty() && filesystem::file_exists(filename)) {
+		if (take_screenshot) {
+			if (!filesystem::file_exists(filename)) {
+				ERR_ED << "Map file '" << filename << "' does not exist. Unable to take screenshot!";
+				return EXIT_ERROR;
+			}
+			editor.context_manager_->load_map(filename, false);
+			editor.do_screenshot(screenshot_filename);
+			return EXIT_NORMAL;
+		}
+
+		if (!filename.empty()) {
 			if (filesystem::is_directory(filename)) {
 				editor.context_manager_->set_default_dir(filename);
 				editor.context_manager_->load_map_dialog(true);
@@ -141,16 +151,9 @@ EXIT_STATUS start(bool clear_id, const std::string& filename, bool take_screensh
 				// -- vultraz, 2018-02-24
 				editor.set_button_state();
 			}
-
-			if (take_screenshot) {
-				editor.do_screenshot(screenshot_filename);
-				e = EXIT_NORMAL;
-			}
 		}
 
-		if (!take_screenshot) {
-			e = editor.main_loop();
-		}
+		e = editor.main_loop();
 	} catch(const editor_exception& e) {
 		ERR_ED << "Editor exception in editor::start: " << e.what();
 		throw;

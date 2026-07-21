@@ -61,7 +61,7 @@ if there's an indent open at end of file or if a closer occurs with
 indent already zero; these two conditions strongly suggest unbalanced WML.
 """
 
-import sys, os, argparse, filecmp, re, codecs, signal
+import sys, os, argparse, filecmp, re, signal
 from wesnoth import wmltools3 as wmltools
 from wesnoth import version
 
@@ -289,7 +289,7 @@ def convertor(linefilter, arglist, exclude):
                     continue
                 else:
                     try:
-                        with codecs.open(filename,"r","utf8") as infp, codecs.open(filename + ".out", "w","utf8") as outfp:
+                        with open(filename,"r",encoding="utf8") as infp, open(filename + ".out","w",encoding="utf8") as outfp:
                             linefilter(filename, infp, outfp)
                     except bailout as e:
                         print('wmlindent: "%s", %d: %s' % (e.filename, e.lineno, e.msg), file=sys.stderr)

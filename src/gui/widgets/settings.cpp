@@ -31,10 +31,20 @@ unsigned gamemap_x_offset = 0;
 unsigned gamemap_width = 0;
 unsigned gamemap_height = 0;
 
+/**
+ * Delay before a popup shows. Also used as the delay
+ * required for long press and drag to work.
+ */
 std::chrono::milliseconds popup_show_delay{0};
 std::chrono::milliseconds popup_show_time{0};
 std::chrono::milliseconds help_show_time{0};
+/**
+ * The interval between two clicks to be detected as double click.
+ */
 std::chrono::milliseconds double_click_time{0};
+/**
+ * How much a repeating button need to be held before the action repeats.
+ */
 std::chrono::milliseconds repeat_button_repeat_time{0};
 
 std::string sound_button_click = "";
@@ -57,7 +67,7 @@ void update_screen_size_variables()
 	gamemap_height = screen_height;
 
 	if(display* display = display::get_singleton()) {
-		const SDL_Rect rect_gm = display->map_outside_area();
+		const rect rect_gm = display->map_outside_area();
 
 		if(rect_gm.w && rect_gm.h) {
 			gamemap_width = rect_gm.w;

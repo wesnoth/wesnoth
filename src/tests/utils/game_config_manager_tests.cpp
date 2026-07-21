@@ -29,17 +29,13 @@
 #include "hotkey/hotkey_item.hpp"
 #include "language.hpp"
 #include "units/types.hpp"
+#include "utils/general.hpp"
 
 #include "gui/gui.hpp"
 
 #include <clocale>
 
 namespace test_utils {
-
-	static bool match_english(const language_def& def)
-	{
-		return def.localename == "en_US";
-	}
 
 	class game_config_manager {
 		config cfg_;
@@ -73,18 +69,15 @@ namespace test_utils {
 			translation::bind_textdomain("wesnoth-lib", intl_dir.c_str(), "UTF-8");
 			translation::set_default_textdomain("wesnoth");
 
-
 			font::load_font_config();
 			gui2::init();
 			gui2::switch_theme("default");
 			load_language_list();
 			game_config::config_cache::instance().add_define("TEST");
-			game_config::config_cache::instance().get_config(game_config::path + "/data/test/", cfg_);
+			cfg_ = game_config::config_cache::instance().get_config(game_config::path + "/data/test/");
 			::init_textdomains(game_config_view_);
 			const std::vector<language_def>& languages = get_languages();
-			std::vector<language_def>::const_iterator English = std::find_if(languages.begin(),
-					languages.end(),
-					match_english); // Using German because the most active translation
+			auto English = utils::ranges::find(languages, "en_US", &language_def::localename);
 			::set_language(*English);
 
 			unit_types.set_config(game_config_view_.merged_children_view("units"));
@@ -95,7 +88,6 @@ namespace test_utils {
 			hotkey::load_default_hotkeys(game_config_view_);
 			paths_manager_.set_paths(game_config_view_);
 			font::load_font_config();
-
 		}
 
 		static config& get_config_static()

@@ -23,7 +23,7 @@ Limitations:
 """
 
 from functools import total_ordering
-import sys, re, copy, codecs
+import sys, re, copy
 import fnmatch
 keyPattern = re.compile(r'(\w+)(,\s?\w+)*\s*=')
 keySplit = re.compile(r'[=,\s]')
@@ -133,7 +133,7 @@ Important Attributes:
             lines = []
             if filename:
                 try:
-                    with codecs.open(self.fname, "r", "utf8") as ifp:
+                    with open(self.fname, "r", encoding="utf8") as ifp:
                         lines = ifp.readlines()
                 except Exception:
                     self.printError('error opening file')
@@ -291,8 +291,6 @@ Important Attributes:
             return (['#define'],)*2
         elif text.find('#enddef') >= 0:
             elements.append(('#enddef', text.find('#enddef'), -1))
-        elif text.startswith('#po:') or text.startswith('# po:'):
-            elements.append(("#po", 0, 0))
         else:
             commentSearch = 0
         begincomment = text.find('#', commentSearch)
@@ -500,7 +498,7 @@ if __name__ == '__main__':
             continue
         print('Reading', fname+'...')
         didSomething = True
-        with codecs.open(fname, "r", "utf8") as f:
+        with open(fname, "r", encoding="utf8") as f:
             itor = WmlIterator(f.readlines())
             for i in itor:
                 pass

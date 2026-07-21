@@ -77,7 +77,11 @@ public:
 
 	void register_generator(const std::string &name, generator *);
 
-	config generate_report(const std::string &name, const context& ct, bool only_static = false);
+	/** Generate the specified report using the given context. */
+	config generate_report(const std::string& name, const context& ct);
+
+	/** Generate the specified report using the given context, excluding dynamic generators. */
+	config generate_builtin_report(const std::string& name, const context& rc);
 
 	const std::set<std::string> &report_list();
 

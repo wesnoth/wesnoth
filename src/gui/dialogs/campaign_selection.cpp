@@ -37,6 +37,19 @@
 namespace gui2::dialogs
 {
 
+namespace
+{
+	// These arbitary strings are used instead of a campaign id for the special pages
+	// which can appear in the right-hand pane. The data for those pages is loaded
+	// from the tree_view's WML via ids hardcoded in pre_show().
+	const std::string PAGE_ID_GET_ADDONS = "////addons////";
+	const std::string PAGE_ID_LANDING_PAGE = "////landing-page////";
+	const std::string PAGE_ID_MISSING_CAMPAIGNS = "////missing-campaign////";
+
+	// The campaign_rng_mode preference stores a string mirroring the savefile's random_mode RNG.
+	const std::vector<std::string> rng_mode_prefs{"default", "deterministic", "biased"};
+};
+
 REGISTER_DIALOG(campaign_selection)
 
 campaign_selection::campaign_selection(ng::create_engine& eng)
@@ -59,31 +72,29 @@ campaign_selection::campaign_selection(ng::create_engine& eng)
 void campaign_selection::campaign_selected()
 {
 	tree_view& tree = find_widget<tree_view>("campaign_tree");
-	if(tree.empty()) {
-		return;
-	}
-
-	assert(tree.selected_item());
-
-	const std::string& campaign_id = tree.selected_item()->id();
+	const std::string& campaign_id = tree.selected_item() ? tree.selected_item()->id() : PAGE_ID_LANDING_PAGE;
 	if(campaign_id.empty()) {
 		return;
 	}
 
-	auto iter = std::find(page_ids_.begin(), page_ids_.end(), campaign_id);
+	const bool can_proceed = campaign_id != PAGE_ID_MISSING_CAMPAIGNS && campaign_id != PAGE_ID_LANDING_PAGE;
+	const bool actual_campaign = can_proceed && campaign_id != PAGE_ID_GET_ADDONS;
 
 	button& ok_button = find_widget<button>("proceed");
-	ok_button.set_active(campaign_id != missing_campaign_);
-	ok_button.set_label((campaign_id == addons_) ? _("game^Get Add-ons") : _("game^Play"));
+	ok_button.set_active(can_proceed);
+	ok_button.set_label((campaign_id == PAGE_ID_GET_ADDONS) ? _("game^Get Add-ons") : _("game^Play"));
 
-	const int choice = std::distance(page_ids_.begin(), iter);
+	auto iter = std::find(page_ids_.begin(), page_ids_.end(), campaign_id);
 	if(iter == page_ids_.end()) {
 		return;
 	}
+	const int choice = std::distance(page_ids_.begin(), iter);
 
 	multi_page& pages = find_widget<multi_page>("campaign_details");
 	pages.select_page(choice);
 
+	// The engine bounds-checks this and silently selects the first campaign if choice points to one
+	// of the non-campaign pages.
 	engine_.set_current_level(choice);
 
 	styled_widget& background = find_widget<styled_widget>("campaign_background");
@@ -97,9 +108,9 @@ void campaign_selection::campaign_selected()
 	auto diff_config_range = engine_.current_level().data().child_range("difficulty");
 	const std::size_t difficulty_count = diff_config_range.size();
 
-	diff_menu.set_active(difficulty_count > 1);
-
-	if(diff_config_range.empty()) {
+	if(diff_config_range.empty() || !actual_campaign) {
+		// Cosmetic bug: this leaves the difficulties of a previously-selected campaign visible
+		diff_menu.set_active(false);
 		return;
 	}
 
@@ -152,6 +163,7 @@ void campaign_selection::campaign_selected()
 		++n;
 	}
 
+	diff_menu.set_active(true);
 	diff_menu.set_values(entry_list);
 	diff_menu.set_selected(selection);
 }
@@ -210,10 +222,10 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 
 	// Remember which campaign was selected...
 	std::string was_selected;
-	if(!tree.empty()) {
+	if(tree.selected_item()) {
 		was_selected = tree.selected_item()->id();
-		tree.clear();
 	}
+	tree.clear();
 
 	boost::dynamic_bitset<> show_items;
 	show_items.resize(levels.size(), true);
@@ -345,7 +357,13 @@ void campaign_selection::pre_show()
 	connect_signal_mouse_left_click(find_widget<button>("proceed"),
 		std::bind(&campaign_selection::proceed, this));
 
+#ifdef __IPHONEOS__
+	// On iOS, opening the campaign browser should not immediately summon the
+	// software keyboard just because the optional filter field exists.
+	keyboard_capture(&tree);
+#else
 	keyboard_capture(filter);
+#endif
 	add_to_keyboard_chain(&tree);
 
 	/***** Setup campaign details. *****/
@@ -367,39 +385,40 @@ void campaign_selection::pre_show()
 		add_campaign_to_tree(campaign);
 
 		/*** Add detail item ***/
-		widget_data data;
-		widget_item item;
-
-		item["label"] = campaign["description"];
-		item["use_markup"] = "true";
-
-		if(!campaign["description_alignment"].empty()) {
-			item["text_alignment"] = campaign["description_alignment"];
-		}
-
-		data.emplace("description", item);
-
-		item["label"] = campaign["image"];
-		data.emplace("image", item);
-
-		pages.add_page(data);
+		pages.add_page({
+			{"description", {
+				{"label", campaign["description"].t_str()},
+				{"text_alignment", campaign["description_alignment"].str("left")},
+				{"use_markup", "true"}
+			}},
+			{"image", {
+				{"label", campaign["image"].str()}
+			}}
+		});
 		page_ids_.push_back(campaign["id"]);
 	}
 
 	//
-	// Addon Manager link
+	// Special-purpose pages that appear as if they were campaigns.
 	//
+
+	// The intro page is shown if nothing is selected in the tree_view, it isn't in the tree itself
+	pages.add_page("no_campaign_selected", -1, widget_data{});
+	page_ids_.push_back(PAGE_ID_LANDING_PAGE);
+
+	// Addon Manager link
 	config addons;
 	addons["icon"] = "icons/icon-game.png~BLIT(icons/icon-addon-publish.png)";
 	addons["name"] = _("More campaigns...");
 	addons["completed"] = false;
-	addons["id"] = addons_;
+	addons["id"] = PAGE_ID_GET_ADDONS;
 
 	add_campaign_to_tree(addons);
 
 	pages.add_page("go_download_more_stuff", -1, widget_data{});
-	page_ids_.push_back(addons_);
+	page_ids_.push_back(PAGE_ID_GET_ADDONS);
 
+	// The data directory has few (or none) of the mainline campaigns
 	std::vector<std::string> dirs;
 	filesystem::get_files_in_dir(game_config::path + "/data/campaigns", nullptr, &dirs);
 	if(dirs.size() <= 15) {
@@ -407,12 +426,12 @@ void campaign_selection::pre_show()
 		missing["icon"] = "units/unknown-unit.png";
 		missing["name"] = _("Missing Campaigns");
 		missing["completed"] = false;
-		missing["id"] = missing_campaign_;
+		missing["id"] = PAGE_ID_MISSING_CAMPAIGNS;
 
 		add_campaign_to_tree(missing);
 
 		pages.add_page("missing_campaign_warning", -1, widget_data{});
-		page_ids_.push_back(missing_campaign_);
+		page_ids_.push_back(PAGE_ID_MISSING_CAMPAIGNS);
 	}
 
 	//
@@ -427,7 +446,7 @@ void campaign_selection::pre_show()
 		for(const auto& mod : engine_.get_const_extras_by_type(ng::create_engine::MOD)) {
 			const bool active = std::find(enabled.begin(), enabled.end(), mod->id) != enabled.end();
 
-			mod_menu_values.emplace_back("label", mod->name, "checkbox", active);
+			mod_menu_values.emplace_back("label", mod->name, "tooltip", mod->description, "checkbox", active);
 
 			mod_states_.push_back(active);
 			mod_ids_.emplace_back(mod->id);
@@ -441,6 +460,16 @@ void campaign_selection::pre_show()
 		mods_menu.set_active(false);
 		mods_menu.set_label(_("active_modifications^None"));
 	}
+
+	//
+	// Set up RNG mode dropdown
+	//
+	// New installs default to "Reduced RNG"; existing installs restore the last selection.
+	menu_button& rng_menu = find_widget<menu_button>("rng_menu");
+	auto rng_it = std::find(rng_mode_prefs.begin(), rng_mode_prefs.end(), prefs::get().campaign_rng_mode());
+	rng_menu.set_selected(rng_it != rng_mode_prefs.end()
+		? static_cast<unsigned>(std::distance(rng_mode_prefs.begin(), rng_it))
+		: static_cast<unsigned>(RNG_DEFAULT));
 
 	//
 	// Set up Difficulty dropdown
@@ -477,20 +506,13 @@ void campaign_selection::pre_show()
 
 void campaign_selection::add_campaign_to_tree(const config& campaign)
 {
-	tree_view& tree = find_widget<tree_view>("campaign_tree");
-	widget_data data;
-	widget_item item;
-
-	item["label"] = campaign["icon"];
-	data.emplace("icon", item);
-
-	item["label"] = campaign["name"];
-	data.emplace("name", item);
-
 	// We completed the campaign! Calculate the appropriate victory laurel.
-	if(campaign["completed"].to_bool()) {
-		config::const_child_itors difficulties = campaign.child_range("difficulty");
+	const auto get_laurel = [&campaign] {
+		if(!campaign["completed"].to_bool()) {
+			return std::string{};
+		}
 
+		config::const_child_itors difficulties = campaign.child_range("difficulty");
 		auto did_complete_at = [](const config& c) { return c["completed_at"].to_bool(); };
 
 		// Check for non-completion on every difficulty save the first.
@@ -509,17 +531,27 @@ void campaign_selection::add_campaign_to_tree(const config& campaign)
 		 * - Use the silver laurel otherwise.
 		 */
 		if(!difficulties.empty() && did_complete_at(difficulties.back())) {
-			item["label"] = game_config::images::victory_laurel_hardest;
+			return game_config::images::victory_laurel_hardest;
 		} else if(only_first_completed && did_complete_at(difficulties.front())) {
-			item["label"] = game_config::images::victory_laurel_easy;
+			return game_config::images::victory_laurel_easy;
 		} else {
-			item["label"] = game_config::images::victory_laurel;
+			return game_config::images::victory_laurel;
 		}
+	};
 
-		data.emplace("victory", item);
-	}
+	auto& node = find_widget<tree_view>("campaign_tree")
+		.add_node("campaign", {
+			{"icon", {
+				{"label", campaign["icon"].str()}
+			}},
+			{"name", {
+				{"label", campaign["name"].t_str()}
+			}},
+			{"victory", {
+				{"label", get_laurel()}
+			}}
+		});
 
-	auto& node = tree.add_node("campaign", data);
 	node.set_id(campaign["id"]);
 	connect_signal_mouse_left_double_click(
 		node.find_widget<toggle_panel>("tree_view_node_label"),
@@ -531,14 +563,13 @@ void campaign_selection::proceed()
 {
 	tree_view& tree = find_widget<tree_view>("campaign_tree");
 
-	if(tree.empty()) {
+	if(tree.empty() || !tree.selected_item()) {
 		return;
 	}
 
-	assert(tree.selected_item());
 	const std::string& campaign_id = tree.selected_item()->id();
 	if(!campaign_id.empty()) {
-		if (campaign_id == addons_) {
+		if (campaign_id == PAGE_ID_GET_ADDONS) {
 			set_retval(OPEN_ADDON_MANAGER);
 		} else {
 			auto iter = std::find(page_ids_.begin(), page_ids_.end(), campaign_id);
@@ -551,6 +582,8 @@ void campaign_selection::proceed()
 
 
 	rng_mode_ = RNG_MODE(std::clamp<unsigned>(find_widget<menu_button>("rng_menu").get_value(), RNG_DEFAULT, RNG_BIASED));
+
+	prefs::get().set_campaign_rng_mode(rng_mode_prefs[rng_mode_]);
 
 	prefs::get().set_modifications(engine_.active_mods(), false);
 }

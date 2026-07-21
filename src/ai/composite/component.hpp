@@ -58,9 +58,9 @@ public:
 	virtual std::string get_name() const = 0;
 	virtual std::string get_engine() const = 0;
 	virtual ~component() {}
-	virtual component* get_child(const path_element &child);
-	virtual std::vector<component*> get_children(const std::string &type);
-	virtual std::vector<std::string> get_children_types();
+	virtual component* get_child(const path_element &child) const;
+	virtual std::vector<component*> get_children(const std::string &type) const;
+	virtual std::vector<std::string> get_children_types() const;
 	virtual bool change_child(const path_element &child, const config &cfg);
 	virtual bool add_child(const path_element &child, const config &cfg);
 	virtual bool delete_child(const path_element &child);

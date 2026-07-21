@@ -48,6 +48,21 @@ mp_options_helper::mp_options_helper(window& window, ng::create_engine& create_e
 	update_all_options();
 }
 
+void mp_options_helper::set_options(const config& new_options)
+{
+	visible_options_.clear();
+	node_data_map_.clear();
+	options_tree_.clear();
+
+	for(const auto [_, cfg] : new_options.all_children_view()) {
+		for(const auto& saved_option : cfg.child_range("option")) {
+			options_data_[cfg["id"]][saved_option["id"].str()] = saved_option["value"];
+		}
+	}
+
+	update_all_options();
+}
+
 void mp_options_helper::update_all_options()
 {
 	visible_options_.clear();
@@ -190,7 +205,7 @@ std::pair<T*, config::attribute_value> mp_options_helper::add_node_and_get_widge
 	}
 
 	widget->set_id(widget_id);
-	widget->set_tooltip(cfg["description"]);
+	widget->set_tooltip(cfg["description"].t_str());
 
 	return {widget, option_config[widget_id]};
 }
@@ -216,7 +231,7 @@ void mp_options_helper::display_custom_options(const std::string& type, int node
 		widget_data data;
 		widget_item item;
 
-		item["label"] = cfg["name"];
+		item["label"] = cfg["name"].t_str();
 		data.emplace("tree_view_node_label", item);
 
 		tree_view_node& option_node = options_tree_.add_node("option_node", data, node_position);
@@ -229,7 +244,7 @@ void mp_options_helper::display_custom_options(const std::string& type, int node
 			config::attribute_value val;
 
 			if(option_key == "checkbox") {
-				item["label"] = option_cfg["name"];
+				item["label"] = option_cfg["name"].t_str();
 				data.emplace("option_checkbox", item);
 
 				toggle_button* checkbox;
@@ -248,7 +263,7 @@ void mp_options_helper::display_custom_options(const std::string& type, int node
 					continue;
 				}
 
-				item["label"] = option_cfg["name"];
+				item["label"] = option_cfg["name"].t_str();
 				data.emplace("menu_button_label", item);
 
 				std::vector<config> combo_items;
@@ -278,7 +293,7 @@ void mp_options_helper::display_custom_options(const std::string& type, int node
 					std::bind(&mp_options_helper::update_options_data_map_menu_button, this, menu, visible_options_.back(), option_cfg));
 
 			} else if(option_key == "slider") {
-				item["label"] = option_cfg["name"];
+				item["label"] = option_cfg["name"].t_str();
 				data.emplace("slider_label", item);
 
 				slider* slide;
@@ -292,7 +307,7 @@ void mp_options_helper::display_custom_options(const std::string& type, int node
 					std::bind(&mp_options_helper::update_options_data_map<slider>, this, slide, visible_options_.back()));
 
 			} else if(option_key == "entry") {
-				item["label"] = option_cfg["name"];
+				item["label"] = option_cfg["name"].t_str();
 				data.emplace("text_entry_label", item);
 
 				text_box* textbox;

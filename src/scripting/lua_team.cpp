@@ -160,11 +160,10 @@ SIDE_SETTER("scroll_to_leader", bool) {
 	t.set_scroll_to_leader(value);
 }
 
-static void reinit_flag_for_team(lua_State* L, const team& t) {
-   auto* disp = lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).get_display();
-   if(disp) {
-	   disp->reinit_flags_for_team(t);
-   }
+static void reinit_flag_for_team(const team& t) {
+	if(auto disp = game_display::get_singleton()) {
+		disp->reinit_flags_for_team(t);
+	}
 }
 
 SIDE_GETTER("color", std::string) {
@@ -173,7 +172,7 @@ SIDE_GETTER("color", std::string) {
 
 SIDE_SETTER("color", std::string) {
 	t.set_color(value);
-	reinit_flag_for_team(L, t);
+	reinit_flag_for_team(t);
 }
 
 SIDE_GETTER("flag", std::string) {
@@ -182,7 +181,7 @@ SIDE_GETTER("flag", std::string) {
 
 SIDE_SETTER("flag", std::string) {
 	t.set_flag(value);
-	reinit_flag_for_team(L, t);
+	reinit_flag_for_team(t);
 }
 
 SIDE_GETTER("flag_icon", std::string) {

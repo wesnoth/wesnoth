@@ -11,13 +11,13 @@ jobs:
   checks: # checks that don't need a wesnoth binary
     runs-on: ubuntu-latest
     container:
-      image: wesnoth/wesnoth:2404-master
+      image: wesnoth/wesnoth:2404-sdl3
       options: --tty # docker create options
       env:
         CLICOLOR_FORCE: 1
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Set git safe directory
         if: success() || failure()
@@ -28,6 +28,11 @@ jobs:
         run: |
           ./utils/CI/check_utf8.sh
           ./utils/CI/utf8_bom_dog.sh
+      - name: Run wmllint
+        if: success() || failure()
+        run: |
+          ./data/tools/wmllint --config=./data/tools/lint.toml ./data > ./wmllint.log 2>&1
+          if [ "$(wc -l < wmllint.log)" != "0" ]; then cat wmllint.log; exit 1; fi
       - name: Whitespace and WML indentation check
         if: success() || failure()
         run: ./utils/CI/fix_whitespace.sh && git status && git diff --exit-code
@@ -42,9 +47,9 @@ jobs:
         run: doxygen doc/doxygen/Doxyfile
 
   copyright: # check takes a bit longer and does not need to run in docker (sound/music only)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
-      - { uses: actions/checkout@v4, with: { fetch-depth: 50 } }
+      - { uses: actions/checkout@v6, with: { fetch-depth: 50 } }
 
       - name: Sound/Music copyright check
         run: ./update_copyrights
@@ -60,7 +65,7 @@ jobs:
           - { cfg: release, tool: cmake, cc: clang, cxx: clang++, std: 17, lto: true,  sys_lua: true  }
     runs-on: ubuntu-latest
     container:
-      image: wesnoth/wesnoth:2404-master
+      image: wesnoth/wesnoth:2404-sdl3
       options: --tty # docker create options
       env:
         TOOL: ${{ matrix.tool }}
@@ -74,9 +79,9 @@ jobs:
         SDL_VIDEODRIVER: dummy
 
     steps:
-      - { uses: actions/checkout@v4, with: { submodules: "recursive" } }
+      - { uses: actions/checkout@v6, with: { submodules: "recursive" } }
 
-# 1) wesnothd and campaignd should be buildable without SDL2 being present
+# 1) wesnothd and campaignd should be buildable without SDL3 being present
 # 2) boost is installed via apt as well as built and installed into /usr/local (for _GLIBCXX_DEBUG support in boost program options)
       - name: Build wesnoth, wesnothd, campaignd and unit tests
         id: build # needed to check step outcome
@@ -97,7 +102,8 @@ jobs:
               # triggers false positive compiler warnings that clang itself won't
               run-clang-tidy -quiet -use-color -j 2 -extra-arg="-w" -warnings-as-errors='*' '^(?!.*src/modules/|.*build/)'
 
-              apt remove -y -qq libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev
+              # re-enable once libsdl3 etc is installed normally
+              #apt remove -y -qq libsdl3-dev libsdl3-image-dev libsdl3-mixer-dev
 
               build wesnothd campaignd
               ;;
@@ -107,19 +113,20 @@ jobs:
                 cmake "$@" -DCMAKE_BUILD_TYPE="$CFG" -DCXX_STD="$CXX_STD" \
                   -DEXTRA_FLAGS_CONFIG="-pipe" -DENABLE_MYSQL=true -DENABLE_STRICT_COMPILATION=true \
                   -DENABLE_NLS=false -DENABLE_LTO="$LTO" -DFORCE_COLOR_OUTPUT=true -DLTO_JOBS=2 \
-                  -DENABLE_SYSTEM_LUA="$SYS_LUA -DCLANG_TIDY=true" .
+                  -DENABLE_SYSTEM_LUA="$SYS_LUA -DCLANG_TIDY=true" -DCMAKE_PREFIX_PATH="/usr/local/lib/cmake/SDL3;/usr/local/lib/cmake/SDL3_image;/usr/local/lib/cmake/SDL3_mixer" -S . -B .
               }
-              rm -R /usr/local/lib/cmake
+              # still need the rest of /usr/local/lib/cmake for SDL3 for now
+              rm -R /usr/local/lib/cmake/boost*
+              rm -R /usr/local/lib/cmake/Boost*
               rm /usr/local/lib/libboost*
               rm -R /usr/local/include/boost
               build -DENABLE_GAME=true -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=true
-              make conftests
-              make VERBOSE=1 -j2
+              make -C . VERBOSE=1 -j2
 
-              apt remove -y -qq libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev
+              #apt remove -y -qq libsdl3-dev libsdl3-image-dev libsdl3-mixer-dev
 
               build -DENABLE_GAME=false -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=false
-              make VERBOSE=1 -j2
+              make -C . VERBOSE=1 -j2
               ;;
           esac
       - name: Check path options
@@ -143,7 +150,7 @@ jobs:
         run: ./run_wml_tests -v -v -g -c -t 20 -bt 1000 -a=--userdata-dir=ud
       - name: Upload userdata files from WML unit tests (logs, replays)
         if: matrix.cc == 'clang' && (success() || failure())
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: WMLTest-userdata-Linux
           path: ud
@@ -161,7 +168,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - { uses: actions/checkout@v4, with: { submodules: "recursive" } }
+      - { uses: actions/checkout@v6, with: { submodules: "recursive" } }
 
       - name: Steam Runtime
         run: |
@@ -170,7 +177,7 @@ jobs:
           tar -cf "steambuild-$version.tar" steambuild
 
       - name: Upload
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: Steam-Linux
           path: utils/dockerbuilds/steambuild-*.tar
@@ -179,7 +186,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - { uses: actions/checkout@v4, with: { submodules: "recursive" } }
+      - { uses: actions/checkout@v6, with: { submodules: "recursive" } }
 
       - name: MinGW Crosscompile
         run: |
@@ -192,13 +199,14 @@ jobs:
           mv mingwbuild/wesnoth*-win64.exe "wesnoth-$version-win64.exe"
 
       - name: Upload Source
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: Source
           path: wesnoth-*.tar.bz2
+          archive: false
 
       - name: Upload Windows-Installer
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: Windows-Installer
           path: utils/dockerbuilds/wesnoth-*-win64.exe
@@ -206,11 +214,11 @@ jobs:
   flatpak:
     runs-on: ubuntu-latest
     container:
-      image: wesnoth/wesnoth:flatpak-master
+      image: wesnoth/wesnoth:flatpak-sdl3
       options: --tty --cap-add=ALL --privileged # docker create options
 
     steps:
-      - { uses: actions/checkout@v4, with: { submodules: "recursive" } }
+      - { uses: actions/checkout@v6, with: { submodules: "recursive" } }
 
       - name: Flatpak
         run: |
@@ -228,7 +236,7 @@ jobs:
           flatpak build-bundle --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo export-repo wesnoth.flatpak org.wesnoth.Wesnoth "$branch"
 
       - name: Upload flatpak bundle
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: Flatpak-Bundle
           path: wesnoth.flatpak
@@ -236,7 +244,7 @@ jobs:
   translations:
     runs-on: ubuntu-latest
     container:
-      image: wesnoth/wesnoth:2404-master
+      image: wesnoth/wesnoth:2404-sdl3
       env:
        LANGUAGE: en_US.UTF-8
        LANG: en_US.UTF-8
@@ -244,7 +252,7 @@ jobs:
        CLICOLOR_FORCE: 1
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           submodules: "recursive"
 
@@ -267,19 +275,19 @@ jobs:
       fail-fast: false
       matrix:
         cfg: [ Release ]
-    runs-on: macos-13
+    runs-on: macos-14
     env:
       CFG: ${{ matrix.cfg }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           submodules: "recursive"
 
       - name: Get dependencies
         run: |
-          HOMEBREW_NO_AUTO_UPDATE=1 brew install scons
-          ./projectfiles/Xcode/Fix_Xcode_Dependencies
+          HOMEBREW_NO_AUTO_UPDATE=1 brew install autoconf autoconf-archive automake cmake libtool scons
+          ./projectfiles/Xcode/macos/build_macos_deps
       - name: Build translations
         run: scons translations build=release --debug=time nls=true jobs=2
       - name: Build wesnoth, wesnothd, campaignd and unit tests
@@ -296,16 +304,18 @@ jobs:
         continue-on-error: true  # allow failures since this is not essential and it does fail spuriously (hdiutil: create failed - Resource busy)
         run: hdiutil create -volname "Wesnoth_$CFG" -fs 'HFS+' -srcfolder "build/$CFG" -ov -format UDBZ "Wesnoth_${CFG}.dmg"
       - name: Upload disk image
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: MacOS ${{ matrix.cfg }} disk image
           path: projectfiles/Xcode/Wesnoth_${{ matrix.cfg }}.dmg
       - name: Run WML tests
         if: matrix.cfg == 'Release'
-        run: ./run_wml_tests -g -c -t 30 -bt 350 -p "projectfiles/Xcode/build/$CFG/The Battle for Wesnoth.app/Contents/MacOS/The Battle for Wesnoth" -a=--userdata-dir="$PWD/ud"
+        run: |
+          "projectfiles/Xcode/build/$CFG/The Battle for Wesnoth.app/Contents/MacOS/The Battle for Wesnoth" --userdata-dir="$PWD/ud" -u test_return
+          ./run_wml_tests -g -c -t 30 -bt 350 -p "projectfiles/Xcode/build/$CFG/The Battle for Wesnoth.app/Contents/MacOS/The Battle for Wesnoth" -a=--userdata-dir="$PWD/ud"
       - name: Upload userdata files from WML unit tests (logs, replays)
         if: matrix.cfg == 'Release' && (success() || failure())
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: WMLTest-userdata-MacOS
           path: ud
@@ -328,30 +338,30 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - { uses: actions/checkout@v4, with: { submodules: "recursive" } }
+      - { uses: actions/checkout@v6, with: { submodules: "recursive" } }
 
       - name: Make version of the runner image (https://github.com/actions/runner-images/releases) accessible to expression
         run: echo IMAGE_VERSION=%ImageVersion%>> %GITHUB_ENV%
 
       - name: Cache object files
         id: windows-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: vcpkg_installed  # vcpkg generates this dir next to vcpkg.json
           # the final key part needs to be changed if anything in the build process changes that is not already included here
           key: win-cache-master-${{ matrix.cfg }}-${{ env.IMAGE_VERSION }}-${{ hashFiles('vcpkg.json') }}-0001
 
       - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v2
+        uses: microsoft/setup-msbuild@v3
 
       - name: Run cmake
         run: cmake -DCMAKE_BUILD_TYPE=%CFG% -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true
           -DENABLE_TESTS=true -DENABLE_MYSQL=false -DENABLE_NLS=false
           -DCMAKE_TOOLCHAIN_FILE=C:\vcpkg\scripts\buildsystems\vcpkg.cmake -DVCPKG_INSTALL_OPTIONS=--debug
-          -DVCPKG_TARGET_TRIPLET=x64-windows -DCMAKE_GENERATOR_PLATFORM=x64 -G "Visual Studio 17 2022" .
+          -DVCPKG_TARGET_TRIPLET=x64-windows -DCMAKE_GENERATOR_PLATFORM=x64 -G "Visual Studio 18 2026" .
 
       - name: Build wesnoth, wesnothd, campaignd and unit tests
-        run: MSBuild.exe wesnoth.sln -p:Configuration=%CFG%
+        run: MSBuild.exe wesnoth.slnx -p:Configuration=%CFG%
 
       - name: Run WML unit tests
         if: matrix.cfg == 'Release'
@@ -359,20 +369,20 @@ jobs:
 
       - name: Upload userdata files from WML unit tests (logs, replays)
         if: matrix.cfg == 'Release' && (success() || failure())
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: WMLTest-userdata-Windows
           path: ud
 
 # run after all other jobs have completed to check overall build status
   notification:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     needs: [checks, copyright, ubuntu, steam-runtime, mingw, flatpak, translations, macos-intel, windows]
     if: failure() && github.event_name == 'push'
 
     steps:
       - name: Discord Notification
-        uses: rjstone/discord-webhook-notify@v1
+        uses: rjstone/discord-webhook-notify@v2
         with:
           severity: error
           webhookUrl: ${{ secrets.DISCORD_CI_WEBHOOK }}

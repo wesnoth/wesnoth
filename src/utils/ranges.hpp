@@ -23,6 +23,10 @@
 #include <boost/range/adaptor/transformed.hpp>
 #endif
 
+#ifndef __cpp_lib_ranges_stride
+#include <boost/range/adaptor/strided.hpp>
+#endif
+
 namespace utils::views
 {
 #ifdef __cpp_lib_ranges
@@ -42,4 +46,15 @@ constexpr auto transform = boost::adaptors::transformed;
 constexpr auto values    = boost::adaptors::map_values;
 
 #endif
+
+//
+// Ranges introduced in C++23
+//
+
+#ifdef __cpp_lib_ranges_stride
+using std::views::stride;
+#else
+constexpr auto stride = boost::adaptors::strided;
+#endif
+
 } // namespace utils::views

@@ -46,22 +46,11 @@ extern int cache_compression_level;
 
 class config;
 class game_config_view;
-struct SDL_RWops;
 
 namespace filesystem {
 
 using scoped_istream = std::unique_ptr<std::istream>;
 using scoped_ostream = std::unique_ptr<std::ostream>;
-
-struct sdl_rwops_deleter
-{
-	void operator()(SDL_RWops*) const noexcept;
-};
-
-using rwops_ptr = std::unique_ptr<SDL_RWops, sdl_rwops_deleter>;
-
-rwops_ptr make_read_RWops(const std::string &path);
-rwops_ptr make_write_RWops(const std::string &path);
 
 /** An exception object used when an IO error occurs */
 struct io_exception : public game::error {
@@ -76,33 +65,32 @@ enum class filter_mode { NO_FILTER, SKIP_MEDIA_DIR, SKIP_PBL_FILES };
 enum class reorder_mode { DONT_REORDER, DO_REORDER };
 
 // default extensions
-const std::string map_extension = ".map";
-const std::string mask_extension = ".mask";
-const std::string wml_extension = ".cfg";
+extern const std::string map_extension;
+extern const std::string mask_extension;
+extern const std::string wml_extension;
 
 // A list of file and directory blacklist patterns
 class blacklist_pattern_list
 {
 public:
-	blacklist_pattern_list()
-		: file_patterns_(), directory_patterns_()
-	{}
-	blacklist_pattern_list(const std::vector<std::string>& file_patterns, const std::vector<std::string>& directory_patterns)
-		: file_patterns_(file_patterns), directory_patterns_(directory_patterns)
+	blacklist_pattern_list() = default;
+
+	blacklist_pattern_list(std::vector<std::string> file_patterns, std::vector<std::string> directory_patterns)
+		: file_patterns_(std::move(file_patterns)), directory_patterns_(std::move(directory_patterns))
 	{}
 
 	bool match_file(const std::string& name) const;
 
 	bool match_dir(const std::string& name) const;
 
-	void add_file_pattern(const std::string& pattern)
+	void add_file_pattern(std::string pattern)
 	{
-		file_patterns_.push_back(pattern);
+		file_patterns_.push_back(std::move(pattern));
 	}
 
-	void add_directory_pattern(const std::string& pattern)
+	void add_directory_pattern(std::string pattern)
 	{
-		directory_patterns_.push_back(pattern);
+		directory_patterns_.push_back(std::move(pattern));
 	}
 
 	void remove_blacklisted_files_and_dirs(std::vector<std::string>& files, std::vector<std::string>& directories) const;
@@ -154,7 +142,7 @@ std::string get_default_prefs_file();
 std::string get_save_index_file();
 std::string get_lua_history_file();
 /** location of the game manual file correponding to the given locale (default: en) */
-utils::optional<std::string> get_game_manual_file(const std::string& locale_code = "en");
+utils::optional<std::string> get_game_manual_file(const std::string& locale_code, const std::string& short_locale_code);
 /**
  * parent directory for everything that should be synced between systems.
  * implemented due to limitations of Steam's AutoCloud (non-SDK) syncing, but will also simplify things if it's ever added for any other platforms.
@@ -246,6 +234,9 @@ void write_file(const std::string& fname, const std::string& data, std::ios_base
  * @param dest The destination of the copied file.
  */
 void copy_file(const std::string& src, const std::string& dest);
+
+std::string get_map_file(const std::string& name);
+std::string get_scenario_file(const std::string& name);
 
 std::string read_map(const std::string& name);
 std::string read_scenario(const std::string& name);
@@ -437,16 +428,15 @@ char path_separator();
  */
 struct binary_paths_manager
 {
-	binary_paths_manager();
+	binary_paths_manager() = default;
 	binary_paths_manager(const game_config_view& cfg);
+	binary_paths_manager(const binary_paths_manager& o) = delete;
+	binary_paths_manager& operator=(const binary_paths_manager& o) = delete;
 	~binary_paths_manager();
 
 	void set_paths(const game_config_view& cfg);
 
 private:
-	binary_paths_manager(const binary_paths_manager& o);
-	binary_paths_manager& operator=(const binary_paths_manager& o);
-
 	void cleanup();
 
 	std::vector<std::string> paths_;
@@ -502,6 +492,7 @@ std::string get_program_invocation(const std::string &program_name);
  * Returns the localized version of the given filename, if it exists.
  */
 utils::optional<std::string> get_localized_path(const std::string& file, const std::string& suff = "");
+utils::optional<std::string> get_localized_path(const utils::optional<std::string>& base_path);
 
 /**
  * Returns the add-on ID from a path.

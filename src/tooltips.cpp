@@ -21,9 +21,8 @@
 #include "game_display.hpp"
 #include "help/help.hpp"
 #include "log.hpp"
+#include "sdl/rect.hpp"
 #include "video.hpp"
-
-#include <SDL2/SDL_rect.h>
 
 static lg::log_domain log_font("font");
 #define DBG_FT LOG_STREAM(debug, log_font)
@@ -37,7 +36,7 @@ static const double height_fudge = 0.95;  // An artificial "border" to keep tip 
 
 struct tooltip
 {
-	tooltip(const SDL_Rect& r, const std::string& msg, const std::string& act = "");
+	tooltip(const rect& r, const std::string& msg, const std::string& act = "");
 	rect origin;
 	rect loc = {};
 	std::string message;
@@ -49,7 +48,7 @@ struct tooltip
 	void update_label_pos();
 };
 
-tooltip::tooltip(const SDL_Rect& r, const std::string& msg, const std::string& act)
+tooltip::tooltip(const rect& r, const std::string& msg, const std::string& act)
 	: origin(r), message(msg), action(act), label(msg)
 {
 	DBG_FT << "created tooltip for " << origin << " at " << loc;
@@ -240,7 +239,7 @@ void clear_tooltips()
 	tips.clear();
 }
 
-void clear_tooltips(const SDL_Rect& r)
+void clear_tooltips(const rect& r)
 {
 	for(auto i = tips.begin(); i != tips.end(); ) {
 		if(i->second.origin.overlaps(r)) {
@@ -259,7 +258,7 @@ void clear_tooltips(const SDL_Rect& r)
 	}
 }
 
-bool update_tooltip(int id, const SDL_Rect& origin, const std::string& message)
+bool update_tooltip(int id, const rect& origin, const std::string& message)
 {
 	std::map<int, tooltip>::iterator it = tips.find(id);
 	if (it == tips.end() ) return false;
@@ -291,7 +290,7 @@ void remove_tooltip(int id)
 	tips.erase(id);
 }
 
-int add_tooltip(const SDL_Rect& origin, const std::string& message, const std::string& action)
+int add_tooltip(const rect& origin, const std::string& message, const std::string& action)
 {
 	// Because some other things are braindead, we have to check we're not
 	// just adding the same tooltip over and over every time the mouse moves.

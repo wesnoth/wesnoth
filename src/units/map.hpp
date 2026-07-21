@@ -361,7 +361,7 @@ public:
 	unit_map& operator=(const unit_map& that);
 
 	~unit_map();
-	void swap(unit_map& o);
+	void swap(unit_map& o) noexcept;
 
 	typedef iterator_base<standard_iter_types> unit_iterator;
 	typedef iterator_base<const_iter_types> const_unit_iterator;
@@ -595,7 +595,7 @@ private:
 };
 
 /** Implement non-member swap function for std::swap (calls @ref unit_map::swap). */
-void swap(unit_map& lhs, unit_map& rhs);
+void swap(unit_map& lhs, unit_map& rhs) noexcept;
 
 template<typename T>
 std::size_t unit_map::erase(const T& iter)

@@ -84,11 +84,9 @@ public:
 		return !query_value(key).is_null();
 	}
 
-	// Note: this function should NOT overwrite str, but append text to it!
-	// TODO: return str instead of taking str.
-	void serialize(std::string& str) const
+	std::string serialize() const
 	{
-		serialize_to_string(str);
+		return serialize_to_string();
 	}
 
 	void subscribe_dtor(callable_die_subscriber* d) const {
@@ -103,23 +101,23 @@ protected:
 	template<typename T, typename K>
 	static variant convert_map(const std::map<T, K>& input_map)
 	{
-		std::map<variant,variant> tmp;
+		std::map<variant, variant> tmp;
 		for(const auto& p : input_map) {
 			tmp[variant(p.first)] = variant(p.second);
 		}
 
-		return variant(tmp);
+		return variant(std::move(tmp));
 	}
 
 	template<typename T>
 	static variant convert_set(const std::set<T>& input_set)
 	{
-		std::map<variant,variant> tmp;
+		std::map<variant, variant> tmp;
 		for(const auto& elem : input_set) {
 			tmp[variant(elem)] = variant(1);
 		}
 
-		return variant(tmp);
+		return variant(std::move(tmp));
 	}
 
 	template<typename T>
@@ -130,7 +128,7 @@ protected:
 			tmp.emplace_back(elem);
 		}
 
-		return variant(tmp);
+		return variant(std::move(tmp));
 	}
 
 	static inline void add_input(formula_input_vector& inputs, const std::string& key, formula_access access_type = formula_access::read_only)
@@ -156,9 +154,7 @@ protected:
 		return this < callable ? -1 : (this == callable ? 0 : 1);
 	}
 
-	// Note: this function should NOT overwrite str, but append text to it!
-	// TODO: return string not take string
-	virtual void serialize_to_string(std::string& /*str*/) const
+	virtual std::string serialize_to_string() const
 	{
 		throw type_error("Tried to serialize type which cannot be serialized");
 	}
@@ -311,5 +307,40 @@ private:
 
 using map_formula_callable_ptr = std::shared_ptr<map_formula_callable>;
 using const_map_formula_callable_ptr = std::shared_ptr<const map_formula_callable>;
+
+template<typename T, typename... Args>
+variant make_callable(Args&&... args)
+{
+	return variant{std::make_shared<T>(std::forward<Args>(args)...)};
+}
+
+#ifdef __cpp_concepts
+template<typename T>
+requires std::is_pointer_v<T>
+auto callable_cast(const variant& v)
+#else
+template<typename T>
+auto callable_cast(const variant& v) -> std::enable_if_t<std::is_pointer_v<T>, std::shared_ptr<const std::remove_pointer_t<T>>>
+#endif
+{
+	return std::dynamic_pointer_cast<const std::remove_pointer_t<T>>(v.as_callable());
+}
+
+#ifdef __cpp_concepts
+template<typename T>
+requires std::is_reference_v<T>
+auto callable_cast(const variant& v)
+#else
+template<typename T>
+auto callable_cast(const variant& v) -> std::enable_if_t<std::is_reference_v<T>, const std::remove_reference_t<T>>
+#endif
+{
+	auto ptr = callable_cast<std::remove_reference_t<T>*>(v);
+	if(!ptr) {
+		throw type_error{"could not convert type"};
+	}
+
+	return *ptr;
+}
 
 } // namespace wfl

@@ -40,7 +40,6 @@ class team;
 class terrain_filter;  // lines 43-43
 class unit_map;
 class unit_type;  // lines 46-46
-namespace wfl { class variant; }
 namespace ai { class ai_context; }  // lines 51-51
 namespace ai { class unit_advancements_aspect; }
 struct battle_context_unit_stats;  // lines 39-39
@@ -205,8 +204,6 @@ public:
 	virtual void add_aspects(std::vector< aspect_ptr > &aspects ) = 0;
 
 	virtual const attacks_vector& get_attacks() const = 0;
-
-	virtual const wfl::variant& get_attacks_as_variant() const = 0;
 
 	virtual const terrain_filter& get_avoid() const = 0;
 
@@ -576,11 +573,6 @@ public:
 	virtual const attacks_vector& get_attacks() const override
 	{
 		return target_->get_attacks();
-	}
-
-	virtual const wfl::variant& get_attacks_as_variant() const override
-	{
-		return target_->get_attacks_as_variant();
 	}
 
 	virtual const terrain_filter& get_avoid() const override
@@ -1144,8 +1136,6 @@ public:
 	virtual aspect_map& get_aspects() override;
 
 	virtual const attacks_vector& get_attacks() const override;
-
-	virtual const wfl::variant& get_attacks_as_variant() const override;
 
 	virtual const terrain_filter& get_avoid() const override;
 

@@ -1130,7 +1130,7 @@ std::unique_ptr<document> document::clone()
 	return std::make_unique<document>(buf);
 }
 
-void document::swap(document& o)
+void document::swap(document& o) noexcept
 {
 	std::swap(compressed_buf_, o.compressed_buf_);
 	std::swap(output_, o.output_);
@@ -1239,7 +1239,7 @@ std::string document::stats()
 	return s.str();
 }
 
-void swap(document& lhs, document& rhs)
+void swap(document& lhs, document& rhs) noexcept
 {
 	lhs.swap(rhs);
 }

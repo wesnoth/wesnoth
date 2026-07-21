@@ -53,7 +53,7 @@ void mouse_action_unit::move(editor_display& disp, const map_location& hex)
 
 		disp.clear_mouseover_hex_overlay();
 
-		SDL_Rect rect = disp.get_location_rect(hex);
+		rect rect = disp.get_location_rect(hex);
 		std::stringstream str;
 		str << _("Identifier: ") << unit_it->id()     << "\n";
 		if(unit_it->name() != "") {

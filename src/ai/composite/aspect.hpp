@@ -41,13 +41,8 @@ public:
 	void invalidate() const
 	{
 		valid_ = false;
-		valid_variant_ = false;
 		valid_lua_ = false;
 	}
-
-	virtual const wfl::variant& get_variant() const = 0;
-
-	virtual std::shared_ptr<wfl::variant> get_variant_ptr() const = 0;
 
 	virtual void get_lua(lua_State* L) const = 0;
 
@@ -84,7 +79,6 @@ protected:
 	std::string turns_;
 
 	mutable bool valid_;
-	mutable bool valid_variant_;
 	mutable bool valid_lua_;
 
 	config cfg_;
@@ -103,7 +97,6 @@ public:
 	typesafe_aspect(readonly_context &context, const config &cfg, const std::string &id)
 		: aspect(context,cfg,id)
 		, value_()
-		, value_variant_()
 		, value_lua_()
 	{
 	}
@@ -115,32 +108,6 @@ public:
 	virtual const T& get() const
 	{
 		return *get_ptr();
-	}
-
-	virtual const wfl::variant& get_variant() const
-	{
-		return *get_variant_ptr();
-	}
-
-	virtual std::shared_ptr<wfl::variant> get_variant_ptr() const
-	{
-		if (!valid_variant_) {
-			if (!valid_) {
-				recalculate();
-			}
-
-			if (!valid_variant_ && valid_ ) {
-				value_variant_.reset(new wfl::variant(variant_value_translator<T>::value_to_variant(this->get())));
-				valid_variant_ = true;
-			} else if (!valid_variant_ && valid_lua_) {
-				value_ = value_lua_->get();
-				value_variant_.reset(new wfl::variant(variant_value_translator<T>::value_to_variant(this->get())));
-				valid_variant_ = true; // @note: temporary workaround
-			} else {
-				assert(valid_variant_);
-			}
-		}
-		return value_variant_;
 	}
 
 	void get_lua(lua_State* L) const {
@@ -155,15 +122,12 @@ public:
 	virtual std::shared_ptr<T> get_ptr() const
 	{
 		if (!valid_) {
-			if (!(valid_variant_ || valid_lua_)) {
+			if (!valid_lua_) {
 				recalculate();
 			}
 
 			if (!valid_ ) {
-				if (valid_variant_) {
-					value_.reset(new T(variant_value_translator<T>::variant_to_value(get_variant())));
-					valid_ = true;
-				} else if (valid_lua_){
+				if (valid_lua_){
 					value_ = value_lua_->get();
 					valid_ = true;
 				} else {
@@ -176,7 +140,6 @@ public:
 
 protected:
 	mutable std::shared_ptr<T> value_;
-	mutable std::shared_ptr<wfl::variant> value_variant_;
 	mutable std::shared_ptr< lua_object<T>> value_lua_;
 };
 

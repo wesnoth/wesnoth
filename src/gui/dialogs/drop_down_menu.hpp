@@ -16,10 +16,10 @@
 #pragma once
 
 #include "gui/dialogs/modal_dialog.hpp"
+#include "gui/widgets/group.hpp"
 #include "utils/optional_fwd.hpp"
 
 #include <boost/dynamic_bitset.hpp>
-
 
 class config;
 
@@ -37,7 +37,7 @@ public:
 	drop_down_menu(styled_widget* parent, const std::vector<config>& items, int selected_item, bool keep_open);
 
 	/** Menu was invoked manually. Position and markup settings must be provided here. */
-	drop_down_menu(SDL_Rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup, bool keep_open);
+	drop_down_menu(rect button_pos, const std::vector<config>& items, int selected_item, bool use_markup, bool keep_open);
 
 	int selected_item() const
 	{
@@ -53,13 +53,16 @@ public:
 	boost::dynamic_bitset<> get_toggle_states() const;
 
 private:
-	// TODO: evaluate exposing this publically via the [multi]menu_button widgets
+	// TODO: evaluate exposing this publicly via the [multi]menu_button widgets
 	struct entry_data
 	{
 		entry_data(const config& cfg);
 
 		/** If present, column 1 will have a toggle button. The value indicates its initial state. */
 		utils::optional<bool> checkbox;
+
+		/** If present, column 1 will have a radio toggle button. The value indicates its initial state. */
+		utils::optional<bool> radio;
 
 		/** If no checkbox is present, the icon at this path will be shown in column 1. */
 		std::string icon;
@@ -83,12 +86,15 @@ private:
 	/** Configuration of each row. */
 	std::vector<entry_data> items_;
 
+	/** Manages radio buttons, if present. */
+	utils::optional<gui2::group<int>> radio_manager_;
+
 	/**
 	 * The screen location of the menu_button button that triggered this droplist.
 	 * Note: we don't adjust the location of this dialog to when resizing the window.
 	 * Instead this dialog automatically closes itself on resizing.
 	 */
-	SDL_Rect button_pos_;
+	rect button_pos_;
 
 	int selected_item_;
 	point selected_item_pos_;
@@ -116,6 +122,28 @@ private:
 	void mouse_up_callback(bool&, bool&, const point& coordinate);
 
 	void mouse_down_callback();
+
+	//
+	// ThemeWML transition API. Don't use for anything else!!!
+	//
+
+	/** If true, enables special handling of embedded toggle buttons. */
+	bool legacy_menu_mode_ = false;
+
+	/** Helper toggle callback, only to be used for legacy theme handling. */
+	std::function<void(int)> theme_transition_toggle_callback_ = nullptr;
+
+public:
+	void set_legacy_menu_mode(bool value)
+	{
+		legacy_menu_mode_ = value;
+	}
+
+	template<typename Func>
+	void set_legacy_toggle_callback(const Func& f)
+	{
+		theme_transition_toggle_callback_ = f;
+	}
 };
 
 } // namespace dialogs

@@ -1,16 +1,17 @@
 # Russian translations for Battle for Wesnoth package
-# Copyright (C) 2006-2022 Wesnoth development team.
+# Copyright (C) 2006-2026 Wesnoth development team.
 #
 # Automatically generated, 2006.
 # ???
 # Fedor Khod'kov <fkhodkov@gmail.com>, ???-2014.
 # Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2024.
+# Alexandr Obolonkin (Alexinor) <obolonkin@proton.me>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-manpages\n"
 "POT-Creation-Date: 2025-04-27 22:22-0500\n"
-"PO-Revision-Date: 2024-04-08 21:45+0300\n"
-"Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
+"PO-Revision-Date: 2026-06-21 17:23+0500\n"
+"Last-Translator: Alexandr Obolonkin (Alexinor) <obolonkin@proton.me>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 
 # type: TH
 #. type: TH
@@ -119,10 +120,9 @@ msgstr "ПАРАМЕТРЫ"
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:45
-#, fuzzy, no-wrap
-#| msgid "B<--noaddons>"
+#, no-wrap
 msgid "B<--addon-info>"
-msgstr "B<--noaddons>"
+msgstr "B<--addon-info>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:48
@@ -130,6 +130,8 @@ msgid ""
 "Shows a button on the add-ons manager to query the add-ons server for "
 "various information."
 msgstr ""
+"Отображает кнопку в менеджере аддонов для запроса различной информации с "
+"сервера аддонов."
 
 #. type: TP
 #: doc/man/wesnoth.6:48
@@ -212,13 +214,12 @@ msgstr "B<--clock>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:72
-#, fuzzy
-#| msgid "Adds the option to show a clock for testing the drawing timer."
 msgid ""
 "Adds the option to show a clock for testing the drawing timer. Also adds the "
 "option for showing the GUI Test Dialog."
 msgstr ""
-"Добавить возможность показать часы, чтобы проверить таймер отображения."
+"Добавить возможность показать часы, чтобы проверить таймер отображения. "
+"Также добавляет возможность показать диалоговое окно тестирования GUI."
 
 # type: TP
 #. type: TP
@@ -230,10 +231,8 @@ msgstr "B<--core>I<\\ id_ядра>"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:75
-#, fuzzy
-#| msgid "overrides the loaded core with the one whose id is specified."
 msgid "Overrides the loaded core with the one whose id is specified."
-msgstr "перекрывает загруженное ядро тем, чей идентификатор был указан."
+msgstr "Перекрывает загруженное ядро тем, чей идентификатор был указан."
 
 #. type: TP
 #: doc/man/wesnoth.6:75
@@ -247,6 +246,8 @@ msgid ""
 "Overrides the data directory with the one specified. The data directory is "
 "the one that contains subdirectories 'data', 'fonts', 'images' and others."
 msgstr ""
+"Перекрывает каталог данных указанным каталогом. Каталог данных содержит "
+"подкаталоги 'data', 'fonts', 'images' и другие."
 
 # type: TP
 #. type: TP
@@ -304,10 +305,9 @@ msgstr "запретить устаревшие вызовы Lua API"
 
 #. type: TP
 #: doc/man/wesnoth.6:92
-#, fuzzy, no-wrap
-#| msgid "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
+#, no-wrap
 msgid "B<-D,\\ --diff>I<\\ left-file>B<\\ >I<right-file>"
-msgstr "B<-D,--diff>I<\\ левый файл>B<\\ >I<правый файл>"
+msgstr "B<-D,\\ --diff>I<left-file>B<\\ >I<right-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:98
@@ -429,13 +429,6 @@ msgstr "B<--log->I<уровень>B<=>I<домен1>B<,>I<домен2>B<,>I<...>
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:151
-#, fuzzy
-#| msgid ""
-#| "sets the severity level of the log domains.  B<all> can be used to match "
-#| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>,\\ B<none>.  By default the B<warning> level is used for most "
-#| "domains, but B<deprecation> defaults to B<none> unless combined with the "
-#| "B<-d> option."
 msgid ""
 "sets the severity level of the log domains. The wildcard B<*> may be used to "
 "match a subset of domains, e.g. gui/* or conf* or * (the latter matches all "
@@ -444,12 +437,14 @@ msgid ""
 "B<deprecation> defaults to B<none> unless combined with the B<-d> option.  "
 "This option can be specified multiple times."
 msgstr ""
-"задать уровень детальности доменов лога.  B<all> выводит в лог домены всех "
-"уровней. Доступны уровни: B<error> (ошибки),\\ B<warning> (предупреждения),"
-"\\ B<info> (сведения),\\ B<debug> (отладка),\\ B<none> (ничего).  По "
-"умолчанию для большинства доменов используется уровень B<warning>, но домен "
-"B<deprecation> (выводимое из употребления) устанавливается в B<none>, если "
-"только не установлен параметр B<-d>."
+"задать уровень детальности доменов лога. B<*> может использоваться для "
+"сопоставления подмножества доменов, например, gui/* или conf* или * "
+"(последний соответствует всем доменам). Доступны уровни: B<error> (ошибки),"
+"\\ B<warning> (предупреждения),\\ B<info> (сведения),\\ B<debug> (отладка),"
+"\\ B<none> (ничего). По умолчанию для большинства доменов используется "
+"уровень B<warning>, но домен B<deprecation> (выводимое из употребления) "
+"устанавливается в B<none>, если только не установлен параметр B<-d>. Этот "
+"параметр можно указать несколько раз."
 
 # type: TP
 #. type: TP
@@ -466,27 +461,21 @@ msgstr "выводить временные метки в файл логов с
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:154
-#, fuzzy, no-wrap
-#| msgid "B<--log-strict>"
+#, no-wrap
 msgid "B<--log-strict>I<\\ level>"
-msgstr "B<--log-strict>"
+msgstr "B<--log-strict>I<\\ уровень>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:163
-#, fuzzy
-#| msgid ""
-#| "sets the strict level of the logger. Any messages sent to log domains of "
-#| "this level or more severe will cause the unit test to fail regardless of "
-#| "the victory result. Only relevant when used with B<-u>."
 msgid ""
 "sets the strict I<level> of the logger. Any messages sent to log domains of "
 "this I<level> or more severe will cause the unit test to fail regardless of "
 "the victory result. Only relevant when used with B<-u>."
 msgstr ""
-"установить строгий уровень отладчика. Любые сообщения, посланные в домены "
-"этого уровня выше по своей значимости, приведут к провалу проверки модуля "
-"невзирая на исход пробной игры. Имеет значение только, когда используется "
-"совместно с B<-u>."
+"установить строгийI<level> уровень отладчика. Любые сообщения, посланные в "
+"домены этого I<level> уровня выше по своей значимости, приведут к провалу "
+"проверки модуля невзирая на исход пробной игры. Имеет значение только, когда "
+"используется совместно с B<-u>."
 
 # type: TP
 #. type: TP
@@ -513,17 +502,14 @@ msgstr "B<--no-log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:171
-#, fuzzy
-#| msgid ""
-#| "prevents redirecting logged output to a file. Log files are created in "
-#| "the logs directory under the userdata folder."
 msgid ""
 "prevents redirecting logged output to a file. The environment variable "
 "WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created "
 "in the logs directory under the userdata folder."
 msgstr ""
-"предотвращает перенаправление данных логгера в файл. Файлы логов создаются в "
-"подпапке логов в директории пользовательских данных."
+"предотвращает перенаправление данных логгера в файл. В качестве альтернативы "
+"можно также установить переменную среды WESNOTH_NO_LOG_FILE. Файлы логов "
+"создаются в подпапке logs в папке userdata."
 
 # type: TP
 #. type: TP
@@ -534,24 +520,19 @@ msgstr "B<--log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:174
-#, fuzzy
-#| msgid ""
-#| "log output is written to a file in addition to standard output/error. "
-#| "Cancels the effect of --no-log-to-file whether implicit or explicit."
 msgid ""
 "log output is written to a file. Cancels the effect of --no-log-to-file "
 "whether implicit or explicit."
 msgstr ""
-"вывод логов дополнительно к стандартному выводу записывается в файл. Имеет "
-"приоритет перед --no-log-to-file"
+"вывод логов записывается в файл. Отменяет действие параметра --no-log-to-"
+"file, независимо от того, является ли он явным или неявным."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:174
-#, fuzzy, no-wrap
-#| msgid "B<--no-log-to-file>"
+#, no-wrap
 msgid "B<--no-log-sanitize>"
-msgstr "B<--no-log-to-file>"
+msgstr "B<--no-log-sanitize>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:177
@@ -559,6 +540,8 @@ msgid ""
 "disables the anonymization that's normally applied when logging, for example "
 "replacing usernames with USER."
 msgstr ""
+"отключает анонимизацию, которая обычно применяется при входе в систему, "
+"например, замену имён пользователей на USER."
 
 # type: TP
 #. type: TP
@@ -777,20 +760,14 @@ msgstr "B<--plugin>I<\\ скрипт>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:239
-#, fuzzy
-#| msgid ""
-#| "(experimental) load a I<script> which defines a Wesnoth plugin. Similar "
-#| "to B<--script>, but Lua file should return a function which will be run "
-#| "as a coroutine and periodically woken up with updates."
 msgid ""
 "load a I<script> which defines a Wesnoth plugin. Lua file should return a "
 "function which will be run as a coroutine and periodically woken up with "
 "updates."
 msgstr ""
-"(экспериментально) загрузить I<скрипт>, определяющий плагин Веснота. В "
-"целом, похоже на B<--script> за исключением того, что файл Lua должен "
-"вернуть функцию, которую можно запустить в качестве сопрограммы и время от "
-"времени пробуждать обновлениями."
+"загрузить I<script>, определяющий плагин Веснота. Файл Lua должен возвращать "
+"функцию, которая будет выполняться как сопрограмма и периодически "
+"активироваться при обновлениях."
 
 #. type: TP
 #: doc/man/wesnoth.6:239
@@ -847,7 +824,7 @@ msgstr "B<--preprocess-input-macros>I<\\ исходный файл>"
 #. type: Plain text
 #: doc/man/wesnoth.6:257
 msgid "preprocesses a given string and writes the output to stdout."
-msgstr ""
+msgstr "обрабатывает заданную строку и выводит результат в stdout."
 
 #. type: TP
 #: doc/man/wesnoth.6:257
@@ -857,19 +834,15 @@ msgstr "B<--preprocess-defines=>I<ОПРЕДЕЛЕНИЕ1>B<,>I<ОПРЕДЕЛЕ
 
 #. type: Plain text
 #: doc/man/wesnoth.6:266
-#, fuzzy
-#| msgid ""
-#| "comma separated list of defines to be used by the B<--preprocess> "
-#| "command. If B<SKIP_CORE> is in the define list the \"data/core\" "
-#| "directory won't be preprocessed."
 msgid ""
 "comma separated list of defines to be used by the B<--preprocess> or B<--"
 "preprocess-string> command. If B<SKIP_CORE> is in the define list the \"data/"
 "core\" directory won't be preprocessed."
 msgstr ""
 "разделённый запятыми список определений, используемых командой B<--"
-"preprocess>. Если в списке определений есть B<SKIP_CORE>, то каталог \"data/"
-"core\" не будет прогоняться через препроцессор."
+"preprocess> или B<--preprocess-string> . Если в списке определений есть "
+"B<SKIP_CORE>, то каталог \"data/core\" не будет прогоняться через "
+"препроцессор."
 
 #. type: TP
 #: doc/man/wesnoth.6:266
@@ -879,18 +852,14 @@ msgstr "B<--preprocess-input-macros>I<\\ исходный файл>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:275
-#, fuzzy
-#| msgid ""
-#| "used only by the B<--preprocess> command. Specifies a file that contains "
-#| "B<[preproc_define]>s to be included before preprocessing."
 msgid ""
 "used only by the B<--preprocess> or B<--preprocess-string> command. "
 "Specifies a file that contains B<[preproc_define]>s to be included before "
 "preprocessing."
 msgstr ""
-"используется только командой B<--preprocess>. Задает файл, который содержит "
-"определения препроцессора B<[preproc_define]>, которые должны быть загружены "
-"до запуска препроцессора."
+"используется только командой B<--preprocess> или B<--preprocess-string>. "
+"Задает файл, который содержит определения препроцессора B<[preproc_define]>, "
+"которые должны быть загружены до запуска препроцессора."
 
 #. type: TP
 #: doc/man/wesnoth.6:275
@@ -900,13 +869,6 @@ msgstr "B<--preprocess-output-macros[>I<=целевой файл>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:288
-#, fuzzy
-#| msgid ""
-#| "used only by the B<--preprocess> command. Will output all preprocessed "
-#| "macros in the target file. If the file is not specified the output will "
-#| "be file '_MACROS_.cfg' in the target directory of preprocess's command. "
-#| "The output file can be passed to B<--preprocess-input-macros>.  This "
-#| "switch should be typed before the B<--preprocess> command."
 msgid ""
 "used only by the B<--preprocess> command (But not by the B<--preprocess-"
 "string> command). Will output all preprocessed macros in the target file. If "
@@ -915,11 +877,11 @@ msgid ""
 "B<--preprocess-input-macros>.  This switch should be typed before the B<--"
 "preprocess> command."
 msgstr ""
-"используется только командой B<--preprocess>. Выводит все заранее "
-"обработанные макросы в целевой файл. Если файл не задан, файлом вывода будет "
-"'_MACROS_.cfg' в целевом каталоге команды обработчика. Файл вывода можно "
-"передать с помощью B<--preprocess-input-macros>.   Этот ключ необходимо "
-"указать до команды B<--preprocess>."
+"используется только командой B<--preprocess> (Но не командой B<--preprocess-"
+"string>). Выводит все заранее обработанные макросы в целевой файл. Если файл "
+"не задан, файлом вывода будет '_MACROS_.cfg' в целевом каталоге команды "
+"обработчика. Файл вывода можно передать с помощью B<--preprocess-input-"
+"macros>.   Этот ключ необходимо указать до команды B<--preprocess>."
 
 # type: TP
 #. type: TP
@@ -944,8 +906,8 @@ msgstr "B<--render-image>I<\\ изображение>B<\\ >I<результат>
 #: doc/man/wesnoth.6:296
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
-"outputs to a .png file. Image path functions are documented at https://wiki."
-"wesnoth.org/ImagePathFunctionWML."
+"outputs to a .png file. Image path functions are documented at https://"
+"wiki.wesnoth.org/ImagePathFunctionWML."
 msgstr ""
 "взять подходящую Веснотскую 'строку пути к изображению', применить к ней "
 "функции пути изображения, и вывести результат в .png файл. Функции пути "
@@ -1012,8 +974,8 @@ msgid ""
 "in preferences. Example: B<--server> B<server.wesnoth.org>."
 msgstr ""
 "подключиться к указанному хосту, если таковой имеется, иначе подключиться к "
-"первому, указанному в настройках. Например: B<--server> B<server.wesnoth."
-"org>."
+"первому, указанному в настройках. Например: B<--server> "
+"B<server.wesnoth.org>."
 
 # type: TP
 #. type: TP
@@ -1282,7 +1244,7 @@ msgstr "B<--with-replay>"
 #. type: Plain text
 #: doc/man/wesnoth.6:400
 msgid "replays the game loaded with the B<--load> option."
-msgstr "воспроизводит игру, загруженную с параметром B<--load>"
+msgstr "воспроизводит игру, загруженную с параметром B<--load>."
 
 # type: SH
 #. type: SH
@@ -1373,8 +1335,8 @@ msgid ""
 "eras.cfg> file."
 msgstr ""
 "используйте этот параметр для игры в выбранной эре вместо B<Default>. Эра "
-"выбирается по ее идентификатору. Они описаны в файле B<data/multiplayer/eras."
-"cfg>."
+"выбирается по ее идентификатору. Они описаны в файле B<data/multiplayer/"
+"eras.cfg>."
 
 # type: TP
 #. type: TP
@@ -1557,12 +1519,12 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:497
 msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
-"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
-"Отредактирована Нильсом Кнейпером (Nils Kneuper) E<lt>crazy-ivanovic@gmx."
-"netE<gt>, ott E<lt>ott@gaon.netE<gt> и Soliton E<lt>soliton.de@gmail."
-"comE<gt>."
+"Отредактирована Нильсом Кнейпером (Nils Kneuper) E<lt>crazy-"
+"ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> и Soliton "
+"E<lt>soliton.de@gmail.comE<gt>."
 
 # type: Plain text
 #. type: Plain text
@@ -1590,12 +1552,9 @@ msgstr "АВТОРСКОЕ ПРАВО"
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:505 doc/man/wesnothd.6:286
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2023 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2025 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Авторское право \\(co Дэвид Уайт, 2003-2023 E<lt>davidnwhite@verizon.netE<gt>"
+"Авторское право \\(co Дэвид Уайт, 2003-2026 E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -1666,14 +1625,9 @@ msgstr ""
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:32
-#, fuzzy
-#| msgid ""
-#| "B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] "
-#| "[\\|B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
 msgid "B<wesnothd> [\\|B<-dvw>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|]"
 msgstr ""
-"B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<путь>\\|] [\\|B<-p> I<порт>\\|] [\\|"
-"B<-t> I<число>\\|] [\\|B<-T> I<число>\\|]"
+"B<wesnothd> [\\|B<-dvw>\\|] [\\|B<-c> I<путь>\\|] [\\|B<-p> I<порт>\\|]"
 
 # type: Plain text
 #. type: Plain text
@@ -1689,9 +1643,10 @@ msgid ""
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client (/query ...) or the fifo."
 msgstr ""
-"Управление многопользовательскими играми Битвы за Веснот. См. https://www."
-"wesnoth.org/wiki/ServerAdministration (англ.), чтобы узнать, какие команды "
-"сервер может принимать через клиент Веснота (/query ...) или через fifo."
+"Управление многопользовательскими играми Битвы за Веснот. См. https://"
+"www.wesnoth.org/wiki/ServerAdministration (англ.), чтобы узнать, какие "
+"команды сервер может принимать через клиент Веснота (/query ...) или через "
+"fifo."
 
 # type: TP
 #. type: TP
@@ -1917,18 +1872,18 @@ msgstr "B<disallow_names>"
 #| msgid ""
 #| "Names/nicks that are not accepted by the server. B<*> and B<?> from "
 #| "wildcard patterns are supported. See B<glob>(7)  for more details.  "
-#| "Default values (used if nothing is specified) are: B<*admin*,*admln*,"
-#| "*server*,ai,ai?,computer,human,network,player>."
+#| "Default values (used if nothing is specified) are: "
+#| "B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>."
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: B<*admin*,*admln*,*moderator*,*server*,"
-"ai,ai?,computer,human,network,player>."
+"(used if nothing is specified) are: "
+"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
 msgstr ""
 "Имена/ники, не принимаемые сервером. Поддерживаются групповые шаблоны B<*> и "
 "B<?>. Подробности см. B<glob>(7). Значения по умолчанию (используются, если "
-"ничего не указано): B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,"
-"player>."
+"ничего не указано): "
+"B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>."
 
 # type: TP
 #. type: TP
@@ -2401,24 +2356,19 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:242
-#, fuzzy, no-wrap
-#| msgid "B<db_game_info_table>"
+#, no-wrap
 msgid "B<db_game_content_info_table>"
-msgstr "B<db_game_info_table>"
+msgstr "B<db_game_content_info_table>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:245
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which wesnothd will save its own data about the "
-#| "modifications used in a game."
 msgid ""
 "The name of the table in which wesnothd will save its own data about game "
 "content (scenario/era/modifications) used in a game."
 msgstr ""
-"Название таблицы, в которой wesnothd сохранит свои данные о модификациях, "
-"используемых в игре."
+"Название таблицы, в которой wesnothd сохранит свои данные о контенте "
+"(сценариях/эрах/модификациях), используемом в игре."
 
 # type: TP
 #. type: TP
@@ -2442,10 +2392,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:248
-#, fuzzy, no-wrap
-#| msgid "B<db_name>"
+#, no-wrap
 msgid "B<db_tournament_query>"
-msgstr "B<db_name>"
+msgstr "B<db_tournament_query>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:251
@@ -2453,6 +2402,8 @@ msgid ""
 "The SQL query to find tournaments to announce on login. Should return "
 "tournament B<title>, B<status> and B<url>."
 msgstr ""
+"SQL-запрос для поиска турниров, о которых следует объявить при входе в "
+"систему. Должен возвращать турниры B<title>, B<status> и B<url>."
 
 # type: TP
 #. type: TP
@@ -2523,29 +2474,25 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnothd.6:263
-#, fuzzy, no-wrap
-#| msgid "B<mp_mod_group>"
+#, no-wrap
 msgid "B<forum_admin_group>"
-msgstr "B<mp_mod_group>"
+msgstr "B<forum_admin_group>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:266 doc/man/wesnothd.6:269
-#, fuzzy
-#| msgid ""
-#| "The ID of the forum group to be considered as having moderation authority."
 msgid ""
 "The ID of one of the forum groups to be considered as having admin authority "
 "on the add-ons server."
 msgstr ""
-"Идентификатор группы пользователей форума, имеющих полномочия модератора."
+"Идентификатор группы пользователей форума, имеющих полномочия админа на "
+"сервере аддонов."
 
 #. type: TP
 #: doc/man/wesnothd.6:266
-#, fuzzy, no-wrap
-#| msgid "B<mp_mod_group>"
+#, no-wrap
 msgid "B<site_admin_group>"
-msgstr "B<mp_mod_group>"
+msgstr "B<site_admin_group>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:274
@@ -2562,16 +2509,16 @@ msgstr ""
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
-"Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt>.  This manual page was originally "
+"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "Написана Дэвидом Уайтом (David White) E<lt>davidnwhite@verizon.netE<gt>. "
-"Отредактирована Нильсом Кнейпером (Nils Kneuper) E<lt>crazy-ivanovic@gmx."
-"netE<gt>, ott E<lt>ott@gaon.netE<gt>, Soliton E<lt>soliton.de@gmail.comE<gt> "
-"и Томасом Баумхаером E<lt>thomas.baumhauer@gmail.comE<gt>. Эта страница "
-"изначально была написана Сирилом Бауторсом (Cyril Bouthors) "
-"E<lt>cyril@bouthors.orgE<gt>."
+"Отредактирована Нильсом Кнейпером (Nils Kneuper) E<lt>crazy-"
+"ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, Soliton "
+"E<lt>soliton.de@gmail.comE<gt> и Томасом Баумхаером "
+"E<lt>thomas.baumhauer@gmail.comE<gt>. Эта страница изначально была написана "
+"Сирилом Бауторсом (Cyril Bouthors) E<lt>cyril@bouthors.orgE<gt>."
 
 # type: TH
 #. type: Plain text

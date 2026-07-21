@@ -20,19 +20,19 @@
 
 #include "game_events/wmi_manager.hpp"
 #include "game_events/menu_item.hpp"
-#include "play_controller.hpp"
-#include "resources.hpp"
 
 #include "config.hpp"
+#include "formula/string_utils.hpp"
 #include "game_data.hpp"
 #include "log.hpp"
 #include "map/location.hpp"
+#include "play_controller.hpp"
+#include "resources.hpp"
 
 static lg::log_domain log_engine("engine");
 #define WRN_NG LOG_STREAM(warn, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
 
-// This file is in the game_events namespace.
 namespace game_events
 {
 wmi_manager::wmi_manager()
@@ -57,7 +57,6 @@ bool wmi_manager::erase(const std::string& id)
 
 	if(iter == wml_menu_items_.end()) {
 		WRN_NG << "Trying to remove non-existent menu item '" << id << "'; ignoring.";
-		// No such item.
 		return false;
 	}
 
@@ -87,7 +86,7 @@ bool wmi_manager::fire_item(
 		return false;
 	}
 
-	// Prepare for can show().
+	// Prepare for can_show().
 	config::attribute_value x1 = gamedata.get_variable("x1");
 	config::attribute_value y1 = gamedata.get_variable("y1");
 	gamedata.get_variable("x1") = hex.wml_x();
@@ -123,26 +122,28 @@ void wmi_manager::get_items(const map_location& hex,
 		return;
 	}
 
-	// Prepare for can show().
-
-
+	// Prepare for can_show().
 	config::attribute_value x1 = gamedata.get_variable("x1");
 	config::attribute_value y1 = gamedata.get_variable("y1");
 	gamedata.get_variable("x1") = hex.wml_x();
 	gamedata.get_variable("y1") = hex.wml_y();
 	scoped_xy_unit highlighted_unit("unit", hex, units);
 
-	// Check each menu item.
-	for(const auto& item_pair : wml_menu_items_) {
-		item_ptr item = item_pair.second;
+	for(const auto& [id, item] : wml_menu_items_) {
+		// Not synched, or synched in an allowed context
+		bool synched_allowed = !item->is_synced() || resources::controller->can_use_synced_wml_menu();
 
 		// Can this item be shown?
-		if(item->use_wml_menu() && (!item->is_synced() || resources::controller->can_use_synced_wml_menu())
-				&& item->can_show(hex, gamedata, fc)) {
-			// Include this item.
-			items.emplace_back("id", item->hotkey_id() , "label", item->menu_text(), "icon", item->image());
+		if(!item->use_wml_menu() || !synched_allowed || !item->can_show(hex, gamedata, fc)) {
+			continue;
 		}
+
+		// Allows variables to be substituted at invocation time
+		auto description = utils::interpolate_variables_into_string(item->menu_text(), gamedata);
+		items.emplace_back("id", item->hotkey_id(), "label", description, "icon", item->image());
 	}
+
+	// Restore old values
 	gamedata.get_variable("x1") = x1;
 	gamedata.get_variable("y1") = y1;
 }
@@ -163,7 +164,7 @@ wmi_manager::item_ptr wmi_manager::get_item(const std::string& id) const
 void wmi_manager::init_handlers(game_lua_kernel& lk) const
 {
 	// Applying default hotkeys here currently does not work because
-	// the hotkeys are reset by play_controler::init_managers() ->
+	// the hotkeys are reset by play_controller::init_managers() ->
 	// display_manager::display_manager, which is called after this.
 	// The result is that default wml hotkeys will be ignored if wml
 	// hotkeys are set to default in the preferences menu. (They are
@@ -171,29 +172,20 @@ void wmi_manager::init_handlers(game_lua_kernel& lk) const
 	// by starting a new campaign.) Since it isn't that important
 	// I'll just leave it for now.
 
-	unsigned wmi_count = 0;
-
-	// Loop through each menu item.
-	for(const auto& item : wml_menu_items_) {
+	for(const auto& [id, item] : wml_menu_items_) {
 		// If this menu item has a [command], add a handler for it.
-		item.second->init_handler(lk);
-
-		// Count the menu items (for the diagnostic message).
-		++wmi_count;
+		item->init_handler(lk);
 	}
 
 	// Diagnostic:
-	if(wmi_count > 0) {
-		LOG_NG << wmi_count << " WML menu items found, loaded.";
-	}
+	LOG_NG << wml_menu_items_.size() << " WML menu items found, loaded.";
 }
 
 void wmi_manager::to_config(config& cfg) const
 {
-	// Loop through our items.
-	for(const auto& item : wml_menu_items_) {
+	for(const auto& [id, item] : wml_menu_items_) {
 		// Add this item as a child of cfg.
-		item.second->to_config(cfg.add_child("menu_item"));
+		item->to_config(cfg.add_child("menu_item"));
 	}
 }
 
@@ -225,9 +217,7 @@ void wmi_manager::set_menu_items(const config& cfg)
 		}
 
 		const std::string& id = item["id"];
-		bool success;
-
-		std::tie(std::ignore, success) = wml_menu_items_.emplace(id, std::make_shared<wml_menu_item>(id, item));
+		auto [iter, success] = wml_menu_items_.emplace(id, std::make_shared<wml_menu_item>(id, item));
 
 		if(!success) {
 			WRN_NG << "duplicate menu item (" << id << ") while loading from config";

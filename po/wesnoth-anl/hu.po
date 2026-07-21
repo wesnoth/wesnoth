@@ -6,20 +6,22 @@
 # Németh Tamás <ntomasz@vipmail.hu>, 2008.
 # Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2008, 2009, 2011.
 # Krutki Tamás <krtamas@0x64.org>, 2018.
+# Berda Jenő <big4billy@gmail.com>, 2026
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-anl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-04-10 17:05 UTC\n"
-"PO-Revision-Date: 2018-08-07 13:26+0100\n"
-"Last-Translator: Krutki Tamás <krtamas-wesnoth@0x64.org>\n"
+"POT-Creation-Date: 2026-06-23 03:16 UTC\n"
+"PO-Revision-Date: 2026-07-12 10:44+0200\n"
+"Last-Translator: Berda Jenő <big4billy@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 2.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.5\n"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:4
@@ -28,10 +30,6 @@ msgstr "4j – Egy új ország"
 
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
-#, fuzzy
-#| msgid ""
-#| "This 4p survival scenario allows you to construct buildings and terraform "
-#| "the land. Use map settings. The recommended starting gold is 100."
 msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land.\n"
@@ -39,7 +37,9 @@ msgid ""
 "For experienced players, it’s recommended to lower the starting gold to 75."
 msgstr ""
 "Ezen a négyjátékos túlélőpályán lehetőség van épületek építésére és a terep "
-"átalakítására. Használd a térképbeállításokat! Ajánlott kezdőarany: 100."
+"átalakítására.\n"
+"\n"
+"Tapasztalt játékosoknak ajánlott levenni a kezdő aranymennyiséget 75-re."
 
 #. [part]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:28
@@ -98,10 +98,8 @@ msgstr "Rabok"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:299
-#, fuzzy
-#| msgid "teamname^Prisoners"
 msgid "teamname^Monsters"
-msgstr "Rabok"
+msgstr "Lények"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:500
@@ -150,7 +148,7 @@ msgid ""
 "him?"
 msgstr ""
 "Esküszöm, hogy láttam valakit csapdába esni a pókhálóban. Talán meg kéne "
-"mentenünk."
+"mentenünk?"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:772
@@ -240,12 +238,12 @@ msgstr "Vissza a menübe"
 #. [message]: speaker=narrator
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:14
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:105
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:104
 msgid "Peasants"
 msgstr "Parasztok"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:17
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:16
 msgid ""
 "Peasants are your workers. Depending on the terrain, right-clicking on a "
 "peasant allows you to terraform the landscape and/or build castles, mines, "
@@ -257,13 +255,13 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #. [option]
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:24
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:112
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:23
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:111
 msgid "Mages"
 msgstr "Mágusok"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:26
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:25
 msgid ""
 "Mages are your wise men. They can study at universities, pursuing advances "
 "in mining, farming and recruitment."
@@ -274,13 +272,13 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #. [option]
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:33
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:119
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:32
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:118
 msgid "Farms"
 msgstr "Farmok"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:35
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:34
 msgid ""
 "Farms can only be planted on grassland. Move a peasant onto a farm and he "
 "will begin to automatically harvest the cash crop."
@@ -290,13 +288,13 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #. [option]
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:42
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:126
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:41
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:125
 msgid "Villages"
 msgstr "Falvak"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:44
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:43
 msgid ""
 "Villages can only be built on grassland. They provide income and healing as "
 "usual. Right-click on a peasant in a village and you can establish a "
@@ -308,13 +306,13 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #. [option]
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:51
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:133
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:50
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:132
 msgid "Mines"
 msgstr "Bányák"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:53
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:52
 msgid ""
 "Mines can be built on hills or mountains. A peasant on a mine will "
 "automatically dig for gold at the start of your turn."
@@ -324,13 +322,13 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #. [option]
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:60
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:140
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:59
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:139
 msgid "Universities"
 msgstr "Egyetemek"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:62
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:61
 msgid ""
 "Any of the ‘Elvish’ style villages represent universities. At the start of "
 "your turn, Mages in universities automatically add to the study progress of "
@@ -345,40 +343,38 @@ msgstr ""
 #. [message]: speaker=narrator
 #. [option]
 #. [set_menu_item]: id=anl_diplomacy
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:69
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:147
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:68
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:146
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:217
 msgid "Diplomacy"
 msgstr "Diplomácia"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:71
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:70
 msgid ""
 "Right-clicking on your leader when in a university allows you to select "
 "special diplomatic options."
 msgstr ""
 "Ha jobb gombbal kattintasz a vezéredre, mikor egy egyetemen tartózkodik, "
-"akkor alkalmad nyílik speciális diplomáciai lehetőségek közül választani. "
+"akkor alkalmad nyílik speciális diplomáciai lehetőségek közül választani."
 
 #. [set_menu_item]: id=anl_help
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:79
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:78
 msgid "Help"
 msgstr "Súgó"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:94
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:93
 msgid "A New Land — Help"
 msgstr "Egy új ország – Súgó"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:95
-#, fuzzy
-#| msgid "Select a topic."
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:94
 msgid "Select a topic:"
-msgstr "Válassz egy témát."
+msgstr "Válassz egy témát:"
 
 #. [option]
-#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:98
+#: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:97
 msgid "Done"
 msgstr "Kész"
 
@@ -548,49 +544,49 @@ msgstr ""
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:5
 msgid "In this scenario you build up an economy"
-msgstr ""
+msgstr "Ebben a küldetésben egy gazdaságot építesz fel"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:9
 msgid "Move any unit next to captives and they will join your side"
 msgstr ""
+"Mozgasd bármelyik egységet a foglyok mellé és azok csatlakozni fognak a te "
+"oldaladhoz"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:13
 msgid "Right-click on a leader to read about the game mechanics"
-msgstr ""
+msgstr "Jobb kattintás a vezetőn, megmutatja a játék működését"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:17
 msgid "Rules:"
-msgstr ""
+msgstr "Szabályok:"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:21
 msgid "Goal:"
-msgstr ""
+msgstr "Cél:"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:25
 msgid "Hint:"
-msgstr ""
+msgstr "Tipp:"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:29
 msgid "Hints:"
-msgstr ""
+msgstr "Tippek:"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:33
 msgid "Defeat all enemy leaders"
-msgstr ""
+msgstr "Minden ellenséges vezető legyőzése"
 
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:37
-#, fuzzy
-#| msgid "You must survive until turn 25."
 msgid "You must survive until turn 25"
-msgstr "Kitartasz 25 körön keresztül."
+msgstr "Kitartasz a 25. körig"
 
 #. [set_menu_item]: id=anl_choose_new_recruit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:45

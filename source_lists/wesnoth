@@ -40,13 +40,6 @@ ai/default/contexts.cpp
 ai/default/engine_cpp.cpp
 ai/default/recruitment.cpp
 ai/default/stage_rca.cpp
-ai/formula/ai.cpp
-ai/formula/callable_objects.cpp
-ai/formula/candidates.cpp
-ai/formula/engine_fai.cpp
-ai/formula/function_table.cpp
-ai/formula/stage_side_formulas.cpp
-ai/formula/stage_unit_formulas.cpp
 ai/game_info.cpp
 ai/gamestate_observer.cpp
 ai/lua/aspect_advancements.cpp
@@ -105,7 +98,6 @@ editor/toolkit/brush.cpp
 editor/toolkit/editor_toolkit.cpp
 fake_unit_manager.cpp
 fake_unit_ptr.cpp
-filesystem_sdl.cpp
 floating_textbox.cpp
 formula/callable_objects.cpp
 formula/debugger.cpp
@@ -247,9 +239,9 @@ gui/dialogs/network_transmission.cpp
 gui/dialogs/outro.cpp
 gui/dialogs/preferences_dialog.cpp
 gui/dialogs/prompt.cpp
+gui/dialogs/reachmap_options.cpp
 gui/dialogs/screenshot_notification.cpp
 gui/dialogs/select_orb_colors.cpp
-gui/dialogs/reachmap_options.cpp
 gui/dialogs/server_info_dialog.cpp
 gui/dialogs/simple_item_selector.cpp
 gui/dialogs/sp_options_configure.cpp
@@ -354,6 +346,7 @@ scripting/plugins/manager.cpp
 sdl/input.cpp
 sdl/point.cpp
 sdl/texture.cpp
+sdl/utils_simd.cpp
 side_filter.cpp
 statistics.cpp
 statistics_record.cpp
@@ -375,7 +368,6 @@ units/animation_component.cpp
 units/attack_type.cpp
 units/drawer.cpp
 units/filter.cpp
-units/formula_manager.cpp
 units/frame.cpp
 units/helper.cpp
 units/id.cpp

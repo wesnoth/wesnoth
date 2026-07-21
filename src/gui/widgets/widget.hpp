@@ -528,7 +528,7 @@ public:
 	 *
 	 * @returns                   The drawing rectangle.
 	 */
-	SDL_Rect calculate_blitting_rectangle() const;
+	rect calculate_blitting_rectangle() const;
 
 	/**
 	 * Calculates the clipping rectangle of the widget.
@@ -538,7 +538,7 @@ public:
 	 *
 	 * @returns                   The clipping rectangle.
 	 */
-	SDL_Rect calculate_clipping_rectangle() const;
+	rect calculate_clipping_rectangle() const;
 
 	/**
 	 * Draws the background of a widget.
@@ -600,7 +600,7 @@ public:
 	 *
 	 * @returns                   The dirty rectangle.
 	 */
-	SDL_Rect get_dirty_rectangle() const;
+	rect get_dirty_rectangle() const;
 
 	/**
 	 * Sets the visible rectangle for a widget.
@@ -610,7 +610,7 @@ public:
 	 *
 	 * @param rectangle           The visible rectangle in screen coordinates.
 	 */
-	virtual void set_visible_rectangle(const SDL_Rect& rectangle);
+	virtual void set_visible_rectangle(const rect& rectangle);
 
 	/**
 	 * Indicates that this widget should be redrawn.

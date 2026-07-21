@@ -79,7 +79,7 @@ void game_stats::pre_show()
 		widget_data row_data_stats;
 		widget_item column_stats;
 
-		const bool known = viewing_team_.knows_about_team(team.side() - 1);
+		const bool known = viewing_team_.knows_upkeep(team);
 		const bool enemy = viewing_team_.is_enemy(team.side());
 
 		const team_data& data = team_data_.back();
@@ -108,7 +108,7 @@ void game_stats::pre_show()
 				}
 			}
 
-			leader_name = markup::span_color(team::get_side_highlight_pango(team.side()), leader_name);
+			leader_name = markup::span_color(team::get_side_color(team.side()), leader_name);
 		}
 
 		//

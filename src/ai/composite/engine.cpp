@@ -116,11 +116,6 @@ void engine::do_parse_stage_from_config( ai_context &/*context*/, const config &
 
 }
 
-std::string engine::evaluate(const std::string& /*str*/)
-{
-	return "evaluate command is not implemented by this engine";
-}
-
 void engine::set_ai_context(ai_context_ptr ai_context)
 {
 	ai_context_ = ai_context;

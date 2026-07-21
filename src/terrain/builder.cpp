@@ -202,7 +202,7 @@ void terrain_builder::tilemap::reload(int x, int y)
 {
 	x_ = x;
 	y_ = y;
-	std::vector<terrain_builder::tile> new_tiles(static_cast<size_t>(x + 4) * (y + 4));
+	std::vector<terrain_builder::tile> new_tiles(static_cast<std::size_t>(x + 4) * (y + 4));
 	tiles_.swap(new_tiles);
 	reset();
 }
@@ -279,10 +279,7 @@ void terrain_builder::flush_local_rules()
 void terrain_builder::set_terrain_rules_cfg(const game_config_view& cfg)
 {
 	rules_cfg_ = &cfg;
-	// use the swap trick to clear the rules cache and get a fresh one.
-	// because simple clear() seems to cause some progressive memory degradation.
-	building_ruleset empty;
-	std::swap(building_rules_, empty);
+	building_rules_.clear();
 }
 
 void terrain_builder::reload_map()
@@ -1194,11 +1191,9 @@ void terrain_builder::build_terrains()
 		assert(min_constraint != nullptr);
 
 		// NOTE: if min_types is not empty, we have found a valid min_constraint;
-		for(t_translation::ter_list::const_iterator t = min_types.begin(); t != min_types.end(); ++t) {
-			const std::vector<map_location>* locations = &terrain_by_type_[*t];
-
-			for(std::vector<map_location>::const_iterator itor = locations->begin(); itor != locations->end(); ++itor) {
-				const map_location loc = legacy_difference(*itor, min_constraint->loc);
+		for(const auto& t : min_types) {
+			for(map_location mloc : terrain_by_type_[t]) {
+				const map_location loc = legacy_difference(mloc, min_constraint->loc);
 
 				if(rule_matches(rule, loc, min_constraint)) {
 					apply_rule(rule, loc);

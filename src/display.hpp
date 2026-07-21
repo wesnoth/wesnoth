@@ -241,19 +241,17 @@ public:
 	rect map_outside_area() const;
 
 	/** Check if the bbox of the hex at x,y has pixels outside the area rectangle. */
-	static bool outside_area(const SDL_Rect& area, const int x,const int y);
+	static bool outside_area(const rect& area, const int x,const int y);
 
 	/**
-	 * Function which returns the width of a hex in pixels,
-	 * up to where the next hex starts.
-	 * (i.e. not entirely from tip to tip -- use hex_size()
-	 * to get the distance from tip to tip)
+	 * Function which returns the "average" width of a hex in pixels,
+	 * up to where the next hex starts (half a hex up/down on the y axis).
 	 */
 	static int hex_width() { return (zoom_*3)/4; }
 
 	/**
 	 * Function which returns the size of a hex in pixels
-	 * (from top tip to bottom tip or left edge to right edge).
+	 * (from left tip to right tip or top edge to bottom edge).
 	 */
 	static int hex_size(){ return zoom_; }
 
@@ -264,7 +262,7 @@ public:
 	}
 
 	/** Scale the width and height of a rect by the current zoom factor */
-	static rect scaled_to_zoom(const SDL_Rect& r)
+	static rect scaled_to_zoom(const rect& r)
 	{
 		const double zf = get_zoom_factor();
 		return {r.x, r.y, int(r.w * zf), int(r.h * zf)};
@@ -438,8 +436,8 @@ public:
 	bool propagate_invalidation(const std::set<map_location>& locs);
 
 	/** invalidate all hexes under the rectangle rect (in screen coordinates) */
-	bool invalidate_locations_in_rect(const SDL_Rect& rect);
-	bool invalidate_visible_locations_in_rect(const SDL_Rect& rect);
+	bool invalidate_locations_in_rect(const rect& rect);
+	bool invalidate_visible_locations_in_rect(const rect& rect);
 
 	/**
 	 * Function to invalidate animated terrains and units which may have changed.
@@ -733,7 +731,7 @@ protected:
 	const std::unique_ptr<fake_unit_manager> fake_unit_man_;
 	const std::unique_ptr<terrain_builder> builder_;
 	std::function<rect(rect)> minimap_renderer_;
-	SDL_Rect minimap_location_;
+	rect minimap_location_;
 	bool redraw_background_;
 	bool invalidateAll_;
 	int diagnostic_label_;
@@ -911,7 +909,7 @@ public:
 		DEBUG_BENCHMARK,
 
 		/** Dummy entry to size the bitmask. Keep this last! */
-		__NUM_DEBUG_FLAGS
+		NUM_DEBUG_FLAGS
 	};
 
 	bool debug_flag_set(DEBUG_FLAG flag) const
@@ -931,7 +929,7 @@ public:
 
 private:
 	/** Currently set debug flags. */
-	std::bitset<__NUM_DEBUG_FLAGS> debug_flags_;
+	std::bitset<NUM_DEBUG_FLAGS> debug_flags_;
 
 	/** Maps the list of arrows for each location */
 	std::map<map_location, std::list<arrow*>> arrows_map_;

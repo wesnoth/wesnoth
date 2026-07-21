@@ -300,7 +300,7 @@ static void find_routes(
 		search_counter = 1;
 	}
 	// Initialize the nodes for this search.
-	nodes.resize(static_cast<size_t>(map.w()) * map.h());
+	nodes.resize(static_cast<std::size_t>(map.w()) * map.h());
 	findroute_comp node_comp(nodes);
 	findroute_indexer index(map.w(), map.h());
 
@@ -340,7 +340,7 @@ static void find_routes(
 
 		// Get the locations adjacent to current.
 		std::vector<map_location> adj_locs(6);
-		get_adjacent_tiles(cur_hex, adj_locs.data());
+		get_adjacent_tiles(cur_hex, utils::span{adj_locs}.first<6>());
 
 		// Sort adjacents by on-boardness
 		auto off_board_it = std::partition(adj_locs.begin(), adj_locs.end(), [&index](map_location loc){
@@ -893,7 +893,7 @@ full_cost_map::full_cost_map(const unit& u, bool force_ignore_zoc,
 	 viewing_team_(viewing_team), see_all_(see_all), ignore_units_(ignore_units)
 {
 	const gamemap& map = resources::gameboard->map();
-	cost_map = std::vector<std::pair<int, int>>(static_cast<size_t>(map.w()) * map.h(), std::pair(-1, 0));
+	cost_map = std::vector<std::pair<int, int>>(static_cast<std::size_t>(map.w()) * map.h(), std::pair(-1, 0));
 	add_unit(u);
 }
 
@@ -908,7 +908,7 @@ full_cost_map::full_cost_map(bool force_ignore_zoc,
 	 viewing_team_(viewing_team), see_all_(see_all), ignore_units_(ignore_units)
 {
 	const gamemap& map = resources::gameboard->map();
-	cost_map = std::vector<std::pair<int, int>>(static_cast<size_t>(map.w()) * map.h(), std::pair(-1, 0));
+	cost_map = std::vector<std::pair<int, int>>(static_cast<std::size_t>(map.w()) * map.h(), std::pair(-1, 0));
 }
 
 /**

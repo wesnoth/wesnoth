@@ -63,6 +63,7 @@ namespace game_config
 
 	extern bool allow_insecure;
 	extern bool addon_server_info;
+	extern bool no_simd;
 
 	extern const bool& debug;
 	void set_debug(bool new_debug);
@@ -132,10 +133,6 @@ namespace game_config
 			observer,
 			tod_bright,
 			tod_dark,
-			selected_menu,
-			deselected_menu,
-			checked_menu,
-			unchecked_menu,
 			wml_menu,
 			level,
 			ellipsis,

@@ -145,7 +145,7 @@ saved_game::saved_game(config cfg)
 	, statistics_()
 	, skip_story_(false)
 {
-	set_data(cfg);
+	set_data(std::move(cfg));
 }
 
 saved_game::saved_game(const saved_game& state)
@@ -350,7 +350,7 @@ void saved_game::check_require_scenario()
 }
 
 // "non scenario" at the time of writing this meaning any era, campaign, mods, or resources (see expand_mp_events() below).
-void saved_game::load_non_scenario(const std::string& type, const std::string& id, size_t pos)
+void saved_game::load_non_scenario(const std::string& type, const std::string& id, std::size_t pos)
 {
 	if(auto cfg = game_config_manager::get()->game_config().find_child(type, "id", id)) {
 		// Note the addon_id if this mod is required to play the game in mp.
@@ -434,7 +434,7 @@ void saved_game::expand_mp_events()
 		while(starting_point_.has_child("load_resource")) {
 			assert(starting_point_.child_count("load_resource") > 0);
 			std::string id = starting_point_.mandatory_child("load_resource")["id"];
-			size_t pos = starting_point_.find_total_first_of("load_resource");
+			std::size_t pos = starting_point_.find_total_first_of("load_resource");
 			starting_point_.remove_child("load_resource", 0);
 			if(loaded_resources.find(id) == loaded_resources.end()) {
 				loaded_resources.insert(id);
@@ -725,7 +725,7 @@ void saved_game::update_label()
 	if(classification().abbrev.empty()) {
 		label = starting_point_["name"].str();
 	} else {
-		label = classification().abbrev + "-" + starting_point_["name"];
+		label = classification().abbrev + "-" + starting_point_["name"].t_str();
 	}
 
 	utils::erase_if(label, is_illegal_file_char);
@@ -762,7 +762,7 @@ saved_game& saved_game::operator=(saved_game&& other)
 	return *this;
 }
 
-void saved_game::swap(saved_game& other)
+void saved_game::swap(saved_game& other) noexcept
 {
 	carryover_.swap(other.carryover_);
 
@@ -777,9 +777,10 @@ void saved_game::swap(saved_game& other)
 	std::swap(starting_point_type_, other.starting_point_type_);
 }
 
-void saved_game::set_data(config& cfg)
+void saved_game::set_data(config&& input_cfg)
 {
 	log_scope("read_game");
+	config cfg = std::move(input_cfg);
 
 	if(auto caryover_sides = cfg.optional_child("carryover_sides")) {
 		carryover_.swap(*caryover_sides);
@@ -826,8 +827,6 @@ void saved_game::set_data(config& cfg)
 
 	classification_ = game_classification{ cfg };
 	mp_settings_ = { cfg.child_or_empty("multiplayer") };
-
-	cfg.clear();
 }
 
 void saved_game::clear()
@@ -843,7 +842,7 @@ void saved_game::clear()
 	statistics_ = statistics_record::campaign_stats_t();
 }
 
-void swap(saved_game& lhs, saved_game& rhs)
+void swap(saved_game& lhs, saved_game& rhs) noexcept
 {
 	lhs.swap(rhs);
 }

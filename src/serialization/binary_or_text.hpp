@@ -31,7 +31,7 @@ public:
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	~config_writer();
 
-	void write(const config &cfg);
+	void write(const config& cfg, bool strong_quotes = false);
 
 	void write_child(const std::string &key, const config &cfg);
 	void open_child(const std::string &key);
@@ -44,7 +44,7 @@ public:
 	{
 		config::attribute_value v;
 		v = value;
-		io::write_key_val(out_, key, v, level_, textdomain_);
+		io::write_key_val(out_, key, v, level_, textdomain_, false);
 	}
 
 private:

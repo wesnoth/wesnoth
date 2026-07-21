@@ -61,13 +61,6 @@ void ai_composite::on_create()
 		add_stage(cfg_element);
 	}
 
-	config cfg;
-	cfg["engine"] = "fai";
-	engine_ptr e_ptr = get_engine_by_cfg(cfg);
-	if (e_ptr) {
-		e_ptr->set_ai_context(this);
-	}
-
 	register_vector_property(property_handlers(), "engine", get_engines(),
 		[this](auto&&... args) { create_engine(args...); });
 
@@ -151,18 +144,6 @@ std::string ai_composite::get_name() const
 std::string ai_composite::get_engine() const
 {
 	return cfg_["engine"];
-}
-
-std::string ai_composite::evaluate(const std::string& str)
-{
-	config cfg;
-	cfg["engine"] = "fai";
-	engine_ptr e_ptr = get_engine_by_cfg(cfg);
-	if (!e_ptr) {
-		// This should be unreachable, but not entirely sure...
-		return "engine not found for evaluate command";
-	}
-	return e_ptr->evaluate(str);
 }
 
 void ai_composite::new_turn()

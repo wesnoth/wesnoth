@@ -31,10 +31,15 @@ static lg::log_domain log_mp_connect_engine("mp/connect/engine");
 
 namespace ng
 {
+era_metadata::era_metadata(const config& cfg)
+	: faction_sort_order(sort_order::get_enum(cfg["auto_sort"].str()).value_or(sort_order::type::ascending))
+{
+}
 
-flg_manager::flg_manager(const std::vector<const config*>& era_factions,
+flg_manager::flg_manager(const era_metadata& era_info, const std::vector<const config*>& era_factions,
 		const config& side, const bool lock_settings, const bool use_map_settings, const bool saved_game)
-	: era_factions_(era_factions)
+	: era_info_(era_info)
+	, era_factions_(era_factions)
 	, side_num_(side["side"].to_int())
 	, faction_from_recruit_(side["faction_from_recruit"].to_bool())
 	, original_faction_(get_default_faction(side)["faction"].str())
@@ -185,21 +190,18 @@ void flg_manager::resolve_random(randomness::mt_rng& rng, const std::vector<std:
 
 			const std::string& faction_id = faction["id"];
 
-			if(!faction_choices.empty() && std::find(faction_choices.begin(), faction_choices.end(),
-					faction_id) == faction_choices.end()) {
+			if(!faction_choices.empty() && !utils::contains(faction_choices, faction_id)) {
 				continue;
 			}
 
-			if(!faction_excepts.empty() && std::find(faction_excepts.begin(), faction_excepts.end(),
-					faction_id) != faction_excepts.end()) {
+			if(!faction_excepts.empty() && utils::contains(faction_excepts, faction_id)) {
 				continue;
 			}
 
 			// This side is consistent with this random faction, remember as a fallback.
 			fallback_nonrandom_sides.push_back(i);
 
-			if(!avoid.empty() && std::find(avoid.begin(), avoid.end(),
-					faction_id) != avoid.end()) {
+			if(!avoid.empty() && utils::contains(avoid, faction_id)) {
 				continue;
 			}
 
@@ -279,7 +281,7 @@ void flg_manager::update_available_factions()
 		}
 
 		// Add default faction to the top of the list.
-		if(original_faction_ == (*faction)["id"]) {
+		if((*faction)["id"] == original_faction_) {
 			available_factions_.insert(available_factions_.begin(), faction);
 		} else {
 			available_factions_.push_back(faction);
@@ -396,9 +398,7 @@ void flg_manager::update_choosable_leaders()
 	choosable_leaders_ = available_leaders_;
 
 	if(!default_leader_type_.empty() && leader_lock_) {
-		if(std::find(available_leaders_.begin(), available_leaders_.end(),
-			default_leader_type_) != available_leaders_.end()) {
-
+		if(utils::contains(available_leaders_, default_leader_type_)) {
 			choosable_leaders_.clear();
 			choosable_leaders_.push_back(default_leader_type_);
 		}
@@ -420,7 +420,7 @@ void flg_manager::update_choosable_genders()
 			default_gender = choosable_genders_.front();
 		}
 
-		if(std::find(available_genders_.begin(), available_genders_.end(), default_gender) != available_genders_.end()) {
+		if(utils::contains(available_genders_, default_gender)) {
 			choosable_genders_.clear();
 			choosable_genders_.push_back(default_gender);
 		}
@@ -430,10 +430,8 @@ void flg_manager::update_choosable_genders()
 void flg_manager::select_default_faction()
 {
 	const std::string& default_faction = original_faction_;
-	auto default_faction_it = std::find_if(choosable_factions_.begin(), choosable_factions_.end(),
-		[&default_faction](const config* faction) {
-			return (*faction)["id"] == default_faction;
-		});
+	auto default_faction_it = utils::ranges::find(choosable_factions_, default_faction,
+		[](const config* faction) { return (*faction)["id"]; });
 
 	if(default_faction_it != choosable_factions_.end()) {
 		set_current_faction(std::distance(choosable_factions_.begin(), default_faction_it));

@@ -132,8 +132,8 @@ public:
 	 * RC-map based constructor.
 	 * @param recolor_map The palette switch map.
 	 */
-	rc_modification(const color_range_map& recolor_map)
-		: rc_map_(recolor_map)
+	rc_modification(color_mapping&& recolor_map)
+		: rc_map_(std::move(recolor_map))
 	{}
 	virtual void operator()(surface& src) const override;
 
@@ -142,11 +142,11 @@ public:
 
 	bool no_op() const { return rc_map_.empty(); }
 
-	const color_range_map& map() const { return rc_map_;}
-	color_range_map& map() { return rc_map_;}
+	const color_mapping& map() const { return rc_map_;}
+	color_mapping& map() { return rc_map_;}
 
 private:
-	color_range_map rc_map_;
+	color_mapping rc_map_;
 };
 
 /**
@@ -339,18 +339,18 @@ private:
 class crop_modification : public modification
 {
 public:
-	crop_modification(const SDL_Rect& slice)
+	crop_modification(const rect& slice)
 		: slice_(slice)
 	{}
 	virtual void operator()(surface& src) const override;
 
-	const SDL_Rect& get_slice() const
+	const rect& get_slice() const
 	{
 		return slice_;
 	}
 
 private:
-	SDL_Rect slice_;
+	rect slice_;
 };
 
 /**
@@ -486,6 +486,30 @@ public:
 
 private:
 	int z_;
+};
+
+/**
+ * PAD modification.
+ * Expands the image by adding transparent pixels to its top, right, bottom, and left sides.
+ */
+class pad_modification : public modification
+{
+public:
+	pad_modification(int top, int right, int bottom, int left)
+		: top_{top}
+		, right_{right}
+		, bottom_{bottom}
+		, left_{left}
+	{
+	}
+
+	virtual void operator()(surface& src) const override;
+
+private:
+	int top_;
+	int right_;
+	int bottom_;
+	int left_;
 };
 
 /**

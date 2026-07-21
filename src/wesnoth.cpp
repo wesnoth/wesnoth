@@ -54,7 +54,6 @@
 #include "game_version.hpp"        // for version_info
 #include "video.hpp"          // for video::error and video::quit
 #include "wesconfig.h"        // for PACKAGE
-#include "widgets/button.hpp" // for button
 #include "wml_exception.hpp"  // for wml_exception
 
 #include "utils/spritesheet_generator.hpp"
@@ -68,7 +67,8 @@
 #include <fenv.h>
 #endif // _MSC_VER
 
-#include <SDL2/SDL.h> // for SDL_Init, SDL_INIT_TIMER
+#include <SDL3/SDL.h> // for SDL_Init, SDL_INIT_TIMER
+#include <SDL3/SDL_main.h> // Provides platform-specific entrypoint, if applicable
 
 #include <boost/program_options/errors.hpp>     // for error
 #include <boost/algorithm/string/predicate.hpp> // for checking cmdline options
@@ -150,10 +150,8 @@ static void handle_preprocess_string(const commandline_options& cmdline_opts)
 
 		int read = 0;
 
-		// use static preproc_define::read_pair(config) to make a object
 		for(const auto [_, cfg] : cfg.all_children_view()) {
-			const preproc_map::value_type def = preproc_define::read_pair(cfg);
-			defines_map[def.first] = def.second;
+			preproc_define::insert(defines_map, cfg);
 			++read;
 		}
 
@@ -169,19 +167,22 @@ static void handle_preprocess_string(const commandline_options& cmdline_opts)
 			}
 
 			LOG_PREPROC << "adding define: " << define;
-			defines_map.emplace(define, preproc_define(define));
+			defines_map.try_emplace(define, define);
 		}
 	}
 
 	// add the WESNOTH_VERSION define
-	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
+	defines_map.try_emplace("WESNOTH_VERSION", game_config::wesnoth_version.str());
 
 	// preprocess resource
+	PLAIN_LOG << "added " << defines_map.size() << " defines.";
 	PLAIN_LOG << "preprocessing specified string: " << *cmdline_opts.preprocess_source_string;
+
 	const utils::ms_optimer timer(
 		[](const auto& timer) { PLAIN_LOG << "preprocessing finished. Took " << timer << " ticks."; });
-	std::cout << preprocess_string(*cmdline_opts.preprocess_source_string, &defines_map) << std::endl;
-	PLAIN_LOG << "added " << defines_map.size() << " defines.";
+
+	const auto input_stream = preprocess_string(*cmdline_opts.preprocess_source_string, "wesnoth", defines_map);
+	io::write(std::cout, io::read(*input_stream), 0, true);
 }
 
 static void handle_preprocess_command(const commandline_options& cmdline_opts)
@@ -207,10 +208,8 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 
 		int read = 0;
 
-		// use static preproc_define::read_pair(config) to make a object
 		for(const auto [_, cfg] : cfg.all_children_view()) {
-			const preproc_map::value_type def = preproc_define::read_pair(cfg);
-			input_macros[def.first] = def.second;
+			preproc_define::insert(input_macros, cfg);
 			++read;
 		}
 
@@ -239,7 +238,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 			}
 
 			LOG_PREPROC << "adding define: " << define;
-			defines_map.emplace(define, preproc_define(define));
+			defines_map.try_emplace(define, define);
 
 			if(define == "SKIP_CORE") {
 				PLAIN_LOG << "'SKIP_CORE' defined.";
@@ -252,7 +251,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 	}
 
 	// add the WESNOTH_VERSION define
-	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
+	defines_map.try_emplace("WESNOTH_VERSION", game_config::wesnoth_version.str());
 
 	PLAIN_LOG << "added " << defines_map.size() << " defines.";
 
@@ -301,11 +300,12 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 	}
 }
 
-static int handle_validate_command(const std::string& file, abstract_validator& validator, const std::vector<std::string>& defines) {
+static int handle_validate_command(const std::string& file, abstract_validator& validator, const std::vector<std::string>& defines)
+{
 	preproc_map defines_map;
-	// add the WESNOTH_VERSION define
-	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
-	defines_map["SCHEMA_VALIDATION"] = preproc_define();
+	defines_map.try_emplace("WESNOTH_VERSION", game_config::wesnoth_version.str());
+	defines_map.try_emplace("SCHEMA_VALIDATION");
+
 	for(const std::string& define : defines) {
 		if(define.empty()) {
 			PLAIN_LOG << "empty define supplied";
@@ -313,11 +313,12 @@ static int handle_validate_command(const std::string& file, abstract_validator& 
 		}
 
 		LOG_PREPROC << "adding define: " << define;
-		defines_map.emplace(define, preproc_define(define));
+		defines_map.try_emplace(define, define);
 	}
+
 	PLAIN_LOG << "Validating " << file << " against schema " << validator.name_;
 	lg::set_strict_severity(lg::severity::LG_ERROR);
-	io::read(*preprocess_file(file, &defines_map), &validator);
+	io::read(*preprocess_file(file, defines_map), &validator);
 	if(lg::broke_strict()) {
 		std::cout << "validation failed\n";
 	} else {
@@ -329,33 +330,14 @@ static int handle_validate_command(const std::string& file, abstract_validator& 
 /** Process commandline-arguments */
 static int process_command_args(commandline_options& cmdline_opts)
 {
-	// Options that output info unaffected by other options and return.
-	if(cmdline_opts.help) {
-		std::cout << cmdline_opts;
-		return 0;
-	}
-
-	if(cmdline_opts.logdomains) {
-		std::cout << lg::list_log_domains(*cmdline_opts.logdomains);
-		return 0;
-	}
-
-	if(cmdline_opts.version) {
-		std::cout << "Battle for Wesnoth" << " " << game_config::wesnoth_version.str() << "\n\n";
-		std::cout << "Library versions:\n" << game_config::library_versions_report() << '\n';
-		std::cout << "Optional features:\n" << game_config::optional_features_report();
-		return 0;
-	}
-
-	if(cmdline_opts.simple_version) {
-		std::cout << game_config::wesnoth_version.str() << "\n";
-		return 0;
-	}
-
 	// Options that don't change behavior based on any others should be checked alphabetically below.
 
 	if(cmdline_opts.no_log_sanitize) {
 		lg::set_log_sanitize(false);
+	}
+
+	if(cmdline_opts.no_simd) {
+		game_config::no_simd = true;
 	}
 
 	if(cmdline_opts.usercache_dir) {
@@ -378,9 +360,9 @@ static int process_command_args(commandline_options& cmdline_opts)
 		|| (!cmdline_opts.no_log_to_file
 			&& !getenv("WESNOTH_NO_LOG_FILE")
 			// command line options that imply not redirecting output to a log file
-			&& !cmdline_opts.data_path
-			&& !cmdline_opts.userdata_path
-			&& !cmdline_opts.usercache_path
+			&& !cmdline_opts.print_data_path
+			&& !cmdline_opts.print_userdata_path
+			&& !cmdline_opts.print_usercache_path
 			&& !cmdline_opts.report
 			&& !cmdline_opts.do_diff
 			&& !cmdline_opts.do_patch
@@ -405,6 +387,29 @@ static int process_command_args(commandline_options& cmdline_opts)
 	}
 #endif
 
+	// Options that output info unaffected by other options and return.
+	if(cmdline_opts.help) {
+		std::cout << cmdline_opts;
+		return 0;
+	}
+
+	if(cmdline_opts.logdomains) {
+		std::cout << lg::list_log_domains(*cmdline_opts.logdomains);
+		return 0;
+	}
+
+	if(cmdline_opts.version) {
+		std::cout << "Battle for Wesnoth" << " " << game_config::wesnoth_version.str() << "\n\n";
+		std::cout << "Library versions:\n" << game_config::library_versions_report() << '\n';
+		std::cout << "Optional features:\n" << game_config::optional_features_report();
+		return 0;
+	}
+
+	if(cmdline_opts.simple_version) {
+		std::cout << game_config::wesnoth_version.str() << "\n";
+		return 0;
+	}
+
 	if(cmdline_opts.log) {
 		for(const auto& log_pair : *cmdline_opts.log) {
 			const std::string log_domain = log_pair.second;
@@ -422,13 +427,13 @@ static int process_command_args(commandline_options& cmdline_opts)
 		PLAIN_LOG << "Started on " << chrono::format_local_timestamp(now, "%a %b %d %T %Y") << '\n';
 	}
 
-	if(cmdline_opts.usercache_path) {
-		std::cout << filesystem::get_cache_dir();
+	if(cmdline_opts.print_usercache_path) {
+		std::cout << filesystem::get_cache_dir() << std::endl;
 		return 0;
 	}
 
-	if(cmdline_opts.userdata_path) {
-		std::cout << filesystem::get_user_data_dir();
+	if(cmdline_opts.print_userdata_path) {
+		std::cout << filesystem::get_user_data_dir() << std::endl;
 		return 0;
 	}
 
@@ -438,6 +443,14 @@ static int process_command_args(commandline_options& cmdline_opts)
 			PLAIN_LOG << "Overriding data directory with '" << game_config::path << "'";
 		}
 	} else {
+#if defined(__ANDROID__) && !defined(WESNOTH_PATH)
+		if(const char* ext_path = SDL_GetAndroidExternalStoragePath()) {
+			game_config::path = ext_path + std::string("/gamedata");
+			PLAIN_LOG << "Determined game data directory: " << game_config::path;
+		} else {
+			PLAIN_LOG << "Cannot find game data directory, specify one with --data-dir. SDL_GetAndroidExternalStoragePath() failed: " << SDL_GetError();
+		}
+#endif
 		// if a pre-defined path does not exist this will empty it
 		game_config::path = filesystem::normalize_path(game_config::path, true, true);
 		if(game_config::path.empty()) {
@@ -460,8 +473,8 @@ static int process_command_args(commandline_options& cmdline_opts)
 		return 1;
 	}
 
-	if(cmdline_opts.data_path) {
-		std::cout << game_config::path;
+	if(cmdline_opts.print_data_path) {
+		std::cout << game_config::path << std::endl;
 		return 0;
 	}
 
@@ -490,7 +503,7 @@ static int process_command_args(commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.render_image) {
-		SDL_setenv("SDL_VIDEODRIVER", "dummy", 1);
+		SDL_setenv_unsafe("SDL_VIDEODRIVER", "dummy", 1);
 	}
 
 	if(cmdline_opts.strict_validation) {
@@ -721,6 +734,26 @@ static void check_fpu()
 }
 #endif
 
+/** Gets the appropriate action code for the current iteration of the game loop. */
+static int get_gameloop_action(game_launcher& game)
+{
+	// If loading a game, skip the titlescreen entirely
+	if(game.has_load_data()) {
+		return title_screen::LOAD_GAME;
+	}
+
+	title_screen dlg{game};
+
+	// Allows re-layout on resize.
+	// Since RELOAD_UI is not checked here, it causes
+	// the dialog to be closed and reshown with changes.
+	while(dlg.get_retval() == title_screen::REDRAW_BACKGROUND) {
+		dlg.show();
+	}
+
+	return dlg.get_retval();
+}
+
 /**
  * Setups the game environment and enters
  * the titlescreen or game loops.
@@ -762,10 +795,6 @@ static int do_gameloop(commandline_options& cmdline_opts)
 	const cursor::manager cursor_manager;
 	cursor::set(cursor::WAIT);
 
-#if(defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
-	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
-#endif
-
 	gui2::init();
 	gui2::switch_theme(prefs::get().gui2_theme());
 	const gui2::event::manager gui_event_manager;
@@ -780,7 +809,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		gui2::show_message(_("Logging Failure"), msg, message::ok_button);
 	}
 
-	game_config_manager config_manager(cmdline_opts);
+	game_config_manager& config_manager = game->config_manager();
 
 	if(game_config::check_migration) {
 		game_config::check_migration = false;
@@ -898,26 +927,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 
 		cursor::set(cursor::NORMAL);
 
-		// If loading a game, skip the titlescreen entirely
-		if(game->has_load_data() && game->load_game()) {
-			game->launch_game(game_launcher::reload_mode::RELOAD_DATA);
-			continue;
-		}
-
-		int retval;
-		{ // scope to not keep the title screen alive all game
-			title_screen dlg(*game);
-
-			// Allows re-layout on resize.
-			// Since RELOAD_UI is not checked here, it causes
-			// the dialog to be closed and reshown with changes.
-			while(dlg.get_retval() == title_screen::REDRAW_BACKGROUND) {
-				dlg.show();
-			}
-			retval = dlg.get_retval();
-		}
-
-		switch(retval) {
+		switch(get_gameloop_action(*game)) {
 		case title_screen::QUIT_GAME:
 			LOG_GENERAL << "quitting game...";
 			return 0;
@@ -940,6 +950,11 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		case title_screen::MAP_EDITOR:
 			game->start_editor();
 			break;
+		case title_screen::LOAD_GAME:
+			if(!game->load_prepared_game()) {
+				break;
+			}
+			[[fallthrough]];
 		case title_screen::LAUNCH_GAME:
 			game->launch_game(game_launcher::reload_mode::RELOAD_DATA);
 			break;
@@ -965,7 +980,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 #define error_exit(res) return res
 #endif
 
-#ifdef __APPLE__
+#if defined(__APPLE__) && !defined(__IPHONEOS__)
 extern "C" int wesnoth_main(int argc, char** argv);
 int wesnoth_main(int argc, char** argv)
 #else
@@ -985,6 +1000,11 @@ int main(int argc, char** argv)
 	// original process environment for research/testing purposes.
 	setenv("PANGOCAIRO_BACKEND", "fontconfig", 0);
 #endif
+#ifdef __ANDROID__
+	setenv("PANGOCAIRO_BACKEND", "fontconfig", 0);
+	setenv("SDL_HINT_AUDIODRIVER", "android", 0);
+	setenv("SDL_HINT_ANDROID_TRAP_BACK_BUTTON", "1", 0);
+#endif
 
 	try {
 		commandline_options cmdline_opts = commandline_options(args);
@@ -1001,26 +1021,22 @@ int main(int argc, char** argv)
 		}
 
 		SDL_SetHint(SDL_HINT_NO_SIGNAL_HANDLERS, "1");
-		// Is there a reason not to just use SDL_INIT_EVERYTHING?
-		if(SDL_Init(SDL_INIT_TIMER) < 0) {
-			PLAIN_LOG << "Couldn't initialize SDL: " << SDL_GetError();
-			return (1);
-		}
 		atexit(SDL_Quit);
 
 		// Mac's touchpad generates touch events too.
 		// Ignore them until Macs have a touchscreen: https://forums.libsdl.org/viewtopic.php?p=45758
 #if defined(__APPLE__) && !defined(__IPHONEOS__)
-		SDL_EventState(SDL_FINGERMOTION, SDL_DISABLE);
-		SDL_EventState(SDL_FINGERDOWN, SDL_DISABLE);
-		SDL_EventState(SDL_FINGERUP, SDL_DISABLE);
+		SDL_SetEventEnabled(SDL_EVENT_FINGER_MOTION, false);
+		SDL_SetEventEnabled(SDL_EVENT_FINGER_DOWN, false);
+		SDL_SetEventEnabled(SDL_EVENT_FINGER_UP, false);
+#endif
+
+#ifdef _WIN32
+		SDL_SetWindowsMessageHook(&events::handle_windows_message, nullptr);
 #endif
 
 		// declare this here so that it will always be at the front of the event queue.
 		events::event_context global_context;
-
-		SDL_StartTextInput();
-
 		const int res = do_gameloop(cmdline_opts);
 		safe_exit(res);
 	} catch(const boost::program_options::error& e) {

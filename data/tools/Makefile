@@ -16,12 +16,6 @@ MAINLINE = $(DATA)/core $(DATA)/multiplayer $(DATA)/themes $(DATA)/campaigns/*
 # Macro reference destination dir.
 DEST = .
 
-sanity-check: unresolved lint
-
-lint:
-	# Check for obsolete WML, broken references, consistency.
-	./wmllint --dryrun $(MAINLINE) $(UMC)
-
 unresolved:
 	@echo "# Report on unresolved macro calls and resource references"
 	@./wmlscope --unresolved $(MAINLINE) $(UMC)
@@ -64,7 +58,7 @@ definitions:
 
 # Generate a reference page for the utility macros.
 macro-reference.html: helpheader.html helptrailer.html wmlscope
-	@{ cat helpheader.html; ./wmlscope --extracthelp --exclude data/scenarios --exclude data/tutorial --exclude data/campaigns $(DATA)/core/macros/; cat helptrailer.html; } > $(DEST)/macro-reference.html
+	@{ cat helpheader.html; ./wmlscope --extracthelp --macrosdir $(DATA)/core/macros/; cat helptrailer.html; } > $(DEST)/macro-reference.html
 
 # Report on unchecked macro calls
 unchecked:
@@ -91,17 +85,5 @@ bindings:
 
 # Look at the difficulty-rank order of the campaigns
 rank:
-	@awk -F= '$$1 ~ "^[[:blank:]]*rank$$" { n=split(FILENAME, f, "/"); print $$2, "\t", f[n-1] }' $(DATA)/campaigns/*/_main.cfg | sort -n
+	@awk -F '=| *#' '$$1 ~ "^[[:blank:]]*rank$$" { n=split(FILENAME, f, "/"); print $$2 "\t" f[n-1] }' $(DATA)/campaigns/*/_main.cfg | sort -n
 
-# For performing test lifts of mainline
-lift:
-	./wmllint --verbose $(MAINLINE) $(UMC)
-trylift:
-	./wmllint --dryrun --verbose $(MAINLINE) $(UMC)
-diffs:
-	./wmllint --diffs $(MAINLINE) $(UMC)
-revert:
-	./wmllint --revert $(MAINLINE) $(UMC)
-clean:
-	./wmllint --clean $(MAINLINE) $(UMC)
-	rm -f macro-reference.html

@@ -69,7 +69,7 @@ struct save_info_less_time
 };
 
 /** Read the complete config information out of a savefile. */
-void read_save_file(const std::string& dir, const std::string& name, config& cfg, std::string* error_log);
+config read_save_file(const std::string& dir, const std::string& name);
 
 class create_save_info
 {
@@ -130,7 +130,6 @@ private:
 	/** Deletes non-existent save files from the index. */
 	void clean_up_index();
 
-	bool loaded_;
 	config data_;
 	std::map<std::string, std::chrono::system_clock::time_point> modified_;
 	const std::string dir_;

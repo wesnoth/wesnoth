@@ -59,6 +59,7 @@ game_config_manager::game_config_manager(const commandline_options& cmdline_opts
 	, old_defines_map_()
 	, paths_manager_()
 	, cache_(game_config::config_cache::instance())
+	, tdata_(game_config())
 	, achievements_()
 {
 	assert(!singleton);
@@ -105,6 +106,9 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 	game_config::scoped_preproc_define test("TEST", cmdline_opts_.test.has_value());
 	game_config::scoped_preproc_define mptest("MP_TEST", cmdline_opts_.mptest);
 	game_config::scoped_preproc_define editor("EDITOR", cmdline_opts_.editor.has_value());
+#ifdef __ANDROID__
+	game_config::scoped_preproc_define android("ANDROID", true);
+#endif
 	game_config::scoped_preproc_define title_screen("TITLE_SCREEN",
 		!cmdline_opts_.multiplayer && !cmdline_opts_.test && !cmdline_opts_.editor);
 
@@ -209,8 +213,7 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 			achievements_.reload();
 
 			// Load mainline cores definition file.
-			config cores_cfg;
-			cache_.get_config(game_config::path + "/data/cores.cfg", cores_cfg);
+			config cores_cfg = cache_.get_config(game_config::path + "/data/cores.cfg");
 
 			// Append the $user_campaign_dir/*/cores.cfg files to the cores.
 			std::vector<std::string> user_dirs;
@@ -224,9 +227,7 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 			for(const std::string& umc : user_dirs) {
 				const std::string cores_file = umc + "/cores.cfg";
 				if(filesystem::file_exists(cores_file)) {
-					config cores;
-					cache_.get_config(cores_file, cores);
-					cores_cfg.append(cores);
+					cores_cfg.append(cache_.get_config(cores_file));
 				}
 			}
 
@@ -311,7 +312,7 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 				validator->set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
 			}
 
-			cache_.get_config(filesystem::get_wml_location(wml_tree_root).value(), game_config_, validator.get());
+			game_config_ = cache_.get_config(filesystem::get_wml_location(wml_tree_root).value(), validator.get());
 			game_config_.append(valid_cores);
 
 			main_transaction.lock();
@@ -344,7 +345,7 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 
 		set_unit_data();
 		terrain_builder::set_terrain_rules_cfg(game_config());
-		tdata_ = std::make_shared<terrain_type_data>(game_config());
+		tdata_.reset();
 		::init_strings(game_config());
 		theme::set_known_themes(&game_config());
 
@@ -521,10 +522,7 @@ void game_config_manager::load_addons_cfg()
 			}
 		} else if(filesystem::file_exists(info_cfg)) {
 			// Addon server-generated info can be fetched from cache.
-			config temp;
-			cache_.get_config(info_cfg, temp);
-
-			metadata = temp.child_or_empty("info");
+			metadata = cache_.get_config(info_cfg).child_or_empty("info");
 		}
 
 		std::string using_core = metadata["core"];
@@ -555,8 +553,7 @@ void game_config_manager::load_addons_cfg()
 			loading_screen::spin();
 
 			// Load this addon from the cache to a config.
-			config umc_cfg;
-			cache_.get_config(main_cfg, umc_cfg, validator.get());
+			config umc_cfg = cache_.get_config(main_cfg, validator.get());
 
 			static const std::set<std::string> tags_with_addon_id {
 				"era",

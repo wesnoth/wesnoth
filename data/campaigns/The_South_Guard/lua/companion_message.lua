@@ -19,6 +19,12 @@ function wesnoth.wml_actions.companion_message(cfg)
 		wesnoth.wml_actions.message{ speaker=speaker, message=cfg.message_hylas }
 
 	elseif cfg.message_generic then
-		wesnoth.wml_actions.message{ speaker="Mari,Sir Gerrick,Minister Hylas", message=cfg.message_generic }
+		if wesnoth.units.find_on_map{id="Mari"}[1] then
+			wesnoth.wml_actions.message{ speaker="Mari", message=cfg.message_generic }
+		elseif wesnoth.units.find_on_map{id="Sir Gerrick"}[1] then
+			wesnoth.wml_actions.message{ speaker="Sir Gerrick", message=cfg.message_generic }
+		elseif wesnoth.units.find_on_map{id="Minister Hylas"}[1] then
+			wesnoth.wml_actions.message{ speaker="Minister Hylas", message=cfg.message_generic }
+		end
 	end
 end

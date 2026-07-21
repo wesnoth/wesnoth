@@ -1,0 +1,290 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2022 wesnothd "خادم شبكة متعددة اللاعبين لـ Battle for Wesnoth"
+.
+.SH اسم
+.
+wesnothd \- خادم شبكة متعددة اللاعبين لـ \fBWesnoth\fP
+.
+.SH الملخص
+.
+\fBwesnothd\fP [\|\fB\-dvw\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH تقديم
+.
+يدير ألعاب Battle for Wesnoth متعددة اللاعبين. انظر
+https://www.wesnoth.org/wiki/ServerAdministration للأوامر التي يقبلها الخادم
+عبر عميل wesnoth (/query ...) أو الـ fifo.
+.
+.SH "إعدادات الخيارات"
+.
+.TP 
+\fB\-c\ \fP\fIpath\fP\fB,\ \-\-config\fP\fI\ path\fP
+يخبر wesnothd بمكان العثور على ملف التهيئة لاستخدامه. راجع قسم \fBتهيئة الخادم\fP أدناه لمعرفة الصيغة. يمكن إعادة تحميل التهيئة بإرسال إشارة SIGHUP
+إلى عملية الخادم.
+.TP 
+\fB\-d, \-\-daemon\fP
+يشغل wesnothd كخادم (daemon).
+.TP 
+\fB\-h, \-\-help\fP
+يشرح وظائف خيارات سطر الأوامر.
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
+يضبط مستوى شدة مجالات السجل. يمكن استخدام \fBall\fP لمطابقة أي مجال
+سجل. المستويات المتاحة: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. افتراضيًا، يتم استخدام مستوى \fBerror\fP ومستوى \fBinfo\fP لمجال
+\fBserver\fP.
+.TP 
+\fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
+يربط الخادم بالمنفذ المحدد. إذا لم يتم تحديد منفذ، سيُستخدم المنفذ \fB15000\fP.
+.TP 
+\fB\-V, \-\-version\fP
+يعرض رقم الإصدار ويخرج.
+.TP 
+\fB\-v, \-\-verbose\fP
+يفعّل تسجيل السجلات (logging) في وضع التصحيح (debug).
+.
+.SH "تهيئة الخادم (SERVER CONFIG)"
+.
+.SS "الصيغة العامة هي:"
+.
+.P
+[\fItag\fP]
+.IP
+\fIkey\fP="\fIvalue\fP"
+.IP
+\fIkey\fP="\fIvalue\fP,\fIvalue\fP,..."
+.P
+[/\fItag\fP]
+.
+.SS "المفاتيح العامة (Global keys):"
+.
+.TP 
+\fBallow_remote_shutdown\fP
+إذا تم ضبطها على \fBno\fP (الافتراضي)، يتم تجاهل طلبات shut_down وrestart إلا
+إذا جاءت من الـ fifo. اضبطها على \fByes\fP للسماح بالإيقاف عن بُعد (remote
+shutdown) عبر /query من قبل المدير.
+.TP 
+\fBban_save_file\fP
+مسار كامل أو نسبي لملف (مضغوط بـ gzip) يمكن للخادم قراءته وكتابته. سيتم حفظ
+الحظور (bans) في هذا الملف وقراءته مجددًا عند بدء الخادم.
+.TP 
+\fBconnections_allowed\fP
+عدد الاتصالات المسموح بها من نفس عنوان IP. \fB0\fP تعني غير محدود. (الافتراضي:
+\fB5\fP)
+.TP 
+\fBdeny_unregistered_login\fP
+ما إذا كان يتم منع المستخدمين غير المسجلين في \fBuser_handler\fP المستخدم من
+تسجيل الدخول. (الافتراضي: false)
+.TP 
+\fBdisallow_names\fP
+Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
+patterns are supported. See \fBglob\fP(7)  for more details.  Default values
+(used if nothing is specified) are:
+\fB*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player\fP.
+.TP 
+\fBfifo_path\fP
+مسار الـ fifo الذي يمكنك إرسال أوامر الخادم إليه (مثل /query ... من
+wesnoth). إذا لم يتم تحديده، يستخدم المسار الافتراضي وقت الترجمة (default:
+\fB/var/run/wesnothd/socket\fP).
+.TP 
+\fBid\fP
+معرف الخادم عند استخدام وظيفة قاعدة البيانات لتخزين معلومات اللعبة. يكون
+بشكل عام إصدار clients المقبول الرئيسي.الفرعي، مثل 1.16 أو 1.17.
+.TP 
+\fBmax_messages\fP
+عدد الرسائل المسموح بها في فترة \fBmessages_time_period\fP. (الافتراضي: \fB4\fP)
+.TP 
+\fBmessages_time_period\fP
+الفترة الزمنية (بالثواني) التي يتم فيها اكتشاف التدفق (flooding)
+للرسائل. (الافتراضي: \fB10\fP ثوانٍ)
+.TP 
+\fBmotd\fP
+رسالة اليوم
+.TP 
+\fBpasswd\fP
+كلمة المرور المستخدمة للحصول على صلاحيات المشرف (عبر \fB/query admin \fP\fIpassword\fP).
+.TP 
+\fBreplay_save_path\fP
+الدليل حيث يخزن الخادم تسجيلات الألعاب (الريبلاي). (لا تنسى / في النهاية!)
+الافتراضي هو `' مما يعني الدليل الذي تم بدء تشغيل wesnothd منه.
+.TP 
+\fBrestart_command\fP
+الأمر الذي يستخدمه الخادم لبدء عملية خادم جديدة عبر أمر \fBrestart\fP. (يمكن
+إصداره فقط عبر الـ fifo. راجع إعداد \fBallow_remote_shutdown\fP.)
+.TP 
+\fBsave_replays\fP
+يحدد ما إذا كان الخادم سيحفظ تلقائيًا تسجيلات الألعاب
+(الريبلاي). (الافتراضي: \fBfalse\fP)
+.TP 
+\fBtls_enabled\fP
+تمكين استخدام TLS. إذا كانت القيمة true، تتطلب تعيين الخيارات الثلاثة
+التالية أيضًا.
+.TP 
+\fBtls_fullchain\fP
+شهادة TLS الكاملة (سلسلة الشهادات) بتنسيق .pem
+.TP 
+\fBtls_private_key\fP
+المفتاح الخاص لـ TLS بتنسيق .pem
+.TP 
+\fBtls_dh\fP
+معاملات DH لـ TLS، كملف .pem. تولد باستخدام \fBopenssl dhparam \-out filename.pem 4096\fP
+.TP 
+\fBversions_accepted\fP
+قائمة من سلاسل الإصدارات المقبولة من قبل الخادم، مفصولة بفواصل. الرموز
+العامة \fB*\fP و \fB?\fP مدعومة. (الافتراضي هو إصدار wesnoth المقابل)
+.br
+مثال: \fBversions_accepted="*"\fP يقبل أي سلسلة إصدار.
+.
+.SS "وسوم عامة (Global tags):"
+.
+.P
+\fB[redirect]\fP وسم لتحديد خادم لإعادة توجيه إصدارات معينة من العملاء إليه. لا
+يستخدم إذا لم يتم ضبط \fBversions_accepted\fP.
+.RS
+.TP 
+\fBhost\fP
+عنوان الخادم المراد إعادة التوجيه إليه.
+.TP 
+\fBport\fP
+المنفذ للاتصال به.
+.TP 
+\fBversion\fP
+قائمة مفصولة بفواصل من الإصدارات التي سيتم إعادة توجيهها. تتصرف بنفس طريقة
+\fBversions_accepted\fP فيما يتعلق بالرموز العامة.
+.RE
+.P
+\fB[ban_time]\fP وسم لتعريف كلمات مفتاحية ملائمة لأطوال مدة الحظر المؤقت.
+.RS
+.TP 
+\fBname\fP
+الاسم المستخدم للإشارة إلى وقت الحظر.
+.TP 
+\fBtime\fP
+تعريف طول المدة الزمنية. الصيغة: %d[%s[%d%s[...]]] حيث %s هو s (ثواني)، m
+(دقائق)، h (ساعات)، D (أيام)، M (أشهر) أو Y (سنوات) و %d هو رقم. إذا لم يتم
+إعطاء معدل زمني، يفترض أن تكون الدقائق (m). مثال: \fBtime="1D12h30m"\fP ينتج
+مدة حظر مقدارها يوم واحد و 12 ساعة و 30 دقيقة.
+.RE
+.P
+\fB[proxy]\fP وسم لإخبار الخادم للعمل كوسيط (بروكسي) وإعادة توجيه طلبات العميل
+المتصل إلى الخادم المحدد. يقبل نفس المفاتيح مثل \fB[redirect]\fP.
+.RE
+.P
+\fB[user_handler]\fP يضبط معالج المستخدم. إذا لم يكن قسم \fB[user_handler]\fP
+موجودًا في التهيئة، سيتم تشغيل الخادم بدون أي خدمة تسجيل اسم مستخدم. جميع
+الجداول الإضافية اللازمة لعمل \fBforum_user_handler\fP يمكن العثور عليها في
+table_definitions.sql في مستودع مصدر Wesnoth. يتطلب تمكين دعم mysql. بالنسبة
+لـ cmake هذا هو \fBENABLE_MYSQL\fP وبالنسبة لـ scons هذا هو
+\fBforum_user_handler.\fP
+.RS
+.TP 
+\fBdb_host\fP
+اسم مضيف خادم قاعدة البيانات
+.TP 
+\fBdb_name\fP
+اسم قاعدة البيانات
+.TP 
+\fBdb_user\fP
+اسم المستخدم المراد تسجيل الدخول إلى قاعدة البيانات بواسطته
+.TP 
+\fBdb_password\fP
+كلمة مرور هذا المستخدم
+.TP 
+\fBdb_users_table\fP
+اسم الجدول الذي يحفظ فيه منتدى phpbb الخاص بك بيانات المستخدمين. على الأرجح
+سيكون هذا <بادئة\-الجدول>_users (مثال: phpbb3_users).
+.TP 
+\fBdb_extra_table\fP
+اسم الجدول الذي سيحفظ فيه wesnothd بياناته الخاصة حول المستخدمين.
+.TP 
+\fBdb_game_info_table\fP
+اسم الجدول الذي سيحفظ فيه wesnothd بياناته الخاصة حول الألعاب.
+.TP 
+\fBdb_game_player_info_table\fP
+اسم الجدول الذي سيحفظ فيه ويسنوث بياناته الخاصة عن اللاعبين في اللعبة.
+.TP 
+\fBdb_game_content_info_table\fP
+The name of the table in which wesnothd will save its own data about game
+content (scenario/era/modifications) used in a game.
+.TP 
+\fBdb_user_group_table\fP
+اسم الجدول الذي يحفظ فيه منتدى phpbb الخاص بك بيانات مجموعة المستخدمين. على
+الأرجح سيكون هذا <بادئة\-الجدول>_user_group (مثال:
+phpbb3_user_group).
+.TP 
+\fBdb_tournament_query\fP
+The SQL query to find tournaments to announce on login. Should return
+tournament \fBtitle\fP, \fBstatus\fP and \fBurl\fP.
+.TP 
+\fBdb_connection_history_table\fP
+اسم الجدول الذي سيتم فيه تخزين أوقات تسجيل الدخول/الخروج. يستخدم أيضًا
+لمطابقة عناوين IP مع المستخدمين والعكس.
+.TP 
+\fBdb_topics_table\fP
+اسم الجدول الذي يحفظ فيه منتدى phpbb الخاص بك معلومات الموضوعات
+(المناقشات). على الأرجح سيكون هذا <بادئة\-الجدول>_topics (مثال:
+phpbb3_topics).
+.TP 
+\fBdb_banlist_table\fP
+اسم الجدول الذي يحفظ فيه منتدى phpbb الخاص بك بيانات حظر المستخدمين. على
+الأرجح سيكون هذا <بادئة\-الجدول>_banlist (مثال: phpbb3_banlist).
+.TP 
+\fBmp_mod_group\fP
+معرّف مجموعة المنتدى التي سيتم اعتبارها ذات سلطة إشراف.
+.TP 
+\fBforum_admin_group\fP
+The ID of one of the forum groups to be considered as having admin authority
+on the add\-ons server.
+.TP 
+\fBsite_admin_group\fP
+The ID of one of the forum groups to be considered as having admin authority
+on the add\-ons server.
+.RE
+.
+.SH "حالة الخروج (EXIT STATUS)"
+.
+حالة الخروج العادية هي 0 عندما تم إغلاق الخادم بشكل صحيح. تشير حالة الخروج 2
+إلى وجود خطأ في خيارات سطر الأوامر.
+.
+.SH "المؤلف (AUTHOR)"
+.
+كتبت بواسطة دافيد وايت <davidnwhite@verizon.net>.  دققت بواسطة نيلز
+نوبر  <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net>, صوليتون
+<soliton.de@gmail.com> وطوماس باومهاور
+<thomas.baumhauer@gmail.com>.  هذا الكتيب كتب في الاصل بواسطة سيريل
+بوذر <cyril@bouthors.org>.
+.br
+زوروا الصفحة الرئيسية الرسمية: https://www.wesnoth.org/
+.
+.SH "حقوق النشر (COPYRIGHT)"
+.
+Copyright \(co 2003\-2025 David White <davidnwhite@verizon.net>
+.br
+هذا برنامج حر؛ مرخص تحت GPL الإصدار 2، كما نشرته Free Software
+Foundation. لا يوجد أي ضمان؛ ولا حتى لـ MERCHANTABILITY أو FITNESS FOR A
+PARTICULAR PURPOSE.
+.
+.SH "شاهد أيضًا (SEE ALSO)"
+.
+\fBwesnoth\fP(6)
+

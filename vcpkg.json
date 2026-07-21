@@ -2,15 +2,15 @@
   "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
   "name": "wesnoth-dependencies",
   "version": "0.0.1",
-  "builtin-baseline": "acd5bba5aac8b6573b5f6f463dc0341ac0ee6fa4",
+  "builtin-baseline": "b5229343b4b80264ed51e89c6a7dcd0cbe85e9cc",
   "dependencies": [
-    "sdl2",
+    "sdl3",
     {
-      "name": "sdl2-image",
-      "features": [ "libjpeg-turbo", "libwebp" ]
+      "name": "sdl3-image",
+      "features": [ "jpeg", "png", "webp" ]
     },
     "libwebp",
-    "sdl2-mixer",
+    "sdl3-mixer",
     "bzip2",
     "zlib",
     "pango",
@@ -19,6 +19,18 @@
     "libvorbis",
     "libogg",
     "openssl",
+    {
+      "name": "gettext-libintl",
+      "platform": "osx"
+    },
+    {
+      "name": "readline",
+      "platform": "osx"
+    },
+    {
+      "name": "wavpack",
+      "platform": "osx"
+    },
     "boost-filesystem",
     "boost-graph",
     "boost-iostreams",

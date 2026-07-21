@@ -99,6 +99,9 @@ std::set<std::string> split_set(std::string_view val, const char c = ',', const 
 
 std::vector<std::string_view> split_view(std::string_view val, const char c = ',', const int flags = REMOVE_EMPTY | STRIP_SPACES);
 
+/** You cannot take a non-owning view to a temporary string! */
+std::vector<std::string_view> split_view(std::string&&) = delete;
+
 /**
  * This function is identical to split(), except it does not split when it otherwise would if the
  * previous character was identical to the parameter 'quote' (i.e. it does not split quoted commas).
@@ -200,14 +203,15 @@ std::vector<std::string> square_parenthetical_split(
  * @param v A container with elements.
  * @param s List delimiter.
  */
-template <typename T>
-std::string join(const T& v, const std::string& s = ",")
+template<typename Range>
+std::string join(const Range& v, const std::string& s = ",")
 {
 	std::stringstream str;
+	const auto sentinel = std::end(v);
 
-	for(typename T::const_iterator i = v.begin(); i != v.end(); ++i) {
+	for(auto i = std::begin(v); i != sentinel; ++i) {
 		str << *i;
-		if(std::next(i) != v.end()) {
+		if(std::next(i) != sentinel) {
 			str << s;
 		}
 	}
@@ -326,6 +330,28 @@ inline std::string wml_escape_string(std::string_view str)
 	for(char c : str) {
 		res.append(c == '"' ? 2 : 1, c);
 	}
+
+	return res;
+}
+
+/** Format @a str as a strongly quoted WML value. Occurances of `<<` are double quoted separately */
+inline std::string wml_escape_strong(const std::string& str)
+{
+	std::string res;
+	std::size_t i = str.find(">>");
+	if(i == std::string::npos) {
+		return str;
+	}
+
+	res.append(str, 0, i);
+	res.append(">>\">>\"<<");
+	std::size_t j;
+	while((j = str.find(">>", i + 2)) != std::string::npos) {
+		res.append(str, i + 2, j - (i + 2));
+		res.append(">>\">>\"<<");
+		i = j;
+	}
+	res.append(str, i + 2);
 
 	return res;
 }

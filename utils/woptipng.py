@@ -25,20 +25,33 @@ from multiprocessing import Pool
 import multiprocessing # cpu count
 from PIL import Image as PIL # compare images
 import enum
-import subprocess # launch advdef, optipng, imagemagick
+import subprocess # launch advdef, optipng, imagemagick, oxipng
 import os # os rename, niceness
 import shutil # copy files
 import argparse # argument parsing
 import sys # sys.exit
 
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(
+    formatter_class=argparse.RawDescriptionHelpFormatter,
+    description="woptipng: a PNG optimizing script for The Battle for Wesnoth",
+    epilog="""You can obtain the required dependencies at the following websites:
+* OptiPNG: https://optipng.sourceforge.net
+* ImageMagick convert: https://imagemagick.org
+* AdvanceCOMP Advdef: https://www.advancemame.it
+* Oxipng: https://github.com/shssoichiro/oxipng
+* Exiftool: https://exiftool.org""")
 parser.add_argument("inpath", help="file or path (recursively) to be searched for crushable pngs", metavar='path', nargs='+', type=str)
 parser.add_argument("-d", "--debug", help="print debug information", action='store_true')
 parser.add_argument("-t", "--threshold", help="size reduction below this percentage will be discarded, default: 10", metavar='n', nargs='?', default=10, type=float)
 parser.add_argument("-j", "--jobs", help="max amount of jobs/threads. If unspecified, take number of cores found", metavar='n', nargs='?', default=multiprocessing.cpu_count(), type=int)
 parser.add_argument("-n", "--nice", help="niceness of all threads (must be positive, \
 doesn't have any effect on Windows)", metavar='n', nargs="?", default=19, type=int)
+parser.add_argument("--optipng_path", help="specify the path to the OptiPNG executable")
+parser.add_argument("--convert_path", help="specify the path to the ImageMagick convert executable")
+parser.add_argument("--advdef_path", help="specify the path to the AdvanceCOMP advdef executable")
+parser.add_argument("--oxipng_path", help="specify the path to the oxipng executable")
+parser.add_argument("--exiftool_path", help="specify the path to the exiftool executable")
 
 args = parser.parse_args()
 
@@ -47,12 +60,27 @@ INPATHS = args.inpath
 THRESHOLD = args.threshold
 MAX_THREADS = args.jobs
 # program executables
-EXEC_OPTIPNG = shutil.which("optipng")
-EXEC_IMAGEMAGICK = shutil.which("convert")
-EXEC_ADVDEF = shutil.which("advdef")
+EXEC_OPTIPNG = args.optipng_path or shutil.which("optipng")
+EXEC_IMAGEMAGICK = args.convert_path or shutil.which("convert")
+EXEC_ADVDEF = args.advdef_path or shutil.which("advdef")
+EXEC_OXIPNG = args.oxipng_path or shutil.which("oxipng")
+EXEC_EXIFTOOL = args.exiftool_path or shutil.which("exiftool")
 
 if os.name == "posix":
     os.nice(args.nice) # set niceness, not available on Windows
+elif os.name == "nt":
+    # after testing this script on Windows, instead of running correctly,
+    # the command prompt became full of error messages.
+    # This happens because the Windows kernel lacks the fork() method
+    # available in POSIX systems, so multiprocessing is done by spawning
+    # multiple Python interpreters.
+    # To work correctly, this requires that everything which isn't a class
+    # or function definition or a global variable to be guarded inside the
+    # if __name__ == "__main__" block.
+    # Until everything can be moved into that block, corrected and tested,
+    # the only option is to exit here.
+    print("This program cannot run on Windows yet.")
+    sys.exit(0)
 
 input_files=[]
 bad_input_files=[]
@@ -60,14 +88,14 @@ bad_input_files=[]
 print("Collecting files... ", end="")
 for path in INPATHS: # iterate over arguments
     if (os.path.isfile(path)):   # inpath is a file
-        if (path.endswith("png")):
+        if (path.endswith(".png")):
             input_files.append(path)
         else: # not png?
             bad_input_files.append(path)
     elif (os.path.isdir(path)):  # inpath is a directory
         for root, directories, filenames in os.walk(path):
             for filename in filenames:
-                if (filename.split('.')[-1] == "png"): # check for valid filetypes
+                if (filename.endswith(".png")): # check for valid filetypes
                     input_files.append(os.path.join(root,filename)) # add to list
     else: # path does not exist
         bad_input_files.append(path)
@@ -107,10 +135,10 @@ def run_imagemagick(image, tmpimage):
     shutil.copy(image, tmpimage)
     debugprint("imagemagick ")
     cmd = [ EXEC_IMAGEMAGICK,
+            image,
             "-strip",
             "-define",
             "png:color-type=6",
-            image,
             tmpimage
     ]
     subprocess.call(cmd)
@@ -142,15 +170,69 @@ def run_advdef(image, tmpimage):
         ]
         subprocess.call(cmd, stdout=open(os.devnull, 'w')) # discard stdout
 
+def run_oxipng(image, tmpimage):
+    debugprint("oxipng")
+    shutil.copy(image, tmpimage)
+    cmd = [
+        EXEC_OXIPNG,
+        "--nc",
+        "--np",
+        "-o6",
+        "--quiet",
+        tmpimage,
+    ]
+    subprocess.call(cmd, stderr=open(os.devnull, 'w')) # discard stdout
+
+def extract_metadata(image):
+    debugprint("exiftool, reading metadata")
+    cmd = [
+        EXEC_EXIFTOOL,
+        "-s", # return tag names instead of descriptions...
+        "-t", # ... as a tab separated list
+        "-EXIF:Artist",
+        "-EXIF:Copyright",
+        "-EXIF:UserComment",
+        "-EXIF:CreateDate",
+        image
+    ]
+    output = subprocess.run(cmd, capture_output=True, encoding="utf-8").stdout
+    metadata = {}
+
+    for item in output.splitlines(): # output ends with a newline, which splitlines discards
+        key, value = item.split("\t", 1)
+        metadata[key] = value
+
+    return metadata
+
+def add_metadata(tmpimage, metadata):
+    debugprint("exiftool, adding metadata")
+    cmd = [
+        EXEC_EXIFTOOL,
+        "-overwrite_original"
+    ]
+    for key, value in metadata.items():
+        cmd.append(f"-EXIF:{key}={value}")
+    cmd.append(tmpimage)
+    subprocess.run(cmd, stdout=subprocess.DEVNULL) # discard stdout
+
 def check_progs():
+    debugprint(EXEC_ADVDEF)
     if (not EXEC_ADVDEF):
         print("ERROR: advdef binary not found!")
+    debugprint(EXEC_IMAGEMAGICK)
     if (not EXEC_IMAGEMAGICK):
         print("ERROR: imagemagick/convert binary not found!")
+    debugprint(EXEC_OPTIPNG)
     if (not EXEC_OPTIPNG):
         print("ERROR: optipng not found!")
+    debugprint(EXEC_OXIPNG)
+    if (not EXEC_OXIPNG):
+        print("ERROR: oxipng not found!")
+    debugprint(EXEC_EXIFTOOL)
+    if (not EXEC_EXIFTOOL):
+        print("ERROR: exiftool not found!")
 
-    if not (EXEC_ADVDEF and EXEC_IMAGEMAGICK and EXEC_OPTIPNG):
+    if not (EXEC_ADVDEF and EXEC_IMAGEMAGICK and EXEC_OPTIPNG and EXEC_OXIPNG and EXEC_EXIFTOOL):
         sys.exit(1)
 
 class ProcessingStatus(enum.Enum):
@@ -167,22 +249,32 @@ class ProcessingResult:
         self.size_after = size_after
 
 def optimize_image(image):
+    metadata = extract_metadata(image)
+    
     size_initial = os.path.getsize(image)
-    with open(image, 'rb') as f:
-        initial_file_content = f.read()
+    # make a copy of the original file and work on it
+    backup_image = image + ".original"
+    shutil.copy(image, backup_image)
 
     tmpimage  = image + ".tmp"
 
-    run_imagemagick(image, tmpimage)
-    verify_images(image, tmpimage, "imagemagick")
+    run_imagemagick(backup_image, tmpimage)
+    add_metadata(tmpimage, metadata)
+    verify_images(backup_image, tmpimage, "imagemagick")
 
-    run_optipng(image, tmpimage)
-    verify_images(image, tmpimage, "optipng")
+    run_optipng(backup_image, tmpimage)
+    add_metadata(tmpimage, metadata)
+    verify_images(backup_image, tmpimage, "optipng")
 
-    run_advdef(image, tmpimage)
-    verify_images(image, tmpimage, "advdef")
+    run_advdef(backup_image, tmpimage)
+    add_metadata(tmpimage, metadata)
+    verify_images(backup_image, tmpimage, "advdef")
 
-    size_after = os.path.getsize(image)
+    run_oxipng(backup_image, tmpimage)
+    add_metadata(tmpimage, metadata)
+    verify_images(backup_image, tmpimage, "oxipng")
+
+    size_after = os.path.getsize(backup_image)
     size_delta = size_after - size_initial
     perc_delta = (size_delta/size_initial) *100
 
@@ -207,10 +299,13 @@ def optimize_image(image):
         summary_string = "optimized  {image}  from {size_initial} to {size_after}, {size_delta}b, {perc_delta}%"
         status = ProcessingStatus.OPTIMIZED
 
-    # If the file didn't shrink sufficiently, write back the original version
-    if status != ProcessingStatus.OPTIMIZED:
-        with open(image, 'wb') as f:
-            f.write(initial_file_content)
+    # If the file shrank sufficiently, write back the optimized version
+    if status == ProcessingStatus.OPTIMIZED:
+        shutil.copy(backup_image, image)
+
+    # remove the backup of the original file
+    if os.path.isfile(backup_image):
+        os.remove(backup_image)
 
     if summary_string:
         debugprint(summary_string.format(image=image, size_initial=size_initial, size_after=size_after, size_delta=size_delta, perc_delta=str(perc_delta)[0:6]))

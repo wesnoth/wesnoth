@@ -41,7 +41,7 @@ public:
 	virtual bool can_scroll_down() override { return false;}
 
 	//drawing
-	virtual void adjust_size(const SDL_Rect& /*target*/) override {}
+	virtual void adjust_size(const rect& /*target*/) override {}
 
 	void hide(bool /*hidden*/) override
 	{
@@ -63,9 +63,8 @@ public:
 	virtual const std::vector<item_group>& get_groups() const override { static const std::vector<item_group> empty; return empty; }
 
 	/** Menu expanding for palette group list */
-	virtual void expand_palette_groups_menu(std::vector<config>& items, int i) override
+	virtual void expand_palette_groups_menu(std::vector<config>& /*items*/) override
 	{
-		items.erase(items.begin() + i);
 	}
 
 	//item

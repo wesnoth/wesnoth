@@ -129,15 +129,11 @@ void chat_command_handler::do_version() {
 void chat_command_handler::do_info() {
 	if (get_data(1).empty()) return command_failed_need_arg(1);
 
-	config data;
-	config& nickserv = data.add_child("nickserv");
-
-	nickserv.add_child("info")["name"] = get_data(1);
 	utils::string_map symbols;
 	symbols["nick"] = get_arg(1);
 	print(_("nick registration"), VGETTEXT("requesting information for user $nick", symbols));
 
-	chat_handler_.send_to_server(data);
+	chat_handler_.send_to_server(config{"nickserv", config{"info", config{"name", get_data(1)}}});
 }
 
 void chat_command_handler::do_clear_messages() {

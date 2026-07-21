@@ -32,12 +32,10 @@
 # http://wmlxgettext-unoff.readthedocs.org/en/latest/srcdoc/index.html
 
 import os
-import re
 import sys
 import signal
-import warnings
 import argparse
-from datetime import datetime
+import datetime
 import pywmlx
 
 
@@ -86,7 +84,7 @@ def commandline(args):
         action='store_true',
         default=False,
         dest='force_po',
-        help=('Write PO file even if empty.')
+        help='Write PO file even if empty.'
     )
     parser.add_argument(
         '--initialdomain',
@@ -182,7 +180,6 @@ def main():
     pywmlx.set_warnall(args.warnall)
     startPath = os.path.realpath(os.path.normpath(args.start_path))
     sentlist = dict()
-    fileno = 0
     fdebug = None
     if args.folder == '-':
         args.folder = None
@@ -208,7 +205,7 @@ def main():
                 "FILELIST will be ignored.")
         # If we use the --recursive option we recursively scan the add-on
         # directory.
-        #    But we want that the file reference informations placed
+        #    But we want that the file reference information placed
         # in the .po file will remember the (relative) root name of the
         # addon.
         #    This is why the autof.autoscan function returns a tuple of
@@ -246,7 +243,7 @@ def main():
     folder = None
     filename = None
     outfile = sys.stdout
-    now = datetime.utcnow()
+    now = datetime.datetime.now(datetime.timezone.utc)
     if args.folder is not None:
         folder = os.path.realpath(os.path.normpath(args.folder))
         if not os.path.isdir(folder) and "." in os.path.basename(folder):

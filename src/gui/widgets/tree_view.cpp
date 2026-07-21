@@ -38,6 +38,7 @@ tree_view::tree_view(const implementation::builder_tree_view& builder)
 	: scrollbar_container(builder, type())
 	, node_definitions_(builder.nodes)
 	, indentation_step_size_(builder.indentation_step_size)
+	, has_minimum_(builder.has_minimum)
 	, need_layout_(false)
 	, root_node_(nullptr)
 	, selected_item_(nullptr)
@@ -66,8 +67,7 @@ std::pair<std::shared_ptr<tree_view_node>, int> tree_view::remove_node(tree_view
 
 	tree_view_node::node_children_vector& siblings = node->parent_node_->children_;
 
-	auto node_itor = std::find_if(siblings.begin(), siblings.end(), [node](const auto& c) { return c.get() == node; });
-
+	auto node_itor = utils::ranges::find(siblings, node, [](const auto& c) { return c.get(); });
 	assert(node_itor != siblings.end());
 
 	auto old_node = std::move(*node_itor);
@@ -196,8 +196,8 @@ bool tree_view::handle_up_down_arrow()
 {
 	if(tree_view_node* next = get_next_node<func>()) {
 		next->select_node();
-		SDL_Rect visible = content_visible_area();
-		SDL_Rect rect = next->get_grid().get_rectangle();
+		rect visible = content_visible_area();
+		rect rect = next->get_grid().get_rectangle();
 		visible.y = rect.y; // - content_grid()->get_y();
 		visible.h = rect.h;
 		show_content_rect(visible);
@@ -279,6 +279,7 @@ namespace implementation
 builder_tree_view::builder_tree_view(const config& cfg)
 	: builder_scrollbar_container(cfg)
 	, indentation_step_size(cfg["indentation_step_size"].to_unsigned())
+	, has_minimum(cfg["has_minimum"].to_bool(true))
 	, nodes()
 {
 	for(const auto& node : cfg.child_range("node")) {

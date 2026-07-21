@@ -20,6 +20,7 @@
 
 #pragma once
 
+#include "sdl/point.hpp"
 #include "storyscreen/parser.hpp"
 
 #include <chrono>
@@ -319,6 +320,12 @@ public:
 		return title_alignment_;
 	}
 
+	/** Retrieves the percentage based position of the title text */
+	const point& title_position() const
+	{
+		return title_perc_pos_;
+	}
+
 	/** Retrieve any associated floating images for this story screen. */
 	const std::vector<floating_image>& get_floating_images() const
 	{
@@ -350,6 +357,9 @@ private:
 	std::string music_;
 	std::string sound_;
 	std::string voice_;
+
+	 // Position of the title text in percentage. (0,0) at top left.
+	point title_perc_pos_;
 
 	std::vector<background_layer> background_layers_;
 	std::vector<floating_image> floating_images_;

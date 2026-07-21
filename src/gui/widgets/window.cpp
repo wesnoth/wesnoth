@@ -60,7 +60,7 @@
 #include "sdl/userevent.hpp"
 #include "sdl/input.hpp" // get_mouse_button_mask
 
-#include <SDL2/SDL_timer.h>
+#include <SDL3/SDL_timer.h>
 
 #include <algorithm>
 #include <functional>
@@ -126,7 +126,7 @@ const unsigned LAYOUT = 0;
  *
  * @return                        The new timer interval (always 0).
  */
-static uint32_t delay_event_callback(const uint32_t, void* event)
+static uint32_t delay_event_callback(void* event, SDL_TimerID, uint32_t)
 {
 	SDL_PushEvent(static_cast<SDL_Event*>(event));
 	delete static_cast<SDL_Event*>(event);
@@ -250,7 +250,6 @@ window::window(const builder_window::window_resolution& definition)
 	, status_(status::NEW)
 	, show_mode_(show_mode::none)
 	, retval_(retval::NONE)
-	, owner_(nullptr)
 	, need_layout_(true)
 	, variables_()
 	, invalidate_layout_blocked_(false)
@@ -712,7 +711,7 @@ void window::render()
 	draw::clear();
 
 	draw();
-	awaiting_rerender_ = sdl::empty_rect;
+	awaiting_rerender_ = {};
 }
 
 bool window::expose(const rect& region)
@@ -806,7 +805,7 @@ void window::add_linked_widget(const std::string& id, widget* wgt)
 	}
 
 	std::vector<widget*>& widgets = linked_size_[id].widgets;
-	if(std::find(widgets.begin(), widgets.end(), wgt) == widgets.end()) {
+	if(!utils::contains(widgets, wgt)) {
 		widgets.push_back(wgt);
 	}
 }
@@ -823,9 +822,7 @@ void window::remove_linked_widget(const std::string& id, const widget* wgt)
 
 	if(itor != widgets.end()) {
 		widgets.erase(itor);
-
-		assert(std::find(widgets.begin(), widgets.end(), wgt)
-			   == widgets.end());
+		assert(!utils::contains(widgets, wgt));
 	}
 }
 
@@ -899,19 +896,19 @@ void window::layout()
 	}
 	catch(const layout_exception_resize_failed&)
 	{
-
 		/** @todo implement the scrollbars on the window. */
 
 		std::stringstream sstr;
-		sstr << __FILE__ << ":" << __LINE__ << " in function '" << __func__
-			 << "' found the following problem: Failed to size window;"
-			 << " wanted size " << get_best_size() << " available size "
-			 << maximum_width << ',' << maximum_height << " screen size "
-			 << settings::screen_width << ',' << settings::screen_height << '.';
+		sstr << __FILE__ << ":" << __LINE__ << " in function ‘" << __func__
+		     << "’ found the following problem: Failed to size window with id ‘" << id()
+		     << "’; wanted size " << get_best_size() << ", available size ("
+		     << maximum_width << ',' << maximum_height << "), screen size ("
+		     << settings::screen_width << ',' << settings::screen_height << ").";
 
-		throw wml_exception(_("Failed to show a dialog, "
-							   "which doesn’t fit on the screen."),
-							 sstr.str());
+		throw wml_exception(
+			_("Failed to show a dialog, which doesn’t fit on the screen."),
+			sstr.str(),
+			wml_exception::error_type::GUI_LAYOUT_FAILURE);
 	}
 
 	/****** Validate click dismiss status. *****/
@@ -935,20 +932,19 @@ void window::layout()
 		}
 		catch(const layout_exception_resize_failed&)
 		{
-
 			/** @todo implement the scrollbars on the window. */
 
 			std::stringstream sstr;
-			sstr << __FILE__ << ":" << __LINE__ << " in function '" << __func__
-				 << "' found the following problem: Failed to size window;"
-				 << " wanted size " << get_best_size() << " available size "
-				 << maximum_width << ',' << maximum_height << " screen size "
-				 << settings::screen_width << ',' << settings::screen_height
-				 << '.';
+			sstr << __FILE__ << ":" << __LINE__ << " in function ‘" << __func__
+			     << "’ found the following problem: Failed to size window with id ‘" << id()
+			     << "’; wanted size " << get_best_size() << ", available size ("
+			     << maximum_width << ',' << maximum_height << "), screen size ("
+			     << settings::screen_width << ',' << settings::screen_height << ").";
 
-			throw wml_exception(_("Failed to show a dialog, "
-								   "which doesn’t fit on the screen."),
-								 sstr.str());
+			throw wml_exception(
+				_("Failed to show a dialog, which doesn’t fit on the screen."),
+				sstr.str(),
+				wml_exception::error_type::GUI_LAYOUT_FAILURE);
 		}
 	}
 
@@ -1201,6 +1197,14 @@ void window::mouse_capture(const bool capture)
 void window::keyboard_capture(widget* widget)
 {
 	assert(event_distributor_);
+#ifndef __ANDROID__
+	event_distributor_->keyboard_capture(widget);
+#endif
+}
+
+void window::capture_and_show_keyboard(widget* widget)
+{
+	assert(event_distributor_);
 	event_distributor_->keyboard_capture(widget);
 }
 
@@ -1218,7 +1222,7 @@ void window::remove_from_keyboard_chain(widget* widget)
 
 void window::add_to_tab_order(widget* widget, int at)
 {
-	if(std::find(tab_order.begin(), tab_order.end(), widget) != tab_order.end()) {
+	if(utils::contains(tab_order, widget)) {
 		return;
 	}
 	assert(event_distributor_);
@@ -1284,7 +1288,7 @@ void window::signal_handler_sdl_key_down(const event::ui_event event,
 		}
 	}
 	if(key == SDLK_KP_ENTER || key == SDLK_RETURN) {
-		if (mod & (KMOD_CTRL | KMOD_ALT | KMOD_GUI | KMOD_SHIFT)) {
+		if (mod & (SDL_KMOD_CTRL | SDL_KMOD_ALT | SDL_KMOD_GUI | SDL_KMOD_SHIFT)) {
 			// Don't handle if modifier is pressed
 			handled = false;
 		} else {
@@ -1295,7 +1299,7 @@ void window::signal_handler_sdl_key_down(const event::ui_event event,
 				handled = true;
 			}
 		}
-	} else if(key == SDLK_ESCAPE && !escape_disabled_) {
+	} else if((key == SDLK_ESCAPE || key == SDLK_AC_BACK) && !escape_disabled_) {
 		set_retval(retval::CANCEL);
 		handled = true;
 	} else if(key == SDLK_SPACE) {
@@ -1305,7 +1309,7 @@ void window::signal_handler_sdl_key_down(const event::ui_event event,
 		widget* focus = event_distributor_->keyboard_focus();
 		auto iter = std::find(tab_order.begin(), tab_order.end(), focus);
 		do {
-			if(mod & KMOD_SHIFT) {
+			if(mod & SDL_KMOD_SHIFT) {
 				if(iter == tab_order.begin()) {
 					iter = tab_order.end();
 				}

@@ -29,7 +29,7 @@
 #include "sdl/rect.hpp"
 #include "sdl/texture.hpp"
 
-#include <SDL2/SDL_image.h>
+#include <SDL3_image/SDL_image.h>
 
 #include <boost/algorithm/string.hpp>
 
@@ -327,13 +327,12 @@ bool locator::operator<(const locator& a) const
 // Load overlay image and compose it with the original surface.
 static void add_localized_overlay(const std::string& ovr_file, surface& orig_surf)
 {
-	filesystem::rwops_ptr rwops = filesystem::make_read_RWops(ovr_file);
-	surface ovr_surf = IMG_Load_RW(rwops.release(), true); // SDL takes ownership of rwops
+	surface ovr_surf = IMG_Load(ovr_file.c_str());
 	if(!ovr_surf) {
 		return;
 	}
 
-	SDL_Rect area {0, 0, ovr_surf->w, ovr_surf->h};
+	rect area {0, 0, ovr_surf->w, ovr_surf->h};
 
 	sdl_blit(ovr_surf, nullptr, orig_surf, &area);
 }
@@ -366,8 +365,10 @@ static surface load_image_file(const image::locator& loc)
 				location = loc_location.value();
 			}
 
-			filesystem::rwops_ptr rwops = filesystem::make_read_RWops(location.value());
-			res = IMG_Load_RW(rwops.release(), true); // SDL takes ownership of rwops
+			res = IMG_Load(location.value().c_str());
+			if(!res) {
+				ERR_IMG << "Failed to load image with reason: " << SDL_GetError();
+			}
 
 			// If there was no standalone localized image, check if there is an overlay.
 			if(res && !loc_location) {
@@ -380,7 +381,7 @@ static surface load_image_file(const image::locator& loc)
 	}
 
 	if(!res && !name.empty()) {
-		ERR_IMG << "could not open image '" << name << "'";
+		ERR_IMG << "could not open image '" << name << "' at location '" << location.value_or("<location missing>") << "'";
 		if(game_config::debug && name != game_config::images::missing)
 			return get_surface(game_config::images::missing, UNSCALED);
 		if(name != game_config::images::blank)
@@ -435,8 +436,7 @@ static surface load_image_sub_file(const image::locator& loc)
 
 		// cut and hex mask, but also check and cache if empty result
 		surface cut = cut_surface(surf, srcrect);
-		bool is_empty = false;
-		mask_surface(cut, get_hexmask(), &is_empty);
+		bool is_empty = mask_surface(cut, get_hexmask());
 
 		// discard empty images to free memory
 		if(is_empty) {
@@ -468,16 +468,15 @@ static surface load_image_data_uri(const image::locator& loc)
 		ERR_IMG << "Data URI not of image MIME type: " << parsed.mime;
 	} else {
 		const std::vector<uint8_t> image_data = base64::decode(parsed.data);
-		filesystem::rwops_ptr rwops{SDL_RWFromConstMem(image_data.data(), image_data.size())};
 
 		if(image_data.empty()) {
 			ERR_IMG << "Invalid encoding in data URI";
 		} else if(parsed.mime == "image/png") {
-			surf = IMG_LoadPNG_RW(rwops.release());
+			surf = IMG_LoadTyped_IO(SDL_IOFromConstMem(image_data.data(), image_data.size()), true, "PNG");
 		} else if(parsed.mime == "image/jpeg") {
-			surf = IMG_LoadJPG_RW(rwops.release());
+			surf = IMG_LoadTyped_IO(SDL_IOFromConstMem(image_data.data(), image_data.size()), true, "JPG");
 		} else if(parsed.mime == "image/webp") {
-			surf = IMG_LoadWEBP_RW(rwops.release());
+			surf = IMG_LoadTyped_IO(SDL_IOFromConstMem(image_data.data(), image_data.size()), true, "WEBP");
 		} else {
 			ERR_IMG << "Invalid image MIME type: " << parsed.mime;
 		}
@@ -617,35 +616,48 @@ static surface get_hexed(const locator& i_locator, bool skip_cache = false)
 {
 	surface image = get_surface(i_locator, UNSCALED, skip_cache).clone();
 	surface mask = get_hexmask();
+
 	// Ensure the image is the correct size by cropping and/or centering.
 	// TODO: this should probably be a function of sdl/utils
 	if(image && (image->w != mask->w || image->h != mask->h)) {
 		DBG_IMG << "adjusting [" << image->w << ',' << image->h << ']'
 			<< " image to hex mask: " << i_locator;
-		// the fitted surface
-		surface fit(mask->w, mask->h);
-		// if the image is too large in either dimension, crop it.
-		if(image->w > mask->w || image->h >= mask->h) {
-			// fill the crop surface with transparency
-			SDL_FillRect(fit, nullptr, SDL_MapRGBA(fit->format, 0, 0, 0, 0));
-			// crop the input image to hexmask dimensions
-			int cutx = std::max(0, image->w - mask->w) / 2;
-			int cuty = std::max(0, image->h - mask->h) / 2;
-			int cutw = std::min(image->w, mask->w);
-			int cuth = std::min(image->h, mask->h);
-			image = cut_surface(image, {cutx, cuty, cutw, cuth});
-			// image will now have dimensions <= mask
-		}
-		// center image
-		int placex = (mask->w - image->w) / 2;
-		int placey = (mask->h - image->h) / 2;
-		rect dst = {placex, placey, image->w, image->h};
-		sdl_blit(image, nullptr, fit, &dst);
-		image = fit;
+
+		auto fit = surface(mask->w, mask->h);
+
+		// Fill the crop surface with transparency
+		SDL_FillSurfaceRect(fit, nullptr, SDL_MapSurfaceRGBA(fit, 0, 0, 0, 0));
+
+		// Returns an area rectangle clamped at the max size of the base surface.
+		// If surf is smaller than base, the result is centered relative to base.
+		const auto centered_intersection = [](const surface& surf, const surface& base) -> rect {
+			return {
+				std::max(0, surf->w - base->w) / 2,
+				std::max(0, surf->h - base->h) / 2,
+				std::min(surf->w, base->w),
+				std::min(surf->h, base->h),
+			};
+		};
+
+		rect src = centered_intersection(image, mask);
+		rect dst = centered_intersection(mask, image);
+
+		SDL_BlendMode src_blend;
+		SDL_GetSurfaceBlendMode(image, &src_blend);
+		SDL_SetSurfaceBlendMode(image, SDL_BLENDMODE_NONE);
+		// Take the center area of the source image, up to the size of the hex mask,
+		// and copy it, likewise centered, to the temporary surface. If the image is
+		// larger than the hex mask, its center portion will be retained. If instead
+		// it's *smaller* than the hex mask, it will be copied wholesale to the temp
+		// surface and render centered in any hex to which it is drawn.
+		sdl_blit(image, &src, fit, &dst);
+		SDL_SetSurfaceBlendMode(image, src_blend);
+
+		image = std::move(fit);
 	}
+
 	// hex cut tiles, also check and cache if empty result
-	bool is_empty = false;
-	mask_surface(image, mask, &is_empty, i_locator.get_filename());
+	bool is_empty = mask_surface(image, mask, i_locator.get_filename());
 	is_empty_hex_.add_to_cache(i_locator, is_empty);
 	return image;
 }
@@ -762,8 +774,12 @@ surface get_lighted_image(const image::locator& i_locator, const std::vector<lig
 	// not cached yet, generate it
 	surface res = apply_light(get_surface(i_locator, HEXED).clone(), ls);
 
+	// lvar may no longer be valid as apply_light can reenter this function
+	// and mutate lit_surfaces_; get a new reference before updating
+	lit_surface_variants& reacquired_lvar = lit_surfaces_.access_in_cache(i_locator);
+
 	// record the lighted surface in the corresponding variants cache
-	lvar[ls] = res;
+	reacquired_lvar[ls] = res;
 	return res;
 }
 
@@ -831,8 +847,7 @@ bool is_empty_hex(const locator& i_locator)
 
 	// Should never reach this point, but let's manually do it anyway.
 	surf = surf.clone();
-	bool is_empty = false;
-	mask_surface(surf, get_hexmask(), &is_empty);
+	bool is_empty = mask_surface(surf, get_hexmask());
 	is_empty_hex_.add_to_cache(i_locator, is_empty);
 	return is_empty;
 }
@@ -916,15 +931,13 @@ save_result save_image(const surface& surf, const std::string& filename)
 
 	if(boost::algorithm::ends_with(filename, ".jpeg") || boost::algorithm::ends_with(filename, ".jpg") || boost::algorithm::ends_with(filename, ".jpe")) {
 		LOG_IMG << "Writing a JPG image to " << filename;
-
-		const int err = IMG_SaveJPG_RW(surf, filesystem::make_write_RWops(filename).release(), true, 75); // SDL takes ownership of the RWops
+		const int err = IMG_SaveJPG(surf, filename.c_str(), 75);
 		return err == 0 ? save_result::success : save_result::save_failed;
 	}
 
 	if(boost::algorithm::ends_with(filename, ".png")) {
 		LOG_IMG << "Writing a PNG image to " << filename;
-
-		const int err = IMG_SavePNG_RW(surf, filesystem::make_write_RWops(filename).release(), true); // SDL takes ownership of the RWops
+		const int err = IMG_SavePNG(surf, filename.c_str());
 		return err == 0 ? save_result::success : save_result::save_failed;
 	}
 

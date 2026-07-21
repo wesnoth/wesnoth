@@ -42,8 +42,73 @@ namespace lua_common {
 
 }
 
+/**
+ * Shallow wrapper around lua_geti which pops the top variable from the
+ * Lua stack when destroyed. This is meant to be used in local contexts
+ * for quick cleanup of the stack variable.
+ *
+ * @todo support different get* functions?
+ */
+class scoped_lua_argument
+{
+public:
+	scoped_lua_argument(lua_State* L, int arg_index);
+	scoped_lua_argument(lua_State* L, int value_index, int arg_index);
+
+	~scoped_lua_argument();
+
+	scoped_lua_argument(const scoped_lua_argument&) = delete;
+	scoped_lua_argument& operator=(const scoped_lua_argument&) = delete;
+
+private:
+	lua_State* const state_;
+};
+
 void* operator new(std::size_t sz, lua_State *L, int nuv = 0);
 void operator delete(void* p, lua_State *L, int nuv);
+
+/**
+ * Efficiently creates new LUA "named tuples" with the specified field
+ * names. Use the @a push method to create a new empty tuple instance
+ * at the top of the stack.
+ *
+ * All tuples have some fixed layout and the total set of layouts is
+ * small (10-ish). So, we simply store the meta table the LUA registry
+ * once and then keep reusing it. Saves tons of construction effort.
+ * For maximum reuse, you should create static instances of this class.
+ *
+ * @note It is perfectly fine to have multiple instances of this
+ * class produce the same named tuple structure; the registry mechanism
+ * will ensure that there is a single common metatable not all of them.
+ */
+class lua_named_tuple_builder
+{
+public:
+
+	lua_named_tuple_builder(const std::vector<std::string>& names);
+
+	/**
+	 * Push an empty "named tuple" onto the stack.
+	 * A named tuple is an array where each index can also be accessed by name.
+	 * Once it's pushed, you can set the elements, eg with lua_rawseti.
+	 */
+	void push(lua_State *L) const;
+
+private:
+
+	static int impl_get(lua_State* L);
+	static int impl_set(lua_State* L);
+	static int impl_dir(lua_State* L);
+	static int impl_tostring(lua_State* L);
+	static int impl_compare(lua_State* L);
+
+	static std::string build_key(const std::vector<std::string>& names);
+
+	static constexpr std::string_view base_name_ = "named tuple";
+
+	const std::vector<std::string> names_;
+	const std::string key_;
+};
 
 /**
  * Like luaL_getmetafield, but returns false if key is an empty string
@@ -93,13 +158,6 @@ bool luaW_iststring(lua_State* L, int index);
  * still at the top on exit.
  */
 void luaW_filltable(lua_State *L, const config& cfg);
-
-/**
- * Push an empty "named tuple" onto the stack.
- * A named tuple is an array where each index can also be accessed by name.
- * Once it's pushed, you can set the elements, eg with lua_rawseti.
- */
-void luaW_push_namedtuple(lua_State* L, const std::vector<std::string>& names);
 
 /**
  * Get the keys of a "named tuple" from the stack.

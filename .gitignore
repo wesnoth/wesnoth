@@ -83,6 +83,14 @@ cmake-build-release
 # KDevelop caches (KDevelop 4.3.1, KDE Development Platform 4.8.4).
 *.kate-swp
 
+# Gradle
+packaging/android/build
+packaging/android/classes
+packaging/android/compiled
+packaging/android/gen
+packaging/android/.gradle
+packaging/android/app/build
+
 # autotools
 config.h
 config.h.in
@@ -136,7 +144,6 @@ compile_commands.json
 !src/gui/lib/
 
 # release-only directories
-translations
 userdata
 
 # testing
@@ -147,6 +154,11 @@ src/test
 error*.log
 boost_test_result.xml
 *build*.sh
+!projectfiles/Xcode/ios/build_ios_deps.sh
+projectfiles/Xcode/Headers.iOS
+projectfiles/Xcode/lib.iOS
+projectfiles/Xcode/Headers.device
+projectfiles/Xcode/lib.device
 boost_tests.log
 
 # translations
@@ -180,6 +192,7 @@ src/**/wesnoth_addon_manager
 src/**/wmllint
 src/**/wmlscope
 src/**/wmlindent
+wmllint.log
 
 # file for loading lua from within test scenario on-the-fly
 data/lua/**/code.lua
@@ -208,6 +221,8 @@ fonts/.uuid
 .deps
 .dirstamp
 *.cfg-bak
+*.map-bak
+*.mask-bak
 *.orig
 
 # might be good to have, but not in data

@@ -25,8 +25,11 @@
 #include "sdl/rect.hpp"
 #include "serialization/string_utils.hpp"
 #include "sdl/input.hpp" // get_mouse_state
+#if defined(__ANDROID__) || defined(__IPHONEOS__)
+#include "video.hpp"
+#endif
 
-#include <SDL2/SDL_timer.h>
+#include <SDL3/SDL_timer.h>
 
 static lg::log_domain log_display("display");
 #define WRN_DP LOG_STREAM(warn, log_display)
@@ -44,7 +47,6 @@ textbox::textbox(int width, const std::string& text, bool editable, std::size_t 
 	     edit_target_(nullptr)
 		,listening_(false)
 {
-	// const int height = font::pango_draw_text(nullptr,sdl::empty_rect,font_size,font::NORMAL_COLOR,"ABCD",0,0).h;
 	set_measurements(width, font::get_max_height(font_size_));
 	set_scroll_rate(font::get_max_height(font_size_) / 2);
 	update_text_cache(true);
@@ -58,14 +60,14 @@ textbox::~textbox()
 	}
 }
 
-void textbox::update_location(const SDL_Rect& rect)
+void textbox::update_location(const rect& rect)
 {
 	scrollarea::update_location(rect);
 	update_text_cache(true);
 	queue_redraw();
 }
 
-void textbox::set_inner_location(const SDL_Rect& /*rect*/)
+void textbox::set_inner_location(const rect& /*rect*/)
 {
 	if (!text_image_) return;
 	text_pos_ = 0;
@@ -161,7 +163,7 @@ void textbox::set_cursor_pos(const int cursor_pos)
 void textbox::draw_cursor(int pos) const
 {
 	if(show_cursor_ && editable_ && enabled()) {
-		SDL_Rect rect {
+		rect rect {
 				  location().x + pos
 				, location().y
 				, 1
@@ -181,7 +183,7 @@ void textbox::layout()
 
 void textbox::draw_contents()
 {
-	const SDL_Rect& loc = inner_location();
+	const rect& loc = inner_location();
 
 	color_t c(0, 0, 0);
 
@@ -197,7 +199,7 @@ void textbox::draw_contents()
 		src.w = std::min<std::size_t>(loc.w,text_image_.w());
 		src.h = std::min<std::size_t>(loc.h,text_image_.h());
 		src.x = text_pos_;
-		SDL_Rect dest{loc.x, loc.y, src.w, src.h};
+		rect dest{loc.x, loc.y, src.w, src.h};
 
 		// Fills the selected area
 		if(enabled() && is_selection()) {
@@ -401,9 +403,9 @@ void textbox::erase_selection()
 namespace {
 	const unsigned int copypaste_modifier =
 #ifdef __APPLE__
-		KMOD_LGUI | KMOD_RGUI
+		SDL_KMOD_LGUI | SDL_KMOD_RGUI
 #else
-		KMOD_CTRL
+		SDL_KMOD_CTRL
 #endif
 		;
 }
@@ -418,8 +420,8 @@ bool textbox::requires_event_focus(const SDL_Event* event) const
 		return true;
 	}
 
-	if(event->type == SDL_KEYDOWN) {
-		SDL_Keycode key = event->key.keysym.sym;
+	if(event->type == SDL_EVENT_KEY_DOWN) {
+		SDL_Keycode key = event->key.key;
 		switch(key) {
 		case SDLK_UP:
 		case SDLK_DOWN:
@@ -470,10 +472,9 @@ bool textbox::handle_key_down(const SDL_Event &event)
 {
 	bool changed = false;
 
-	const SDL_Keysym& key = reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym;
 	const SDL_Keymod modifiers = SDL_GetModState();
 
-	const int c = key.sym;
+	const int c = reinterpret_cast<const SDL_KeyboardEvent&>(event).key;
 	const int old_cursor = cursor_;
 
 	listening_ = true;
@@ -486,13 +487,13 @@ bool textbox::handle_key_down(const SDL_Event &event)
 			++cursor_;
 
 		// ctrl-a, ctrl-e and ctrl-u are readline style shortcuts, even on Macs
-		if(c == SDLK_END || (c == SDLK_e && (modifiers & KMOD_CTRL)))
+		if(c == SDLK_END || (c == SDLK_E && (modifiers & SDL_KMOD_CTRL)))
 			cursor_ = text_.size();
 
-		if(c == SDLK_HOME || (c == SDLK_a && (modifiers & KMOD_CTRL)))
+		if(c == SDLK_HOME || (c == SDLK_A && (modifiers & SDL_KMOD_CTRL)))
 			cursor_ = 0;
 
-		if((old_cursor != cursor_) && (modifiers & KMOD_SHIFT)) {
+		if((old_cursor != cursor_) && (modifiers & SDL_KMOD_SHIFT)) {
 			if(selstart_ == -1)
 				selstart_ = old_cursor;
 			selend_ = cursor_;
@@ -512,7 +513,7 @@ bool textbox::handle_key_down(const SDL_Event &event)
 			}
 		}
 
-		if(c == SDLK_u && (modifiers & KMOD_CTRL)) { // clear line
+		if(c == SDLK_U && (modifiers & SDL_KMOD_CTRL)) { // clear line
 			changed = true;
 			cursor_ = 0;
 			text_.resize(0);
@@ -528,7 +529,7 @@ bool textbox::handle_key_down(const SDL_Event &event)
 				}
 			}
 		}
-	} else if(c == SDLK_BACKSPACE || c == SDLK_DELETE || (c == SDLK_u && (modifiers & KMOD_CTRL))) {
+	} else if(c == SDLK_BACKSPACE || c == SDLK_DELETE || (c == SDLK_U && (modifiers & SDL_KMOD_CTRL))) {
 		pass_event_to_target(event);
 	}
 
@@ -537,14 +538,14 @@ bool textbox::handle_key_down(const SDL_Event &event)
 	if(!(c == SDLK_UP || c == SDLK_DOWN || c == SDLK_LEFT || c == SDLK_RIGHT ||
 			c == SDLK_DELETE || c == SDLK_BACKSPACE || c == SDLK_END || c == SDLK_HOME ||
 			c == SDLK_PAGEUP || c == SDLK_PAGEDOWN)) {
-		if((event.key.keysym.mod & copypaste_modifier)
+		if((event.key.mod & copypaste_modifier)
 				//on windows SDL fires for AltGr lctrl+ralt (needed to access @ etc on certain keyboards)
 #ifdef _WIN32
-				&& !(event.key.keysym.mod & KMOD_ALT)
+				//&& !(event.key.keysym.mod & SDL_KMOD_ALT)
 #endif
 		) {
 			switch(c) {
-			case SDLK_v: // paste
+			case SDLK_V: // paste
 			{
 				if(!editable()) {
 					pass_event_to_target(event);
@@ -574,7 +575,7 @@ bool textbox::handle_key_down(const SDL_Event &event)
 
 			break;
 
-			case SDLK_c: // copy
+			case SDLK_C: // copy
 			{
 				if(is_selection())
 				{
@@ -588,12 +589,12 @@ bool textbox::handle_key_down(const SDL_Event &event)
 			}
 			break;
 
-			case SDLK_x: // cut
+			case SDLK_X: // cut
 			{
 				if(is_selection())
 				{
-					const size_t beg = std::min<size_t>(size_t(selstart_),size_t(selend_));
-					const size_t end = std::max<size_t>(size_t(selstart_),size_t(selend_));
+					const std::size_t beg = std::min<std::size_t>(std::size_t(selstart_),std::size_t(selend_));
+					const std::size_t end = std::max<std::size_t>(std::size_t(selstart_),std::size_t(selend_));
 
 					std::u32string ws(text_.begin() + beg, text_.begin() + end);
 					std::string s = unicode_cast<std::string>(ws);
@@ -602,7 +603,7 @@ bool textbox::handle_key_down(const SDL_Event &event)
 				}
 				break;
 			}
-			case SDLK_a: // selectall
+			case SDLK_A: // selectall
 			{
 				set_selection(0, text_.size());
 				break;
@@ -638,15 +639,22 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 		selstart_ = selend_ = -1;
 	}
 
-	int mousex, mousey;
+	float mousex, mousey;
 	const uint8_t mousebuttons = sdl::get_mouse_state(&mousex,&mousey);
-	if(!(mousebuttons & SDL_BUTTON(1))) {
+	if(!(mousebuttons & SDL_BUTTON_MASK(1))) {
 		grabmouse_ = false;
 	}
 
 	const rect loc = inner_location();
 
 	const bool mouse_inside = loc.contains(mousex, mousey);
+
+#if defined(__ANDROID__) || defined(__IPHONEOS__)
+	if(mouse_inside) {
+		// Show onscreen keyboard
+		SDL_StartTextInput(video::get_window());
+	}
+#endif
 
 	// Someone else may set the mouse cursor for us to something unusual (e.g.
 	// the WAIT cursor) so we ought to mess with that only if it's set to
@@ -658,13 +666,13 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 		cursor::set(cursor::NORMAL);
 	}
 
-	bool clicked_inside = !mouse_locked() && (event.type == SDL_MOUSEBUTTONDOWN
-					   && (mousebuttons & SDL_BUTTON(1))
+	bool clicked_inside = !mouse_locked() && (event.type == SDL_EVENT_MOUSE_BUTTON_DOWN
+					   && (mousebuttons & SDL_BUTTON_MASK(1))
 					   && mouse_inside);
 	if(clicked_inside) {
 		set_focus(true);
 	}
-	if ((grabmouse_ && (!mouse_locked() && event.type == SDL_MOUSEMOTION)) || clicked_inside) {
+	if ((grabmouse_ && (!mouse_locked() && event.type == SDL_EVENT_MOUSE_MOTION)) || clicked_inside) {
 		const int x = mousex - loc.x + text_pos_;
 		const int y = mousey - loc.y;
 		int pos = 0;
@@ -690,10 +698,10 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 
 		update_text_cache(false);
 
-		if(!grabmouse_ && (mousebuttons & SDL_BUTTON(1))) {
+		if(!grabmouse_ && (mousebuttons & SDL_BUTTON_MASK(1))) {
 			grabmouse_ = true;
 			selstart_ = selend_ = cursor_;
-		} else if (! (mousebuttons & SDL_BUTTON(1))) {
+		} else if (! (mousebuttons & SDL_BUTTON_MASK(1))) {
 			grabmouse_ = false;
 		}
 
@@ -703,7 +711,7 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 	//if we don't have the focus, then see if we gain the focus,
 	//otherwise return
 	if(!was_forwarded && focus(&event) == false) {
-		if (!mouse_locked() && event.type == SDL_MOUSEMOTION && loc.contains(mousex, mousey))
+		if (!mouse_locked() && event.type == SDL_EVENT_MOUSE_MOTION && loc.contains(mousex, mousey))
 			events::focus_handler(this);
 
 		return;
@@ -711,9 +719,9 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 
 	const int old_cursor = cursor_;
 
-	if (event.type == SDL_TEXTINPUT && listening_) {
+	if (event.type == SDL_EVENT_TEXT_INPUT && listening_) {
 		changed = handle_text_input(event);
-	} else if (event.type == SDL_KEYDOWN) {
+	} else if (event.type == SDL_EVENT_KEY_DOWN) {
 		changed = handle_key_down(event);
 	}
 

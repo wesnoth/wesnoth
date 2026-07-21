@@ -53,13 +53,11 @@ using test_integral_types = std::tuple<
 
 using test_floating_point_types = std::tuple<float, double, long double>;
 
-
-
 using test_match_types = decltype(std::tuple_cat(test_bool_types{}, test_integral_types{}));
 using test_nomatch_types = decltype(std::tuple_cat(test_floating_point_types{}));
 using test_types = decltype(std::tuple_cat(test_nomatch_types{}, test_match_types{}));
 
-using test_arethmetic_types = decltype(std::tuple_cat(test_integral_types{}, test_floating_point_types{}));
+using test_arithmetic_types = decltype(std::tuple_cat(test_integral_types{}, test_floating_point_types{}));
 
 namespace {
 
@@ -109,7 +107,7 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(test_lexical_cast_throw, T, test_types)
 #undef TEST_CASE
 
 BOOST_AUTO_TEST_CASE_TEMPLATE(
-		test_lexical_arethmetic_signed, T, test_arethmetic_types)
+		test_lexical_arithmetic_signed, T, test_arithmetic_types)
 {
 	result = "specialized - To arithmetic - From string";
 

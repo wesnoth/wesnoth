@@ -31,7 +31,7 @@ static lg::log_domain log_engine("engine");
  */
 void fake_unit_manager::place_temporary_unit(internal_ptr_type u)
 {
-	if(std::find(fake_units_.begin(),fake_units_.end(), u) != fake_units_.end()) {
+	if(utils::contains(fake_units_, u)) {
 		ERR_NG << "In fake_unit_manager::place_temporary_unit: attempt to add duplicate fake unit.";
 	} else {
 		fake_units_.push_back(u);

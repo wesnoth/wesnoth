@@ -49,8 +49,8 @@
 			<Add option="-fopenmp" />
 			<Add library="mingw32" />
 			<Add library="mingwthrd" />
-			<Add library="SDL2main" />
-			<Add library="SDL2" />
+			<Add library="SDL3main" />
+			<Add library="SDL3" />
 			<Add library="ws2_32" />
 			<Add library="wsock32" />
 			<Add library="shlwapi" />
@@ -98,7 +98,6 @@
 		<Unit filename="../../src/filesystem.hpp" />
 		<Unit filename="../../src/filesystem.cpp" />
 		<Unit filename="../../src/filesystem_common.cpp" />
-		<Unit filename="../../src/filesystem_sdl.cpp" />
 		<Unit filename="../../src/filesystem_win32.ii" />
 		<Unit filename="../../src/font/constants.cpp" />
 		<Unit filename="../../src/font/constants.hpp" />
