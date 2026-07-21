@@ -738,7 +738,7 @@ function return_table:execution(cfg,data)
             -- usually we simply don't add dangerous hexes to the retreatmap, but villages (and possibly other hexes in the future) are important to defend and thus are added even if they're somewhat dangerous,
             -- so for locations inside danger_hexes, check threat for each hex and each unit individually
             local adjusted_strength = get_unit_strength(myunit) * (defense+60)/100 * 1.5 + 20;
-            if danger_hexes[{x,y}] and adjusted_strength<threatmap[{x,y}].enemies
+            if wesnoth.current.map.matches(x,y, {terrain='*^V*'}) and danger_hexes[{x,y}] and adjusted_strength<threatmap[{x,y}].enemies
                 -- if we're standoffish, only make this check if the village we're considering isn't very nearby
                 -- otherwise we may ignore a dangerous adjacent village to instead loiter on an equally dangerous adjacent flat hex
                 and (not standoffish or standoffish and wesnoth.current.map.distance_between(myunit,{x,y})>1)
