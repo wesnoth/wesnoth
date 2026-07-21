@@ -47,6 +47,7 @@
 		3C254DF5B7DF196F2041955F /* mp_report.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 58C649488B3014E6F7254B62 /* mp_report.cpp */; };
 		3CC6488695A7293C9CFC2CB6 /* tab_container.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BF3B41AF9FEBC9C3A11736A2 /* tab_container.hpp */; };
 		3DED4C43AC1B737C15549CEC /* rich_label.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C8FF4A8788B6B7E6BE7AB7BB /* rich_label.hpp */; };
+		3E72469D9189A079337C06F8 /* map_dispatcher.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 8BA145C39AA995A42D563A8D /* map_dispatcher.hpp */; };
 		3E9A4297B4A2828C569C8927 /* statistics_record.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27764FB68F02032F1C0B6748 /* statistics_record.cpp */; };
 		4291489DA38012477DA3BA7C /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
 		44CA4F8598147FDAE871B7CB /* prompt.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D4594633BF3F8A06D6AE752F /* prompt.hpp */; };
@@ -91,18 +92,6 @@
 		46406DEE230DA7180069492E /* libSDL3.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0367228361B6007D2741 /* libSDL3.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		46406DEF230DA7190069492E /* libvorbis.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0364228361B6007D2741 /* libvorbis.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		46406DF0230DA7190069492E /* libvorbisfile.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 464C0369228361B7007D2741 /* libvorbisfile.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		7A200001B5C0000100000001 /* libbz2.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242218EF07B4001FA499 /* libbz2.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		7A200002B5C0000100000001 /* libexpat.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242318EF07B4001FA499 /* libexpat.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		7A200003B5C0000100000001 /* libz.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C243A18EF07B4001FA499 /* libz.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		7A300001B6C0000100000001 /* libbrotlicommon.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7A300101B6C0000100000001 /* libbrotlicommon.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		7A300002B6C0000100000001 /* libbrotlidec.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7A300102B6C0000100000001 /* libbrotlidec.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		7A300003B6C0000100000001 /* libicudata.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7A300103B6C0000100000001 /* libicudata.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		7A300004B6C0000100000001 /* libicui18n.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7A300104B6C0000100000001 /* libicui18n.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		7A300005B6C0000100000001 /* libicuuc.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7A300105B6C0000100000001 /* libicuuc.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		7A300006B6C0000100000001 /* libjpeg.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7A300106B6C0000100000001 /* libjpeg.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		7A300007B6C0000100000001 /* liblzma.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7A300107B6C0000100000001 /* liblzma.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		7A300008B6C0000100000001 /* libwavpack.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7A300108B6C0000100000001 /* libwavpack.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		7A300009B6C0000100000001 /* libzstd.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7A300109B6C0000100000001 /* libzstd.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		46406DF1230DA73E0069492E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C58BBDF21822A930078D25A /* Security.framework */; platformFilters = (macos, ); };
 		4649B87A202886F000827CFB /* test_irdya_date.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4649B879202886F000827CFB /* test_irdya_date.cpp */; };
 		4649B87B20288CBB00827CFB /* manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA556251E7B5DA5006E907D /* manager.cpp */; };
@@ -223,13 +212,6 @@
 		468A5BC6258CD8D3004A80EF /* libboost_thread.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 468A5B8E258CD3B4004A80EF /* libboost_thread.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		468A5BCB258CDBE4004A80EF /* libboost_chrono.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 468A5B85258CD3B4004A80EF /* libboost_chrono.dylib */; platformFilters = (macos, ); };
 		468A5BCC258CDBEA004A80EF /* libboost_chrono.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 468A5B85258CD3B4004A80EF /* libboost_chrono.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		7A100001B4C0000100000001 /* libboost_process.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A100007B4C0000100000001 /* libboost_process.dylib */; platformFilters = (macos, ); };
-		7A100002B4C0000100000001 /* libboost_process.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7A100007B4C0000100000001 /* libboost_process.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		7A10000AB4C0000100000001 /* libboost_process.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A100007B4C0000100000001 /* libboost_process.dylib */; };
-		7A100003B4C0000100000001 /* libboost_container.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A100008B4C0000100000001 /* libboost_container.dylib */; platformFilters = (macos, ); };
-		7A100004B4C0000100000001 /* libboost_container.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7A100008B4C0000100000001 /* libboost_container.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		7A100005B4C0000100000001 /* libboost_date_time.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A100009B4C0000100000001 /* libboost_date_time.dylib */; platformFilters = (macos, ); };
-		7A100006B4C0000100000001 /* libboost_date_time.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7A100009B4C0000100000001 /* libboost_date_time.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		468C1B971F09245F002DF652 /* function_gamestate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 468C1B951F09245E002DF652 /* function_gamestate.cpp */; };
 		4690FBC52884726900986A47 /* libboost_atomic.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4690FBC42884726900986A47 /* libboost_atomic.dylib */; platformFilters = (macos, ); };
 		4690FBC62884726900986A47 /* libboost_atomic.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4690FBC42884726900986A47 /* libboost_atomic.dylib */; };
@@ -271,6 +253,7 @@
 		46D60159255AFA7E00E072F0 /* commandline_argv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D60156255AFA7E00E072F0 /* commandline_argv.cpp */; };
 		46D60162255AFDE100E072F0 /* commandline_argv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46D60156255AFA7E00E072F0 /* commandline_argv.cpp */; };
 		46DE42A486EEA7BD55757690 /* fps_report.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 03A840C5A9D9062764009C89 /* fps_report.cpp */; };
+		46E09C242C79D60700B247E2 /* cacert.pem in Copy iOS CA Bundle */ = {isa = PBXBuildFile; fileRef = 46E09C252C79D60700B247E2 /* cacert.pem */; platformFilters = (ios, ); };
 		46E2D98F25022BF5003D99F3 /* lua_widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46E2D98B25022BF5003D99F3 /* lua_widget.cpp */; };
 		46E2D99025022BF5003D99F3 /* lua_widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46E2D98B25022BF5003D99F3 /* lua_widget.cpp */; };
 		46E2D99125022BF6003D99F3 /* lua_widget_attributes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46E2D98D25022BF5003D99F3 /* lua_widget_attributes.cpp */; };
@@ -286,10 +269,8 @@
 		46EB546227DD2FC800D5CDE8 /* libwebp.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 46EB545F27DD2FAD00D5CDE8 /* libwebp.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		46EEFB762087434300E1E75A /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFB742087434200E1E75A /* chat_log.cpp */; };
 		46EEFB772087434300E1E75A /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFB742087434200E1E75A /* chat_log.cpp */; };
-		46E09C242C79D60700B247E2 /* cacert.pem in Copy iOS CA Bundle */ = {isa = PBXBuildFile; fileRef = 46E09C252C79D60700B247E2 /* cacert.pem */; platformFilters = (ios, ); };
+		46F1280130AF6D4F00B5AC11 /* liblua.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9107AE141DB32862001927B0 /* liblua.a */; platformFilters = (ios, ); };
 		46F302EE220327FE0028938F /* container-migration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46F302EC220327FD0028938F /* container-migration.plist */; };
-		EB3A53F5AF0D4883A38A9CB9 /* Resources/Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2294281A8FB742D3A49A7FBA /* Resources/Assets.xcassets */; platformFilters = (ios, ); };
-		F57BE6B24F76DB47B2231B2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EC324240DB23D8921BB0FFE /* LaunchScreen.storyboard */; platformFilters = (ios, ); };
 		46F54C27211DFB7200374A1C /* apple_version.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46F54C26211DFB7200374A1C /* apple_version.mm */; };
 		46F57084205FCE34007031BF /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
 		46F57085205FCE48007031BF /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
@@ -620,6 +601,10 @@
 		4A1D4916A16C7C6E07D0BAB2 /* spritesheet_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 492144E3AE22C0C7A2D5F27C /* spritesheet_generator.cpp */; };
 		4E19429E82899A42A73BBE91 /* choose_addon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20E644DC98F26C756364EC2C /* choose_addon.cpp */; };
 		4E4A4DBC9F44444A5867EC2B /* migrate_version_selection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7B1444E9B79504502208B82 /* migrate_version_selection.cpp */; };
+		4F8A5D1130B1A10000A1D001 /* libbz2.1.0.ios.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8A5D0130B1A10000A1D001 /* libbz2.1.0.ios.dylib */; platformFilters = (ios, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		4F8A5D1230B1A10000A1D001 /* libexpat.1.ios.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8A5D0230B1A10000A1D001 /* libexpat.1.ios.dylib */; platformFilters = (ios, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		4F8A5D1330B1A10000A1D001 /* libiconv.2.ios.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8A5D0330B1A10000A1D001 /* libiconv.2.ios.dylib */; platformFilters = (ios, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		4F8A5D1430B1A10000A1D001 /* libz.1.ios.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8A5D0430B1A10000A1D001 /* libz.1.ios.dylib */; platformFilters = (ios, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		4FD94DA284B825C931FF52C7 /* utils_simd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86A64A4ABB2987095E97AAF4 /* utils_simd.cpp */; };
 		508C40A885166B2E3F4245F4 /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
 		52074B55B6C7AC8A1AE8BEA8 /* addon_server_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39A1469A99EFCB311DF640CB /* addon_server_info.cpp */; };
@@ -672,6 +657,25 @@
 		70284C5A94BEC79FC449D9E5 /* tracked_drawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C5744948AA0B9637D5203B90 /* tracked_drawable.cpp */; };
 		77D94146A5FA29849D1A9BD8 /* multiline_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0B0F48CE9CF65D9813BE6CDC /* multiline_text.cpp */; };
 		7A0347D48BDB52B1430D9E79 /* migrate_version_selection.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B3DE4F95AF72C6F6BC37E695 /* migrate_version_selection.hpp */; };
+		7A100001B4C0000100000001 /* libboost_process.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A100007B4C0000100000001 /* libboost_process.dylib */; platformFilters = (macos, ); };
+		7A100002B4C0000100000001 /* libboost_process.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7A100007B4C0000100000001 /* libboost_process.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		7A100003B4C0000100000001 /* libboost_container.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A100008B4C0000100000001 /* libboost_container.dylib */; platformFilters = (macos, ); };
+		7A100004B4C0000100000001 /* libboost_container.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7A100008B4C0000100000001 /* libboost_container.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		7A100005B4C0000100000001 /* libboost_date_time.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A100009B4C0000100000001 /* libboost_date_time.dylib */; platformFilters = (macos, ); };
+		7A100006B4C0000100000001 /* libboost_date_time.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7A100009B4C0000100000001 /* libboost_date_time.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		7A10000AB4C0000100000001 /* libboost_process.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A100007B4C0000100000001 /* libboost_process.dylib */; };
+		7A200001B5C0000100000001 /* libbz2.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242218EF07B4001FA499 /* libbz2.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		7A200002B5C0000100000001 /* libexpat.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242318EF07B4001FA499 /* libexpat.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		7A200003B5C0000100000001 /* libz.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C243A18EF07B4001FA499 /* libz.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		7A300001B6C0000100000001 /* libbrotlicommon.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7A300101B6C0000100000001 /* libbrotlicommon.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		7A300002B6C0000100000001 /* libbrotlidec.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7A300102B6C0000100000001 /* libbrotlidec.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		7A300003B6C0000100000001 /* libicudata.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7A300103B6C0000100000001 /* libicudata.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		7A300004B6C0000100000001 /* libicui18n.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7A300104B6C0000100000001 /* libicui18n.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		7A300005B6C0000100000001 /* libicuuc.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7A300105B6C0000100000001 /* libicuuc.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		7A300006B6C0000100000001 /* libjpeg.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7A300106B6C0000100000001 /* libjpeg.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		7A300007B6C0000100000001 /* liblzma.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7A300107B6C0000100000001 /* liblzma.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		7A300008B6C0000100000001 /* libwavpack.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7A300108B6C0000100000001 /* libwavpack.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		7A300009B6C0000100000001 /* libzstd.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7A300109B6C0000100000001 /* libzstd.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		7A7146D7893AA09891352019 /* test_schema_validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7CF14AB694764953E2CB3AF7 /* test_schema_validator.cpp */; };
 		7BED48C1A5A814946FADBE6B /* utils_simd.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 81144D69A447D9A8DF6D04CF /* utils_simd.hpp */; };
 		7BFC4DF5BFF8CF75855BA662 /* prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67044415B63F5888193BD7A6 /* prompt.cpp */; };
@@ -679,6 +683,7 @@
 		7FDF4E8D9C94E7DA8F41F7BB /* tod_new_schedule.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 5D46466DBCD81B13621C7342 /* tod_new_schedule.hpp */; };
 		805143B8BABF92CA79BEC8F5 /* gui_test_dialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7FBD4033B4B52E9424819B5F /* gui_test_dialog.cpp */; };
 		80724CBB88A3B6C36D1E3199 /* spritesheet_generator.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3D284B9A81882806D8B25006 /* spritesheet_generator.hpp */; };
+		856B403182BE84DA60688DC7 /* map_dispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD54AB3BE642A8AC9CBC43E /* map_dispatcher.cpp */; };
 		87744447951D17AA38BE5F48 /* mp_report.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 58C649488B3014E6F7254B62 /* mp_report.cpp */; };
 		8C704B6F99C824A4073EEBEE /* prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67044415B63F5888193BD7A6 /* prompt.cpp */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; platformFilters = (macos, ); };
@@ -1321,6 +1326,7 @@
 		E6CF415F9FD04C35A55FB24D /* scroll_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 755D4555A1DEA29125E7F338 /* scroll_text.cpp */; };
 		E79249078ACE777D1E219DED /* choose_addon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20E644DC98F26C756364EC2C /* choose_addon.cpp */; };
 		E875402885AA34096C34E3B0 /* reachmap_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85514A7D81C52A912FF68AEB /* reachmap_options.cpp */; };
+		EB3A53F5AF0D4883A38A9CB9 /* Resources/Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2294281A8FB742D3A49A7FBA /* Resources/Assets.xcassets */; platformFilters = (ios, ); };
 		EBB44A70837B84A928CB6424 /* edit_pbl_translation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00574699A982AA23F12B39E0 /* edit_pbl_translation.cpp */; };
 		EC0341E11ECF46FE000F2E2B /* config_attribute_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0341DF1ECF46FE000F2E2B /* config_attribute_value.cpp */; };
 		EC0341E21ECF4712000F2E2B /* config_attribute_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0341DF1ECF46FE000F2E2B /* config_attribute_value.cpp */; };
@@ -1400,10 +1406,6 @@
 		EC64D7661A085F120092EF75 /* mt_rng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC64D7641A085F120092EF75 /* mt_rng.cpp */; };
 		EC64D7671A085F2F0092EF75 /* seed_rng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC64D75F1A085CE60092EF75 /* seed_rng.cpp */; };
 		EC669C261DFC95AF00172EED /* surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC669C251DFC95AF00172EED /* surface.cpp */; };
-		4F8A5D1130B1A10000A1D001 /* libbz2.1.0.ios.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8A5D0130B1A10000A1D001 /* libbz2.1.0.ios.dylib */; platformFilters = (ios, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		4F8A5D1230B1A10000A1D001 /* libexpat.1.ios.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8A5D0230B1A10000A1D001 /* libexpat.1.ios.dylib */; platformFilters = (ios, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		4F8A5D1330B1A10000A1D001 /* libiconv.2.ios.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8A5D0330B1A10000A1D001 /* libiconv.2.ios.dylib */; platformFilters = (ios, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		4F8A5D1430B1A10000A1D001 /* libz.1.ios.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8A5D0430B1A10000A1D001 /* libz.1.ios.dylib */; platformFilters = (ios, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		EC74C11F197576F500B85A1A /* notifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C119197576F500B85A1A /* notifications.cpp */; };
 		EC74C120197576F500B85A1A /* open.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C11B197576F500B85A1A /* open.cpp */; };
 		EC8174671FB4284E00A8ED00 /* random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0680271EA920A300EEE03B /* random.cpp */; };
@@ -1476,17 +1478,19 @@
 		F46C5DCF13A5074C00DD0816 /* commandline_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F46C5DCB13A5074C00DD0816 /* commandline_options.cpp */; };
 		F46C5DD413A5089100DD0816 /* lua_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F46C5DD313A5089100DD0816 /* lua_object.cpp */; };
 		F480CD1F14034E6D007175D6 /* mapbuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F480CD1D14034E6D007175D6 /* mapbuilder.cpp */; };
-		46F1280130AF6D4F00B5AC11 /* liblua.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9107AE141DB32862001927B0 /* liblua.a */; platformFilters = (ios, ); };
 		F4D2A99614DAED0E00CAFF31 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */; platformFilters = (macos, ); };
 		F4D2A9D514DAED4200CAFF31 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */; };
 		F4D2DECB14DCA1D000CAFF31 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D2DECA14DCA1D000CAFF31 /* client.cpp */; };
 		F4D5483E15198D060058C8A7 /* lua_jailbreak_exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419E44413354E620031448A /* lua_jailbreak_exception.cpp */; };
 		F4E4E0B11367241E001C7528 /* suppose_dead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E4E0AF1367241E001C7528 /* suppose_dead.cpp */; };
 		F4E4E0B41367244F001C7528 /* image_modifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E4E0B21367244F001C7528 /* image_modifications.cpp */; };
+		F5124AB4BE8F5105D7188BE6 /* map_dispatcher.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 8BA145C39AA995A42D563A8D /* map_dispatcher.hpp */; };
+		F57BE6B24F76DB47B2231B2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EC324240DB23D8921BB0FFE /* LaunchScreen.storyboard */; platformFilters = (ios, ); };
 		F6E34C7CBC418F214B43BC39 /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
 		F7524948ADF9BC097E6D8DBC /* charconv.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A03A423AB502FE015C91F1C9 /* charconv.hpp */; };
 		F8974F919B014C9E7103A6B9 /* markup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5EE4DE4B73C204AC0666900 /* markup.cpp */; };
 		F96A40219A964A8022910D73 /* back_edge_detector.hpp in Headers */ = {isa = PBXBuildFile; fileRef = DA034C90BB2E6C060B0A0B93 /* back_edge_detector.hpp */; };
+		FA1A4AC7A353764B0CA1B6BF /* map_dispatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD54AB3BE642A8AC9CBC43E /* map_dispatcher.cpp */; };
 		FC66414CB2E3F0E8B0B747B6 /* tod_new_schedule.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 5D46466DBCD81B13621C7342 /* tod_new_schedule.hpp */; };
 /* End PBXBuildFile section */
 
@@ -1650,6 +1654,7 @@
 		1C58BBDF21822A930078D25A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1E364CB2B7C9E22650753C72 /* addon_server_info.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = addon_server_info.hpp; sourceTree = "<group>"; };
 		20E644DC98F26C756364EC2C /* choose_addon.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = choose_addon.cpp; sourceTree = "<group>"; };
+		2294281A8FB742D3A49A7FBA /* Resources/Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		231C4A6BB2F1A717F0D6E2E2 /* reachmap_options.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = reachmap_options.hpp; sourceTree = "<group>"; };
 		26A04033A9545CFE8A226FBD /* test_schema_self_validator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_schema_self_validator.cpp; sourceTree = "<group>"; };
 		27764FB68F02032F1C0B6748 /* statistics_record.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = statistics_record.cpp; sourceTree = "<group>"; };
@@ -1700,25 +1705,16 @@
 		46181DD12119F74C00908BC2 /* battery_info.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = battery_info.cpp; sourceTree = "<group>"; };
 		461DC52B241F836200B9DD10 /* lua_color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_color.cpp; sourceTree = "<group>"; };
 		461DC52C241F836200B9DD10 /* lua_color.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_color.hpp; sourceTree = "<group>"; };
-		462311A92D047BF400DAE465 /* libboost_charconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_charconv.dylib"; path = "lib/libboost_charconv.dylib"; sourceTree = "<group>"; };
+		462311A92D047BF400DAE465 /* libboost_charconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_charconv.dylib; path = lib/libboost_charconv.dylib; sourceTree = "<group>"; };
 		4638966F2034180800075E54 /* deprecation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = deprecation.hpp; sourceTree = "<group>"; };
 		463896702034180900075E54 /* deprecation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = deprecation.cpp; sourceTree = "<group>"; };
 		4649B879202886F000827CFB /* test_irdya_date.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test_irdya_date.cpp; sourceTree = "<group>"; };
-		464C0362228361B5007D2741 /* libSDL3_image.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL3_image.dylib"; path = "lib/libSDL3_image.dylib"; sourceTree = "<group>"; };
+		464C0362228361B5007D2741 /* libSDL3_image.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSDL3_image.dylib; path = lib/libSDL3_image.dylib; sourceTree = "<group>"; };
 		464C0363228361B6007D2741 /* libogg.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libogg.dylib; path = lib/libogg.dylib; sourceTree = "<group>"; };
 		464C0364228361B6007D2741 /* libvorbis.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvorbis.dylib; path = lib/libvorbis.dylib; sourceTree = "<group>"; };
-		464C0367228361B6007D2741 /* libSDL3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL3.dylib"; path = "lib/libSDL3.dylib"; sourceTree = "<group>"; };
-		464C0368228361B7007D2741 /* libSDL3_mixer.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL3_mixer.dylib"; path = "lib/libSDL3_mixer.dylib"; sourceTree = "<group>"; };
+		464C0367228361B6007D2741 /* libSDL3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSDL3.dylib; path = lib/libSDL3.dylib; sourceTree = "<group>"; };
+		464C0368228361B7007D2741 /* libSDL3_mixer.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSDL3_mixer.dylib; path = lib/libSDL3_mixer.dylib; sourceTree = "<group>"; };
 		464C0369228361B7007D2741 /* libvorbisfile.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libvorbisfile.dylib; path = lib/libvorbisfile.dylib; sourceTree = "<group>"; };
-		7A300101B6C0000100000001 /* libbrotlicommon.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libbrotlicommon.dylib"; path = "lib/libbrotlicommon.dylib"; sourceTree = "<group>"; };
-		7A300102B6C0000100000001 /* libbrotlidec.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libbrotlidec.dylib"; path = "lib/libbrotlidec.dylib"; sourceTree = "<group>"; };
-		7A300103B6C0000100000001 /* libicudata.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libicudata.dylib"; path = "lib/libicudata.dylib"; sourceTree = "<group>"; };
-		7A300104B6C0000100000001 /* libicui18n.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libicui18n.dylib"; path = "lib/libicui18n.dylib"; sourceTree = "<group>"; };
-		7A300105B6C0000100000001 /* libicuuc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libicuuc.dylib"; path = "lib/libicuuc.dylib"; sourceTree = "<group>"; };
-		7A300106B6C0000100000001 /* libjpeg.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libjpeg.dylib"; path = "lib/libjpeg.dylib"; sourceTree = "<group>"; };
-		7A300107B6C0000100000001 /* liblzma.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "liblzma.dylib"; path = "lib/liblzma.dylib"; sourceTree = "<group>"; };
-		7A300108B6C0000100000001 /* libwavpack.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libwavpack.dylib"; path = "lib/libwavpack.dylib"; sourceTree = "<group>"; };
-		7A300109B6C0000100000001 /* libzstd.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libzstd.dylib"; path = "lib/libzstd.dylib"; sourceTree = "<group>"; };
 		46515C2E2569CE0B00084CE2 /* libssl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.dylib; path = lib/libssl.dylib; sourceTree = "<group>"; };
 		46515C2F2569CE0B00084CE2 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = lib/libcrypto.dylib; sourceTree = "<group>"; };
 		46685C6B219D51870009CFFE /* utf8_exception.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = utf8_exception.hpp; sourceTree = "<group>"; };
@@ -1762,22 +1758,19 @@
 		4685A5F925B4501E006FD3A1 /* match_history.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = match_history.cpp; sourceTree = "<group>"; };
 		4685A5FA25B4501E006FD3A1 /* match_history.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = match_history.hpp; sourceTree = "<group>"; };
 		4685E3702417F9BF00CB1ED8 /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = data; path = ../../data; sourceTree = "<group>"; };
-		468A5B85258CD3B4004A80EF /* libboost_chrono.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_chrono.dylib"; path = "lib/libboost_chrono.dylib"; sourceTree = "<group>"; };
-		468A5B86258CD3B4004A80EF /* libboost_context.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_context.dylib"; path = "lib/libboost_context.dylib"; sourceTree = "<group>"; };
-		468A5B88258CD3B4004A80EF /* libboost_unit_test_framework.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_unit_test_framework.dylib"; path = "lib/libboost_unit_test_framework.dylib"; sourceTree = "<group>"; };
-		468A5B89258CD3B4004A80EF /* libboost_iostreams.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_iostreams.dylib"; path = "lib/libboost_iostreams.dylib"; sourceTree = "<group>"; };
-		468A5B8C258CD3B4004A80EF /* libboost_filesystem.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_filesystem.dylib"; path = "lib/libboost_filesystem.dylib"; sourceTree = "<group>"; };
-		468A5B8D258CD3B4004A80EF /* libboost_coroutine.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_coroutine.dylib"; path = "lib/libboost_coroutine.dylib"; sourceTree = "<group>"; };
-		468A5B8E258CD3B4004A80EF /* libboost_thread.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_thread.dylib"; path = "lib/libboost_thread.dylib"; sourceTree = "<group>"; };
-		468A5B8F258CD3B4004A80EF /* libboost_program_options.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_program_options.dylib"; path = "lib/libboost_program_options.dylib"; sourceTree = "<group>"; };
-		468A5B91258CD3B4004A80EF /* libboost_locale.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_locale.dylib"; path = "lib/libboost_locale.dylib"; sourceTree = "<group>"; };
-		468A5B92258CD3B4004A80EF /* libboost_random.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_random.dylib"; path = "lib/libboost_random.dylib"; sourceTree = "<group>"; };
-		7A100007B4C0000100000001 /* libboost_process.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_process.dylib"; path = "lib/libboost_process.dylib"; sourceTree = "<group>"; };
-		7A100008B4C0000100000001 /* libboost_container.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_container.dylib"; path = "lib/libboost_container.dylib"; sourceTree = "<group>"; };
-		7A100009B4C0000100000001 /* libboost_date_time.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_date_time.dylib"; path = "lib/libboost_date_time.dylib"; sourceTree = "<group>"; };
+		468A5B85258CD3B4004A80EF /* libboost_chrono.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_chrono.dylib; path = lib/libboost_chrono.dylib; sourceTree = "<group>"; };
+		468A5B86258CD3B4004A80EF /* libboost_context.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_context.dylib; path = lib/libboost_context.dylib; sourceTree = "<group>"; };
+		468A5B88258CD3B4004A80EF /* libboost_unit_test_framework.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_unit_test_framework.dylib; path = lib/libboost_unit_test_framework.dylib; sourceTree = "<group>"; };
+		468A5B89258CD3B4004A80EF /* libboost_iostreams.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_iostreams.dylib; path = lib/libboost_iostreams.dylib; sourceTree = "<group>"; };
+		468A5B8C258CD3B4004A80EF /* libboost_filesystem.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_filesystem.dylib; path = lib/libboost_filesystem.dylib; sourceTree = "<group>"; };
+		468A5B8D258CD3B4004A80EF /* libboost_coroutine.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_coroutine.dylib; path = lib/libboost_coroutine.dylib; sourceTree = "<group>"; };
+		468A5B8E258CD3B4004A80EF /* libboost_thread.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_thread.dylib; path = lib/libboost_thread.dylib; sourceTree = "<group>"; };
+		468A5B8F258CD3B4004A80EF /* libboost_program_options.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_program_options.dylib; path = lib/libboost_program_options.dylib; sourceTree = "<group>"; };
+		468A5B91258CD3B4004A80EF /* libboost_locale.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_locale.dylib; path = lib/libboost_locale.dylib; sourceTree = "<group>"; };
+		468A5B92258CD3B4004A80EF /* libboost_random.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_random.dylib; path = lib/libboost_random.dylib; sourceTree = "<group>"; };
 		468C1B951F09245E002DF652 /* function_gamestate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = function_gamestate.cpp; sourceTree = "<group>"; };
 		468C1B961F09245E002DF652 /* function_gamestate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = function_gamestate.hpp; sourceTree = "<group>"; };
-		4690FBC42884726900986A47 /* libboost_atomic.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_atomic.dylib"; path = "lib/libboost_atomic.dylib"; sourceTree = "<group>"; };
+		4690FBC42884726900986A47 /* libboost_atomic.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_atomic.dylib; path = lib/libboost_atomic.dylib; sourceTree = "<group>"; };
 		469853CD24D3560800B0E93B /* server_info_dialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = server_info_dialog.cpp; sourceTree = "<group>"; };
 		469853CE24D3560800B0E93B /* server_info_dialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = server_info_dialog.hpp; sourceTree = "<group>"; };
 		469BDB53205C357400DBF748 /* base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = base64.cpp; sourceTree = "<group>"; };
@@ -1798,6 +1791,8 @@
 		46BED4D1205060EA00842FA5 /* crypt_blowfish.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = crypt_blowfish.c; sourceTree = "<group>"; };
 		46BFFC77258256C700643800 /* license_prompt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = license_prompt.cpp; sourceTree = "<group>"; };
 		46BFFC78258256C700643800 /* license_prompt.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = license_prompt.hpp; sourceTree = "<group>"; };
+		46C0FFEE0000000000000001 /* wesnothd-mas.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = "wesnothd-mas.entitlements"; path = "Resources/wesnothd-mas.entitlements"; sourceTree = "<group>"; };
+		46C0FFEE0000000000000002 /* wesnothd-nosandbox.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = "wesnothd-nosandbox.entitlements"; path = "Resources/wesnothd-nosandbox.entitlements"; sourceTree = "<group>"; };
 		46CAC4CB29BD07C0004763BE /* libcurl.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurl.tbd; path = usr/lib/libcurl.tbd; sourceTree = SDKROOT; };
 		46D6014A255AFA5F00E072F0 /* auth.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = auth.hpp; sourceTree = "<group>"; };
 		46D6014B255AFA5F00E072F0 /* options.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = options.hpp; sourceTree = "<group>"; };
@@ -1807,6 +1802,7 @@
 		46D60157255AFA7E00E072F0 /* commandline_argv.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = commandline_argv.hpp; sourceTree = "<group>"; };
 		46DF5BCB1F46173700BE6D24 /* irdya_datetime.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = irdya_datetime.hpp; sourceTree = "<group>"; };
 		46DF5BCC1F46173700BE6D24 /* irdya_datetime.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = irdya_datetime.cpp; sourceTree = "<group>"; };
+		46E09C252C79D60700B247E2 /* cacert.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cacert.pem; path = ../../packaging/android/app/src/main/res/raw/cacert.pem; sourceTree = SOURCE_ROOT; };
 		46E2D98925022BF4003D99F3 /* lua_widget_methods.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_widget_methods.hpp; sourceTree = "<group>"; };
 		46E2D98A25022BF4003D99F3 /* lua_widget_attributes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_widget_attributes.hpp; sourceTree = "<group>"; };
 		46E2D98B25022BF5003D99F3 /* lua_widget.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_widget.cpp; sourceTree = "<group>"; };
@@ -1817,11 +1813,8 @@
 		46EB545F27DD2FAD00D5CDE8 /* libwebp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libwebp.dylib; path = lib/libwebp.dylib; sourceTree = "<group>"; };
 		46EEFB742087434200E1E75A /* chat_log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chat_log.cpp; sourceTree = "<group>"; };
 		46EEFB752087434200E1E75A /* chat_log.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = chat_log.hpp; sourceTree = "<group>"; };
-		46E09C252C79D60700B247E2 /* cacert.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cacert.pem; path = ../../packaging/android/app/src/main/res/raw/cacert.pem; sourceTree = SOURCE_ROOT; };
 		46F302EC220327FD0028938F /* container-migration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "container-migration.plist"; path = "Resources/container-migration.plist"; sourceTree = "<group>"; };
 		46F302ED220327FE0028938F /* Wesnoth.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = Wesnoth.entitlements; path = Resources/Wesnoth.entitlements; sourceTree = "<group>"; };
-		46C0FFEE0000000000000001 /* wesnothd-mas.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = "wesnothd-mas.entitlements"; path = "Resources/wesnothd-mas.entitlements"; sourceTree = "<group>"; };
-		46C0FFEE0000000000000002 /* wesnothd-nosandbox.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = "wesnothd-nosandbox.entitlements"; path = "Resources/wesnothd-nosandbox.entitlements"; sourceTree = "<group>"; };
 		46F54C26211DFB7200374A1C /* apple_version.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = apple_version.mm; path = ../../src/desktop/apple_version.mm; sourceTree = "<group>"; };
 		46F54C28211DFB9100374A1C /* apple_version.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = apple_version.hpp; path = ../../src/desktop/apple_version.hpp; sourceTree = "<group>"; };
 		46F92C082174F5D600602C1C /* help.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = help.hpp; sourceTree = "<group>"; };
@@ -2177,6 +2170,10 @@
 		4944F41A1354FBFF0027E614 /* teleport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = teleport.cpp; sourceTree = "<group>"; };
 		49478712172FF6F8002B7ABA /* tristate_button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tristate_button.cpp; sourceTree = "<group>"; };
 		49478713172FF6F8002B7ABA /* tristate_button.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tristate_button.hpp; sourceTree = "<group>"; };
+		4F8A5D0130B1A10000A1D001 /* libbz2.1.0.ios.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.ios.dylib; path = lib/libbz2.1.0.dylib; sourceTree = "<group>"; };
+		4F8A5D0230B1A10000A1D001 /* libexpat.1.ios.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libexpat.1.ios.dylib; path = lib/libexpat.1.dylib; sourceTree = "<group>"; };
+		4F8A5D0330B1A10000A1D001 /* libiconv.2.ios.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.ios.dylib; path = lib/libiconv.2.dylib; sourceTree = "<group>"; };
+		4F8A5D0430B1A10000A1D001 /* libz.1.ios.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.ios.dylib; path = lib/libz.1.dylib; sourceTree = "<group>"; };
 		57724A59B2F7D072D91DD787 /* attributes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = attributes.cpp; path = font/attributes.cpp; sourceTree = "<group>"; };
 		58C649488B3014E6F7254B62 /* mp_report.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mp_report.cpp; sourceTree = "<group>"; };
 		5D46466DBCD81B13621C7342 /* tod_new_schedule.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tod_new_schedule.hpp; sourceTree = "<group>"; };
@@ -2264,6 +2261,18 @@
 		67044415B63F5888193BD7A6 /* prompt.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = prompt.cpp; sourceTree = "<group>"; };
 		6FA542D78393E8FF067775DA /* edit_pbl.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = edit_pbl.cpp; sourceTree = "<group>"; };
 		755D4555A1DEA29125E7F338 /* scroll_text.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = scroll_text.cpp; sourceTree = "<group>"; };
+		7A100007B4C0000100000001 /* libboost_process.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_process.dylib; path = lib/libboost_process.dylib; sourceTree = "<group>"; };
+		7A100008B4C0000100000001 /* libboost_container.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_container.dylib; path = lib/libboost_container.dylib; sourceTree = "<group>"; };
+		7A100009B4C0000100000001 /* libboost_date_time.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libboost_date_time.dylib; path = lib/libboost_date_time.dylib; sourceTree = "<group>"; };
+		7A300101B6C0000100000001 /* libbrotlicommon.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbrotlicommon.dylib; path = lib/libbrotlicommon.dylib; sourceTree = "<group>"; };
+		7A300102B6C0000100000001 /* libbrotlidec.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbrotlidec.dylib; path = lib/libbrotlidec.dylib; sourceTree = "<group>"; };
+		7A300103B6C0000100000001 /* libicudata.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicudata.dylib; path = lib/libicudata.dylib; sourceTree = "<group>"; };
+		7A300104B6C0000100000001 /* libicui18n.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicui18n.dylib; path = lib/libicui18n.dylib; sourceTree = "<group>"; };
+		7A300105B6C0000100000001 /* libicuuc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicuuc.dylib; path = lib/libicuuc.dylib; sourceTree = "<group>"; };
+		7A300106B6C0000100000001 /* libjpeg.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libjpeg.dylib; path = lib/libjpeg.dylib; sourceTree = "<group>"; };
+		7A300107B6C0000100000001 /* liblzma.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblzma.dylib; path = lib/liblzma.dylib; sourceTree = "<group>"; };
+		7A300108B6C0000100000001 /* libwavpack.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libwavpack.dylib; path = lib/libwavpack.dylib; sourceTree = "<group>"; };
+		7A300109B6C0000100000001 /* libzstd.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libzstd.dylib; path = lib/libzstd.dylib; sourceTree = "<group>"; };
 		7CF14AB694764953E2CB3AF7 /* test_schema_validator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_schema_validator.cpp; sourceTree = "<group>"; };
 		7FBD4033B4B52E9424819B5F /* gui_test_dialog.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = gui_test_dialog.cpp; sourceTree = "<group>"; };
 		81144D69A447D9A8DF6D04CF /* utils_simd.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = utils_simd.hpp; sourceTree = "<group>"; };
@@ -2272,9 +2281,8 @@
 		85514A7D81C52A912FF68AEB /* reachmap_options.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = reachmap_options.cpp; sourceTree = "<group>"; };
 		86A64A4ABB2987095E97AAF4 /* utils_simd.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = utils_simd.cpp; sourceTree = "<group>"; };
 		875E45698F8A8D5B750E7317 /* combobox.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = combobox.cpp; sourceTree = "<group>"; };
-		2294281A8FB742D3A49A7FBA /* Resources/Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Resources/Assets.xcassets"; sourceTree = "<group>"; };
+		8BA145C39AA995A42D563A8D /* map_dispatcher.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = map_dispatcher.hpp; path = map_dispatcher.hpp; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9EC324240DB23D8921BB0FFE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* The Battle for Wesnoth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Battle for Wesnoth.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DAD49C8B52CC4E4FD686A60 /* units_dialog.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = units_dialog.hpp; sourceTree = "<group>"; };
 		9107AE141DB32862001927B0 /* liblua.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblua.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2497,6 +2505,8 @@
 		95EB8A51287A02B800B09F95 /* draw_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = draw_manager.hpp; sourceTree = "<group>"; };
 		95EB8A53287A02EC00B09F95 /* top_level_drawable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = top_level_drawable.hpp; path = gui/core/top_level_drawable.hpp; sourceTree = "<group>"; };
 		95EB8A54287A02EC00B09F95 /* top_level_drawable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = top_level_drawable.cpp; path = gui/core/top_level_drawable.cpp; sourceTree = "<group>"; };
+		9DD54AB3BE642A8AC9CBC43E /* map_dispatcher.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = map_dispatcher.cpp; path = map_dispatcher.cpp; sourceTree = "<group>"; };
+		9EC324240DB23D8921BB0FFE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A03A423AB502FE015C91F1C9 /* charconv.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = charconv.hpp; sourceTree = "<group>"; };
 		A05D48F0A2C022FC128C8B3E /* edit_unit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = edit_unit.cpp; sourceTree = "<group>"; };
 		B2CC45FEA71445AE817CAA6B /* edit_pbl.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = edit_pbl.hpp; sourceTree = "<group>"; };
@@ -2915,10 +2925,6 @@
 		EC5C243018EF07B4001FA499 /* libpangoft2-1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libpangoft2-1.0.dylib"; path = "lib/libpangoft2-1.0.dylib"; sourceTree = "<group>"; };
 		EC5C243118EF07B4001FA499 /* libpng16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng16.dylib; path = lib/libpng16.dylib; sourceTree = "<group>"; };
 		EC5C243A18EF07B4001FA499 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = lib/libz.dylib; sourceTree = "<group>"; };
-		4F8A5D0130B1A10000A1D001 /* libbz2.1.0.ios.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.ios.dylib; path = lib/libbz2.1.0.dylib; sourceTree = "<group>"; };
-		4F8A5D0230B1A10000A1D001 /* libexpat.1.ios.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libexpat.1.ios.dylib; path = lib/libexpat.1.dylib; sourceTree = "<group>"; };
-		4F8A5D0330B1A10000A1D001 /* libiconv.2.ios.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.ios.dylib; path = lib/libiconv.2.dylib; sourceTree = "<group>"; };
-		4F8A5D0430B1A10000A1D001 /* libz.1.ios.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.ios.dylib; path = lib/libz.1.dylib; sourceTree = "<group>"; };
 		EC5C70BB19EEB54900432CF4 /* filesystem_common.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = filesystem_common.cpp; sourceTree = "<group>"; };
 		EC5C70C019EEB58300432CF4 /* mp_ui_alerts.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_ui_alerts.cpp; sourceTree = "<group>"; };
 		EC64D75F1A085CE60092EF75 /* seed_rng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = seed_rng.cpp; sourceTree = "<group>"; };
@@ -3794,6 +3800,8 @@
 				46F92C482174F6A300602C1C /* handler.cpp */,
 				46F92C422174F6A300602C1C /* handler.hpp */,
 				46F92C492174F6A300602C1C /* message.hpp */,
+				9DD54AB3BE642A8AC9CBC43E /* map_dispatcher.cpp */,
+				8BA145C39AA995A42D563A8D /* map_dispatcher.hpp */,
 			);
 			path = event;
 			sourceTree = "<group>";
@@ -5252,6 +5260,7 @@
 				ED17477C9FA46C9D7C7BD567 /* tracked_drawable.hpp in Headers */,
 				C9074CACAE3FC9E937989C6E /* fps_report.hpp in Headers */,
 				7BED48C1A5A814946FADBE6B /* utils_simd.hpp in Headers */,
+				3E72469D9189A079337C06F8 /* map_dispatcher.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5281,6 +5290,7 @@
 				262647058B8E718FB1D8264C /* tracked_drawable.hpp in Headers */,
 				E460406AB8500EE18D2CE16D /* fps_report.hpp in Headers */,
 				1C1E4B9FA377DB54A3E27E46 /* utils_simd.hpp in Headers */,
+				F5124AB4BE8F5105D7188BE6 /* map_dispatcher.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6016,6 +6026,7 @@
 				BEC947DAA02187CC655F20B3 /* tracked_drawable.cpp in Sources */,
 				AC6A496B8F5EC3A612C0E6D6 /* fps_report.cpp in Sources */,
 				D6EC45B189E997A1DB5F6868 /* utils_simd.cpp in Sources */,
+				856B403182BE84DA60688DC7 /* map_dispatcher.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6683,6 +6694,7 @@
 				70284C5A94BEC79FC449D9E5 /* tracked_drawable.cpp in Sources */,
 				46DE42A486EEA7BD55757690 /* fps_report.cpp in Sources */,
 				4FD94DA284B825C931FF52C7 /* utils_simd.cpp in Sources */,
+				FA1A4AC7A353764B0CA1B6BF /* map_dispatcher.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6843,9 +6855,15 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = P7YF26GARW;
 				ENABLE_HARDENED_RUNTIME = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = x86_64;
-				"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphone*]" = SDLMain.mm;
 				"EXCLUDED_ARCHS[sdk=iphoneos*]" = arm64e;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = x86_64;
+				"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphone*]" = (
+					SDLMain.mm,
+				);
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphone*]" = (
+					"$(BUILT_PRODUCTS_DIR)",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/lib",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"LOCALEDIR=\\\"translations\\\"",
@@ -6887,8 +6905,6 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Wesnoth;
 				INSTALL_PATH = /Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				"WESNOTH_IOS_TRIPLET[sdk=iphoneos*]" = "arm64-ios-wesnoth";
-				"WESNOTH_IOS_TRIPLET[sdk=iphonesimulator*]" = "arm64-ios-simulator-wesnoth";
 				LD_CLASSIC_1000 = "";
 				LD_CLASSIC_1100 = "";
 				LD_CLASSIC_1200 = "";
@@ -6897,10 +6913,6 @@
 				LD_CLASSIC_1500 = "-ld_classic";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=iphone*]" = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				"FRAMEWORK_SEARCH_PATHS[sdk=iphone*]" = (
-					"$(BUILT_PRODUCTS_DIR)",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/lib",
-				);
 				"LIBRARY_SEARCH_PATHS[sdk=iphone*]" = (
 					"$(BUILT_PRODUCTS_DIR)",
 					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/lib",
@@ -7014,14 +7026,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.wesnoth.Wesnoth;
 				PRODUCT_NAME = "The Battle for Wesnoth";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphone*]" = (
-					SDLMain.mm,
-				);
 				SKIP_INSTALL = NO;
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "";
+				"WESNOTH_IOS_TRIPLET[sdk=iphoneos*]" = "arm64-ios-wesnoth";
+				"WESNOTH_IOS_TRIPLET[sdk=iphonesimulator*]" = "arm64-ios-simulator-wesnoth";
 				WRAPPER_EXTENSION = app;
 			};
 			name = SignedRelease;
@@ -7404,9 +7415,15 @@
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = x86_64;
-				"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphone*]" = SDLMain.mm;
 				"EXCLUDED_ARCHS[sdk=iphoneos*]" = arm64e;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = x86_64;
+				"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphone*]" = (
+					SDLMain.mm,
+				);
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphone*]" = (
+					"$(BUILT_PRODUCTS_DIR)",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/lib",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -7451,8 +7468,6 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Wesnoth;
 				INSTALL_PATH = /Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				"WESNOTH_IOS_TRIPLET[sdk=iphoneos*]" = "arm64-ios-wesnoth";
-				"WESNOTH_IOS_TRIPLET[sdk=iphonesimulator*]" = "arm64-ios-simulator-wesnoth";
 				LD_CLASSIC_1000 = "";
 				LD_CLASSIC_1100 = "";
 				LD_CLASSIC_1200 = "";
@@ -7461,10 +7476,6 @@
 				LD_CLASSIC_1500 = "-ld_classic";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=iphone*]" = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				"FRAMEWORK_SEARCH_PATHS[sdk=iphone*]" = (
-					"$(BUILT_PRODUCTS_DIR)",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/lib",
-				);
 				"LIBRARY_SEARCH_PATHS[sdk=iphone*]" = (
 					"$(BUILT_PRODUCTS_DIR)",
 					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/lib",
@@ -7577,13 +7588,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.wesnoth.Wesnoth;
 				PRODUCT_NAME = "The Battle for Wesnoth";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphone*]" = (
-					SDLMain.mm,
-				);
 				SKIP_INSTALL = NO;
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				"WESNOTH_IOS_TRIPLET[sdk=iphoneos*]" = "arm64-ios-wesnoth";
+				"WESNOTH_IOS_TRIPLET[sdk=iphonesimulator*]" = "arm64-ios-simulator-wesnoth";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -7611,9 +7621,15 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = x86_64;
-				"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphone*]" = SDLMain.mm;
 				"EXCLUDED_ARCHS[sdk=iphoneos*]" = arm64e;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = x86_64;
+				"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphone*]" = (
+					SDLMain.mm,
+				);
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphone*]" = (
+					"$(BUILT_PRODUCTS_DIR)",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/lib",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"LOCALEDIR=\\\"translations\\\"",
@@ -7656,8 +7672,6 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Wesnoth;
 				INSTALL_PATH = /Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				"WESNOTH_IOS_TRIPLET[sdk=iphoneos*]" = "arm64-ios-wesnoth";
-				"WESNOTH_IOS_TRIPLET[sdk=iphonesimulator*]" = "arm64-ios-simulator-wesnoth";
 				LD_CLASSIC_1000 = "";
 				LD_CLASSIC_1100 = "";
 				LD_CLASSIC_1200 = "";
@@ -7666,10 +7680,6 @@
 				LD_CLASSIC_1500 = "-ld_classic";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=iphone*]" = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				"FRAMEWORK_SEARCH_PATHS[sdk=iphone*]" = (
-					"$(BUILT_PRODUCTS_DIR)",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/lib",
-				);
 				"LIBRARY_SEARCH_PATHS[sdk=iphone*]" = (
 					"$(BUILT_PRODUCTS_DIR)",
 					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/lib",
@@ -7783,14 +7793,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.wesnoth.Wesnoth;
 				PRODUCT_NAME = "The Battle for Wesnoth";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphone*]" = (
-					SDLMain.mm,
-				);
 				SKIP_INSTALL = NO;
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "";
+				"WESNOTH_IOS_TRIPLET[sdk=iphoneos*]" = "arm64-ios-wesnoth";
+				"WESNOTH_IOS_TRIPLET[sdk=iphonesimulator*]" = "arm64-ios-simulator-wesnoth";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -34,6 +34,7 @@
 #include "game_events/pump.hpp"
 #include "game_state.hpp"
 #include "gettext.hpp"
+#include "gui/core/event/handler.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/message.hpp"      // for show_error_message
 #include "gui/dialogs/transient_message.hpp"
@@ -61,6 +62,8 @@
 #include "utils/general.hpp"
 #include "video.hpp"
 #include "whiteboard/manager.hpp"
+
+#include "gui/core/event/map_dispatcher.hpp"
 
 #include <functional>
 
@@ -177,6 +180,23 @@ play_controller::play_controller(const config& level, saved_game& state_of_game)
 	persist_.start_transaction();
 
 	game_config::add_color_info(game_config_view::wrap(level));
+
+	static gui2::event::map_dispatcher mdispatcher;
+	mdispatcher.set_mouse_behavior(gui2::event::dispatcher::mouse_behavior::all);
+	// mdispatcher.connect_signal<gui2::event::LEFT_BUTTON_CLICK>(
+	// 	[](gui2::event::dispatcher& d, gui2::event::ui_event e, bool& handled, bool& halt) {
+	// 		PLAIN_LOG << "Mouse clicked (map)";
+	// 		handled = true;
+	// 	},
+	// 	gui2::event::dispatcher::front_pre_child
+	// );
+	mdispatcher.connect_signal<gui2::event::SDL_LEFT_BUTTON_DOWN>(
+    [](gui2::event::dispatcher& d, gui2::event::ui_event e,
+       bool& handled, bool& halt, const point& p) {
+        PLAIN_LOG << "Raw mouse down received!";
+        handled = true;
+    }
+);
 
 	try {
 		init(level);

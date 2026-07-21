@@ -114,9 +114,7 @@ static uint32_t timer_sdl_poll_events(uint32_t, void*)
 /***** handler class. *****/
 
 /**
- * This singleton class handles all events.
- *
- * It's a new experimental class.
+ * This singleton class handles all gui2 events.
  */
 class sdl_event_handler : public events::sdl_handler
 {
