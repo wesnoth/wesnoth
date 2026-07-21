@@ -775,21 +775,23 @@ function return_table:execution(cfg,data)
     -- for each retreating unit, try to retreat into the retreat area with our current moves
     -- if we can't reach it, try instead to form up adjacent to a unit that's already in the retreat area
     -- if we still can't, give up and let the default AI act; maybe it'll kill something
+    local fallback_units = {};
     for i,myunit in pairs(retreating_units) do
-        local success = execute_retreat(myunit);
-        -- couldn't reach the retreat area; try to retreat adjacent to a unit that's already in it
-        -- (recomputed per unit, since units retreating earlier this loop are now part of the retreat area)
-        if not success then
-            local adjacent_to_retreat_area = location_set.create();
-            for j,ally in pairs(wesnoth.units.find_on_map({ T.filter_side{T.allied_with{ side=wesnoth.current.side }} })) do
-                if retreatmap[{ally.x,ally.y}] then
-                    for x,y in location_set.of_pairs(wesnoth.current.map.find{ radius=1, T.filter{id=ally.id} }):iter() do
-                        adjacent_to_retreat_area[{x,y}] = { value=0 };
-                    end
+        if not execute_retreat(myunit) then table.insert(fallback_units, myunit) end
+    end
+    -- couldn't reach the retreat area; try to retreat adjacent to a unit that's already in it
+    -- do this after retreating all units who can reach the actual retreat area, otherwise we risk triggering desperate attacks
+    -- for units who could've passed the fallback check once other, later units finished retreating
+    for i,myunit in pairs(fallback_units) do
+        local adjacent_to_retreat_area = location_set.create();
+        for j,ally in pairs(wesnoth.units.find_on_map({ T.filter_side{T.allied_with{ side=wesnoth.current.side }} })) do
+            if retreatmap[{ally.x,ally.y}] then
+                for x,y in location_set.of_pairs(wesnoth.current.map.find{ radius=1, T.filter{id=ally.id} }):iter() do
+                    adjacent_to_retreat_area[{x,y}] = { value=0 };
                 end
             end
-            success = execute_retreat(myunit, false, adjacent_to_retreat_area);
         end
+        local success = execute_retreat(myunit, false, adjacent_to_retreat_area);
         -----------------------------------------------
         -- DEBUG; recolor desperate attackers
 --         if not success then
