@@ -11,8 +11,9 @@
 ### Editor
 ### Multiplayer
 ### Lua API
-   * `text_box` gui widget now has the gettable and settable properties `selection_start` and `selection_length` for cursor position/selection start and length of text selection respectively.
+   * `text_box` gui widget now has the gettable and settable properties `selection_start` and `selection_length` for cursor position/selection start and length of text selection respectively. 
    * Added getter `wesnoth.game_config.random_mode`, which is only intended to be used for the tutorial hints.
+   * add_overlay_text now accepts a border parameter
 ### Packaging
 ### Terrain
 ### Translations
