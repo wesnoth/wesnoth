@@ -288,7 +288,7 @@ function return_table:execution(cfg,data)
 		-- only consider enemies: comparing allies-vs-enemies might lead to a situation where we don't try to guard our leader because we have tons of units hiding behind him
         if threatmap[{x,y}].enemies<=0 then retreatmap_leader:remove(x,y) end
     end
-    locationset_expand(retreatmap_leader, cfg.leader_protect_radius, { skip_impassable=true, skip_unwalkable });
+    locationset_expand(retreatmap_leader, cfg.leader_protect_radius, { skip_impassable=true, skip_unwalkable=skip_unwalkable });
 
     -- 2) within 3 hexes of the border where we outnumber our enemy 3x or more, or...
     local danger_hexes = location_set.create();
@@ -298,7 +298,7 @@ function return_table:execution(cfg,data)
         else                              danger_hexes:insert(x,y,{ is_border_hex=true }) end
     end
     local retreatmap_border = danger_hexes:clone();
-    locationset_expand(retreatmap_border, 3, { skip_impassable=true, skip_unwalkable });
+    locationset_expand(retreatmap_border, 3, { skip_impassable=true, skip_unwalkable=skip_unwalkable });
     retreatmap_border:inter_merge(safe_hexes, function(x,y,v1,v2) return type(v1)=='table' and v1 or v2 end );
 
     -- 3) any village / healing terrain that's not too dangerous
@@ -588,7 +588,7 @@ function return_table:execution(cfg,data)
                         local _, _, _, _, def_combo = battle_calcs.attack_combo_stats(attackers, destinations, target, cache, cache_this_move);
                         local kill_chance = def_combo.hp_chance[0] or 0;
                         -- require a high kill chance, or a decent kill chance with a chance to make the area safe
-                        if kill_chance>=0.7 or kill_chance>=0.4 and is_safe_hex( threatmap[{ x=target.x, y=target.y }], 0-get_unit_strength(target) ) then
+                        if kill_chance>=0.7 or kill_chance>=0.4 and is_safe_hex( threatmap[{ x=target.x, y=target.y }], get_unit_strength(target) ) then
 --                             wesnoth.interface.add_chat_message(myunit.name..' + helpers succeeded killing '..target.name)
 --                             for k,u in ipairs(attackers) do wesnoth.interface.add_chat_message(u.name) end
                             for k,u in ipairs(attackers) do table.insert(kamikaze_units, u) end
