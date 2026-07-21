@@ -67,7 +67,7 @@ game_stringfixes = {
 "wesnoth" : (
 # conversion added in 1.11.10+dev
 ("Save and Abort game", "Save and abort game"),
-("Filters on addon descripton,", "Filters on addon description,"),
+("Filters on addon description,", "Filters on addon description,"),
 ("Messanger Waypoint 1", "Messenger Waypoint 1"),
 ("Identifer", "Identifier"),
 
