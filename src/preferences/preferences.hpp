@@ -208,6 +208,7 @@ public:
 	void write_preferences();
 	void load_advanced_prefs(const game_config_view& gc);
 	void migrate_preferences(const std::string& prefs_dir);
+	void set_campaign_rng_mode_default_for_migration(); // TODO: remove after 1.20. (Not used after that. Needs no replacement.)
 	void reload_preferences();
 	std::set<std::string> all_attributes();
 
@@ -541,6 +542,7 @@ public:
 	PREF_GETTER_SETTER(grid, bool, false)
 	PREF_GETTER_SETTER(disable_auto_moves, bool, false)
 	PREF_GETTER_SETTER(damage_prediction_allow_monte_carlo_simulation, bool, true)
+	PREF_GETTER_SETTER(campaign_rng_mode, std::string, std::string("biased"))
 	PREF_GETTER_SETTER(addon_manager_saved_order_name, std::string, std::string(""))
 	PREF_GETTER_SETTER(selected_achievement_group, std::string, std::string(""))
 	/** The most recently selected add-on id from the editor. May be an empty string. */
@@ -734,6 +736,7 @@ private:
 		prefs_list::ally_sighted_interrupts,
 		prefs_list::auto_save_max,
 		prefs_list::blindfold_replay,
+		prefs_list::campaign_rng_mode,
 		prefs_list::campaign_server,
 		prefs_list::chat_lines,
 		prefs_list::chat_timestamp,

@@ -95,7 +95,17 @@ function wesnoth.wml_actions.display_scenario_preview(cfg)
 	-------------------------
 	-- REWARD: OTHER
 	-------------------------
-	local otherlabel = cfg.otherlabel and "\n"..cfg.otherlabel.."\n" or ""
+	local otherlabel      = cfg.otherlabel and "\n"..cfg.otherlabel.."\n" or ""
+	local choose_only_one = cfg.choose_only_one and _"<b>-OR-</b> (choose one reward)" or ""
+
+	-------------------------
+	-- TIMER
+	-------------------------
+	local n = cfg.seasons_remaining or 1;
+	local timer =_(
+		"(expires after playing any other scenario)",
+		"(expires after playing $seasons_remaining other scenarios)",
+	n):vformat{ seasons_remaining=n }
 
 	--##############################
 	-- DEFINE GRID
@@ -118,14 +128,25 @@ function wesnoth.wml_actions.display_scenario_preview(cfg)
 				T.column{ T.label{ label="   " }},
 				T.column{ T.grid{
 					-------------------------
-					-- TITLE AND DIFFICULTY
+					-- TITLE, TIMER, AND DIFFICULTY
 					-------------------------
+					-- Title
 					T.row{ T.column{ T.label{  use_markup=true,  label="<span size='5000'> </span>"  }}},
 					T.row{ T.column{
 						horizontal_alignment="left",
 						T.label{  definition="title",label=title,  }
 					}},
-					T.row{ T.column{ T.label{  use_markup=true,  label="<span size='5000'> </span>"  }}},
+					-- Timer
+					T.row{ T.column{
+						horizontal_alignment="left",
+						T.label{
+							id="timer",
+							definition="default_small",
+							label=timer
+						}
+					}},
+					T.row{ T.column{ T.label{  use_markup=true,  label="<span size='15000'> </span>"  }}},
+					-- Difficulty
 					T.row{ T.column{
 						horizontal_alignment="left",
 						T.grid{ T.row{
@@ -161,6 +182,12 @@ function wesnoth.wml_actions.display_scenario_preview(cfg)
 						vertical_alignment="top",
 						horizontal_alignment="left",
 						T.label{  id="other0",  use_markup=true,  label=otherlabel  }
+					}},
+					-- Choose Only One
+					T.row{ T.column{
+						vertical_alignment="top",
+						horizontal_alignment="left",
+						T.label{  id="choose_only_one",  use_markup=true,  label=choose_only_one  }
 					}},
 					-- New Companion
 					T.row{ T.column{
@@ -221,6 +248,12 @@ function wesnoth.wml_actions.display_scenario_preview(cfg)
 					dialog["companion1"].visible = false
 					dialog["companion2"].visible = false
 				end
+				if (not cfg.choose_only_one) then
+					dialog["choose_only_one"].visible = false
+				end
+				if (not cfg.seasons_remaining) then
+					dialog["timer"].visible = false
+				end
 			end
 		)
 		return { button=button }
@@ -259,41 +292,71 @@ function wesnoth.wml_actions.display_overworld_tutorial()
 			-------------------------
 			-- INTRO
 			-------------------------
-			T.row{ T.column{ T.image{  label="icons/banner3-narrow.png"  }}},
+			T.row{ T.column{ T.image{  label="icons/banner3.png"  }}},
 			T.row{ T.column{ T.label{  use_markup=true,  label="<span size='5000'> </span>"  }}},
 			T.row{ T.column{
 				horizontal_alignment="center",
 				T.label{  definition="title",  label=_"Welcome to the Great Continent",  }
 			}},
 			T.row{ T.column{ T.label{  use_markup=true,  label="<span size='15000'> </span>"  }}},
+			T.row{ T.column {T.image{  label="icons/banner2.png"  }}},
+			T.row{ T.column{ T.label{  use_markup=true,  label="<span size='15000'> </span>"  }}},
+			-------------------------
+			-- LEAVING THE OVERWORLD
+			-------------------------
+			T.row{ T.column{ T.grid{ T.row{
+				T.column{
+					border="right", border_size=25,
+					T.image{  label="bigmap/overworld-tutorial.png"  }
+				},
+				T.column{
+					horizontal_alignment="left",
+					vertical_alignment="center",
+					T.label{
+						use_markup=true,
+						wrap=true,
+						characters_per_line=74,
+						label=_"overworld_help^<b>This is an overworld.</b> There’s no movement cost or combat, so explore at your leisure. To leave the overworld and preview or play a battle scenario, move Konrad to one of the marked hexes.",
+					}
+				}
+			}}}},
+			T.row{ T.column{ T.label{  use_markup=true,  label="<span size='15000'> </span>"  }}},
+			-------------------------
+			-- SEASONS AND DELFADOR
+			-------------------------
+			T.row{ T.column{ T.grid{ T.row{
+				T.column{
+					horizontal_alignment="left",
+					vertical_alignment="center",
+					T.label{
+						use_markup=true,
+						wrap=true,
+						characters_per_line=70,
+						label=_"overworld_help^Each scenario provides unique rewards, as shown in its preview, and most will open new areas of the map to explore." .. "\n\n" .. _"overworld_help^After completing any scenario, the season of the year will change. Winter battles will have longer nights and shorter days, often with more snow and ice, while summer battles are the opposite. It’s currently autumn."
+					},
+				},
+				T.column{
+					border="left", border_size=25,
+					T.image{  label="bigmap/overworld-tutorial-seasons.png"  }
+				}
+			}}}},
+			T.row{ T.column{ T.label{  use_markup=true,  label="<span size='15000'> </span>"  }}},
+			-------------------------
+			-- SCENARIO REWARDS
+			-------------------------
 			T.row{ T.column{
 				horizontal_alignment="left",
 				border="right,left", border_size=18,
 				T.label{
 					use_markup=true,
-					label=_"The Great Continent is a place of many possibilities.\nWhere shall you go? What shall you do?",
+					wrap=true,
+					characters_per_line=92,
+					label=_"overworld_help^Konrad only has time to fight a limited number of battles before the finale. And Delfador and his elementals will only be around to help during your first battle, so choose wisely!"
 				}
 			}},
 			T.row{ T.column{ T.label{  use_markup=true,  label="<span size='15000'> </span>"  }}},
-			-------------------------
-			-- IMAGE
-			-------------------------
-			T.row{ T.column{ T.grid{ T.row{
-				T.column{
-					T.image{  label="bigmap/overworld-tutorial.png"  }
-				},
-				T.column{ T.label{  use_markup=true,  label="<span size='40000'> </span>"  }},
-				T.column{
-					horizontal_alignment="left",
-					T.label{
-						use_markup=true,
-						label=_"To leave the overworld and play\na battle scenario, <i><b>move Konrad\nto one of the marked hexes.</b></i>",
-					}
-				}
-			}}}},
-			T.row{ T.column{ T.label{  use_markup=true,  label="<span size='9000'> </span>"  }}},
-			T.row{ T.column {T.image{  label="icons/banner2-narrow.png"  }}},
-			T.row{ T.column{ T.label{  use_markup=true,  label="<span size='9000'> </span>"  }}},
+			T.row{ T.column {T.image{  label="icons/banner2.png"  }}},
+			T.row{ T.column{ T.label{  use_markup=true,  label="<span size='15000'> </span>"  }}},
 			-------------------------
 			-- BUTTONS
 			-------------------------
