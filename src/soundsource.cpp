@@ -138,34 +138,42 @@ bool positional_source::is_global() const
 
 void positional_source::update(const std::chrono::steady_clock::time_point& time, const display &disp)
 {
-	if (time - last_played_ < min_delay_ || sound::is_sound_playing(id_))
+	if(sound::is_sound_playing(id_))
 		return;
 
-	int i = randomness::rng::default_instance().get_random_int(1, 100);
+	// The min_delay/chance gate spaces out and randomizes one-shot ambient
+	// triggers; looping sources skip it and play whenever they are in range.
+	const bool looping = loops_ != 0;
 
-	if(i <= chance_) {
-		last_played_ = time;
-
-		// If no locations have been specified, treat the source as if
-		// it was present everywhere on the map
-		if(locations_.empty()) {
-			sound::play_sound_positioned(files_, loops_, 0, id_);	// max volume
-			return;
-		}
-
-		int distance_volume = DISTANCE_SILENT;
-		for(const map_location& l : locations_) {
-			int v = calculate_volume(l, disp);
-			if(v < distance_volume) {
-				distance_volume = v;
-			}
-		}
-
-		if(distance_volume >= DISTANCE_SILENT)
+	if(!looping) {
+		if(time - last_played_ < min_delay_)
 			return;
 
-		sound::play_sound_positioned(files_, loops_, distance_volume, id_);
+		if(randomness::rng::default_instance().get_random_int(1, 100) > chance_)
+			return;
 	}
+
+	last_played_ = time;
+
+	// If no locations have been specified, treat the source as if
+	// it was present everywhere on the map
+	if(locations_.empty()) {
+		sound::play_sound_positioned(files_, loops_, 0, id_);	// max volume
+		return;
+	}
+
+	int distance_volume = DISTANCE_SILENT;
+	for(const map_location& l : locations_) {
+		int v = calculate_volume(l, disp);
+		if(v < distance_volume) {
+			distance_volume = v;
+		}
+	}
+
+	if(distance_volume >= DISTANCE_SILENT)
+		return;
+
+	sound::play_sound_positioned(files_, loops_, distance_volume, id_);
 }
 
 void positional_source::update_positions(const std::chrono::steady_clock::time_point& time, const display &disp)
