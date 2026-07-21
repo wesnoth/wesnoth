@@ -317,7 +317,7 @@ function return_table:execution(cfg,data)
 
     -- generate standoffmap_unowned_villages.
     -- we use villages and village value as part of our standoffmap
-    standoffmap_unowned_villages = location_set.of_pairs(wesnoth.current.map.find( is_unowned_village ));
+    local standoffmap_unowned_villages = location_set.of_pairs(wesnoth.current.map.find( is_unowned_village ));
     for x,y in standoffmap_unowned_villages:iter() do standoffmap_unowned_villages[{x,y}]={ value=0 } end
 
     -- remove any hexes that're in our default AI's [avoid] tag
@@ -676,7 +676,7 @@ function return_table:execution(cfg,data)
     --###############################
     -- calculate value for all hexes in our retreatmap/standoffmap
     -- then move to whichever one has the highest value
-    function execute_retreat(myunit, standoffish, override_map)
+    local function execute_retreat(myunit, standoffish, override_map)
         local highest_value = 0-math.huge;
         local highest_x = nil;
         local highest_y = nil;
