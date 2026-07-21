@@ -301,18 +301,19 @@ std::vector<texture> footsteps_images(const map_location& loc, const pathfind::m
 		return res; // not on the route
 	}
 
-	// Check which footsteps images of game_config we will use
-	std::string foot_speed_prefix;
+	// Determine which set of footprint images the unit uses
+	std::string footprints;
 	int move_cost = 1;
 	const unit_map::const_iterator u = dc->units().find(route.steps.front());
 	if(u != dc->units().end()) {
 		move_cost = u->movement_cost(dc->map().get_terrain(loc));
-		foot_speed_prefix = u->type().footprint_dir();
+		footprints = u->type().footprints();
 	}
 
-	if(foot_speed_prefix.empty()) {
-		foot_speed_prefix = "footsteps/humanoid/";
+	if(footprints.empty()) {
+		footprints = "humanoid";
 	}
+	const std::string foot_speed_prefix = "footsteps/" + footprints + "/";
 
 	// Generate a red tint string based on movement cost.
 	std::string color_mod;
