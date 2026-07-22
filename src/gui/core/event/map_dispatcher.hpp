@@ -19,11 +19,16 @@ public:
 	map_dispatcher(play_controller& controller);
 	bool is_at(const point& coordinate) const override;
 
-	void mouse_left_click(
+	void mouse_left_up(
 		gui2::event::ui_event e,
 		bool& handled,
 		const point& p);
-	void mouse_right_click(
+	void mouse_left_down(
+		gui2::event::ui_event e,
+		bool& handled,
+		const point& p);
+
+	void mouse_right_down(
 		gui2::event::ui_event e,
 		bool& handled,
 		const point& p);
