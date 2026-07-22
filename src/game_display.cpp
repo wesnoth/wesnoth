@@ -20,6 +20,7 @@
 
 #include "game_display.hpp"
 
+#include <cstdint>
 #include <utility>
 
 
@@ -28,6 +29,7 @@
 #include "fake_unit_manager.hpp"
 #include "floating_label.hpp"
 #include "game_board.hpp"
+#include "picture.hpp"
 #include "preferences/preferences.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
@@ -453,14 +455,33 @@ void game_display::draw_hex(const map_location& loc)
 	}
 
 	// Draw reach_map information.
-	if(!is_shrouded && !reach_map_.empty() && reach_map_.find(loc) != reach_map_.end()) {
+	bool reachable = reach_map_.find(loc) != reach_map_.end();
+	// Darken unreachable
+	// We remove the reachability mask of the unit that we want to attack.
+	if(!is_shrouded && !reach_map_.empty() && !reachable && loc != attack_indicator_dst_) {
+		std::string darken_suffix = prefs::get().reach_map_darken_tex() ? "" : "~WIPE_ALPHA()";
+
+		texture darken_tex = image::get_texture(game_config::images::unreachable + darken_suffix, image::scale_quality::linear, image::HEXED);
+		uint8_t darken_opacity = prefs::get().reach_map_darken_opacity() * (255.0/100.0);
+		darken_tex.set_alpha_mod(darken_opacity);
+
+		drawing_buffer_add(drawing_layer::reachmap_darken, loc,
+			[darken_tex](const rect& dest) {
+				draw::blit(darken_tex, dest);
+			});
+	}
+	// Highlight reachable
+	if(!is_shrouded && !reach_map_.empty() && reachable) {
 		// draw the reachmap tint below units and high terrain graphics
 		std::string color = prefs::get().reach_map_color();
-		std::string tint_opacity = std::to_string(prefs::get().reach_map_tint_opacity());
+		texture tint_tex = image::get_texture(game_config::reach_map_prefix + ".png~RC(magenta>"+color+")", image::HEXED);
+		uint8_t tint_opacity = prefs::get().reach_map_tint_opacity() * (255.0/100.0);
+		tint_tex.set_alpha_mod(tint_opacity);
 
-		drawing_buffer_add(drawing_layer::reachmap_highlight, loc, [tex = image::get_texture(game_config::reach_map_prefix + ".png~RC(magenta>"+color+")~O("+tint_opacity+"%)", image::HEXED)](const rect& dest) {
-			draw::blit(tex, dest);
+		drawing_buffer_add(drawing_layer::reachmap_highlight, loc, [tint_tex](const rect& dest) {
+			draw::blit(tint_tex, dest);
 		});
+
 		// We remove the reachmap border mask of the hovered hex to avoid weird interactions with other visual objects.
 		if(loc != mouseoverHex_) {
 			// draw the highlight borders on top of units and terrain
@@ -845,12 +866,11 @@ std::vector<texture> game_display::get_reachmap_images(const map_location& loc) 
 
 			std::string color = prefs::get().reach_map_color();
 			std::string enemy_color = prefs::get().reach_map_enemy_color();
-			std::string border_opacity = std::to_string(prefs::get().reach_map_border_opacity());
 
 			if(tiles[i] == ENEMY) {
-				suffix = ".png~RC(magenta>"+enemy_color+")~O("+border_opacity+"%)";
+				suffix = ".png~RC(magenta>"+enemy_color+")";
 			} else {
-				suffix = ".png~RC(magenta>"+color+")~O("+border_opacity+"%)";
+				suffix = ".png~RC(magenta>"+color+")";
 			}
 
 			for(int cap2 = 0; tiles[i] != REACH && cap2 != 6; i = (i + 1) % 6, ++cap2) {
@@ -878,10 +898,12 @@ std::vector<texture> game_display::get_reachmap_images(const map_location& loc) 
 
 	// now get the textures
 	std::vector<texture> res;
+	uint8_t border_opacity = prefs::get().reach_map_border_opacity() * (255.0/100.0);
 
 	for(const std::string& name : names) {
 		DBG_DP << "Pushing: " << name;
 		if(texture tex = image::get_texture(name, image::HEXED)) {
+			tex.set_alpha_mod(border_opacity);
 			res.push_back(std::move(tex));
 		}
 	}

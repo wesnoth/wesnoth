@@ -480,6 +480,12 @@ void preferences_dialog::initialize_callbacks()
 	connect_signal_mouse_left_click(find_widget<button>("cachemg"),
 		[](auto&&...) { dialogs::game_cache_options::display(); });
 
+	/* DISPLAY->ACCESSIBILITY */
+	connect_signal_mouse_left_click(find_widget<button>("custom_orb_color"),
+		[](auto&&...) { dialogs::select_orb_colors::display(); });
+	connect_signal_mouse_left_click(find_widget<button>("custom_reach_map"),
+		[](auto&&...) { dialogs::reachmap_options::display(); });
+
 	//
 	// DISPLAY PANEL
 	//
@@ -1073,10 +1079,6 @@ void preferences_dialog::on_advanced_prefs_list_select(listbox& list)
 	if(pref.type == preferences::option::avd_type::SPECIAL) {
 		if(pref.field == "logging") {
 			gui2::dialogs::log_settings::display();
-		} else if(pref.field == "orb_color") {
-			gui2::dialogs::select_orb_colors::display();
-		} else if(pref.field == "reach_map") {
-			gui2::dialogs::reachmap_options::display();
 		} else {
 			WRN_GUI_L << "Invalid or unimplemented custom advanced prefs option: " << pref.field;
 		}

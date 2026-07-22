@@ -336,6 +336,10 @@ struct preferences_list_defines
 	ADDPREF(reach_map_enemy_color)
 	/** opacity of the reach map tint, 100 being 100% of the original image opacity, 0 being invisible */
 	ADDPREF(reach_map_tint_opacity)
+	/** opacity of the reach map darkening, 100 being 100% of the original image opacity, 0 being invisible */
+	ADDPREF(reach_map_darken_opacity)
+	/** whether to darken unreachable areas with textured or solid black */
+	ADDPREF(reach_map_darken_tex)
 	/** whether to play a sound when the game is ready to be started */
 	ADDPREF(ready_for_start_sound)
 	/** whether to show a notification when the game is ready to be started */
@@ -586,6 +590,8 @@ struct preferences_list_defines
 		addon_icons,
 		reach_map_border_opacity,
 		reach_map_tint_opacity,
+		reach_map_darken_opacity,
+		reach_map_darken_tex,
 		reach_map_color,
 		reach_map_enemy_color
 	)

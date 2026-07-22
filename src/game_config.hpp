@@ -102,6 +102,8 @@ namespace game_config
 	extern bool show_unmoved_orb;
 	extern int reach_map_border_opacity;
 	extern int reach_map_tint_opacity;
+	extern int reach_map_darken_opacity;
+	extern bool reach_map_darken_tex;
 
 	namespace images {
 	extern std::string game_title,
@@ -128,6 +130,7 @@ namespace game_config
 			mouseover,
 			selected,
 			editor_brush,
+			unreachable,
 			linger,
 			// GUI elements
 			observer,
