@@ -14,8 +14,10 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 	: controller_(controller)
 {
 	// Mouse handling
-	set_mouse_behavior(dispatcher::mouse_behavior::all);
 
+	// Note: If an hotkey is assigned to the same event as the signals,
+	// then the hotkey is executed first. If it returns false, only then the
+	// builtin handler is executed.
 	connect_signal<SDL_MOUSE_MOTION>(std::bind(
 		&map_dispatcher::mouse_motion, this, std::placeholders::_3, std::placeholders::_5));
 
@@ -27,6 +29,24 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 	connect_signal<SDL_RIGHT_BUTTON_DOWN>(std::bind(
 		&map_dispatcher::mouse_right_down, this, std::placeholders::_3, std::placeholders::_5));
 
+	// Mouse Hotkeys
+	set_want_keyboard_input(true);
+	register_hotkey(hotkey::HOTKEY_SELECT_AND_ACTION, [this](auto&&...) {
+		auto& mhandler = controller_.get_mouse_handler_base();
+		bool is_selected = mhandler.get_last_hex().valid();
+		if (is_selected) {
+			mhandler.select_or_action(controller_.is_browsing());
+		}
+		return is_selected;
+	});
+	register_hotkey(hotkey::HOTKEY_DESELECT_HEX, [this](auto&&...) {
+		auto& mhandler = controller_.get_mouse_handler_base();
+		bool is_selected = mhandler.get_selected_hex().valid();
+		if (is_selected) {
+			mhandler.deselect_hex();
+		}
+		return is_selected;
+	});
 }
 
 void map_dispatcher::mouse_motion(
@@ -44,7 +64,6 @@ void map_dispatcher::mouse_left_up(
 	bool& handled,
 	const point& p)
 {
-	// PLAIN_LOG << "mouse left up at: " << p;
 	auto& mhandler = controller_.get_mouse_handler_base();
 	map_location loc = display::get_singleton()->hex_clicked_on(p.x, p.y);
 	mhandler.mouse_update(controller_.is_browsing(), loc);
@@ -59,7 +78,6 @@ void map_dispatcher::mouse_left_down(
 	bool& handled,
 	const point& p)
 {
-	// PLAIN_LOG << "mouse left down at: " << p;
 	auto& mhandler = controller_.get_mouse_handler_base();
 	map_location loc = display::get_singleton()->hex_clicked_on(p.x, p.y);
 	mhandler.mouse_update(controller_.is_browsing(), loc);
@@ -74,12 +92,12 @@ void map_dispatcher::mouse_right_down(
 	bool& handled,
 	const point& p)
 {
-	// PLAIN_LOG << "mouse right down at: " << p;
 	auto& mhandler = controller_.get_mouse_handler_base();
 	map_location loc = display::get_singleton()->hex_clicked_on(p.x, p.y);
 	mhandler.mouse_update(controller_.is_browsing(), loc);
 
 	auto* menu = display::get_singleton()->get_theme().context_menu();
+
 	hotkey::command_executor* cmd_exec = controller_.get_hotkey_command_executor();
 	if(!menu || !cmd_exec) {
 		handled = false;
@@ -91,6 +109,7 @@ void map_dispatcher::mouse_right_down(
 		handled = false;
 	}
 
+	// TODO: should be migrated to gui2. command_executor shouldn't have menu expansion as responsibility.
 	cmd_exec->show_menu(menu->items(), p, menu);
 	handled = true;
 }
