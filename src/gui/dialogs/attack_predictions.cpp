@@ -24,6 +24,7 @@
 #include "formatter.hpp"
 #include "formula/variant.hpp"
 #include "game_board.hpp"
+#include "game_classification.hpp"
 #include "game_config.hpp"
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/label.hpp"
@@ -55,6 +56,26 @@ attack_predictions::attack_predictions(
 
 void attack_predictions::pre_show()
 {
+	// Append the active game's RNG mode to the title (reusing the existing strings due to string freeze) so it's clear which odds are being shown.
+	const std::string random_mode
+		= resources::classification ? resources::classification->random_mode : std::string();
+	std::string rng_label = _("Default RNG");
+	// TODO: placeholder borrowed from the campaign dialog to avoid a new string during the string freeze. Rewrite for the battle calc context once the freeze lifts.
+	std::string rng_tooltip = _("Pure, unbiased randomness; the way Wesnoth is intended to be played.\n\nExample: if you strike twice with 50% accuracy, you’re most likely to hit once and miss once, but might also hit twice or miss twice.");
+	if(random_mode == "deterministic") {
+		rng_label = _("Predictable RNG");
+		// TODO: placeholder borrowed from the campaign dialog to avoid a new string during the string freeze. Rewrite for the battle calc context once the freeze lifts.
+		rng_tooltip = _("Identical to Default RNG, except loading a saved game will not change the outcome of an attack.\n\nExample: you strike twice and get lucky, hitting both strikes. You then load an earlier save and make the same attack again. Both strikes will still hit.");
+	} else if(random_mode == "biased") {
+		rng_label = _("Reduced RNG");
+		// TODO: placeholder borrowed from the campaign dialog to avoid a new string during the string freeze. Rewrite for the battle calc context once the freeze lifts.
+		rng_tooltip = _("Hits and misses are much more consistent. This tends to make small-scale engagements easier to plan.\n\nExample: if you strike three times with 50% accuracy, you will always hit at least once and miss at least once.");
+	}
+
+	label& title = find_widget<label>("title");
+	title.set_label(title.get_label() + " - " + rng_label);
+	title.set_tooltip(rng_tooltip);
+
 	set_data(attacker_data_, defender_data_);
 	set_data(defender_data_, attacker_data_);
 }
