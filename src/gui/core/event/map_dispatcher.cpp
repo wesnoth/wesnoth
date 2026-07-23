@@ -28,6 +28,14 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 	connect_signal<SDL_RIGHT_BUTTON_DOWN>(std::bind(
 		&map_dispatcher::mouse_right_down, this, std::placeholders::_3, std::placeholders::_5));
 
+	// Hotkeys
+	set_want_keyboard_input(true);
+	register_hotkey(hotkey::HOTKEY_SELECT_AND_ACTION, [this](auto&&...) {
+		PLAIN_LOG << "Firing hotkey";
+		auto& mhandler = controller_.get_mouse_handler_base();
+		mhandler.select_or_action(controller_.is_browsing());
+		return true;
+	});
 }
 
 void map_dispatcher::mouse_motion(
