@@ -31,9 +31,11 @@
 #include "attack_prediction.hpp"
 
 #include "actions/attack.hpp"
+#include "game_classification.hpp"
 #include "game_config.hpp"
 #include "preferences/preferences.hpp"
 #include "random.hpp"
+#include "resources.hpp"
 
 #include <array>
 #include <cfloat>
@@ -94,6 +96,294 @@ void dump(const battle_context_unit_stats& stats)
 namespace
 {
 using summary_t = std::array<std::vector<double>, 2>;
+
+// Hit-count distribution for attack::perform_hit's bias accumulator, which lands
+// floor((n * cth + bias) / 100) hits with bias seeded uniformly on [0, 100).
+std::vector<double> biased_hit_weights(unsigned int n, unsigned int cth)
+{
+	std::vector<double> weights(n + 1, 0.0);
+	const unsigned int total = n * cth;
+	const double frac = (total % 100) / 100.0;
+
+	weights[total / 100] += 1.0 - frac;
+	if(frac > 0.0) {
+		weights[total / 100 + 1] += frac;
+	}
+
+	return weights;
+}
+
+// Convert default RNG outcome to biased RNG outcome, if possible. Returns true if the summary was modified, false if not.
+bool apply_biased_hit_distribution(summary_t& summary,
+		const summary_t& incoming,
+		const battle_context_unit_stats& unit,
+		const battle_context_unit_stats& opp,
+		bool levelup_considered,
+		unsigned int rounds)
+{
+	if(unit.drains || unit.drain_percent != 0 || unit.drain_constant != 0 || opp.swarm || opp.slows) {
+		return false;
+	}
+	if(levelup_considered && unit.can_advance
+		&& unit.experience + game_config::kill_xp(opp.level) >= unit.max_experience) {
+		return false;
+	}
+
+	// Berserk carries the bias across rounds, so treat it as one run of strikes. This
+	// over-counts when the fight ends early; only the exact path above handles that.
+	const unsigned int strikes = opp.num_blows * rounds;
+	const int damage = opp.is_slowed ? opp.slow_damage : opp.damage;
+	const std::vector<double> weights = biased_hit_weights(strikes, opp.chance_to_hit);
+
+	std::vector<double> start = incoming[0];
+	if(incoming[1].size() > start.size()) {
+		start.resize(incoming[1].size(), 0.0);
+	}
+	for(std::size_t i = 0; i < incoming[1].size(); ++i) {
+		start[i] += incoming[1][i];
+	}
+	const double total = std::accumulate(start.begin(), start.end(), 0.0);
+	if(total <= 0.0) {
+		start.assign(unit.hp + 1, 0.0);
+		start[unit.hp] = 1.0;
+	}
+
+	std::vector<double> out(std::max(start.size(), static_cast<std::size_t>(unit.hp) + 1), 0.0);
+	for(unsigned int start_hp = 0; start_hp < start.size(); ++start_hp) {
+		if(start[start_hp] <= 0.0) {
+			continue;
+		}
+		for(unsigned int h = 0; h < weights.size(); ++h) {
+			const unsigned int hp = static_cast<unsigned int>(
+				std::max(0, static_cast<int>(start_hp) - static_cast<int>(h) * damage));
+			if(hp >= out.size()) {
+				out.resize(hp + 1, 0.0);
+			}
+			out[hp] += weights[h] * start[start_hp];
+		}
+	}
+	summary[0].swap(out);
+	summary[1].assign(summary[1].size(), 0.0);
+	return true;
+}
+
+// Cap on starting hit point pairs before the exact fight gives up and convolves instead.
+const std::size_t MAX_BIASED_START_PAIRS = 64;
+
+// Exact biased fight for what the convolution above cannot express: once a unit can die
+// partway through, the strikes after its death never happen, coupling the two hit point
+// distributions. Conditional on h hits over n strikes the hits are a uniform h-subset, so
+// strike i hits with probability (h - j) / (n - i) given j spent, and a running hit count
+// makes the fight exact. Restricted to fixed damage per strike (no slow, drain, petrify or
+// swarm), which keeps hit points a function of hits taken; returns false otherwise.
+bool biased_exact_fight(const battle_context_unit_stats& stats,
+		const battle_context_unit_stats& opp_stats,
+		const summary_t& incoming,
+		const summary_t& opp_incoming,
+		summary_t& summary,
+		summary_t& opp_summary,
+		double& self_not_hit,
+		double& opp_not_hit,
+		bool levelup_considered)
+{
+	if(stats.slows || opp_stats.slows || stats.drains || opp_stats.drains || stats.petrifies || opp_stats.petrifies
+		|| stats.swarm || opp_stats.swarm) {
+		return false;
+	}
+	if(stats.drain_percent != 0 || opp_stats.drain_percent != 0 || stats.drain_constant != 0
+		|| opp_stats.drain_constant != 0) {
+		return false;
+	}
+	if(!incoming[1].empty() || !opp_incoming[1].empty()) {
+		return false;
+	}
+	// Berserk spreads a round's hits over that round's strikes, not the whole combat.
+	if(stats.rounds > 1 || opp_stats.rounds > 1) {
+		return false;
+	}
+	// An advancing unit full heals: on survival if the combat XP alone levels it, otherwise
+	// only on landing the kill.
+	const bool a_advances = levelup_considered && stats.can_advance;
+	const bool b_advances = levelup_considered && opp_stats.can_advance;
+	const bool a_levels_on_survival
+		= a_advances && stats.experience + game_config::combat_xp(opp_stats.level) >= stats.max_experience;
+	const bool b_levels_on_survival
+		= b_advances && opp_stats.experience + game_config::combat_xp(stats.level) >= opp_stats.max_experience;
+	const bool a_levels_on_kill = a_advances && !a_levels_on_survival
+		&& stats.experience + game_config::kill_xp(opp_stats.level) >= stats.max_experience;
+	const bool b_levels_on_kill = b_advances && !b_levels_on_survival
+		&& opp_stats.experience + game_config::kill_xp(stats.level) >= opp_stats.max_experience;
+
+	const unsigned int n_a = stats.num_blows;
+	const unsigned int n_b = opp_stats.num_blows;
+
+	// Starting hit points and their probabilities; one dynamic program runs per pair.
+	std::vector<std::pair<std::size_t, double>> a_start, b_start;
+	const auto collect = [](const std::vector<double>& in, unsigned int hp, unsigned int max_hp,
+							 std::vector<std::pair<std::size_t, double>>& out) {
+		if(in.empty()) {
+			out.emplace_back(hp, 1.0);
+			return;
+		}
+		for(std::size_t i = 0; i < in.size() && i <= max_hp; ++i) {
+			if(in[i] > 0.0) {
+				out.emplace_back(i, in[i]);
+			}
+		}
+	};
+	collect(incoming[0], stats.hp, stats.max_hp, a_start);
+	collect(opp_incoming[0], opp_stats.hp, opp_stats.max_hp, b_start);
+
+	if(a_start.size() * b_start.size() > MAX_BIASED_START_PAIRS) {
+		return false;
+	}
+
+	const std::vector<double> w_a = biased_hit_weights(n_a, stats.chance_to_hit);
+	const std::vector<double> w_b = biased_hit_weights(n_b, opp_stats.chance_to_hit);
+
+	// Most hits this RNG grants a side, usually well short of the strike count; the strike
+	// count itself would call far more fights lethal.
+	const std::size_t hi_a = (n_a * stats.chance_to_hit + 99) / 100;
+	const std::size_t hi_b = (n_b * opp_stats.chance_to_hit + 99) / 100;
+
+	std::vector<double> a_out(stats.max_hp + 1, 0.0);
+	std::vector<double> b_out(opp_stats.max_hp + 1, 0.0);
+	double a_never_hit = 0.0;
+	double b_never_hit = 0.0;
+
+	std::vector<double> cur, next;
+
+	for(const auto& a_entry : a_start) {
+		const std::size_t a_hp = a_entry.first;
+
+		for(const auto& b_entry : b_start) {
+			const std::size_t b_hp = b_entry.first;
+			const double start_mass = a_entry.second * b_entry.second;
+
+			// If neither side can kill, no strike is cut short and the result is just the
+			// product of the two hit distributions, so the dynamic program is skipped.
+			const bool lethal = hi_a * static_cast<std::size_t>(stats.damage) >= b_hp
+				|| hi_b * static_cast<std::size_t>(opp_stats.damage) >= a_hp;
+
+			// Damage per strike is fixed here, so hit points follow from hits taken.
+			const auto a_hp_at = [&](std::size_t j_b) {
+				return a_hp - std::min(a_hp, j_b * static_cast<std::size_t>(opp_stats.damage));
+			};
+			const auto b_hp_at = [&](std::size_t j_a) {
+				return b_hp - std::min(b_hp, j_a * static_cast<std::size_t>(stats.damage));
+			};
+
+			for(unsigned int h_a = 0; h_a < w_a.size(); ++h_a) {
+				if(w_a[h_a] <= 0.0) {
+					continue;
+				}
+
+				for(unsigned int h_b = 0; h_b < w_b.size(); ++h_b) {
+					if(w_b[h_b] <= 0.0) {
+						continue;
+					}
+
+					// state[j_a * (h_b + 1) + j_b]
+					const std::size_t jb_n = h_b + 1;
+					cur.assign((h_a + 1) * jb_n, 0.0);
+					cur[lethal ? 0 : h_a * jb_n + h_b] = 1.0;
+
+					// One strike; `mine` selects which side swings and which counter advances.
+					const auto strike = [&](bool mine, unsigned int index, unsigned int n, unsigned int h) {
+						if(h == 0 || index >= n) {
+							return;
+						}
+						next.assign(cur.size(), 0.0);
+
+						for(std::size_t j_a = 0; j_a <= h_a; ++j_a) {
+							for(std::size_t j_b = 0; j_b < jb_n; ++j_b) {
+								const std::size_t here = j_a * jb_n + j_b;
+								const double mass = cur[here];
+								if(mass <= 0.0) {
+									continue;
+								}
+
+								const std::size_t j = mine ? j_a : j_b;
+								// Hits left for this side, spread over the strikes it has left.
+								const double p = j >= h ? 0.0
+									: static_cast<double>(h - j) / static_cast<double>(n - index);
+
+								// A dead unit does not swing, and a dead target ends the fight.
+								if(p <= 0.0 || a_hp_at(j_b) == 0 || b_hp_at(j_a) == 0) {
+									next[here] += mass;
+									continue;
+								}
+
+								next[here] += mass * (1.0 - p);
+								next[mine ? here + jb_n : here + 1] += mass * p;
+							}
+						}
+						cur.swap(next);
+					};
+
+					if(lethal) {
+						for(unsigned int i = 0; i < std::max(n_a, n_b); ++i) {
+							if(i < n_a) {
+								strike(true, i, n_a, h_a);
+							}
+							if(i < n_b) {
+								strike(false, i, n_b, h_b);
+							}
+						}
+					}
+
+					const double branch = w_a[h_a] * w_b[h_b] * start_mass;
+					for(std::size_t j_a = 0; j_a <= h_a; ++j_a) {
+						for(std::size_t j_b = 0; j_b < jb_n; ++j_b) {
+							const double mass = cur[j_a * jb_n + j_b] * branch;
+							if(mass <= 0.0) {
+								continue;
+							}
+							// Resolve both ends before advancing, so "opponent died" still holds
+							// once the survivor heals.
+							const std::size_t a_end = a_hp_at(j_b);
+							const std::size_t b_end = b_hp_at(j_a);
+							std::size_t a_res = a_end;
+							std::size_t b_res = b_end;
+							if(a_end > 0 && (a_levels_on_survival || (a_levels_on_kill && b_end == 0))) {
+								a_res = stats.max_hp;
+							}
+							if(b_end > 0 && (b_levels_on_survival || (b_levels_on_kill && a_end == 0))) {
+								b_res = opp_stats.max_hp;
+							}
+							a_out[a_res] += mass;
+							b_out[b_res] += mass;
+							// A zero hit count is exactly the "never hit" case the callers report.
+							if(j_b == 0) {
+								a_never_hit += mass;
+							}
+							if(j_a == 0) {
+								b_never_hit += mass;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	summary[0].swap(a_out);
+	summary[1].assign(summary[1].size(), 0.0);
+	opp_summary[0].swap(b_out);
+	opp_summary[1].assign(opp_summary[1].size(), 0.0);
+	self_not_hit = std::min(a_never_hit, 1.0);
+	opp_not_hit = std::min(b_never_hit, 1.0);
+	return true;
+}
+
+/** Whether combat uses biased ("Reduced RNG") */
+bool use_biased_combat_rng()
+{
+	return resources::classification != nullptr
+		&& resources::classification->random_mode == "biased"
+		&& randomness::generator != nullptr
+		&& !randomness::generator->is_networked();
+}
 
 /**
 * A struct to describe one possible combat scenario.
@@ -1394,7 +1684,8 @@ public:
 			const std::vector<combat_slice>& a_split,
 			const std::vector<combat_slice>& b_split,
 			double a_initially_slowed_chance,
-			double b_initially_slowed_chance);
+			double b_initially_slowed_chance,
+			bool biased);
 
 	void simulate();
 
@@ -1418,8 +1709,11 @@ private:
 	double b_hit_chance_;
 	double a_initially_slowed_chance_;
 	double b_initially_slowed_chance_;
+	bool biased_;
 	unsigned int iterations_a_hit_ = 0u;
 	unsigned int iterations_b_hit_ = 0u;
+
+	static bool roll_biased_hit(randomness::rng& rng, unsigned int n_attacks, double hit_chance, int& bias);
 
 	unsigned int calc_blows_a(unsigned int a_hp) const;
 	unsigned int calc_blows_b(unsigned int b_hp) const;
@@ -1450,7 +1744,8 @@ monte_carlo_combat_matrix::monte_carlo_combat_matrix(unsigned int a_max_hp,
 		const std::vector<combat_slice>& a_split,
 		const std::vector<combat_slice>& b_split,
 		double a_initially_slowed_chance,
-		double b_initially_slowed_chance)
+		double b_initially_slowed_chance,
+		bool biased)
 	: combat_matrix(a_max_hp,
 			b_max_hp,
 			a_hp,
@@ -1474,6 +1769,7 @@ monte_carlo_combat_matrix::monte_carlo_combat_matrix(unsigned int a_max_hp,
 	, b_hit_chance_(b_hit_chance)
 	, a_initially_slowed_chance_(a_initially_slowed_chance)
 	, b_initially_slowed_chance_(b_initially_slowed_chance)
+	, biased_(biased)
 {
 	scale_probabilities(a_summary[0], a_initial_, 1.0 - a_initially_slowed_chance, a_hp);
 	scale_probabilities(a_summary[1], a_initial_slowed_, a_initially_slowed_chance, a_hp);
@@ -1481,6 +1777,22 @@ monte_carlo_combat_matrix::monte_carlo_combat_matrix(unsigned int a_max_hp,
 	scale_probabilities(b_summary[1], b_initial_slowed_, b_initially_slowed_chance, b_hp);
 
 	clear();
+}
+
+bool monte_carlo_combat_matrix::roll_biased_hit(
+		randomness::rng& rng, unsigned int n_attacks, double hit_chance, int& bias)
+{
+	// Mirrors attack::perform_hit's bias-accumulator PRNG ("Reduced RNG"). The bias carries
+	// across strikes; n_attacks counts the strikes left including this one.
+	const int cth = std::clamp(static_cast<int>(hit_chance * 100.0 + 0.5), 0, 100);
+	if(cth == 0 || cth == 100) {
+		// Never/always hit, and leave the bias untouched.
+		return cth == 100;
+	}
+	const int expected_hits = (cth * static_cast<int>(n_attacks) + bias) / 100;
+	const bool does_hit = rng.get_random_int(0, static_cast<int>(n_attacks) - 1) < expected_hits;
+	bias += cth - 100 * static_cast<int>(does_hit);
+	return does_hit;
 }
 
 void monte_carlo_combat_matrix::simulate()
@@ -1501,10 +1813,16 @@ void monte_carlo_combat_matrix::simulate()
 		unsigned int a_strikes = calc_blows_a(a_hp);
 		unsigned int b_strikes = calc_blows_b(b_hp);
 
+		// Bias accumulators, seeded once per battle and carried across every strike by
+		// roll_biased_hit, matching attack::perform_hit.
+		int a_bias = biased_ ? rng.get_random_int(0, 99) : 0;
+		int b_bias = biased_ ? rng.get_random_int(0, 99) : 0;
+
 		for(unsigned int j = 0u; j < rounds_ && a_hp > 0u && b_hp > 0u; ++j) {
 			for(unsigned int k = 0u; k < std::max(a_strikes, b_strikes); ++k) {
 				if(k < a_strikes) {
-					if(rng.get_random_bool(a_hit_chance_)) {
+					if(biased_ ? roll_biased_hit(rng, a_strikes - k, a_hit_chance_, a_bias)
+					           : rng.get_random_bool(a_hit_chance_)) {
 						// A hits B
 						unsigned int damage = a_slowed ? a_slow_damage_ : a_damage_;
 						damage = std::min(damage, b_hp);
@@ -1524,7 +1842,8 @@ void monte_carlo_combat_matrix::simulate()
 				}
 
 				if(k < b_strikes) {
-					if(rng.get_random_bool(b_hit_chance_)) {
+					if(biased_ ? roll_biased_hit(rng, b_strikes - k, b_hit_chance_, b_bias)
+					           : rng.get_random_bool(b_hit_chance_)) {
 						// B hits A
 						unsigned int damage = b_slowed ? b_slow_damage_ : b_damage_;
 						damage = std::min(damage, a_hp);
@@ -2196,7 +2515,8 @@ void complex_fight(attack_prediction_mode mode,
 			split,
 			opp_split,
 			initially_slowed_chance,
-			opp_initially_slowed_chance
+			opp_initially_slowed_chance,
+			use_biased_combat_rng()
 		);
 
 		mcm->simulate();
@@ -2371,7 +2691,24 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 		fight_complexity(split.size(), opp_split.size(), u_, opponent.u_) > MONTE_CARLO_SIMULATION_THRESHOLD
 		&& prefs::get().damage_prediction_allow_monte_carlo_simulation();
 
-	if(use_monte_carlo_simulation) {
+	const bool biased = use_biased_combat_rng() && !use_monte_carlo_simulation;
+
+	// Only the biased calculations read the pre-fight summaries, and they overwrite
+	// summary as they go, so keep a copy for them alone rather than on every fight.
+	summary_t self_incoming, opp_incoming;
+	if(biased) {
+		self_incoming = summary;
+		opp_incoming = opponent.summary;
+	}
+
+	// It declines before writing anything, so try it before building a result to overwrite.
+	const bool biased_done = biased
+		&& biased_exact_fight(u_, opponent.u_, self_incoming, opp_incoming, summary, opponent.summary, self_not_hit,
+			opp_not_hit, levelup_considered);
+
+	if(biased_done) {
+		// The exact biased calculation has already written both summaries.
+	} else if(use_monte_carlo_simulation) {
 		// A very complex fight. Use Monte Carlo simulation instead of exact
 		// probability calculations.
 		complex_fight(attack_prediction_mode::monte_carlo_simulation, u_, opponent.u_, u_.num_blows,
@@ -2425,6 +2762,35 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 		summary[1].swap(summary_result[1]);
 		opponent.summary[0].swap(opp_summary_result[0]);
 		opponent.summary[1].swap(opp_summary_result[1]);
+	}
+
+	// Biased-mode fallback for fights the exact biased path declined (slow, drain, berserk):
+	// reshape the default-RNG result computed above into the biased two-value hit count, one
+	// side at a time. Each side is convolved independently, so this cannot see one unit's
+	// death cutting the other's strikes short; apply_biased_hit_distribution leaves any side
+	// it still cannot express (e.g. one the opponent can slow) on the default-RNG result.
+	if(biased && !biased_done) {
+		const unsigned int rounds = std::max(u_.rounds, opponent.u_.rounds);
+
+		// Re-derive "not hit" from the replaced summaries.
+		const auto mass_at = [](const summary_t& s, unsigned int hp) {
+			double p = 0.0;
+			if(hp < s[0].size()) {
+				p += s[0][hp];
+			}
+			if(hp < s[1].size()) {
+				p += s[1][hp];
+			}
+			return std::min(p, 1.0);
+		};
+
+		if(apply_biased_hit_distribution(summary, self_incoming, u_, opponent.u_, levelup_considered, rounds)) {
+			self_not_hit = mass_at(summary, u_.hp);
+		}
+		if(apply_biased_hit_distribution(
+			   opponent.summary, opp_incoming, opponent.u_, u_, levelup_considered, rounds)) {
+			opp_not_hit = mass_at(opponent.summary, opponent.u_.hp);
+		}
 	}
 
 #if 0
