@@ -388,13 +388,27 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		case SDL_EVENT_MOUSE_BUTTON_DOWN:
 			{
-				mouse_button_down({static_cast<int>(event.button.x), static_cast<int>(event.button.y)}, button);
+				const hotkey::hotkey_ptr hk = hotkey::get_hotkey(event);
+				bool done = false;
+				if(!hk->null()) {
+					done = hotkey_pressed(hk);
+				}
+				if(!done) {
+					mouse_button_down({static_cast<int>(event.button.x), static_cast<int>(event.button.y)}, button);
+				}
 			}
 			break;
 
 		case SDL_EVENT_MOUSE_BUTTON_UP:
 			{
-				mouse_button_up({static_cast<int>(event.button.x), static_cast<int>(event.button.y)}, button);
+				const hotkey::hotkey_ptr hk = hotkey::get_hotkey(event);
+				bool done = false;
+				if(!hk->null()) {
+					done = hotkey_pressed(hk);
+				}
+				if(!done) {
+					mouse_button_up({static_cast<int>(event.button.x), static_cast<int>(event.button.y)}, button);
+				}
 			}
 			break;
 
