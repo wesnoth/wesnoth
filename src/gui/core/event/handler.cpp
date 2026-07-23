@@ -114,9 +114,7 @@ static uint32_t timer_sdl_poll_events(uint32_t, void*)
 /***** handler class. *****/
 
 /**
- * This singleton class handles all events.
- *
- * It's a new experimental class.
+ * This singleton class handles all gui2 events.
  */
 class sdl_event_handler : public events::sdl_handler
 {
@@ -390,13 +388,27 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		case SDL_EVENT_MOUSE_BUTTON_DOWN:
 			{
-				mouse_button_down({static_cast<int>(event.button.x), static_cast<int>(event.button.y)}, button);
+				const hotkey::hotkey_ptr hk = hotkey::get_hotkey(event);
+				bool done = false;
+				if(!hk->null()) {
+					done = hotkey_pressed(hk);
+				}
+				if(!done) {
+					mouse_button_down({static_cast<int>(event.button.x), static_cast<int>(event.button.y)}, button);
+				}
 			}
 			break;
 
 		case SDL_EVENT_MOUSE_BUTTON_UP:
 			{
-				mouse_button_up({static_cast<int>(event.button.x), static_cast<int>(event.button.y)}, button);
+				const hotkey::hotkey_ptr hk = hotkey::get_hotkey(event);
+				bool done = false;
+				if(!hk->null()) {
+					done = hotkey_pressed(hk);
+				}
+				if(!done) {
+					mouse_button_up({static_cast<int>(event.button.x), static_cast<int>(event.button.y)}, button);
+				}
 			}
 			break;
 

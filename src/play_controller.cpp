@@ -34,6 +34,7 @@
 #include "game_events/pump.hpp"
 #include "game_state.hpp"
 #include "gettext.hpp"
+#include "gui/core/event/handler.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/message.hpp"      // for show_error_message
 #include "gui/dialogs/transient_message.hpp"
@@ -61,6 +62,8 @@
 #include "utils/general.hpp"
 #include "video.hpp"
 #include "whiteboard/manager.hpp"
+
+#include "gui/core/event/map_dispatcher.hpp"
 
 #include <functional>
 
@@ -180,6 +183,8 @@ play_controller::play_controller(const config& level, saved_game& state_of_game)
 
 	try {
 		init(level);
+
+		static gui2::event::map_dispatcher mdispatcher(*this);
 	} catch(...) {
 		DBG_NG << "Caught exception initializing level: " << utils::get_unknown_exception_type();
 		clear_resources();
