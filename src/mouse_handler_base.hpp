@@ -212,12 +212,16 @@ public:
 		return scroll_started_;
 	}
 
-protected:
-	void cancel_dragging();
-	void clear_dragging(const SDL_MouseButtonEvent& event, bool browse);
-	void clear_drag_from_hex();
-	void init_dragging(bool& dragging_flag);
+	void init_dragging_touch() { init_dragging(dragging_touch_); };
+	void init_dragging_left()  { init_dragging(dragging_left_); };
+	void init_dragging_right() { init_dragging(dragging_right_); };
 
+	void cancel_dragging();
+	void clear_dragging(int x, int y, bool browse);
+	void clear_drag_from_hex();
+
+protected:
+	void init_dragging(bool& dragging_flag);
 	/** Show context menu flag */
 	bool show_menu_{false};
 
