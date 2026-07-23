@@ -163,6 +163,9 @@ private:
 	replay_recorder_base* base_;
 	int sent_upto_;
 	std::vector<int> message_locations;
+	// Cache for build_chat_log().
+	mutable std::vector<chat_msg> message_log;
+	mutable std::size_t last_message_location_count = 0;
 };
 
 enum REPLAY_RETURN
