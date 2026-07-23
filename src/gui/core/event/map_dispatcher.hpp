@@ -19,19 +19,10 @@ public:
 	map_dispatcher(play_controller& controller);
 	bool is_at(const point& coordinate) const override;
 
-	void mouse_left_up(
-		gui2::event::ui_event e,
-		bool& handled,
-		const point& p);
-	void mouse_left_down(
-		gui2::event::ui_event e,
-		bool& handled,
-		const point& p);
-
-	void mouse_right_down(
-		gui2::event::ui_event e,
-		bool& handled,
-		const point& p);
+	void mouse_motion(ui_event e, bool& handled, const point& p);
+	void mouse_left_up(ui_event e, bool& handled, const point& p);
+	void mouse_left_down(ui_event e, bool& handled, const point& p);
+	void mouse_right_down(ui_event e, bool& handled, const point& p);
 
 	// TODO Necessary evil because this is a widget and not a dispatcher
 	// getting rid of this requires refactor dispatcher & friends to not rely on widget
