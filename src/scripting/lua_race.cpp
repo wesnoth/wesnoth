@@ -52,6 +52,7 @@ static int impl_race_get(lua_State* L)
 	return_tstring_attrib("plural_name", race.plural_name());
 	return_bool_attrib("ignore_global_traits", !race.uses_global_traits());
 	return_string_attrib("undead_variation", race.undead_variation());
+	return_string_attrib("footprints", race.footprints());
 	return_cfgref_attrib("__cfg", race.get_cfg());
 	if (strcmp(m, "traits") == 0) {
 		lua_newtable(L);
