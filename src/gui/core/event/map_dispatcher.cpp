@@ -13,22 +13,24 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 	: controller_(controller)
 {
 	connect();
+
+	// Mouse handling
 	set_mouse_behavior(dispatcher::mouse_behavior::all);
 
 	connect_signal<SDL_MOUSE_MOTION>(std::bind(
-		&map_dispatcher::mouse_motion, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
+		&map_dispatcher::mouse_motion, this, std::placeholders::_3, std::placeholders::_5));
 
 	connect_signal<SDL_LEFT_BUTTON_UP>(std::bind(
-		&map_dispatcher::mouse_left_up, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
+		&map_dispatcher::mouse_left_up, this, std::placeholders::_3, std::placeholders::_5));
 	connect_signal<SDL_LEFT_BUTTON_DOWN>(std::bind(
-		&map_dispatcher::mouse_left_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
+		&map_dispatcher::mouse_left_down, this, std::placeholders::_3, std::placeholders::_5));
 
 	connect_signal<SDL_RIGHT_BUTTON_DOWN>(std::bind(
-		&map_dispatcher::mouse_right_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
+		&map_dispatcher::mouse_right_down, this, std::placeholders::_3, std::placeholders::_5));
+
 }
 
 void map_dispatcher::mouse_motion(
-	ui_event e,
 	bool& handled,
 	const point& p)
 {
@@ -40,7 +42,6 @@ void map_dispatcher::mouse_motion(
 }
 
 void map_dispatcher::mouse_left_up(
-	ui_event e,
 	bool& handled,
 	const point& p)
 {
@@ -56,7 +57,6 @@ void map_dispatcher::mouse_left_up(
 }
 
 void map_dispatcher::mouse_left_down(
-	ui_event e,
 	bool& handled,
 	const point& p)
 {
@@ -72,7 +72,6 @@ void map_dispatcher::mouse_left_down(
 }
 
 void map_dispatcher::mouse_right_down(
-	ui_event e,
 	bool& handled,
 	const point& p)
 {
