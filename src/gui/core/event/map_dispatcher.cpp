@@ -31,7 +31,6 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 	// Hotkeys
 	set_want_keyboard_input(true);
 	register_hotkey(hotkey::HOTKEY_SELECT_AND_ACTION, [this](auto&&...) {
-		PLAIN_LOG << "Firing hotkey";
 		auto& mhandler = controller_.get_mouse_handler_base();
 		mhandler.select_or_action(controller_.is_browsing());
 		return true;
@@ -53,7 +52,6 @@ void map_dispatcher::mouse_left_up(
 	bool& handled,
 	const point& p)
 {
-	// PLAIN_LOG << "mouse left up at: " << p;
 	auto& mhandler = controller_.get_mouse_handler_base();
 	map_location loc = display::get_singleton()->hex_clicked_on(p.x, p.y);
 	mhandler.mouse_update(controller_.is_browsing(), loc);
@@ -68,7 +66,6 @@ void map_dispatcher::mouse_left_down(
 	bool& handled,
 	const point& p)
 {
-	// PLAIN_LOG << "mouse left down at: " << p;
 	auto& mhandler = controller_.get_mouse_handler_base();
 	map_location loc = display::get_singleton()->hex_clicked_on(p.x, p.y);
 	mhandler.mouse_update(controller_.is_browsing(), loc);
@@ -83,7 +80,6 @@ void map_dispatcher::mouse_right_down(
 	bool& handled,
 	const point& p)
 {
-	// PLAIN_LOG << "mouse right down at: " << p;
 	auto& mhandler = controller_.get_mouse_handler_base();
 	map_location loc = display::get_singleton()->hex_clicked_on(p.x, p.y);
 	mhandler.mouse_update(controller_.is_browsing(), loc);
