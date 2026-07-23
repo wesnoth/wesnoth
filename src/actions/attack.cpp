@@ -873,7 +873,7 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 		} else {
 			auto& bias_opt = attacker_turn ? bias_attacker_ : bias_defender_;
 			if(!bias_opt) {
-				bias_opt = randomness::generator->get_random_int(0,  100 * attacker.n_attacks_ - 1);
+				bias_opt = randomness::generator->get_random_int(0,  99);
 			}
 			int& bias = *bias_opt;
 			// attacker.n_attacks_ is the number of strikes left.
