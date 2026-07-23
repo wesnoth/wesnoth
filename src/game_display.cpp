@@ -311,7 +311,7 @@ std::vector<texture> footsteps_images(const map_location& loc, const pathfind::m
 	}
 
 	if(footprints.empty()) {
-		footprints = "humanoid";
+		footprints = "default";
 	}
 	const std::string foot_speed_prefix = "footsteps/" + footprints + "/";
 
