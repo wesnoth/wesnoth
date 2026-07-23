@@ -662,8 +662,8 @@ private:
 
 	bool use_prng_;
 
-	int bias_attacker_;
-	int bias_defender_;
+	utils::optional<int> bias_attacker_;
+	utils::optional<int> bias_defender_;
 };
 
 attack::unit_info::unit_info(const map_location& loc, int weapon, unit_map& units)
@@ -737,8 +737,8 @@ attack::attack(const map_location& attacker,
 
 	//new experimental prng mode.
 	, use_prng_(resources::classification->random_mode == "biased" && randomness::generator->is_networked() == false)
-	, bias_attacker_(0)
-	, bias_defender_(0)
+	, bias_attacker_()
+	, bias_defender_()
 {
 	if(use_prng_) {
 		LOG_NG << "Using experimental PRNG for combat";
@@ -871,10 +871,14 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 			// TODO: should we call randomness::generator->get_random_int() anyways to stay in sync? (doing so would mean we are calling rng the same amount of times in the biased and defaultmode
 			ran_num = 50;
 		} else {
-			int& bias = attacker_turn ? bias_attacker_ : bias_defender_;
+			auto& bias_opt = attacker_turn ? bias_attacker_ : bias_defender_;
+			if(!bias_opt) {
+				bias_opt = randomness::generator->get_random_int(0,  99);
+			}
+			int& bias = *bias_opt;
 			// attacker.n_attacks_ is the number of strikes left.
-			int expected_hits = attacker.cth_ * attacker.n_attacks_ + bias;
-			bool does_hit = randomness::generator->get_random_int(0,  100 * attacker.n_attacks_ - 1) < expected_hits;
+			int expected_hits = (attacker.cth_ * attacker.n_attacks_ + bias) / 100;
+			bool does_hit = randomness::generator->get_random_int(0,  attacker.n_attacks_ - 1) < expected_hits;
 			bias += (attacker.cth_ - 100 * int(does_hit));
 			ran_num = does_hit ? 0 : 99;
 		}
