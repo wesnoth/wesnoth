@@ -64,7 +64,7 @@ class halo_impl
 
 		bool expired()     const { return !images_.cycles() && images_.animation_finished(); }
 		bool need_update() const { return images_.need_update(); }
-		bool does_change() const { return !images_.does_not_change(); }
+		bool does_change() const { return !images_.is_static(); }
 
 	private:
 
@@ -171,7 +171,9 @@ rect halo_impl::effect::get_draw_location()
 /** Update the current location, animation frame, etc. */
 void halo_impl::effect::update()
 {
-	images_.update_last_draw_time(); //name is a bit missleading, it needs to be called on every update to keep the timer on track.
+	if(images_.need_update()) {
+		images_.advance_to_current_frame();
+	}
 	double zf = disp->get_zoom_factor();
 
 	if(map_loc_.x != -1 && map_loc_.y != -1) {
