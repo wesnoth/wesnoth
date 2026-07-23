@@ -1,4 +1,5 @@
 #include "gui/core/event/map_dispatcher.hpp"
+#include "gui/core/event/handler.hpp"
 #include "log.hpp"
 #include "resources.hpp"
 
@@ -12,19 +13,34 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 	: controller_(controller)
 {
 	connect();
-	set_mouse_behavior(gui2::event::dispatcher::mouse_behavior::all);
+	set_mouse_behavior(dispatcher::mouse_behavior::all);
 
-	connect_signal<gui2::event::SDL_LEFT_BUTTON_UP>(std::bind(
+	connect_signal<SDL_MOUSE_MOTION>(std::bind(
+		&map_dispatcher::mouse_motion, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
+
+	connect_signal<SDL_LEFT_BUTTON_UP>(std::bind(
 		&map_dispatcher::mouse_left_up, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
-	connect_signal<gui2::event::SDL_LEFT_BUTTON_DOWN>(std::bind(
+	connect_signal<SDL_LEFT_BUTTON_DOWN>(std::bind(
 		&map_dispatcher::mouse_left_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
 
-	connect_signal<gui2::event::SDL_RIGHT_BUTTON_DOWN>(std::bind(
+	connect_signal<SDL_RIGHT_BUTTON_DOWN>(std::bind(
 		&map_dispatcher::mouse_right_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5));
 }
 
+void map_dispatcher::mouse_motion(
+	ui_event e,
+	bool& handled,
+	const point& p)
+{
+	auto& mhandler = controller_.get_mouse_handler_base();
+	map_location loc = display::get_singleton()->hex_clicked_on(p.x, p.y);
+	mhandler.mouse_update(controller_.is_browsing(), loc);
+
+	handled = true;
+}
+
 void map_dispatcher::mouse_left_up(
-	gui2::event::ui_event e,
+	ui_event e,
 	bool& handled,
 	const point& p)
 {
@@ -33,12 +49,14 @@ void map_dispatcher::mouse_left_up(
 	map_location loc = display::get_singleton()->hex_clicked_on(p.x, p.y);
 	mhandler.mouse_update(controller_.is_browsing(), loc);
 
+	mhandler.clear_dragging(p.x, p.y, controller_.is_browsing());
 	mhandler.left_mouse_up(p.x, p.y, controller_.is_browsing());
+	mhandler.clear_drag_from_hex();
 	handled = true;
 }
 
 void map_dispatcher::mouse_left_down(
-	gui2::event::ui_event e,
+	ui_event e,
 	bool& handled,
 	const point& p)
 {
@@ -47,12 +65,14 @@ void map_dispatcher::mouse_left_down(
 	map_location loc = display::get_singleton()->hex_clicked_on(p.x, p.y);
 	mhandler.mouse_update(controller_.is_browsing(), loc);
 
+	mhandler.cancel_dragging();
+	mhandler.init_dragging_left();
 	mhandler.left_click(p.x, p.y, controller_.is_browsing());
 	handled = true;
 }
 
 void map_dispatcher::mouse_right_down(
-	gui2::event::ui_event e,
+	ui_event e,
 	bool& handled,
 	const point& p)
 {
