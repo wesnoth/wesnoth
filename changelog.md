@@ -24,6 +24,7 @@
 ### User interface
    * Fix sound effect slider which was incorrectly affecting the music track volume.
 ### WML Engine
+   * Custom WML menu items now support an accompanying toggle button.
 ### Miscellaneous and Bug Fixes
 ### Android
 
