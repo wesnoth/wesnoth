@@ -34,6 +34,14 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 		mhandler.select_or_action(controller_.is_browsing());
 		return true;
 	});
+	register_hotkey(hotkey::HOTKEY_DESELECT_HEX, [this](auto&&...) {
+		auto& mhandler = controller_.get_mouse_handler_base();
+		bool is_selected = mhandler.get_selected_hex().valid();
+		if (is_selected) {
+			mhandler.deselect_hex();
+		}
+		return is_selected;
+	});
 }
 
 void map_dispatcher::mouse_motion(
