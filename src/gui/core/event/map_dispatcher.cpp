@@ -1,6 +1,7 @@
 #include "gui/core/event/map_dispatcher.hpp"
 #include "gui/core/event/handler.hpp"
 #include "log.hpp"
+#include "play_controller.hpp"
 #include "resources.hpp"
 
 namespace gui2
@@ -12,8 +13,6 @@ namespace event
 map_dispatcher::map_dispatcher(play_controller& controller)
 	: controller_(controller)
 {
-	connect();
-
 	// Mouse handling
 	set_mouse_behavior(dispatcher::mouse_behavior::all);
 
