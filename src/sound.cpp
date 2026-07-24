@@ -397,7 +397,7 @@ bool init_sound()
 			track_map.emplace(i, sound_tracks::type::sound_ui);
 		}
 
-		for(std::size_t i = n_reserved_tracks_id_start; i <= n_reserved_tracks_id_end; i++) {
+		for(std::size_t i = n_reserved_tracks_id_start; i < n_reserved_tracks_id_end; i++) {
 			std::shared_ptr<MIX_Track> sound_fx_track(MIX_CreateTrack(mixer), &MIX_DestroyTrack);
 			MIX_TagTrack(sound_fx_track.get(), sound_tracks::sound_fx);
 			tracks.push_back(sound_fx_track);
@@ -771,28 +771,48 @@ void write_music_play_list(config& snapshot)
 	}
 }
 
+static MIX_Point3D distance_to_position(unsigned int distance)
+{
+	// SDL3_mixer attenuates as 1/distance; invert that so the audible fade stays linear, like SDL2's Mix_SetDistance.
+	MIX_Point3D pos;
+	pos.x = 0.0f;
+	pos.y = static_cast<float>(DISTANCE_SILENT) / (DISTANCE_SILENT - distance);
+	pos.z = 0.0f;
+	return pos;
+}
+
 void reposition_sound(unsigned id, unsigned int distance)
 {
-	for(unsigned ch = 0; ch < tracks.size(); ++ch) {
-		if(ch != id) {
-			continue;
+	int track;
+	{
+		std::scoped_lock lock(soundsource_map_mutex);
+		auto it = soundsource_map.find(id);
+		if(it == soundsource_map.end()) {
+			return;
 		}
+		track = it->second;
+	}
 
-		if(distance == DISTANCE_SILENT) {
-			MIX_StopTrack(tracks[ch].get(), 0);
-		} else {
-			MIX_Point3D pos;
-			pos.x = 0;
-			pos.y = distance;
-			pos.z = 0;
-			MIX_SetTrack3DPosition(tracks[ch].get(), &pos);
-		}
+	if(distance >= DISTANCE_SILENT) {
+		MIX_StopTrack(tracks[track].get(), 0);
+	} else {
+		MIX_Point3D pos = distance_to_position(distance);
+		MIX_SetTrack3DPosition(tracks[track].get(), &pos);
 	}
 }
 
 bool is_sound_playing(int id)
 {
-	return MIX_TrackPlaying(tracks[id].get());
+	int track;
+	{
+		std::scoped_lock lock(soundsource_map_mutex);
+		auto it = soundsource_map.find(id);
+		if(it == soundsource_map.end()) {
+			return false;
+		}
+		track = it->second;
+	}
+	return MIX_TrackPlaying(tracks[track].get());
 }
 
 void stop_sound(unsigned id)
@@ -810,7 +830,7 @@ static void play_sound_internal(const std::string& files,
 		const std::chrono::milliseconds& loop_ticks = 0ms,
 		const std::chrono::milliseconds& fadein_ticks = 0ms)
 {
-	if(files.empty() || !mix_ok) {
+	if(files.empty() || distance >= DISTANCE_SILENT || !mix_ok) {
 		return;
 	}
 
@@ -848,11 +868,10 @@ static void play_sound_internal(const std::string& files,
 	const auto localized = filesystem::get_localized_path(filename.value_or(""));
 	std::string real_path = localized.value_or(filename.value());
 
-	MIX_Point3D pos;
-	pos.x = 0;
-	pos.y = distance;
-	pos.z = 0;
-	MIX_SetTrack3DPosition(tracks[free_track].get(), &pos);
+	if(group == sound_tracks::type::sound_source) {
+		MIX_Point3D pos = distance_to_position(distance);
+		MIX_SetTrack3DPosition(tracks[free_track].get(), &pos);
+	}
 
 	std::shared_ptr<MIX_Audio> sound;
 	if(sound_cache.count(real_path) != 0) {
@@ -861,6 +880,11 @@ static void play_sound_internal(const std::string& files,
 	} else {
 		sound.reset(MIX_LoadAudio(mixer, real_path.c_str(), false), &MIX_DestroyAudio);
 		DBG_AUDIO << "cache miss for " << real_path;
+	}
+
+	if(!sound) {
+		ERR_AUDIO << "Could not load sound file '" << real_path << "' : " << SDL_GetError();
+		return;
 	}
 
 	MIX_SetTrackAudio(tracks[free_track].get(), sound.get());
@@ -918,6 +942,12 @@ static void play_sound_internal(const std::string& files,
 } // end anon namespace
 
 namespace sound {
+// The volume sliders range 0..128; MIX_SetTrackGain expects a 0.0..1.0 gain.
+static float volume_to_gain(int vol)
+{
+	return (vol > 128 ? 128 : vol) / 128.0f;
+}
+
 void play_sound(const std::string& files, sound_tracks::type group, unsigned int repeats)
 {
 	if(prefs::get().sound()) {
@@ -959,7 +989,7 @@ void play_UI_sound(const std::string& files)
 int get_music_volume()
 {
 	if(mix_ok) {
-		return MIX_SetTrackGain(sound::tracks[music_track_id].get(), -1);
+		return static_cast<int>(MIX_GetTrackGain(sound::tracks[music_track_id].get()) * 128.0f);
 	}
 
 	return 0;
@@ -968,11 +998,7 @@ int get_music_volume()
 void set_music_volume(int vol)
 {
 	if(mix_ok && vol >= 0) {
-		if(vol > 1.0f) {
-			vol = 1.0f;
-		}
-
-		MIX_SetTrackGain(sound::tracks[music_track_id].get(), vol);
+		MIX_SetTrackGain(sound::tracks[music_track_id].get(), volume_to_gain(vol));
 	}
 }
 
@@ -980,7 +1006,7 @@ int get_sound_volume()
 {
 	if(mix_ok) {
 		// Since set_sound_volume sets all main tracks to the same, just return the volume of any main track
-		return MIX_SetTrackGain(sound::tracks[source_track_id_start].get(), -1);
+		return static_cast<int>(MIX_GetTrackGain(sound::tracks[source_track_id_start].get()) * 128.0f);
 	}
 	return 0;
 }
@@ -988,14 +1014,13 @@ int get_sound_volume()
 void set_sound_volume(int vol)
 {
 	if(mix_ok && vol >= 0) {
-		if(vol > 1.0f) {
-			vol = 1.0f;
-		}
+		float gain = volume_to_gain(vol);
 
 		// Bell, timer and UI have separate tracks which we can't set up from this
 		// Also separating music track from being modified
 		for(unsigned i = 0; i < n_of_tracks; ++i) {
-			if(i != music_track_id && !(i >= UI_sound_track_id_start && i <= UI_sound_track_id_last) && i != bell_track_id && i != timer_track_id) {				MIX_SetTrackGain(sound::tracks[i].get(), vol);
+			if(i != music_track_id && !(i >= UI_sound_track_id_start && i <= UI_sound_track_id_last) && i != bell_track_id && i != timer_track_id) {
+				MIX_SetTrackGain(sound::tracks[i].get(), gain);
 			}
 		}
 	}
@@ -1007,24 +1032,18 @@ void set_sound_volume(int vol)
 void set_bell_volume(int vol)
 {
 	if(mix_ok && vol >= 0) {
-		if(vol > 1.0f) {
-			vol = 1.0f;
-		}
-
-		MIX_SetTrackGain(sound::tracks[bell_track_id].get(), vol);
-		MIX_SetTrackGain(sound::tracks[timer_track_id].get(), vol);
+		float gain = volume_to_gain(vol);
+		MIX_SetTrackGain(sound::tracks[bell_track_id].get(), gain);
+		MIX_SetTrackGain(sound::tracks[timer_track_id].get(), gain);
 	}
 }
 
 void set_UI_volume(int vol)
 {
 	if(mix_ok && vol >= 0) {
-		if(vol > 1.0f) {
-			vol = 1.0f;
-		}
-
+		float gain = volume_to_gain(vol);
 		for(unsigned i = UI_sound_track_id_start; i <= UI_sound_track_id_last; ++i) {
-			MIX_SetTrackGain(sound::tracks[i].get(), vol);
+			MIX_SetTrackGain(sound::tracks[i].get(), gain);
 		}
 	}
 }

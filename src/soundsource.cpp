@@ -19,6 +19,8 @@
 #include "sound.hpp"
 #include "soundsource.hpp"
 
+#include <cmath>
+
 namespace soundsource {
 
 using namespace std::chrono_literals;
@@ -136,34 +138,42 @@ bool positional_source::is_global() const
 
 void positional_source::update(const std::chrono::steady_clock::time_point& time, const display &disp)
 {
-	if (time - last_played_ < min_delay_ || sound::is_sound_playing(id_))
+	if(sound::is_sound_playing(id_))
 		return;
 
-	int i = randomness::rng::default_instance().get_random_int(1, 100);
+	// The min_delay/chance gate spaces out and randomizes one-shot ambient
+	// triggers; looping sources skip it and play whenever they are in range.
+	const bool looping = loops_ != 0;
 
-	if(i <= chance_) {
-		last_played_ = time;
-
-		// If no locations have been specified, treat the source as if
-		// it was present everywhere on the map
-		if(locations_.empty()) {
-			sound::play_sound_positioned(files_, loops_, 0, id_);	// max volume
-			return;
-		}
-
-		int distance_volume = DISTANCE_SILENT;
-		for(const map_location& l : locations_) {
-			int v = calculate_volume(l, disp);
-			if(v < distance_volume) {
-				distance_volume = v;
-			}
-		}
-
-		if(distance_volume >= DISTANCE_SILENT)
+	if(!looping) {
+		if(time - last_played_ < min_delay_)
 			return;
 
-		sound::play_sound_positioned(files_, loops_, distance_volume, id_);
+		if(randomness::rng::default_instance().get_random_int(1, 100) > chance_)
+			return;
 	}
+
+	last_played_ = time;
+
+	// If no locations have been specified, treat the source as if
+	// it was present everywhere on the map
+	if(locations_.empty()) {
+		sound::play_sound_positioned(files_, loops_, 0, id_);	// max volume
+		return;
+	}
+
+	int distance_volume = DISTANCE_SILENT;
+	for(const map_location& l : locations_) {
+		int v = calculate_volume(l, disp);
+		if(v < distance_volume) {
+			distance_volume = v;
+		}
+	}
+
+	if(distance_volume >= DISTANCE_SILENT)
+		return;
+
+	sound::play_sound_positioned(files_, loops_, distance_volume, id_);
 }
 
 void positional_source::update_positions(const std::chrono::steady_clock::time_point& time, const display &disp)
@@ -195,9 +205,14 @@ int positional_source::calculate_volume(const map_location &loc, const display &
 	if((check_shrouded_ && disp.shrouded(loc)) || (check_fogged_ && disp.fogged(loc)))
 		return DISTANCE_SILENT;
 
+	// Pixel distance from the screen centre to the hex, in hex_size units, with
+	// the x axis scaled by hex_size/hex_width to correct the column spacing.
 	rect area = disp.map_area();
-	map_location center = disp.hex_clicked_on(area.x + area.w / 2, area.y + area.h / 2);
-	int distance = distance_between(loc, center);
+	const double hex = disp.hex_size();
+	point src = disp.get_location(loc);
+	double dx = ((src.x + hex / 2.0) - (area.x + area.w / 2.0)) * hex / disp.hex_width();
+	double dy = (src.y + hex / 2.0) - (area.y + area.h / 2.0);
+	double distance = std::sqrt(dx * dx + dy * dy) / hex;
 
 	if(distance <= range_) {
 		return 0;
@@ -207,8 +222,10 @@ int positional_source::calculate_volume(const map_location &loc, const display &
 		return DISTANCE_SILENT;
 	}
 
-	return static_cast<int>((((distance - range_)
-			/ static_cast<double>(faderange_)) * DISTANCE_SILENT));
+	int volume = static_cast<int>(((distance - range_)
+			/ static_cast<double>(faderange_)) * DISTANCE_SILENT);
+
+	return volume >= DISTANCE_SILENT ? DISTANCE_SILENT : volume;
 }
 
 void positional_source::write_config(config& cfg) const
