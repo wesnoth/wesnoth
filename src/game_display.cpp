@@ -282,6 +282,13 @@ const image::locator mouseover_ally_top
 const image::locator mouseover_ally_bot
 	{"misc/hover-hex-bottom.png", "~RC(magenta>lightblue)"};
 
+/** How far the prints need strengthening at the current zoom, 0 at 3x up to 1 at 1/5x. */
+double footprint_boost()
+{
+	const double octaves = std::log2(3.0 / display::get_zoom_factor());
+	return std::clamp(octaves / 4.0, 0.0, 1.0);
+}
+
 /**
  * Function to return 2 half-hex footsteps images for the given location.
  * Only loc is on the current route set by set_route.
@@ -308,10 +315,15 @@ std::vector<texture> footsteps_images(const map_location& loc, const pathfind::m
 	if(u != dc->units().end()) {
 		move_cost = u->movement_cost(dc->map().get_terrain(loc));
 		footprints = u->type().footprints();
+
+		// Fall back to the unit's race, which a [unit] may have overridden
+		if(footprints.empty()) {
+			footprints = u->race()->footprints();
+		}
 	}
 
 	if(footprints.empty()) {
-		footprints = "humanoid";
+		footprints = "default";
 	}
 	const std::string foot_speed_prefix = "footsteps/" + footprints + "/";
 
@@ -362,6 +374,54 @@ std::vector<texture> footsteps_images(const map_location& loc, const pathfind::m
 
 	return res;
 }
+
+/**
+ * Zoomed out, the prints are easily lost in the terrain. The art is authored
+ * faint, so build it up with repeated passes.
+ */
+struct zoom_boost_step_renderer
+{
+	std::vector<texture> images;
+
+	void operator()(const rect& dest) const {
+		const double boost = footprint_boost();
+
+		// Zoomed in past where any strengthening applies, so the extra passes
+		// below would all be fully transparent
+		if(boost <= 0.0) {
+			for(const texture& t : images) {
+				draw::blit(t, dest);
+			}
+			return;
+		}
+
+		const auto alpha = [boost](double full) { return static_cast<uint8_t>(boost * full); };
+
+		for(texture t : images) {
+			// Sits under the print, showing through most where the art fades out
+			t.set_color_mod(50, 45, 40);
+			t.set_alpha_mod(alpha(200));
+			draw::blit(t, dest);
+			draw::blit(t, dest);
+
+			t.set_color_mod(255, 255, 255);
+			t.set_alpha_mod(255);
+			draw::blit(t, dest);
+
+			// Further passes composite past the opacity the art is drawn at
+			t.set_alpha_mod(alpha(255));
+			draw::blit(t, dest);
+			draw::blit(t, dest);
+
+			t.set_blend_mode(SDL_BLENDMODE_ADD);
+			t.set_alpha_mod(alpha(45));
+			draw::blit(t, dest);
+
+			t.set_blend_mode(SDL_BLENDMODE_BLEND);
+			t.set_alpha_mod(255);
+		}
+	}
+};
 
 struct flash_fade_step_renderer
 {
@@ -481,11 +541,8 @@ void game_display::draw_hex(const map_location& loc)
 			// Draw standard footsteps for the current turn's route.
 			std::vector<texture> footstepImages = footsteps_images(loc, route_, dc_);
 			if(!footstepImages.empty()) {
-				drawing_buffer_add(drawing_layer::footsteps, loc, [images = std::move(footstepImages)](const rect& dest) {
-					for(const texture& t : images) {
-						draw::blit(t, dest);
-					}
-				});
+				drawing_buffer_add(drawing_layer::footsteps, loc,
+					zoom_boost_step_renderer{ std::move(footstepImages) });
 			}
 
 			// Draw the flash fade effect for queued (future turn) moves.
