@@ -3,12 +3,9 @@
 #include "gui/widgets/widget.hpp"
 #include "gui/auxiliary/iterator/walker.hpp"
 
-#include "play_controller.hpp"
+class play_controller;
 
-namespace gui2
-{
-
-namespace event
+namespace gui2::event
 {
 
 class map_dispatcher : public gui2::widget {
@@ -38,4 +35,3 @@ public:
 
 }
 
-}
