@@ -20,25 +20,17 @@ def CheckSDL3(context, require_version):
         env["ENV"]["PATH"] = PrependPath(environ["PATH"], join(sdldir, "bin"))
         env["ENV"]["PKG_CONFIG_PATH"] = PrependPath(environ.get("PKG_CONFIG_PATH", ""), join(sdldir, "lib/pkgconfig"))
 
-    # if not building for windows or if building for windows on linux
-    if env["PLATFORM"] != "win32" or (env["PLATFORM"] == "win32" and sys.platform == "linux"):
-        for foo_config in [
-            "pkg-config --cflags --libs $PKG_CONFIG_FLAGS sdl3",
-            "sdl3-config --cflags --libs",
-            "echo -lSDL3"
-            ]:
-            try:
-                env.ParseConfig(foo_config)
-            except OSError:
-                pass
-            else:
-                break
-    else:
-        if sdldir:
-            env.AppendUnique(CPPPATH = [os.path.join(sdldir, "include/SDL3")], LIBPATH = [os.path.join(sdldir, "lib")])
-        env.AppendUnique(CCFLAGS = ["-D_GNU_SOURCE"])
-        env.AppendUnique(LIBS = Split("mingw32 SDL3main SDL3"))
-        env.AppendUnique(LINKFLAGS = ["-mwindows", "-fstack-protector"])
+    for foo_config in [
+        "pkg-config --cflags --libs $PKG_CONFIG_FLAGS sdl3",
+        "sdl3-config --cflags --libs",
+        "echo -lSDL3"
+        ]:
+        try:
+            env.ParseConfig(foo_config)
+        except OSError:
+            pass
+        else:
+            break
 
     cpp_file = File("src/conftests/sdl3.cpp").rfile().abspath
     if not os.path.isfile(cpp_file):
