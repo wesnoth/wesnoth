@@ -904,11 +904,11 @@ function return_table:execution(cfg,data)
     retreat_goal_count = 0;
     for x,y,hex in retreatmap:iter() do
         if not hex.create_goal then goto next_hex end
-        -- goal value always ranges from 0.5 to 2.5, depending on the hex's value
+        -- goal value always ranges from 0.3 to 1.0, depending on the hex's value
         -- need a value high enough that we stop nearby units from running by,
         -- but also low enough that we don't pull distant units who have better things to do
         local multiplier = (hex.value-min_value) / (max_value-min_value);
-        local value = 0.5 + 2.0 * ( multiplier~=multiplier and 0.5 or multiplier); -- 0/0 (i.e. NaN) defaults to multiplier=0.5
+        local value = 0.3 + 0.7 * ( multiplier~=multiplier and 0.5 or multiplier); -- 0/0 (i.e. NaN) defaults to multiplier=0.5
         -- offset the goal one hex away from the dangerous edge of the retreat area, so reinforcing units stop a hex short of it instead of right on it
         -- candidates are the unit's own hex (= no offset) plus its neighbours; pick the best by:
         --   primary  : lowest enemy threat -- the threatmap's .enemies value carries a small distance gradient (see GENERATE THREATMAP), so it points away from the threat
@@ -940,7 +940,7 @@ function return_table:execution(cfg,data)
                 id='regroup_mai_side'..wesnoth.current.side..'_retreat'..retreat_goal_count,
                 name='target_location',
                 value=value,
-                T.criteria{ x=goal_x, y=goal_y }
+                T.criteria{ x=goal_x, y=goal_y, radius=1 }
             }
         });
         -----------------------------------------------
