@@ -133,18 +133,20 @@ function return_table:execution(cfg,data)
     -- remember that the threat evaluations already also factor in each unit's alignment for a +/- 25%
     -- and remember that we consider our units' next-turn moves, but only our enemies' this-turn moves
     local function is_safe_hex( hex, enemy_adjustment )
+        local this_turn_lawful_bonus = wesnoth.schedule.get_time_of_day(nil,          wesnoth.current.turn                            ).lawful_bonus;
+        local next_turn_lawful_bonus = wesnoth.schedule.get_time_of_day(nil, math.min(wesnoth.current.turn+1, wesnoth.scenario.turns) ).lawful_bonus;
         local is_good_tod = (
             (cfg.retreat_tod=='none') or -- if retreat_tod=none, assume it's always a good ToD
-            (cfg.retreat_tod=='nighttime' and wesnoth.schedule.get_time_of_day(nil,wesnoth.current.turn).lawful_bonus >= 0) or
-            (cfg.retreat_tod=='daytime'   and wesnoth.schedule.get_time_of_day(nil,wesnoth.current.turn).lawful_bonus <= 0)
+            (cfg.retreat_tod=='nighttime' and this_turn_lawful_bonus>=0) or
+            (cfg.retreat_tod=='daytime'   and this_turn_lawful_bonus<=0)
         );
         local is_almost_bad_tod = (
-            (cfg.retreat_tod=='nighttime' and wesnoth.schedule.get_time_of_day(nil,wesnoth.current.turn+1).lawful_bonus < 0) or
-            (cfg.retreat_tod=='daytime'   and wesnoth.schedule.get_time_of_day(nil,wesnoth.current.turn+1).lawful_bonus > 0)
+            (cfg.retreat_tod=='nighttime' and next_turn_lawful_bonus<0) or
+            (cfg.retreat_tod=='daytime'   and next_turn_lawful_bonus>0)
         );
         local is_almost_good_tod = (
-            (cfg.retreat_tod=='nighttime' and wesnoth.schedule.get_time_of_day(nil,wesnoth.current.turn+1).lawful_bonus >= 0) or
-            (cfg.retreat_tod=='daytime'   and wesnoth.schedule.get_time_of_day(nil,wesnoth.current.turn+1).lawful_bonus <= 0)
+            (cfg.retreat_tod=='nighttime' and next_turn_lawful_bonus>=0) or
+            (cfg.retreat_tod=='daytime'   and next_turn_lawful_bonus<=0)
         );
         enemy_adjustment = enemy_adjustment or 0;
         return
