@@ -121,12 +121,13 @@ void map_dispatcher::mouse_right_down(
 	hotkey::command_executor* cmd_exec = controller_.get_hotkey_command_executor();
 	if(!menu || !cmd_exec) {
 		handled = false;
+		return;
 	}
 
 	// context menus cannot appear outside map area,
-	// but main top-panel menus can.
 	if(menu && !(display::get_singleton()->map_area().contains(p))) {
 		handled = false;
+		return;
 	}
 
 	cmd_exec->show_menu(menu->items(), p, menu);
