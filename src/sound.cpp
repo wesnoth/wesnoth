@@ -870,20 +870,20 @@ static void play_sound_internal(const std::string& files,
 	bool res;
 	if(loop_ticks > 0ms) {
 		if(fadein_ticks > 0ms) {
-			SDL_SetNumberProperty(props.id(), MIX_PROP_PLAY_FADE_IN_MILLISECONDS_NUMBER, fadein_ticks.count());
-			SDL_SetNumberProperty(props.id(), MIX_PROP_PLAY_MAX_MILLISECONDS_NUMBER, loop_ticks.count());
+			SDL_SetNumberProperty(props, MIX_PROP_PLAY_FADE_IN_MILLISECONDS_NUMBER, fadein_ticks.count());
+			SDL_SetNumberProperty(props, MIX_PROP_PLAY_MAX_MILLISECONDS_NUMBER, loop_ticks.count());
 		} else {
-			SDL_SetNumberProperty(props.id(), MIX_PROP_PLAY_LOOPS_NUMBER, -1);
+			SDL_SetNumberProperty(props, MIX_PROP_PLAY_LOOPS_NUMBER, -1);
 		}
 	} else {
 		if(fadein_ticks > 0ms) {
-			SDL_SetNumberProperty(props.id(), MIX_PROP_PLAY_FADE_IN_MILLISECONDS_NUMBER, fadein_ticks.count());
+			SDL_SetNumberProperty(props, MIX_PROP_PLAY_FADE_IN_MILLISECONDS_NUMBER, fadein_ticks.count());
 		} else {
-			SDL_SetNumberProperty(props.id(), MIX_PROP_PLAY_LOOPS_NUMBER, repeats);
+			SDL_SetNumberProperty(props, MIX_PROP_PLAY_LOOPS_NUMBER, repeats);
 		}
 	}
 
-	res = MIX_PlayTrack(tracks[free_track].get(), props.id());
+	res = MIX_PlayTrack(tracks[free_track].get(), props);
 
 	if(!res) {
 		ERR_AUDIO << "error playing sound effect " << real_path << " : " << SDL_GetError();
