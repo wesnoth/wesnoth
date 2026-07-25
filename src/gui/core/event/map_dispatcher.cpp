@@ -1,6 +1,9 @@
 #include "gui/core/event/map_dispatcher.hpp"
 #include "gui/core/event/handler.hpp"
+#include "gui/gui.hpp"
+#include "hotkey/hotkey_command.hpp"
 #include "log.hpp"
+#include "preferences/preferences.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 
@@ -41,6 +44,25 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 			mhandler.deselect_hex();
 		}
 		return is_selected;
+	});
+	register_hotkey(hotkey::HOTKEY_CYCLE_UNITS, [this](auto&&...) {
+		auto& mhandler = controller_.get_mouse_handler_base();
+		mhandler.cycle_units(controller_.is_browsing());
+		return true;
+	});
+	register_hotkey(hotkey::HOTKEY_CYCLE_BACK_UNITS, [this](auto&&...) {
+		auto& mhandler = controller_.get_mouse_handler_base();
+		mhandler.cycle_back_units(controller_.is_browsing());
+		return true;
+	});
+	register_hotkey(hotkey::HOTKEY_QUIT_GAME, [](auto&&...) {
+		quit_confirmation::quit_to_desktop();
+		return true;
+	});
+	register_hotkey(hotkey::HOTKEY_QUIT_TO_DESKTOP, [](auto&&...) {
+		gui2::switch_theme(prefs::get().gui2_theme());
+		quit_confirmation::quit_to_title();
+		return true;
 	});
 }
 
