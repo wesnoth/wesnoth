@@ -34,8 +34,11 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 	set_want_keyboard_input(true);
 	register_hotkey(hotkey::HOTKEY_SELECT_AND_ACTION, [this](auto&&...) {
 		auto& mhandler = controller_.get_mouse_handler_base();
-		mhandler.select_or_action(controller_.is_browsing());
-		return true;
+		bool is_selected = mhandler.get_last_hex().valid();
+		if (is_selected) {
+			mhandler.select_or_action(controller_.is_browsing());
+		}
+		return is_selected;
 	});
 	register_hotkey(hotkey::HOTKEY_DESELECT_HEX, [this](auto&&...) {
 		auto& mhandler = controller_.get_mouse_handler_base();
@@ -45,6 +48,7 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 		}
 		return is_selected;
 	});
+
 	register_hotkey(hotkey::HOTKEY_CYCLE_UNITS, [this](auto&&...) {
 		auto& mhandler = controller_.get_mouse_handler_base();
 		mhandler.cycle_units(controller_.is_browsing());
@@ -55,13 +59,13 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 		mhandler.cycle_back_units(controller_.is_browsing());
 		return true;
 	});
-	register_hotkey(hotkey::HOTKEY_QUIT_GAME, [](auto&&...) {
-		quit_confirmation::quit_to_desktop();
-		return true;
-	});
 	register_hotkey(hotkey::HOTKEY_QUIT_TO_DESKTOP, [](auto&&...) {
 		gui2::switch_theme(prefs::get().gui2_theme());
 		quit_confirmation::quit_to_title();
+		return true;
+	});
+	register_hotkey(hotkey::HOTKEY_QUIT_GAME, [](auto&&...) {
+		quit_confirmation::quit_to_desktop();
 		return true;
 	});
 }
