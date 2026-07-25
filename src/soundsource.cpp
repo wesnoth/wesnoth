@@ -82,8 +82,8 @@ void manager::update()
 {
 	auto time = std::chrono::steady_clock::now();
 
-	for(positional_source_iterator it = sources_.begin(); it != sources_.end(); ++it) {
-		(*it).second->update(time, disp_);
+	for(const auto& [source_id, source] : sources_) {
+		source->update(time, disp_);
 	}
 }
 
@@ -91,19 +91,19 @@ void manager::update_positions()
 {
 	auto time = std::chrono::steady_clock::now();
 
-	for(positional_source_iterator it = sources_.begin(); it != sources_.end(); ++it) {
-		(*it).second->update_positions(time, disp_);
+	for(const auto& [source_id, source] : sources_) {
+		source->update_positions(time, disp_);
 	}
 }
 
 void manager::write_sourcespecs(config& cfg) const
 {
-	for(positional_source_const_iterator i = sources_.begin(); i != sources_.end(); ++i) {
-		assert(i->second);
+	for(const auto& [source_id, source] : sources_) {
+		assert(source);
 
 		config& child = cfg.add_child("sound_source");
-		child["id"] = i->first;
-		i->second->write_config(child);
+		child["id"] = source_id;
+		source->write_config(child);
 	}
 }
 
@@ -173,8 +173,8 @@ void positional_source::update_positions(const std::chrono::steady_clock::time_p
 	}
 
 	int distance_volume = DISTANCE_SILENT;
-	for(std::vector<map_location>::iterator i = locations_.begin(); i != locations_.end(); ++i) {
-		int v = calculate_volume(*i, disp);
+	for(const map_location& loc : locations_) {
+		int v = calculate_volume(loc, disp);
 		if(v < distance_volume) {
 			distance_volume = v;
 		}
