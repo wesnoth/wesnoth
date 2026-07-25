@@ -27,10 +27,10 @@ const auto DEFAULT_DELAY                = 1000ms;
 
 unsigned int positional_source::last_id = 0;
 
-manager::manager(const display &disp) :
-	observer(),
-	sources_(),
-	disp_(disp)
+manager::manager(const display& disp)
+	: observer()
+	, sources_()
+	, disp_(disp)
 {
 	disp_.scroll_event().attach_handler(this);
 	update_positions();
@@ -107,18 +107,18 @@ void manager::write_sourcespecs(config& cfg) const
 	}
 }
 
-positional_source::positional_source(const sourcespec &spec) :
-	last_played_(),
-	min_delay_(spec.minimum_delay()),
-	chance_(spec.chance()),
-	loops_(spec.loops()),
-	id_(last_id++),
-	range_(spec.full_range()),
-	faderange_(spec.fade_range()),
-	check_fogged_(spec.check_fogged()),
-	check_shrouded_(spec.check_shrouded()),
-	files_(spec.files()),
-	locations_(spec.get_locations())
+positional_source::positional_source(const sourcespec& spec)
+	: last_played_()
+	, min_delay_(spec.minimum_delay())
+	, chance_(spec.chance())
+	, loops_(spec.loops())
+	, id_(last_id++)
+	, range_(spec.full_range())
+	, faderange_(spec.fade_range())
+	, check_fogged_(spec.check_fogged())
+	, check_shrouded_(spec.check_shrouded())
+	, files_(spec.files())
+	, locations_(spec.get_locations())
 {
 	assert(range_ >= 0);
 	assert(faderange_ >= 0);
