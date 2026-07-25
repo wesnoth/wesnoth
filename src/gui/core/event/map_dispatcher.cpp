@@ -101,12 +101,13 @@ void map_dispatcher::mouse_right_down(
 	hotkey::command_executor* cmd_exec = controller_.get_hotkey_command_executor();
 	if(!menu || !cmd_exec) {
 		handled = false;
+		return;
 	}
 
 	// context menus cannot appear outside map area,
-	// but main top-panel menus can.
 	if(menu && !(display::get_singleton()->map_area().contains(p))) {
 		handled = false;
+		return;
 	}
 
 	// TODO: should be migrated to gui2. command_executor shouldn't have menu expansion as responsibility.
