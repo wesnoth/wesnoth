@@ -19,6 +19,9 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 	// Mouse handling
 	set_mouse_behavior(dispatcher::mouse_behavior::all);
 
+	// Note: If an hotkey is assigned to the same event as the signals,
+	// then the hotkey is executed first. If it returns false, only then the
+	// builtin handler is executed.
 	connect_signal<SDL_MOUSE_MOTION>(std::bind(
 		&map_dispatcher::mouse_motion, this, std::placeholders::_3, std::placeholders::_5));
 
@@ -30,7 +33,7 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 	connect_signal<SDL_RIGHT_BUTTON_DOWN>(std::bind(
 		&map_dispatcher::mouse_right_down, this, std::placeholders::_3, std::placeholders::_5));
 
-	// Hotkeys
+	// Mouse Hotkeys
 	set_want_keyboard_input(true);
 	register_hotkey(hotkey::HOTKEY_SELECT_AND_ACTION, [this](auto&&...) {
 		auto& mhandler = controller_.get_mouse_handler_base();
@@ -118,6 +121,7 @@ void map_dispatcher::mouse_right_down(
 	mhandler.mouse_update(controller_.is_browsing(), loc);
 
 	auto* menu = display::get_singleton()->get_theme().context_menu();
+
 	hotkey::command_executor* cmd_exec = controller_.get_hotkey_command_executor();
 	if(!menu || !cmd_exec) {
 		handled = false;
@@ -130,6 +134,7 @@ void map_dispatcher::mouse_right_down(
 		return;
 	}
 
+	// TODO: should be migrated to gui2. command_executor shouldn't have menu expansion as responsibility.
 	cmd_exec->show_menu(menu->items(), p, menu);
 	handled = true;
 }
