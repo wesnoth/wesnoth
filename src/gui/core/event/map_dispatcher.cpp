@@ -1,6 +1,5 @@
 #include "gui/core/event/map_dispatcher.hpp"
 #include "gui/core/event/handler.hpp"
-#include "log.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 
@@ -29,6 +28,11 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 
 	connect_signal<SDL_RIGHT_BUTTON_DOWN>(std::bind(
 		&map_dispatcher::mouse_right_down, this, std::placeholders::_3, std::placeholders::_5));
+
+	connect_signal<SDL_MIDDLE_BUTTON_UP>(std::bind(
+		&map_dispatcher::mouse_middle_up, this, std::placeholders::_3, std::placeholders::_5));
+	connect_signal<SDL_MIDDLE_BUTTON_DOWN>(std::bind(
+		&map_dispatcher::mouse_middle_down, this, std::placeholders::_3, std::placeholders::_5));
 
 	connect_signal<SDL_WHEEL_UP>(std::bind(
 		&map_dispatcher::mouse_wheel, this, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6));
@@ -120,13 +124,38 @@ void map_dispatcher::mouse_right_down(
 	handled = true;
 }
 
+void map_dispatcher::mouse_middle_up(
+	bool& handled,
+	const point& p)
+{
+	auto& mhandler = controller_.get_mouse_handler_base();
+	map_location loc = display::get_singleton()->hex_clicked_on(p.x, p.y);
+	mhandler.mouse_update(controller_.is_browsing(), loc);
+
+	mhandler.middle_mouse_up(p.x, p.y);
+	handled = true;
+}
+
+void map_dispatcher::mouse_middle_down(
+	bool& handled,
+	const point& p)
+{
+	auto& mhandler = controller_.get_mouse_handler_base();
+	map_location loc = display::get_singleton()->hex_clicked_on(p.x, p.y);
+	mhandler.mouse_update(controller_.is_browsing(), loc);
+
+	mhandler.middle_mouse_down(p.x, p.y);
+	handled = true;
+}
+
 void map_dispatcher::mouse_wheel(
 	bool& handled,
 	const point& /*p*/,
 	const point& scroll)
 {
 	auto& mhandler = controller_.get_mouse_handler_base();
-	mhandler.mouse_wheel(scroll.x, scroll.y, controller_.is_browsing());
+	// SDL and wesnoth vertical scroll directions are opposite, hence -scroll.y.
+	mhandler.mouse_wheel(scroll.x, -scroll.y, controller_.is_browsing());
 
 	handled = true;
 }

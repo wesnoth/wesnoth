@@ -20,6 +20,8 @@ public:
 	void mouse_left_up(bool& handled, const point& p);
 	void mouse_left_down(bool& handled, const point& p);
 	void mouse_right_down(bool& handled, const point& p);
+	void mouse_middle_up(bool& handled, const point& p);
+	void mouse_middle_down(bool& handled, const point& p);
 	void mouse_wheel(bool& handled, const point& p, const point& scroll);
 
 	// TODO Necessary evil because this is a widget and not a dispatcher
