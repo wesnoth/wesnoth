@@ -82,6 +82,9 @@ public:
 	 */
 	bool mouse_motion_default(int x, int y, bool update);
 
+	void middle_mouse_up(int x, int y);
+	void middle_mouse_down(int x, int y);
+
 	/**
 	 * Called when a mouse motion event takes place. Derived classes must provide an
 	 * implementation, possibly using mouse_motion_default().
@@ -95,7 +98,7 @@ public:
 			= 0;
 
 	virtual void mouse_press(const SDL_MouseButtonEvent& event, const bool browse);
-	virtual bool mouse_button_event(const SDL_MouseButtonEvent& event, uint8_t button, map_location loc, bool click = false);
+	virtual bool mouse_button_event(uint8_t button, map_location loc, bool click = false, bool down = false);
 	bool is_left_click(const SDL_MouseButtonEvent& event) const;
 	bool is_middle_click(const SDL_MouseButtonEvent& event) const;
 	bool is_right_click(const SDL_MouseButtonEvent& event) const;
