@@ -80,23 +80,6 @@ void disable_widget_on_toggle_inverted(window& window, widget& w, const std::str
 	window.find_widget<W>(id).set_active(!dynamic_cast<selectable_item&>(w).get_value_bool());
 }
 
-// Helper to make it easier to immediately apply sound toggles immediately.
-template<bool(*fptr)(bool)>
-void sound_toggle_on_change(window& window, const std::string& id_to_toggle, widget& w)
-{
-	std::invoke(fptr, dynamic_cast<selectable_item&>(w).get_value_bool());
-
-	// Toggle the corresponding slider.
-	disable_widget_on_toggle<slider>(window, w, id_to_toggle);
-}
-
-// Helper to make it easier to immediately apply volume (music, etc) setings on change.
-template<void(*fptr)(int)>
-void volume_setter_on_change(widget& w)
-{
-	std::invoke(fptr, dynamic_cast<integer_selector&>(w).get_value());
-}
-
 } // end anon namespace
 
 REGISTER_DIALOG(preferences_dialog)
@@ -344,56 +327,43 @@ void preferences_dialog::apply_pixel_scale()
 	events::raise_resize_event();
 }
 
-template<bool(*toggle_getter)(), bool(*toggle_setter)(bool), int(*vol_getter)(), void(*vol_setter)(int)>
-void preferences_dialog::initialize_sound_option_group(const std::string& id_suffix)
+template<typename ToggleGet, typename ToggleSet, typename VolumeGet, typename VolumeSet>
+void preferences_dialog::initialize_sound_option_group(
+	const std::string& id_suffix,
+	ToggleGet&& toggle_getter,
+	ToggleSet&& toggle_setter,
+	VolumeGet&& volume_getter,
+	VolumeSet&& volume_setter)
 {
 	const std::string toggle_widget_id = "sound_toggle_" + id_suffix;
 	const std::string volume_widget_id = "sound_volume_" + id_suffix;
 
-	const auto on_changed = [this, volume_widget_id](widget& w) {
-		sound_toggle_on_change<toggle_setter>(*this, volume_widget_id, w);
-	};
+	// Set up the volume slider.
+	register_integer(volume_widget_id, true, volume_getter, volume_setter);
+	auto& volume_slider = find_widget<slider>(volume_widget_id);
+
+	// Callback to actually immediately apply the volume effect. field_integer doesn't
+	// have a callback-on-changed mechanism. To add one would either mean adding it to
+	// the base field class or make it a proper class of is own.
+	connect_signal_notify_modified(volume_slider,
+		[=](widget& w, auto&&...) {
+			std::invoke(volume_setter, dynamic_cast<integer_selector&>(w).get_value());
+		});
+
+	const auto toggle_changed =
+		[=, &volume_slider](widget& w) {
+			const bool sound_enabled = dynamic_cast<selectable_item&>(w).get_value_bool();
+			std::invoke(toggle_setter, sound_enabled); // FIXME: we should use this return value
+			volume_slider.set_active(sound_enabled);
+		};
 
 	// Set up the toggle. We utilize field_bool's callback-on-changed mechanism instead
 	// of manually registering the callback. Since we want the effects to apply immediately,
 	// the callback the setter callback is duplicated in the on-change callback. The field
 	// class could possibly use some reworking to make this less redundant, but for now it
 	// works well enough.
-	register_bool(toggle_widget_id, true, toggle_getter, toggle_setter, on_changed, true);
-
-	// Set up the volume slider. integer_field doesn't have a callback-on-changed mechanism.
-	// To add one would either mean adding it to the base field class or make it a proper
-	// class of is own.
-	register_integer(volume_widget_id, true, vol_getter, vol_setter);
-
-	// Callback to actually immediately apply the volume effect.
-	connect_signal_notify_modified(find_widget<slider>(volume_widget_id),
-		[](widget& w, auto&&...) { volume_setter_on_change<vol_setter>(w); });
+	register_bool(toggle_widget_id, true, toggle_getter, toggle_setter, toggle_changed, true);
 }
-
-/* SOUND FX wrappers for template */
-static bool sound(){return prefs::get().sound();}
-static bool set_sound(bool v){return prefs::get().set_sound(v);}
-static int sound_volume(){return prefs::get().sound_volume();}
-static void set_sound_volume(int v){prefs::get().set_sound_volume(v);}
-
-/* MUSIC wrappers for template */
-static bool music_on(){return prefs::get().music_on();}
-static bool set_music(bool v){return prefs::get().set_music(v);}
-static int music_volume(){return prefs::get().music_volume();}
-static void set_music_volume(int v){prefs::get().set_music_volume(v);}
-
-/* TURN BELL wrappers for template */
-static bool turn_bell(){return prefs::get().turn_bell();}
-static bool set_turn_bell(bool v){return prefs::get().set_turn_bell(v);}
-static int bell_volume(){return prefs::get().bell_volume();}
-static void set_bell_volume(int v){prefs::get().set_bell_volume(v);}
-
-/* UI FX wrappers for template */
-static bool ui_sound_on(){return prefs::get().ui_sound_on();}
-static bool set_ui_sound(bool v){return prefs::get().set_ui_sound(v);}
-static int ui_volume(){return prefs::get().ui_volume();}
-static void set_ui_volume(int v){prefs::get().set_ui_volume(v);}
 
 /**
  * Sets up states and callbacks for each of the widgets
@@ -628,20 +598,36 @@ void preferences_dialog::initialize_callbacks()
 	//
 
 	/* SOUND FX */
-	initialize_sound_option_group<sound, set_sound, sound_volume, set_sound_volume>("sfx");
+	initialize_sound_option_group("sfx",
+		[]         { return prefs::get().sound(); },
+		[](bool v) { return prefs::get().set_sound(v); },
+		[]         { return prefs::get().sound_volume(); },
+		[](int v)  {        prefs::get().set_sound_volume(v); });
 
 	/* MUSIC */
-	initialize_sound_option_group<music_on, set_music, music_volume, set_music_volume>("music");
+	initialize_sound_option_group("music",
+		[]         { return prefs::get().music_on(); },
+		[](bool v) { return prefs::get().set_music(v); },
+		[]         { return prefs::get().music_volume(); },
+		[](int v)  {        prefs::get().set_music_volume(v); });
 
 	register_bool("sound_toggle_stop_music_in_background", true,
 		[]() {return prefs::get().stop_music_in_background();},
 		[](bool v) {prefs::get().set_stop_music_in_background(v);});
 
 	/* TURN BELL */
-	initialize_sound_option_group<turn_bell, set_turn_bell, bell_volume, set_bell_volume>("bell");
+	initialize_sound_option_group("bell",
+		[]         { return prefs::get().turn_bell(); },
+		[](bool v) { return prefs::get().set_turn_bell(v); },
+		[]         { return prefs::get().bell_volume(); },
+		[](int v)  {        prefs::get().set_bell_volume(v); });
 
 	/* UI FX */
-	initialize_sound_option_group<ui_sound_on, set_ui_sound, ui_volume, set_ui_volume>("uisfx");
+	initialize_sound_option_group("uisfx",
+		[]         { return prefs::get().ui_sound_on(); },
+		[](bool v) { return prefs::get().set_ui_sound(v); },
+		[]         { return prefs::get().ui_volume(); },
+		[](int v)  {        prefs::get().set_ui_volume(v); });
 
 	//
 	// MULTIPLAYER PANEL

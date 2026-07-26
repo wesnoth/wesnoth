@@ -72,8 +72,13 @@ private:
 	void set_gui2_theme_list(menu_button& theme_list);
 	listbox& setup_hotkey_list();
 
-	template<bool(*toggle_getter)(), bool(*toggle_setter)(bool), int(*vol_getter)(), void(*vol_setter)(int)>
-	void initialize_sound_option_group(const std::string& id_suffix);
+	template<typename ToggleGet, typename ToggleSet, typename VolumeGet, typename VolumeSet>
+	void initialize_sound_option_group(
+		const std::string& id_suffix,
+		ToggleGet&& toggle_getter,
+		ToggleSet&& toggle_setter,
+		VolumeGet&& volume_getter,
+		VolumeSet&& volume_setter);
 
 	void apply_pixel_scale();
 
