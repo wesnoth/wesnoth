@@ -189,6 +189,15 @@ private:
 	void mouse(const ui_event event, const point& position);
 
 	/**
+	 * Fires a generic mouse wheel event.
+	 *
+	 * @param event                  The event to fire.
+	 * @param position               The position of the mouse.
+	 * @param scroll                How much scroll wheel moved in x and y directions.
+	 */
+	void mouse_wheel(const ui_event event, const point& position, const point& scroll);
+
+	/**
 	 * Fires a mouse button up event.
 	 *
 	 * @param position               The position of the mouse.
@@ -210,10 +219,9 @@ private:
 	 * Fires a mouse wheel event.
 	 *
 	 * @param position               The position of the mouse.
-	 * @param scrollx                The amount of horizontal scrolling.
-	 * @param scrolly                The amount of vertical scrolling.
+	 * @param scroll                 The amount of scrolling in x and y directions.
 	 */
-	void mouse_wheel(const point& position, int scrollx, int scrolly);
+	void mouse_wheel(const point& position, const point& scroll);
 
 	/**
 	 * Gets the dispatcher that wants to receive the keyboard input.
@@ -413,7 +421,8 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			break;
 
 		case SDL_EVENT_MOUSE_WHEEL:
-			mouse_wheel(get_mouse_position(), event.wheel.x, event.wheel.y);
+			mouse_wheel(get_mouse_position(),
+				point{static_cast<int>(event.wheel.x), static_cast<int>(event.wheel.y)});
 			break;
 
 		case SHOW_HELPTIP_EVENT:
@@ -636,6 +645,32 @@ void sdl_event_handler::mouse(const ui_event event, const point& position)
 	}
 }
 
+void sdl_event_handler::mouse_wheel(const ui_event event, const point& position, const point& scroll)
+{
+	DBG_GUI_E << "Firing: " << event << ".";
+
+	if(mouse_focus) {
+		mouse_focus->fire(event, dynamic_cast<widget&>(*mouse_focus), position, scroll);
+		return;
+	}
+
+	for(auto& dispatcher : dispatchers_ | utils::views::reverse) {
+		if(dispatcher->get_mouse_behavior() == dispatcher::mouse_behavior::all) {
+			dispatcher->fire(event, dynamic_cast<widget&>(*dispatcher), position, scroll);
+			break;
+		}
+
+		if(dispatcher->get_mouse_behavior() == dispatcher::mouse_behavior::none) {
+			continue;
+		}
+
+		if(dispatcher->is_at(position)) {
+			dispatcher->fire(event, dynamic_cast<widget&>(*dispatcher), position, scroll);
+			break;
+		}
+	}
+}
+
 void sdl_event_handler::mouse_button_up(const point& position, const uint8_t button)
 {
 	switch(button) {
@@ -690,18 +725,18 @@ void sdl_event_handler::mouse_button_down(const point& position, const uint8_t b
 	}
 }
 
-void sdl_event_handler::mouse_wheel(const point& position, int x, int y)
+void sdl_event_handler::mouse_wheel(const point& position, const point& scroll)
 {
-	if(x > 0) {
-		mouse(SDL_WHEEL_RIGHT, position);
-	} else if(x < 0) {
-		mouse(SDL_WHEEL_LEFT, position);
+	if(scroll.x > 0) {
+		mouse_wheel(SDL_WHEEL_RIGHT, position, scroll);
+	} else if(scroll.x < 0) {
+		mouse_wheel(SDL_WHEEL_LEFT, position, scroll);
 	}
 
-	if(y < 0) {
-		mouse(SDL_WHEEL_DOWN, position);
-	} else if(y > 0) {
-		mouse(SDL_WHEEL_UP, position);
+	if(scroll.y < 0) {
+		mouse_wheel(SDL_WHEEL_DOWN, position, scroll);
+	} else if(scroll.y > 0) {
+		mouse_wheel(SDL_WHEEL_UP, position, scroll);
 	}
 }
 

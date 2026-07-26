@@ -78,9 +78,10 @@ using signal_keyboard = dispatcher_callback<const SDL_Keycode, const SDL_Keymod,
  *
  * Extra parameters:
  * 5. Origin of the touch event, in x,y format.
- * 6. Number of pixels dragged, in x,y format.
+ * 6. Number of pixels dragged, in x,y format (touch)
+ * OR The scroll amount, in x,y format (wheel)
  */
-using signal_touch_motion = dispatcher_callback<const point&, const point&>;
+using signal_touch_wheel_motion = dispatcher_callback<const point&, const point&>;
 
 /**
  * Used for events in event_category::touch_gesture.
@@ -591,7 +592,7 @@ private:
 	signal_queue<signal_keyboard> signal_keyboard_queue_;
 
 	/** Signal queue for callbacks in event_category::touch_motion. */
-	signal_queue<signal_touch_motion> signal_touch_motion_queue_;
+	signal_queue<signal_touch_wheel_motion> signal_touch_wheel_motion_queue_;
 
 	/** Signal queue for callbacks in event_category::touch_gesture. */
 	signal_queue<signal_touch_gesture> signal_touch_gesture_queue_;
@@ -623,8 +624,8 @@ private:
 			return signal_mouse_queue_;
 		} else if constexpr(cat == event_category::keyboard) {
 			return signal_keyboard_queue_;
-		} else if constexpr(cat == event_category::touch_motion) {
-			return signal_touch_motion_queue_;
+		} else if constexpr(cat == event_category::touch_and_wheel_motion) {
+			return signal_touch_wheel_motion_queue_;
 		} else if constexpr(cat == event_category::touch_gesture) {
 			return signal_touch_gesture_queue_;
 		} else if constexpr(cat == event_category::notification) {
