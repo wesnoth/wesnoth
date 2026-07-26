@@ -30,8 +30,12 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 	connect_signal<SDL_RIGHT_BUTTON_DOWN>(std::bind(
 		&map_dispatcher::mouse_right_down, this, std::placeholders::_3, std::placeholders::_5));
 
+	connect_signal<SDL_WHEEL_UP>(std::bind(
+		&map_dispatcher::mouse_wheel, this, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6));
+	connect_signal<SDL_WHEEL_DOWN>(std::bind(
+		&map_dispatcher::mouse_wheel, this, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6));
+
 	// Mouse Hotkeys
-	set_want_keyboard_input(true);
 	register_hotkey(hotkey::HOTKEY_SELECT_AND_ACTION, [this](auto&&...) {
 		auto& mhandler = controller_.get_mouse_handler_base();
 		bool is_selected = mhandler.get_last_hex().valid();
@@ -113,6 +117,17 @@ void map_dispatcher::mouse_right_down(
 
 	// TODO: should be migrated to gui2. command_executor shouldn't have menu expansion as responsibility.
 	cmd_exec->show_menu(menu->items(), p, menu);
+	handled = true;
+}
+
+void map_dispatcher::mouse_wheel(
+	bool& handled,
+	const point& /*p*/,
+	const point& scroll)
+{
+	auto& mhandler = controller_.get_mouse_handler_base();
+	mhandler.mouse_wheel(scroll.x, scroll.y, controller_.is_browsing());
+
 	handled = true;
 }
 
