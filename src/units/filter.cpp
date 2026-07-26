@@ -163,14 +163,9 @@ struct unit_filter_adjacent : public unit_filter_base
 			++match_count;
 		}
 
+		static std::vector<std::pair<int,int>> default_counts = {{{1, std::numeric_limits<int>::max()}}};
 		config::attribute_value i_count = cfg_["count"];
-		if(i_count.empty() && match_count == 0) {
-			return false;
-		}
-		if(!i_count.empty() && !in_ranges<int>(match_count, utils::parse_ranges_unsigned(i_count.str()))) {
-			return false;
-		}
-		return true;
+		return in_ranges(match_count, !i_count.empty() ? utils::parse_ranges_unsigned(i_count) : default_counts);
 	}
 
 	const unit_filter_compound child_;
