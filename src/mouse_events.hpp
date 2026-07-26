@@ -127,7 +127,7 @@ protected:
 	 * Use update to force an update of the mouse state.
 	 */
 	void mouse_motion(int x, int y, const bool browse, bool update=false, map_location loc = map_location::null_location()) override;
-	bool mouse_button_event(const SDL_MouseButtonEvent& event, uint8_t button, map_location loc, bool click = false) override;
+	bool mouse_button_event(uint8_t button, map_location loc, bool click = false, bool down = true) override;
 	bool right_click_show_menu(int x, int y, const bool browse) override;
 //	bool left_click(int x, int y, const bool browse);
 	bool move_unit_along_current_route();
