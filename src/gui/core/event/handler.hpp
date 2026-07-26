@@ -58,27 +58,27 @@ enum class event_category : uint32_t {
  	 * @note Some mouse events like MOUSE_ENTER don't send the mouse coordinates
  	 * to the callback function so they are also in this category.
  	 */
-	general           = 1u << 8,
+	general                     = 1u << 8,
 
 	/**
 	 * Callbacks with a coordinate as extra parameter.
 	 */
-	mouse             = 1u << 9,
+	mouse                       = 1u << 9,
 
 	/**
 	 * Callbacks with the keyboard values (these haven't been determined yet).
 	 */
-	keyboard          = 1u << 10,
+	keyboard                    = 1u << 10,
 
-	touch_motion      = 1u << 11,
-	touch_gesture     = 1u << 12,
+	touch_and_wheel_motion      = 1u << 11,
+	touch_gesture               = 1u << 12,
 
 	/**
 	 * Callbacks with a sender aka notification messages. Like general events
 	 * it has no extra parameters, but this version is only sent to the target
 	 * and does not use the pre and post queue.
  	 */
-	notification      = 1u << 13,
+	notification                = 1u << 13,
 
 	/**
 	 * Callbacks with a sender aka notification messages.
@@ -86,10 +86,10 @@ enum class event_category : uint32_t {
 	 * is sent from a widget all the way up to the window, who is always the
 	 * receiver of the message (unless somebody grabbed it before).
 	 */
-	message           = 1u << 14,
+	message                     = 1u << 14,
 
-	raw_event         = 1u << 15,
-	text_input        = 1u << 16,
+	raw_event                   = 1u << 15,
+	text_input                  = 1u << 16,
 };
 // clang-format on
 
@@ -156,10 +156,10 @@ enum ui_event : uint32_t {
 	SDL_FORWARD_BUTTON_DOWN        = encode_category(59, event_category::mouse),
 	SDL_FORWARD_BUTTON_UP          = encode_category(60, event_category::mouse),
 
-	SDL_WHEEL_LEFT                 = encode_category(26, event_category::mouse),
-	SDL_WHEEL_RIGHT                = encode_category(27, event_category::mouse),
-	SDL_WHEEL_UP                   = encode_category(28, event_category::mouse),
-	SDL_WHEEL_DOWN                 = encode_category(29, event_category::mouse),
+	SDL_WHEEL_LEFT                 = encode_category(26, event_category::touch_and_wheel_motion),
+	SDL_WHEEL_RIGHT                = encode_category(27, event_category::touch_and_wheel_motion),
+	SDL_WHEEL_UP                   = encode_category(28, event_category::touch_and_wheel_motion),
+	SDL_WHEEL_DOWN                 = encode_category(29, event_category::touch_and_wheel_motion),
 	SHOW_TOOLTIP                   = encode_category(30, event_category::mouse),
 	SHOW_HELPTIP                   = encode_category(31, event_category::mouse),
 	SDL_TOUCH_UP                   = encode_category(32, event_category::mouse),
@@ -183,7 +183,7 @@ enum ui_event : uint32_t {
 	MESSAGE_SHOW_TOOLTIP           = encode_category(44, event_category::message),
 	MESSAGE_SHOW_HELPTIP           = encode_category(45, event_category::message),
 
-	SDL_TOUCH_MOTION               = encode_category(46, event_category::touch_motion),
+	SDL_TOUCH_MOTION               = encode_category(46, event_category::touch_and_wheel_motion),
 	SDL_TOUCH_MULTI_GESTURE        = encode_category(47, event_category::touch_gesture),
 
 	SDL_RAW_EVENT                  = encode_category(48, event_category::raw_event)
