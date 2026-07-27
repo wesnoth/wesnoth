@@ -113,7 +113,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 	y = fy;
 
 	// This is from mouse_handler_base::mouse_motion_default()
-	tooltips::process(x, y);
+	// tooltips::process(x, y);
 
 	if(simple_warp_) {
 		return;
