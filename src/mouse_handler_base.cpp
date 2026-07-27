@@ -81,7 +81,7 @@ void mouse_handler_base::mouse_update(const bool browse, map_location loc)
 
 bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
 {
-	tooltips::process(x, y);
+	// tooltips::process(x, y);
 
 	if(simple_warp_) {
 		return true;
