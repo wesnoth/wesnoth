@@ -219,8 +219,7 @@ void unit_ability_t::do_compat_fixes(config& cfg, const std::string& tag, bool i
 	for (config& filter_adjacent : cfg.child_range("filter_adjacent")) {
 		if (filter_adjacent["count"].empty()) {
 			//Previously count= behaved differenty in abilities.cpp and in filter.cpp according to the wiki
-			deprecated_message("omitting count= in [filter_adjacent] in abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.21"), "specify count explicitly");
-			filter_adjacent["count"] = map_location::parse_directions(filter_adjacent["adjacent"]).size();
+			deprecated_message("omitting count= in [filter_adjacent] in abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.21"), ". In 1.20, omitting count= means the filter must match all units.");
 		}
 		cfg.child_or_add(filter_teacher).add_child("filter_adjacent", filter_adjacent);
 	}
@@ -228,8 +227,7 @@ void unit_ability_t::do_compat_fixes(config& cfg, const std::string& tag, bool i
 	for (config& filter_adjacent : cfg.child_range("filter_adjacent_location")) {
 		if (filter_adjacent["count"].empty()) {
 			//Previously count= bahves differenty in abilities.cpp and in filter.cpp according to the wiki
-			deprecated_message("omitting count= in [filter_adjacent_location] in abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.21"), "specify count explicitly");
-			filter_adjacent["count"] = map_location::parse_directions(filter_adjacent["adjacent"]).size();
+			deprecated_message("omitting count= in [filter_adjacent_location] in abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.21"), ". In 1.20, omitting count= means the filter must match all hexes.");
 		}
 		cfg.child_or_add(filter_teacher).add_child("filter_location").add_child("filter_adjacent_location", filter_adjacent);
 	}
