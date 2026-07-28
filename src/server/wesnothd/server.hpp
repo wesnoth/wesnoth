@@ -143,14 +143,20 @@ private:
 		, players_required(required)
 		, players_in_queue()
 		, settings(game)
+		, required_addons()
 		{
-
+			for(const config& addon : settings.child_range("addon")) {
+				if(addon.has_attribute("id") && addon["required"].to_bool(false)) {
+					required_addons.push_back(addon["id"].str());
+				}
+			}
 		}
 
 		int id;
 		std::string display_name;
 		std::size_t players_required;
 		std::vector<std::string> players_in_queue;
+		std::vector<std::string> required_addons;
 		config settings;
 	};
 
