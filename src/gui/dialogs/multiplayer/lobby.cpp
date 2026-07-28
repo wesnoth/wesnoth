@@ -729,6 +729,28 @@ void mp_lobby::join_queue()
 	const std::vector<mp::queue_info>& queues = mp::get_server_queues();
 	if(queues.size() > static_cast<std::size_t>(queues_listbox->get_selected_row())) {
 		const mp::queue_info& queue = queues[queues_listbox->get_selected_row()];
+
+		std::vector<std::string> missing = mp::missing_queue_addons(queue);
+		if(!missing.empty()) {
+			std::vector<mp::game_info::required_addon> reqs;
+			for(const std::string& id : missing) {
+				mp::game_info::required_addon r;
+				r.addon_id = id;
+				r.outcome = mp::game_info::addon_req::NEED_DOWNLOAD;
+				r.message = VGETTEXT("Missing addon: $id", {{"id", id}});
+				reqs.push_back(std::move(r));
+			}
+
+			if(!handle_addon_requirements_gui(reqs, mp::game_info::addon_req::NEED_DOWNLOAD)) {
+				return;
+			}
+
+			//Addons download -- re-check before joining; if still missing (user cancelled some install, abort instead of joining)
+			if(!mp::missing_queue_addons(queue).empty()) {
+				return;
+			}
+		}
+
 		mp::send_to_server(config{"join_server_queue", config{"queue_id", queue.id}});
 	} else {
 		ERR_LB << "Attempted to join queue but couldn't find queue info";
@@ -816,6 +838,9 @@ void mp_lobby::update_queue_list()
 		item["label"] = info.display_name;
 		data.emplace("queue_name", item);
 
+		item["label"] = mp::missing_queue_addons(info).empty() ? "" : markup::span_color("#f00", markup::bold("[!] "));
+		data.emplace("queue_addon_marker", item);
+
 		item["label"] = std::to_string(info.current_players.size())+"/"+std::to_string(info.players_required);
 		data.emplace("queue_player_count", item);
 
@@ -854,6 +879,7 @@ void mp_lobby::process_network_data(const config& data)
 			new_info.id = queue_update["queue_id"].to_int();
 			new_info.players_required = queue_update["players_required"].to_int();
 			new_info.display_name = queue_update["display_name"].str();
+			new_info.required_addons = utils::split(queue_update["required_addons"].str());
 		} else {
 			for(mp::queue_info& info : queues) {
 				if(info.id == queue_update["queue_id"].to_int()) {
@@ -868,6 +894,9 @@ void mp_lobby::process_network_data(const config& data)
 						}
 						if(queue_update->has_attribute("current_players")){
 							info.current_players = utils::split_set(queue_update["current_players"].str());
+						}
+						if(queue_update->has_attribute("required_addons")){
+							info.required_addons = utils::split_set(queue_update["required_addons"].str());
 						}
 					} else {
 						continue;

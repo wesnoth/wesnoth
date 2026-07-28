@@ -18,6 +18,7 @@
 #include <boost/test/unit_test.hpp>
 
 #include "addon/validation.hpp"
+#include "game_initialization/multiplayer.hpp"
 
 BOOST_AUTO_TEST_SUITE( addons )
 
@@ -125,6 +126,23 @@ BOOST_AUTO_TEST_CASE( encoding )
 	}
 
 	BOOST_CHECK( recursive_encoded == raw );
+}
+
+BOOST_AUTO_TEST_CASE( missing_queue_adddons )
+{
+	mp::queue_info q;
+	q.id =1;
+	q.display_name = "Test Queue";
+	q.players_required = 2;
+	q.required_addons = {"some_addon_that_is_definitely_not_installed"};
+
+	std::vector<std::string> missing = mp::missing_queue_addon(q);
+	BOOST_CHECK_EQUAL(missing.size(), 1u);
+	BOOST_CHECK_EQUAL(missing[0], "some_addon_that_is_definitely_not_installed");
+
+	q.required_addons.clear();
+	missing = mp::missing_queue_addons(q);
+	BOOST_CHECK(missing.empty());
 }
 
 BOOST_AUTO_TEST_SUITE_END()
