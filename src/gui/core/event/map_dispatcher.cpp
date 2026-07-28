@@ -66,9 +66,6 @@ void map_dispatcher::mouse_motion(
 	auto& mhandler = controller_.get_mouse_handler_base();
 	map_location loc = display::get_singleton()->hex_clicked_on(p.x, p.y);
 	mhandler.mouse_update(controller_.is_browsing(), loc);
-	if (!loc.valid()) {
-		tooltips::show(p);
-	}
 
 	handled = true;
 }
