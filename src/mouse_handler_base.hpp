@@ -75,6 +75,10 @@ public:
 		return show_menu_;
 	}
 
+	void set_gui2_tooltip(bool is_gui2_tooltip) {
+		is_gui2_tooltip_ = is_gui2_tooltip;
+	}
+
 	/**
 	 * This handles minimap scrolling and click-drag.
 	 * @returns true when the caller should not process the mouse motion
@@ -260,6 +264,12 @@ protected:
 
 	/** last highlighted hex */
 	map_location last_hex_;
+
+	/**
+	 * toggle gui2 tooltips.
+	 * FIXME: to be removed once all event handling is routed via gui2
+	 */
+	bool is_gui2_tooltip_{false};
 };
 
 } // end namespace events
