@@ -184,6 +184,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game)
 
 	try {
 		init(level);
+		mouse_handler_.set_gui2_tooltip(true);
 		map_dispatcher_.connect();
 	} catch(...) {
 		DBG_NG << "Caught exception initializing level: " << utils::get_unknown_exception_type();
@@ -195,6 +196,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game)
 play_controller::~play_controller()
 {
 	map_dispatcher_.disconnect();
+	mouse_handler_.set_gui2_tooltip(false);
 	unit_types.remove_scenario_fixes();
 	clear_resources();
 }
