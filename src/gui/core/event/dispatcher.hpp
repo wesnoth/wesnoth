@@ -455,7 +455,7 @@ public:
 	 * @returns                   true if the hotkey is handled, false
 	 *                            otherwise.
 	 */
-	bool execute_hotkey(const hotkey::HOTKEY_COMMAND id);
+	virtual bool execute_hotkey(const hotkey::HOTKEY_COMMAND id);
 
 private:
 	/** Helper struct to generate the various signal types. */

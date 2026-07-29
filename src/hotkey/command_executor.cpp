@@ -580,7 +580,7 @@ void jhat_event(const SDL_Event& event, command_executor* executor)
 void key_event(const SDL_Event& event, command_executor* executor)
 {
 	if (!executor) return;
-	event_queue(event,executor);
+	event_queue(event, executor);
 }
 
 void keyup_event(const SDL_Event&, command_executor* executor)
