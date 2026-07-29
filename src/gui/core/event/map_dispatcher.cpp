@@ -62,107 +62,32 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 
 	//Keyboard Hotkeys
 	set_want_keyboard_input(true);
-	register_hotkeys();
 }
 
-void map_dispatcher::register_hotkeys() {
+bool map_dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
+{
+	// Local hotkey
+	if(dispatcher::execute_hotkey(id)) {
+		return true;
+	}
 
-	// "Menu" menu
+	// these hotkeys have fallback hardcoded mouse handlers, so return false to let the
+	// handler do its work.
+	if(id == hotkey::HOTKEY_SELECT_AND_ACTION || id == hotkey::HOTKEY_DESELECT_HEX) return false;
 
-	register_hotkey(hotkey::HOTKEY_OBJECTIVES, [this](auto&& ...) {
-		controller_.get_hotkey_command_executor()->objectives();
-		return true;
-	});
-	register_hotkey(hotkey::HOTKEY_ACHIEVEMENTS, [](auto&& ...) {
-		gui2::dialogs::achievements_dialog::display();
-		return true;
-	});
-	register_hotkey(hotkey::HOTKEY_STATUS_TABLE, [this](auto&& ...) {
-		PLAIN_LOG << "status table";
-		controller_.get_hotkey_command_executor()->status_table();
-		return true;
-	});
-	register_hotkey(hotkey::HOTKEY_STATISTICS, [this](auto&& ...) {
-		PLAIN_LOG << "statistics";
-		controller_.get_hotkey_command_executor()->show_statistics();
-		return true;
-	});
-	register_hotkey(hotkey::HOTKEY_UNIT_LIST, [this](auto&& ...) {
-		controller_.get_hotkey_command_executor()->unit_list();
-		return true;
-	});
-	register_hotkey(hotkey::HOTKEY_LOAD_GAME, [this](auto&& ...) {
-		controller_.get_hotkey_command_executor()->load_game();
-		return true;
-	});
-	register_hotkey(hotkey::HOTKEY_SAVE_GAME, [this](auto&& ...) {
-		controller_.save_game();
-		return true;
-	});
-	register_hotkey(hotkey::HOTKEY_SAVE_REPLAY, [this](auto&& ...) {
-		controller_.get_hotkey_command_executor()->save_replay();
-		return true;
-	});
-	register_hotkey(hotkey::HOTKEY_SAVE_MAP, [this](auto&& ...) {
-		controller_.get_hotkey_command_executor()->save_map();
-		return true;
-	});
-	register_hotkey(hotkey::HOTKEY_LOAD_GAME, [this](auto&& ...) {
-		controller_.get_hotkey_command_executor()->show_chat_log();
-		return true;
-	});
-	register_hotkey(hotkey::HOTKEY_PREFERENCES, [this](auto&& ...) {
-		controller_.get_hotkey_command_executor()->preferences();
-		return true;
-	});
-	register_hotkey(hotkey::HOTKEY_HELP, [this](auto&& ...) {
-		controller_.get_hotkey_command_executor()->show_help();
-		return true;
-	});
-	register_hotkey(hotkey::HOTKEY_QUIT_TO_DESKTOP, [](auto&& ...) {
-		quit_confirmation::quit_to_desktop();
-		return true;
-	});
-	register_hotkey(hotkey::HOTKEY_QUIT_GAME, [](auto&& ...) {
-		gui2::switch_theme(prefs::get().gui2_theme());
-		quit_confirmation::quit_to_title();
-		return true;
-	});
+	// If no local hotkey, try controller's hotkey executor
+	hotkey::command_executor* cmd_exec = controller_.get_hotkey_command_executor();
 
-	// "Actions" menu
-	register_hotkey(hotkey::HOTKEY_WB_TOGGLE, [this](auto&& ...) {
-		controller_.get_hotkey_command_executor()->whiteboard_toggle();
-		return true;
-	});
-	register_hotkey(hotkey::HOTKEY_CYCLE_UNITS, [this](auto&& ...) {
-		controller_.get_hotkey_command_executor()->cycle_units();
-		return true;
-	});
-	register_hotkey(hotkey::HOTKEY_SPEAK, [this](auto&& ...) {
-		controller_.get_hotkey_command_executor()->speak();
-		return true;
-	});
-	register_hotkey(hotkey::HOTKEY_RECRUIT, [this](auto&& ...) {
-		controller_.get_hotkey_command_executor()->recruit();
-		return true;
-	});
-	register_hotkey(hotkey::HOTKEY_RECALL, [this](auto&& ...) {
-		controller_.get_hotkey_command_executor()->recall();
-		return true;
-	});
-	register_hotkey(hotkey::HOTKEY_SHOW_ENEMY_MOVES, [this](auto&& ...) {
-		controller_.get_hotkey_command_executor()->show_enemy_moves(false);
-		return true;
-	});
-	register_hotkey(hotkey::HOTKEY_LABEL_SETTINGS, [this](auto&& ...) {
-		controller_.get_hotkey_command_executor()->label_settings();
-		return true;
-	});
-	register_hotkey(hotkey::HOTKEY_USER_CMD, [this](auto&& ...) {
-		controller_.get_hotkey_command_executor()->user_command();
-		return true;
-	});
+	if(!cmd_exec) {
+		return false;
+	}
 
+	hotkey::ui_command cmd(hotkey::get_hotkey_command(id));
+	if(cmd_exec->can_execute_command(cmd)) {
+		return cmd_exec->do_execute_command(cmd);
+	} else {
+		return false;
+	}
 }
 
 void map_dispatcher::mouse_motion(
