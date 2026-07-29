@@ -1,8 +1,9 @@
+#include "gui/gui.hpp"
 #include "gui/core/event/map_dispatcher.hpp"
 #include "gui/core/event/handler.hpp"
+#include "hotkey/hotkey_command.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
-#include "tooltips.hpp"
 
 namespace gui2
 {
@@ -56,6 +57,32 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 		}
 		return is_selected;
 	});
+}
+
+bool map_dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
+{
+	// Local hotkey
+	if(dispatcher::execute_hotkey(id)) {
+		return true;
+	}
+
+	// these hotkeys have fallback hardcoded mouse handlers, so return false to let the
+	// handler do its work.
+	if(id == hotkey::HOTKEY_SELECT_AND_ACTION || id == hotkey::HOTKEY_DESELECT_HEX) return false;
+
+	// If no local hotkey, try controller's hotkey executor
+	hotkey::command_executor* cmd_exec = controller_.get_hotkey_command_executor();
+
+	if(!cmd_exec) {
+		return false;
+	}
+
+	hotkey::ui_command cmd(hotkey::get_hotkey_command(id));
+	if(cmd_exec->can_execute_command(cmd)) {
+		return cmd_exec->do_execute_command(cmd);
+	} else {
+		return false;
+	}
 }
 
 void map_dispatcher::mouse_motion(

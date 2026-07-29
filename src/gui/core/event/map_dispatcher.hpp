@@ -12,9 +12,12 @@ class map_dispatcher : public gui2::widget {
 private:
 	play_controller& controller_;
 
+	void register_hotkeys();
 public:
 	map_dispatcher(play_controller& controller);
+
 	bool is_at(const point& coordinate) const override;
+	bool execute_hotkey(const hotkey::HOTKEY_COMMAND id) override;
 
 	void mouse_motion(bool& handled, const point& p);
 	void mouse_left_up(bool& handled, const point& p);
