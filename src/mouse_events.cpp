@@ -108,7 +108,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 	// Copy-pasted from everywhere. TODO: generalize the two.
 	float fx;
 	float fy;
-	sdl::get_mouse_state(&fx,&fy);
+	sdl::get_mouse_state(&fx, &fy);
 	x = fx;
 	y = fy;
 
@@ -400,9 +400,10 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 	// and isolated mouse motion event when using drag&drop
 	float fx;
 	float fy;
-	sdl::get_mouse_state(&fx, &fy); // <-- modify x and y
-	fx = x;
-	fy = y;
+	sdl::get_mouse_state(&fx, &fy);
+	// modify x and y
+	x = fx;
+	y = fy;
 
 	if(mouse_handler_base::mouse_motion_default(x, y, update)) {
 		return;

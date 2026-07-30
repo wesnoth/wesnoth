@@ -118,6 +118,8 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
 		float mx = pos.x;
 		float my = pos.y;
 		uint32_t mouse_state = dragging_left_ || dragging_right_ ? sdl::get_mouse_state(&mx, &my) : 0;
+		pos.x = static_cast<int>(mx);
+		pos.y = static_cast<int>(my);
 
 #ifdef MOUSE_TOUCH_EMULATION
 		if(dragging_left_ && (mouse_state & SDL_BUTTON_MASK(SDL_BUTTON_RIGHT))) {
