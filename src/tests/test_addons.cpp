@@ -136,7 +136,7 @@ BOOST_AUTO_TEST_CASE( missing_queue_adddons )
 	q.players_required = 2;
 	q.required_addons = {"some_addon_that_is_definitely_not_installed"};
 
-	std::vector<std::string> missing = mp::missing_queue_addon(q);
+	std::vector<std::string> missing = mp::missing_queue_addons(q);
 	BOOST_CHECK_EQUAL(missing.size(), 1u);
 	BOOST_CHECK_EQUAL(missing[0], "some_addon_that_is_definitely_not_installed");
 

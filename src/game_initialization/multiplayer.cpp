@@ -113,7 +113,7 @@ private:
 					info.display_name = queue["display_name"].str();
 					info.players_required = queue["players_required"].to_int();
 					info.current_players = utils::split_set(queue["current_players"].str());
-					info.required_addons = utils::split_set(queue["required_addons"].str());
+					info.required_addons = utils::split(queue["required_addons"].str());
 					queues.emplace_back(info);
 				}
 			}
@@ -839,7 +839,7 @@ bool goto_mp_wait(bool observe)
 
 bool logged_in_as_moderator()
 {
-	return manager && manager->get_session_info().is_moderator;
+return manager && manager->get_session_info().is_moderator;
 }
 
 std::string get_profile_link(int user_id)

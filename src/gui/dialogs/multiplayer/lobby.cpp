@@ -896,7 +896,7 @@ void mp_lobby::process_network_data(const config& data)
 							info.current_players = utils::split_set(queue_update["current_players"].str());
 						}
 						if(queue_update->has_attribute("required_addons")){
-							info.required_addons = utils::split_set(queue_update["required_addons"].str());
+							info.required_addons = utils::split(queue_update["required_addons"].str());
 						}
 					} else {
 						continue;
