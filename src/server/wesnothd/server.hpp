@@ -156,8 +156,8 @@ private:
 		std::string display_name;
 		std::size_t players_required;
 		std::vector<std::string> players_in_queue;
-		std::vector<std::string> required_addons;
 		config settings;
+		std::vector<std::string> required_addons;
 	};
 
 	std::deque<login_log> failed_logins_;

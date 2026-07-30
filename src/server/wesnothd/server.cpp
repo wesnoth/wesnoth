@@ -492,7 +492,7 @@ void server::load_config(bool reload)
 				update.set_attr_dup("action", "add");
 				update.set_attr_dup("display_name", info.display_name.c_str());
 				update.set_attr_int("players_required", info.players_required);
-				update.set_attr_int("required_addons",  utils::join(queue.players_in_queue).c_str());
+				update.set_attr_dup("required_addons",  utils::join(info.required_addons).c_str());
 
 				send_to_lobby(queue_update);
 			} else if(
@@ -508,7 +508,7 @@ void server::load_config(bool reload)
 				update.set_attr_dup("action", "update");
 				update.set_attr_dup("display_name", info.display_name.c_str());
 				update.set_attr_int("players_required", info.players_required);
-				update.set_attr_int("required_addons",  utils::join(queue.players_in_queue).c_str());
+				update.set_attr_dup("required_addons",  utils::join(info.required_addons).c_str());
 
 				send_to_lobby(queue_update);
 			}
