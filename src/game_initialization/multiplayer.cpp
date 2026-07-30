@@ -839,7 +839,7 @@ bool goto_mp_wait(bool observe)
 
 bool logged_in_as_moderator()
 {
-return manager && manager->get_session_info().is_moderator;
+	return manager && manager->get_session_info().is_moderator;
 }
 
 std::string get_profile_link(int user_id)
