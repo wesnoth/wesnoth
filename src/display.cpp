@@ -1439,6 +1439,17 @@ const theme::menu* display::menu_pressed()
 	return nullptr;
 }
 
+const theme::menu* display::menu_pressed(const point& loc)
+{
+	for(const auto& btn : menu_buttons_) {
+		if(btn->hit(loc.x, loc.y)) {
+			return theme_.get_menu_item(btn->id());
+		}
+	}
+
+	return nullptr;
+}
+
 void display::announce(const std::string& message, const color_t& color, const announce_options& options)
 {
 	if(options.discard_previous) {

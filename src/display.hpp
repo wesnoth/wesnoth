@@ -459,6 +459,7 @@ public:
 
 	const theme::action* action_pressed();
 	const theme::menu*   menu_pressed();
+	const theme::menu*   menu_pressed(const point& loc);
 
 	void set_diagnostic(const std::string& msg);
 
