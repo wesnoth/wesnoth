@@ -5,6 +5,7 @@
 #include "hotkey/hotkey_command.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
+#include "video.hpp"
 
 namespace gui2
 {
@@ -105,6 +106,15 @@ void map_dispatcher::mouse_left_up(
 	bool& handled,
 	const point& p)
 {
+	const theme::menu* const m = display::get_singleton()->menu_pressed(p);
+	if(m != nullptr) {
+		const rect& menu_loc = m->location(video::game_canvas());
+		if(show_menu(m, { menu_loc.x + 1, menu_loc.y + menu_loc.h + 1 }, false)) {
+			handled = true;
+			return;
+		}
+	}
+
 	auto& mhandler = controller_.get_mouse_handler_base();
 	map_location loc = display::get_singleton()->hex_clicked_on(p.x, p.y);
 	mhandler.mouse_update(controller_.is_browsing(), loc);
@@ -139,21 +149,7 @@ void map_dispatcher::mouse_right_down(
 
 	auto* menu = display::get_singleton()->get_theme().context_menu();
 
-	hotkey::command_executor* cmd_exec = controller_.get_hotkey_command_executor();
-	if(!menu || !cmd_exec) {
-		handled = false;
-		return;
-	}
-
-	// context menus cannot appear outside map area,
-	if(menu && !(display::get_singleton()->map_area().contains(p))) {
-		handled = false;
-		return;
-	}
-
-	// TODO: should be migrated to gui2. command_executor shouldn't have menu expansion as responsibility.
-	cmd_exec->show_menu(menu->items(), p, menu);
-	handled = true;
+	handled = show_menu(menu, p, true);
 }
 
 void map_dispatcher::mouse_middle_up(
@@ -190,6 +186,23 @@ void map_dispatcher::mouse_wheel(
 	mhandler.mouse_wheel(scroll.x, -scroll.y, controller_.is_browsing());
 
 	handled = true;
+}
+
+bool map_dispatcher::show_menu(const theme::menu* menu, const point& loc, bool context_menu)
+{
+	hotkey::command_executor* cmd_exec = controller_.get_hotkey_command_executor();
+	if(!menu || !cmd_exec) {
+		return false;
+	}
+
+	// context menus cannot appear outside map area,
+	if(context_menu && !(display::get_singleton()->map_area().contains(loc))) {
+		return false;
+	}
+
+	// TODO: should be migrated to gui2. command_executor shouldn't have menu expansion as responsibility.
+	cmd_exec->show_menu(menu->items(), loc, context_menu);
+	return true;
 }
 
 bool map_dispatcher::is_at(const point& /*coordinate*/) const
