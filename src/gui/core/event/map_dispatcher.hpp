@@ -2,6 +2,7 @@
 
 #include "gui/widgets/widget.hpp"
 #include "gui/auxiliary/iterator/walker.hpp"
+#include "theme.hpp"
 
 class play_controller;
 
@@ -26,6 +27,8 @@ public:
 	void mouse_middle_up(bool& handled, const point& p);
 	void mouse_middle_down(bool& handled, const point& p);
 	void mouse_wheel(bool& handled, const point& p, const point& scroll);
+
+	bool show_menu(const theme::menu* menu, const point& loc, bool context_menu);
 
 	// TODO Necessary evil because this is a widget and not a dispatcher
 	// getting rid of this requires refactor dispatcher & friends to not rely on widget
