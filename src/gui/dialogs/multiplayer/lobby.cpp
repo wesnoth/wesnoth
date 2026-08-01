@@ -16,6 +16,7 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/dialogs/multiplayer/lobby.hpp"
+#include "gui/dialogs/multiplayer/competitive_messages.hpp"
 
 #include "gui/auxiliary/field.hpp"
 #include "gui/dialogs/message.hpp"
@@ -85,6 +86,16 @@ mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& j
 		  true,
 		  []() {return prefs::get().fi_vacant_slots();},
 		  [](bool v) {prefs::get().set_fi_vacant_slots(v);},
+		  std::bind(&mp_lobby::update_gamelist_filter, this)))
+	, filter_ranked_(register_bool("filter_ranked",
+		  false,
+		  []() { return false; },
+		  [](bool) {},
+		  std::bind(&mp_lobby::update_gamelist_filter, this)))
+	, filter_tournament_(register_bool("filter_tournament",
+		  false,
+		  []() { return false; },
+		  [](bool) {},
 		  std::bind(&mp_lobby::update_gamelist_filter, this)))
 	, filter_invert_(register_bool("filter_invert",
 		  true,
@@ -392,7 +403,13 @@ widget_data mp_lobby::make_game_row_data(const mp::game_info& game)
 		{"era_name", game.era}
 	});
 
-	item["label"] = game.vacant_slots > 0 ? markup::span_color(color_string, game.name) : game.name;
+	// A tournament game remains recognizable in the compact game list, while
+	// the full details are included in the game-information tooltip below.
+	const std::string tournament_label = game.tournament_id.empty()
+		? ""
+		: " (" + (game.tournament_name.empty() ? game.tournament_id : game.tournament_name) + ")";
+	const std::string game_name = game.name + tournament_label;
+	item["label"] = game.vacant_slots > 0 ? markup::span_color(color_string, game_name) : game_name;
 	data.emplace("name", item);
 
 	item["label"] = markup::span_color(font::GRAY_COLOR, game.type_marker, markup::italic(scenario_text));
@@ -449,6 +466,13 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	const auto yes_or_no = [](bool val) { return val ? _("yes") : _("no"); };
 
 	ss << "\n" << markup::tag("big", markup::span_color(font::TITLE_COLOR, _("Settings"))) << "\n";
+	// Competitive metadata remains visible, while join authorization is decided
+	// by wesnothd against the current Tournament Manager data.
+	ss << _("Ranked:") << " " << yes_or_no(game.ranked_mode) << "\n";
+	const std::string tournament_label = game.tournament_name.empty()
+		? (game.tournament_id.empty() ? _("None") : game.tournament_id)
+		: game.tournament_name;
+	ss << _("Tournament:") << " " << tournament_label << "\n";
 	ss << _("Experience modifier:")   << " " << game.xp << "\n";
 	ss << _("Gold per village:")      << " " << game.gold << "\n";
 	ss << _("Map size:")              << " " << game.map_size_info << "\n";
@@ -459,6 +483,9 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	ss << _("Use map settings:")      << " " << yes_or_no(game.use_map_settings);
 
 	image& info_icon = grid->find_widget<image>("game_info");
+	image& ranked_icon = grid->find_widget<image>("ranked_icon");
+	ranked_icon.set_visible(game.ranked_mode ? widget::visibility::visible : widget::visibility::invisible);
+	ranked_icon.set_tooltip(_("Ranked game"));
 
 	if(!game.have_era || !game.have_all_mods || !game.required_addons.empty()) {
 		info_icon.set_label("icons/icon-info-error.png");
@@ -835,8 +862,15 @@ void mp_lobby::process_network_data(const config& data)
 		if(info["type"] == "server_info") {
 			server_information_ = info["message"].str();
 			return;
-		} else if(info["type"] == "announcements") {
+	} else if(info["type"] == "announcements") {
 			announcements_ = info["message"].str();
+			return;
+		} else if(info["type"] == "info") {
+			// wesnothd sends an ID because it cannot know the locale of this
+			// client. Preserve an unknown server message as a compatibility
+			// fallback.
+			const std::string localized = localized_competitive_message(info["message_id"].str());
+			gui2::show_message(_("Information"), localized.empty() ? info["message"].str() : localized, message::ok_button);
 			return;
 		}
 	} else if(auto create = data.optional_child("create_game")) {
@@ -1053,6 +1087,8 @@ void mp_lobby::game_filter_init()
 {
 	lobby_info_.clear_game_filters();
 
+	// These two filters are deliberately independent: a tournament may be
+	// unranked, and a ranked game need not belong to a tournament.
 	lobby_info_.add_game_filter([this](const mp::game_info& info) {
 		for(const auto& s : utils::split(filter_text_->get_value(), ' ')) {
 			if(!info.match_string_filter(s)) {
@@ -1076,6 +1112,14 @@ void mp_lobby::game_filter_init()
 
 	lobby_info_.add_game_filter([this](const mp::game_info& info) {
 		return filter_slots_->get_widget_value() ? info.vacant_slots > 0 : true;
+	});
+
+	lobby_info_.add_game_filter([this](const mp::game_info& info) {
+		return filter_ranked_->get_widget_value() ? info.ranked_mode : true;
+	});
+
+	lobby_info_.add_game_filter([this](const mp::game_info& info) {
+		return filter_tournament_->get_widget_value() ? !info.tournament_id.empty() : true;
 	});
 
 	lobby_info_.add_game_filter([this](const mp::game_info& info) {

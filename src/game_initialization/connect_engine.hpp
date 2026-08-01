@@ -50,6 +50,10 @@ public:
 		int side_taken = -1);
 	void import_user(const config& data, const bool observer,
 		int side_taken = -1);
+	/** Update per-user seat eligibility from wesnothd's staging [user] list. */
+	void update_user_access(const config::const_child_itors& users);
+	/** Whether @a name may be offered as a side controller in this game. */
+	bool user_can_play(const std::string& name) const;
 
 	// Returns true if there are still sides available for this game.
 	bool sides_available() const;
@@ -132,6 +136,9 @@ private:
 	std::vector<side_engine_ptr> side_engines_;
 	std::vector<const config*> era_factions_;
 	std::vector<team_data_pod> team_data_;
+	// Authorization snapshot received from the server. It affects controller
+	// menus only; observers may still remain in the game.
+	std::map<std::string, bool> user_access_;
 
 	ng::era_metadata era_info_;
 

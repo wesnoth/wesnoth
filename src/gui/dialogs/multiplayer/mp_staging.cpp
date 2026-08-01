@@ -23,6 +23,8 @@
 #include "formatter.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/message.hpp"
+#include "gui/dialogs/multiplayer/competitive_messages.hpp"
 #include "gui/dialogs/multiplayer/faction_select.hpp"
 #include "gui/dialogs/multiplayer/player_list_helper.hpp"
 #include "gui/widgets/button.hpp"
@@ -42,7 +44,6 @@
 
 namespace gui2::dialogs
 {
-
 REGISTER_DIALOG(mp_staging)
 
 mp_staging::mp_staging(ng::connect_engine& connect_engine, wesnothd_connection* connection)
@@ -531,8 +532,23 @@ void mp_staging::network_handler()
 		return;
 	}
 
+	if(auto message = data.optional_child("message"); message && message["type"] == "info") {
+		const std::string localized = localized_competitive_message(message["message_id"].str());
+		if(!localized.empty()) {
+			// Show the localized information as a dialog and replace the chat payload so
+			// staging chat never displays a server-internal error identifier.
+			message["message"] = localized;
+			gui2::show_message(_("Information"), localized, message::ok_button);
+		}
+	}
+
 	// Update chat
 	find_widget<chatbox>("chat").process_network_data(data);
+	if(data.has_child("user")) {
+		// Refresh the server-authoritative eligibility snapshot before rebuilding
+		// side controller menus for this staging update.
+		connect_engine_.update_user_access(data.child_range("user"));
+	}
 
 	// TODO: why is this needed...
 	const bool was_able_to_start = connect_engine_.can_start_game();

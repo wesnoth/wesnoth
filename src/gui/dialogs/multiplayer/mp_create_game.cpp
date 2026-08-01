@@ -54,12 +54,44 @@ static lg::log_domain log_mp_create("mp/create");
 namespace gui2::dialogs
 {
 
+namespace
+{
+	/**
+	 * Build the tournament selector label from optional competition components.
+	 * Names supplied by the organizer remain literal; only the fixed labels
+	 * around round and game numbers go through Wesnoth's localization system.
+	 */
+	std::string tournament_selector_label(const mp_tournament_info& tournament)
+	{
+		std::vector<std::string> components;
+		if(!tournament.phase_name.empty()) {
+			components.push_back(tournament.phase_name);
+		}
+		if(!tournament.group_name.empty()) {
+			components.push_back(tournament.group_name);
+		}
+		if(!tournament.round_number.empty()) {
+			components.push_back(VGETTEXT("Round $round", {{"round", tournament.round_number}}));
+		}
+		if(!tournament.game_number.empty()) {
+			components.push_back(VGETTEXT("Game $game", {{"game", tournament.game_number}}));
+		}
+		return components.empty() ? tournament.name : tournament.name + " — " + utils::join(components, " — ");
+	}
+
+	bool is_ranked_tournament_mode(const std::string& mode)
+	{
+		const std::string normalized_mode = boost::algorithm::to_lower_copy(boost::algorithm::trim_copy(mode));
+		return normalized_mode.find("ranked") != std::string::npos;
+	}
+}
+
 // Special retval value for loading a game
 static const int LOAD_GAME = 100;
 
 REGISTER_DIALOG(mp_create_game)
 
-mp_create_game::mp_create_game(saved_game& state, bool local_mode)
+mp_create_game::mp_create_game(saved_game& state, bool local_mode, std::vector<mp_tournament_info> tournaments, bool ranked_enabled)
 	: modal_dialog(window_id())
 	, create_engine_(state)
 	, options_manager_()
@@ -117,6 +149,8 @@ mp_create_game::mp_create_game(saved_game& state, bool local_mode)
 	, mod_list_()
 	, eras_menu_button_()
 	, local_mode_(local_mode)
+	, tournaments_(std::move(tournaments))
+	, ranked_enabled_(ranked_enabled)
 	, previous_settings_()
 {
 	level_types_ = {
@@ -370,6 +404,34 @@ void mp_create_game::pre_show()
 
 	on_random_faction_mode_select();
 
+	// These widgets are declared in the General panel. Their available values
+	// are intentionally derived from the authenticated server session, not from
+	// a client-side tournament cache.
+	menu_button& tournament_menu = find_widget<menu_button>("tournament");
+	std::vector<config> tournament_values;
+	tournament_values.emplace_back("label", _("None"));
+	for(const auto& tournament : tournaments_) {
+		tournament_values.emplace_back("label", tournament_selector_label(tournament));
+	}
+	tournament_menu.set_values(tournament_values);
+	connect_signal_notify_modified(tournament_menu,
+		std::bind(&mp_create_game::on_tournament_select, this));
+	toggle_button& ranked_mode = find_widget<toggle_button>("ranked_mode");
+	image& ranked_mode_info = find_widget<image>("ranked_mode_info");
+	ranked_mode.set_value_bool(false);
+	if(!ranked_enabled_) {
+		// This prevents an accidental invalid request, while wesnothd performs
+		// the authoritative check again when the game is created.
+		ranked_mode.set_active(false);
+		ranked_mode.set_tooltip(_("To activate ranked mode, enable ranked matches in your user profile: https://tournament.wesnoth.org/help/getting-started"));
+		// Disabled toggles do not receive hover events, so provide the same help
+		// from a nearby active information icon.
+		ranked_mode_info.set_visible(widget::visibility::visible);
+		ranked_mode_info.set_tooltip(_("To activate ranked mode, enable ranked matches in your user profile: https://tournament.wesnoth.org/help/getting-started"));
+	} else {
+		ranked_mode_info.set_visible(widget::visibility::invisible);
+	}
+	on_tournament_select();
 	//
 	// Set up the setting status labels
 	//
@@ -524,6 +586,34 @@ void mp_create_game::pre_show()
 	plugins_context_->set_accessor_int("find_mod", [this](const config& cfg) {
 		return create_engine_.find_extra_by_id(ng::create_engine::MOD, cfg["id"]);
 	});
+}
+
+void mp_create_game::on_tournament_select()
+{
+	menu_button& tournament_menu = find_widget<menu_button>("tournament");
+	toggle_button& ranked_mode = find_widget<toggle_button>("ranked_mode");
+	const int selected = tournament_menu.get_value();
+
+	if(selected <= 0 || selected > static_cast<int>(tournaments_.size())) {
+		// Without a tournament, ranked mode is an independent choice. Restore
+		// the profile-based state and its explanatory tooltip.
+		ranked_mode.set_active(ranked_enabled_);
+		if(!ranked_enabled_) {
+			ranked_mode.set_tooltip(_("To activate ranked mode, enable ranked matches in your user profile: https://tournament.wesnoth.org/help/getting-started"));
+		} else {
+			ranked_mode.set_tooltip(_("Only players enabled for ranked games may join"));
+		}
+		return;
+	}
+
+	const mp_tournament_info& tournament = tournaments_[selected - 1];
+	const bool tournament_is_ranked = is_ranked_tournament_mode(tournament.mode);
+	// A tournament's mode is authoritative: selecting a ranked tournament marks
+	// the game ranked, while unranked and team tournaments clear it. Keeping the
+	// control disabled prevents a later manual change from creating a mismatch.
+	ranked_mode.set_value_bool(tournament_is_ranked);
+	ranked_mode.set_active(false);
+	ranked_mode.set_tooltip(_("The selected tournament determines whether this game is ranked."));
 }
 
 void mp_create_game::sync_with_depcheck()
@@ -969,6 +1059,14 @@ config mp_create_game::settings_config()
 	settings.add_child("options", options_manager_->get_options_config());
 	random_faction_mode::type type = random_faction_mode::get_enum(selected_rfm_index_).value_or(random_faction_mode::type::independent);
 	settings["random_faction_mode"] = random_faction_mode::get_string(type);
+	// Include competitive metadata in the create-game request. The selected
+	// entry carries both its tournament ID and its precise pending game ID;
+	// wesnothd validates both before opening the game.
+	settings["ranked_mode"] = find_widget<toggle_button>("ranked_mode").get_value_bool();
+	const int tournament = find_widget<menu_button>("tournament").get_value();
+	settings["tournament_id"] = tournament > 0 && tournament <= static_cast<int>(tournaments_.size()) ? tournaments_[tournament - 1].id : "";
+	settings["tournament_name"] = tournament > 0 && tournament <= static_cast<int>(tournaments_.size()) ? tournaments_[tournament - 1].name : "";
+	settings["tournament_game_id"] = tournament > 0 && tournament <= static_cast<int>(tournaments_.size()) ? tournaments_[tournament - 1].game_id : "";
 
 	return settings;
 }
@@ -1176,6 +1274,14 @@ void mp_create_game::post_show()
 
 		params.allow_observers = observers_->get_widget_value();
 		params.private_replay = private_replay_->get_widget_value();
+		// Keep the local staging settings, including the selected tournament-game
+		// ID, in sync with the create-game request. They are later serialized with
+		// the [multiplayer] game configuration.
+		params.ranked_mode = find_widget<toggle_button>("ranked_mode").get_value_bool();
+		const int tournament = find_widget<menu_button>("tournament").get_value();
+		params.tournament_id = tournament > 0 && tournament <= static_cast<int>(tournaments_.size()) ? tournaments_[tournament - 1].id : "";
+		params.tournament_name = tournament > 0 && tournament <= static_cast<int>(tournaments_.size()) ? tournaments_[tournament - 1].name : "";
+		params.tournament_game_id = tournament > 0 && tournament <= static_cast<int>(tournaments_.size()) ? tournaments_[tournament - 1].game_id : "";
 		create_engine_.get_state().classification().oos_debug = strict_sync_->get_widget_value();
 		params.shuffle_sides = shuffle_sides_->get_widget_value();
 

@@ -25,6 +25,7 @@
 #include "game_initialization/playcampaign.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/loading_screen.hpp"
+#include "gui/dialogs/message.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "hotkey/hotkey_handler_mp.hpp"
 #include "log.hpp"
@@ -417,13 +418,20 @@ playmp_controller::PROCESS_DATA_RESULT playmp_controller::process_network_data_i
 
 	if (const auto message = cfg.optional_child("message"))
 	{
-		game_display::get_singleton()->get_chat_manager().add_chat_message(
-			std::chrono::system_clock::now(),
-			message.value()["sender"],
-			message.value()["side"].to_int(),
-			message.value()["message"],
-			events::chat_handler::MESSAGE_PUBLIC,
-			prefs::get().message_bell());
+		if(message.value()["message_id"] == "side_assignment_denied") {
+			gui2::show_message(
+				_("Information"),
+				_("That player is not eligible for this ranked or tournament game."),
+				gui2::dialogs::message::ok_button);
+		} else {
+			game_display::get_singleton()->get_chat_manager().add_chat_message(
+				std::chrono::system_clock::now(),
+				message.value()["sender"],
+				message.value()["side"].to_int(),
+				message.value()["message"],
+				events::chat_handler::MESSAGE_PUBLIC,
+				prefs::get().message_bell());
+		}
 	}
 	else if (auto whisper = cfg.optional_child("whisper") /*&& is_observer()*/)
 	{
