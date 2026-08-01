@@ -17,7 +17,7 @@
 ### Packaging
 ### Terrain
 ### Translations
-   * Updated translations: Bengali, British English, Bulgarian, Czech, French, Galician, German, Hungarian, Italian, Polish, Russian, Serbian
+   * Updated translations: Bengali, British English, Bulgarian, Czech, French, Galician, German, Hungarian, Italian, Polish, Russian, Serbian, Spanish
 ### Units
    * Frost Stoat
      * Arcane Resist: -20% -> 0%
