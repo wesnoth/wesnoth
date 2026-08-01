@@ -42,6 +42,7 @@ namespace gui2::dialogs {
 		bool active() const { return active_; }
 		std::string get_value() const;
 		void set_value(const std::string& text);
+		void set_properties(MODE mode, const std::string& label, const std::string& check_label, bool checked);
 		const std::vector<std::string>& command_history() const { return command_history_; }
 
 		// returns the text to chat log
