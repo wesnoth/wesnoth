@@ -21,21 +21,12 @@
 
 #include <set>
 
-class game_display;
-class team;
-class unit_map;
-
-namespace gui2 {
-	class ttoggle_button;
-	class ttext_box;
-}
-
 namespace gui2::dialogs {
 
-	class tfloating_textbox : public modeless_dialog {
+	class floating_textbox : public modeless_dialog {
 	public:
 		enum MODE { NONE, SEARCH, MESSAGE, COMMAND, AI };
-		tfloating_textbox(MODE mode, const std::string& label, const std::string& check_label = "", bool checked = false);
+		floating_textbox(MODE mode, const std::string& label, const std::string& check_label = "", bool checked = false);
 
 		MODE mode() const { return mode_; }
 		bool checked() const;
@@ -47,11 +38,21 @@ namespace gui2::dialogs {
 
 		// returns the text to chat log
 		std::string tab(const std::set<std::string>& dictionary);
+		void history_update(bool up);
 		void memorize_command(const std::string& command);
+
+		void on_execute(std::function<void(const std::string&)> f)
+		{
+			do_enter_ = std::move(f);
+		}
 
 	private:
 		virtual const std::string& window_id() const;
 		void pre_show();
+		void key_down(const event::ui_event /*event*/,
+						bool& handled,
+						const SDL_Keycode key,
+						SDL_Keymod modifier);
 
 		gui2::toggle_button* check_;
 		gui2::text_box* box_;
@@ -60,5 +61,7 @@ namespace gui2::dialogs {
 		std::string label_string_, check_label_;
 		bool initially_checked_, active_;
 		std::vector<std::string> command_history_;
+
+		std::function<void(const std::string&)> do_enter_;
 	};
 }

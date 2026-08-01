@@ -34,7 +34,6 @@
 #include "game_events/pump.hpp"
 #include "game_state.hpp"
 #include "gettext.hpp"
-#include "gui/core/event/handler.hpp"
 #include "gui/dialogs/floating_textbox.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/message.hpp"      // for show_error_message
@@ -677,29 +676,29 @@ void play_controller::enter_textbox()
 
 	using namespace gui2::dialogs;
 
-	tfloating_textbox& box = *menu_handler_.get_textbox();
+	floating_textbox& box = *menu_handler_.get_textbox();
 	const std::string str = box.get_value();
 	const unsigned int team_num = current_side();
 	events::mouse_handler& mousehandler = mouse_handler_;
 
 	switch(box.mode()) {
-	case tfloating_textbox::SEARCH:
+	case floating_textbox::SEARCH:
 		menu_handler_.do_search(str);
 		box.memorize_command(str);
 		box.close();
 		break;
-	case tfloating_textbox::MESSAGE:
+	case floating_textbox::MESSAGE:
 		if (menu_handler_.do_speak()) {
 			box.memorize_command(str);
 			box.close();
 		}
 		break;
-	case tfloating_textbox::COMMAND:
+	case floating_textbox::COMMAND:
 		box.memorize_command(str);
 		box.close();
 		menu_handler_.do_command(str);
 		break;
-	case tfloating_textbox::AI:
+	case floating_textbox::AI:
 		box.memorize_command(str);
 		box.close();
 		menu_handler_.do_ai_formula(str, team_num, mousehandler);
@@ -716,45 +715,18 @@ void play_controller::textbox_move_vertically(bool up)
 		return;
 	}
 
-	using namespace gui2::dialogs;
-	tfloating_textbox& box = *menu_handler_.get_textbox();
-	const std::string str = box.get_value();
-	const std::vector<std::string>& command_history = box.command_history();
-
-	auto prev = std::find(command_history.begin(), command_history.end(), str);
-
-	if (prev != command_history.end())
-	{
-		if(up) {
-			if(prev != command_history.begin()) {
-				box.set_value(*--prev);
-			}
-		} else {
-			if(++prev != command_history.end()) {
-				box.set_value(*prev);
-			} else {
-				box.set_value("");
-			}
-		}
-	} else if (up) {
-		if(command_history.size() > 0) {
-			box.set_value(*--prev);
-		}
-		if(!str.empty()) {
-			box.memorize_command(str);
-		}
-	}
+	menu_handler_.get_textbox()->history_update(up);
 }
 
 void play_controller::tab()
 {
 	using namespace gui2::dialogs;
 
-	tfloating_textbox::MODE mode = menu_handler_.get_textbox()->mode();
+	floating_textbox::MODE mode = menu_handler_.get_textbox()->mode();
 
 	std::set<std::string> dictionary;
 	switch(mode) {
-	case tfloating_textbox::SEARCH: {
+	case floating_textbox::SEARCH: {
 		for(const unit& u : get_units()) {
 			const map_location& loc = u.get_location();
 			if(!gui_->fogged(loc) && !(gui_->viewing_team().is_enemy(u.side()) && u.invisible(loc)))
@@ -763,12 +735,12 @@ void play_controller::tab()
 		// TODO List map labels
 		break;
 	}
-	case tfloating_textbox::COMMAND: {
+	case floating_textbox::COMMAND: {
 		std::vector<std::string> commands = menu_handler_.get_commands_list();
 		dictionary.insert(commands.begin(), commands.end());
 		[[fallthrough]]; // we also want player names from the next case
 	}
-	case tfloating_textbox::MESSAGE: {
+	case floating_textbox::MESSAGE: {
 		for(const team& t : get_teams()) {
 			if(!t.is_empty())
 				dictionary.insert(t.current_player());

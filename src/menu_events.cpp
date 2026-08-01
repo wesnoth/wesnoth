@@ -133,7 +133,7 @@ game_board& menu_handler::board() const
 	return gamestate().board_;
 }
 
-std::shared_ptr<tfloating_textbox> menu_handler::get_textbox()
+std::shared_ptr<floating_textbox> menu_handler::get_textbox()
 {
 	return textbox_info_;
 }
@@ -237,7 +237,7 @@ void menu_handler::speak()
 			: _("Send to allies only")
 		: "";
 	textbox_info_.reset(
-		new tfloating_textbox(tfloating_textbox::MESSAGE, _("Message:"), check_label, prefs::get().message_private()));
+		new floating_textbox(floating_textbox::MESSAGE, _("Message:"), check_label, prefs::get().message_private()));
 	textbox_info_->show(true);
 }
 
@@ -1079,7 +1079,7 @@ void menu_handler::search()
 		msg << " [" << last_search_ << "]";
 	}
 	msg << ':';
-	textbox_info_.reset(new tfloating_textbox(tfloating_textbox::SEARCH, msg.str(), "", false));
+	textbox_info_.reset(new floating_textbox(floating_textbox::SEARCH, msg.str(), "", false));
 	textbox_info_->show(true);
 }
 
@@ -2141,7 +2141,7 @@ void menu_handler::do_ai_formula(const std::string& str, int /*side_num*/, mouse
 
 void menu_handler::user_command()
 {
-	textbox_info_.reset(new tfloating_textbox(tfloating_textbox::COMMAND, translation::sgettext("prompt^Command:"), "", false));
+	textbox_info_.reset(new floating_textbox(floating_textbox::COMMAND, translation::sgettext("prompt^Command:"), "", false));
 	textbox_info_->show(true);
 }
 
@@ -2168,7 +2168,7 @@ void menu_handler::custom_command()
 void menu_handler::ai_formula()
 {
 	if(!pc_.is_networked_mp()) {
-		textbox_info_.reset(new tfloating_textbox(tfloating_textbox::AI, translation::sgettext("prompt^Formula:"), "", false));
+		textbox_info_.reset(new floating_textbox(floating_textbox::AI, translation::sgettext("prompt^Formula:"), "", false));
 		textbox_info_->show(true);
 	}
 }

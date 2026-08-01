@@ -17,7 +17,6 @@
 #pragma once
 
 #include "chat_events.hpp"
-#include "gui/dialogs/floating_textbox.hpp"
 #include "lua_jailbreak_exception.hpp"
 #include "units/map.hpp"
 
@@ -27,12 +26,19 @@ class game_state;
 class game_data;
 class game_board;
 class game_config_view;
+class game_display;
 class play_controller;
+class tfloating_textbox;
 class t_string;
 
 namespace events
 {
 class mouse_handler;
+}
+
+namespace gui2::dialogs
+{
+class floating_textbox;
 }
 
 struct fallback_ai_to_human_exception final : public lua_jailbreak_exception
@@ -55,7 +61,7 @@ public:
 
 	void set_gui(game_display* gui);
 
-	std::shared_ptr<gui2::dialogs::tfloating_textbox> get_textbox();
+	std::shared_ptr<gui2::dialogs::floating_textbox> get_textbox();
 
 	void objectives();
 	void show_statistics(int side_num);
@@ -144,7 +150,7 @@ private:
 
 	const game_config_view& game_config_;
 
-	std::shared_ptr<gui2::dialogs::tfloating_textbox> textbox_info_;
+	std::shared_ptr<gui2::dialogs::floating_textbox> textbox_info_;
 	std::string last_search_;
 	map_location last_search_hit_;
 };
