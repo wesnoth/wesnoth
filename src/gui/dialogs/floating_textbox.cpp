@@ -40,27 +40,28 @@ tfloating_textbox::tfloating_textbox(MODE mode, const std::string& label, const 
 	, initially_checked_(checked)
 	, active_(false)
 {
+	active_ = true;
+	set_properties(mode_, label_string_, check_label_, initially_checked_);
 }
 
 void tfloating_textbox::pre_show()
 {
-	active_ = true;
+}
 
-	find_widget<label>("label").set_label(label_string_);
+void tfloating_textbox::set_properties(MODE mode, const std::string& label_str, const std::string& check_label, bool checked)
+{
+	mode_ = mode;
+	find_widget<label>("label").set_label(label_str);
 	box_ = find_widget<text_box>("box", false, true);
+	keyboard_capture(box_);
 
 	check_ = find_widget<toggle_button>("mode_toggle", false, true);
-	if(check_label_.empty()) {
+	if(check_label.empty()) {
 		check_->set_visible(visibility::invisible);
 	} else {
-		check_->set_label(check_label_);
-		check_->set_value_bool(initially_checked_);
+		check_->set_label(check_label);
+		check_->set_value_bool(checked);
 	}
-
-#if defined(__ANDROID__) || defined(__IPHONEOS__)
-	// Show onscreen keyboard
-	SDL_StartTextInput(video::get_window());
-#endif
 }
 
 std::string tfloating_textbox::tab(const std::set<std::string>& dictionary)
