@@ -160,7 +160,7 @@ void luaW_pushfaivariant(lua_State* L, const variant& val) {
 			luaW_pushweapon(L, atk.shared_from_this());
 		} else if(auto team_ref = callable_cast<team_callable*>(val)) {
 			auto& t = team_ref->get_team();
-			luaW_pushteam(L, t);
+			luaW_pushteam(L, const_cast<team&>(t));
 		} else if(auto loc_ref = callable_cast<location_callable*>(val)) {
 			luaW_pushlocation(L, loc_ref->loc());
 		} else {
