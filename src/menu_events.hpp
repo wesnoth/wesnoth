@@ -17,7 +17,7 @@
 #pragma once
 
 #include "chat_events.hpp"
-#include "floating_textbox.hpp"
+#include "gui/dialogs/floating_textbox.hpp"
 #include "lua_jailbreak_exception.hpp"
 #include "units/map.hpp"
 
@@ -53,11 +53,9 @@ public:
 	menu_handler(play_controller& pc);
 	virtual ~menu_handler();
 
-	gui::floating_textbox& get_textbox();
-	void set_gui(game_display* gui)
-	{
-		gui_ = gui;
-	}
+	void set_gui(game_display* gui);
+
+	std::shared_ptr<gui2::dialogs::tfloating_textbox> get_textbox();
 
 	void objectives();
 	void show_statistics(int side_num);
@@ -146,7 +144,7 @@ private:
 
 	const game_config_view& game_config_;
 
-	gui::floating_textbox textbox_info_;
+	std::shared_ptr<gui2::dialogs::tfloating_textbox> textbox_info_;
 	std::string last_search_;
 	map_location last_search_hit_;
 };
