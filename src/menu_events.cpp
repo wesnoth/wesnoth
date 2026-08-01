@@ -238,7 +238,7 @@ void menu_handler::speak()
 		: "";
 	textbox_info_.reset(
 		new tfloating_textbox(tfloating_textbox::MESSAGE, _("Message:"), check_label, prefs::get().message_private()));
-	textbox_info_->show();
+	textbox_info_->show(true);
 }
 
 void menu_handler::whisper()
@@ -1080,7 +1080,7 @@ void menu_handler::search()
 	}
 	msg << ':';
 	textbox_info_.reset(new tfloating_textbox(tfloating_textbox::SEARCH, msg.str(), "", false));
-	textbox_info_->show();
+	textbox_info_->show(true);
 }
 
 bool menu_handler::do_speak()
@@ -2142,7 +2142,7 @@ void menu_handler::do_ai_formula(const std::string& str, int /*side_num*/, mouse
 void menu_handler::user_command()
 {
 	textbox_info_.reset(new tfloating_textbox(tfloating_textbox::COMMAND, translation::sgettext("prompt^Command:"), "", false));
-	textbox_info_->show();
+	textbox_info_->show(true);
 }
 
 void menu_handler::request_control_change(int side_num, const std::string& player)
@@ -2169,7 +2169,7 @@ void menu_handler::ai_formula()
 {
 	if(!pc_.is_networked_mp()) {
 		textbox_info_.reset(new tfloating_textbox(tfloating_textbox::AI, translation::sgettext("prompt^Formula:"), "", false));
-		textbox_info_->show();
+		textbox_info_->show(true);
 	}
 }
 
