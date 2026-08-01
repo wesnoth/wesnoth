@@ -60,9 +60,6 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 		}
 		return is_selected;
 	});
-
-	//Keyboard Hotkeys
-	set_want_keyboard_input(true);
 }
 
 bool map_dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
