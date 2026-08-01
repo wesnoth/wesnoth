@@ -15,6 +15,7 @@
 
 #include "floating_textbox.hpp"
 
+#include "gui/core/event/handler.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
@@ -29,9 +30,9 @@ static lg::log_domain log_display("display");
 
 namespace gui2::dialogs {
 
-REGISTER_DIALOG(tfloating_textbox);
+REGISTER_DIALOG(floating_textbox);
 
-tfloating_textbox::tfloating_textbox(MODE mode, const std::string& label, const std::string& check_label, bool checked)
+floating_textbox::floating_textbox(MODE mode, const std::string& label, const std::string& check_label, bool checked)
 	: modeless_dialog(window_id())
 	, check_(nullptr)
 	, mode_(mode)
@@ -42,13 +43,20 @@ tfloating_textbox::tfloating_textbox(MODE mode, const std::string& label, const 
 {
 	active_ = true;
 	set_properties(mode_, label_string_, check_label_, initially_checked_);
+
+	box_->connect_signal<event::SDL_KEY_DOWN>(std::bind(
+		&floating_textbox::key_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6));
 }
 
-void tfloating_textbox::pre_show()
+void floating_textbox::pre_show()
 {
+#if defined(__ANDROID__) || defined(__IPHONEOS__)
+	// Show onscreen keyboard
+	SDL_StartTextInput(video::get_window());
+#endif
 }
 
-void tfloating_textbox::set_properties(MODE mode, const std::string& label_str, const std::string& check_label, bool checked)
+void floating_textbox::set_properties(MODE mode, const std::string& label_str, const std::string& check_label, bool checked)
 {
 	mode_ = mode;
 	find_widget<label>("label").set_label(label_str);
@@ -64,7 +72,9 @@ void tfloating_textbox::set_properties(MODE mode, const std::string& label_str, 
 	}
 }
 
-std::string tfloating_textbox::tab(const std::set<std::string>& dictionary)
+
+
+std::string floating_textbox::tab(const std::set<std::string>& dictionary)
 {
 	if(active() == false) {
 		return "";
@@ -88,7 +98,7 @@ std::string tfloating_textbox::tab(const std::set<std::string>& dictionary)
 	return completion_list;
 }
 
-void tfloating_textbox::memorize_command(const std::string& command)
+void floating_textbox::memorize_command(const std::string& command)
 {
 	if(command.empty()) {
 		return;
@@ -102,18 +112,69 @@ void tfloating_textbox::memorize_command(const std::string& command)
 	command_history_.emplace_back(command);
 }
 
-bool tfloating_textbox::checked() const
+bool floating_textbox::checked() const
 {
 	return check_ ? check_->get_value_bool() : false;
 }
 
-std::string tfloating_textbox::get_value() const
+std::string floating_textbox::get_value() const
 {
 	return box_->get_value();
 }
 
-void tfloating_textbox::set_value(const std::string& text)
+void floating_textbox::set_value(const std::string& text)
 {
 	box_->set_value(text);
 }
+
+void floating_textbox::history_update(bool up)
+{
+	const std::string str = get_value();
+
+	auto prev = std::find(command_history_.begin(), command_history_.end(), str);
+
+	if (prev != command_history_.end())
+	{
+		if(up) {
+			if(prev != command_history_.begin()) {
+				set_value(*--prev);
+			}
+		} else {
+			if(++prev != command_history_.end()) {
+				set_value(*prev);
+			} else {
+				set_value("");
+			}
+		}
+	} else if (up) {
+		if(command_history_.size() > 0) {
+			set_value(*--prev);
+		}
+
+		if(!str.empty()) {
+			memorize_command(str);
+		}
+	}
+}
+
+void floating_textbox::key_down(const event::ui_event /*event*/,
+								bool& handled,
+								const SDL_Keycode key,
+								SDL_Keymod /*modifier*/)
+{
+	switch(key) {
+		case SDLK_ESCAPE:
+			handled = true;
+			hide();
+			break;
+
+		case SDLK_RETURN:
+		case SDLK_KP_ENTER:
+			handled = true;
+			do_enter_(get_value());
+			hide();
+			break;
+	}
+}
+
 }
