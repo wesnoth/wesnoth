@@ -170,9 +170,10 @@ void floating_textbox::key_down(const event::ui_event /*event*/,
 
 		case SDLK_RETURN:
 		case SDLK_KP_ENTER:
-			handled = true;
-			do_enter_(get_value());
-			hide();
+			if(do_enter_ && !get_value().empty()) {
+				handled = true;
+				do_enter_(get_value());
+			}
 			break;
 	}
 }

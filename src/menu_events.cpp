@@ -238,6 +238,11 @@ void menu_handler::speak()
 		: "";
 	textbox_info_.reset(
 		new floating_textbox(floating_textbox::MESSAGE, _("Message:"), check_label, prefs::get().message_private()));
+	textbox_info_->on_execute([this](const std::string& str) {
+		if (do_speak()) {
+			textbox_info_->memorize_command(str);
+		}
+ 	});
 	textbox_info_->show(true);
 }
 
@@ -1080,6 +1085,10 @@ void menu_handler::search()
 	}
 	msg << ':';
 	textbox_info_.reset(new floating_textbox(floating_textbox::SEARCH, msg.str(), "", false));
+	textbox_info_->on_execute([this](const std::string& str) {
+		do_search(str);
+		textbox_info_->memorize_command(str);
+	});
 	textbox_info_->show(true);
 }
 
@@ -2142,6 +2151,10 @@ void menu_handler::do_ai_formula(const std::string& str, int /*side_num*/, mouse
 void menu_handler::user_command()
 {
 	textbox_info_.reset(new floating_textbox(floating_textbox::COMMAND, translation::sgettext("prompt^Command:"), "", false));
+	textbox_info_->on_execute([this](const std::string& str) {
+		textbox_info_->memorize_command(str);
+		do_command(str);
+	});
 	textbox_info_->show(true);
 }
 
@@ -2169,6 +2182,13 @@ void menu_handler::ai_formula()
 {
 	if(!pc_.is_networked_mp()) {
 		textbox_info_.reset(new floating_textbox(floating_textbox::AI, translation::sgettext("prompt^Formula:"), "", false));
+		textbox_info_->on_execute([this](const std::string& str) {
+			textbox_info_->memorize_command(str);
+			do_ai_formula(
+				str,
+				resources::controller->current_side(),
+				resources::controller->get_mouse_handler_base());
+		});
 		textbox_info_->show(true);
 	}
 }
