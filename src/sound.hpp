@@ -140,9 +140,9 @@ private:
 	float gain{1.0};
 };
 
-constexpr static volume silence{0.f};
-constexpr static volume full_volume{1.f};
-constexpr static volume max_volume{1.28f};
+constexpr inline volume silence{0.f};
+constexpr inline volume full_volume{1.f};
+constexpr inline volume max_volume{1.28f};
 
 volume get_music_volume();
 volume get_sound_volume();
