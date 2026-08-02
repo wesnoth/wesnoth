@@ -136,16 +136,6 @@ public:
 	constexpr auto operator-(const volume& other) const
 	{ return volume{gain - other.gain}; }
 
-#ifdef __cpp_impl_three_way_comparison
-	constexpr auto operator<=>(const volume& other) const = default;
-#else
-	constexpr bool operator==(const volume& other) const
-	{ return gain == other.gain; };
-
-	constexpr bool operator!=(const volume& other) const
-	{ return !operator==(other); }
-#endif
-
 private:
 	float gain{1.0};
 };
