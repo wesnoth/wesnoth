@@ -141,7 +141,7 @@ static int impl_music_get(lua_State* L) {
 	}
 	// This calculation reverses the one used in [volume] to get back the relative volume level.
 	// (Which is the same calculation that's duplicated in impl_music_set.)
-	return_float_attrib("volume", sound::get_music_volume() * 100.0 / prefs::get().music_volume());
+	return_float_attrib("volume", (sound::get_music_volume() / prefs::get().music_volume()).as_percent());
 	return luaW_getmetafield(L, 1, m);
 }
 
@@ -180,7 +180,7 @@ static int impl_music_set(lua_State* L) {
 		return 0;
 	}
 	const char* m = luaL_checkstring(L, 2);
-	modify_float_attrib_check_range("volume", sound::set_music_volume(value * prefs::get().music_volume() / 100.0), 0.0, 100.0);
+	modify_float_attrib_check_range("volume", sound::set_music_volume(sound::volume::from_percent(value) * prefs::get().music_volume()), 0.f, 100.f);
 	modify_int_attrib_check_range("current_i", sound::play_track(value - 1), 1, static_cast<int>(sound::get_num_tracks()));
 	return 0;
 }
@@ -462,8 +462,8 @@ static int impl_audio_get(lua_State* L)
 {
 	std::string m = luaL_checkstring(L, 2);
 	if(m != "volume") return 0;
-	int vol = prefs::get().sound_volume();
-	lua_pushnumber(L, sound::get_sound_volume() * 100.0 / vol);
+	sound::volume vol = prefs::get().sound_volume();
+	lua_pushnumber(L, sound::get_sound_volume() / vol);
 	return 1;
 }
 
@@ -478,13 +478,12 @@ static int impl_audio_set(lua_State* L)
 		lua_rawset(L, 1);
 		return 0;
 	}
-	int vol = prefs::get().sound_volume();
+	sound::volume vol = prefs::get().sound_volume();
 	float rel = lua_tonumber(L, 3);
 	if(rel < 0.0f || rel > 100.0f) {
 		return luaL_argerror(L, 1, "volume must be in range 0..100");
 	}
-	vol = static_cast<int>(rel*vol / 100.0f);
-	sound::set_sound_volume(vol);
+	sound::set_sound_volume(sound::volume{rel} * vol);
 	return 0;
 }
 

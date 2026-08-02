@@ -290,7 +290,8 @@ void tod_manager::replace_schedule(const config& time_cfg)
 
 void tod_manager::replace_schedule(const std::vector<time_of_day>& schedule, int initial_time)
 {
-	if(times_.empty() || schedule.empty() || times_[currentTime_].lawful_bonus != schedule.front().lawful_bonus) {
+	initial_time = fix_time_index(schedule.size(), initial_time);
+	if(times_.empty() || schedule.empty() || times_[currentTime_].lawful_bonus != schedule[initial_time].lawful_bonus) {
 		has_tod_bonus_changed_ = true;
 	}
 
@@ -321,11 +322,12 @@ void tod_manager::replace_local_schedule(const std::vector<time_of_day>& schedul
 	assert(area_index < static_cast<int>(areas_.size()));
 	area_time_of_day& area = areas_[area_index];
 
+	initial_time = fix_time_index(area.times.size(), initial_time);
 	if(area.times.empty() || schedule.empty()) {
 		// If one of those is empty then their 'previous' time of day might depend on other areas_,
 		// its better to just assume the illumination has changes than to do the explicit computation.
 		has_tod_bonus_changed_ = true;
-	} else if(area.times[area.currentTime].lawful_bonus != schedule.front().lawful_bonus) {
+	} else if(area.times[area.currentTime].lawful_bonus != schedule[initial_time].lawful_bonus) {
 		// the current illumination on these tiles has changes.
 		has_tod_bonus_changed_ = true;
 	}
@@ -393,10 +395,10 @@ void tod_manager::add_time_area(const gamemap& map, const config& cfg)
 	area.id = cfg["id"].str();
 	area.xsrc = cfg["x"].str();
 	area.ysrc = cfg["y"].str();
-	area.currentTime = cfg["current_time"].to_int(0);
 	const std::vector<map_location>& locs(map.parse_location_range(area.xsrc, area.ysrc, true));
 	area.hexes.insert(locs.begin(), locs.end());
 	area.times = time_of_day::parse_times(cfg);
+	area.currentTime = fix_time_index(area.times.size(), cfg["current_time"].to_int(0));
 	has_tod_bonus_changed_ = true;
 }
 
@@ -406,8 +408,8 @@ void tod_manager::add_time_area(const std::string& id, const std::set<map_locati
 	area_time_of_day& area = areas_.back();
 	area.id = id;
 	area.hexes = locs;
-	area.currentTime = time_cfg["current_time"].to_int(0);
 	area.times = time_of_day::parse_times(time_cfg);
+	area.currentTime = fix_time_index(area.times.size(), time_cfg["current_time"].to_int(0));
 	has_tod_bonus_changed_ = true;
 }
 

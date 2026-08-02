@@ -66,6 +66,7 @@ enum class lobby_joins { show_none, show_friends, show_all };
 enum PREFERENCE_VIEW { VIEW_DEFAULT, VIEW_FRIENDS };
 };
 
+namespace sound { class volume; }
 namespace preferences
 {
 class acquaintance
@@ -276,20 +277,20 @@ public:
 	std::size_t sound_buffer_size();
 	void save_sound_buffer_size(const std::size_t size);
 
-	int sound_volume();
-	void set_sound_volume(int vol);
+	sound::volume sound_volume();
+	void set_sound_volume(sound::volume vol);
 
-	int bell_volume();
-	void set_bell_volume(int vol);
+	sound::volume bell_volume();
+	void set_bell_volume(sound::volume vol);
 
-	int ui_volume();
-	void set_ui_volume(int vol);
+	sound::volume ui_volume();
+	void set_ui_volume(sound::volume vol);
 
 	bool music_on();
 	bool set_music(bool ison);
 
-	int music_volume();
-	void set_music_volume(int vol);
+	sound::volume music_volume();
+	void set_music_volume(sound::volume vol);
 
 	bool turn_bell();
 	bool set_turn_bell(bool ison);

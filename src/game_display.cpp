@@ -308,10 +308,15 @@ std::vector<texture> footsteps_images(const map_location& loc, const pathfind::m
 	if(u != dc->units().end()) {
 		move_cost = u->movement_cost(dc->map().get_terrain(loc));
 		footprints = u->type().footprints();
+
+		// Fall back to the unit's race, which a [unit] may have overridden
+		if(footprints.empty()) {
+			footprints = u->race()->footprints();
+		}
 	}
 
 	if(footprints.empty()) {
-		footprints = "humanoid";
+		footprints = "default";
 	}
 	const std::string foot_speed_prefix = "footsteps/" + footprints + "/";
 

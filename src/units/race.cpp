@@ -56,6 +56,7 @@ unit_race::unit_race()
 	, topics_(empty_topics().child_range("topic"))
 	, global_traits_(true)
 	, undead_variation_()
+	, footprints_()
 	, help_taxonomy_()
 {
 	for(auto& generator : name_generator_) {
@@ -74,6 +75,7 @@ unit_race::unit_race(const config& cfg)
 	, topics_(cfg.child_range("topic"))
 	, global_traits_(!cfg["ignore_global_traits"].to_bool())
 	, undead_variation_(cfg["undead_variation"])
+	, footprints_(cfg["footprints"])
 	, help_taxonomy_(cfg["help_taxonomy"])
 {
 	if (plural_name_.empty()) {

@@ -47,6 +47,7 @@ public:
 	const config::const_child_itors& additional_topics() const;
 	unsigned int num_traits() const;
 	const std::string& undead_variation() const { return undead_variation_; }
+	const std::string& footprints() const { return footprints_; }
 
 	/**
 	 * Gets this race's icon path without state/size suffix and extension.
@@ -86,6 +87,7 @@ private:
 	config::const_child_itors topics_;
 	bool global_traits_;
 	std::string undead_variation_;
+	std::string footprints_;
 	std::string help_taxonomy_;
 };
 

@@ -106,12 +106,51 @@ public:
 // Save music playlist for snapshot
 void write_music_play_list(config& snapshot);
 
-int get_music_volume();
-int get_sound_volume();
-void set_music_volume(int vol);
-void set_sound_volume(int vol);
-void set_bell_volume(int vol);
-void set_UI_volume(int vol);
+class volume
+{
+public:
+	constexpr explicit volume(float factor)
+		: gain(factor)
+	{
+	}
+
+	constexpr static volume from_percent(float percentage)
+	{ return volume{percentage / 100.f}; }
+
+	constexpr float as_percent() const
+	{ return gain * 100.f; }
+
+	/** Implicit conversion for use with SDL. */
+	constexpr operator float() const
+	{ return gain; }
+
+	constexpr auto operator*(const volume& other) const
+	{ return volume{gain * other.gain}; }
+
+	constexpr auto operator/(const volume& other) const
+	{ return volume{gain / other.gain}; }
+
+	constexpr auto operator+(const volume& other) const
+	{ return volume{gain + other.gain}; }
+
+	constexpr auto operator-(const volume& other) const
+	{ return volume{gain - other.gain}; }
+
+private:
+	float gain{1.0};
+};
+
+constexpr inline volume silence{0.f};
+constexpr inline volume full_volume{1.f};
+constexpr inline volume max_volume{1.28f};
+
+volume get_music_volume();
+volume get_sound_volume();
+
+void set_music_volume(volume vol);
+void set_sound_volume(volume vol);
+void set_bell_volume(volume vol);
+void set_UI_volume(volume vol);
 
 utils::optional<unsigned int> get_current_track_index();
 std::shared_ptr<sound::music_track> get_current_track();

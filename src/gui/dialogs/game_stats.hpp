@@ -32,7 +32,7 @@ class game_stats : public modal_dialog
 public:
 	game_stats(const display_context& board, const team& viewing_team, int& selected_side_number);
 
-	static bool execute(game_board& board, const team viewing_team, int& selected_side_number)
+	static bool execute(game_board& board, const team& viewing_team, int& selected_side_number)
 	{
 		if(std::all_of(board.teams().begin(), board.teams().end(), [](team& team) { return team.hidden(); })) {
 			show_transient_message("", _("No visible sides found."));

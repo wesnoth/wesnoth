@@ -7,7 +7,8 @@
       "--device=dri",
       "--share=ipc",
       "--share=network",
-      "--socket=x11",
+      "--socket=wayland",
+      "--socket=fallback-x11",
       "--socket=pulseaudio"
    ],
    "command":"wesnoth",
