@@ -933,10 +933,6 @@ volume clamp_gain(volume value)
 
 } // namespace
 
-constexpr volume sound::silent{ 0.00f };
-constexpr volume sound::full{ 1.00f };
-constexpr volume sound::max{ 1.28f };
-
 void play_sound(const std::string& files, sound_tracks::type group, unsigned int repeats)
 {
 	if(prefs::get().sound()) {

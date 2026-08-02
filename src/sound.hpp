@@ -109,24 +109,40 @@ void write_music_play_list(config& snapshot);
 class volume
 {
 public:
-	constexpr explicit volume(float gain_val) : gain(gain_val) {}
+	constexpr explicit volume(float factor)
+		: gain(factor)
+	{
+	}
 
-	constexpr static volume from_percent(int percentage) { return volume{percentage / 100.f}; }
+	constexpr static volume from_percent(float percentage)
+	{ return volume{percentage / 100.f}; }
 
-	constexpr operator float() { return gain; }
+	constexpr float as_percent() const
+	{ return gain * 100.f; }
 
-	constexpr volume operator*(volume other) const { return volume{gain * other.gain}; };
-	constexpr volume operator/(volume other) const { return volume{gain / other.gain}; };
+	/** Implicit conversion for use with SDL. */
+	constexpr operator float() const
+	{ return gain; }
 
-	constexpr int as_percent() { return gain * 100; }
+	constexpr auto operator*(volume other) const
+	{ return volume{gain * other.gain}; }
+
+	constexpr auto operator/(volume other) const
+	{ return volume{gain / other.gain}; }
+
+	constexpr auto operator+(volume other) const
+	{ return volume{gain + other.gain}; }
+
+	constexpr auto operator-(volume other) const
+	{ return volume{gain - other.gain}; }
 
 private:
 	float gain{1.0};
 };
 
-constexpr static volume silence;
-constexpr static volume full_volume;
-constexpr static volume max_volume;
+constexpr static volume silence{0.f};
+constexpr static volume full_volume{1.f};
+constexpr static volume max_volume{1.28f};
 
 volume get_music_volume();
 volume get_sound_volume();
