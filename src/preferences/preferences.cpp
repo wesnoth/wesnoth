@@ -724,68 +724,68 @@ void prefs::save_sound_buffer_size(const std::size_t size)
 	sound::reset_sound();
 }
 
-int prefs::music_volume()
+sound::volume prefs::music_volume()
 {
-	return preferences_[prefs_list::music_volume].to_int(100);
+	return sound::volume::from_percent(preferences_[prefs_list::music_volume].to_int(100));
 }
 
-void prefs::set_music_volume(int vol)
+void prefs::set_music_volume(sound::volume vol)
 {
 	if(music_volume() == vol) {
 		return;
 	}
 
-	preferences_[prefs_list::music_volume] = vol;
+	preferences_[prefs_list::music_volume] = vol.as_percent();
 	sound::set_music_volume(music_volume());
 }
 
-int prefs::sound_volume()
+sound::volume prefs::sound_volume()
 {
-	return preferences_[prefs_list::sound_volume].to_int(100);
+	return sound::volume::from_percent(preferences_[prefs_list::sound_volume].to_int(100));
 }
 
-void prefs::set_sound_volume(int vol)
+void prefs::set_sound_volume(sound::volume vol)
 {
 	if(sound_volume() == vol) {
 		return;
 	}
 
-	preferences_[prefs_list::sound_volume] = vol;
+	preferences_[prefs_list::sound_volume] = vol.as_percent();
 	sound::set_sound_volume(sound_volume());
 }
 
-int prefs::bell_volume()
+sound::volume prefs::bell_volume()
 {
-	return preferences_[prefs_list::bell_volume].to_int(100);
+	return sound::volume::from_percent(preferences_[prefs_list::bell_volume].to_int(100));
 }
 
-void prefs::set_bell_volume(int vol)
+void prefs::set_bell_volume(sound::volume vol)
 {
 	if(bell_volume() == vol) {
 		return;
 	}
 
-	preferences_[prefs_list::bell_volume] = vol;
+	preferences_[prefs_list::bell_volume] = vol.as_percent();
 	sound::set_bell_volume(bell_volume());
 }
 
 // old pref name had uppercase UI
-int prefs::ui_volume()
+sound::volume prefs::ui_volume()
 {
 	if(preferences_.has_attribute(prefs_list::ui_volume)) {
-		return preferences_[prefs_list::ui_volume].to_int(100);
+		return sound::volume::from_percent(preferences_[prefs_list::ui_volume].to_int(100));
 	} else {
-		return preferences_["UI_volume"].to_int(100);
+		return sound::volume::from_percent(preferences_["UI_volume"].to_int(100));
 	}
 }
 
-void prefs::set_ui_volume(int vol)
+void prefs::set_ui_volume(sound::volume vol)
 {
 	if(ui_volume() == vol) {
 		return;
 	}
 
-	preferences_[prefs_list::ui_volume] = vol;
+	preferences_[prefs_list::ui_volume] = vol.as_percent();
 	sound::set_UI_volume(ui_volume());
 }
 

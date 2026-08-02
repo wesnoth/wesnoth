@@ -925,7 +925,17 @@ void play_sound_internal(const std::string& files,
 	}
 }
 
+/** Clamp gain value to a sensible (albeit arbitrary) range. */
+volume clamp_gain(volume value)
+{
+	return std::clamp(value, sound::silence, sound::max_volume);
+}
+
 } // namespace
+
+constexpr volume sound::silent{ 0.00f };
+constexpr volume sound::full{ 1.00f };
+constexpr volume sound::max{ 1.28f };
 
 void play_sound(const std::string& files, sound_tracks::type group, unsigned int repeats)
 {
@@ -965,42 +975,36 @@ void play_UI_sound(const std::string& files)
 	}
 }
 
-int get_music_volume()
+volume get_music_volume()
 {
 	if(mix_ok) {
-		return MIX_SetTrackGain(sound::music_tracks[0], -1);
+		return volume{MIX_GetTrackGain(sound::music_tracks[0])};
 	}
 
-	return 0;
+	return sound::silence;
 }
 
-void set_music_volume(int vol)
+void set_music_volume(volume vol)
 {
-	if(mix_ok && vol >= 0) {
-		if(vol > 1.0f) {
-			vol = 1.0f;
-		}
-
-		MIX_SetTrackGain(sound::music_tracks[0], vol);
+	if(mix_ok) {
+		MIX_SetTrackGain(sound::music_tracks[0], clamp_gain(vol));
 	}
 }
 
-int get_sound_volume()
+volume get_sound_volume()
 {
 	if(mix_ok) {
 		// Since set_sound_volume sets all main tracks to the same, just return the volume of any main track
-		// FIXME: this is wrong for a function returning int
-		return MIX_GetTrackGain(sound::sound_source_tracks[0]);
+		return volume{MIX_GetTrackGain(sound::sound_source_tracks[0])};
 	}
-	return 0;
+
+	return sound::silence;
 }
 
-void set_sound_volume(int vol)
+void set_sound_volume(volume vol)
 {
-	if(mix_ok && vol >= 0) {
-		if(vol > 1.0f) {
-			vol = 1.0f;
-		}
+	if(mix_ok) {
+		vol = clamp_gain(vol);
 
 		// Bell, timer and UI have separate tracks which we can't set up from this
 		for(track_source& t : sound_source_tracks) {
@@ -1016,24 +1020,20 @@ void set_sound_volume(int vol)
 /*
  * For the purpose of volume setting, we treat turn timer the same as bell
  */
-void set_bell_volume(int vol)
+void set_bell_volume(volume vol)
 {
-	if(mix_ok && vol >= 0) {
-		if(vol > 1.0f) {
-			vol = 1.0f;
-		}
+	if(mix_ok) {
+		vol = clamp_gain(vol);
 
 		MIX_SetTrackGain(sound::bell_tracks[0], vol);
 		MIX_SetTrackGain(sound::timer_tracks[0], vol);
 	}
 }
 
-void set_UI_volume(int vol)
+void set_UI_volume(volume vol)
 {
-	if(mix_ok && vol >= 0) {
-		if(vol > 1.0f) {
-			vol = 1.0f;
-		}
+	if(mix_ok) {
+		vol = clamp_gain(vol);
 
 		for(track_source& t : UI_sound_tracks) {
 			MIX_SetTrackGain(t, vol);

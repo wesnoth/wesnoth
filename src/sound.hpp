@@ -106,12 +106,35 @@ public:
 // Save music playlist for snapshot
 void write_music_play_list(config& snapshot);
 
-int get_music_volume();
-int get_sound_volume();
-void set_music_volume(int vol);
-void set_sound_volume(int vol);
-void set_bell_volume(int vol);
-void set_UI_volume(int vol);
+class volume
+{
+public:
+	constexpr explicit volume(float gain_val) : gain(gain_val) {}
+
+	constexpr static volume from_percent(int percentage) { return volume{percentage / 100.f}; }
+
+	constexpr operator float() { return gain; }
+
+	constexpr volume operator*(volume other) const { return volume{gain * other.gain}; };
+	constexpr volume operator/(volume other) const { return volume{gain / other.gain}; };
+
+	constexpr int as_percent() { return gain * 100; }
+
+private:
+	float gain{1.0};
+};
+
+constexpr static volume silence;
+constexpr static volume full_volume;
+constexpr static volume max_volume;
+
+volume get_music_volume();
+volume get_sound_volume();
+
+void set_music_volume(volume vol);
+void set_sound_volume(volume vol);
+void set_bell_volume(volume vol);
+void set_UI_volume(volume vol);
 
 utils::optional<unsigned int> get_current_track_index();
 std::shared_ptr<sound::music_track> get_current_track();
