@@ -82,6 +82,10 @@ struct game_info
 	bool ranked_mode;
 	std::string tournament_id;
 	std::string tournament_name;
+	std::string tournament_phase_name;
+	std::string tournament_group_name;
+	std::string tournament_round_number;
+	std::string tournament_game_number;
 
 	/** List of modification names and whether they're installed or not. */
 	std::vector<std::pair<std::string, bool>> mod_info;

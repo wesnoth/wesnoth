@@ -2089,12 +2089,18 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			std::set<std::string> primary_keys;
 			for(const auto& addon : m.children("addon")) {
 				for(const auto& content : addon->children("content")) {
-					std::string key = uuid_+"-"+std::to_string(g.db_id())+"-"+content->attr("type").to_string()+"-"+content->attr("id").to_string()+"-"+addon->attr("id").to_string();
+					const std::string content_type = content->attr("type").to_string();
+					const std::string content_id = content->attr("id").to_string();
+					const std::string content_name = content->attr("name").to_string();
+					const std::string addon_id = addon->attr("id").to_string();
+					const std::string addon_version = addon->attr("version").to_string();
+					const std::string key = uuid_ + "-" + std::to_string(g.db_id()) + "-"
+						+ content_type + "-" + content_id + "-" + addon_id;
 					if(primary_keys.count(key) == 0) {
 						primary_keys.emplace(key);
-						unsigned long long rows_inserted = user_handler_->db_insert_game_content_info(uuid_, g.db_id(), content->attr("type").to_string(), content->attr("name").to_string(), content->attr("id").to_string(), addon->attr("id").to_string(), addon->attr("version").to_string());
+						unsigned long long rows_inserted = user_handler_->db_insert_game_content_info(uuid_, g.db_id(), content_type, content_name, content_id, addon_id, addon_version);
 						if(rows_inserted == 0) {
-							WRN_SERVER << "Did not insert content row for [addon] data with uuid '" << uuid_ << "', game ID '" << g.db_id() << "', type '" << content->attr("type").to_string() << "', and content ID '" << content->attr("id").to_string() << "'";
+							WRN_SERVER << "Did not insert content row for [addon] data with uuid '" << uuid_ << "', game ID '" << g.db_id() << "', type '" << content_type << "', and content ID '" << content_id << "'";
 						}
 					}
 				}
@@ -2109,12 +2115,12 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			const std::string ranked = m["ranked_mode"].to_bool(false) ? "yes" : "no";
 			user_handler_->db_insert_game_content_info(uuid_, g.db_id(), "ranked", ranked, ranked, "", "");
 			const std::string tournament_id = m["tournament_id"].to_string();
-			const std::string tournament = tournament_id.empty() || m["tournament_name"].empty()
+			const std::string tournament_name = tournament_id.empty() || m["tournament_name"].empty()
 				? (tournament_id.empty() ? "No" : tournament_id)
 				: m["tournament_name"].to_string();
-			user_handler_->db_insert_game_content_info(uuid_, g.db_id(), "tournament", tournament, tournament_id.empty() ? "No" : tournament_id, "", "");
+			user_handler_->db_insert_game_content_info(uuid_, g.db_id(), "tournament", tournament_name, tournament_id.empty() ? "No" : tournament_id, "", "");
 			const std::string tournament_game_id = m["tournament_game_id"].to_string();
-			user_handler_->db_insert_game_content_info(uuid_, g.db_id(), "tournament_game", tournament, tournament_game_id.empty() ? "No" : tournament_game_id, "", "");
+			user_handler_->db_insert_game_content_info(uuid_, g.db_id(), "tournament_game", tournament_name, tournament_game_id.empty() ? "No" : tournament_game_id, "", "");
 
 			user_handler_->db_insert_game_info(uuid_, g.db_id(), server_id_, g.name(), g.is_reload(), m["observer"].to_bool(), !m["private_replay"].to_bool(), g.has_password());
 

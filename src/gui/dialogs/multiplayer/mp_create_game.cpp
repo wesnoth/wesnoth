@@ -16,6 +16,7 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/dialogs/multiplayer/mp_create_game.hpp"
+#include "gui/dialogs/multiplayer/tournament_label.hpp"
 
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
@@ -56,33 +57,14 @@ namespace gui2::dialogs
 
 namespace
 {
-	/**
-	 * Build the tournament selector label from optional competition components.
-	 * Names supplied by the organizer remain literal; only the fixed labels
-	 * around round and game numbers go through Wesnoth's localization system.
-	 */
-	std::string tournament_selector_label(const mp_tournament_info& tournament)
-	{
-		std::vector<std::string> components;
-		if(!tournament.phase_name.empty()) {
-			components.push_back(tournament.phase_name);
-		}
-		if(!tournament.group_name.empty()) {
-			components.push_back(tournament.group_name);
-		}
-		if(!tournament.round_number.empty()) {
-			components.push_back(VGETTEXT("Round $round", {{"round", tournament.round_number}}));
-		}
-		if(!tournament.game_number.empty()) {
-			components.push_back(VGETTEXT("Game $game", {{"game", tournament.game_number}}));
-		}
-		return components.empty() ? tournament.name : tournament.name + " — " + utils::join(components, " — ");
-	}
-
 	bool is_ranked_tournament_mode(const std::string& mode)
 	{
-		const std::string normalized_mode = boost::algorithm::to_lower_copy(boost::algorithm::trim_copy(mode));
-		return normalized_mode.find("ranked") != std::string::npos;
+		return boost::algorithm::iequals(mode, "ranked");
+	}
+
+	std::string ranked_access_tooltip()
+	{
+		return _("To activate ranked mode, enable ranked matches in your user profile: https://tournament.wesnoth.org/help/getting-started");
 	}
 }
 
@@ -411,7 +393,12 @@ void mp_create_game::pre_show()
 	std::vector<config> tournament_values;
 	tournament_values.emplace_back("label", _("None"));
 	for(const auto& tournament : tournaments_) {
-		tournament_values.emplace_back("label", tournament_selector_label(tournament));
+		tournament_values.emplace_back("label", format_tournament_match_label(
+			tournament.name,
+			tournament.phase_name,
+			tournament.group_name,
+			tournament.round_number,
+			tournament.game_number));
 	}
 	tournament_menu.set_values(tournament_values);
 	connect_signal_notify_modified(tournament_menu,
@@ -423,11 +410,11 @@ void mp_create_game::pre_show()
 		// This prevents an accidental invalid request, while wesnothd performs
 		// the authoritative check again when the game is created.
 		ranked_mode.set_active(false);
-		ranked_mode.set_tooltip(_("To activate ranked mode, enable ranked matches in your user profile: https://tournament.wesnoth.org/help/getting-started"));
+		ranked_mode.set_tooltip(ranked_access_tooltip());
 		// Disabled toggles do not receive hover events, so provide the same help
 		// from a nearby active information icon.
 		ranked_mode_info.set_visible(widget::visibility::visible);
-		ranked_mode_info.set_tooltip(_("To activate ranked mode, enable ranked matches in your user profile: https://tournament.wesnoth.org/help/getting-started"));
+		ranked_mode_info.set_tooltip(ranked_access_tooltip());
 	} else {
 		ranked_mode_info.set_visible(widget::visibility::invisible);
 	}
@@ -588,26 +575,34 @@ void mp_create_game::pre_show()
 	});
 }
 
+const mp_tournament_info* mp_create_game::selected_tournament()
+{
+	const int selection = find_widget<menu_button>("tournament").get_value();
+	if(selection <= 0 || static_cast<std::size_t>(selection) > tournaments_.size()) {
+		return nullptr;
+	}
+
+	return &tournaments_[selection - 1];
+}
+
 void mp_create_game::on_tournament_select()
 {
-	menu_button& tournament_menu = find_widget<menu_button>("tournament");
 	toggle_button& ranked_mode = find_widget<toggle_button>("ranked_mode");
-	const int selected = tournament_menu.get_value();
+	const mp_tournament_info* tournament = selected_tournament();
 
-	if(selected <= 0 || selected > static_cast<int>(tournaments_.size())) {
+	if(!tournament) {
 		// Without a tournament, ranked mode is an independent choice. Restore
 		// the profile-based state and its explanatory tooltip.
 		ranked_mode.set_active(ranked_enabled_);
 		if(!ranked_enabled_) {
-			ranked_mode.set_tooltip(_("To activate ranked mode, enable ranked matches in your user profile: https://tournament.wesnoth.org/help/getting-started"));
+			ranked_mode.set_tooltip(ranked_access_tooltip());
 		} else {
 			ranked_mode.set_tooltip(_("Only players enabled for ranked games may join"));
 		}
 		return;
 	}
 
-	const mp_tournament_info& tournament = tournaments_[selected - 1];
-	const bool tournament_is_ranked = is_ranked_tournament_mode(tournament.mode);
+	const bool tournament_is_ranked = is_ranked_tournament_mode(tournament->mode);
 	// A tournament's mode is authoritative: selecting a ranked tournament marks
 	// the game ranked, while unranked and team tournaments clear it. Keeping the
 	// control disabled prevents a later manual change from creating a mismatch.
@@ -1063,10 +1058,23 @@ config mp_create_game::settings_config()
 	// entry carries both its tournament ID and its precise pending game ID;
 	// wesnothd validates both before opening the game.
 	settings["ranked_mode"] = find_widget<toggle_button>("ranked_mode").get_value_bool();
-	const int tournament = find_widget<menu_button>("tournament").get_value();
-	settings["tournament_id"] = tournament > 0 && tournament <= static_cast<int>(tournaments_.size()) ? tournaments_[tournament - 1].id : "";
-	settings["tournament_name"] = tournament > 0 && tournament <= static_cast<int>(tournaments_.size()) ? tournaments_[tournament - 1].name : "";
-	settings["tournament_game_id"] = tournament > 0 && tournament <= static_cast<int>(tournaments_.size()) ? tournaments_[tournament - 1].game_id : "";
+	if(const mp_tournament_info* tournament = selected_tournament()) {
+		settings["tournament_id"] = tournament->id;
+		settings["tournament_name"] = tournament->name;
+		settings["tournament_game_id"] = tournament->game_id;
+		settings["tournament_phase_name"] = tournament->phase_name;
+		settings["tournament_group_name"] = tournament->group_name;
+		settings["tournament_round_number"] = tournament->round_number;
+		settings["tournament_game_number"] = tournament->game_number;
+	} else {
+		settings["tournament_id"] = "";
+		settings["tournament_name"] = "";
+		settings["tournament_game_id"] = "";
+		settings["tournament_phase_name"] = "";
+		settings["tournament_group_name"] = "";
+		settings["tournament_round_number"] = "";
+		settings["tournament_game_number"] = "";
+	}
 
 	return settings;
 }
@@ -1278,10 +1286,23 @@ void mp_create_game::post_show()
 		// ID, in sync with the create-game request. They are later serialized with
 		// the [multiplayer] game configuration.
 		params.ranked_mode = find_widget<toggle_button>("ranked_mode").get_value_bool();
-		const int tournament = find_widget<menu_button>("tournament").get_value();
-		params.tournament_id = tournament > 0 && tournament <= static_cast<int>(tournaments_.size()) ? tournaments_[tournament - 1].id : "";
-		params.tournament_name = tournament > 0 && tournament <= static_cast<int>(tournaments_.size()) ? tournaments_[tournament - 1].name : "";
-		params.tournament_game_id = tournament > 0 && tournament <= static_cast<int>(tournaments_.size()) ? tournaments_[tournament - 1].game_id : "";
+		if(const mp_tournament_info* tournament = selected_tournament()) {
+			params.tournament_id = tournament->id;
+			params.tournament_name = tournament->name;
+			params.tournament_game_id = tournament->game_id;
+			params.tournament_phase_name = tournament->phase_name;
+			params.tournament_group_name = tournament->group_name;
+			params.tournament_round_number = tournament->round_number;
+			params.tournament_game_number = tournament->game_number;
+		} else {
+			params.tournament_id = "";
+			params.tournament_name = "";
+			params.tournament_game_id = "";
+			params.tournament_phase_name = "";
+			params.tournament_group_name = "";
+			params.tournament_round_number = "";
+			params.tournament_game_number = "";
+		}
 		create_engine_.get_state().classification().oos_debug = strict_sync_->get_widget_value();
 		params.shuffle_sides = shuffle_sides_->get_widget_value();
 

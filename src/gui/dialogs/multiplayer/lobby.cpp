@@ -17,6 +17,7 @@
 
 #include "gui/dialogs/multiplayer/lobby.hpp"
 #include "gui/dialogs/multiplayer/competitive_messages.hpp"
+#include "gui/dialogs/multiplayer/tournament_label.hpp"
 
 #include "gui/auxiliary/field.hpp"
 #include "gui/dialogs/message.hpp"
@@ -407,7 +408,12 @@ widget_data mp_lobby::make_game_row_data(const mp::game_info& game)
 	// the full details are included in the game-information tooltip below.
 	const std::string tournament_label = game.tournament_id.empty()
 		? ""
-		: " (" + (game.tournament_name.empty() ? game.tournament_id : game.tournament_name) + ")";
+		: " (" + format_tournament_match_label(
+			game.tournament_name.empty() ? game.tournament_id : game.tournament_name,
+			game.tournament_phase_name,
+			game.tournament_group_name,
+			game.tournament_round_number,
+			game.tournament_game_number) + ")";
 	const std::string game_name = game.name + tournament_label;
 	item["label"] = game.vacant_slots > 0 ? markup::span_color(color_string, game_name) : game_name;
 	data.emplace("name", item);
@@ -469,9 +475,14 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	// Competitive metadata remains visible, while join authorization is decided
 	// by wesnothd against the current Tournament Manager data.
 	ss << _("Ranked:") << " " << yes_or_no(game.ranked_mode) << "\n";
-	const std::string tournament_label = game.tournament_name.empty()
-		? (game.tournament_id.empty() ? _("None") : game.tournament_id)
-		: game.tournament_name;
+	const std::string tournament_label = game.tournament_id.empty()
+		? _("None")
+		: format_tournament_match_label(
+			game.tournament_name.empty() ? game.tournament_id : game.tournament_name,
+			game.tournament_phase_name,
+			game.tournament_group_name,
+			game.tournament_round_number,
+			game.tournament_game_number);
 	ss << _("Tournament:") << " " << tournament_label << "\n";
 	ss << _("Experience modifier:")   << " " << game.xp << "\n";
 	ss << _("Gold per village:")      << " " << game.gold << "\n";

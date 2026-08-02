@@ -37,6 +37,9 @@ class mp_create_game : public modal_dialog, private plugin_executor
 
 public:
 	/**
+	 * @param state The saved game state being configured for multiplayer.
+	 * @param local_mode Whether the dialog is configuring a local game rather
+	 *                   than a game hosted through wesnothd.
 	 * @param tournaments Pending tournament-game entries supplied for the
 	 *                    authenticated player in the server's [join_lobby]
 	 *                    response.
@@ -122,6 +125,8 @@ private:
 	void on_random_faction_mode_select();
 	/** Make Ranked Mode match the selected Tournament Manager game mode. */
 	void on_tournament_select();
+	/** Return the selected pending tournament game, or nullptr for None. */
+	const mp_tournament_info* selected_tournament();
 
 	std::vector<std::string> get_active_mods();
 	void set_active_mods(const std::vector<std::string>& val);

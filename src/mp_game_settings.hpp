@@ -72,6 +72,10 @@ struct mp_game_settings
 	std::string tournament_id;
 	std::string tournament_name;
 	std::string tournament_game_id;
+	std::string tournament_phase_name;
+	std::string tournament_group_name;
+	std::string tournament_round_number;
+	std::string tournament_game_number;
 	std::map<std::string, std::string> side_users;
 
 	int num_turns;

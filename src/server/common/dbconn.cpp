@@ -123,7 +123,7 @@ bool dbconn::can_create_tournament_game(const std::string& name, const std::stri
 	const config tournaments = get_player_tournaments(name);
 	for(const config& tournament : tournaments.child_range("tournament")) {
 		if(tournament["id"] == tournament_id && tournament["game_id"] == tournament_game_id) {
-			ranked = boost::algorithm::to_lower_copy(boost::algorithm::trim_copy(tournament["mode"].str())).find("ranked") != std::string::npos;
+			ranked = boost::algorithm::iequals(tournament["mode"].str(), "ranked");
 			return true;
 		}
 	}

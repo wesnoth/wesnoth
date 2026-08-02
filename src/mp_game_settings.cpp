@@ -41,6 +41,10 @@ mp_game_settings::mp_game_settings() :
 	tournament_id(),
 	tournament_name(),
 	tournament_game_id(),
+	tournament_phase_name(),
+	tournament_group_name(),
+	tournament_round_number(),
+	tournament_game_number(),
 	side_users(),
 	num_turns(0),
 	village_gold(0),
@@ -76,6 +80,10 @@ mp_game_settings::mp_game_settings(const config& cfg)
 	, tournament_id(cfg["tournament_id"].str())
 	, tournament_name(cfg["tournament_name"].str())
 	, tournament_game_id(cfg["tournament_game_id"].str())
+	, tournament_phase_name(cfg["tournament_phase_name"].str())
+	, tournament_group_name(cfg["tournament_group_name"].str())
+	, tournament_round_number(cfg["tournament_round_number"].str())
+	, tournament_game_number(cfg["tournament_game_number"].str())
 	, side_users(utils::map_split(cfg["side_users"]))
 	, num_turns(cfg["mp_num_turns"].to_int())
 	, village_gold(cfg["mp_village_gold"].to_int())
@@ -121,6 +129,10 @@ config mp_game_settings::to_config() const
 	cfg["tournament_id"] = tournament_id;
 	cfg["tournament_name"] = tournament_name;
 	cfg["tournament_game_id"] = tournament_game_id;
+	cfg["tournament_phase_name"] = tournament_phase_name;
+	cfg["tournament_group_name"] = tournament_group_name;
+	cfg["tournament_round_number"] = tournament_round_number;
+	cfg["tournament_game_number"] = tournament_game_number;
 	cfg["side_users"] = utils::join_map(side_users);
 	cfg["experience_modifier"] = xp_modifier;
 	cfg["mp_countdown"] = mp_countdown;
