@@ -162,7 +162,6 @@ struct unit_filter_adjacent : public unit_filter_base
 			}
 			++match_count;
 		}
-		static std::vector<std::pair<int,int>> default_counts = {{{1, std::numeric_limits<int>::max()}}};
 
 		static std::vector<std::pair<int,int>> default_counts = {{{1, std::numeric_limits<int>::max()}}};
 		config::attribute_value i_count = cfg_["count"];
