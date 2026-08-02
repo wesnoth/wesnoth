@@ -194,7 +194,7 @@ namespace
 		{
 			//the 'side' parameter might differ from side_num_-
 			int res = 0;
-			team t = resources::gameboard->get_team(side_num_);
+			team& t = resources::gameboard->get_team(side_num_);
 			//i wonder how this got included here ?
 			bool is_mp = resources::controller->is_networked_mp();
 			bool is_current_side = resources::controller->current_side() == side_num_;

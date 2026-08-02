@@ -126,7 +126,7 @@ bool simulated_move(int side, const map_location& from, const map_location& to, 
 bool simulated_recall(int side, const std::string& unit_id, const map_location& recall_location){
 	LOG_AI_SIM_ACTIONS << "Simulated recall";
 
-	team own_team = resources::gameboard->get_team(side);
+	team& own_team = resources::gameboard->get_team(side);
 	unit_ptr recall_unit = own_team.recall_list().extract_if_matches_id(unit_id);
 
 	helper_place_unit(*recall_unit, recall_location);
