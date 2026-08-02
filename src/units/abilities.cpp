@@ -34,6 +34,7 @@
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
+#include "preferences/preferences.hpp" // for prefs::get_show_deprecation
 #include "resources.hpp"
 #include "serialization/markup.hpp"
 #include "serialization/string_utils.hpp"
@@ -55,6 +56,7 @@ static lg::log_domain log_engine("engine");
 
 static lg::log_domain log_wml("wml");
 #define ERR_WML LOG_STREAM(err, log_wml)
+#define DEBUG_WML LOG_STREAM(debug, log_wml)
 
 namespace
 {
@@ -184,6 +186,21 @@ unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
 
 void unit_ability_t::do_compat_fixes(config& cfg, const std::string& tag, bool inside_attack)
 {
+	// Some behavior changed without deprecation when moving to using the common implementations of
+	// SUF and SLF instead of ability-specific reimplementations. For filters that, in 1.18 and
+	// earlier, could never match anything, it seems reasonable to treat those edge cases as bugs in
+	// the WML and warn about them, rather than to add bug-for-bug compatibility.
+
+	// The warnings about changed behavior are similar to deprecation warnings, so show them in the
+	// chat log if and only if the player has enabled deprecation messages. Most of the message
+	// isn't translated, but the hint about which preference controls it can use an existing string.
+	auto note_bugfix = [](const std::string& message) {
+		DEBUG_WML << message;
+		if(prefs::get().get_show_deprecation(game_config::wesnoth_version.is_dev_version())) {
+			lg::log_to_chat() << message << " (“" << _("Show deprecation messages in-game") << "” is on)\n";
+		}
+	};
+
 	// replace deprecated backstab with formula
 	if (!cfg["backstab"].blank()) {
 		deprecated_message("backstab= in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use [filter_opponent] with a formula instead; the code can be found in data/core/macros/ in the WEAPON_SPECIAL_BACKSTAB macro.");
@@ -200,36 +217,79 @@ void unit_ability_t::do_compat_fixes(config& cfg, const std::string& tag, bool i
 	std::string filter_teacher = inside_attack ? "filter_self" : "filter";
 	if (cfg.has_child("filter_adjacent")) {
 		if (inside_attack) {
-			deprecated_message("[filter_adjacent] in weapon specials in [specials] tags", DEP_LEVEL::INDEFINITE, "", "Use [filter_self][filter_adjacent] instead.");
+			deprecated_message("[filter_adjacent] in weapon specials in [specials] tags", DEP_LEVEL::FOR_REMOVAL, version_info("1.23"), "Use [filter_self][filter_adjacent] instead.");
 		}
 		else {
-			deprecated_message("[filter_adjacent] in abilities", DEP_LEVEL::INDEFINITE, "", "Use [filter][filter_adjacent] instead or other unit filter.");
+			deprecated_message("[filter_adjacent] in abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.23"), "Use [filter][filter_adjacent] instead or other unit filter.");
 		}
 	}
 	if (cfg.has_child("filter_adjacent_location")) {
 		if (inside_attack) {
-			deprecated_message("[filter_adjacent_location] in weapon specials in [specials] tags", DEP_LEVEL::INDEFINITE, "", "Use [filter_self][filter_location][filter_adjacent_location] instead.");
+			deprecated_message("[filter_adjacent_location] in weapon specials in [specials] tags", DEP_LEVEL::FOR_REMOVAL, version_info("1.23"), "Use [filter_self][filter_location][filter_adjacent_location] instead.");
 		}
 		else {
-			deprecated_message("[filter_adjacent_location] in abilities", DEP_LEVEL::INDEFINITE, "", "Use [filter][filter_location][filter_adjacent_location] instead.");
+			deprecated_message("[filter_adjacent_location] in abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.23"), "Use [filter][filter_location][filter_adjacent_location] instead.");
 		}
 	}
 
 	//These tags are were never supported inside [specials] according to the wiki.
 	for (config& filter_adjacent : cfg.child_range("filter_adjacent")) {
-		if (filter_adjacent["count"].empty()) {
-			//Previously count= behaved differenty in abilities.cpp and in filter.cpp according to the wiki
-			deprecated_message("omitting count= in [filter_adjacent] in abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.21"), "specify count explicitly");
-			filter_adjacent["count"] = map_location::parse_directions(filter_adjacent["adjacent"]).size();
+		// For SUF, omitting adjacent= or count= triggers defaults. Contrary to SLF's behavior, an
+		// empty attribute is treated the same as an omitted one, so this could just use
+		// config::operator[] without checking that the attribute already exists, but one of SUF or
+		// SLF is likely to change behavior to match the other.
+		const auto has_dirs = filter_adjacent.has_attribute("adjacent");
+		const auto has_count = filter_adjacent.has_attribute("count");
+		if (!has_dirs) {
+			std::ostringstream ss;
+			ss << "Filter [" << tag << "][filter_adjacent] changed behavior in 1.19.26. Previously this would never match because adjacent= is omitted.";
+			note_bugfix(ss.str());
+		}
+		if (!has_count) {
+			// It was documented on the Wiki that omitting count meant that every given direction
+			// must match, equivalent to a count that matches the number of directions given.
+			//
+			// However, a bug introduced in 1.13.2 meant filters without count= would never match.
+			//
+			// For 1.20 this simply passes the data through to the common SUF implementation.
+			std::ostringstream ss;
+			ss << "Filter [" << tag << "][filter_adjacent] changed behavior in 1.19.26. Previously this would never match because count= is omitted.";
+			note_bugfix(ss.str());
+		}
+		if (has_dirs && has_count && !in_ranges<int>(map_location::parse_directions(filter_adjacent["adjacent"]).size(), utils::parse_ranges_unsigned(filter_adjacent["count"].str()))) {
+			// In 1.18, all directions had to match, for example count=1 with adjacent=n,s would never match.
+			// This was a bug, it returned false on the first non-match instead of counting.
+			std::ostringstream ss;
+			ss << "Filter [" << tag << "][filter_adjacent] changed behavior in 1.19.26. In 1.18 this combination of adjacent= and count= would never match.";
+			note_bugfix(ss.str());
 		}
 		cfg.child_or_add(filter_teacher).add_child("filter_adjacent", filter_adjacent);
 	}
 	cfg.remove_children("filter_adjacent");
 	for (config& filter_adjacent : cfg.child_range("filter_adjacent_location")) {
-		if (filter_adjacent["count"].empty()) {
-			//Previously count= bahves differenty in abilities.cpp and in filter.cpp according to the wiki
-			deprecated_message("omitting count= in [filter_adjacent_location] in abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.21"), "specify count explicitly");
-			filter_adjacent["count"] = map_location::parse_directions(filter_adjacent["adjacent"]).size();
+		// For the common implementation of SLF, omitting adjacent or count triggers defaults, but
+		// creating an empty attribute prevents that behavior. Therefore we can't use
+		// config::operator[] without first checking that the attribute already exists.
+		//
+		// The warnings refer to the behavior of [filter_adjacent_location] in 1.18, which means the
+		// now-removed ability-specific implementation rather than the common implementation.
+		const auto has_dirs = filter_adjacent.has_attribute("adjacent");
+		const auto has_count = filter_adjacent.has_attribute("count");
+		if (!has_dirs) {
+			std::ostringstream ss;
+			ss << "Filter [" << tag << "][filter_adjacent_location] changed behavior in 1.19.26. Previously this would never match because adjacent= is omitted.";
+			note_bugfix(ss.str());
+		}
+		if (!has_count) {
+			std::ostringstream ss;
+			ss << "Filter [" << tag << "][filter_adjacent_location] changed behavior in 1.19.26. Previously this would never match because count= is omitted.";
+			note_bugfix(ss.str());
+		}
+		if (has_dirs && has_count && !in_ranges<int>(map_location::parse_directions(filter_adjacent["adjacent"]).size(), utils::parse_ranges_unsigned(filter_adjacent["count"].str()))) {
+			// In 1.18, all directions had to match, for example count=1 with adjacent=n,s would never match
+			std::ostringstream ss;
+			ss << "Filter [" << tag << "][filter_adjacent_location] changed behavior in 1.19.26. In 1.18 this combination of adjacent= and count= would never match.";
+			note_bugfix(ss.str());
 		}
 		cfg.child_or_add(filter_teacher).add_child("filter_location").add_child("filter_adjacent_location", filter_adjacent);
 	}
