@@ -726,7 +726,7 @@ void prefs::save_sound_buffer_size(const std::size_t size)
 
 sound::volume prefs::music_volume()
 {
-	return sound::volume::from_percent(preferences_[prefs_list::music_volume].to_int(100));
+	return sound::volume::from_percent(preferences_[prefs_list::music_volume].to_double(100.f));
 }
 
 void prefs::set_music_volume(sound::volume vol)
@@ -741,7 +741,7 @@ void prefs::set_music_volume(sound::volume vol)
 
 sound::volume prefs::sound_volume()
 {
-	return sound::volume::from_percent(preferences_[prefs_list::sound_volume].to_int(100));
+	return sound::volume::from_percent(preferences_[prefs_list::sound_volume].to_double(100.f));
 }
 
 void prefs::set_sound_volume(sound::volume vol)
@@ -756,7 +756,7 @@ void prefs::set_sound_volume(sound::volume vol)
 
 sound::volume prefs::bell_volume()
 {
-	return sound::volume::from_percent(preferences_[prefs_list::bell_volume].to_int(100));
+	return sound::volume::from_percent(preferences_[prefs_list::bell_volume].to_double(100.f));
 }
 
 void prefs::set_bell_volume(sound::volume vol)
@@ -773,9 +773,9 @@ void prefs::set_bell_volume(sound::volume vol)
 sound::volume prefs::ui_volume()
 {
 	if(preferences_.has_attribute(prefs_list::ui_volume)) {
-		return sound::volume::from_percent(preferences_[prefs_list::ui_volume].to_int(100));
+		return sound::volume::from_percent(preferences_[prefs_list::ui_volume].to_double(100.f));
 	} else {
-		return sound::volume::from_percent(preferences_["UI_volume"].to_int(100));
+		return sound::volume::from_percent(preferences_["UI_volume"].to_double(100.f));
 	}
 }
 
