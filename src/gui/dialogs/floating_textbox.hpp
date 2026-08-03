@@ -41,9 +41,16 @@ namespace gui2::dialogs {
 		void history_update(bool up);
 		void memorize_command(const std::string& command);
 
+		// called when enter pressed
 		void on_execute(std::function<void(const std::string&)> f)
 		{
 			do_enter_ = std::move(f);
+		}
+
+		// called when tab pressed
+		void on_completion(std::function<void(void)> f)
+		{
+			do_tab_ = std::move(f);
 		}
 
 	private:
@@ -63,5 +70,6 @@ namespace gui2::dialogs {
 		std::vector<std::string> command_history_;
 
 		std::function<void(const std::string&)> do_enter_;
+		std::function<void(void)> do_tab_;
 	};
 }
