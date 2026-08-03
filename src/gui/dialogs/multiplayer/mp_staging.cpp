@@ -24,7 +24,7 @@
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/message.hpp"
-#include "gui/dialogs/multiplayer/competitive_messages.hpp"
+#include "gui/dialogs/multiplayer/mp_tournament_ranked.hpp"
 #include "gui/dialogs/multiplayer/faction_select.hpp"
 #include "gui/dialogs/multiplayer/player_list_helper.hpp"
 #include "gui/widgets/button.hpp"

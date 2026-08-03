@@ -16,8 +16,7 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/dialogs/multiplayer/lobby.hpp"
-#include "gui/dialogs/multiplayer/competitive_messages.hpp"
-#include "gui/dialogs/multiplayer/tournament_label.hpp"
+#include "gui/dialogs/multiplayer/mp_tournament_ranked.hpp"
 
 #include "gui/auxiliary/field.hpp"
 #include "gui/dialogs/message.hpp"
@@ -873,7 +872,7 @@ void mp_lobby::process_network_data(const config& data)
 		if(info["type"] == "server_info") {
 			server_information_ = info["message"].str();
 			return;
-	} else if(info["type"] == "announcements") {
+		} else if(info["type"] == "announcements") {
 			announcements_ = info["message"].str();
 			return;
 		} else if(info["type"] == "info") {

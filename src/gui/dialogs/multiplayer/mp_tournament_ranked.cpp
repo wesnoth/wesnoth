@@ -8,25 +8,43 @@
 	(at your option) any later version.
 */
 
-#pragma once
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
+#include "gui/dialogs/multiplayer/mp_tournament_ranked.hpp"
 
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
 #include "serialization/string_utils.hpp"
+#include "tstring.hpp"
 
-#include <string>
 #include <vector>
 
 namespace gui2::dialogs
 {
 
-/**
- * Formats the tournament match label used by both game setup and the lobby.
- * Tournament and organizer-defined names remain literal; only the fixed
- * labels for round and game numbers are localized.
- */
-inline std::string format_tournament_match_label(
+std::string localized_competitive_message(const std::string& message_id)
+{
+	if(message_id == "ranked_access_required") {
+		return _("You are not enabled for ranked matches. Enable ranked matches in your user profile: https://tournament.wesnoth.org/help/getting-started");
+	}
+	if(message_id == "tournament_join_denied") {
+		return _("You are not allowed to join this tournament game.");
+	}
+	if(message_id == "tournament_creation_denied") {
+		return _("You are not a participant in this tournament.");
+	}
+	if(message_id == "tournament_mode_mismatch") {
+		return _("The selected tournament determines whether this game is ranked.");
+	}
+	if(message_id == "side_assignment_denied") {
+		return _("That player is not eligible for this ranked or tournament game.");
+	}
+
+	return {};
+}
+
+std::string format_tournament_match_label(
 	const std::string& tournament_name,
 	const std::string& phase_name,
 	const std::string& group_name,

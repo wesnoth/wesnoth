@@ -16,7 +16,7 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/dialogs/multiplayer/mp_create_game.hpp"
-#include "gui/dialogs/multiplayer/tournament_label.hpp"
+#include "gui/dialogs/multiplayer/mp_tournament_ranked.hpp"
 
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"

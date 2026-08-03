@@ -512,6 +512,7 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(const std::stri
 		if(const auto join_lobby = data.optional_child("join_lobby")) {
 			// Note any session data sent with the response. This should be the only place session_info is set.
 			session_info = { join_lobby.value() };
+
 			// All done!
 			break;
 		}
