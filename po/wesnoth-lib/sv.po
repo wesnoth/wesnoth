@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-06-22 22:15-0500\n"
+"POT-Creation-Date: 2026-08-02 22:45-0500\n"
 "PO-Revision-Date: 2020-03-10 12:52+0100\n"
 "Last-Translator: Alex Alowersson <alexalowersson@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -3502,7 +3502,7 @@ msgstr "Starta en kampanj"
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:615
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:221
-#: src/gui/dialogs/campaign_selection.cpp:82
+#: src/gui/dialogs/campaign_selection.cpp:85
 #, fuzzy
 #| msgid "Play"
 msgid "game^Play"
@@ -3576,7 +3576,7 @@ msgstr "Öppna spel"
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
 #: src/gui/dialogs/editor/edit_unit.cpp:296
-#: src/preferences/preferences.cpp:1342
+#: src/preferences/preferences.cpp:1352
 msgid "Select"
 msgstr "Välj"
 
@@ -6491,7 +6491,7 @@ msgstr "Snabbtangent"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:130
-#: src/gui/dialogs/preferences_dialog.cpp:885
+#: src/gui/dialogs/preferences_dialog.cpp:881
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -6504,7 +6504,7 @@ msgstr "Kan användas under spel"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:145
-#: src/gui/dialogs/preferences_dialog.cpp:886
+#: src/gui/dialogs/preferences_dialog.cpp:882
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -6517,7 +6517,7 @@ msgstr "Kan användas i redigeraren"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:160
-#: src/gui/dialogs/preferences_dialog.cpp:887
+#: src/gui/dialogs/preferences_dialog.cpp:883
 #, fuzzy
 #| msgid "game_hotkeys^G"
 msgid "mainmenu_hotkeys^M"
@@ -7281,7 +7281,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/wml_error.cfg:40
-#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:265
+#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:249
 #: src/gui/dialogs/transient_message.cpp:77
 msgid "Error"
 msgstr "Fel"
@@ -7871,25 +7871,25 @@ msgstr "Attackerarens motståndskraft gentemot"
 msgid "Attacker vulnerability vs"
 msgstr "Attackerarnes sårbarhet gentemot"
 
-#: src/gui/dialogs/campaign_selection.cpp:82
+#: src/gui/dialogs/campaign_selection.cpp:85
 #, fuzzy
 #| msgid "Add-ons"
 msgid "game^Get Add-ons"
 msgstr "Extramaterial"
 
-#: src/gui/dialogs/campaign_selection.cpp:409
+#: src/gui/dialogs/campaign_selection.cpp:412
 #, fuzzy
 #| msgid "Campaigns"
 msgid "More campaigns..."
 msgstr "Kampanjer"
 
-#: src/gui/dialogs/campaign_selection.cpp:424
+#: src/gui/dialogs/campaign_selection.cpp:427
 #, fuzzy
 #| msgid "Campaigns"
 msgid "Missing Campaigns"
 msgstr "Kampanjer"
 
-#: src/gui/dialogs/campaign_selection.cpp:458
+#: src/gui/dialogs/campaign_selection.cpp:461
 #: src/gui/dialogs/multiplayer/lobby.cpp:435
 msgid "active_modifications^None"
 msgstr "Inga"
@@ -8685,33 +8685,33 @@ msgstr "Väntar på att spelare ska välja fraktion..."
 msgid "The End"
 msgstr "Slut"
 
-#: src/gui/dialogs/preferences_dialog.cpp:192
+#: src/gui/dialogs/preferences_dialog.cpp:176
 msgid "friend"
 msgstr "vän"
 
-#: src/gui/dialogs/preferences_dialog.cpp:197
+#: src/gui/dialogs/preferences_dialog.cpp:181
 msgid "ignored"
 msgstr "Ignorerad"
 
-#: src/gui/dialogs/preferences_dialog.cpp:250
-#: src/gui/dialogs/preferences_dialog.cpp:307
+#: src/gui/dialogs/preferences_dialog.cpp:234
+#: src/gui/dialogs/preferences_dialog.cpp:291
 msgid "No username specified"
 msgstr "Inget spelarnamn angivet"
 
-#: src/gui/dialogs/preferences_dialog.cpp:265
+#: src/gui/dialogs/preferences_dialog.cpp:249
 msgid "Invalid username"
 msgstr "Ogiltigt användarnamn"
 
-#: src/gui/dialogs/preferences_dialog.cpp:312
+#: src/gui/dialogs/preferences_dialog.cpp:296
 msgid "Not on friends or ignore lists"
 msgstr "FInns inte på vän- eller blockeringslista"
 
-#: src/gui/dialogs/preferences_dialog.cpp:931
-#: src/gui/dialogs/preferences_dialog.cpp:995
+#: src/gui/dialogs/preferences_dialog.cpp:927
+#: src/gui/dialogs/preferences_dialog.cpp:993
 msgid "No hotkey selected"
 msgstr "Ingen snabbtangent vald"
 
-#: src/gui/dialogs/preferences_dialog.cpp:959
+#: src/gui/dialogs/preferences_dialog.cpp:955
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -8719,15 +8719,15 @@ msgstr ""
 "“<b>$hotkey_sequence|</b>” används av “<b>$old_hotkey_action|</b>”.\n"
 "Vill du ändra till “<b>$new_hotkey_action|</b>”?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:965
+#: src/gui/dialogs/preferences_dialog.cpp:961
 msgid "Reassign Hotkey"
 msgstr "Omfördela snabbtangent"
 
-#: src/gui/dialogs/preferences_dialog.cpp:982
+#: src/gui/dialogs/preferences_dialog.cpp:978
 msgid "All hotkeys have been reset to their default values."
 msgstr "Alla snabbtangenter har återställts till sina förvalda värden."
 
-#: src/gui/dialogs/preferences_dialog.cpp:982
+#: src/gui/dialogs/preferences_dialog.cpp:978
 msgid "Hotkeys Reset"
 msgstr "Återställ snabbtangenter"
 
@@ -10019,11 +10019,11 @@ msgstr "Visa Lua-konsol"
 msgid "Unrecognized Command"
 msgstr "Okänt kommando"
 
-#: src/preferences/preferences.cpp:1299
+#: src/preferences/preferences.cpp:1309
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Inga kända teman. Försök att ändra i ett existerande spel."
 
-#: src/preferences/preferences.cpp:1336
+#: src/preferences/preferences.cpp:1346
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
@@ -10033,15 +10033,15 @@ msgstr ""
 "gruppspelsfunktionalitet, och krävs om du vill vara värd för lokala "
 "nätverksspel. Normalt finns applikationen i samma mapp som spelapplikationen."
 
-#: src/preferences/preferences.cpp:1340
+#: src/preferences/preferences.cpp:1350
 msgid "Find Server Application"
 msgstr "Lokalisera serverapplikation"
 
-#: src/preferences/preferences.cpp:1822
+#: src/preferences/preferences.cpp:1832
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/preferences.cpp:1824
+#: src/preferences/preferences.cpp:1834
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 

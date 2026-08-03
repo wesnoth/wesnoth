@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-06-22 22:15-0500\n"
+"POT-Creation-Date: 2026-08-02 22:45-0500\n"
 "PO-Revision-Date: 2013-08-30 17:11+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -3420,7 +3420,7 @@ msgstr "Παίξτε μια εκστρατεία"
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:615
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:221
-#: src/gui/dialogs/campaign_selection.cpp:82
+#: src/gui/dialogs/campaign_selection.cpp:85
 msgid "game^Play"
 msgstr "Παίξε"
 
@@ -3492,7 +3492,7 @@ msgstr "Φόρτωση Πυρήνα"
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
 #: src/gui/dialogs/editor/edit_unit.cpp:296
-#: src/preferences/preferences.cpp:1342
+#: src/preferences/preferences.cpp:1352
 msgid "Select"
 msgstr "Επιλογή"
 
@@ -6339,7 +6339,7 @@ msgstr "Συντόμευση"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:130
-#: src/gui/dialogs/preferences_dialog.cpp:885
+#: src/gui/dialogs/preferences_dialog.cpp:881
 msgid "game_hotkeys^G"
 msgstr "Π"
 
@@ -6352,7 +6352,7 @@ msgstr "Διαθέσιμο στο παιχνίδι"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:145
-#: src/gui/dialogs/preferences_dialog.cpp:886
+#: src/gui/dialogs/preferences_dialog.cpp:882
 msgid "editor_hotkeys^E"
 msgstr "Ε"
 
@@ -6365,7 +6365,7 @@ msgstr "Διαθέσιμο στον επεξεργαστή"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:160
-#: src/gui/dialogs/preferences_dialog.cpp:887
+#: src/gui/dialogs/preferences_dialog.cpp:883
 msgid "mainmenu_hotkeys^M"
 msgstr "Κ"
 
@@ -7138,7 +7138,7 @@ msgstr "Σήμανση/αποσήμανση της επιλεγμένης μον
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/wml_error.cfg:40
-#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:265
+#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:249
 #: src/gui/dialogs/transient_message.cpp:77
 msgid "Error"
 msgstr "Σφάλμα"
@@ -7720,19 +7720,19 @@ msgstr "Αντοχή επιτιθέμενου εναντίον"
 msgid "Attacker vulnerability vs"
 msgstr "Ευπάθεια επιτιθέμενου εναντίον"
 
-#: src/gui/dialogs/campaign_selection.cpp:82
+#: src/gui/dialogs/campaign_selection.cpp:85
 msgid "game^Get Add-ons"
 msgstr "Λήψη Πρόσθετων"
 
-#: src/gui/dialogs/campaign_selection.cpp:409
+#: src/gui/dialogs/campaign_selection.cpp:412
 msgid "More campaigns..."
 msgstr "Περισσότερες εκστρατείες..."
 
-#: src/gui/dialogs/campaign_selection.cpp:424
+#: src/gui/dialogs/campaign_selection.cpp:427
 msgid "Missing Campaigns"
 msgstr "Εκστρατείες που Λείπουν"
 
-#: src/gui/dialogs/campaign_selection.cpp:458
+#: src/gui/dialogs/campaign_selection.cpp:461
 #: src/gui/dialogs/multiplayer/lobby.cpp:435
 msgid "active_modifications^None"
 msgstr "Κανένα"
@@ -8475,33 +8475,33 @@ msgstr "Αναμονή για παίκτες να επιλέξουν φατρί�
 msgid "The End"
 msgstr "Το Τέλος"
 
-#: src/gui/dialogs/preferences_dialog.cpp:192
+#: src/gui/dialogs/preferences_dialog.cpp:176
 msgid "friend"
 msgstr "φίλος"
 
-#: src/gui/dialogs/preferences_dialog.cpp:197
+#: src/gui/dialogs/preferences_dialog.cpp:181
 msgid "ignored"
 msgstr "αγνοήθηκε"
 
-#: src/gui/dialogs/preferences_dialog.cpp:250
-#: src/gui/dialogs/preferences_dialog.cpp:307
+#: src/gui/dialogs/preferences_dialog.cpp:234
+#: src/gui/dialogs/preferences_dialog.cpp:291
 msgid "No username specified"
 msgstr "Δεν καθορίστηκε όνομα χρήστη"
 
-#: src/gui/dialogs/preferences_dialog.cpp:265
+#: src/gui/dialogs/preferences_dialog.cpp:249
 msgid "Invalid username"
 msgstr "Μη έγκυρο όνομα χρήστη"
 
-#: src/gui/dialogs/preferences_dialog.cpp:312
+#: src/gui/dialogs/preferences_dialog.cpp:296
 msgid "Not on friends or ignore lists"
 msgstr "Δεν είναι στις λίστες φίλων ή αγνόησης"
 
-#: src/gui/dialogs/preferences_dialog.cpp:931
-#: src/gui/dialogs/preferences_dialog.cpp:995
+#: src/gui/dialogs/preferences_dialog.cpp:927
+#: src/gui/dialogs/preferences_dialog.cpp:993
 msgid "No hotkey selected"
 msgstr "Δεν έχει επιλεγεί πλήκτρο συντόμευσης"
 
-#: src/gui/dialogs/preferences_dialog.cpp:959
+#: src/gui/dialogs/preferences_dialog.cpp:955
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -8510,16 +8510,16 @@ msgstr ""
 "\"<b>$old_hotkey_action|</b>\".\n"
 "Θέλετε να το αναθέσετε ξανά στο \"<b>$new_hotkey_action|</b>\";"
 
-#: src/gui/dialogs/preferences_dialog.cpp:965
+#: src/gui/dialogs/preferences_dialog.cpp:961
 msgid "Reassign Hotkey"
 msgstr "Επαναανάθεση Πλήκτρου Συντόμευσης"
 
-#: src/gui/dialogs/preferences_dialog.cpp:982
+#: src/gui/dialogs/preferences_dialog.cpp:978
 msgid "All hotkeys have been reset to their default values."
 msgstr ""
 "Όλα τα πλήκτρα συντόμευσης έχουν επαναφερθεί στις προεπιλεγμένες τιμές τους."
 
-#: src/gui/dialogs/preferences_dialog.cpp:982
+#: src/gui/dialogs/preferences_dialog.cpp:978
 msgid "Hotkeys Reset"
 msgstr "Επαναφορά Πλήκτρων Συντόμευσης"
 
@@ -9742,13 +9742,13 @@ msgstr "Εμφάνιση Κονσόλας Lua"
 msgid "Unrecognized Command"
 msgstr "Μη Αναγνωρισμένη Εντολή"
 
-#: src/preferences/preferences.cpp:1299
+#: src/preferences/preferences.cpp:1309
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""
 "Δεν υπάρχουν γνωστά θέματα. Δοκιμάστε να αλλάξετε από μέσα από ένα υπάρχον "
 "παιχνίδι."
 
-#: src/preferences/preferences.cpp:1336
+#: src/preferences/preferences.cpp:1346
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
@@ -9759,15 +9759,15 @@ msgstr ""
 "δικτύου. Συνήθως θα βρίσκεται στον ίδιο φάκελο με το εκτελέσιμο του "
 "παιχνιδιού."
 
-#: src/preferences/preferences.cpp:1340
+#: src/preferences/preferences.cpp:1350
 msgid "Find Server Application"
 msgstr "Εύρεση Εφαρμογής Διακομιστή"
 
-#: src/preferences/preferences.cpp:1822
+#: src/preferences/preferences.cpp:1832
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/preferences.cpp:1824
+#: src/preferences/preferences.cpp:1834
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 

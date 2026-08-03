@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-06-22 22:15-0500\n"
+"POT-Creation-Date: 2026-08-02 22:45-0500\n"
 "PO-Revision-Date: 2026-07-07 19:00+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -324,7 +324,7 @@ msgstr "skrývání"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:23
-#: data/core/macros/weapon_specials.cfg:183
+#: data/core/macros/weapon_specials.cfg:184
 msgid "drains"
 msgstr "vysátí"
 
@@ -362,7 +362,7 @@ msgstr "noční lovec"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:50
-#: data/core/macros/weapon_specials.cfg:205
+#: data/core/macros/weapon_specials.cfg:206
 msgid "poison"
 msgstr "otrava"
 
@@ -601,12 +601,12 @@ msgstr "Startovní pozice"
 msgid ""
 "Defines the side leader starting position.\n"
 "This tool sets the side leaders’ default starting locations, and named "
-"special locations. Both types of location are enabled in both <ref "
-"dst='..editor_mode_terrain'>Terrain Editor</ref> and <ref "
-"dst='..editor_mode_scenario'>Scenario Editor</ref> modes. The location names "
-"are shown as a list in the editor palette, clicking on the map will place "
-"that name on a hex, each location can only be placed on a single hex, and "
-"the editor will only allow one location per hex.\n"
+"special locations. Both types of location are enabled in both <ref dst='.."
+"editor_mode_terrain'>Terrain Editor</ref> and <ref dst='.."
+"editor_mode_scenario'>Scenario Editor</ref> modes. The location names are "
+"shown as a list in the editor palette, clicking on the map will place that "
+"name on a hex, each location can only be placed on a single hex, and the "
+"editor will only allow one location per hex.\n"
 "\n"
 "To add named special locations, click “Add” at the bottom of the editor "
 "palette, and enter the name. These names must start with a letter and may "
@@ -629,12 +629,12 @@ msgid ""
 msgstr ""
 "Stanovuje počáteční umístění vůdce dané strany.\n"
 "Tento nástroj nastavuje výchozí umístění vůdců stran a pojmenovaná zvláštní "
-"místa. Oba typy míst jsou povoleny jak v režimu <ref "
-"dst='..editor_mode_terrain'>editoru terénu</ref>, tak <ref "
-"dst='..editor_mode_scenario'>editoru scénáře</ref>. Jména míst jsou "
-"zobrazena jako seznam v paletě editoru, kliknutí do mapy umístí toto jméno "
-"na hex, každé místo může být pouze na jediném hexu a editor umožní jenom "
-"jedno místo na hex.\n"
+"místa. Oba typy míst jsou povoleny jak v režimu <ref dst='.."
+"editor_mode_terrain'>editoru terénu</ref>, tak <ref dst='.."
+"editor_mode_scenario'>editoru scénáře</ref>. Jména míst jsou zobrazena jako "
+"seznam v paletě editoru, kliknutí do mapy umístí toto jméno na hex, každé "
+"místo může být pouze na jediném hexu a editor umožní jenom jedno místo na "
+"hex.\n"
 "\n"
 "Pro přidání pojmenovaných zvlášních míst klikni dole na paletě na „Přidat“ "
 "a vlož jméno. Tato jména musí začínat písmenem a mohou obsahovat čísla "
@@ -678,9 +678,9 @@ msgstr ""
 #: data/core/editor/help.cfg:131
 msgid ""
 "editor^<header>Movement Overlays</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/impassable-"
-"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/"
-"unwalkable-editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/unwalkable-"
+"editor.png~O(0.5))'/>\n"
 "<b>Impassable and Unwalkable</b>\n"
 "\n"
 "While easily noticeable in the editor, these are invisible in the game, so "
@@ -689,9 +689,9 @@ msgid ""
 "respectively."
 msgstr ""
 "<header>Překryvy pro pohyb</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/impassable-"
-"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/"
-"unwalkable-editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/unwalkable-"
+"editor.png~O(0.5))'/>\n"
 "<b>neprostupný a neprůchodný</b>\n"
 "\n"
 "Zatímco jsou v editoru snadno k povšimnutí, ve hře jsou neviditelné, takže "
@@ -705,9 +705,9 @@ msgstr ""
 #: data/core/editor/help.cfg:140
 msgid ""
 "editor^<header>Castle Overlays</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-"
-"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/"
-"keep-overlay-editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/keep-"
+"overlay-editor.png~O(0.5))'/>\n"
 "Adding either of these overlays to a passable hex allows units to be "
 "recruited onto a hex. The keep also allows a leader to recruit from there.\n"
 "\n"
@@ -718,9 +718,9 @@ msgid ""
 "units being recruited onto them."
 msgstr ""
 "<header>Překryvy pro hrad</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-"
-"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/"
-"keep-overlay-editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/keep-"
+"overlay-editor.png~O(0.5))'/>\n"
 "Přidání některého z těchto překryvů na prostupné políčko umožňuje na takové "
 "políčko verbovat jednotky. Tvrz navíc dovoluje vůdci, aby odtud verboval.\n"
 "\n"
@@ -904,8 +904,8 @@ msgstr "Zastaralý terén"
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
 #: data/core/editor/help.cfg:203
 msgid ""
-"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-"
-"editor.png)'/>\n"
+"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
+"png)'/>\n"
 "The magenta ‘D’ (for “Deprecated”).\n"
 "\n"
 "This is shown in the editor over deprecated terrain codes. Examples are:\n"
@@ -1358,10 +1358,10 @@ msgid ""
 "The map editor saves one file when in terrain mode (a .map) or two files "
 "when in scenario mode (both a .map and a .cfg).\n"
 "\n"
-"Loading a .cfg file has different results depending on the contents of "
-"the .cfg file. For .cfg files that were created by the scenario editor, it "
-"will open the .cfg in the scenario editor. However, for .cfg files that "
-"cannot be opened by the scenario editor, the editor will attempt to find the "
+"Loading a .cfg file has different results depending on the contents of the ."
+"cfg file. For .cfg files that were created by the scenario editor, it will "
+"open the .cfg in the scenario editor. However, for .cfg files that cannot be "
+"opened by the scenario editor, the editor will attempt to find the "
 "scenario’s map data and open the corresponding .map file in terrain-only "
 "mode, as if the .map file was chosen in the file selector. It is recommended "
 "in those cases to simply load the .map file directly instead."
@@ -1571,8 +1571,8 @@ msgid ""
 "\n"
 "• <span face='monospace'>map_file=maps/01_First_Map.map</span> <i>— "
 "supported since Wesnoth 1.14</i>\n"
-"• <span face='monospace'>map_data=&quot;&#0x7B;maps/"
-"01_First_Map.map&#0x7D;&quot;</span> <i>— a WML preprocessor include</i>\n"
+"• <span face='monospace'>map_data=&quot;&#0x7B;maps/01_First_Map.map&#0x7D;"
+"&quot;</span> <i>— a WML preprocessor include</i>\n"
 "\n"
 "The <i>map_file</i> method is preferred over using a preprocessor include."
 msgstr ""
@@ -1597,8 +1597,8 @@ msgstr ""
 "\n"
 "• <span face='monospace'>map_file=maps/01_First_Map.map</span> <i>– "
 "podporováno od Wesnothu 1.14</i>\n"
-"• <span face='monospace'>map_data=&quot;&#0x7B;maps/"
-"01_First_Map.map&#0x7D;&quot;</span> <i>– začleněno WML preprocesorem</i>\n"
+"• <span face='monospace'>map_data=&quot;&#0x7B;maps/01_First_Map.map&#0x7D;"
+"&quot;</span> <i>– začleněno WML preprocesorem</i>\n"
 "\n"
 "Způsobu s <i>map_file</i> je dána přednost před použitím začleňování "
 "preprocesorem."
@@ -2293,8 +2293,8 @@ msgstr ""
 #: data/core/encyclopedia/geography.cfg:187
 msgid ""
 "<header>Notable land features:</header>\n"
-"    • Aethenwood: The largest southern forest, home to reclusive <ref "
-"dst='..race_elf'>elves</ref>.\n"
+"    • Aethenwood: The largest southern forest, home to reclusive <ref dst='.."
+"race_elf'>elves</ref>.\n"
 "    • Vale of Blossoming Trees: An elvish vale at the southern edge of the "
 "Aethenwood. It contains the sacred Isle of Elrath.\n"
 "    • Lake Aelin: An elvish lake at the edge of their territory along the "
@@ -2304,8 +2304,8 @@ msgid ""
 "enter it seldom return."
 msgstr ""
 "<header>Významné krajinné prvky:</header>\n"
-"    • Aethenský les: Největší hvozd na jihu, domov samotářských <ref "
-"dst='..race_elf'>elfů</ref>.\n"
+"    • Aethenský les: Největší hvozd na jihu, domov samotářských <ref dst='.."
+"race_elf'>elfů</ref>.\n"
 "    • Údolí kvetoucích stromů: Elfí údolí na jižním okraji Aethenského lesa. "
 "Nachází se v něm posvátný ostrov Elrath.\n"
 "    • Jezero Aelin: Elfí jezero na pomezí jejich území podél řeky Aethen.\n"
@@ -2806,8 +2806,8 @@ msgstr ""
 "Během hry měj na paměti, že můžeš pohybovat myší přes mnoho herních prvků, "
 "jako třeba přes informace zobrazené ve stavovém panelu, aby se ti pro každý "
 "prvek ukázal krátký vysvětlující popis. Užitečné je to zejména v případě, "
-"kdy se poprvé setkáš s něčím novým, například novou <ref "
-"dst='..abilities_section'>schopností</ref>."
+"kdy se poprvé setkáš s něčím novým, například novou <ref dst='.."
+"abilities_section'>schopností</ref>."
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:177
@@ -2870,12 +2870,12 @@ msgstr ""
 "Každá ze stran začíná hrát s jedním vůdcem umístěným ve tvrzi hradu. Na "
 "začátku každé bitvy i během ní budeš verbovat <ref dst='..units'>jednotky</"
 "ref> do své armády. Pro verbování je nutné mít umístěného vůdce (např. "
-"v tažení <i>Dědic trůnu</i> je jím Konrád) ve tvrzi <ref "
-"dst='..terrain_castle'>hradu</ref>. Pak můžeš verbovat nováčky buď pomocí "
-"volby menu <b>Naverbovat</b> nebo pravým klikem na políčko a volbou "
-"<b>Naverbovat</b>. Tím se vyvolá menu verbování, které obsahuje seznam "
-"dostupných posil i jejich cenu. Kliknutím na jednotku uvidíš její "
-"statistiku, následným kliknutím na tlačítko <b>Naverbovat</b> ji naverbuješ."
+"v tažení <i>Dědic trůnu</i> je jím Konrád) ve tvrzi <ref dst='.."
+"terrain_castle'>hradu</ref>. Pak můžeš verbovat nováčky buď pomocí volby "
+"menu <b>Naverbovat</b> nebo pravým klikem na políčko a volbou <b>Naverbovat</"
+"b>. Tím se vyvolá menu verbování, které obsahuje seznam dostupných posil i "
+"jejich cenu. Kliknutím na jednotku uvidíš její statistiku, následným "
+"kliknutím na tlačítko <b>Naverbovat</b> ji naverbuješ."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:200
@@ -2897,8 +2897,8 @@ msgid ""
 "Recruited units come with two random <ref dst='..traits_section'>traits</"
 "ref> which modify their statistics."
 msgstr ""
-"Naverbované jednotky přicházejí se dvěma náhodnými <ref "
-"dst='..traits_section'>vlastnostmi</ref>, jež upravují jejich statistiku."
+"Naverbované jednotky přicházejí se dvěma náhodnými <ref dst='.."
+"traits_section'>vlastnostmi</ref>, jež upravují jejich statistiku."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:204
@@ -4168,11 +4168,10 @@ msgstr "Závěr"
 #: data/core/help.cfg:529
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
-"basic strategy, or familiarize yourself with <ref "
-"dst='..traits_section'>traits</ref> and <ref "
-"dst='..abilities_section'>abilities</ref>, but you now know everything you "
-"need to know to play the <i>Heir to the Throne</i> campaign. Have fun, and "
-"good luck!"
+"basic strategy, or familiarize yourself with <ref dst='.."
+"traits_section'>traits</ref> and <ref dst='..abilities_section'>abilities</"
+"ref>, but you now know everything you need to know to play the <i>Heir to "
+"the Throne</i> campaign. Have fun, and good luck!"
 msgstr ""
 "Tím jsme uzavřeli základy Wesnothu. Možná se budeš chtít podívat na základy "
 "strategie nebo se seznámit s <ref dst='..traits_section'>vlastnostmi</ref> a "
@@ -6316,7 +6315,7 @@ msgstr ""
 "pouze pokud je použit v boji."
 
 #. [drains]: id=drains
-#: data/core/macros/weapon_specials.cfg:184
+#: data/core/macros/weapon_specials.cfg:185
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -6325,18 +6324,18 @@ msgstr ""
 "polovinu poranění, jež útokem způsobila (zaokrouhleno dolů)."
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:194
+#: data/core/macros/weapon_specials.cfg:195
 msgid "first strike"
 msgstr "první úder"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:195
+#: data/core/macros/weapon_specials.cfg:196
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr "Tato jednotka v souboji vždy udeří první, i když se brání."
 
 #. [poison]: id=poison
-#: data/core/macros/weapon_specials.cfg:206
+#: data/core/macros/weapon_specials.cfg:207
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
@@ -6347,12 +6346,12 @@ msgstr ""
 "jednotku zabít."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:216
+#: data/core/macros/weapon_specials.cfg:217
 msgid "stun"
 msgstr "omráčení"
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:217
+#: data/core/macros/weapon_specials.cfg:218
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
@@ -6361,7 +6360,7 @@ msgstr ""
 "oblast kontroly. Účinek vyprší v dalším kole protivníka."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:218
+#: data/core/macros/weapon_specials.cfg:219
 msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
 msgstr ""
@@ -6369,12 +6368,12 @@ msgstr ""
 "kontroly."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:227
+#: data/core/macros/weapon_specials.cfg:228
 msgid "arcane"
 msgstr "nezemský"
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:228
+#: data/core/macros/weapon_specials.cfg:229
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
@@ -6383,7 +6382,7 @@ msgstr ""
 "takže odolnost proti nezemskému uživatele nepostihuje."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:229
+#: data/core/macros/weapon_specials.cfg:230
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-06-22 22:15-0500\n"
+"POT-Creation-Date: 2026-08-02 22:45-0500\n"
 "PO-Revision-Date: 2026-04-07 09:41-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -5548,7 +5548,7 @@ msgstr "Jogar uma campanha"
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:615
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:221
-#: src/gui/dialogs/campaign_selection.cpp:82
+#: src/gui/dialogs/campaign_selection.cpp:85
 msgid "game^Play"
 msgstr "Jogar"
 
@@ -5672,7 +5672,7 @@ msgstr "Carregar Núcleo"
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
 #: src/gui/dialogs/editor/edit_unit.cpp:296
-#: src/preferences/preferences.cpp:1342
+#: src/preferences/preferences.cpp:1352
 msgid "Select"
 msgstr "Selecionar"
 
@@ -9835,7 +9835,7 @@ msgstr "Atalho"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:130
-#: src/gui/dialogs/preferences_dialog.cpp:885
+#: src/gui/dialogs/preferences_dialog.cpp:881
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -9848,7 +9848,7 @@ msgstr "Disponível dentro do jogo"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:145
-#: src/gui/dialogs/preferences_dialog.cpp:886
+#: src/gui/dialogs/preferences_dialog.cpp:882
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -9861,7 +9861,7 @@ msgstr "Disponível no editor"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:160
-#: src/gui/dialogs/preferences_dialog.cpp:887
+#: src/gui/dialogs/preferences_dialog.cpp:883
 msgid "mainmenu_hotkeys^M"
 msgstr "M"
 
@@ -10961,7 +10961,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/wml_error.cfg:40
-#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:265
+#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:249
 #: src/gui/dialogs/transient_message.cpp:77
 msgid "Error"
 msgstr "Erro"
@@ -11776,7 +11776,7 @@ msgstr "Vulnerabilidades do atacante vs"
 # File: data/gui/default/window/title_screen.cfg, line: 260
 # File: data/gui/default/window/title_screen.cfg, line: 260
 # File: data/gui/default/window/title_screen.cfg, line: 260
-#: src/gui/dialogs/campaign_selection.cpp:82
+#: src/gui/dialogs/campaign_selection.cpp:85
 #, fuzzy
 #| msgid "Add-ons"
 msgid "game^Get Add-ons"
@@ -11786,7 +11786,7 @@ msgstr "Add-ons"
 # File: data/gui/default/window/title_screen.cfg, line: 257
 # File: data/gui/default/window/title_screen.cfg, line: 257
 # File: data/gui/default/window/title_screen.cfg, line: 257
-#: src/gui/dialogs/campaign_selection.cpp:409
+#: src/gui/dialogs/campaign_selection.cpp:412
 #, fuzzy
 #| msgid "Campaign"
 msgid "More campaigns..."
@@ -11796,7 +11796,7 @@ msgstr "Campanha"
 # File: data/gui/default/window/title_screen.cfg, line: 257
 # File: data/gui/default/window/title_screen.cfg, line: 257
 # File: data/gui/default/window/title_screen.cfg, line: 257
-#: src/gui/dialogs/campaign_selection.cpp:424
+#: src/gui/dialogs/campaign_selection.cpp:427
 msgid "Missing Campaigns"
 msgstr "Campanhas Faltando"
 
@@ -11804,7 +11804,7 @@ msgstr "Campanhas Faltando"
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
 # File: data/gui/default/window/mp_create_game_choose_mods.cfg, line: 54
-#: src/gui/dialogs/campaign_selection.cpp:458
+#: src/gui/dialogs/campaign_selection.cpp:461
 #: src/gui/dialogs/multiplayer/lobby.cpp:435
 msgid "active_modifications^None"
 msgstr "Nenhum"
@@ -12993,7 +12993,7 @@ msgstr "Fim"
 # File: src/game_preferences_display.cpp, line: 1107
 # File: src/game_preferences_display.cpp, line: 1122
 # File: src/game_preferences_display.cpp, line: 1122
-#: src/gui/dialogs/preferences_dialog.cpp:192
+#: src/gui/dialogs/preferences_dialog.cpp:176
 msgid "friend"
 msgstr "amigo"
 
@@ -13001,12 +13001,12 @@ msgstr "amigo"
 # File: src/game_preferences_display.cpp, line: 1113
 # File: src/game_preferences_display.cpp, line: 1126
 # File: src/game_preferences_display.cpp, line: 1126
-#: src/gui/dialogs/preferences_dialog.cpp:197
+#: src/gui/dialogs/preferences_dialog.cpp:181
 msgid "ignored"
 msgstr "ignorado"
 
-#: src/gui/dialogs/preferences_dialog.cpp:250
-#: src/gui/dialogs/preferences_dialog.cpp:307
+#: src/gui/dialogs/preferences_dialog.cpp:234
+#: src/gui/dialogs/preferences_dialog.cpp:291
 msgid "No username specified"
 msgstr "Nenhum nome de usuário especificado"
 
@@ -13017,7 +13017,7 @@ msgstr "Nenhum nome de usuário especificado"
 # File: src/game_preferences_display.cpp, line: 986
 # File: src/game_preferences_display.cpp, line: 969
 # File: src/game_preferences_display.cpp, line: 986
-#: src/gui/dialogs/preferences_dialog.cpp:265
+#: src/gui/dialogs/preferences_dialog.cpp:249
 msgid "Invalid username"
 msgstr "Nome de usuário inválido"
 
@@ -13025,16 +13025,16 @@ msgstr "Nome de usuário inválido"
 # File: src/game_preferences_display.cpp, line: 390
 # File: src/game_preferences_display.cpp, line: 390
 # File: src/game_preferences_display.cpp, line: 390
-#: src/gui/dialogs/preferences_dialog.cpp:312
+#: src/gui/dialogs/preferences_dialog.cpp:296
 msgid "Not on friends or ignore lists"
 msgstr "Não está na lista de amigos nem na lista de ignorados"
 
-#: src/gui/dialogs/preferences_dialog.cpp:931
-#: src/gui/dialogs/preferences_dialog.cpp:995
+#: src/gui/dialogs/preferences_dialog.cpp:927
+#: src/gui/dialogs/preferences_dialog.cpp:993
 msgid "No hotkey selected"
 msgstr "Nenhum atalho selecionado"
 
-#: src/gui/dialogs/preferences_dialog.cpp:959
+#: src/gui/dialogs/preferences_dialog.cpp:955
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -13046,7 +13046,7 @@ msgstr ""
 # File: src/hotkey_preferences_display.cpp, line: 658
 # File: src/hotkey_preferences_display.cpp, line: 658
 # File: src/hotkey_preferences_display.cpp, line: 658
-#: src/gui/dialogs/preferences_dialog.cpp:965
+#: src/gui/dialogs/preferences_dialog.cpp:961
 msgid "Reassign Hotkey"
 msgstr "Mudar Atalho"
 
@@ -13054,7 +13054,7 @@ msgstr "Mudar Atalho"
 # File: src/hotkey_preferences_display.cpp, line: 148
 # File: src/hotkey_preferences_display.cpp, line: 148
 # File: src/hotkey_preferences_display.cpp, line: 148
-#: src/gui/dialogs/preferences_dialog.cpp:982
+#: src/gui/dialogs/preferences_dialog.cpp:978
 msgid "All hotkeys have been reset to their default values."
 msgstr "Todos os Atalhos foram redefinidos para os seus valores padões."
 
@@ -13062,7 +13062,7 @@ msgstr "Todos os Atalhos foram redefinidos para os seus valores padões."
 # File: src/hotkey_preferences_display.cpp, line: 147
 # File: src/hotkey_preferences_display.cpp, line: 147
 # File: src/hotkey_preferences_display.cpp, line: 147
-#: src/gui/dialogs/preferences_dialog.cpp:982
+#: src/gui/dialogs/preferences_dialog.cpp:978
 msgid "Hotkeys Reset"
 msgstr "Resetar Atalhos"
 
@@ -15368,11 +15368,11 @@ msgstr "Comando não Reconhecido"
 # File: src/game_preferences_display.cpp, line: 1298
 # File: src/game_preferences_display.cpp, line: 1321
 # File: src/game_preferences_display.cpp, line: 1321
-#: src/preferences/preferences.cpp:1299
+#: src/preferences/preferences.cpp:1309
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Nenhum tema conhecido. Tente mudar de dentro de um jogo existente."
 
-#: src/preferences/preferences.cpp:1336
+#: src/preferences/preferences.cpp:1346
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
@@ -15382,7 +15382,7 @@ msgstr ""
 "hostear jogos em LAN. Ele normalmente pode ser encontrado no mesmo folder "
 "onde fica o executável do jogo."
 
-#: src/preferences/preferences.cpp:1340
+#: src/preferences/preferences.cpp:1350
 msgid "Find Server Application"
 msgstr "Encontre o aplicativo do servidor"
 
@@ -15390,7 +15390,7 @@ msgstr "Encontre o aplicativo do servidor"
 # File: src/game_preferences.cpp, line: 895
 # File: src/game_preferences.cpp, line: 921
 # File: src/game_preferences.cpp, line: 921
-#: src/preferences/preferences.cpp:1822
+#: src/preferences/preferences.cpp:1832
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
@@ -15398,7 +15398,7 @@ msgstr "[%H:%M]"
 # File: src/game_preferences.cpp, line: 898
 # File: src/game_preferences.cpp, line: 924
 # File: src/game_preferences.cpp, line: 924
-#: src/preferences/preferences.cpp:1824
+#: src/preferences/preferences.cpp:1834
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 

@@ -44,8 +44,8 @@ wesnoth \- Битва за Веснот, пошаговая стратегиче
 .
 .TP 
 \fB\-\-addon\-info\fP
-Shows a button on the add\-ons manager to query the add\-ons server for
-various information.
+Отображает кнопку в менеджере аддонов для запроса различной информации с
+сервера аддонов.
 .TP 
 \fB\-\-all\-translations\fP
 Отобразить все переводы во внутриигровом списке выбора языка, даже если они
@@ -67,15 +67,16 @@ various information.
 Пропустить экран предыстории [story] и диалог до окончания события \fBstart\fP.
 .TP 
 \fB\-\-clock\fP
-Adds the option to show a clock for testing the drawing timer. Also adds the
-option for showing the GUI Test Dialog.
+Добавить возможность показать часы, чтобы проверить таймер
+отображения. Также добавляет возможность показать диалоговое окно
+тестирования GUI.
 .TP 
 \fB\-\-core\fP\fI\ id_ядра\fP
-Overrides the loaded core with the one whose id is specified.
+Перекрывает загруженное ядро тем, чей идентификатор был указан.
 .TP 
 \fB\-\-data\-dir\fP\fI\ каталог\fP
-Overrides the data directory with the one specified. The data directory is
-the one that contains subdirectories 'data', 'fonts', 'images' and others.
+Перекрывает каталог данных указанным каталогом. Каталог данных содержит
+подкаталоги 'data', 'fonts', 'images' и другие.
 .TP 
 \fB\-\-data\-path\fP
 вывести путь к каталогу данных и выйти.
@@ -91,7 +92,7 @@ https://wiki.wesnoth.org/CommandMode/ru дальнейших сведений о
 \fB\-\-strict\-lua\fP
 запретить устаревшие вызовы Lua API
 .TP 
-\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+\fB\-D,\ \-\-diff\fP\fIleft\-file\fP\fB\ \fP\fIright\-file\fP
 сравнивает два WML\-файла (см. команду diff) без предварительной обработки
 (если нужна, используйте сначала команду \fB\-p\fP). Помещает разницу в виде
 DiffWML в стандартный вывод или в файл, указанный \fI\-\-output\fP.
@@ -121,36 +122,38 @@ DiffWML в стандартный вывод или в файл, указанн�
 примеру: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIуровень\fP\fB=\fP\fIдомен1\fP\fB,\fP\fIдомен2\fP\fB,\fP\fI...\fP
-sets the severity level of the log domains. The wildcard \fB*\fP may be used to
-match a subset of domains, e.g. gui/* or conf* or * (the latter matches all
-domains).  Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default, the \fBwarning\fP level is used for most domains, but
-\fBdeprecation\fP defaults to \fBnone\fP unless combined with the \fB\-d\fP option.
-This option can be specified multiple times.
+задать уровень детальности доменов лога. \fB*\fP может использоваться для
+сопоставления подмножества доменов, например, gui/* или conf* или *
+(последний соответствует всем доменам). Доступны уровни: \fBerror\fP (ошибки),\ \fBwarning\fP (предупреждения),\ \fBinfo\fP (сведения),\ \fBdebug\fP (отладка),\ \fBnone\fP (ничего). По умолчанию для большинства доменов используется уровень
+\fBwarning\fP, но домен \fBdeprecation\fP (выводимое из употребления)
+устанавливается в \fBnone\fP, если только не установлен параметр \fB\-d\fP. Этот
+параметр можно указать несколько раз.
 .TP 
 \fB\-\-log\-precise\fP
 выводить временные метки в файл логов с большей точностью.
 .TP 
-\fB\-\-log\-strict\fP\fI\ level\fP
-sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
-this \fIlevel\fP or more severe will cause the unit test to fail regardless of
-the victory result. Only relevant when used with \fB\-u\fP.
+\fB\-\-log\-strict\fP\fI\ уровень\fP
+установить строгий\fIlevel\fP уровень отладчика. Любые сообщения, посланные в
+домены этого \fIlevel\fP уровня выше по своей значимости, приведут к провалу
+проверки модуля невзирая на исход пробной игры. Имеет значение только, когда
+используется совместно с \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=фильтр\fP\fB]\fP
 перечислить доступные домены логов (только те, которые содержатся в
 \fBфильтре\fP, если он задан) и выйти
 .TP 
 \fB\-\-no\-log\-to\-file\fP
-prevents redirecting logged output to a file. The environment variable
-WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created
-in the logs directory under the userdata folder.
+предотвращает перенаправление данных логгера в файл. В качестве альтернативы
+можно также установить переменную среды WESNOTH_NO_LOG_FILE. Файлы логов
+создаются в подпапке logs в папке userdata.
 .TP 
 \fB\-\-log\-to\-file\fP
-log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
-whether implicit or explicit.
+вывод логов записывается в файл. Отменяет действие параметра
+\-\-no\-log\-to\-file, независимо от того, является ли он явным или неявным.
 .TP 
 \fB\-\-no\-log\-sanitize\fP
-disables the anonymization that's normally applied when logging, for example
-replacing usernames with USER.
+отключает анонимизацию, которая обычно применяется при входе в систему,
+например, замену имён пользователей на USER.
 .TP 
 \fB\-\-wnoconsole\fP
 В виндоусе, когда используется вместе с \-\-no\-log\-to\-file, приводит к тому,
@@ -207,9 +210,9 @@ replacing usernames with USER.
 предпочтения. Небезопасно.
 .TP 
 \fB\-\-plugin\fP\fI\ скрипт\fP
-load a \fIscript\fP which defines a Wesnoth plugin. Lua file should return a
-function which will be run as a coroutine and periodically woken up with
-updates.
+загрузить \fIscript\fP, определяющий плагин Веснота. Файл Lua должен возвращать
+функцию, которая будет выполняться как сопрограмма и периодически
+активироваться при обновлениях.
 .TP 
 \fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 применяет патч DiffWML к WML\-файлу; ни один из этих файлов предварительно не
@@ -227,25 +230,27 @@ updates.
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
 \fB\-\-preprocess\-string\fP\fI\ source\-string\fP
-preprocesses a given string and writes the output to stdout.
+обрабатывает заданную строку и выводит результат в stdout.
 .TP 
 \fB\-\-preprocess\-defines=\fP\fIОПРЕДЕЛЕНИЕ1\fP\fB,\fP\fIОПРЕДЕЛЕНИЕ2\fP\fB,\fP\fI...\fP
-comma separated list of defines to be used by the \fB\-\-preprocess\fP or
-\fB\-\-preprocess\-string\fP command. If \fBSKIP_CORE\fP is in the define list the
-"data/core" directory won't be preprocessed.
+разделённый запятыми список определений, используемых командой
+\fB\-\-preprocess\fP или \fB\-\-preprocess\-string\fP . Если в списке определений есть
+\fBSKIP_CORE\fP, то каталог "data/core" не будет прогоняться через
+препроцессор.
 .TP 
 \fB\-\-preprocess\-input\-macros\fP\fI\ исходный файл\fP
-used only by the \fB\-\-preprocess\fP or \fB\-\-preprocess\-string\fP
-command. Specifies a file that contains \fB[preproc_define]\fPs to be included
-before preprocessing.
+используется только командой \fB\-\-preprocess\fP или
+\fB\-\-preprocess\-string\fP. Задает файл, который содержит определения
+препроцессора \fB[preproc_define]\fP, которые должны быть загружены до запуска
+препроцессора.
 .TP 
 \fB\-\-preprocess\-output\-macros[\fP\fI=целевой файл\fP\fB]\fP
-used only by the \fB\-\-preprocess\fP command (But not by the
-\fB\-\-preprocess\-string\fP command). Will output all preprocessed macros in the
-target file. If the file is not specified the output will be file
-\&'_MACROS_.cfg' in the target directory of preprocess's command. The output
-file can be passed to \fB\-\-preprocess\-input\-macros\fP.  This switch should be
-typed before the \fB\-\-preprocess\fP command.
+используется только командой \fB\-\-preprocess\fP (Но не командой
+\fB\-\-preprocess\-string\fP). Выводит все заранее обработанные макросы в целевой
+файл. Если файл не задан, файлом вывода будет '_MACROS_.cfg' в целевом
+каталоге команды обработчика. Файл вывода можно передать с помощью
+\fB\-\-preprocess\-input\-macros\fP.   Этот ключ необходимо указать до команды
+\fB\-\-preprocess\fP.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 установить разрешение экрана. Пример: \fB\-r\fP \fB800x600\fP.
@@ -342,7 +347,7 @@ Games"), задайте абсолютный путь. Помимо этого, 
 запускать игру в оконном режиме.
 .TP 
 \fB\-\-with\-replay\fP
-воспроизводит игру, загруженную с параметром \fB\-\-load\fP
+воспроизводит игру, загруженную с параметром \fB\-\-load\fP.
 .
 .SH "Параметры для \-\-multiplayer"
 .
@@ -431,7 +436,7 @@ data/multiplayer.cfg.
 .
 .SH "АВТОРСКОЕ ПРАВО"
 .
-Copyright \(co 2003\-2025 David White <davidnwhite@verizon.net>
+Авторское право \(co Дэвид Уайт, 2003\-2026 <davidnwhite@verizon.net>
 .br
 Это — Свободное программное обеспечение; эта программа находится под
 лицензией GPL версии 2, опубликованной Фондом свободного программного

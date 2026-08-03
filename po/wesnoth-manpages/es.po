@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
-"POT-Creation-Date: 2025-04-27 22:22-0500\n"
+"POT-Creation-Date: 2026-08-02 22:46-0500\n"
 "PO-Revision-Date: 2025-09-01 15:42-0300\n"
 "Last-Translator: Sebastián Lecchini<sebas38760@gmail.com>\n"
 "Language-Team: Wesnoth\n"
@@ -113,6 +113,7 @@ msgstr "OPCIONES"
 
 #. type: TP
 #: doc/man/wesnoth.6:45
+#, no-wrap
 msgid "B<--addon-info>"
 msgstr "B<--addon-info>"
 
@@ -292,6 +293,7 @@ msgstr "deshabilita llamadas obsoletas de Lua API"
 
 #. type: TP
 #: doc/man/wesnoth.6:92
+#, no-wrap
 msgid "B<-D,\\ --diff>I<\\ left-file>B<\\ >I<right-file>"
 msgstr "B<-D,\\ --diff>I<\\ left-file>B<\\ >I<right-file>"
 
@@ -434,6 +436,7 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:154
+#, no-wrap
 msgid "B<--log-strict>I<\\ level>"
 msgstr "B<--log-strict>I<\\ level>"
 
@@ -484,6 +487,7 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:171
+#, no-wrap
 msgid "B<--log-to-file>"
 msgstr "B<--log-to-file>"
 
@@ -498,6 +502,7 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:174
+#, no-wrap
 msgid "B<--no-log-sanitize>"
 msgstr "B<--no-log-sanitize>"
 
@@ -512,6 +517,7 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:177
+#, no-wrap
 msgid "B<--wnoconsole>"
 msgstr "B<--wnoconsole>"
 
@@ -715,6 +721,7 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:239
+#, no-wrap
 msgid "B<-P,\\ --patch>I<\\ base-file>B<\\ >I<patch-file>"
 msgstr "B<-P,\\ --patch>I<\\ base-file>B<\\ >I<patch-file>"
 
@@ -759,6 +766,7 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:254
+#, no-wrap
 msgid "B<--preprocess-string>I<\\ source-string>"
 msgstr "B<--preprocess-string>I<\\ source-string>"
 
@@ -845,8 +853,8 @@ msgstr "B<--render-image>I<\\ image>B<\\ >I<output>"
 #: doc/man/wesnoth.6:296
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
-"outputs to a .png file. Image path functions are documented at https://"
-"wiki.wesnoth.org/ImagePathFunctionWML."
+"outputs to a .png file. Image path functions are documented at https://wiki."
+"wesnoth.org/ImagePathFunctionWML."
 msgstr ""
 "toma una 'cadena de dirección de imágen' válida de wesnoth con funciones de "
 "direccionado de imágen, y genera un archivo .png. Las funciones de "
@@ -1004,6 +1012,7 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:350
+#, no-wrap
 msgid "B<-S,\\ --use-schema>I<\\ path>"
 msgstr "B<-S,\\ --use-schema>I<\\ path>"
 
@@ -1094,6 +1103,7 @@ msgstr "valida el núcleo WML mientras se está jugando."
 
 #. type: TP
 #: doc/man/wesnoth.6:380
+#, no-wrap
 msgid "B<--validate-schema>I<\\ path>"
 msgstr "B<--validate-schema>I<\\ path>"
 
@@ -1410,11 +1420,11 @@ msgstr "Escrito por David White E<lt>davidnwhite@verizon.netE<gt>."
 #. type: Plain text
 #: doc/man/wesnoth.6:497
 msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
-"E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
+"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
-"Editado por Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
-"E<lt>ott@gaon.netE<gt> y Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Editado por Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
+"netE<gt> y Soliton E<lt>soliton.de@gmail.comE<gt>."
 
 #. type: Plain text
 #: doc/man/wesnoth.6:499
@@ -1460,19 +1470,8 @@ msgstr ""
 msgid "SEE ALSO"
 msgstr "VÉASE TAMBIÉN"
 
-#.  This program is free software; you can redistribute it and/or modify
-#.  it under the terms of the GNU General Public License as published by
-#.  the Free Software Foundation; either version 2 of the License, or
-#.  (at your option) any later version.
-#.  This program is distributed in the hope that it will be useful,
-#.  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#.  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#.  GNU General Public License for more details.
-#.  You should have received a copy of the GNU General Public License
-#.  along with this program; if not, write to the Free Software
-#.  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #. type: Plain text
-#: doc/man/wesnothd.6:15
+#: doc/man/wesnoth.6:511
 msgid "B<wesnothd>(6)"
 msgstr "B<wesnothd>(6)"
 
@@ -1719,13 +1718,13 @@ msgstr "B<disallow_names>"
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: "
-"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
+"(used if nothing is specified) are: B<*admin*,*admln*,*moderator*,*server*,"
+"ai,ai?,computer,human,network,player>."
 msgstr ""
 "Nombres/apodos que no son aceptados por el servidor. B<*> y B<?> funcionan "
 "como comodines. Vea B<glob>(7) para más detalles. Los valores por defecto "
-"(usados si no se especifica nada) son: "
-"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
+"(usados si no se especifica nada) son: B<*admin*,*admln*,*moderator*,"
+"*server*,ai,ai?,computer,human,network,player>."
 
 #. type: TP
 #: doc/man/wesnothd.6:118
@@ -2166,6 +2165,7 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnothd.6:242
+#, no-wrap
 msgid "B<db_game_content_info_table>"
 msgstr "B<db_game_content_info_table>"
 
@@ -2197,6 +2197,7 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnothd.6:248
+#, no-wrap
 msgid "B<db_tournament_query>"
 msgstr "B<db_tournament_query>"
 
@@ -2275,6 +2276,7 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnothd.6:263
+#, no-wrap
 msgid "B<forum_admin_group>"
 msgstr "B<forum_admin_group>"
 
@@ -2289,6 +2291,7 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnothd.6:266
+#, no-wrap
 msgid "B<site_admin_group>"
 msgstr "B<site_admin_group>"
 
@@ -2307,15 +2310,15 @@ msgstr ""
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer "
-"E<lt>thomas.baumhauer@gmail.comE<gt>.  This manual page was originally "
-"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
+"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
+"Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "Escrito por David White E<lt>davidnwhite@verizon.netE<gt>.  Editado por Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> y Thomas Baumhauer "
-"E<lt>thomas.baumhauer@gmail.comE<gt>.  Esta página de manual fue "
-"originalmente escrita por Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> y Thomas Baumhauer E<lt>thomas."
+"baumhauer@gmail.comE<gt>.  Esta página de manual fue originalmente escrita "
+"por Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
 #. type: Plain text
 #: doc/man/wesnothd.6:293
@@ -2520,8 +2523,8 @@ msgstr "B<wesnoth>(6)"
 #~ "compresses a file in gzip format, stores it as I<infile>.gz and removes "
 #~ "I<infile>."
 #~ msgstr ""
-#~ "comprime un archivo en formato gzip, lo guarda como "
-#~ "I<archivo_de_entrada>.gz y elimina I<archivo_de_entrada>."
+#~ "comprime un archivo en formato gzip, lo guarda como I<archivo_de_entrada>."
+#~ "gz y elimina I<archivo_de_entrada>."
 
 #, no-wrap
 #~ msgid "2021"

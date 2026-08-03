@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-06-22 22:15-0500\n"
+"POT-Creation-Date: 2026-08-02 22:45-0500\n"
 "PO-Revision-Date: 2026-05-24 08:34+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -300,8 +300,8 @@ msgid ""
 "identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgstr ""
 "<italic>text='Pouště'</italic> mají poněkud odlišné složení než malé jámy "
-"s pískem nebo pláže, hru ale ovlivňují obdobně. Podívej se na "
-"<ref>dst='..terrain_sand' text='písek'</ref>."
+"s pískem nebo pláže, hru ale ovlivňují obdobně. Podívej se na <ref>dst='.."
+"terrain_sand' text='písek'</ref>."
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -3193,8 +3193,8 @@ msgid ""
 "campaign_landing^For a full list of changes, consult our official changelog "
 "at https://www.wesnoth.org/start/1.20/"
 msgstr ""
-"Úplný seznam změn najdeš v oficiálním záznamu na adrese https://"
-"www.wesnoth.org/start/1.20/."
+"Úplný seznam změn najdeš v oficiálním záznamu na adrese https://www.wesnoth."
+"org/start/1.20/."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:248
@@ -3413,7 +3413,7 @@ msgstr "Hrát tažení"
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:615
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:221
-#: src/gui/dialogs/campaign_selection.cpp:82
+#: src/gui/dialogs/campaign_selection.cpp:85
 msgid "game^Play"
 msgstr "Hrát"
 
@@ -3485,7 +3485,7 @@ msgstr "Načíst jádro"
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
 #: src/gui/dialogs/editor/edit_unit.cpp:296
-#: src/preferences/preferences.cpp:1342
+#: src/preferences/preferences.cpp:1352
 msgid "Select"
 msgstr "Vybrat"
 
@@ -6318,7 +6318,7 @@ msgstr "Klávesa"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:130
-#: src/gui/dialogs/preferences_dialog.cpp:885
+#: src/gui/dialogs/preferences_dialog.cpp:881
 msgid "game_hotkeys^G"
 msgstr "H"
 
@@ -6331,7 +6331,7 @@ msgstr "Dostupné ve hře"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:145
-#: src/gui/dialogs/preferences_dialog.cpp:886
+#: src/gui/dialogs/preferences_dialog.cpp:882
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -6344,7 +6344,7 @@ msgstr "Dostupné v editoru"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:160
-#: src/gui/dialogs/preferences_dialog.cpp:887
+#: src/gui/dialogs/preferences_dialog.cpp:883
 msgid "mainmenu_hotkeys^M"
 msgstr "M"
 
@@ -7107,7 +7107,7 @@ msgstr "Označit/odznačit vybranou jednotku jako oblíbenou"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/wml_error.cfg:40
-#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:265
+#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:249
 #: src/gui/dialogs/transient_message.cpp:77
 msgid "Error"
 msgstr "Chyba"
@@ -7684,19 +7684,19 @@ msgstr "Odolnost útočníka vs."
 msgid "Attacker vulnerability vs"
 msgstr "Zranitelnost útočníka vs."
 
-#: src/gui/dialogs/campaign_selection.cpp:82
+#: src/gui/dialogs/campaign_selection.cpp:85
 msgid "game^Get Add-ons"
 msgstr "Získat rozšíření"
 
-#: src/gui/dialogs/campaign_selection.cpp:409
+#: src/gui/dialogs/campaign_selection.cpp:412
 msgid "More campaigns..."
 msgstr "Další tažení..."
 
-#: src/gui/dialogs/campaign_selection.cpp:424
+#: src/gui/dialogs/campaign_selection.cpp:427
 msgid "Missing Campaigns"
 msgstr "Chybějící tažení"
 
-#: src/gui/dialogs/campaign_selection.cpp:458
+#: src/gui/dialogs/campaign_selection.cpp:461
 #: src/gui/dialogs/multiplayer/lobby.cpp:435
 msgid "active_modifications^None"
 msgstr "Žádné"
@@ -8296,8 +8296,8 @@ msgid ""
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
 "S databází pro ověření verze rozšíření, která je potřebná pro čekárnu hry "
-"více hráčů, není něco v pořádku. Prosím nahlas to na https://"
-"bugs.wesnoth.org."
+"více hráčů, není něco v pořádku. Prosím nahlas to na https://bugs.wesnoth."
+"org."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:992
 msgid "This game is password protected. Join using moderator rights anyway?"
@@ -8430,33 +8430,33 @@ msgstr "Čekání na hráče, kteří si vybírají frakci..."
 msgid "The End"
 msgstr "Konec"
 
-#: src/gui/dialogs/preferences_dialog.cpp:192
+#: src/gui/dialogs/preferences_dialog.cpp:176
 msgid "friend"
 msgstr "přítel"
 
-#: src/gui/dialogs/preferences_dialog.cpp:197
+#: src/gui/dialogs/preferences_dialog.cpp:181
 msgid "ignored"
 msgstr "otrapa"
 
-#: src/gui/dialogs/preferences_dialog.cpp:250
-#: src/gui/dialogs/preferences_dialog.cpp:307
+#: src/gui/dialogs/preferences_dialog.cpp:234
+#: src/gui/dialogs/preferences_dialog.cpp:291
 msgid "No username specified"
 msgstr "Nebylo zadáno uživatelské jméno"
 
-#: src/gui/dialogs/preferences_dialog.cpp:265
+#: src/gui/dialogs/preferences_dialog.cpp:249
 msgid "Invalid username"
 msgstr "Nepoužitelná přezdívka"
 
-#: src/gui/dialogs/preferences_dialog.cpp:312
+#: src/gui/dialogs/preferences_dialog.cpp:296
 msgid "Not on friends or ignore lists"
 msgstr "Není v seznamu přátel ani ignorovaných"
 
-#: src/gui/dialogs/preferences_dialog.cpp:931
-#: src/gui/dialogs/preferences_dialog.cpp:995
+#: src/gui/dialogs/preferences_dialog.cpp:927
+#: src/gui/dialogs/preferences_dialog.cpp:993
 msgid "No hotkey selected"
 msgstr "Nepřiřazeno"
 
-#: src/gui/dialogs/preferences_dialog.cpp:959
+#: src/gui/dialogs/preferences_dialog.cpp:955
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -8465,15 +8465,15 @@ msgstr ""
 "b>“.\n"
 "Chceš ji přeřadit k akci „<b>$new_hotkey_action|</b>“?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:965
+#: src/gui/dialogs/preferences_dialog.cpp:961
 msgid "Reassign Hotkey"
 msgstr "Přeřadit klávesovou zkratku"
 
-#: src/gui/dialogs/preferences_dialog.cpp:982
+#: src/gui/dialogs/preferences_dialog.cpp:978
 msgid "All hotkeys have been reset to their default values."
 msgstr "Všechny zkratky byly nastaveny na své výchozí hodnoty."
 
-#: src/gui/dialogs/preferences_dialog.cpp:982
+#: src/gui/dialogs/preferences_dialog.cpp:978
 msgid "Hotkeys Reset"
 msgstr "Reset klávesových zkratek"
 
@@ -9704,11 +9704,11 @@ msgstr "Zobrazit Lua konzoli"
 msgid "Unrecognized Command"
 msgstr "Neznámý příkaz"
 
-#: src/preferences/preferences.cpp:1299
+#: src/preferences/preferences.cpp:1309
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Žádné známé motivy. Zkus změnit během existující hry."
 
-#: src/preferences/preferences.cpp:1336
+#: src/preferences/preferences.cpp:1346
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
@@ -9718,16 +9718,16 @@ msgstr ""
 "hráčů a je požadována pro pořádání her na místní síti. Obvykle se nachází ve "
 "stejné složce jako spustitelný soubor hry."
 
-#: src/preferences/preferences.cpp:1340
+#: src/preferences/preferences.cpp:1350
 msgid "Find Server Application"
 msgstr "Najít aplikaci serveru"
 
-#: src/preferences/preferences.cpp:1822
+#: src/preferences/preferences.cpp:1832
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
 # formát času pro 2x12 + AM/PM
-#: src/preferences/preferences.cpp:1824
+#: src/preferences/preferences.cpp:1834
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 

@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-manpages\n"
-"POT-Creation-Date: 2025-04-27 22:22-0500\n"
+"POT-Creation-Date: 2026-08-02 22:46-0500\n"
 "PO-Revision-Date: 2026-06-21 17:23+0500\n"
 "Last-Translator: Alexandr Obolonkin (Alexinor) <obolonkin@proton.me>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
@@ -906,8 +906,8 @@ msgstr "B<--render-image>I<\\ изображение>B<\\ >I<результат>
 #: doc/man/wesnoth.6:296
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
-"outputs to a .png file. Image path functions are documented at https://"
-"wiki.wesnoth.org/ImagePathFunctionWML."
+"outputs to a .png file. Image path functions are documented at https://wiki."
+"wesnoth.org/ImagePathFunctionWML."
 msgstr ""
 "взять подходящую Веснотскую 'строку пути к изображению', применить к ней "
 "функции пути изображения, и вывести результат в .png файл. Функции пути "
@@ -974,8 +974,8 @@ msgid ""
 "in preferences. Example: B<--server> B<server.wesnoth.org>."
 msgstr ""
 "подключиться к указанному хосту, если таковой имеется, иначе подключиться к "
-"первому, указанному в настройках. Например: B<--server> "
-"B<server.wesnoth.org>."
+"первому, указанному в настройках. Например: B<--server> B<server.wesnoth."
+"org>."
 
 # type: TP
 #. type: TP
@@ -1335,8 +1335,8 @@ msgid ""
 "eras.cfg> file."
 msgstr ""
 "используйте этот параметр для игры в выбранной эре вместо B<Default>. Эра "
-"выбирается по ее идентификатору. Они описаны в файле B<data/multiplayer/"
-"eras.cfg>."
+"выбирается по ее идентификатору. Они описаны в файле B<data/multiplayer/eras."
+"cfg>."
 
 # type: TP
 #. type: TP
@@ -1519,12 +1519,12 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:497
 msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
-"E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
+"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
-"Отредактирована Нильсом Кнейпером (Nils Kneuper) E<lt>crazy-"
-"ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> и Soliton "
-"E<lt>soliton.de@gmail.comE<gt>."
+"Отредактирована Нильсом Кнейпером (Nils Kneuper) E<lt>crazy-ivanovic@gmx."
+"netE<gt>, ott E<lt>ott@gaon.netE<gt> и Soliton E<lt>soliton.de@gmail."
+"comE<gt>."
 
 # type: Plain text
 #. type: Plain text
@@ -1578,19 +1578,8 @@ msgid "SEE ALSO"
 msgstr "СМ. ТАКЖЕ"
 
 # type: TH
-#.  This program is free software; you can redistribute it and/or modify
-#.  it under the terms of the GNU General Public License as published by
-#.  the Free Software Foundation; either version 2 of the License, or
-#.  (at your option) any later version.
-#.  This program is distributed in the hope that it will be useful,
-#.  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#.  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#.  GNU General Public License for more details.
-#.  You should have received a copy of the GNU General Public License
-#.  along with this program; if not, write to the Free Software
-#.  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #. type: Plain text
-#: doc/man/wesnothd.6:15
+#: doc/man/wesnoth.6:511
 msgid "B<wesnothd>(6)"
 msgstr "B<wesnothd>(6)"
 
@@ -1643,10 +1632,9 @@ msgid ""
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client (/query ...) or the fifo."
 msgstr ""
-"Управление многопользовательскими играми Битвы за Веснот. См. https://"
-"www.wesnoth.org/wiki/ServerAdministration (англ.), чтобы узнать, какие "
-"команды сервер может принимать через клиент Веснота (/query ...) или через "
-"fifo."
+"Управление многопользовательскими играми Битвы за Веснот. См. https://www."
+"wesnoth.org/wiki/ServerAdministration (англ.), чтобы узнать, какие команды "
+"сервер может принимать через клиент Веснота (/query ...) или через fifo."
 
 # type: TP
 #. type: TP
@@ -1872,18 +1860,18 @@ msgstr "B<disallow_names>"
 #| msgid ""
 #| "Names/nicks that are not accepted by the server. B<*> and B<?> from "
 #| "wildcard patterns are supported. See B<glob>(7)  for more details.  "
-#| "Default values (used if nothing is specified) are: "
-#| "B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>."
+#| "Default values (used if nothing is specified) are: B<*admin*,*admln*,"
+#| "*server*,ai,ai?,computer,human,network,player>."
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: "
-"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
+"(used if nothing is specified) are: B<*admin*,*admln*,*moderator*,*server*,"
+"ai,ai?,computer,human,network,player>."
 msgstr ""
 "Имена/ники, не принимаемые сервером. Поддерживаются групповые шаблоны B<*> и "
 "B<?>. Подробности см. B<glob>(7). Значения по умолчанию (используются, если "
-"ничего не указано): "
-"B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>."
+"ничего не указано): B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,"
+"player>."
 
 # type: TP
 #. type: TP
@@ -2509,16 +2497,16 @@ msgstr ""
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer "
-"E<lt>thomas.baumhauer@gmail.comE<gt>.  This manual page was originally "
-"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
+"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
+"Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "Написана Дэвидом Уайтом (David White) E<lt>davidnwhite@verizon.netE<gt>. "
-"Отредактирована Нильсом Кнейпером (Nils Kneuper) E<lt>crazy-"
-"ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, Soliton "
-"E<lt>soliton.de@gmail.comE<gt> и Томасом Баумхаером "
-"E<lt>thomas.baumhauer@gmail.comE<gt>. Эта страница изначально была написана "
-"Сирилом Бауторсом (Cyril Bouthors) E<lt>cyril@bouthors.orgE<gt>."
+"Отредактирована Нильсом Кнейпером (Nils Kneuper) E<lt>crazy-ivanovic@gmx."
+"netE<gt>, ott E<lt>ott@gaon.netE<gt>, Soliton E<lt>soliton.de@gmail.comE<gt> "
+"и Томасом Баумхаером E<lt>thomas.baumhauer@gmail.comE<gt>. Эта страница "
+"изначально была написана Сирилом Бауторсом (Cyril Bouthors) "
+"E<lt>cyril@bouthors.orgE<gt>."
 
 # type: TH
 #. type: Plain text

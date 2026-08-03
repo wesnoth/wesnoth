@@ -26,7 +26,7 @@ wesnothd \- скрытый процесс многопользовательск
 .
 .SH ОБЗОР
 .
-\fBwesnothd\fP [\|\fB\-dvw\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|]
+\fBwesnothd\fP [\|\fB\-dvw\fP\|] [\|\fB\-c\fP \fIпуть\fP\|] [\|\fB\-p\fP \fIпорт\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
@@ -235,8 +235,8 @@ MySQL. В cmake она включается при помощи \fBENABLE_MYSQL\
 игре.
 .TP 
 \fBdb_game_content_info_table\fP
-The name of the table in which wesnothd will save its own data about game
-content (scenario/era/modifications) used in a game.
+Название таблицы, в которой wesnothd сохранит свои данные о контенте
+(сценариях/эрах/модификациях), используемом в игре.
 .TP 
 \fBdb_user_group_table\fP
 Название таблицы, где Ваш phpbb форум хранит данные о группах
@@ -244,8 +244,8 @@ content (scenario/era/modifications) used in a game.
 phpbb3_user_group).
 .TP 
 \fBdb_tournament_query\fP
-The SQL query to find tournaments to announce on login. Should return
-tournament \fBtitle\fP, \fBstatus\fP and \fBurl\fP.
+SQL\-запрос для поиска турниров, о которых следует объявить при входе в
+систему. Должен возвращать турниры \fBtitle\fP, \fBstatus\fP и \fBurl\fP.
 .TP 
 \fBdb_connection_history_table\fP
 Имя таблицы, где хранятся времена захода/выхода с сервера. Можно также
@@ -264,12 +264,12 @@ tournament \fBtitle\fP, \fBstatus\fP and \fBurl\fP.
 Идентификатор группы пользователей форума, имеющих полномочия модератора.
 .TP 
 \fBforum_admin_group\fP
-The ID of one of the forum groups to be considered as having admin authority
-on the add\-ons server.
+Идентификатор группы пользователей форума, имеющих полномочия админа на
+сервере аддонов.
 .TP 
 \fBsite_admin_group\fP
-The ID of one of the forum groups to be considered as having admin authority
-on the add\-ons server.
+Идентификатор группы пользователей форума, имеющих полномочия админа на
+сервере аддонов.
 .RE
 .
 .SH "КОД ВЫХОДА"
@@ -290,7 +290,7 @@ Soliton <soliton.de@gmail.com> и Томасом Баумхаером
 .
 .SH "АВТОРСКОЕ ПРАВО"
 .
-Copyright \(co 2003\-2025 David White <davidnwhite@verizon.net>
+Авторское право \(co Дэвид Уайт, 2003\-2026 <davidnwhite@verizon.net>
 .br
 Это — Свободное программное обеспечение; эта программа находится под
 лицензией GPL версии 2, опубликованной Фондом свободного программного

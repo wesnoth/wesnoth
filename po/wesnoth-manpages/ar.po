@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.0+dev\n"
-"POT-Creation-Date: 2025-04-27 22:22-0500\n"
+"POT-Creation-Date: 2026-08-02 22:46-0500\n"
 "PO-Revision-Date: 2025-07-04 09:17+0100\n"
 "Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: none\n"
@@ -261,9 +261,8 @@ msgid ""
 "https://www.wesnoth.org/wiki/CommandMode for more information about command "
 "mode)."
 msgstr ""
-"يتيح خيارات وضع الأوامر الإضافية داخل اللعبة (راجع صفحة wiki على https://"
-"www.wesnoth.org/wiki/CommandMode للحصول على مزيد من المعلومات حول وضع "
-"الأوامر)."
+"يتيح خيارات وضع الأوامر الإضافية داخل اللعبة (راجع صفحة wiki على https://www."
+"wesnoth.org/wiki/CommandMode للحصول على مزيد من المعلومات حول وضع الأوامر)."
 
 #. type: TP
 #: doc/man/wesnoth.6:86
@@ -859,9 +858,9 @@ msgid ""
 "preprocess> command."
 msgstr ""
 "يُستخدم فقط بواسطة أمر B<--preprocess>. سيُخرج جميع وحدات الماكرو المُعالجة "
-"مسبقًا في ملف الهدف. إذا لم يتم تحديد الملف، سيكون المخرج في ملف "
-"'_MACROS_.cfg' بدليل الهدف لأمر preprocess. يمكن تمرير ملف المخرجات إلى B<--"
-"preprocess-input-macros>. يجب كتابة هذا المفتاح قبل أمر B<--preprocess>."
+"مسبقًا في ملف الهدف. إذا لم يتم تحديد الملف، سيكون المخرج في ملف '_MACROS_."
+"cfg' بدليل الهدف لأمر preprocess. يمكن تمرير ملف المخرجات إلى B<--preprocess-"
+"input-macros>. يجب كتابة هذا المفتاح قبل أمر B<--preprocess>."
 
 # type: TP
 #. type: TP
@@ -885,8 +884,8 @@ msgstr "B<--render-image>I<\\ image>B<\\ >I<output>"
 #: doc/man/wesnoth.6:296
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
-"outputs to a .png file. Image path functions are documented at https://"
-"wiki.wesnoth.org/ImagePathFunctionWML."
+"outputs to a .png file. Image path functions are documented at https://wiki."
+"wesnoth.org/ImagePathFunctionWML."
 msgstr ""
 "يأخذ مسار صورة صالحًا في Wesnoth مع دوال مسار الصورة، ويُخرج إلى ملف .png. "
 "دوال مسار الصورة موثقة في: https://wiki.wesnoth.org/ImagePathFunctionWML."
@@ -1443,11 +1442,11 @@ msgstr "كُتب بواسطة David White E<lt>davidnwhite@verizon.netE<gt>."
 #. type: Plain text
 #: doc/man/wesnoth.6:497
 msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
-"E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
+"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
-"حرره Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>، ott "
-"E<lt>ott@gaon.netE<gt> و Soliton E<lt>soliton.de@gmail.comE<gt>."
+"حرره Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>، ott E<lt>ott@gaon."
+"netE<gt> و Soliton E<lt>soliton.de@gmail.comE<gt>."
 
 # type: Plain text
 #. type: Plain text
@@ -1500,19 +1499,8 @@ msgstr "شاهد أيضًا (SEE ALSO)"
 
 #
 #
-#.  This program is free software; you can redistribute it and/or modify
-#.  it under the terms of the GNU General Public License as published by
-#.  the Free Software Foundation; either version 2 of the License, or
-#.  (at your option) any later version.
-#.  This program is distributed in the hope that it will be useful,
-#.  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#.  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#.  GNU General Public License for more details.
-#.  You should have received a copy of the GNU General Public License
-#.  along with this program; if not, write to the Free Software
-#.  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #. type: Plain text
-#: doc/man/wesnothd.6:15
+#: doc/man/wesnoth.6:511
 msgid "B<wesnothd>(6)"
 msgstr "B<wesnothd>(6)"
 
@@ -1792,18 +1780,18 @@ msgstr "B<disallow_names>"
 #| msgid ""
 #| "Names/nicks that are not accepted by the server. B<*> and B<?> from "
 #| "wildcard patterns are supported. See B<glob>(7)  for more details.  "
-#| "Default values (used if nothing is specified) are: "
-#| "B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>."
+#| "Default values (used if nothing is specified) are: B<*admin*,*admln*,"
+#| "*server*,ai,ai?,computer,human,network,player>."
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: "
-"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
+"(used if nothing is specified) are: B<*admin*,*admln*,*moderator*,*server*,"
+"ai,ai?,computer,human,network,player>."
 msgstr ""
 "الأسماء/الألقاب غير المقبولة من قبل الخادم. يتم دعم B<*> و B<?> من أنماط "
 "wildcard. راجع B<glob>(7) لمزيد من التفاصيل. القيم الافتراضية (المستخدمة إذا "
-"لم يتم تحديد شيء) هي: "
-"B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>."
+"لم يتم تحديد شيء) هي: B<*admin*,*admln*,*server*,ai,ai?,computer,human,"
+"network,player>."
 
 # type: TP
 #. type: TP
@@ -1996,8 +1984,8 @@ msgid ""
 "TLS DH parameters, as .pem file. Generate with B<openssl dhparam -out "
 "filename.pem 4096>"
 msgstr ""
-"معاملات DH لـ TLS، كملف .pem. تولد باستخدام B<openssl dhparam -out "
-"filename.pem 4096>"
+"معاملات DH لـ TLS، كملف .pem. تولد باستخدام B<openssl dhparam -out filename."
+"pem 4096>"
 
 # type: TP
 #. type: TP
@@ -2404,15 +2392,15 @@ msgstr ""
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer "
-"E<lt>thomas.baumhauer@gmail.comE<gt>.  This manual page was originally "
-"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
+"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
+"Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "كتبت بواسطة دافيد وايت E<lt>davidnwhite@verizon.netE<gt>.  دققت بواسطة نيلز "
 "نوبر  E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, صوليتون "
-"E<lt>soliton.de@gmail.comE<gt> وطوماس باومهاور "
-"E<lt>thomas.baumhauer@gmail.comE<gt>.  هذا الكتيب كتب في الاصل بواسطة سيريل "
-"بوذر E<lt>cyril@bouthors.orgE<gt>."
+"E<lt>soliton.de@gmail.comE<gt> وطوماس باومهاور E<lt>thomas.baumhauer@gmail."
+"comE<gt>.  هذا الكتيب كتب في الاصل بواسطة سيريل بوذر E<lt>cyril@bouthors."
+"orgE<gt>."
 
 #. type: Plain text
 #: doc/man/wesnothd.6:293

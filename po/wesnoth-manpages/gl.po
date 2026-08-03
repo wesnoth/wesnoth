@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
-"POT-Creation-Date: 2025-04-27 22:22-0500\n"
+"POT-Creation-Date: 2026-08-02 22:46-0500\n"
 "PO-Revision-Date: 2025-11-25 13:49+0100\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -907,8 +907,8 @@ msgstr "B<--render-image>I<\\ imaxe>B<\\ >I<output>"
 #: doc/man/wesnoth.6:296
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
-"outputs to a .png file. Image path functions are documented at https://"
-"wiki.wesnoth.org/ImagePathFunctionWML."
+"outputs to a .png file. Image path functions are documented at https://wiki."
+"wesnoth.org/ImagePathFunctionWML."
 msgstr ""
 "Toma unha \"cadea de ruta de imaxe\" válida de Wesnoth con funcións de ruta "
 "de imaxe e envía a saída a un ficheiro .png. As funcións de ruta de imaxe "
@@ -975,8 +975,8 @@ msgid ""
 "in preferences. Example: B<--server> B<server.wesnoth.org>."
 msgstr ""
 "Conéctase ao servidor especificado se o houber; se non, conéctase ao "
-"primeiro servidor nas preferencias. Exemplo: B<--server> "
-"B<server.wesnoth.org>."
+"primeiro servidor nas preferencias. Exemplo: B<--server> B<server.wesnoth."
+"org>."
 
 # type: TP
 #. type: TP
@@ -1519,8 +1519,8 @@ msgstr "Autor orixinal: David White E<lt>davidnwhite@verizon.netE<gt>."
 #. type: Plain text
 #: doc/man/wesnoth.6:497
 msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
-"E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
+"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
 "Modificacións posteriores: Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, "
 "ott E<lt>ott@gaon.netE<gt> e Soliton E<lt>soliton.de@gmail.comE<gt>."
@@ -1576,19 +1576,8 @@ msgid "SEE ALSO"
 msgstr "VÉXASE TAMÉN"
 
 # type: TH
-#.  This program is free software; you can redistribute it and/or modify
-#.  it under the terms of the GNU General Public License as published by
-#.  the Free Software Foundation; either version 2 of the License, or
-#.  (at your option) any later version.
-#.  This program is distributed in the hope that it will be useful,
-#.  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#.  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#.  GNU General Public License for more details.
-#.  You should have received a copy of the GNU General Public License
-#.  along with this program; if not, write to the Free Software
-#.  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #. type: Plain text
-#: doc/man/wesnothd.6:15
+#: doc/man/wesnoth.6:511
 msgid "B<wesnothd>(6)"
 msgstr "B<wesnothd>(6)"
 
@@ -1867,13 +1856,13 @@ msgstr "B<disallow_names>"
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: "
-"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
+"(used if nothing is specified) are: B<*admin*,*admln*,*moderator*,*server*,"
+"ai,ai?,computer,human,network,player>."
 msgstr ""
 "Nomes/alcumes que o servidor non acepta. Admítense B<*> e B<?> dos patróns "
 "de comodíns. Consulta B<glob>(7)  para obter máis detalles.  Os valores "
-"predeterminados (úsanse se non se especifica nada) son: "
-"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
+"predeterminados (úsanse se non se especifica nada) son: B<*admin*,*admln*,"
+"*moderator*,*server*,ai,ai?,computer,human,network,player>."
 
 # type: TP
 #. type: TP
@@ -2204,9 +2193,9 @@ msgid ""
 "Example: B<time=\"1D12h30m\"> results in a ban time of 1 day, 12 hours and "
 "30 minutes."
 msgstr ""
-"A duración.  O formato é «%d[%s[%d%s[…]]]», onde %s será «s» (segundos), «m» "
-"(minutos), «h» (horas), «D» (días), «M» (meses) ou «Y» (anos), e %d será un "
-"número.  Se non se fornece un modificador de tempo, interpretarase a "
+"A duración.  O formato é «%d[%s[%d%s[…]]]», onde %s será «s» (segundos), "
+"«m» (minutos), «h» (horas), «D» (días), «M» (meses) ou «Y» (anos), e %d será "
+"un número.  Se non se fornece un modificador de tempo, interpretarase a "
 "cantidade indicada como minutos.  Por exemplo: B<time=\"1D12h30m\"> é unha "
 "expulsión de 1 día, 12 horas e 30 minutos."
 
@@ -2510,9 +2499,9 @@ msgstr ""
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer "
-"E<lt>thomas.baumhauer@gmail.comE<gt>.  This manual page was originally "
-"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
+"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
+"Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "Autor orixinal: David White E<lt>davidnwhite@verizon.netE<gt>. Modificacións "
 "posteriores: Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
@@ -2551,8 +2540,8 @@ msgstr "B<wesnoth>(6)"
 #~ "compresses a file in bzip2 format, stores it as I<infile>.bz2 and removes "
 #~ "I<infile>."
 #~ msgstr ""
-#~ "Comprime un ficheiro en formato BZip2, gárdao coma "
-#~ "I<ficheiro_de_entrada>.bz2 e borra o I<ficheiro_de_entrada>."
+#~ "Comprime un ficheiro en formato BZip2, gárdao coma I<ficheiro_de_entrada>."
+#~ "bz2 e borra o I<ficheiro_de_entrada>."
 
 # type: TP
 #, fuzzy, no-wrap
@@ -2601,8 +2590,8 @@ msgstr "B<wesnoth>(6)"
 #~ "compresses a file in gzip format, stores it as I<infile>.gz and removes "
 #~ "I<infile>."
 #~ msgstr ""
-#~ "Comprime un ficheiro en formato GZIP, gárdao coma "
-#~ "I<ficheiro_de_entrada>.gz e borra o I<ficheiro_de_entrada>."
+#~ "Comprime un ficheiro en formato GZIP, gárdao coma I<ficheiro_de_entrada>."
+#~ "gz e borra o I<ficheiro_de_entrada>."
 
 # type: TP
 #, fuzzy, no-wrap

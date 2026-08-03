@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-06-22 22:16-0500\n"
+"POT-Creation-Date: 2026-08-02 22:45-0500\n"
 "PO-Revision-Date: 2026-04-21 17:29-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -373,7 +373,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:369
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:949
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:941
 msgid "poisoned"
 msgstr "envenenado"
 
@@ -1034,7 +1034,7 @@ msgstr "Tradução para o Sérvio"
 # File: data/core/about.cfg, line: 2703
 # File: data/core/about.cfg, line: 2703
 #. [about]
-#: data/core/about_i18n.cfg:1691
+#: data/core/about_i18n.cfg:1696
 msgid "Slovak Translation"
 msgstr "Tradução para o Eslovaco"
 
@@ -1043,7 +1043,7 @@ msgstr "Tradução para o Eslovaco"
 # File: data/core/about.cfg, line: 2732
 # File: data/core/about.cfg, line: 2732
 #. [about]
-#: data/core/about_i18n.cfg:1726
+#: data/core/about_i18n.cfg:1731
 msgid "Slovenian Translation"
 msgstr "Tradução para o Esloveno"
 
@@ -1052,7 +1052,7 @@ msgstr "Tradução para o Esloveno"
 # File: data/core/about.cfg, line: 2748
 # File: data/core/about.cfg, line: 2748
 #. [about]
-#: data/core/about_i18n.cfg:1742
+#: data/core/about_i18n.cfg:1747
 msgid "Spanish Translation"
 msgstr "Tradução para o Espanhol"
 
@@ -1061,7 +1061,7 @@ msgstr "Tradução para o Espanhol"
 # File: data/core/about.cfg, line: 2832
 # File: data/core/about.cfg, line: 2832
 #. [about]
-#: data/core/about_i18n.cfg:1836
+#: data/core/about_i18n.cfg:1841
 msgid "Swedish Translation"
 msgstr "Tradução para o Sueco"
 
@@ -1070,7 +1070,7 @@ msgstr "Tradução para o Sueco"
 # File: data/core/about.cfg, line: 2873
 # File: data/core/about.cfg, line: 2873
 #. [about]
-#: data/core/about_i18n.cfg:1881
+#: data/core/about_i18n.cfg:1886
 msgid "Turkish Translation"
 msgstr "Tradução para o Turco"
 
@@ -1079,7 +1079,7 @@ msgstr "Tradução para o Turco"
 # File: data/core/about.cfg, line: 2895
 # File: data/core/about.cfg, line: 2895
 #. [about]
-#: data/core/about_i18n.cfg:1906
+#: data/core/about_i18n.cfg:1911
 msgid "Ukrainian Translation"
 msgstr "Tradução para o Ucraniano"
 
@@ -1088,7 +1088,7 @@ msgstr "Tradução para o Ucraniano"
 # File: data/core/about.cfg, line: 2908
 # File: data/core/about.cfg, line: 2908
 #. [about]
-#: data/core/about_i18n.cfg:1940
+#: data/core/about_i18n.cfg:1945
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Tradução para o Valenciano (Catalão do sul)"
 
@@ -1097,7 +1097,7 @@ msgstr "Tradução para o Valenciano (Catalão do sul)"
 # File: data/core/about.cfg, line: 2921
 # File: data/core/about.cfg, line: 2921
 #. [about]
-#: data/core/about_i18n.cfg:1953
+#: data/core/about_i18n.cfg:1958
 msgid "Vietnamese Translation"
 msgstr "Tradução para o Vietnamita"
 
@@ -1106,7 +1106,7 @@ msgstr "Tradução para o Vietnamita"
 # File: data/core/about.cfg, line: 2466
 # File: data/core/about.cfg, line: 2466
 #. [about]
-#: data/core/about_i18n.cfg:1972
+#: data/core/about_i18n.cfg:1977
 msgid "Welsh Translation"
 msgstr "Tradução para a língua galesa"
 
@@ -1116,7 +1116,7 @@ msgstr "Tradução para a língua galesa"
 # File: data/core/about.cfg, line: 2940
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1981
+#: data/core/about_i18n.cfg:1986
 msgid "RACV’s Translation"
 msgstr "Tradução para o RACV"
 
@@ -4753,27 +4753,9 @@ msgstr "Você recuperou $amount_gold peças de ouro."
 # File: data/core/team-colors.cfg, line: 83
 #. [color_range]: id=red
 #. [color_range]: id=1
-#: data/core/team-colors.cfg:14 data/core/team-colors.cfg:265
+#: data/core/team-colors.cfg:14 data/core/team-colors.cfg:271
 msgid "Red"
 msgstr "Vermelho"
-
-#
-# File: data/core/team-colors.cfg, line: 20
-# File: data/core/team-colors.cfg, line: 20
-# File: data/core/team-colors.cfg, line: 20
-#. [color_range]: id=lightred
-#: data/core/team-colors.cfg:21
-msgid "Light Red"
-msgstr "Vermelho Claro"
-
-#
-# File: data/core/team-colors.cfg, line: 26
-# File: data/core/team-colors.cfg, line: 26
-# File: data/core/team-colors.cfg, line: 26
-#. [color_range]: id=darkred
-#: data/core/team-colors.cfg:27
-msgid "Dark Red"
-msgstr "Vermelho Escuro"
 
 #
 # File: data/core/team-colors.cfg, line: 32
@@ -4784,18 +4766,9 @@ msgstr "Vermelho Escuro"
 # File: data/core/team-colors.cfg, line: 89
 #. [color_range]: id=blue
 #. [color_range]: id=2
-#: data/core/team-colors.cfg:33 data/core/team-colors.cfg:271
+#: data/core/team-colors.cfg:21 data/core/team-colors.cfg:277
 msgid "Blue"
 msgstr "Azul"
-
-#
-# File: data/core/team-colors.cfg, line: 20
-# File: data/core/team-colors.cfg, line: 20
-# File: data/core/team-colors.cfg, line: 20
-#. [color_range]: id=lightblue
-#: data/core/team-colors.cfg:40
-msgid "Light blue"
-msgstr "Azul claro"
 
 #
 # File: data/core/team-colors.cfg, line: 38
@@ -4806,14 +4779,9 @@ msgstr "Azul claro"
 # File: data/core/team-colors.cfg, line: 95
 #. [color_range]: id=green
 #. [color_range]: id=3
-#: data/core/team-colors.cfg:46 data/core/team-colors.cfg:277
+#: data/core/team-colors.cfg:28 data/core/team-colors.cfg:283
 msgid "Green"
 msgstr "Verde"
-
-#. [color_range]: id=brightgreen
-#: data/core/team-colors.cfg:53
-msgid "Bright green"
-msgstr "Verde claro"
 
 #
 # File: data/core/team-colors.cfg, line: 44
@@ -4824,7 +4792,7 @@ msgstr "Verde claro"
 # File: data/core/team-colors.cfg, line: 101
 #. [color_range]: id=purple
 #. [color_range]: id=4
-#: data/core/team-colors.cfg:59 data/core/team-colors.cfg:283
+#: data/core/team-colors.cfg:35 data/core/team-colors.cfg:289
 msgid "Purple"
 msgstr "Roxo"
 
@@ -4837,7 +4805,7 @@ msgstr "Roxo"
 # File: data/core/team-colors.cfg, line: 113
 #. [color_range]: id=black
 #. [color_range]: id=5
-#: data/core/team-colors.cfg:66 data/core/team-colors.cfg:295
+#: data/core/team-colors.cfg:42 data/core/team-colors.cfg:301
 msgid "Black"
 msgstr "Negro"
 
@@ -4850,7 +4818,7 @@ msgstr "Negro"
 # File: data/core/team-colors.cfg, line: 125
 #. [color_range]: id=brown
 #. [color_range]: id=6
-#: data/core/team-colors.cfg:73 data/core/team-colors.cfg:307
+#: data/core/team-colors.cfg:49 data/core/team-colors.cfg:313
 msgid "Brown"
 msgstr "Marrom"
 
@@ -4863,14 +4831,9 @@ msgstr "Marrom"
 # File: data/core/team-colors.cfg, line: 107
 #. [color_range]: id=orange
 #. [color_range]: id=7
-#: data/core/team-colors.cfg:80 data/core/team-colors.cfg:289
+#: data/core/team-colors.cfg:56 data/core/team-colors.cfg:295
 msgid "Orange"
 msgstr "Laranja"
-
-#. [color_range]: id=brightorange
-#: data/core/team-colors.cfg:87
-msgid "Bright orange"
-msgstr "Laranja Claro"
 
 #
 # File: data/core/team-colors.cfg, line: 68
@@ -4881,7 +4844,7 @@ msgstr "Laranja Claro"
 # File: data/core/team-colors.cfg, line: 119
 #. [color_range]: id=white
 #. [color_range]: id=8
-#: data/core/team-colors.cfg:93 data/core/team-colors.cfg:301
+#: data/core/team-colors.cfg:63 data/core/team-colors.cfg:307
 msgid "White"
 msgstr "Branco"
 
@@ -4894,24 +4857,61 @@ msgstr "Branco"
 # File: data/core/team-colors.cfg, line: 131
 #. [color_range]: id=teal
 #. [color_range]: id=9
-#: data/core/team-colors.cfg:100 data/core/team-colors.cfg:313
+#: data/core/team-colors.cfg:70 data/core/team-colors.cfg:319
 msgid "Teal"
 msgstr "Anil"
 
 #. [color_range]: id=gold
-#: data/core/team-colors.cfg:107
+#: data/core/team-colors.cfg:77
 msgid "color^Gold"
 msgstr "Dourado"
 
+#
+# File: data/core/team-colors.cfg, line: 20
+# File: data/core/team-colors.cfg, line: 20
+# File: data/core/team-colors.cfg, line: 20
+#. [color_range]: id=lightblue
+#: data/core/team-colors.cfg:84
+msgid "Light blue"
+msgstr "Azul claro"
+
+#. [color_range]: id=brightgreen
+#: data/core/team-colors.cfg:91
+msgid "Bright green"
+msgstr "Verde claro"
+
+#
+# File: data/core/team-colors.cfg, line: 26
+# File: data/core/team-colors.cfg, line: 26
+# File: data/core/team-colors.cfg, line: 26
+#. [color_range]: id=darkred
+#: data/core/team-colors.cfg:98
+msgid "Dark Red"
+msgstr "Vermelho Escuro"
+
+#. [color_range]: id=brightorange
+#: data/core/team-colors.cfg:105
+msgid "Bright orange"
+msgstr "Laranja Claro"
+
+#
+# File: data/core/team-colors.cfg, line: 20
+# File: data/core/team-colors.cfg, line: 20
+# File: data/core/team-colors.cfg, line: 20
+#. [color_range]: id=lightred
+#: data/core/team-colors.cfg:112
+msgid "Light Red"
+msgstr "Vermelho Claro"
+
 #. [color_range]: id=yellow
-#: data/core/team-colors.cfg:113
+#: data/core/team-colors.cfg:119
 #, fuzzy
 #| msgid "Yellow Potion"
 msgid "Yellow"
 msgstr "Poção Amarela"
 
 #. [color_range]: id=pink
-#: data/core/team-colors.cfg:119
+#: data/core/team-colors.cfg:125
 msgid "Pink"
 msgstr ""
 
@@ -4920,32 +4920,32 @@ msgstr ""
 # File: data/core/team-colors.cfg, line: 26
 # File: data/core/team-colors.cfg, line: 26
 #. [color_range]: id=darkblue
-#: data/core/team-colors.cfg:126
+#: data/core/team-colors.cfg:132
 msgid "Dark blue"
 msgstr "Azul Escuro"
 
 #. [color_range]: id=reef
-#: data/core/team-colors.cfg:135
+#: data/core/team-colors.cfg:141
 msgid "Reef"
 msgstr "Coral"
 
 #. [color_range]: id=shallow_water
-#: data/core/team-colors.cfg:141
+#: data/core/team-colors.cfg:147
 msgid "Shallow water"
 msgstr "Água Rasa"
 
 #. [color_range]: id=deep_water
-#: data/core/team-colors.cfg:147
+#: data/core/team-colors.cfg:153
 msgid "Deep water"
 msgstr "Água Profunda"
 
 #. [color_range]: id=swamp_water
-#: data/core/team-colors.cfg:153
+#: data/core/team-colors.cfg:159
 msgid "Swamp water"
 msgstr "Água pântanosa"
 
 #. [color_range]: id=flat
-#: data/core/team-colors.cfg:159
+#: data/core/team-colors.cfg:165
 msgid "Flat"
 msgstr "Planíce"
 
@@ -4957,37 +4957,37 @@ msgstr "Planíce"
 # File: src/statistics_dialog.cpp, line: 134
 # File: src/statistics_dialog.cpp, line: 274
 #. [color_range]: id=hills
-#: data/core/team-colors.cfg:165
+#: data/core/team-colors.cfg:171
 msgid "Hills"
 msgstr "Montes"
 
 #. [color_range]: id=mountains
-#: data/core/team-colors.cfg:171
+#: data/core/team-colors.cfg:177
 msgid "Mountains"
 msgstr "Montanhas"
 
 #. [color_range]: id=forest
-#: data/core/team-colors.cfg:177
+#: data/core/team-colors.cfg:183
 msgid "Forest"
 msgstr "Floresta"
 
 #. [color_range]: id=sand
-#: data/core/team-colors.cfg:183
+#: data/core/team-colors.cfg:189
 msgid "Sand"
 msgstr "Areia"
 
 #. [color_range]: id=frozen
-#: data/core/team-colors.cfg:189
+#: data/core/team-colors.cfg:195
 msgid "Frozen"
 msgstr "Congelado"
 
 #. [color_range]: id=cave
-#: data/core/team-colors.cfg:195
+#: data/core/team-colors.cfg:201
 msgid "Cave"
 msgstr "Caverna"
 
 #. [color_range]: id=fungus
-#: data/core/team-colors.cfg:201
+#: data/core/team-colors.cfg:207
 msgid "Fungus"
 msgstr "Fungos"
 
@@ -4997,22 +4997,22 @@ msgstr "Fungos"
 # File: src/terrain.cpp, line: 158
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=village
-#: data/core/team-colors.cfg:207 src/terrain/terrain.cpp:169
+#: data/core/team-colors.cfg:213 src/terrain/terrain.cpp:169
 msgid "Village"
 msgstr "Aldeia"
 
 #. [color_range]: id=castle
-#: data/core/team-colors.cfg:213
+#: data/core/team-colors.cfg:219
 msgid "Castle"
 msgstr "Castelo"
 
 #. [color_range]: id=keep
-#: data/core/team-colors.cfg:219
+#: data/core/team-colors.cfg:225
 msgid "Keep"
 msgstr "Torre de Menagem"
 
 #. [color_range]: id=rails
-#: data/core/team-colors.cfg:225
+#: data/core/team-colors.cfg:231
 msgid "Rail"
 msgstr "Trilho"
 
@@ -5021,12 +5021,12 @@ msgstr "Trilho"
 # File: data/lua/wml-tags.lua, line: 1120
 # File: data/lua/wml-tags.lua, line: 1120
 #. [color_range]: id=unwalkable
-#: data/core/team-colors.cfg:231
+#: data/core/team-colors.cfg:237
 msgid "Unwalkable"
 msgstr "Intransponível"
 
 #. [color_range]: id=impassable
-#: data/core/team-colors.cfg:237
+#: data/core/team-colors.cfg:243
 msgid "Impassable"
 msgstr "Impassável"
 
@@ -5039,7 +5039,7 @@ msgstr "Impassável"
 # File: src/multiplayer_lobby.cpp, line: 601
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:243 src/game_initialization/lobby_data.cpp:376
+#: data/core/team-colors.cfg:249 src/game_initialization/lobby_data.cpp:376
 msgid "Fog"
 msgstr "Neblina"
 
@@ -5061,13 +5061,13 @@ msgstr "Neblina"
 # File: src/multiplayer_lobby.cpp, line: 611
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:249 src/game_initialization/lobby_data.cpp:379
+#: data/core/team-colors.cfg:255 src/game_initialization/lobby_data.cpp:379
 #: src/game_initialization/lobby_data.cpp:382
 msgid "Shroud"
 msgstr "Escuridão"
 
 #. [color_range]: id=urbanjungle
-#: data/core/team-colors.cfg:256
+#: data/core/team-colors.cfg:262
 msgid "Urban"
 msgstr ""
 
@@ -5885,7 +5885,7 @@ msgstr "Nível deprecation inválido (deve ser 1-4)"
 # File: src/actions/attack.cpp, line: 800
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:949
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:941
 msgid "female^poisoned"
 msgstr "envenenada"
 
@@ -5898,7 +5898,7 @@ msgstr "envenenada"
 # File: src/actions/attack.cpp, line: 805
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:956
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:948
 msgid "female^slowed"
 msgstr "lenta"
 
@@ -5911,7 +5911,7 @@ msgstr "lenta"
 # File: src/actions/attack.cpp, line: 805
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:956
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:948
 msgid "slowed"
 msgstr "lento"
 
@@ -5924,7 +5924,7 @@ msgstr "lento"
 # File: src/actions/attack.cpp, line: 810
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:962
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:954
 msgid "female^petrified"
 msgstr "petrificada"
 
@@ -5937,7 +5937,7 @@ msgstr "petrificada"
 # File: src/actions/attack.cpp, line: 810
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:962
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:954
 msgid "petrified"
 msgstr "petrificado"
 
@@ -5961,8 +5961,8 @@ msgstr "incurável"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3755
-#: src/scripting/game_lua_kernel.cpp:3790
+#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3766
+#: src/scripting/game_lua_kernel.cpp:3801
 msgid "input"
 msgstr "input"
 
@@ -7995,7 +7995,7 @@ msgstr "escolha de avanço"
 # File: src/actions/attack.cpp, line: 217
 # File: src/actions/attack.cpp, line: 419
 # File: src/actions/attack.cpp, line: 1049
-#: src/actions/attack.cpp:478 src/actions/attack.cpp:1274
+#: src/actions/attack.cpp:478 src/actions/attack.cpp:1266
 msgid "An invalid attacker weapon got selected."
 msgstr "O atacante selecionou uma arma inválida."
 
@@ -8003,7 +8003,7 @@ msgstr "O atacante selecionou uma arma inválida."
 # File: src/reports.cpp, line: 701
 # File: src/reports.cpp, line: 701
 # File: src/reports.cpp, line: 701
-#: src/actions/attack.cpp:969
+#: src/actions/attack.cpp:961
 #, fuzzy
 #| msgid "Attacks: "
 msgid "attack^miss"
@@ -8191,11 +8191,11 @@ msgstr "(aperte $hotkey para continuar o movimento)"
 # File: src/multiplayer_create.cpp, line: 666
 # File: src/gui/dialogs/lobby_player_info.cpp, line: 147
 # File: src/multiplayer_create.cpp, line: 666
-#: src/actions/undo.cpp:330
+#: src/actions/undo.cpp:331
 msgid "Redo Error"
 msgstr "Erro de Redo"
 
-#: src/actions/undo.cpp:331
+#: src/actions/undo.cpp:332
 msgid ""
 "The redo stack is out of sync. This is most commonly caused by a corrupt "
 "save file or by faulty WML code in the scenario or era. Details:"
@@ -8203,7 +8203,7 @@ msgstr ""
 "O redo stack está dessincronizado. Isto é geralmente causado por um save "
 "corrompido ou um problema com código WML no cenário ou era. Detalhes:"
 
-#: src/actions/undo.cpp:342
+#: src/actions/undo.cpp:343
 msgid "Unhandled choices while redoing"
 msgstr ""
 
@@ -9417,7 +9417,7 @@ msgstr "Domínio alterado: '$domain' para nível: '$level'."
 # File: src/menu_events.cpp, line: 2188
 # File: src/menu_events.cpp, line: 2188
 # File: src/menu_events.cpp, line: 2188
-#: src/chat_events.cpp:144
+#: src/chat_events.cpp:149
 msgid "whisper to $receiver"
 msgstr "sussurar para $receiver"
 
@@ -9428,7 +9428,7 @@ msgstr "sussurar para $receiver"
 # File: src/multiplayer_ui.cpp, line: 550
 # File: src/menu_events.cpp, line: 2195
 # File: src/multiplayer_ui.cpp, line: 550
-#: src/chat_events.cpp:151
+#: src/chat_events.cpp:156
 msgid "whisper: $sender"
 msgstr "sussurro: $sender"
 
@@ -9467,7 +9467,7 @@ msgstr "Mensagem de chat"
 # File: src/game_controller_abstract.cpp, line: 99
 # File: src/game_controller.cpp, line: 886
 # File: src/game_controller_abstract.cpp, line: 99
-#: src/desktop/windows_tray_notification.cpp:137 src/game_config.cpp:588
+#: src/desktop/windows_tray_notification.cpp:137 src/game_config.cpp:587
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
@@ -9555,6 +9555,10 @@ msgstr "%b %d"
 msgid "%b %d %Y"
 msgstr "%b %d %Y"
 
+#: src/formula/format_timespan.hpp:57 src/formula/format_timespan.hpp:90
+msgid "timespan^expired"
+msgstr ""
+
 #. TRANSLATORS: The "timespan^$num xxxxx" strings originating from the same file
 #. as the string with this comment MUST be translated following the usual rules
 #. for WML variable interpolation -- that is, without including or translating
@@ -9563,57 +9567,53 @@ msgstr "%b %d %Y"
 #. is the time unit (year, month, etc.) For example, for French you would
 #. translate "timespan^$num years" as "$num ans", thus allowing the game UI to
 #. generate output such as "39 ans" after variable interpolation.
-#: src/formula/format_timespan.hpp:38
+#: src/formula/format_timespan.hpp:82
 msgid "timespan^$num year"
 msgid_plural "timespan^$num years"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/formula/format_timespan.hpp:39
+#: src/formula/format_timespan.hpp:83
 msgid "timespan^$num month"
 msgid_plural "timespan^$num months"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/formula/format_timespan.hpp:40
+#: src/formula/format_timespan.hpp:84
 msgid "timespan^$num week"
 msgid_plural "timespan^$num weeks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/formula/format_timespan.hpp:41
+#: src/formula/format_timespan.hpp:85
 msgid "timespan^$num day"
 msgid_plural "timespan^$num days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/formula/format_timespan.hpp:42
+#: src/formula/format_timespan.hpp:86
 msgid "timespan^$num hour"
 msgid_plural "timespan^$num hours"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/formula/format_timespan.hpp:43
+#: src/formula/format_timespan.hpp:87
 msgid "timespan^$num minute"
 msgid_plural "timespan^$num minutes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/formula/format_timespan.hpp:44
+#: src/formula/format_timespan.hpp:88
 msgid "timespan^$num second"
 msgid_plural "timespan^$num seconds"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/formula/format_timespan.hpp:89 src/formula/format_timespan.hpp:112
-msgid "timespan^expired"
-msgstr ""
-
 #
 # File: src/game_config.cpp, line: 346
 # File: src/game_config.cpp, line: 346
 # File: src/game_config.cpp, line: 346
-#: src/game_config.cpp:536
+#: src/game_config.cpp:535
 msgid "Invalid color in range: "
 msgstr "Gama de cor inválida: "
 
@@ -10527,7 +10527,7 @@ msgstr "Não há campanhas disponíveis."
 # File: src/game_controller.cpp, line: 410
 # File: src/game_controller.cpp, line: 428
 #: src/game_launcher.cpp:685 src/game_launcher.cpp:704
-#: src/hotkey/hotkey_handler_sp.cpp:324 src/replay.cpp:662 src/savegame.cpp:167
+#: src/hotkey/hotkey_handler_sp.cpp:324 src/replay.cpp:664 src/savegame.cpp:167
 msgid "The file you have tried to load is corrupt"
 msgstr "O Arquivo que você tentou carregar está corrompido"
 
@@ -12400,7 +12400,7 @@ msgstr "Comando:"
 # File: src/mouse_events.cpp, line: 725
 # File: src/mouse_events.cpp, line: 725
 # File: src/mouse_events.cpp, line: 725
-#: src/mouse_events.cpp:1317
+#: src/mouse_events.cpp:1337
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
@@ -12415,7 +12415,7 @@ msgstr ""
 # File: src/attack_prediction_display.cpp, line: 236
 # File: src/attack_prediction_display.cpp, line: 104
 # File: src/attack_prediction_display.cpp, line: 236
-#: src/mouse_events.cpp:1420
+#: src/mouse_events.cpp:1440
 msgid "No Attacks"
 msgstr "Nenhum Ataque"
 
@@ -12426,11 +12426,11 @@ msgstr "Nenhum Ataque"
 # File: src/mouse_events.cpp, line: 842
 # File: src/attack_prediction_display.cpp, line: 260
 # File: src/mouse_events.cpp, line: 842
-#: src/mouse_events.cpp:1420
+#: src/mouse_events.cpp:1440
 msgid "This unit has no usable weapons."
 msgstr "Esta unidade não possui nenhuma arma utilizavel."
 
-#: src/mouse_events.cpp:1496 src/mouse_events.cpp:1512
+#: src/mouse_events.cpp:1516 src/mouse_events.cpp:1532
 msgid "Other aspects: "
 msgstr "Outros Aspectos: "
 
@@ -12444,7 +12444,7 @@ msgstr "Outros Aspectos: "
 # File: src/reports.cpp, line: 679
 # File: src/reports.cpp, line: 894
 # File: src/reports.cpp, line: 906
-#: src/mouse_events.cpp:1525 src/mouse_events.cpp:1539
+#: src/mouse_events.cpp:1545 src/mouse_events.cpp:1559
 msgid "Weapon: "
 msgstr "Arma: "
 
@@ -12452,7 +12452,7 @@ msgstr "Arma: "
 # File: src/reports.cpp, line: 178
 # File: src/reports.cpp, line: 178
 # File: src/reports.cpp, line: 178
-#: src/mouse_events.cpp:1526 src/mouse_events.cpp:1540
+#: src/mouse_events.cpp:1546 src/mouse_events.cpp:1560
 msgid "Type: "
 msgstr "Tipo: "
 
@@ -12463,7 +12463,7 @@ msgstr "Tipo: "
 # File: src/reports.cpp, line: 895
 # File: src/reports.cpp, line: 680
 # File: src/reports.cpp, line: 895
-#: src/mouse_events.cpp:1527 src/mouse_events.cpp:1541
+#: src/mouse_events.cpp:1547 src/mouse_events.cpp:1561
 msgid "Damage: "
 msgstr "Dano: "
 
@@ -12471,7 +12471,7 @@ msgstr "Dano: "
 # File: src/reports.cpp, line: 701
 # File: src/reports.cpp, line: 701
 # File: src/reports.cpp, line: 701
-#: src/mouse_events.cpp:1528 src/mouse_events.cpp:1542
+#: src/mouse_events.cpp:1548 src/mouse_events.cpp:1562
 msgid "Attacks: "
 msgstr "Ataques: "
 
@@ -12479,7 +12479,7 @@ msgstr "Ataques: "
 # File: src/reports.cpp, line: 245
 # File: src/reports.cpp, line: 245
 # File: src/reports.cpp, line: 245
-#: src/mouse_events.cpp:1529 src/mouse_events.cpp:1543
+#: src/mouse_events.cpp:1549 src/mouse_events.cpp:1563
 msgid "Chance to hit: "
 msgstr "Chance de acerto: "
 
@@ -14311,21 +14311,21 @@ msgstr "Este Período do Dia é só um Exemplo!"
 # File: src/reports.cpp, line: 311
 # File: src/reports.cpp, line: 311
 # File: src/reports.cpp, line: 311
-#: src/units/abilities.cpp:1161
+#: src/units/abilities.cpp:1166
 msgid "Owned: "
 msgstr "Possuido: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1163
+#: src/units/abilities.cpp:1168
 msgid "Taught: "
 msgstr "Ensinado: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1165
+#: src/units/abilities.cpp:1170
 msgid "Taught: (by an enemy): "
 msgstr "Ensinado: (por uma unidade inimiga): "
 
-#: src/units/abilities.cpp:1166
+#: src/units/abilities.cpp:1171
 msgid "Used by opponent: "
 msgstr "Usado pelo oponente: "
 
@@ -14771,7 +14771,7 @@ msgstr "$year BF"
 msgid "$year AF"
 msgstr "$year AF"
 
-#: src/wesnoth.cpp:804
+#: src/wesnoth.cpp:808
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
@@ -14782,7 +14782,7 @@ msgstr ""
 "restringindo o acesso para a pasta ou usando o OneDrive para gerenciar a sua "
 "pasta Documentos."
 
-#: src/wesnoth.cpp:805
+#: src/wesnoth.cpp:809
 msgid "Logging Failure"
 msgstr "Erro de Login"
 
