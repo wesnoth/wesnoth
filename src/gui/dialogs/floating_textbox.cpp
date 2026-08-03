@@ -176,6 +176,7 @@ void floating_textbox::key_down(const event::ui_event /*event*/,
 			if(do_enter_ && !get_value().empty()) {
 				handled = true;
 				do_enter_(get_value());
+				set_value("");
 			}
 			break;
 
