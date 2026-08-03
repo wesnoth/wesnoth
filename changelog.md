@@ -4,10 +4,40 @@
 ### Campaigns
    * Of Pearls and Pirates
      * Don’t show the tutorial hint about save-loading when Biased RNG is active
+     * S05 "Lady Maudie": fixed Fireships being healable.
    * The Deceivers Gambit
      * Fix missing siphon attack sound, which would cause a crash anytime the attack was used.
+     * S07 "The Great River": reduced walking time from starting keep to first enemies.
+     * Most spells now unlock when Delfador advances a level, not at the start of arbitrary scenarios.
+     * S07 "The Great River": adjusted map to account for Delfador's additional spell options.
+     * S04 "The Sylvan Seer": fixed an issue where playing S03 with a familiar but not S04 would result in the familiar having 0% defense / 100% cth for S05.
+     * S14 "Long Live the Queen": Eldred's units are now mostly on a single side, instead of spread out over several. Scenario rebalanced accordingly.
+     * S14 "Long Live the Queen": the final boss fight now has fewer random elements, and varies less significantly with difficulty.
    * The South Guard
      * Don’t show some of the tutorial hints about RNG when Biased RNG is active
+     * To add variety, later scenarios now feature a small number of mounted variation Walking Corpses.
+     * S04 "Choice in the Fog": Replaced Ghoul leaders with Skeleton Archers. Side 8 now recruits a very small number of Ghouls/Skeleton Archers
+     * S05b "Pebbles in the Flood": Mebrin now uses his nerfed stats from S06b, not regular Lich stats.
+   * Heir to the Throne
+     * S10 "The Siege of Elensefar": reduced lag during Li'sar's AI turn.
+     * S24 "An Old Friend": increased difficulty.
+     * Jeniver: increased blowgun damage from 5-4 to 7-4.
+     * S50 "The Battle for Wesnoth": Avoid setting negative time values for time areas
+     * Added more explanation when you first enter the overworld.
+     * Granite Golems can no longer traverse deep water.
+     * Fixed a bug where some loyal units could trigger the Sceptre of Fire defection event.
+     * S01 "The Elves Besieged": increased the turn limit on lower difficulties.
+     * S02 "Flight of the Elves": moved one enemy leader into an easily-killable position, and added several defensive chokepoints.
+     * S50 "The Battle for Wesnoth": reinforcement waves now grow much more slowly. Burning fields now affects Asheveire's gold less.
+     * S11 "The Silver City": approaching from the north is now easier, while approaching from the south is now harder. The two approaches should now feel more balanced with each other.
+     * S31 "Plunging Into Darkness": fixed one map mask being unwinnable if Konrad has a prisoner and 5 max moves.
+     * S32 "The Swamp of Dread": adjusted starting location, terrain, and enemies to increase difficulty and variety.
+     * S42 "A Crisis of Leadership": the scenario now gains a turn limit once Konrad is spotted.
+     * Li'sar's units now use a different color scheme, to differentiate them (and their special abilities) from regular loyalists.
+     * Delfador will no longer be offered +2 or +4 ranged damage AMLAs if he advances when his chain special has reduced his Lightning attack to only 1 or 2 strikes.
+   * The Hammer of Thursagan
+     * Added experimental "regroup" micro AI.
+     * S03 "Strange Allies": expanded the map.
 ### Editor
 ### Multiplayer
 ### Lua API
@@ -23,8 +53,28 @@
      * Arcane Resist: -20% -> 0%
 ### User interface
    * Fix sound effect slider which was incorrectly affecting the music track volume.
+   * Footprints have been reworked:
+     * The footprint path system now gives immediate strong visual feedback when multi-turn movement is assigned.
+     * It does this by flashing any such footprints and fades them out over 2 seconds as the unit is deselected.
+     * Changed how the red tint that indicated how movement costs works behind the scene. (cleanup)
+     * Custom footprints is now possible with the new key `footprints` under `[unit_type]`, `[male]`, `[female]` and `[variation]` like `footprints="large_clawed_paw"`.
+     * 8 new footprint variations added.
+   * Restored the original footprint images as the `default` set, used by units that do not set the `footprints` key.
+   * The `footprints` key can now also be set under `[race]`, applying to every unit of that race. A `footprints` key on the unit type takes precedence over the race one.
 ### WML Engine
+   * New [default_frame] tag avalible in [unit_type] in unit.cfg.
+     * Lets us adjust the default frame with the same inputs used for the animation [frame] tags.
+     * Example: [default_frame] image="units/monsters/wyvern/wild-wyvern.png" layer=50 [/default_frame]
+     * This is an optional tag.
+   * Added optional input "parallel=yes|no" to [move_units_fake] which
+      * Cause all movement animations to animate in parallel rather than one at a time. 
+      * Defaults to "no".
 ### Miscellaneous and Bug Fixes
+   * Reworked the animation engine to track time on shared wall-clock anchored timelines instead of per-animation timers, making frame timing consistent within each drawn frame and speed changes (accelerated mode) smooth and drift-free.
+   * Fixed crashes when `[scenario]current_time=` or `[time_area]current_time=` was negative
+   * Added optimisations for several pixel iteration functions.
+     * Speed-ups gained between 10% and 1200%, depending on the system and function.
+     * The feature is configurable with an advanced option "SIMD acceleration", a command line flag "--no-simd" and an env var "WESNOTH_NO_SIMD".
 ### Android
 
 ## Version 1.19.25
