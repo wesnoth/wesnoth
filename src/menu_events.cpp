@@ -243,6 +243,38 @@ void menu_handler::speak()
 			textbox_info_->memorize_command(str);
 		}
  	});
+	textbox_info_->on_completion([this]() {
+		std::set<std::string> dictionary;
+		for(const team& t : resources::controller->get_teams()) {
+			if(!t.is_empty()) {
+				dictionary.insert(t.current_player());
+			}
+		}
+
+		// Add observers
+		for(const std::string& o : gui_->observers()) {
+			dictionary.insert(o);
+		}
+
+		// Add nicks who whispered you
+		for(const std::string& w : gui_->get_chat_manager().whisperers()) {
+			dictionary.insert(w);
+		}
+
+		// Add nicks from friendlist
+		for(const auto& [name, _] : prefs::get().get_acquaintances_nice("friend")) {
+			dictionary.insert(name);
+		}
+
+		// Exclude own nick from tab-completion.
+		// NOTE why ?
+		dictionary.erase(prefs::get().login());
+		const std::string all_completions = textbox_info_->tab(dictionary);
+		if(!all_completions.empty()) {
+			gui_->get_chat_manager().add_chat_message(
+				std::chrono::system_clock::now(), "", 0, all_completions, events::chat_handler::MESSAGE_PRIVATE, false);
+		}
+	});
 	textbox_info_->show(true);
 }
 
@@ -1088,6 +1120,21 @@ void menu_handler::search()
 	textbox_info_->on_execute([this](const std::string& str) {
 		do_search(str);
 		textbox_info_->memorize_command(str);
+	});
+	textbox_info_->on_completion([this]() {
+		std::set<std::string> dictionary;
+		for(const unit& u : resources::controller->get_units()) {
+			const map_location& loc = u.get_location();
+			if(!gui_->fogged(loc) && !(gui_->viewing_team().is_enemy(u.side()) && u.invisible(loc))) {
+				dictionary.insert(u.name());
+			}
+		}
+		// TODO List map labels
+		const std::string all_completions = textbox_info_->tab(dictionary);
+		if(!all_completions.empty()) {
+			gui_->get_chat_manager().add_chat_message(
+				std::chrono::system_clock::now(), "", 0, all_completions, events::chat_handler::MESSAGE_PRIVATE, false);
+		}
 	});
 	textbox_info_->show(true);
 }
@@ -2154,6 +2201,41 @@ void menu_handler::user_command()
 	textbox_info_->on_execute([this](const std::string& str) {
 		textbox_info_->memorize_command(str);
 		do_command(str);
+	});
+	textbox_info_->on_completion([this]() {
+		std::set<std::string> dictionary;
+		std::vector<std::string> commands = get_commands_list();
+		dictionary.insert(commands.begin(), commands.end());
+
+		for(const team& t : resources::controller->get_teams()) {
+			if(!t.is_empty()) {
+				dictionary.insert(t.current_player());
+			}
+		}
+
+		// Add observers
+		for(const std::string& o : gui_->observers()) {
+			dictionary.insert(o);
+		}
+
+		// Add nicks who whispered you
+		for(const std::string& w : gui_->get_chat_manager().whisperers()) {
+			dictionary.insert(w);
+		}
+
+		// Add nicks from friendlist
+		for(const auto& [name, _] : prefs::get().get_acquaintances_nice("friend")) {
+			dictionary.insert(name);
+		}
+
+		// Exclude own nick from tab-completion.
+		// NOTE why ?
+		dictionary.erase(prefs::get().login());
+		const std::string all_completions = textbox_info_->tab(dictionary);
+		if(!all_completions.empty()) {
+			gui_->get_chat_manager().add_chat_message(
+				std::chrono::system_clock::now(), "", 0, all_completions, events::chat_handler::MESSAGE_PRIVATE, false);
+		}
 	});
 	textbox_info_->show(true);
 }

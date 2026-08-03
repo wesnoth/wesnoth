@@ -163,17 +163,37 @@ void floating_textbox::key_down(const event::ui_event /*event*/,
 								SDL_Keymod /*modifier*/)
 {
 	switch(key) {
+		case SDLK_AC_BACK:
+			[[fallthrough]];
 		case SDLK_ESCAPE:
 			handled = true;
 			hide();
 			break;
 
 		case SDLK_RETURN:
+			[[fallthrough]];
 		case SDLK_KP_ENTER:
 			if(do_enter_ && !get_value().empty()) {
 				handled = true;
 				do_enter_(get_value());
 			}
+			break;
+
+		case SDLK_TAB:
+			if(do_tab_) {
+				handled = true;
+				do_tab_();
+			}
+			break;
+
+		case SDLK_UP:
+			history_update(true);
+			handled = true;
+			break;
+
+		case SDLK_DOWN:
+			history_update(false);
+			handled = true;
 			break;
 	}
 }
