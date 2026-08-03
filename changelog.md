@@ -1,6 +1,4 @@
-## Version 1.19.25+dev
-### Add-ons client
-### Add-ons server
+## Version 1.19.26
 ### Campaigns
    * Of Pearls and Pirates
      * Don’t show the tutorial hint about save-loading when Biased RNG is active
@@ -38,14 +36,10 @@
    * The Hammer of Thursagan
      * Added experimental "regroup" micro AI.
      * S03 "Strange Allies": expanded the map.
-### Editor
-### Multiplayer
 ### Lua API
    * `text_box` gui widget now has the gettable and settable properties `selection_start` and `selection_length` for cursor position/selection start and length of text selection respectively. 
    * Added getter `wesnoth.game_config.random_mode`, which is only intended to be used for the tutorial hints.
    * add_overlay_text now accepts a border parameter
-### Packaging
-### Terrain
 ### Translations
    * Updated translations: Bengali, British English, Bulgarian, Czech, French, Galician, German, Hungarian, Italian, Polish, Russian, Serbian, Spanish
 ### Units
@@ -75,7 +69,6 @@
    * Added optimisations for several pixel iteration functions.
      * Speed-ups gained between 10% and 1200%, depending on the system and function.
      * The feature is configurable with an advanced option "SIMD acceleration", a command line flag "--no-simd" and an env var "WESNOTH_NO_SIMD".
-### Android
 
 ## Version 1.19.25
 ### Campaigns
