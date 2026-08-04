@@ -1,7 +1,5 @@
-#include "gui/gui.hpp"
 #include "gui/core/event/map_dispatcher.hpp"
 #include "gui/core/event/handler.hpp"
-#include "gui/dialogs/achievements_dialog.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
@@ -17,7 +15,6 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 	: controller_(controller)
 {
 	// Mouse handling
-	set_mouse_behavior(dispatcher::mouse_behavior::all);
 
 	// Note: If an hotkey is assigned to the same event as the signals,
 	// then the hotkey is executed first. If it returns false, only then the
