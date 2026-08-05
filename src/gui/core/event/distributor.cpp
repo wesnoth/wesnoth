@@ -24,7 +24,7 @@
 #include "gui/widgets/widget.hpp"
 #include "sdl/input.hpp" // get_mouse_button_mask
 
-#include <SDL3/SDL.h>
+#include <SDL3/SDL_events.h>
 
 #include <array>
 #include <functional>

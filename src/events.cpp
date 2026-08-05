@@ -39,7 +39,7 @@
 #include <utility>
 #include <vector>
 
-#include <SDL3/SDL.h>
+#include <SDL3/SDL_events.h>
 
 #define ERR_GEN LOG_STREAM(err, lg::general)
 
