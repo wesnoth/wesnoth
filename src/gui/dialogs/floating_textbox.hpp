@@ -55,7 +55,7 @@ namespace gui2::dialogs {
 
 	private:
 		virtual const std::string& window_id() const;
-		void pre_show();
+
 		void key_down(const event::ui_event /*event*/,
 						bool& handled,
 						const SDL_Keycode key,
