@@ -992,18 +992,24 @@ int main(int argc, char** argv)
 	assert(!args.empty());
 
 #ifdef _WIN32
-	_putenv("PANGOCAIRO_BACKEND=fontconfig");
-	_putenv("FONTCONFIG_PATH=fonts");
+	// SDL_setenv_unsafe() is used instead of _putenv() because _putenv() only
+	// updates the C run-time's private environment copy on some Windows CRTs
+	// (eg the legacy msvcrt.dll linked by MSYS2 builds), not the process environment
+	// block that GetEnvironmentVariable (and thus GLib's g_getenv, which Pango
+	// uses to read PANGOCAIRO_BACKEND) reads. SDL_setenv_unsafe() calls
+	// SetEnvironmentVariableA() directly on Windows, avoiding that gap.
+	SDL_setenv_unsafe("PANGOCAIRO_BACKEND", "fontconfig", 0);
+	SDL_setenv_unsafe("FONTCONFIG_PATH", "fonts", 0);
 #endif
 #ifdef __APPLE__
 	// Using setenv with overwrite disabled so we can override this in the
 	// original process environment for research/testing purposes.
-	setenv("PANGOCAIRO_BACKEND", "fontconfig", 0);
+	SDL_setenv_unsafe("PANGOCAIRO_BACKEND", "fontconfig", 0);
 #endif
 #ifdef __ANDROID__
-	setenv("PANGOCAIRO_BACKEND", "fontconfig", 0);
-	setenv("SDL_HINT_AUDIODRIVER", "android", 0);
-	setenv("SDL_HINT_ANDROID_TRAP_BACK_BUTTON", "1", 0);
+	SDL_setenv_unsafe("PANGOCAIRO_BACKEND", "fontconfig", 0);
+	SDL_setenv_unsafe("SDL_HINT_AUDIODRIVER", "android", 0);
+	SDL_setenv_unsafe("SDL_HINT_ANDROID_TRAP_BACK_BUTTON", "1", 0);
 #endif
 
 	try {
