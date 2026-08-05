@@ -992,18 +992,26 @@ int main(int argc, char** argv)
 	assert(!args.empty());
 
 #ifdef _WIN32
+	// Different Windows builds of Pango/GLib have been observed to read this
+	// back via different mechanisms: the official mingw-w64 build only sees a
+	// value set via the real Win32 environment block (SetEnvironmentVariableA),
+	// while an MSVC/vcpkg build has only been confirmed to see a value set via
+	// the C run-time's own _putenv(). Since neither alone is known to work across
+	// both, set it both ways.
 	_putenv("PANGOCAIRO_BACKEND=fontconfig");
 	_putenv("FONTCONFIG_PATH=fonts");
+	SetEnvironmentVariableA("PANGOCAIRO_BACKEND", "fontconfig");
+	SetEnvironmentVariableA("FONTCONFIG_PATH", "fonts");
 #endif
 #ifdef __APPLE__
 	// Using setenv with overwrite disabled so we can override this in the
 	// original process environment for research/testing purposes.
-	setenv("PANGOCAIRO_BACKEND", "fontconfig", 0);
+	SDL_setenv_unsafe("PANGOCAIRO_BACKEND", "fontconfig", 0);
 #endif
 #ifdef __ANDROID__
-	setenv("PANGOCAIRO_BACKEND", "fontconfig", 0);
-	setenv("SDL_HINT_AUDIODRIVER", "android", 0);
-	setenv("SDL_HINT_ANDROID_TRAP_BACK_BUTTON", "1", 0);
+	SDL_setenv_unsafe("PANGOCAIRO_BACKEND", "fontconfig", 0);
+	SDL_setenv_unsafe("SDL_HINT_AUDIODRIVER", "android", 0);
+	SDL_setenv_unsafe("SDL_HINT_ANDROID_TRAP_BACK_BUTTON", "1", 0);
 #endif
 
 	try {
