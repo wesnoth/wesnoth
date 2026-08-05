@@ -48,14 +48,6 @@ floating_textbox::floating_textbox(MODE mode, const std::string& label, const st
 		&floating_textbox::key_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6));
 }
 
-void floating_textbox::pre_show()
-{
-#if defined(__ANDROID__) || defined(__IPHONEOS__)
-	// Show onscreen keyboard
-	SDL_StartTextInput(video::get_window());
-#endif
-}
-
 void floating_textbox::set_properties(MODE mode, const std::string& label_str, const std::string& check_label, bool checked)
 {
 	mode_ = mode;
