@@ -672,6 +672,11 @@ void play_music_config(const config& music_node, bool allow_interrupt_current_tr
 
 void music_thinker::process()
 {
+	if(MIX_GetTrackFadeFrames(music_tracks[0]) != 0) {
+		// Do not block everything while fading.
+		return;
+	}
+
 	if(prefs::get().music_on()) {
 		// TODO: rethink the music_thinker design, especially the use of fade_out_time
 		auto now = std::chrono::steady_clock::now();
