@@ -144,7 +144,7 @@ bool dispatcher::fire(const ui_event event, widget& target, const message& msg)
 	return fire_event<event_category::message>(event, this, &target, msg);
 }
 
-bool dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
+bool dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id, const bool /*down*/)
 {
 	auto itor = hotkeys_.find(id);
 

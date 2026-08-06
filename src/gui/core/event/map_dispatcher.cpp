@@ -59,10 +59,10 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 	});
 }
 
-bool map_dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
+bool map_dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id, const bool down)
 {
 	// Local hotkey
-	if(dispatcher::execute_hotkey(id)) {
+	if(dispatcher::execute_hotkey(id, down)) {
 		return true;
 	}
 
@@ -79,7 +79,9 @@ bool map_dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
 
 	hotkey::ui_command cmd(hotkey::get_hotkey_command(id));
 	if(cmd_exec->can_execute_command(cmd)) {
-		return cmd_exec->do_execute_command(cmd);
+		// we are assuming when the key is not pressed, it's released
+		// this suffices for the present usecase, ie., scroll by arrow keys
+		return cmd_exec->do_execute_command(cmd, down, !down);
 	} else {
 		return false;
 	}

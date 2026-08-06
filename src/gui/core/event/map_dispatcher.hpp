@@ -18,7 +18,7 @@ public:
 	map_dispatcher(play_controller& controller);
 
 	bool is_at(const point& coordinate) const override;
-	bool execute_hotkey(const hotkey::HOTKEY_COMMAND id) override;
+	bool execute_hotkey(const hotkey::HOTKEY_COMMAND id, const bool down) override;
 
 	void mouse_motion(bool& handled, const point& p);
 	void mouse_left_up(bool& handled, const point& p);

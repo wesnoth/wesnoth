@@ -451,11 +451,12 @@ public:
 	 * Executes a hotkey.
 	 *
 	 * @param id                  The hotkey to execute.
+	 * @param down                Is the hotkey pressed or released?
 	 *
 	 * @returns                   true if the hotkey is handled, false
 	 *                            otherwise.
 	 */
-	virtual bool execute_hotkey(const hotkey::HOTKEY_COMMAND id);
+	virtual bool execute_hotkey(const hotkey::HOTKEY_COMMAND id, const bool /*down*/);
 
 private:
 	/** Helper struct to generate the various signal types. */
