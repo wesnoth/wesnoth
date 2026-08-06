@@ -43,6 +43,7 @@ public:
 	bool play_once() const { return once_; }
 	auto ms_before() const { return ms_before_; }
 	auto ms_after()  const { return ms_after_;  }
+	int volume() const { return volume_; }
 
 	const std::string& file_path() const { return file_path_; }
 	const std::string& id() const { return id_; }
@@ -53,6 +54,7 @@ public:
 	void set_ms_before(const std::chrono::milliseconds& v) { ms_before_ = v; }
 	void set_ms_after(const std::chrono::milliseconds& v) { ms_after_ = v; }
 	void set_title(const std::string& v) { title_ = v; }
+	void set_volume(int v) { volume_ = v; }
 
 private:
 	std::string id_;
@@ -66,6 +68,7 @@ private:
 	bool append_ = false;
 	bool immediate_ = false;
 	bool shuffle_ = true;
+	int volume_ = 100;
 };
 
 std::shared_ptr<music_track> get_track(unsigned int i);
