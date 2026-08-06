@@ -11,6 +11,7 @@
 ### Units
 ### User interface
 ### WML Engine
+   * Added a `volume` key to `[music]` to set per-track playback volume, as a percentage of the player's music volume (default 100).
 ### Miscellaneous and Bug Fixes
 ### Android
 

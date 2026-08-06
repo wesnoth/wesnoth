@@ -94,6 +94,9 @@ bool want_new_music = false;
 auto fade_out_time = 5000ms;
 bool no_fading = false;
 
+/** Clamp gain value to a sensible (albeit arbitrary) range. Defined below. */
+volume clamp_gain(volume value);
+
 const std::size_t music_cache_limit = 30;
 const std::size_t sound_cache_limit = 500;
 
@@ -585,6 +588,10 @@ void play_new_music()
 	// Fade in the new music
 	MIX_SetTrackAudio(music_tracks[0], music.get());
 
+	// Apply this track's [music]volume= relative to the player's music volume before starting playback.
+	const volume track_vol = std::clamp(volume::from_percent(current_track->volume()), silence, full_volume);
+	MIX_SetTrackGain(music_tracks[0], clamp_gain(prefs::get().music_volume() * track_vol));
+
 	sdl3_properties props;
 	SDL_SetNumberProperty(props, MIX_PROP_PLAY_FADE_IN_MILLISECONDS_NUMBER, fading_time.count());
 
@@ -988,6 +995,11 @@ volume get_music_volume()
 void set_music_volume(volume vol)
 {
 	if(mix_ok) {
+		// Keep the current track's [music]volume= scaling applied when the master music volume changes
+		if(current_track) {
+			// Cap the per-track factor at full_volume so [music]volume= can't amplify
+			vol = vol * std::clamp(volume::from_percent(current_track->volume()), silence, full_volume);
+		}
 		MIX_SetTrackGain(sound::music_tracks[0], clamp_gain(vol));
 	}
 }
