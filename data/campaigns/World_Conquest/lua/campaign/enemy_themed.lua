@@ -31,7 +31,7 @@ local function wct_map_enemy_themed(race, pet, castle, village, chance)
 		return
 	end
 	--give themed castle
-	wesnoth.current.map[boss] = wesnoth.map.replace_base("K" .. castle)
+	wesnoth.current.map[boss] = wesnoth.map.replace.base("K" .. castle)
 	wesnoth.wml_actions.terrain {
 		terrain="C" .. castle,
 		wml.tag["and"] {
