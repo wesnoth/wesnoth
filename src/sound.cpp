@@ -605,6 +605,13 @@ void play_new_music()
 	want_new_music = false;
 }
 
+MIX_Track* get_soundsource_track(unsigned soundsource_id)
+{
+	std::scoped_lock lock{soundsource_map_mutex};
+	const auto it = soundsource_map.find(soundsource_id);
+	return it == soundsource_map.end() ? nullptr :  it->second;
+}
+
 } // namespace
 
 void play_music_config(const config& music_node, bool allow_interrupt_current_track, int i)
@@ -769,22 +776,23 @@ void write_music_play_list(config& snapshot)
 
 void reposition_sound(unsigned id, unsigned int distance)
 {
-	if(id < track_pool.size()) {
+	if(MIX_Track* track = get_soundsource_track(id)) {
 		if(distance == distance_silent) {
-			MIX_StopTrack(track_pool[id], 0);
+			MIX_StopTrack(track, 0);
 		} else {
 			MIX_Point3D pos;
 			pos.x = 0;
 			pos.y = distance;
 			pos.z = 0;
-			MIX_SetTrack3DPosition(track_pool[id], &pos);
+			MIX_SetTrack3DPosition(track, &pos);
 		}
 	}
 }
 
 bool is_sound_playing(int id)
 {
-	return MIX_TrackPlaying(track_pool[id]);
+	MIX_Track* track = get_soundsource_track(id);
+	return track && MIX_TrackPlaying(track);
 }
 
 void stop_sound(unsigned id)
