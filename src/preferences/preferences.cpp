@@ -794,23 +794,18 @@ bool prefs::turn_bell()
 	return preferences_[prefs_list::turn_bell].to_bool(true);
 }
 
-bool prefs::set_turn_bell(bool ison)
+bool prefs::set_turn_bell(bool is_on)
 {
-	if(!turn_bell() && ison) {
+	// TODO: the source of truth should be the sound system itself, not prefs
+	if(is_on && !turn_bell()) {
 		preferences_[prefs_list::turn_bell] = true;
-		if(!music_on() && !sound() && !ui_sound_on()) {
-			if(!sound::init_sound()) {
-				preferences_[prefs_list::turn_bell] = false;
-				return false;
-			}
-		}
-	} else if(turn_bell() && !ison) {
+		sound::restart_bell();
+	} else if(!is_on && turn_bell()) {
 		preferences_[prefs_list::turn_bell] = false;
 		sound::stop_bell();
-		if(!music_on() && !sound() && !ui_sound_on())
-			sound::close_sound();
 	}
-	return true;
+
+	return is_on;
 }
 
 // old pref name had uppercase UI
@@ -823,23 +818,18 @@ bool prefs::ui_sound_on()
 	}
 }
 
-bool prefs::set_ui_sound(bool ison)
+bool prefs::set_ui_sound(bool is_on)
 {
-	if(!ui_sound_on() && ison) {
+	// TODO: the source of truth should be the sound system itself, not prefs
+	if(is_on && !ui_sound_on()) {
 		preferences_[prefs_list::ui_sound] = true;
-		if(!music_on() && !sound() && !turn_bell()) {
-			if(!sound::init_sound()) {
-				preferences_[prefs_list::ui_sound] = false;
-				return false;
-			}
-		}
-	} else if(ui_sound_on() && !ison) {
+		sound::restart_UI_sound();
+	} else if(!is_on && ui_sound_on()) {
 		preferences_[prefs_list::ui_sound] = false;
 		sound::stop_UI_sound();
-		if(!music_on() && !sound() && !turn_bell())
-			sound::close_sound();
 	}
-	return true;
+
+	return is_on;
 }
 
 bool prefs::message_bell()
@@ -852,22 +842,18 @@ bool prefs::sound()
 	return preferences_[prefs_list::sound].to_bool(true);
 }
 
-bool prefs::set_sound(bool ison) {
-	if(!sound() && ison) {
+bool prefs::set_sound(bool is_on)
+{
+	// TODO: the source of truth should be the sound system itself, not prefs
+	if(is_on && !sound()) {
 		preferences_[prefs_list::sound] = true;
-		if(!music_on() && !turn_bell() && !ui_sound_on()) {
-			if(!sound::init_sound()) {
-				preferences_[prefs_list::sound] = false;
-				return false;
-			}
-		}
-	} else if(sound() && !ison) {
+		sound::restart_sound();
+	} else if(!is_on && sound()) {
 		preferences_[prefs_list::sound] = false;
 		sound::stop_sound();
-		if(!music_on() && !turn_bell() && !ui_sound_on())
-			sound::close_sound();
 	}
-	return true;
+
+	return is_on;
 }
 
 bool prefs::music_on()
@@ -875,25 +861,18 @@ bool prefs::music_on()
 	return preferences_[prefs_list::music].to_bool(true);
 }
 
-bool prefs::set_music(bool ison) {
-	if(!music_on() && ison) {
+bool prefs::set_music(bool is_on)
+{
+	// TODO: the source of truth should be the sound system itself, not prefs
+	if(is_on && !music_on()) {
 		preferences_[prefs_list::music] = true;
-		if(!sound() && !turn_bell() && !ui_sound_on()) {
-			if(!sound::init_sound()) {
-				preferences_[prefs_list::music] = false;
-				return false;
-			}
-		}
-		else
-			sound::play_music();
-	} else if(music_on() && !ison) {
+		sound::restart_music();
+	} else if(!is_on && music_on()) {
 		preferences_[prefs_list::music] = false;
-		if(!sound() && !turn_bell() && !ui_sound_on())
-			sound::close_sound();
-		else
-			sound::stop_music();
+		sound::stop_music();
 	}
-	return true;
+
+	return is_on;
 }
 
 int prefs::scroll_speed()

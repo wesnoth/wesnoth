@@ -51,6 +51,11 @@ void stop_sound();
 void stop_UI_sound();
 void stop_bell();
 
+void restart_music();
+void restart_sound();
+void restart_bell();
+void restart_UI_sound();
+
 // Read config entry, alter track list accordingly.
 void play_music_config(const config &music_node, bool allow_interrupt_current_track = false, int i = -1);
 // Act on any track list changes from above.

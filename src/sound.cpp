@@ -472,9 +472,7 @@ void reset_sound()
 void stop_music()
 {
 	if(mix_ok) {
-		for(channel& c : music_channels) {
-			MIX_StopTrack(c, MIX_TrackMSToFrames(c, 500));
-		}
+		MIX_StopTag(mixer, sound_tracks::music, 500);
 	}
 }
 
@@ -501,6 +499,36 @@ void stop_UI_sound()
 {
 	if(mix_ok) {
 		MIX_StopTag(mixer, sound_tracks::sound_ui, 0);
+	}
+}
+
+void restart_music()
+{
+	if(mix_ok) {
+		MIX_ResumeTag(mixer, sound_tracks::music);
+	}
+}
+
+void restart_sound()
+{
+	if(mix_ok) {
+		MIX_ResumeTag(mixer, sound_tracks::sound_source);
+		MIX_ResumeTag(mixer, sound_tracks::sound_fx);
+	}
+}
+
+void restart_bell()
+{
+	if(mix_ok) {
+		MIX_ResumeTag(mixer, sound_tracks::sound_bell);
+		MIX_ResumeTag(mixer, sound_tracks::sound_timer);
+	}
+}
+
+void restart_UI_sound()
+{
+	if(mix_ok) {
+		MIX_ResumeTag(mixer, sound_tracks::sound_ui);
 	}
 }
 
