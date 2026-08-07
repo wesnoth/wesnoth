@@ -411,7 +411,9 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			if (event.motion.state != 0)
 #endif
 			{
-				mouse(SDL_MOUSE_MOTION, {static_cast<int>(event.motion.x), static_cast<int>(event.motion.y)});
+				if (!events::is_touch(event.motion)) {
+					mouse(SDL_MOUSE_MOTION, {static_cast<int>(event.motion.x), static_cast<int>(event.motion.y)});
+				}
 			}
 			break;
 

@@ -57,18 +57,31 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 		}
 		return is_selected;
 	});
+
+	// Touch hotkey
+	register_hotkey(hotkey::HOTKEY_TOUCH_HEX, [this](auto&&...) {
+		auto& mhandler = controller_.get_mouse_handler_base();
+		map_location loc = mhandler.get_last_hex();
+		bool is_selected = loc.valid();
+		PLAIN_LOG << "touched (hotkey) at: " << loc;
+		if (is_selected) {
+			mhandler.touch_action(loc, controller_.is_browsing());
+		}
+		return is_selected;
+	});
 }
 
 bool map_dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id, const bool down)
 {
 	// Local hotkey
-	if(dispatcher::execute_hotkey(id, down)) {
+	if(!down && dispatcher::execute_hotkey(id, down)) {
+		PLAIN_LOG << "execute_hotkey called";
 		return true;
 	}
 
 	// these hotkeys have fallback hardcoded mouse handlers, so return false to let the
 	// handler do its work.
-	if(id == hotkey::HOTKEY_SELECT_AND_ACTION || id == hotkey::HOTKEY_DESELECT_HEX) return false;
+	if(id == hotkey::HOTKEY_SELECT_AND_ACTION || id == hotkey::HOTKEY_DESELECT_HEX || id == hotkey::HOTKEY_TOUCH_HEX) return false;
 
 	// If no local hotkey, try controller's hotkey executor
 	hotkey::command_executor* cmd_exec = controller_.get_hotkey_command_executor();
