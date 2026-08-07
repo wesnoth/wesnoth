@@ -93,6 +93,11 @@ pango_text::pango_text()
 	, pixel_scale_(1)
 	, surface_buffer_()
 {
+	// TEMPORARY DIAGNOSTIC - remove before merging.
+	PLAIN_LOG << "pango_text ctor: g_getenv(PANGOCAIRO_BACKEND)="
+		<< (g_getenv("PANGOCAIRO_BACKEND") ? g_getenv("PANGOCAIRO_BACKEND") : "(unset)")
+		<< " fontmap type=" << g_type_name(G_OBJECT_TYPE(pango_cairo_font_map_get_default()));
+
 	// With 72 dpi the sizes are the same as with SDL_TTF so hardcoded.
 	pango_cairo_context_set_resolution(context_.get(), 72.0);
 

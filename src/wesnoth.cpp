@@ -992,14 +992,16 @@ int main(int argc, char** argv)
 	assert(!args.empty());
 
 #ifdef _WIN32
-	// SDL_setenv_unsafe() is used instead of _putenv() because _putenv() only
-	// updates the C run-time's private environment copy on some Windows CRTs
-	// (eg the legacy msvcrt.dll linked by MSYS2 builds), not the process environment
-	// block that GetEnvironmentVariable (and thus GLib's g_getenv, which Pango
-	// uses to read PANGOCAIRO_BACKEND) reads. SDL_setenv_unsafe() calls
-	// SetEnvironmentVariableA() directly on Windows, avoiding that gap.
-	SDL_setenv_unsafe("PANGOCAIRO_BACKEND", "fontconfig", 0);
-	SDL_setenv_unsafe("FONTCONFIG_PATH", "fonts", 0);
+	// Different Windows builds of Pango/GLib have been observed to read this
+	// back via different mechanisms: the official mingw-w64 build only sees a
+	// value set via the real Win32 environment block (SetEnvironmentVariableA),
+	// while an MSVC/vcpkg build has only been confirmed to see a value set via
+	// the C run-time's own _putenv(). Since neither alone is known to work across
+	// both, set it both ways.
+	_putenv("PANGOCAIRO_BACKEND=fontconfig");
+	_putenv("FONTCONFIG_PATH=fonts");
+	SetEnvironmentVariableA("PANGOCAIRO_BACKEND", "fontconfig");
+	SetEnvironmentVariableA("FONTCONFIG_PATH", "fonts");
 #endif
 #ifdef __APPLE__
 	// Using setenv with overwrite disabled so we can override this in the
