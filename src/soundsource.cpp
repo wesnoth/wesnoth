@@ -151,7 +151,7 @@ void positional_source::update(const std::chrono::steady_clock::time_point& time
 			return;
 		}
 
-		int distance_volume = DISTANCE_SILENT;
+		int distance_volume = sound::distance_silent;
 		for(const map_location& l : locations_) {
 			int v = calculate_volume(l, disp);
 			if(v < distance_volume) {
@@ -159,7 +159,7 @@ void positional_source::update(const std::chrono::steady_clock::time_point& time
 			}
 		}
 
-		if(distance_volume >= DISTANCE_SILENT)
+		if(distance_volume >= sound::distance_silent)
 			return;
 
 		sound::play_sound_positioned(files_, loops_, distance_volume, id_);
@@ -172,7 +172,7 @@ void positional_source::update_positions(const std::chrono::steady_clock::time_p
 		return;
 	}
 
-	int distance_volume = DISTANCE_SILENT;
+	int distance_volume = sound::distance_silent;
 	for(const map_location& loc : locations_) {
 		int v = calculate_volume(loc, disp);
 		if(v < distance_volume) {
@@ -193,7 +193,7 @@ int positional_source::calculate_volume(const map_location &loc, const display &
 	assert(faderange_ >= 0);
 
 	if((check_shrouded_ && disp.shrouded(loc)) || (check_fogged_ && disp.fogged(loc)))
-		return DISTANCE_SILENT;
+		return sound::distance_silent;
 
 	rect area = disp.map_area();
 	map_location center = disp.hex_clicked_on(area.x + area.w / 2, area.y + area.h / 2);
@@ -204,11 +204,11 @@ int positional_source::calculate_volume(const map_location &loc, const display &
 	}
 
 	if(faderange_ == 0) {
-		return DISTANCE_SILENT;
+		return sound::distance_silent;
 	}
 
 	return static_cast<int>((((distance - range_)
-			/ static_cast<double>(faderange_)) * DISTANCE_SILENT));
+			/ static_cast<double>(faderange_)) * sound::distance_silent));
 }
 
 void positional_source::write_config(config& cfg) const

@@ -770,7 +770,7 @@ void write_music_play_list(config& snapshot)
 void reposition_sound(unsigned id, unsigned int distance)
 {
 	if(id < track_pool.size()) {
-		if(distance == DISTANCE_SILENT) {
+		if(distance == distance_silent) {
 			MIX_StopTrack(track_pool[id], 0);
 		} else {
 			MIX_Point3D pos;
@@ -789,7 +789,7 @@ bool is_sound_playing(int id)
 
 void stop_sound(unsigned id)
 {
-	reposition_sound(id, DISTANCE_SILENT);
+	reposition_sound(id, distance_silent);
 }
 
 namespace
@@ -964,7 +964,7 @@ void play_bell(const std::string& files)
 void play_timer(const std::string& files, const std::chrono::milliseconds& loop_ticks, const std::chrono::milliseconds& fadein_ticks)
 {
 	if(prefs::get().sound()) {
-		sound::play_sound_internal(files, sound_tracks::type::sound_timer, 0, DISTANCE_NONE, UINT_MAX, loop_ticks, fadein_ticks);
+		sound::play_sound_internal(files, sound_tracks::type::sound_timer, 0, distance_none, UINT_MAX, loop_ticks, fadein_ticks);
 	}
 }
 
