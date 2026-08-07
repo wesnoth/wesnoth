@@ -40,7 +40,7 @@ namespace sound
 namespace
 {
 /** Lightweight lifetime wrapper for MIX_Track. */
-class track_source
+class channel
 {
 public:
 	/** Creates a new type-tagged track on @a mixer. */
@@ -63,17 +63,17 @@ private:
 std::mutex soundsource_map_mutex;
 std::map<unsigned int, MIX_Track*> soundsource_map;
 
-std::array<track_source, 32> track_pool{};
+std::array<channel, 32> channel_pool{};
 
 // One of these can play at a time
-const auto music_tracks        = utils::span{track_pool}.subspan<0, 1>();
-const auto bell_tracks         = utils::span{track_pool}.subspan<1, 1>();
-const auto timer_tracks        = utils::span{track_pool}.subspan<2, 1>();
+const auto music_channels        = utils::span{channel_pool}.subspan<0, 1>();
+const auto bell_channels         = utils::span{channel_pool}.subspan<1, 1>();
+const auto timer_channels        = utils::span{channel_pool}.subspan<2, 1>();
 
 // Several of these can play at a time
-const auto sound_source_tracks = utils::span{track_pool}.subspan<3, 8>();
-const auto UI_sound_tracks     = utils::span{track_pool}.subspan<11, 2>();
-const auto sound_fx_tracks     = utils::span{track_pool}.subspan<13, 19>();
+const auto positional_channels   = utils::span{channel_pool}.subspan<3, 8>();
+const auto UI_channels           = utils::span{channel_pool}.subspan<11, 2>();
+const auto SFX_channels          = utils::span{channel_pool}.subspan<13, 19>();
 
 // filename, audio
 std::map<std::string, std::shared_ptr<MIX_Audio>> music_cache;
@@ -374,27 +374,27 @@ bool init_sound()
 
 		mix_ok = true;
 
-		for(track_source& t : music_tracks) {
+		for(channel& t : music_channels) {
 			t.allocate_track(mixer, sound_tracks::music);
 		}
 
-		for(track_source& t : bell_tracks) {
+		for(channel& t : bell_channels) {
 			t.allocate_track(mixer, sound_tracks::sound_bell);
 		}
 
-		for(track_source& t : timer_tracks) {
+		for(channel& t : timer_channels) {
 			t.allocate_track(mixer, sound_tracks::sound_timer);
 		}
 
-		for(track_source& t : sound_source_tracks) {
+		for(channel& t : positional_channels) {
 			t.allocate_track(mixer, sound_tracks::sound_source);
 		}
 
-		for(track_source& t : UI_sound_tracks) {
+		for(channel& t : UI_channels) {
 			t.allocate_track(mixer, sound_tracks::sound_ui);
 		}
 
-		for(track_source& t : sound_fx_tracks) {
+		for(channel& t : SFX_channels) {
 			t.allocate_track(mixer, sound_tracks::sound_fx);
 		}
 
@@ -420,7 +420,7 @@ void close_sound()
 		mix_ok = false;
 	}
 
-	track_pool = {};
+	channel_pool = {};
 	if(mixer) {
 		MIX_DestroyMixer(mixer);
 	}
@@ -472,7 +472,7 @@ void reset_sound()
 void stop_music()
 {
 	if(mix_ok) {
-		for(track_source& t : music_tracks) {
+		for(channel& t : music_channels) {
 			MIX_StopTrack(t, MIX_TrackMSToFrames(t, 500));
 		}
 	}
@@ -571,7 +571,7 @@ void play_new_music()
 	// Do not remove this without ensuring that it does not block.
 	// If you don't want it to halt the music, ensure that fades are completed
 	// before attempting to play new music.
-	MIX_StopTrack(music_tracks[0], 0);
+	MIX_StopTrack(music_channels[0], 0);
 
 	std::shared_ptr<MIX_Audio> music;
 	if(music_cache.count(filename) != 0) {
@@ -583,12 +583,12 @@ void play_new_music()
 	}
 
 	// Fade in the new music
-	MIX_SetTrackAudio(music_tracks[0], music.get());
+	MIX_SetTrackAudio(music_channels[0], music.get());
 
 	sdl3_properties props;
 	SDL_SetNumberProperty(props, MIX_PROP_PLAY_FADE_IN_MILLISECONDS_NUMBER, fading_time.count());
 
-	if(!MIX_PlayTrack(music_tracks[0], props)) {
+	if(!MIX_PlayTrack(music_channels[0], props)) {
 		ERR_AUDIO << "Could not play music: " << SDL_GetError() << " " << filename << " ";
 	} else if(music_cache.count(filename) == 0) {
 		music_cache.emplace(filename, music);
@@ -605,11 +605,11 @@ void play_new_music()
 	want_new_music = false;
 }
 
-MIX_Track* get_soundsource_track(unsigned soundsource_id)
+MIX_Track* get_positional_channel(unsigned soundsource_id)
 {
 	std::scoped_lock lock{soundsource_map_mutex};
 	const auto it = soundsource_map.find(soundsource_id);
-	return it == soundsource_map.end() ? nullptr :  it->second;
+	return it == soundsource_map.end() ? nullptr : it->second;
 }
 
 } // namespace
@@ -679,7 +679,7 @@ void play_music_config(const config& music_node, bool allow_interrupt_current_tr
 
 void music_thinker::process()
 {
-	if(MIX_GetTrackFadeFrames(music_tracks[0]) != 0) {
+	if(MIX_GetTrackFadeFrames(music_channels[0]) != 0) {
 		// Do not block everything while fading.
 		return;
 	}
@@ -688,8 +688,8 @@ void music_thinker::process()
 		// TODO: rethink the music_thinker design, especially the use of fade_out_time
 		auto now = std::chrono::steady_clock::now();
 
-		bool is_playing = MIX_TrackPlaying(music_tracks[0]);
-		bool is_paused = MIX_TrackPaused(music_tracks[0]);
+		bool is_playing = MIX_TrackPlaying(music_channels[0]);
+		bool is_paused = MIX_TrackPaused(music_channels[0]);
 		if(!music_start_time && !current_track_list.empty() && !is_playing && !is_paused) {
 			// Pick next track, add ending time to its start time.
 			set_previous_track(current_track);
@@ -704,8 +704,8 @@ void music_thinker::process()
 		}
 
 		if(want_new_music) {
-			if(MIX_TrackPlaying(music_tracks[0])) {
-				MIX_StopTrack(music_tracks[0], MIX_TrackMSToFrames(music_tracks[0], fade_out_time.count()));
+			if(MIX_TrackPlaying(music_channels[0])) {
+				MIX_StopTrack(music_channels[0], MIX_TrackMSToFrames(music_channels[0], fade_out_time.count()));
 				return;
 			}
 
@@ -724,11 +724,11 @@ void music_muter::handle_window_event(const SDL_Event& event)
 {
 	if(prefs::get().stop_music_in_background() && prefs::get().music_on()) {
 		if(event.type == SDL_EVENT_WINDOW_FOCUS_GAINED) {
-			MIX_ResumeTrack(music_tracks[0]);
+			MIX_ResumeTrack(music_channels[0]);
 			DBG_AUDIO << "resuming music";
 		} else if(event.type == SDL_EVENT_WINDOW_FOCUS_LOST) {
-			if(MIX_TrackPlaying(music_tracks[0])) {
-				MIX_PauseTrack(music_tracks[0]);
+			if(MIX_TrackPlaying(music_channels[0])) {
+				MIX_PauseTrack(music_channels[0]);
 				DBG_AUDIO << "pausing music";
 			}
 		}
@@ -776,7 +776,7 @@ void write_music_play_list(config& snapshot)
 
 void reposition_sound(unsigned id, unsigned int distance)
 {
-	if(MIX_Track* track = get_soundsource_track(id)) {
+	if(MIX_Track* track = get_positional_channel(id)) {
 		if(distance == distance_silent) {
 			MIX_StopTrack(track, 0);
 		} else {
@@ -791,7 +791,7 @@ void reposition_sound(unsigned id, unsigned int distance)
 
 bool is_sound_playing(int id)
 {
-	MIX_Track* track = get_soundsource_track(id);
+	MIX_Track* track = get_positional_channel(id);
 	return track && MIX_TrackPlaying(track);
 }
 
@@ -802,10 +802,10 @@ void stop_sound(unsigned id)
 
 namespace
 {
-MIX_Track* find_free_track(sound_tracks::type group)
+MIX_Track* find_free_channel(sound_tracks::type group)
 {
 	const auto search = [](const auto& span) -> MIX_Track* {
-		for(track_source& t : span) {
+		for(channel& t : span) {
 			if(!MIX_TrackPlaying(t)) {
 				return t;
 			}
@@ -816,17 +816,17 @@ MIX_Track* find_free_track(sound_tracks::type group)
 
 	switch(group) {
 	case sound_tracks::type::music:
-		return search(music_tracks);
+		return search(music_channels);
 	case sound_tracks::type::sound_bell:
-		return search(bell_tracks);
+		return search(bell_channels);
 	case sound_tracks::type::sound_timer:
-		return search(timer_tracks);
+		return search(timer_channels);
 	case sound_tracks::type::sound_source:
-		return search(sound_source_tracks);
+		return search(positional_channels);
 	case sound_tracks::type::sound_ui:
-		return search(UI_sound_tracks);
+		return search(UI_channels);
 	case sound_tracks::type::sound_fx:
-		return search(sound_fx_tracks);
+		return search(SFX_channels);
 	default:
 		return nullptr;
 	}
@@ -855,8 +855,8 @@ void play_sound_internal(const std::string& files,
 	}
 
 	// find a free track in the desired group
-	MIX_Track* free_track = find_free_track(group);
-	if(!free_track) {
+	MIX_Track* free_channel = find_free_channel(group);
+	if(!free_channel) {
 		LOG_AUDIO << "All tracks dedicated to sound group(" << sound_tracks::get_string(group) << ") are busy, skipping.";
 		return;
 	}
@@ -874,7 +874,7 @@ void play_sound_internal(const std::string& files,
 	pos.x = 0;
 	pos.y = distance;
 	pos.z = 0;
-	MIX_SetTrack3DPosition(free_track, &pos);
+	MIX_SetTrack3DPosition(free_channel, &pos);
 
 	std::shared_ptr<MIX_Audio> sound;
 	if(sound_cache.count(real_path) != 0) {
@@ -885,7 +885,7 @@ void play_sound_internal(const std::string& files,
 		DBG_AUDIO << "cache miss for " << real_path;
 	}
 
-	MIX_SetTrackAudio(free_track, sound.get());
+	MIX_SetTrackAudio(free_channel, sound.get());
 
 	sdl3_properties props;
 
@@ -905,7 +905,7 @@ void play_sound_internal(const std::string& files,
 		}
 	}
 
-	res = MIX_PlayTrack(free_track, props);
+	res = MIX_PlayTrack(free_channel, props);
 
 	if(!res) {
 		ERR_AUDIO << "error playing sound effect " << real_path << " : " << SDL_GetError();
@@ -915,9 +915,9 @@ void play_sound_internal(const std::string& files,
 		// first->first since emplace returns an iterator to a pair (what we actually want) and a boolean
 		// const_cast since the callback signature only accepts void*, not const void*
 		std::scoped_lock lock(soundsource_map_mutex);
-		unsigned int* key = const_cast<unsigned int*>(&(soundsource_map.emplace(soundsource_id, free_track).first->first));
+		unsigned int* key = const_cast<unsigned int*>(&(soundsource_map.emplace(soundsource_id, free_channel).first->first));
 		DBG_AUDIO << "adding callback for soundsource id " << *key;
-		MIX_SetTrackStoppedCallback(free_track, [](void* userdata, MIX_Track*){
+		MIX_SetTrackStoppedCallback(free_channel, [](void* userdata, MIX_Track*){
 			std::scoped_lock lock(soundsource_map_mutex);
 			DBG_AUDIO << "in callback to erase soundsource mapping for id " << *static_cast<unsigned int*>(userdata);
 			soundsource_map.erase(*static_cast<unsigned int*>(userdata));
@@ -986,7 +986,7 @@ void play_UI_sound(const std::string& files)
 volume get_music_volume()
 {
 	if(mix_ok) {
-		return volume{MIX_GetTrackGain(sound::music_tracks[0])};
+		return volume{MIX_GetTrackGain(sound::music_channels[0])};
 	}
 
 	return sound::silence;
@@ -995,7 +995,7 @@ volume get_music_volume()
 void set_music_volume(volume vol)
 {
 	if(mix_ok) {
-		MIX_SetTrackGain(sound::music_tracks[0], clamp_gain(vol));
+		MIX_SetTrackGain(sound::music_channels[0], clamp_gain(vol));
 	}
 }
 
@@ -1003,7 +1003,7 @@ volume get_sound_volume()
 {
 	if(mix_ok) {
 		// Since set_sound_volume sets all main tracks to the same, just return the volume of any main track
-		return volume{MIX_GetTrackGain(sound::sound_source_tracks[0])};
+		return volume{MIX_GetTrackGain(sound::positional_channels[0])};
 	}
 
 	return sound::silence;
@@ -1015,11 +1015,11 @@ void set_sound_volume(volume vol)
 		vol = clamp_gain(vol);
 
 		// Bell, timer and UI have separate tracks which we can't set up from this
-		for(track_source& t : sound_source_tracks) {
+		for(channel& t : positional_channels) {
 			MIX_SetTrackGain(t, vol);
 		}
 
-		for(track_source& t : sound_fx_tracks) {
+		for(channel& t : SFX_channels) {
 			MIX_SetTrackGain(t, vol);
 		}
 	}
@@ -1033,8 +1033,8 @@ void set_bell_volume(volume vol)
 	if(mix_ok) {
 		vol = clamp_gain(vol);
 
-		MIX_SetTrackGain(sound::bell_tracks[0], vol);
-		MIX_SetTrackGain(sound::timer_tracks[0], vol);
+		MIX_SetTrackGain(sound::bell_channels[0], vol);
+		MIX_SetTrackGain(sound::timer_channels[0], vol);
 	}
 }
 
@@ -1043,7 +1043,7 @@ void set_UI_volume(volume vol)
 	if(mix_ok) {
 		vol = clamp_gain(vol);
 
-		for(track_source& t : UI_sound_tracks) {
+		for(channel& t : UI_channels) {
 			MIX_SetTrackGain(t, vol);
 		}
 	}
