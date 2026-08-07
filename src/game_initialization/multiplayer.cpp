@@ -15,6 +15,7 @@
 
 #include "game_initialization/multiplayer.hpp"
 
+#include "addon/manager.hpp"
 #include "build_info.hpp"
 #include "commandline_options.hpp"
 #include "connect_engine.hpp"
@@ -39,6 +40,7 @@
 #include "resources.hpp"
 #include "saved_game.hpp"
 #include "sound.hpp"
+#include "utils/general.hpp"
 #include "utils/parse_network_address.hpp"
 #include "wesnothd_connection.hpp"
 
@@ -111,6 +113,7 @@ private:
 					info.display_name = queue["display_name"].str();
 					info.players_required = queue["players_required"].to_int();
 					info.current_players = utils::split_set(queue["current_players"].str());
+					info.required_addons = utils::split(queue["required_addons"].str());
 					queues.emplace_back(info);
 				}
 			}
@@ -860,6 +863,18 @@ std::vector<queue_info>& get_server_queues()
 	}
 	return queues;
 }
+
+std::vector<std::string> missing_queue_addons(const queue_info& queue)
+{
+	std::vector<std::string> installed = installed_addons();
+	std::vector<std::string> missing;
+	for(const std::string& id : queue.required_addons) {
+		if(!utils::contains(installed, id)) {
+			missing.push_back(id);
+		}
+	}
+	return missing;
+} 
 
 void send_to_server(const config& data)
 {
