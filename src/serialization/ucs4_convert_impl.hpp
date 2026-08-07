@@ -158,15 +158,16 @@ namespace ucs4_convert_impl
 		template<typename iitor_t>
 		static inline char32_t read(iitor_t& input, const iitor_t& end)
 		{
-			const char32_t last10 = 0x3FF;
-			const char32_t type_filter = 0xFC00;
-			const char32_t type_lead = 0xD800;
-			const char32_t type_trail = 0xDC00;
+			// type_filter and last10 are bitmasks
+			constexpr uint16_t last10 = 0x3FF;
+			constexpr uint16_t type_filter = 0xFC00;
+			constexpr uint16_t type_lead = 0xD800;
+			constexpr uint16_t type_trail = 0xDC00;
 
 			assert(input != end);
-			char32_t current_char = static_cast<char16_t>(*input);
+			uint16_t high_surrogate = static_cast<uint16_t>(*input);
 			++input;
-			char32_t type = current_char & type_filter;
+			uint16_t type = high_surrogate & type_filter;
 			if(type == type_trail)
 			{
 				//found trail without head
@@ -183,13 +184,15 @@ namespace ucs4_convert_impl
 				{
 					throw utf8::invalid_utf8_exception();
 				}
-				current_char &= last10;
-				current_char <<= 10;
-				current_char += (*input & last10);
-				current_char += 0x10000;
+				uint32_t combined = high_surrogate & last10;
+				combined <<= 10;
+				combined += (*input & last10);
+				combined += 0x10000;
 				++input;
+				return static_cast<char32_t>(combined);
 			}
-			return current_char;
+			// The input wasn't a surrogate, it's the whole character
+			return static_cast<char32_t>(high_surrogate);
 		}
 	};
 
