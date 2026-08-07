@@ -44,7 +44,7 @@ class channel
 {
 public:
 	/** Creates a new type-tagged track on @a mixer. */
-	void allocate_track(MIX_Mixer* mixer, const char* type_tag)
+	void allocate_channel(MIX_Mixer* mixer, const char* type_tag)
 	{
 		track_.reset(MIX_CreateTrack(mixer));
 		MIX_TagTrack(*this, type_tag);
@@ -374,28 +374,28 @@ bool init_sound()
 
 		mix_ok = true;
 
-		for(channel& t : music_channels) {
-			t.allocate_track(mixer, sound_tracks::music);
+		for(channel& c : music_channels) {
+			c.allocate_channel(mixer, sound_tracks::music);
 		}
 
-		for(channel& t : bell_channels) {
-			t.allocate_track(mixer, sound_tracks::sound_bell);
+		for(channel& c : bell_channels) {
+			c.allocate_channel(mixer, sound_tracks::sound_bell);
 		}
 
-		for(channel& t : timer_channels) {
-			t.allocate_track(mixer, sound_tracks::sound_timer);
+		for(channel& c : timer_channels) {
+			c.allocate_channel(mixer, sound_tracks::sound_timer);
 		}
 
-		for(channel& t : positional_channels) {
-			t.allocate_track(mixer, sound_tracks::sound_source);
+		for(channel& c : positional_channels) {
+			c.allocate_channel(mixer, sound_tracks::sound_source);
 		}
 
-		for(channel& t : UI_channels) {
-			t.allocate_track(mixer, sound_tracks::sound_ui);
+		for(channel& c : UI_channels) {
+			c.allocate_channel(mixer, sound_tracks::sound_ui);
 		}
 
-		for(channel& t : SFX_channels) {
-			t.allocate_track(mixer, sound_tracks::sound_fx);
+		for(channel& c : SFX_channels) {
+			c.allocate_channel(mixer, sound_tracks::sound_fx);
 		}
 
 		set_sound_volume(prefs::get().sound_volume());
@@ -472,8 +472,8 @@ void reset_sound()
 void stop_music()
 {
 	if(mix_ok) {
-		for(channel& t : music_channels) {
-			MIX_StopTrack(t, MIX_TrackMSToFrames(t, 500));
+		for(channel& c : music_channels) {
+			MIX_StopTrack(c, MIX_TrackMSToFrames(c, 500));
 		}
 	}
 }
@@ -805,9 +805,9 @@ namespace
 MIX_Track* find_free_channel(sound_tracks::type group)
 {
 	const auto search = [](const auto& span) -> MIX_Track* {
-		for(channel& t : span) {
-			if(!MIX_TrackPlaying(t)) {
-				return t;
+		for(channel& c : span) {
+			if(!MIX_TrackPlaying(c)) {
+				return c;
 			}
 		}
 
@@ -1015,12 +1015,12 @@ void set_sound_volume(volume vol)
 		vol = clamp_gain(vol);
 
 		// Bell, timer and UI have separate tracks which we can't set up from this
-		for(channel& t : positional_channels) {
-			MIX_SetTrackGain(t, vol);
+		for(channel& c : positional_channels) {
+			MIX_SetTrackGain(c, vol);
 		}
 
-		for(channel& t : SFX_channels) {
-			MIX_SetTrackGain(t, vol);
+		for(channel& c : SFX_channels) {
+			MIX_SetTrackGain(c, vol);
 		}
 	}
 }
@@ -1043,8 +1043,8 @@ void set_UI_volume(volume vol)
 	if(mix_ok) {
 		vol = clamp_gain(vol);
 
-		for(channel& t : UI_channels) {
-			MIX_SetTrackGain(t, vol);
+		for(channel& c : UI_channels) {
+			MIX_SetTrackGain(c, vol);
 		}
 	}
 }
