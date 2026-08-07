@@ -846,8 +846,7 @@ void play_sound_internal(const std::string& files,
 
 	if(group == sound_tracks::type::sound_source) {
 		if(soundsource_id != UINT_MAX) {
-			std::scoped_lock lock(soundsource_map_mutex);
-			if(soundsource_map.count(soundsource_id) > 0) {
+			if(is_sound_playing(soundsource_id)) {
 				return;
 			}
 		} else {
