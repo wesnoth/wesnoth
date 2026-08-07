@@ -91,7 +91,7 @@ private:
 	void update_friends_list_controls(listbox& list);
 
 	/** Callback for selection changes */
-	void on_advanced_prefs_list_select(listbox& tree);
+	void on_advanced_prefs_list_select(listbox& tree, const bool initial = false);
 
 	/** Special callback functions */
 	void handle_res_select();
