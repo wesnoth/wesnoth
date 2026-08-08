@@ -524,8 +524,7 @@ void restart_bell()
 void restart_UI_sound()
 {
 	if(mixer) {
-		static sdl3_properties props;
-		MIX_PlayTag(mixer, sound_tracks::sound_ui, props);
+		MIX_ResumeTag(mixer, sound_tracks::sound_ui);
 	}
 }
 
@@ -635,6 +634,17 @@ MIX_Track* get_positional_channel(unsigned soundsource_id)
 	std::scoped_lock lock{soundsource_map_mutex};
 	const auto it = soundsource_map.find(soundsource_id);
 	return it == soundsource_map.end() ? nullptr : it->second;
+}
+
+MIX_Track* get_positional_channel_new(unsigned soundsource_id)
+{
+	int count{0};
+	std::string tag = std::to_string(soundsource_id);
+	auto** tagged = MIX_GetTaggedTracks(mixer, tag.data(), &count);
+	utils::span span{tagged, count};
+	auto* res = count < 1 ? nullptr : span[0];
+	SDL_free(tagged);
+	return res;
 }
 
 } // namespace
