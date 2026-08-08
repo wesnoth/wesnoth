@@ -360,7 +360,7 @@ bool init_sound()
 
 	if(!mixer) {
 		SDL_AudioSpec spec;
-		spec.freq = prefs::get().sample_rate();
+		spec.freq = 44100;
 		spec.format = SDL_AUDIO_S16;
 		spec.channels = 2;
 		mixer = MIX_CreateMixerDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, &spec);
