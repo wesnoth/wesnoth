@@ -1705,14 +1705,14 @@ void server::handle_join_server_queue(player_iterator p, simple_wml::node& data)
 
 		game.set_attr_dup("scenario", scenarios[index].c_str());
 		game.set_attr_dup("era", queue.settings["era"].str().c_str());
-		game.set_attr_int("fog", queue.settings["fog"].to_int());
-		game.set_attr_int("shroud", queue.settings["shroud"].to_int());
+		game.set_attr_dup("fog", queue.settings["fog"].str().c_str());
+		game.set_attr_dup("shroud", queue.settings["shroud"].str().c_str());
 		game.set_attr_int("village_gold", queue.settings["village_gold"].to_int());
 		game.set_attr_int("village_support", queue.settings["village_support"].to_int());
 		game.set_attr_int("experience_modifier", queue.settings["experience_modifier"].to_int());
-		game.set_attr_int("countdown", queue.settings["countdown"].to_int());
-		game.set_attr_int("random_start_time", queue.settings["random_start_time"].to_int());
-		game.set_attr_int("shuffle_sides", queue.settings["shuffle_sides"].to_int());
+		game.set_attr_dup("countdown", queue.settings["countdown"].str().c_str());
+		game.set_attr_dup("random_start_time", queue.settings["random_start_time"].str().c_str());
+		game.set_attr_dup("shuffle_sides", queue.settings["shuffle_sides"].str().c_str());
 
 		// tell the final player to create and host the game
 		send_to_player(p, create_game_doc);
