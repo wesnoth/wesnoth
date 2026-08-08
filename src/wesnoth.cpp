@@ -1006,12 +1006,12 @@ int main(int argc, char** argv)
 #ifdef __APPLE__
 	// Using setenv with overwrite disabled so we can override this in the
 	// original process environment for research/testing purposes.
-	SDL_setenv_unsafe("PANGOCAIRO_BACKEND", "fontconfig", 0);
+	setenv("PANGOCAIRO_BACKEND", "fontconfig", 0);
 #endif
 #ifdef __ANDROID__
-	SDL_setenv_unsafe("PANGOCAIRO_BACKEND", "fontconfig", 0);
-	SDL_setenv_unsafe("SDL_HINT_AUDIODRIVER", "android", 0);
-	SDL_setenv_unsafe("SDL_HINT_ANDROID_TRAP_BACK_BUTTON", "1", 0);
+	setenv("PANGOCAIRO_BACKEND", "fontconfig", 0);
+	setenv("SDL_HINT_AUDIODRIVER", "android", 0);
+	setenv("SDL_HINT_ANDROID_TRAP_BACK_BUTTON", "1", 0);
 #endif
 
 	try {
