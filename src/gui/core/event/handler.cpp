@@ -24,6 +24,7 @@
 #include "gui/widgets/helper.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
+#include "gui/widgets/settings.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "video.hpp"
 #include "utils/ranges.hpp"
@@ -114,9 +115,7 @@ static uint32_t timer_sdl_poll_events(uint32_t, void*)
 /***** handler class. *****/
 
 /**
- * This singleton class handles all events.
- *
- * It's a new experimental class.
+ * This singleton class handles all gui2 events.
  */
 class sdl_event_handler : public events::sdl_handler
 {
@@ -191,6 +190,15 @@ private:
 	void mouse(const ui_event event, const point& position);
 
 	/**
+	 * Fires a generic mouse wheel event.
+	 *
+	 * @param event                  The event to fire.
+	 * @param position               The position of the mouse.
+	 * @param scroll                How much scroll wheel moved in x and y directions.
+	 */
+	void mouse_wheel(const ui_event event, const point& position, const point& scroll);
+
+	/**
 	 * Fires a mouse button up event.
 	 *
 	 * @param position               The position of the mouse.
@@ -212,10 +220,9 @@ private:
 	 * Fires a mouse wheel event.
 	 *
 	 * @param position               The position of the mouse.
-	 * @param scrollx                The amount of horizontal scrolling.
-	 * @param scrolly                The amount of vertical scrolling.
+	 * @param scroll                 The amount of scrolling in x and y directions.
 	 */
-	void mouse_wheel(const point& position, int scrollx, int scrolly);
+	void mouse_wheel(const point& position, const point& scroll);
 
 	/**
 	 * Gets the dispatcher that wants to receive the keyboard input.
@@ -278,15 +285,36 @@ private:
 	void key_down(const SDL_Event& event);
 
 	/**
+	 * Fires a key up event.
+	 *
+	 * @param event                  The SDL keyboard event triggered.
+	 */
+	void key_up(const SDL_Event& event);
+
+	/**
 	 * Handles the pressing of a hotkey.
 	 *
 	 * @param key                 The hotkey item pressed.
+	 * @param down                Is the button down or up?
 	 *
 	 * @returns                   True if there was a valid dispatcher with
 	 *                            which to execute the hotkey callback, false
 	 *                            otherwise.
 	 */
-	bool hotkey_pressed(const hotkey::hotkey_ptr& key);
+	bool hotkey_pressed(const hotkey::hotkey_ptr& key, const bool down);
+
+	/**
+	 * Handles the pressing of a mouse hotkey.
+	 *
+	 * @param key                 The hotkey item pressed.
+	 * @param position            The mouse location.
+	 * @param down                Is the button down or up?
+	 *
+	 * @returns                   True if there was a valid dispatcher with
+	 *                            which to execute the hotkey callback, false
+	 *                            otherwise.
+	 */
+	bool hotkey_pressed_mouse(const hotkey::hotkey_ptr& key, const point& position, const bool down);
 
 	/**
 	 * Fires a key down event.
@@ -347,6 +375,9 @@ private:
 	 */
 	dispatcher* keyboard_focus_;
 	friend void capture_keyboard(dispatcher* dispatcher);
+
+	int long_press_timer_id_;
+	void long_press_callback(int x, int y);
 };
 
 sdl_event_handler::sdl_event_handler()
@@ -354,6 +385,7 @@ sdl_event_handler::sdl_event_handler()
 	, mouse_focus(nullptr)
 	, dispatchers_()
 	, keyboard_focus_(nullptr)
+	, long_press_timer_id_(0)
 {
 // The event context is created now we join it.
 #ifdef ENABLE
@@ -384,24 +416,60 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			if (event.motion.state != 0)
 #endif
 			{
-				mouse(SDL_MOUSE_MOTION, {static_cast<int>(event.motion.x), static_cast<int>(event.motion.y)});
+				if (!events::is_touch(event.motion)) {
+					mouse(SDL_MOUSE_MOTION, {static_cast<int>(event.motion.x), static_cast<int>(event.motion.y)});
+				}
 			}
 			break;
 
 		case SDL_EVENT_MOUSE_BUTTON_DOWN:
 			{
-				mouse_button_down({static_cast<int>(event.button.x), static_cast<int>(event.button.y)}, button);
+				if(events::is_touch(event.button)) {
+					PLAIN_LOG << "long touch start";
+					int x = event.button.x;
+					int y = event.button.y;
+
+					if(long_press_timer_id_ == 0) {
+						long_press_timer_id_ = gui2::add_timer(
+							gui2::settings::popup_show_delay,
+							std::bind(&sdl_event_handler::long_press_callback, this, x, y));
+					}
+				}
+
+				const point position{static_cast<int>(event.button.x), static_cast<int>(event.button.y)};
+				const hotkey::hotkey_ptr hk = hotkey::get_hotkey(event);
+				bool done = false;
+				if(!hk->null()) {
+					done = hotkey_pressed_mouse(hk, position, true);
+				}
+				if(!done) {
+					mouse_button_down(position, button);
+				}
 			}
 			break;
 
 		case SDL_EVENT_MOUSE_BUTTON_UP:
 			{
-				mouse_button_up({static_cast<int>(event.button.x), static_cast<int>(event.button.y)}, button);
+				if(long_press_timer_id_ != 0) {
+					gui2::remove_timer(long_press_timer_id_);
+					long_press_timer_id_ = 0;
+				}
+
+				const point position{static_cast<int>(event.button.x), static_cast<int>(event.button.y)};
+				const hotkey::hotkey_ptr hk = hotkey::get_hotkey(event);
+				bool done = false;
+				if(!hk->null()) {
+					done = hotkey_pressed_mouse(hk, position, false);
+				}
+				if(!done) {
+					mouse_button_up(position, button);
+				}
 			}
 			break;
 
 		case SDL_EVENT_MOUSE_WHEEL:
-			mouse_wheel(get_mouse_position(), event.wheel.x, event.wheel.y);
+			mouse_wheel(get_mouse_position(),
+				point{static_cast<int>(event.wheel.x), static_cast<int>(event.wheel.y)});
 			break;
 
 		case SHOW_HELPTIP_EVENT:
@@ -492,6 +560,7 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		// Silently ignored events.
 		case SDL_EVENT_KEY_UP:
+			key_up(event);
 			break;
 
 		default:
@@ -534,6 +603,11 @@ void sdl_event_handler::disconnect(dispatcher* disp)
 
 	/***** Remove dispatcher. *****/
 	dispatchers_.erase(itor);
+
+	if(long_press_timer_id_ != 0) {
+		gui2::remove_timer(long_press_timer_id_);
+		long_press_timer_id_ = 0;
+	}
 
 	if(disp == mouse_focus) {
 		mouse_focus = nullptr;
@@ -624,6 +698,32 @@ void sdl_event_handler::mouse(const ui_event event, const point& position)
 	}
 }
 
+void sdl_event_handler::mouse_wheel(const ui_event event, const point& position, const point& scroll)
+{
+	DBG_GUI_E << "Firing: " << event << ".";
+
+	if(mouse_focus) {
+		mouse_focus->fire(event, dynamic_cast<widget&>(*mouse_focus), position, scroll);
+		return;
+	}
+
+	for(auto& dispatcher : dispatchers_ | utils::views::reverse) {
+		if(dispatcher->get_mouse_behavior() == dispatcher::mouse_behavior::all) {
+			dispatcher->fire(event, dynamic_cast<widget&>(*dispatcher), position, scroll);
+			break;
+		}
+
+		if(dispatcher->get_mouse_behavior() == dispatcher::mouse_behavior::none) {
+			continue;
+		}
+
+		if(dispatcher->is_at(position)) {
+			dispatcher->fire(event, dynamic_cast<widget&>(*dispatcher), position, scroll);
+			break;
+		}
+	}
+}
+
 void sdl_event_handler::mouse_button_up(const point& position, const uint8_t button)
 {
 	switch(button) {
@@ -678,18 +778,27 @@ void sdl_event_handler::mouse_button_down(const point& position, const uint8_t b
 	}
 }
 
-void sdl_event_handler::mouse_wheel(const point& position, int x, int y)
+void sdl_event_handler::mouse_wheel(const point& position, const point& scroll)
 {
-	if(x > 0) {
-		mouse(SDL_WHEEL_RIGHT, position);
-	} else if(x < 0) {
-		mouse(SDL_WHEEL_LEFT, position);
+	if(scroll.x > 0) {
+		mouse_wheel(SDL_WHEEL_RIGHT, position, scroll);
+	} else if(scroll.x < 0) {
+		mouse_wheel(SDL_WHEEL_LEFT, position, scroll);
 	}
 
-	if(y < 0) {
-		mouse(SDL_WHEEL_DOWN, position);
-	} else if(y > 0) {
-		mouse(SDL_WHEEL_UP, position);
+	if(scroll.y < 0) {
+		mouse_wheel(SDL_WHEEL_DOWN, position, scroll);
+	} else if(scroll.y > 0) {
+		mouse_wheel(SDL_WHEEL_UP, position, scroll);
+	}
+}
+
+void sdl_event_handler::long_press_callback(int x, int y)
+{
+	if(long_press_timer_id_ != 0) {
+		PLAIN_LOG << "long press long_press_callback";
+		// Fire right click
+		mouse_button_down({x, y}, 3);
 	}
 }
 
@@ -741,7 +850,7 @@ void sdl_event_handler::hat_motion(const SDL_Event& event)
 	const hotkey::hotkey_ptr& hk = hotkey::get_hotkey(event);
 	bool done = false;
 	if(!hk->null()) {
-		done = hotkey_pressed(hk);
+		done = hotkey_pressed(hk, false);
 	}
 	if(!done) {
 		// TODO fendrin think about handling hat motions that are not bound to a
@@ -754,7 +863,7 @@ void sdl_event_handler::button_down(const SDL_Event& event)
 	const hotkey::hotkey_ptr hk = hotkey::get_hotkey(event);
 	bool done = false;
 	if(!hk->null()) {
-		done = hotkey_pressed(hk);
+		done = hotkey_pressed(hk, true);
 	}
 	if(!done) {
 		// TODO fendrin think about handling button down events that are not
@@ -767,7 +876,7 @@ void sdl_event_handler::key_down(const SDL_Event& event)
 	const hotkey::hotkey_ptr hk = hotkey::get_hotkey(event);
 	bool done = false;
 	if(!hk->null()) {
-		done = hotkey_pressed(hk);
+		done = hotkey_pressed(hk, true);
 	}
 	if(!done) {
 		if(event.type == SDL_EVENT_TEXT_INPUT) {
@@ -775,6 +884,18 @@ void sdl_event_handler::key_down(const SDL_Event& event)
 		} else {
 			key_down(event.key.key, static_cast<SDL_Keymod>(event.key.mod), "");
 		}
+	}
+}
+
+void sdl_event_handler::key_up(const SDL_Event& event)
+{
+	const hotkey::hotkey_ptr hk = hotkey::get_hotkey(event);
+	bool done = false;
+	if(!hk->null()) {
+		done = hotkey_pressed(hk, false);
+	}
+	if(!done) {
+		// TODO unimplemented, since only hotkeys need it
 	}
 }
 
@@ -798,10 +919,53 @@ void sdl_event_handler::text_editing(const std::string& unicode, int32_t start, 
 	}
 }
 
-bool sdl_event_handler::hotkey_pressed(const hotkey::hotkey_ptr& key)
+bool sdl_event_handler::hotkey_pressed_mouse(const hotkey::hotkey_ptr& key, const point& position, const bool down)
 {
-	if(dispatcher* dispatcher = keyboard_dispatcher()) {
-		return dispatcher->execute_hotkey(hotkey::get_hotkey_command(key->get_command()).command);
+	auto& hkey_cmd = hotkey::get_hotkey_command(key->get_command()).command;
+
+	if(mouse_focus) {
+		if(mouse_focus->execute_hotkey(hkey_cmd, down)) {
+			return true;
+		}
+	}
+
+	for(auto& dispatcher : dispatchers_ | utils::views::reverse) {
+		if(dispatcher->get_mouse_behavior() == dispatcher::mouse_behavior::all) {
+			if(dispatcher->execute_hotkey(hkey_cmd, down)) {
+				return true;
+			}
+		}
+
+		if(dispatcher->get_mouse_behavior() == dispatcher::mouse_behavior::none) {
+			continue;
+		}
+
+		if(dispatcher->is_at(position)) {
+			if(dispatcher->execute_hotkey(hkey_cmd, down)) {
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+bool sdl_event_handler::hotkey_pressed(const hotkey::hotkey_ptr& key, const bool down)
+{
+	auto& hkey_cmd = hotkey::get_hotkey_command(key->get_command()).command;
+
+	if(keyboard_focus_) {
+		if(keyboard_focus_->execute_hotkey(hkey_cmd, down)) {
+			return true;
+		}
+	}
+
+	for(auto& dispatcher : dispatchers_ | utils::views::reverse) {
+		if(dispatcher->get_want_keyboard_input()) {
+			if(dispatcher->execute_hotkey(hkey_cmd, down)) {
+				return true;
+			}
+		}
 	}
 
 	return false;

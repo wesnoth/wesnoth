@@ -34,6 +34,7 @@
 #include "game_events/pump.hpp"
 #include "game_state.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/floating_textbox.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/message.hpp"      // for show_error_message
 #include "gui/dialogs/transient_message.hpp"
@@ -61,6 +62,8 @@
 #include "utils/general.hpp"
 #include "video.hpp"
 #include "whiteboard/manager.hpp"
+
+#include "gui/core/event/map_dispatcher.hpp"
 
 #include <functional>
 
@@ -145,6 +148,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game)
 	, mouse_handler_(*this)
 	, menu_handler_(*this)
 	, hotkey_handler_(new hotkey_handler(*this, saved_game_))
+	, map_dispatcher_(*this)
 	, soundsources_manager_()
 	, persist_()
 	, gui_()
@@ -180,6 +184,8 @@ play_controller::play_controller(const config& level, saved_game& state_of_game)
 
 	try {
 		init(level);
+		mouse_handler_.set_gui2_tooltip(true);
+		map_dispatcher_.connect();
 	} catch(...) {
 		DBG_NG << "Caught exception initializing level: " << utils::get_unknown_exception_type();
 		clear_resources();
@@ -189,6 +195,8 @@ play_controller::play_controller(const config& level, saved_game& state_of_game)
 
 play_controller::~play_controller()
 {
+	map_dispatcher_.disconnect();
+	mouse_handler_.set_gui2_tooltip(false);
 	unit_types.remove_scenario_fixes();
 	clear_resources();
 }
@@ -662,130 +670,114 @@ bool play_controller::enemies_visible() const
 
 void play_controller::enter_textbox()
 {
-	if(menu_handler_.get_textbox().active() == false) {
-		return;
-	}
-
-	const std::string str = menu_handler_.get_textbox().box()->text();
-	const unsigned int team_num = current_side();
-	events::mouse_handler& mousehandler = mouse_handler_;
-
-	switch(menu_handler_.get_textbox().mode()) {
-	case gui::TEXTBOX_SEARCH:
-		menu_handler_.do_search(str);
-		menu_handler_.get_textbox().memorize_command(str);
-		menu_handler_.get_textbox().close();
-		break;
-	case gui::TEXTBOX_MESSAGE:
-		if (menu_handler_.do_speak()) {
-			menu_handler_.get_textbox().memorize_command(str);
-			menu_handler_.get_textbox().close();
-		}
-		break;
-	case gui::TEXTBOX_COMMAND:
-		menu_handler_.get_textbox().memorize_command(str);
-		menu_handler_.get_textbox().close();
-		menu_handler_.do_command(str);
-		break;
-	case gui::TEXTBOX_AI:
-		menu_handler_.get_textbox().memorize_command(str);
-		menu_handler_.get_textbox().close();
-		menu_handler_.do_ai_formula(str, team_num, mousehandler);
-		break;
-	default:
-		menu_handler_.get_textbox().close();
-		ERR_DP << "unknown textbox mode";
-	}
+	// if(!menu_handler_.get_textbox()) {
+	// 	return;
+	// }
+ //
+	// using namespace gui2::dialogs;
+ //
+	// floating_textbox& box = *menu_handler_.get_textbox();
+	// const std::string str = box.get_value();
+	// const unsigned int team_num = current_side();
+	// events::mouse_handler& mousehandler = mouse_handler_;
+ //
+	// switch(box.mode()) {
+	// case floating_textbox::SEARCH:
+	// 	menu_handler_.do_search(str);
+	// 	box.memorize_command(str);
+	// 	box.close();
+	// 	break;
+	// case floating_textbox::MESSAGE:
+	// 	if (menu_handler_.do_speak()) {
+	// 		box.memorize_command(str);
+	// 		box.close();
+	// 	}
+	// 	break;
+	// case floating_textbox::COMMAND:
+	// 	box.memorize_command(str);
+	// 	box.close();
+	// 	menu_handler_.do_command(str);
+	// 	break;
+	// case floating_textbox::AI:
+	// 	box.memorize_command(str);
+	// 	box.close();
+	// 	menu_handler_.do_ai_formula(str, team_num, mousehandler);
+	// 	break;
+	// default:
+	// 	box.close();
+	// 	ERR_DP << "unknown textbox mode";
+	// }
 }
 
-void play_controller::textbox_move_vertically(bool up)
+void play_controller::textbox_move_vertically(bool /*up*/)
 {
-	if(menu_handler_.get_textbox().active() == false) {
-		return;
-	}
-
-	const std::string str = menu_handler_.get_textbox().box()->text();
-	const std::vector<std::string>& command_history = menu_handler_.get_textbox().command_history();
-
-	auto prev = std::find(command_history.begin(), command_history.end(), str);
-
-	if (prev != command_history.end())
-	{
-		if(up) {
-			if(prev != command_history.begin()) {
-				menu_handler_.get_textbox().box()->set_text(*--prev);
-			}
-		} else {
-			if(++prev != command_history.end()) {
-				menu_handler_.get_textbox().box()->set_text(*prev);
-			} else {
-				menu_handler_.get_textbox().box()->set_text("");
-			}
-		}
-	} else if (up) {
-		if(command_history.size() > 0) {
-			menu_handler_.get_textbox().box()->set_text(*--prev);
-		}
-		if(!str.empty()) {
-			menu_handler_.get_textbox().memorize_command(str);
-		}
-	}
+	// if(!menu_handler_.get_textbox()) {
+	// 	return;
+	// }
+ //
+	// menu_handler_.get_textbox()->history_update(up);
 }
 
 void play_controller::tab()
 {
-	gui::TEXTBOX_MODE mode = menu_handler_.get_textbox().mode();
-
-	std::set<std::string> dictionary;
-	switch(mode) {
-	case gui::TEXTBOX_SEARCH: {
-		for(const unit& u : get_units()) {
-			const map_location& loc = u.get_location();
-			if(!gui_->fogged(loc) && !(gui_->viewing_team().is_enemy(u.side()) && u.invisible(loc)))
-				dictionary.insert(u.name());
-		}
-		// TODO List map labels
-		break;
-	}
-	case gui::TEXTBOX_COMMAND: {
-		std::vector<std::string> commands = menu_handler_.get_commands_list();
-		dictionary.insert(commands.begin(), commands.end());
-		[[fallthrough]]; // we also want player names from the next case
-	}
-	case gui::TEXTBOX_MESSAGE: {
-		for(const team& t : get_teams()) {
-			if(!t.is_empty())
-				dictionary.insert(t.current_player());
-		}
-
-		// Add observers
-		for(const std::string& o : gui_->observers()) {
-			dictionary.insert(o);
-		}
-
-		// Add nicks who whispered you
-		for(const std::string& w : gui_->get_chat_manager().whisperers()) {
-			dictionary.insert(w);
-		}
-
-		// Add nicks from friendlist
-		const std::map<std::string, std::string> friends = prefs::get().get_acquaintances_nice("friend");
-
-		for(std::map<std::string, std::string>::const_iterator iter = friends.begin(); iter != friends.end(); ++iter) {
-			dictionary.insert((*iter).first);
-		}
-
-		// Exclude own nick from tab-completion.
-		// NOTE why ?
-		dictionary.erase(prefs::get().login());
-		break;
-	}
-
-	default:
-		ERR_DP << "unknown textbox mode";
-	} // switch(mode)
-
-	menu_handler_.get_textbox().tab(dictionary);
+	// using namespace gui2::dialogs;
+ //
+	// floating_textbox::MODE mode = menu_handler_.get_textbox()->mode();
+ //
+	// std::set<std::string> dictionary;
+	// switch(mode) {
+	// case floating_textbox::SEARCH: {
+	// 	for(const unit& u : get_units()) {
+	// 		const map_location& loc = u.get_location();
+	// 		if(!gui_->fogged(loc) && !(gui_->viewing_team().is_enemy(u.side()) && u.invisible(loc)))
+	// 			dictionary.insert(u.name());
+	// 	}
+	// 	// TODO List map labels
+	// 	break;
+	// }
+	// case floating_textbox::COMMAND: {
+	// 	std::vector<std::string> commands = menu_handler_.get_commands_list();
+	// 	dictionary.insert(commands.begin(), commands.end());
+	// 	[[fallthrough]]; // we also want player names from the next case
+	// }
+	// case floating_textbox::MESSAGE: {
+	// 	for(const team& t : get_teams()) {
+	// 		if(!t.is_empty())
+	// 			dictionary.insert(t.current_player());
+	// 	}
+ //
+	// 	// Add observers
+	// 	for(const std::string& o : gui_->observers()) {
+	// 		dictionary.insert(o);
+	// 	}
+ //
+	// 	// Add nicks who whispered you
+	// 	for(const std::string& w : gui_->get_chat_manager().whisperers()) {
+	// 		dictionary.insert(w);
+	// 	}
+ //
+	// 	// Add nicks from friendlist
+	// 	const std::map<std::string, std::string> friends = prefs::get().get_acquaintances_nice("friend");
+ //
+	// 	for(std::map<std::string, std::string>::const_iterator iter = friends.begin(); iter != friends.end(); ++iter) {
+	// 		dictionary.insert((*iter).first);
+	// 	}
+ //
+	// 	// Exclude own nick from tab-completion.
+	// 	// NOTE why ?
+	// 	dictionary.erase(prefs::get().login());
+	// 	break;
+	// }
+ //
+	// default:
+	// 	ERR_DP << "unknown textbox mode";
+	// } // switch(mode)
+ //
+	// const std::string chat_entry = menu_handler_.get_textbox()->tab(dictionary);
+	// if(!chat_entry.empty()) {
+	// 	game_display::get_singleton()->get_chat_manager().add_chat_message(
+	// 		std::chrono::system_clock::now(), "", 0, chat_entry, events::chat_handler::MESSAGE_PRIVATE, false);
+	// }
 }
 
 team& play_controller::current_team()
@@ -836,22 +828,22 @@ game_display& play_controller::get_display()
 
 bool play_controller::have_keyboard_focus()
 {
-	return !menu_handler_.get_textbox().active();
+	return !menu_handler_.get_textbox()->active();
 }
 
-void play_controller::process_focus_keydown_event(const SDL_Event& event)
+void play_controller::process_focus_keydown_event(const SDL_Event& /*event*/)
 {
-	if(event.key.key == SDLK_ESCAPE || event.key.key == SDLK_AC_BACK) {
-		menu_handler_.get_textbox().close();
-	} else if(event.key.key == SDLK_TAB) {
-		tab();
-	} else if(event.key.key == SDLK_UP) {
-		textbox_move_vertically(true);
-	} else if(event.key.key == SDLK_DOWN) {
-		textbox_move_vertically(false);
-	} else if(event.key.key == SDLK_RETURN || event.key.key == SDLK_KP_ENTER) {
-		enter_textbox();
-	}
+	// if(event.key.key == SDLK_ESCAPE || event.key.key == SDLK_AC_BACK) {
+	// 	menu_handler_.get_textbox()->close();
+	// } else if(event.key.key == SDLK_TAB) {
+	// 	tab();
+	// } else if(event.key.key == SDLK_UP) {
+	// 	textbox_move_vertically(true);
+	// } else if(event.key.key == SDLK_DOWN) {
+	// 	textbox_move_vertically(false);
+	// } else if(event.key.key == SDLK_RETURN || event.key.key == SDLK_KP_ENTER) {
+	// 	enter_textbox();
+	// }
 }
 
 void play_controller::process_keydown_event(const SDL_Event& event)
