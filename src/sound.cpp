@@ -437,35 +437,6 @@ void close_sound()
 	LOG_AUDIO << "Audio device released.";
 }
 
-void reset_sound()
-{
-	bool music = prefs::get().music_on();
-	bool sound = prefs::get().sound();
-	bool UI_sound = prefs::get().ui_sound_on();
-	bool bell = prefs::get().turn_bell();
-
-	if(music || sound || bell || UI_sound) {
-		sound::close_sound();
-		sound::init_sound();
-
-		if(!music) {
-			sound::stop_music();
-		}
-
-		if(!sound) {
-			sound::stop_sound();
-		}
-
-		if(!UI_sound) {
-			sound::stop_UI_sound();
-		}
-
-		if(!bell) {
-			sound::stop_bell();
-		}
-	}
-}
-
 void stop_music()
 {
 	if(mixer) {
