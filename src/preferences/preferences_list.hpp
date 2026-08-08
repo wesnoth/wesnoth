@@ -216,8 +216,6 @@ struct preferences_list_defines
 	ADDPREF(random_faction_mode)
 	/** whether to remember passwords typed into password fields */
 	ADDPREF(remember_password)
-	/** audio sample rate */
-	ADDPREF(sample_rate)
 	/** whether to save replays of games */
 	ADDPREF(save_replays)
 	/** the scroll speed */
@@ -495,7 +493,6 @@ struct preferences_list_defines
 		pixel_scale,
 		random_faction_mode,
 		remember_password,
-		sample_rate,
 		save_replays,
 		scroll,
 		scroll_threshold,

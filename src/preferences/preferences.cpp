@@ -909,22 +909,6 @@ optional_const_config prefs::get_alias()
 	return get_child(prefs_list::alias);
 }
 
-unsigned int prefs::sample_rate()
-{
-	return preferences_[prefs_list::sample_rate].to_int(44100);
-}
-
-void prefs::save_sample_rate(const unsigned int rate)
-{
-	if (sample_rate() == rate)
-		return;
-
-	preferences_[prefs_list::sample_rate] = rate;
-
-	// If audio is open, we have to re set sample rate
-	sound::reset_sound();
-}
-
 bool prefs::confirm_load_save_from_different_version()
 {
 	return preferences_[prefs_list::confirm_load_save_from_different_version].to_bool(true);

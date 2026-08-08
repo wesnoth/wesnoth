@@ -271,9 +271,6 @@ public:
 	bool sound();
 	bool set_sound(bool ison);
 
-	unsigned int sample_rate();
-	void save_sample_rate(const unsigned int rate);
-
 	sound::volume sound_volume();
 	void set_sound_volume(sound::volume vol);
 
@@ -806,7 +803,6 @@ private:
 		prefs_list::skip_ai_moves,
 		prefs_list::skip_mp_replay,
 		prefs_list::sound,
-		prefs_list::sample_rate,
 		prefs_list::stop_music_in_background,
 		prefs_list::turbo,
 		prefs_list::turbo_speed,
