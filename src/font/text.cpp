@@ -35,6 +35,7 @@
 #include "video.hpp"
 
 #include <cassert>
+#include <cstdlib>
 #include <cstring>
 #include <stdexcept>
 
@@ -94,8 +95,8 @@ pango_text::pango_text()
 	, surface_buffer_()
 {
 	// TEMPORARY DIAGNOSTIC - remove before merging.
-	PLAIN_LOG << "pango_text ctor: g_getenv(PANGOCAIRO_BACKEND)="
-		<< (g_getenv("PANGOCAIRO_BACKEND") ? g_getenv("PANGOCAIRO_BACKEND") : "(unset)")
+	PLAIN_LOG << "pango_text ctor: getenv(PANGOCAIRO_BACKEND)="
+		<< (getenv("PANGOCAIRO_BACKEND") ? getenv("PANGOCAIRO_BACKEND") : "(unset)")
 		<< " fontmap type=" << g_type_name(G_OBJECT_TYPE(pango_cairo_font_map_get_default()));
 
 	// With 72 dpi the sizes are the same as with SDL_TTF so hardcoded.
