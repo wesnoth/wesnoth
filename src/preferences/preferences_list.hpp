@@ -254,8 +254,6 @@ struct preferences_list_defines
 	ADDPREF(skip_mp_replay)
 	/** whether to play non-UI sounds */
 	ADDPREF(sound)
-	/** audio buffer size */
-	ADDPREF(sound_buffer_size)
 	/** the volume for playing sounds */
 	ADDPREF(sound_volume)
 	/** list of the last selected single player modifications */
@@ -516,7 +514,6 @@ struct preferences_list_defines
 		skip_ai_moves,
 		skip_mp_replay,
 		sound,
-		sound_buffer_size,
 		sound_volume,
 		sp_modifications,
 		stop_music_in_background,

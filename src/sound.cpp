@@ -327,12 +327,11 @@ std::vector<std::string> enumerate_drivers()
 
 driver_status driver_status::query()
 {
-	driver_status res{mixer != nullptr, 0, SDL_AUDIO_UNKNOWN, 0, 0};
+	driver_status res{mixer != nullptr, 0, SDL_AUDIO_UNKNOWN, 0};
 
 	if(mixer) {
 		SDL_AudioSpec spec;
 		if(MIX_GetMixerFormat(mixer, &spec)) {
-			res.chunk_size = prefs::get().sound_buffer_size();
 			res.frequency = spec.freq;
 			res.format = spec.format;
 			res.channels = spec.channels;

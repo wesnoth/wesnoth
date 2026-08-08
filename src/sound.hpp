@@ -37,7 +37,6 @@ struct driver_status
 	int frequency;
 	SDL_AudioFormat format;
 	int channels;
-	int chunk_size;
 
 	static driver_status query();
 };
