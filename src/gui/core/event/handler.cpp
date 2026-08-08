@@ -24,6 +24,7 @@
 #include "gui/widgets/helper.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
+#include "gui/widgets/settings.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "video.hpp"
 #include "utils/ranges.hpp"
@@ -374,6 +375,9 @@ private:
 	 */
 	dispatcher* keyboard_focus_;
 	friend void capture_keyboard(dispatcher* dispatcher);
+
+	int long_press_timer_id_;
+	void long_press_callback(int x, int y);
 };
 
 sdl_event_handler::sdl_event_handler()
@@ -381,6 +385,7 @@ sdl_event_handler::sdl_event_handler()
 	, mouse_focus(nullptr)
 	, dispatchers_()
 	, keyboard_focus_(nullptr)
+	, long_press_timer_id_(0)
 {
 // The event context is created now we join it.
 #ifdef ENABLE
@@ -419,6 +424,18 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		case SDL_EVENT_MOUSE_BUTTON_DOWN:
 			{
+				if(events::is_touch(event.button)) {
+					PLAIN_LOG << "long touch start";
+					int x = event.button.x;
+					int y = event.button.y;
+
+					if(long_press_timer_id_ == 0) {
+						long_press_timer_id_ = gui2::add_timer(
+							gui2::settings::popup_show_delay,
+							std::bind(&sdl_event_handler::long_press_callback, this, x, y));
+					}
+				}
+
 				const point position{static_cast<int>(event.button.x), static_cast<int>(event.button.y)};
 				const hotkey::hotkey_ptr hk = hotkey::get_hotkey(event);
 				bool done = false;
@@ -433,6 +450,11 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		case SDL_EVENT_MOUSE_BUTTON_UP:
 			{
+				if(long_press_timer_id_ != 0) {
+					gui2::remove_timer(long_press_timer_id_);
+					long_press_timer_id_ = 0;
+				}
+
 				const point position{static_cast<int>(event.button.x), static_cast<int>(event.button.y)};
 				const hotkey::hotkey_ptr hk = hotkey::get_hotkey(event);
 				bool done = false;
@@ -581,6 +603,11 @@ void sdl_event_handler::disconnect(dispatcher* disp)
 
 	/***** Remove dispatcher. *****/
 	dispatchers_.erase(itor);
+
+	if(long_press_timer_id_ != 0) {
+		gui2::remove_timer(long_press_timer_id_);
+		long_press_timer_id_ = 0;
+	}
 
 	if(disp == mouse_focus) {
 		mouse_focus = nullptr;
@@ -763,6 +790,15 @@ void sdl_event_handler::mouse_wheel(const point& position, const point& scroll)
 		mouse_wheel(SDL_WHEEL_DOWN, position, scroll);
 	} else if(scroll.y > 0) {
 		mouse_wheel(SDL_WHEEL_UP, position, scroll);
+	}
+}
+
+void sdl_event_handler::long_press_callback(int x, int y)
+{
+	if(long_press_timer_id_ != 0) {
+		PLAIN_LOG << "long press long_press_callback";
+		// Fire right click
+		mouse_button_down({x, y}, 3);
 	}
 }
 
