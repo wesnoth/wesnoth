@@ -37,6 +37,14 @@ mp_game_settings::mp_game_settings() :
 	mp_scenario(),
 	mp_scenario_name(),
 	mp_campaign(),
+	ranked_mode(false),
+	tournament_id(),
+	tournament_name(),
+	tournament_game_id(),
+	tournament_phase_name(),
+	tournament_group_name(),
+	tournament_round_number(),
+	tournament_game_number(),
 	side_users(),
 	num_turns(0),
 	village_gold(0),
@@ -68,6 +76,14 @@ mp_game_settings::mp_game_settings(const config& cfg)
 	, mp_scenario(cfg["mp_scenario"].str())
 	, mp_scenario_name(cfg["mp_scenario_name"].str())
 	, mp_campaign(cfg["mp_campaign"].str())
+	, ranked_mode(cfg["ranked_mode"].to_bool(false))
+	, tournament_id(cfg["tournament_id"].str())
+	, tournament_name(cfg["tournament_name"].str())
+	, tournament_game_id(cfg["tournament_game_id"].str())
+	, tournament_phase_name(cfg["tournament_phase_name"].str())
+	, tournament_group_name(cfg["tournament_group_name"].str())
+	, tournament_round_number(cfg["tournament_round_number"].str())
+	, tournament_game_number(cfg["tournament_game_number"].str())
 	, side_users(utils::map_split(cfg["side_users"]))
 	, num_turns(cfg["mp_num_turns"].to_int())
 	, village_gold(cfg["mp_village_gold"].to_int())
@@ -107,6 +123,16 @@ config mp_game_settings::to_config() const
 	cfg["mp_scenario"] = mp_scenario;
 	cfg["mp_scenario_name"] = mp_scenario_name;
 	cfg["mp_campaign"] = mp_campaign;
+	// Preserve competitive metadata in presets and the [multiplayer] payload so
+	// the server can enforce the same rules after entering staging.
+	cfg["ranked_mode"] = ranked_mode;
+	cfg["tournament_id"] = tournament_id;
+	cfg["tournament_name"] = tournament_name;
+	cfg["tournament_game_id"] = tournament_game_id;
+	cfg["tournament_phase_name"] = tournament_phase_name;
+	cfg["tournament_group_name"] = tournament_group_name;
+	cfg["tournament_round_number"] = tournament_round_number;
+	cfg["tournament_game_number"] = tournament_game_number;
 	cfg["side_users"] = utils::join_map(side_users);
 	cfg["experience_modifier"] = xp_modifier;
 	cfg["mp_countdown"] = mp_countdown;

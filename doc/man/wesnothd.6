@@ -228,6 +228,22 @@ The name of the user under which to log into the database
 .B db_password
 This user's password
 .TP
+.B tournament_db_host
+The hostname of the database server hosting the Tournament Manager database.
+.TP
+.B tournament_db_user
+The user under which wesnothd connects to the Tournament Manager database.
+.TP
+.B tournament_db_password
+The password for the Tournament Manager database user.
+.TP
+.B tournament_db_name
+The name of the Tournament Manager database. Competitive SQL queries are
+executed in this schema and should use unqualified table names.
+.TP
+.B tournament_db_port
+The TCP port of the Tournament Manager database server. Defaults to 3306.
+.TP
 .B db_users_table
 The name of the table in which your phpbb forum saves its user data. Most likely this will be <table-prefix>_users (e.g. phpbb3_users).
 .TP
@@ -248,6 +264,15 @@ The name of the table in which your phpbb forum saves its user group data. Most 
 .TP
 .B db_tournament_query
 The SQL query to find tournaments to announce on login. Should return tournament \fBtitle\fR, \fBstatus\fR and \fBurl\fR.
+.TP
+.B db_player_tournaments_query
+Parameterized SQL query for pending tournament games in which the logged-in player has an active entry. The query receives the nickname as its first parameter and must return columns named \fBID\fR (tournament ID), \fBNAME\fR (tournament name), \fBGAME_ID\fR (tournament-game ID), \fBPHASE_NAME\fR, \fBGROUP_NAME\fR, \fBROUND_NUMBER\fR, \fBGAME_NUMBER\fR, and \fBMODE\fR (the tournament mode). Phase and group names are displayed verbatim; the client localizes only fixed labels.
+.TP
+.B db_ranked_user_query
+Parameterized SQL query receiving a nickname and returning \fB1\fR when ranked access is enabled, otherwise \fB0\fR.
+.TP
+.B db_tournament_join_query
+Parameterized SQL query used to authorize tournament joins. It receives the tournament ID, tournament-game ID, joining nickname, and joining nickname, and must return \fB1\fR only when that player belongs to either active entry of that exact pending tournament game.
 .TP
 .B db_connection_history_table
 The name of the table in which to store login/logout times. Also used for matching IPs to users and vice versa.
@@ -290,4 +315,3 @@ There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR P
 .SH SEE ALSO
 .
 .BR wesnoth (6)
-

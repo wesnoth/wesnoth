@@ -25,6 +25,30 @@
 
 #include <chrono>
 
+/**
+ * A pending tournament-game entry the authenticated player may select while
+ * creating a game.
+ *
+ * This is session data sent by wesnothd in [join_lobby], rather than part of
+ * persisted game settings. Each entry denotes one pending tournament game, so
+ * the selected tournament game can be recorded with the Wesnoth match.
+ */
+struct mp_tournament_info
+{
+	std::string id;
+	std::string name;
+	std::string game_id;
+	// Server-provided presentation components. Tournament and group names are
+	// organizer-defined and must be displayed verbatim; only the fixed labels
+	// such as "Round" and "Game" are localized by the client.
+	std::string phase_name;
+	std::string group_name;
+	std::string round_number;
+	std::string game_number;
+	/** Tournament Manager mode: ranked, unranked, or team. */
+	std::string mode;
+};
+
 struct mp_game_settings
 {
 	mp_game_settings();
@@ -41,6 +65,17 @@ struct mp_game_settings
 	std::string mp_scenario;
 	std::string mp_scenario_name;
 	std::string mp_campaign;
+	// Competitive-game metadata, serialized into [multiplayer] and used by
+	// wesnothd to authorize creation, joining, and later seat transfers. For a
+	// tournament game, tournament_game_id identifies the precise pending pairing.
+	bool ranked_mode;
+	std::string tournament_id;
+	std::string tournament_name;
+	std::string tournament_game_id;
+	std::string tournament_phase_name;
+	std::string tournament_group_name;
+	std::string tournament_round_number;
+	std::string tournament_game_number;
 	std::map<std::string, std::string> side_users;
 
 	int num_turns;

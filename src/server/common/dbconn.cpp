@@ -22,6 +22,8 @@
 #include "serialization/unicode.hpp"
 #include "utils/general.hpp"
 
+#include <boost/algorithm/string.hpp>
+
 #include <type_traits>
 
 static lg::log_domain log_sql_handler("sql_executor");
@@ -39,6 +41,9 @@ dbconn::dbconn(const config& c)
 	, db_game_content_info_table_(c["db_game_content_info_table"].str())
 	, db_user_group_table_(c["db_user_group_table"].str())
 	, db_tournament_query_(c["db_tournament_query"].str())
+	, db_player_tournaments_query_(c["db_player_tournaments_query"].str())
+	, db_ranked_user_query_(c["db_ranked_user_query"].str())
+	, db_tournament_join_query_(c["db_tournament_join_query"].str())
 	, db_topics_table_(c["db_topics_table"].str())
 	, db_addon_info_table_(c["db_addon_info_table"].str())
 	, db_connection_history_table_(c["db_connection_history_table"].str())
@@ -55,6 +60,107 @@ dbconn::dbconn(const config& c)
 	catch(const mariadb::exception::base& e)
 	{
 		log_sql_exception("Failed to connect to the database!", e);
+	}
+
+	// Tournament Manager may use a different schema, account, or port from the
+	// forum database. Only create this connection when at least one competitive
+	// query is configured, so existing servers without Tournament Manager support
+	// retain their previous startup behavior.
+	if(!db_player_tournaments_query_.empty() || !db_ranked_user_query_.empty() || !db_tournament_join_query_.empty()) {
+		try
+		{
+			tournament_account_ = mariadb::account::create(
+				c["tournament_db_host"].str(),
+				c["tournament_db_user"].str(),
+				c["tournament_db_password"].str(),
+				c["tournament_db_name"].str(),
+				c["tournament_db_port"].to_int(3306));
+			tournament_account_->set_connect_option(mysql_option::MYSQL_SET_CHARSET_NAME, std::string("utf8mb4"));
+			tournament_connection_ = mariadb::connection::create(tournament_account_);
+		}
+		catch(const mariadb::exception::base& e)
+		{
+			log_sql_exception("Failed to connect to the Tournament Manager database!", e);
+		}
+	}
+}
+
+config dbconn::get_player_tournaments(const std::string& name)
+{
+	// The query is optional to retain compatibility with servers that do not
+	// configure Tournament/Ranked support.
+	config result;
+	if(db_player_tournaments_query_.empty() || !tournament_connection_) {
+		return result;
+	}
+	try {
+		mariadb::result_set_ref rows = select(tournament_connection_, db_player_tournaments_query_, {name});
+		while(rows->next()) {
+			config& tournament = result.add_child("tournament");
+			tournament["id"] = rows->get_string("ID");
+			tournament["name"] = rows->get_string("NAME");
+			tournament["game_id"] = rows->get_string("GAME_ID");
+			tournament["phase_name"] = rows->get_string("PHASE_NAME");
+			tournament["group_name"] = rows->get_string("GROUP_NAME");
+			// The configured query returns these tournament sequence columns as
+			// SMALLINT. Convert them to strings for the WML payload consumed by the
+			// client.
+			tournament["round_number"] = std::to_string(rows->get_signed16("ROUND_NUMBER"));
+			tournament["game_number"] = std::to_string(rows->get_signed16("GAME_NUMBER"));
+			tournament["mode"] = rows->get_string("MODE");
+		}
+	} catch(const mariadb::exception::base& e) {
+		log_sql_exception("Could not retrieve the player's tournaments!", e);
+	}
+	return result;
+}
+
+bool dbconn::can_create_tournament_game(const std::string& name, const std::string& tournament_id, const std::string& tournament_game_id, bool& ranked)
+{
+	// Reuse the exact query that populated the selector. Keep its result alive
+	// while iterating child_range(); otherwise the range would reference a
+	// temporary config and could crash wesnothd during game creation.
+	const config tournaments = get_player_tournaments(name);
+	for(const config& tournament : tournaments.child_range("tournament")) {
+		if(tournament["id"] == tournament_id && tournament["game_id"] == tournament_game_id) {
+			ranked = boost::algorithm::iequals(tournament["mode"].str(), "ranked");
+			return true;
+		}
+	}
+
+	return false;
+}
+
+bool dbconn::is_ranked_user(const std::string& name)
+{
+	// Treat an unavailable query or a database failure as denied competitive
+	// access. Ordinary games do not call this method and remain available when
+	// the Tournament Manager database is absent.
+	if(db_ranked_user_query_.empty() || !tournament_connection_) {
+		return false;
+	}
+	try {
+		return get_single_long(tournament_connection_, db_ranked_user_query_, {name}) == 1;
+	} catch(const mariadb::exception::base& e) {
+		log_sql_exception("Could not verify ranked access!", e);
+		return false;
+	}
+}
+
+bool dbconn::can_join_tournament(const std::string& name, const std::string& tournament_id, const std::string& tournament_game_id)
+{
+	// The selected game ID identifies both permitted entries, so the query does
+	// not need the host nickname to reject unrelated tournament participants.
+	// A missing connection denies tournament access while ordinary games remain
+	// unaffected because they do not call this method.
+	if(db_tournament_join_query_.empty() || !tournament_connection_) {
+		return false;
+	}
+	try {
+		return get_single_long(tournament_connection_, db_tournament_join_query_, {tournament_id, tournament_game_id, name, name}) == 1;
+	} catch(const mariadb::exception::base& e) {
+		log_sql_exception("Could not verify tournament access!", e);
+		return false;
 	}
 }
 
@@ -793,6 +899,9 @@ long dbconn::get_single_long(const mariadb::connection_ref& connection, const st
 			case mariadb::value::type::unsigned64:
 			case mariadb::value::type::signed64:
 				return rslt->get_signed64(0);
+			case mariadb::value::type::double64:
+				// MariaDB 11.8 returns some aggregate expressions as DOUBLE.
+				return static_cast<long>(rslt->get_double(0));
 			default:
 				throw mariadb::exception::base("Value retrieved was not a long!");
 		}

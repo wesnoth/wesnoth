@@ -103,6 +103,8 @@ private:
 			: is_moderator(cfg["is_moderator"].to_bool(false))
 			, profile_url_prefix(cfg["profile_url_prefix"].str())
 			, queues()
+			, tournaments()
+			, ranked_enabled(cfg["ranked_enabled"].to_bool(true))
 		{
 			if(cfg.has_child("queues")) {
 				for(const config& queue : cfg.mandatory_child("queues").child_range("queue")) {
@@ -114,6 +116,15 @@ private:
 					queues.emplace_back(info);
 				}
 			}
+			// wesnothd returns one entry per pending tournament game in which the
+			// authenticated player participates.
+			for(const config& tournament : cfg.child_range("tournament")) {
+				tournaments.push_back({
+				tournament["id"].str(), tournament["name"].str(), tournament["game_id"].str(),
+				tournament["phase_name"].str(),
+					tournament["group_name"].str(), tournament["round_number"].str(),
+					tournament["game_number"].str(), tournament["mode"].str()});
+			}
 		}
 
 		/** Whether you are logged in as a server moderator. */
@@ -122,8 +133,12 @@ private:
 		/** The external URL prefix for player profiles (empty if the server doesn't have an attached database). */
 		std::string profile_url_prefix;
 
-		/** The list of server-side queues */
+		/** The list of server-side queues. */
 		std::vector<queue_info> queues;
+		/** Pending tournament-game entries selectable by this player only. */
+		std::vector<mp_tournament_info> tournaments;
+		/** Whether this player may host a ranked game. */
+		bool ranked_enabled = true;
 	};
 
 	/** Opens a new server connection and prompts the client for login credentials, if necessary. */
@@ -596,12 +611,26 @@ void mp_manager::enter_create_mode(utils::optional<config> preset, int queue_id)
 {
 	DBG_MP << "entering create mode";
 
+	if(connection && !preset) {
+		// Tournament eligibility can change while the client remains logged in
+		// (for example, when a new round opens). Refresh session data immediately
+		// before constructing the create-game dialog.
+		connection->send_data(config{"refresh_session"});
+		config response;
+		while(connection->wait_and_receive_data(response)) {
+			if(const auto join_lobby = response.optional_child("join_lobby")) {
+				session_info = {join_lobby.value()};
+				break;
+			}
+		}
+	}
+
 	// if this is using pre-determined settings and the settings came from the server, use those
 	// else look for them locally
 	if(preset) {
 		gui2::dialogs::mp_create_game::quick_mp_setup(state, preset.value());
 		enter_staging_mode(queue_id >= 0 ? queue_type::type::server_preset : queue_type::type::normal, queue_id);
-	} else if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
+	} else if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr, session_info.tournaments, session_info.ranked_enabled)) {
 		enter_staging_mode(queue_type::type::normal);
 	} else if(connection) {
 		connection->send_data(config{"refresh_lobby"});

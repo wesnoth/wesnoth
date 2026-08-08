@@ -766,6 +766,41 @@ void server::handle_new_client(tls_socket_ptr socket)
 	);
 }
 
+void server::make_session_response(simple_wml::document& response, const std::string& username, bool is_moderator)
+{
+	simple_wml::node& session = response.root().add_child("join_lobby");
+	session.set_attr("is_moderator", is_moderator ? "yes" : "no");
+	session.set_attr_dup("profile_url_prefix", "https://r.wesnoth.org/u");
+	session.set_attr("ranked_enabled", user_handler_ && user_handler_->is_ranked_user(username) ? "yes" : "no");
+
+	// Queues and tournament-game entries are session data and must be refreshed
+	// when the player opens the create-game dialog, not only at login time.
+	simple_wml::node& queues = session.add_child("queues");
+	for(const auto& [id, queue] : queue_info_) {
+		simple_wml::node& queue_node = queues.add_child("queue");
+		queue_node.set_attr_int("id", queue.id);
+		queue_node.set_attr_dup("display_name", queue.display_name.c_str());
+		queue_node.set_attr_int("players_required", queue.players_required);
+		queue_node.set_attr_dup("current_players", utils::join(queue.players_in_queue).c_str());
+	}
+
+	if(user_handler_) {
+		config tournaments = user_handler_->get_player_tournaments(username);
+		for(const config& tournament : tournaments.child_range("tournament")) {
+			simple_wml::node& node = session.add_child("tournament");
+			node.set_attr_dup("id", tournament["id"].str().c_str());
+			node.set_attr_dup("name", tournament["name"].str().c_str());
+			node.set_attr_dup("game_id", tournament["game_id"].str().c_str());
+			node.set_attr_dup("phase_name", tournament["phase_name"].str().c_str());
+			node.set_attr_dup("group_name", tournament["group_name"].str().c_str());
+			node.set_attr_dup("round_number", tournament["round_number"].str().c_str());
+			node.set_attr_dup("game_number", tournament["game_number"].str().c_str());
+			node.set_attr_dup("mode", tournament["mode"].str().c_str());
+		}
+	}
+
+}
+
 template<class SocketPtr>
 void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 {
@@ -844,7 +879,10 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 		async_send_error(socket, "You must login first.", MP_MUST_LOGIN);
 	}
 
+	// Publish ranked capability in the lobby user list for the small laurel
+	// indicator. It is informational only; all authorization is rechecked.
 	simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
+	player_cfg.set_attr("ranked_enabled", user_handler_ && user_handler_->is_ranked_user(username) ? "yes" : "no");
 
 	player_iterator new_player;
 	bool inserted;
@@ -865,17 +903,7 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 	assert(inserted && "unexpected duplicate username");
 
 	simple_wml::document join_lobby_response;
-	join_lobby_response.root().add_child("join_lobby").set_attr("is_moderator", is_moderator ? "yes" : "no");
-	simple_wml::node& join_lobby_node = join_lobby_response.root().child("join_lobby")->set_attr_dup("profile_url_prefix", "https://r.wesnoth.org/u");
-	// add server-side queues info
-	simple_wml::node& queues_node = join_lobby_node.add_child("queues");
-	for(const auto& [id, queue] : queue_info_) {
-		simple_wml::node& queue_node = queues_node.add_child("queue");
-		queue_node.set_attr_int("id", queue.id);
-		queue_node.set_attr_dup("display_name", queue.display_name.c_str());
-		queue_node.set_attr_int("players_required", queue.players_required);
-		queue_node.set_attr_dup("current_players", utils::join(queue.players_in_queue).c_str());
-	}
+	make_session_response(join_lobby_response, username, is_moderator);
 	coro_send_doc(socket, join_lobby_response, yield);
 
 	boost::asio::spawn(io_service_,
@@ -1196,6 +1224,13 @@ template<class SocketPtr> void server::handle_player(boost::asio::yield_context 
 		if(!doc) return;
 
 		// DBG_SERVER << client_address(socket) << "\tWML received:\n" << doc->output();
+		if(doc->child("refresh_session")) {
+			simple_wml::document response;
+			make_session_response(response, player->name(), player->info().is_moderator());
+			coro_send_doc(socket, response, yield);
+			continue;
+		}
+
 		if(doc->child("refresh_lobby")) {
 			async_send_doc_queued(socket, games_and_users_list_);
 			continue;
@@ -1227,6 +1262,18 @@ template<class SocketPtr> void server::handle_player(boost::asio::yield_context 
 			handle_player_in_game(player, *doc);
 		}
 	}
+}
+
+bool server::user_can_join_game(const simple_wml::node& settings, const std::string& name)
+{
+	// A server without a configured user handler may still host ordinary games,
+	// but cannot safely authorize Ranked/Tournament participation.
+	if(!user_handler_) {
+		return !settings["ranked_mode"].to_bool(false) && settings["tournament_id"].empty();
+	}
+	return (!settings["ranked_mode"].to_bool(false) || user_handler_->is_ranked_user(name))
+		&& (settings["tournament_id"].empty()
+			|| user_handler_->can_join_tournament(name, settings["tournament_id"].to_string(), settings["tournament_game_id"].to_string()));
 }
 
 void server::handle_player_in_lobby(player_iterator player, simple_wml::document& data)
@@ -1589,6 +1636,11 @@ void server::handle_join_game(player_iterator player, simple_wml::node& join)
 	if(g_iter != player_connections_.get<game_t>().end()) {
 		g = g_iter->get_game();
 	}
+	// Game settings are authoritative only after level initialization. The
+	// fallback keeps malformed/missing game state from accidentally authorizing
+	// a ranked or tournament join.
+	const simple_wml::node* game_settings_node = g ? g->level().root().child("multiplayer") : nullptr;
+	const simple_wml::node& game_settings = game_settings_node ? *game_settings_node : games_and_users_list_.root();
 
 	static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
 	if(!g) {
@@ -1605,8 +1657,21 @@ void server::handle_join_game(player_iterator player, simple_wml::node& join)
 		send_server_message(player, "Attempt to join an uninitialized game.", "error");
 		send_to_player(player, games_and_users_list_);
 		return;
+	} else if(!observer && game_settings["ranked_mode"].to_bool(false) && (!user_handler_ || !user_handler_->is_ranked_user(player->info().name()))) {
+		// Observers are permitted. They cannot receive a side later unless the
+		// staging eligibility check permits it.
+		send_to_player(player, leave_game_doc);
+		send_localized_message(player, "ranked_access_required");
+		send_to_player(player, games_and_users_list_);
+		return;
+	} else if(!observer && !game_settings["tournament_id"].empty() && (!user_handler_ || !user_handler_->can_join_tournament(player->info().name(), game_settings["tournament_id"].to_string(), game_settings["tournament_game_id"].to_string()))) {
+		send_to_player(player, leave_game_doc);
+		send_localized_message(player, "tournament_join_denied");
+		send_to_player(player, games_and_users_list_);
+		return;
 	} else if(player->info().is_moderator()) {
-		// Admins are always allowed to join.
+		// Moderators retain the existing ban/password bypass for ordinary games.
+		// Competitive games have already passed the Tournament Manager checks.
 	} else if(g->player_is_banned(player, player->info().name())) {
 		DBG_SERVER << player->client_ip()
 				   << "\tReject banned player: " << player->info().name()
@@ -1774,6 +1839,31 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		// place a pointer to that summary in the game's description.
 		// g.level() should then receive the full data for the game.
 		if(!g.level_init()) {
+			// Validate the creator before publishing the game in the lobby. Client
+			// widget state is not trusted for ranked or tournament authorization.
+			if(const simple_wml::node* m = data.child("multiplayer")) {
+				if(m->attr("ranked_mode").to_bool(false) && (!user_handler_ || !user_handler_->is_ranked_user(player.name()))) {
+					send_localized_message(p, "ranked_access_required");
+					delete_game(g.id());
+					return;
+				}
+				const std::string tournament_id = m->attr("tournament_id").to_string();
+				if(!tournament_id.empty()) {
+					bool tournament_is_ranked = false;
+					if(!user_handler_ || !user_handler_->can_create_tournament_game(player.name(), tournament_id, m->attr("tournament_game_id").to_string(), tournament_is_ranked)) {
+						send_localized_message(p, "tournament_creation_denied");
+						delete_game(g.id());
+						return;
+					}
+					// Do not trust a modified client to choose a ranked flag that
+					// conflicts with the selected Tournament Manager pairing.
+					if(m->attr("ranked_mode").to_bool(false) != tournament_is_ranked) {
+						send_localized_message(p, "tournament_mode_mismatch");
+						delete_game(g.id());
+						return;
+					}
+				}
+			}
 			LOG_SERVER << p->client_ip() << "\t" << player.name() << "\tcreated game:\t\"" << g.name() << "\" ("
 					   << g.id() << ", " << g.db_id() << ").";
 			// Update our config object which describes the open games,
@@ -1999,12 +2089,18 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			std::set<std::string> primary_keys;
 			for(const auto& addon : m.children("addon")) {
 				for(const auto& content : addon->children("content")) {
-					std::string key = uuid_+"-"+std::to_string(g.db_id())+"-"+content->attr("type").to_string()+"-"+content->attr("id").to_string()+"-"+addon->attr("id").to_string();
+					const std::string content_type = content->attr("type").to_string();
+					const std::string content_id = content->attr("id").to_string();
+					const std::string content_name = content->attr("name").to_string();
+					const std::string addon_id = addon->attr("id").to_string();
+					const std::string addon_version = addon->attr("version").to_string();
+					const std::string key = uuid_ + "-" + std::to_string(g.db_id()) + "-"
+						+ content_type + "-" + content_id + "-" + addon_id;
 					if(primary_keys.count(key) == 0) {
 						primary_keys.emplace(key);
-						unsigned long long rows_inserted = user_handler_->db_insert_game_content_info(uuid_, g.db_id(), content->attr("type").to_string(), content->attr("name").to_string(), content->attr("id").to_string(), addon->attr("id").to_string(), addon->attr("version").to_string());
+						unsigned long long rows_inserted = user_handler_->db_insert_game_content_info(uuid_, g.db_id(), content_type, content_name, content_id, addon_id, addon_version);
 						if(rows_inserted == 0) {
-							WRN_SERVER << "Did not insert content row for [addon] data with uuid '" << uuid_ << "', game ID '" << g.db_id() << "', type '" << content->attr("type").to_string() << "', and content ID '" << content->attr("id").to_string() << "'";
+							WRN_SERVER << "Did not insert content row for [addon] data with uuid '" << uuid_ << "', game ID '" << g.db_id() << "', type '" << content_type << "', and content ID '" << content_id << "'";
 						}
 					}
 				}
@@ -2012,6 +2108,19 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			if(m.children("addon").size() == 0) {
 				WRN_SERVER << "Game content info missing for game with uuid '" << uuid_ << "', game ID '" << g.db_id() << "', named '" << g.name() << "'";
 			}
+
+			// Store both human-readable names and immutable IDs in game_content_info.
+			// Together, tournament and tournament_game identify the exact pending
+			// Tournament Manager pairing that this Wesnoth game reports.
+			const std::string ranked = m["ranked_mode"].to_bool(false) ? "yes" : "no";
+			user_handler_->db_insert_game_content_info(uuid_, g.db_id(), "ranked", ranked, ranked, "", "");
+			const std::string tournament_id = m["tournament_id"].to_string();
+			const std::string tournament_name = tournament_id.empty() || m["tournament_name"].empty()
+				? (tournament_id.empty() ? "No" : tournament_id)
+				: m["tournament_name"].to_string();
+			user_handler_->db_insert_game_content_info(uuid_, g.db_id(), "tournament", tournament_name, tournament_id.empty() ? "No" : tournament_id, "", "");
+			const std::string tournament_game_id = m["tournament_game_id"].to_string();
+			user_handler_->db_insert_game_content_info(uuid_, g.db_id(), "tournament_game", tournament_name, tournament_game_id.empty() ? "No" : tournament_game_id, "", "");
 
 			user_handler_->db_insert_game_info(uuid_, g.db_id(), server_id_, g.name(), g.is_reload(), m["observer"].to_bool(), !m["private_replay"].to_bool(), g.has_password());
 
@@ -2125,6 +2234,14 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		return;
 		// If the owner of a side is changing the controller.
 	} else if(const simple_wml::node* change = data.child("change_controller")) {
+		const simple_wml::node* settings = g.level().root().child("multiplayer");
+		if(settings && !user_can_join_game(*settings, change->attr("player").to_string())) {
+			send_localized_message(p, "side_assignment_denied");
+			// A rejected control request must not be represented as a side_drop:
+			// that message means that a player actually left the game, and the
+			// client may terminate the current game when it receives one.
+			return;
+		}
 		g.transfer_side_control(p, *change);
 		g.describe_slots();
 		update_game_in_lobby(g);
@@ -2240,6 +2357,16 @@ template<class SocketPtr> void server::send_server_message(SocketPtr socket, con
 	msg.set_attr_dup("type", type.c_str());
 
 	async_send_doc_queued(socket, server_message);
+}
+
+void server::send_localized_message(player_iterator player, const char* message_id)
+{
+	simple_wml::document server_message;
+	simple_wml::node& message = server_message.root().add_child("message");
+	message.set_attr("sender", "server");
+	message.set_attr("type", "info");
+	message.set_attr("message_id", message_id);
+	send_to_player(player, server_message);
 }
 
 void server::disconnect_player(player_iterator player)
