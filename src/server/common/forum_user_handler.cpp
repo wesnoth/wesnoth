@@ -23,6 +23,7 @@
 #include "config.hpp"
 
 #include <boost/asio/post.hpp>
+#include <boost/asio/system_executor.hpp>
 
 #include <cstdlib>
 #include <sstream>
@@ -229,8 +230,30 @@ std::string fuh::get_tournaments(){
 	return conn_.get_tournaments();
 }
 
+// Expose the player's pending tournament games through user_handler.
+config fuh::get_player_tournaments(const std::string& name){
+	// Keep tournament policy in dbconn; this handler only exposes it through
+	// the server-wide user_handler interface.
+	return conn_.get_player_tournaments(name);
+}
+
+// Delegate host eligibility and the tournament mode lookup to dbconn.
+bool fuh::can_create_tournament_game(const std::string& name, const std::string& tournament_id, const std::string& tournament_game_id, bool& ranked){
+	return conn_.can_create_tournament_game(name, tournament_id, tournament_game_id, ranked);
+}
+
+// Delegate ranked-access verification to the Tournament Manager database.
+bool fuh::is_ranked_user(const std::string& name){
+	return conn_.is_ranked_user(name);
+}
+
+// Delegate tournament-game join authorization to dbconn.
+bool fuh::can_join_tournament(const std::string& name, const std::string& tournament_id, const std::string& tournament_game_id){
+	return conn_.can_join_tournament(name, tournament_id, tournament_game_id);
+}
+
 void fuh::async_get_and_send_game_history(boost::asio::io_context& io_service, wesnothd::server& s, any_socket_ptr socket, int player_id, int offset, std::string& search_game_name, int search_content_type, std::string& search_content) {
-	boost::asio::post([this, &s, socket, player_id, offset, &io_service, search_game_name, search_content_type, search_content] {
+	boost::asio::post(boost::asio::system_executor{}, [this, &s, socket, player_id, offset, &io_service, search_game_name, search_content_type, search_content] {
 		boost::asio::post(io_service, [socket, &s, doc = conn_.get_game_history(player_id, offset, search_game_name, search_content_type, search_content)]{
 			s.send_to_player(socket, *doc);
 		});
@@ -258,7 +281,7 @@ void fuh::db_set_oos_flag(const std::string& uuid, int game_id){
 }
 
 void fuh::async_test_query(boost::asio::io_context& io_service, int limit) {
-	boost::asio::post([this, limit, &io_service] {
+	boost::asio::post(boost::asio::system_executor{}, [this, limit, &io_service] {
 		ERR_UH << "async test query starts!";
 		int i = conn_.async_test_query(limit);
 		boost::asio::post(io_service, [i]{ ERR_UH << "async test query output: " << i; });

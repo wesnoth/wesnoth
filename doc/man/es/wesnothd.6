@@ -228,6 +228,25 @@ El nombre del usuario con el cual iniciar sesión en la base de datos
 \fBdb_password\fP
 La contraseña de este usuario
 .TP 
+\fBtournament_db_host\fP
+El nombre del host del servidor de base de datos de Tournament Manager.
+.TP
+\fBtournament_db_user\fP
+El usuario con el que wesnothd se conecta a la base de datos de Tournament
+Manager.
+.TP
+\fBtournament_db_password\fP
+La contraseña del usuario de la base de datos de Tournament Manager.
+.TP
+\fBtournament_db_name\fP
+El nombre de la base de datos de Tournament Manager. Las consultas
+competitivas se ejecutan en este esquema y deben usar nombres de tabla sin
+prefijo de base de datos.
+.TP
+\fBtournament_db_port\fP
+El puerto TCP del servidor de base de datos de Tournament Manager. El valor
+predeterminado es 3306.
+.TP
 \fBdb_users_table\fP
 El nombre de la tabla en la que sus foros phpBB almacenan los datos de sus
 usuarios. Generalmente éste será <table\-prefix>_users (por ej.:
@@ -258,6 +277,25 @@ grupos de usuarios. Generalmente éste será <table\-prefix>_user_group
 La consulta SQL para encontrar torneos que se anunciarán al iniciar
 sesión. Debe devolver el torneo \fBtitle\fP, \fBstatus\fP y \fBurl\fP.
 .TP 
+\fBdb_player_tournaments_query\fP
+Consulta SQL parametrizada para las partidas de torneo pendientes en las que
+el jugador conectado tiene una entrada activa. Recibe el apodo como primer
+parámetro y debe devolver columnas llamadas \fBID\fP (identificador del torneo),
+\fBNAME\fP (nombre del torneo), \fBGAME_ID\fP (identificador de la partida de
+torneo), \fBPHASE_NAME\fP, \fBGROUP_NAME\fP, \fBROUND_NUMBER\fP,
+\fBGAME_NUMBER\fP y \fBMODE\fP (modo del torneo). Los nombres de fase y
+grupo se muestran literalmente; el cliente solo traduce las etiquetas fijas.
+.TP
+\fBdb_ranked_user_query\fP
+Consulta SQL parametrizada que recibe un apodo y devuelve \fB1\fP si el
+usuario puede jugar partidas clasificatorias, o \fB0\fP en caso contrario.
+.TP
+\fBdb_tournament_join_query\fP
+Consulta SQL parametrizada para autorizar unirse a partidas de torneo.
+Recibe el identificador del torneo, el identificador de la partida de torneo y
+dos veces el apodo que se une; debe devolver \fB1\fP solo si ese jugador
+pertenece a una de las entradas activas de esa partida de torneo pendiente.
+.TP
 \fBdb_connection_history_table\fP
 El nombre de la tabla en la que almacenar los tiempos de inicio/cierre de
 sesión. También se utiliza para hacer coincidir las direcciones IP con los
@@ -314,4 +352,3 @@ PROPÓSITO PARTICULAR.
 .SH "VÉASE TAMBIÉN"
 .
 \fBwesnoth\fP(6)
-

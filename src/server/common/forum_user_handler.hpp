@@ -120,6 +120,13 @@ public:
 	 */
 	std::string get_tournaments();
 
+	/** Tournament/Ranked authorization facade used by wesnothd. The tournament
+	 * methods work with a concrete pending tournament-game ID. */
+	config get_player_tournaments(const std::string& name);
+	bool can_create_tournament_game(const std::string& name, const std::string& tournament_id, const std::string& tournament_game_id, bool& ranked);
+	bool is_ranked_user(const std::string& name);
+	bool can_join_tournament(const std::string& name, const std::string& tournament_id, const std::string& tournament_game_id);
+
 	/**
 	 * Runs an asynchronous query to fetch the user's game history data.
 	 * The result is then posted back to the main boost::asio thread to be sent to the requesting player.
