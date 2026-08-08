@@ -16,6 +16,7 @@
 #include "lua_jailbreak_exception.hpp"
 
 #include <cassert>
+#include <typeinfo>
 
 void lua_jailbreak_exception::store() const noexcept
 {
@@ -30,6 +31,21 @@ void lua_jailbreak_exception::store() const noexcept
 	}
 
 	jailbreak_exception = this->clone();
+}
+
+void lua_jailbreak_exception::caught() const noexcept
+{
+	assert(jail_depth != 0);
+	// At jail_depth 0, the exception would already have been cleared.
+	// This assert may alternatively become an early return,
+	// if this method is called in places that may or may not have a lua stack.
+
+	assert(jailbreak_exception);
+	// jailbreak_exception should be a clone of this, but we don't have
+	// operator==, or even any members to compare.
+	assert(typeid(*jailbreak_exception) == typeid(*this));
+
+	clear();
 }
 
 void lua_jailbreak_exception::rethrow()

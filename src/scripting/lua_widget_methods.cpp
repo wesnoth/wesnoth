@@ -53,9 +53,17 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 int intf_show_dialog(lua_State* L)
 {
 	config def_cfg = luaW_checkconfig(L, 1);
-	gui2::builder_window::window_resolution def(def_cfg);
-
-	auto wp = std::make_unique<gui2::window>(def);
+	std::unique_ptr<gui2::window> wp;
+	try {
+		gui2::builder_window::window_resolution def(def_cfg);
+		wp = std::make_unique<gui2::window>(def);
+	} catch (const wml_exception& error) {
+		error.caught();
+		error.show();
+		// luaL_argerror is effectively a throw statement
+		// It exits the current lua context, but returns control to its caller
+		return luaL_argerror(L, 1, error.dev_message.c_str());
+	}
 
 	if(!lua_isnoneornil(L, 2)) {
 		lua_pushvalue(L, 2);

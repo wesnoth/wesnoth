@@ -34,6 +34,9 @@ public:
 	/** Stores a copy the current exception to be rethrown. */
 	void store() const noexcept;
 
+	/** Clears the rethrow mechanism of this exception. */
+	void caught() const noexcept;
+
 	/**
 	 * Rethrows the stored exception.
 	 *
