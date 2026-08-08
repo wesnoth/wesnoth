@@ -63,7 +63,8 @@ public:
 		OBSERVE,
 		CREATE, /** player clicked the Create button */
 		RELOAD_CONFIG,
-		CREATE_PRESET
+		CREATE_PRESET,
+		RELOAD_UI /** GUI2 theme was changed via Preferences and needs to be applied */
 	};
 
 	const config queue_game_server_preset() const { return queue_game_server_preset_; }
