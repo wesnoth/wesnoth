@@ -29,6 +29,9 @@
 
 
 #include <fontconfig/fontconfig.h>
+#ifdef _WIN32
+#include <pango/pangocairo.h>
+#endif
 
 static lg::log_domain log_font("font");
 #define DBG_FT LOG_STREAM(debug, log_font)
@@ -138,6 +141,23 @@ manager::manager()
 	{
 		LOG_FT << "Local font configuration loaded";
 	}
+
+#ifdef _WIN32
+	// Pango's default Windows back-end is the native win32/GDI one, which never
+	// consults fontconfig and thus never sees the custom fonts registered above.
+	// Setting PANGOCAIRO_BACKEND=fontconfig in main() is meant to prevent this,
+	// but on some Windows builds it has not reliably taken effect (since the
+	// SDL3 migration) before Pango's default font map is first created, so force
+	// it explicitly here instead of relying on that environment variable being
+	// seen in time.
+	PangoFontMap* fc_font_map = pango_cairo_font_map_new_for_font_type(CAIRO_FONT_TYPE_FT);
+	if(fc_font_map) {
+		pango_cairo_font_map_set_default(PANGO_CAIRO_FONT_MAP(fc_font_map));
+		g_object_unref(fc_font_map);
+	} else {
+		ERR_FT << "Could not create a fontconfig-backed Pango font map";
+	}
+#endif
 }
 
 manager::~manager()
