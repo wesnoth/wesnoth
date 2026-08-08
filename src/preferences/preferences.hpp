@@ -274,9 +274,6 @@ public:
 	unsigned int sample_rate();
 	void save_sample_rate(const unsigned int rate);
 
-	std::size_t sound_buffer_size();
-	void save_sound_buffer_size(const std::size_t size);
-
 	sound::volume sound_volume();
 	void set_sound_volume(sound::volume vol);
 
@@ -867,7 +864,6 @@ private:
 		prefs_list::show_tips,
 		prefs_list::mp_server_program_name,
 		prefs_list::pixel_scale,
-		prefs_list::sound_buffer_size,
 		prefs_list::theme,
 		prefs_list::tile_size,
 		prefs_list::vsync,

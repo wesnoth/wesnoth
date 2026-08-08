@@ -700,30 +700,6 @@ void prefs::keepalive_timeout(int seconds)
 	preferences_[prefs_list::keepalive_timeout] = std::abs(seconds);
 }
 
-std::size_t prefs::sound_buffer_size()
-{
-	// Sounds don't sound good on Windows unless the buffer size is 4k,
-	// but this seems to cause crashes on other systems...
-	#ifdef _WIN32
-		const std::size_t buf_size = 4096;
-	#else
-		const std::size_t buf_size = 1024;
-	#endif
-
-	return preferences_[prefs_list::sound_buffer_size].to_int(buf_size);
-}
-
-void prefs::save_sound_buffer_size(const std::size_t size)
-{
-	const std::string new_size = std::to_string(size);
-	if (preferences_[prefs_list::sound_buffer_size] == new_size)
-		return;
-
-	preferences_[prefs_list::sound_buffer_size] = new_size;
-
-	sound::reset_sound();
-}
-
 sound::volume prefs::music_volume()
 {
 	return sound::volume::from_percent(preferences_[prefs_list::music_volume].to_double(100.f));
