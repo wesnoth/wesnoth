@@ -986,7 +986,7 @@ volume get_music_volume()
 void set_music_volume(volume vol)
 {
 	if(mixer) {
-		MIX_SetTrackGain(sound::music_channels[0], clamp_gain(vol));
+		MIX_SetTagGain(mixer, sound_tracks::music, clamp_gain(vol));
 	}
 }
 
@@ -1005,14 +1005,8 @@ void set_sound_volume(volume vol)
 	if(mixer) {
 		vol = clamp_gain(vol);
 
-		// Bell, timer and UI have separate tracks which we can't set up from this
-		for(channel& c : positional_channels) {
-			MIX_SetTrackGain(c, vol);
-		}
-
-		for(channel& c : SFX_channels) {
-			MIX_SetTrackGain(c, vol);
-		}
+		MIX_SetTagGain(mixer, sound_tracks::sound_source, vol);
+		MIX_SetTagGain(mixer, sound_tracks::sound_fx, vol);
 	}
 }
 
@@ -1024,19 +1018,15 @@ void set_bell_volume(volume vol)
 	if(mixer) {
 		vol = clamp_gain(vol);
 
-		MIX_SetTrackGain(sound::bell_channels[0], vol);
-		MIX_SetTrackGain(sound::timer_channels[0], vol);
+		MIX_SetTagGain(mixer, sound_tracks::sound_bell, vol);
+		MIX_SetTagGain(mixer, sound_tracks::sound_timer, vol);
 	}
 }
 
 void set_UI_volume(volume vol)
 {
 	if(mixer) {
-		vol = clamp_gain(vol);
-
-		for(channel& c : UI_channels) {
-			MIX_SetTrackGain(c, vol);
-		}
+		MIX_SetTagGain(mixer, sound_tracks::sound_ui, clamp_gain(vol));
 	}
 }
 
