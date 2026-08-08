@@ -33,10 +33,10 @@ std::vector<std::string> enumerate_drivers();
 
 struct driver_status
 {
-	bool initialized;
-	int frequency;
-	SDL_AudioFormat format;
-	int channels;
+	bool initialized{false};
+	int frequency{0};
+	SDL_AudioFormat format{SDL_AUDIO_UNKNOWN};
+	int channels{0};
 
 	static driver_status query();
 };
