@@ -61,6 +61,23 @@ public:
 	std::string get_tournaments();
 
 	/**
+	 * Execute db_player_tournaments_query for a lobby login. The query returns
+	 * one entry per pending tournament game where the player has an active
+	 * entry. Required result columns are ID, NAME, GAME_ID, PHASE_NAME,
+	 * GROUP_NAME, ROUND_NUMBER, GAME_NUMBER, and MODE. The
+	 * phase/group names are organizer-defined presentation data, not localized
+	 * strings; the client localizes only the fixed Round/Game labels.
+	 */
+	config get_player_tournaments(const std::string& name);
+	/** Recheck that a host may create the selected pending tournament game and
+	 * return whether its Tournament Manager mode is ranked. */
+	bool can_create_tournament_game(const std::string& name, const std::string& tournament_id, const std::string& tournament_game_id, bool& ranked);
+	/** Execute db_ranked_user_query for ranked authorization. */
+	bool is_ranked_user(const std::string& name);
+	/** Execute db_tournament_join_query for a player's entry in a pending game. */
+	bool can_join_tournament(const std::string& name, const std::string& tournament_id, const std::string& tournament_game_id);
+
+	/**
 	 * This is an asynchronous query that is executed on a separate connection to retrieve the game history for the
 	 * provided player.
 	 *
@@ -269,6 +286,9 @@ private:
 	mariadb::account_ref account_;
 	/** The actual connection to the database. */
 	mariadb::connection_ref connection_;
+	/** Account and connection used for Tournament Manager queries. */
+	mariadb::account_ref tournament_account_;
+	mariadb::connection_ref tournament_connection_;
 
 	/** The name of the table that contains forum user information. */
 	std::string db_users_table_;
@@ -286,6 +306,10 @@ private:
 	std::string db_user_group_table_;
 	/** The text of the SQL query to use to retrieve any currently active tournaments. */
 	std::string db_tournament_query_;
+	/** SQL queries executed against the separately configured Tournament Manager database. */
+	std::string db_player_tournaments_query_;
+	std::string db_ranked_user_query_;
+	std::string db_tournament_join_query_;
 	/** The name of the table that contains phpbb forum thread information */
 	std::string db_topics_table_;
 	/** The name of the table that contains add-on information. */
