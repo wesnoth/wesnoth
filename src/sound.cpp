@@ -421,6 +421,8 @@ void close_sound()
 		mixer = nullptr;
 	}
 
+	flush_cache();
+
 	// as per documentation, calling MIX_Init multiple times won't result in a failure
 	// MIX_Quit then needs to be called the same number of times to make it de-initialize
 	// so, make sure that always happens
