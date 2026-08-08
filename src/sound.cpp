@@ -409,14 +409,9 @@ bool init_sound()
 void close_sound()
 {
 	if(mixer) {
-		stop_bell();
-		stop_UI_sound();
-		stop_sound();
-		stop_music();
-	}
+		MIX_StopAllTracks(mixer, 0);
+		channel_pool = {};
 
-	channel_pool = {};
-	if(mixer) {
 		MIX_DestroyMixer(mixer);
 		mixer = nullptr;
 	}
@@ -426,10 +421,9 @@ void close_sound()
 	// as per documentation, calling MIX_Init multiple times won't result in a failure
 	// MIX_Quit then needs to be called the same number of times to make it de-initialize
 	// so, make sure that always happens
-	for(std::size_t i = 0; i < mixer_init_counter; i++) {
+	while(mixer_init_counter-- > 0) {
 		MIX_Quit();
 	}
-	mixer_init_counter = 0;
 
 	if(SDL_WasInit(SDL_INIT_AUDIO) != 0) {
 		SDL_QuitSubSystem(SDL_INIT_AUDIO);
