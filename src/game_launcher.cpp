@@ -254,9 +254,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	}
 
 	// disable sound in nosound mode, or when sound engine failed to initialize
-	if(no_sound || ((prefs::get().sound() || prefs::get().music_on() ||
-	                  prefs::get().turn_bell() || prefs::get().ui_sound_on()) &&
-	                 !sound::init_sound())) {
+	if(no_sound || !sound::init_sound()) {
 		prefs::get().set_sound(false);
 		prefs::get().set_music(false);
 		prefs::get().set_turn_bell(false);

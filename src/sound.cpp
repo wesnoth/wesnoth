@@ -82,12 +82,11 @@ std::vector<std::string> music_cache_insertion_order;
 std::map<std::string, std::shared_ptr<MIX_Audio>> sound_cache;
 std::vector<std::string> sound_cache_insertion_order;
 
-MIX_Mixer* mixer;
+MIX_Mixer* mixer = nullptr;
 std::size_t mixer_init_counter = 0;
 
 using namespace std::chrono_literals;
 
-bool mix_ok = false;
 utils::optional<std::chrono::steady_clock::time_point> music_start_time;
 utils::rate_counter music_refresh_rate{20};
 bool want_new_music = false;
@@ -328,9 +327,9 @@ std::vector<std::string> enumerate_drivers()
 
 driver_status driver_status::query()
 {
-	driver_status res{mix_ok, 0, SDL_AUDIO_UNKNOWN, 0, 0};
+	driver_status res{mixer != nullptr, 0, SDL_AUDIO_UNKNOWN, 0, 0};
 
-	if(mix_ok) {
+	if(mixer) {
 		SDL_AudioSpec spec;
 		if(MIX_GetMixerFormat(mixer, &spec)) {
 			res.chunk_size = prefs::get().sound_buffer_size();
@@ -360,19 +359,16 @@ bool init_sound()
 		return false;
 	}
 
-	if(!mix_ok) {
+	if(!mixer) {
 		SDL_AudioSpec spec;
 		spec.freq = prefs::get().sample_rate();
 		spec.format = SDL_AUDIO_S16;
 		spec.channels = 2;
 		mixer = MIX_CreateMixerDevice(SDL_AUDIO_DEVICE_DEFAULT_PLAYBACK, &spec);
 		if(!mixer) {
-			mix_ok = false;
 			ERR_AUDIO << "Could not initialize audio: " << SDL_GetError();
 			return false;
 		}
-
-		mix_ok = true;
 
 		for(channel& c : music_channels) {
 			c.allocate_channel(mixer, sound_tracks::music);
@@ -412,17 +408,17 @@ bool init_sound()
 
 void close_sound()
 {
-	if(mix_ok) {
+	if(mixer) {
 		stop_bell();
 		stop_UI_sound();
 		stop_sound();
 		stop_music();
-		mix_ok = false;
 	}
 
 	channel_pool = {};
 	if(mixer) {
 		MIX_DestroyMixer(mixer);
+		mixer = nullptr;
 	}
 
 	// as per documentation, calling MIX_Init multiple times won't result in a failure
@@ -471,16 +467,14 @@ void reset_sound()
 
 void stop_music()
 {
-	if(mix_ok) {
-		for(channel& c : music_channels) {
-			MIX_StopTrack(c, MIX_TrackMSToFrames(c, 500));
-		}
+	if(mixer) {
+		MIX_StopTag(mixer, sound_tracks::music, 500);
 	}
 }
 
 void stop_sound()
 {
-	if(mix_ok) {
+	if(mixer) {
 		MIX_StopTag(mixer, sound_tracks::sound_source, 0);
 		MIX_StopTag(mixer, sound_tracks::sound_fx, 0);
 	}
@@ -491,7 +485,7 @@ void stop_sound()
  */
 void stop_bell()
 {
-	if(mix_ok) {
+	if(mixer) {
 		MIX_StopTag(mixer, sound_tracks::sound_bell, 0);
 		MIX_StopTag(mixer, sound_tracks::sound_timer, 0);
 	}
@@ -499,8 +493,38 @@ void stop_bell()
 
 void stop_UI_sound()
 {
-	if(mix_ok) {
+	if(mixer) {
 		MIX_StopTag(mixer, sound_tracks::sound_ui, 0);
+	}
+}
+
+void restart_music()
+{
+	if(mixer) {
+		MIX_ResumeTag(mixer, sound_tracks::music);
+	}
+}
+
+void restart_sound()
+{
+	if(mixer) {
+		MIX_ResumeTag(mixer, sound_tracks::sound_source);
+		MIX_ResumeTag(mixer, sound_tracks::sound_fx);
+	}
+}
+
+void restart_bell()
+{
+	if(mixer) {
+		MIX_ResumeTag(mixer, sound_tracks::sound_bell);
+		MIX_ResumeTag(mixer, sound_tracks::sound_timer);
+	}
+}
+
+void restart_UI_sound()
+{
+	if(mixer) {
+		MIX_ResumeTag(mixer, sound_tracks::sound_ui);
 	}
 }
 
@@ -551,7 +575,7 @@ void play_new_music()
 	music_start_time.reset(); // reset status: no start time
 	want_new_music = true;
 
-	if(!prefs::get().music_on() || !mix_ok || !current_track) {
+	if(!prefs::get().music_on() || !mixer || !current_track) {
 		return;
 	}
 
@@ -610,6 +634,17 @@ MIX_Track* get_positional_channel(unsigned soundsource_id)
 	std::scoped_lock lock{soundsource_map_mutex};
 	const auto it = soundsource_map.find(soundsource_id);
 	return it == soundsource_map.end() ? nullptr : it->second;
+}
+
+MIX_Track* get_positional_channel_new(unsigned soundsource_id)
+{
+	int count{0};
+	std::string tag = std::to_string(soundsource_id);
+	auto** tagged = MIX_GetTaggedTracks(mixer, tag.data(), &count);
+	utils::span span{tagged, count};
+	auto* res = count < 1 ? nullptr : span[0];
+	SDL_free(tagged);
+	return res;
 }
 
 } // namespace
@@ -840,7 +875,7 @@ void play_sound_internal(const std::string& files,
 		const std::chrono::milliseconds& loop_ticks = 0ms,
 		const std::chrono::milliseconds& fadein_ticks = 0ms)
 {
-	if(files.empty() || !mix_ok) {
+	if(files.empty() || !mixer) {
 		return;
 	}
 
@@ -985,7 +1020,7 @@ void play_UI_sound(const std::string& files)
 
 volume get_music_volume()
 {
-	if(mix_ok) {
+	if(mixer) {
 		return volume{MIX_GetTrackGain(sound::music_channels[0])};
 	}
 
@@ -994,14 +1029,14 @@ volume get_music_volume()
 
 void set_music_volume(volume vol)
 {
-	if(mix_ok) {
+	if(mixer) {
 		MIX_SetTrackGain(sound::music_channels[0], clamp_gain(vol));
 	}
 }
 
 volume get_sound_volume()
 {
-	if(mix_ok) {
+	if(mixer) {
 		// Since set_sound_volume sets all main tracks to the same, just return the volume of any main track
 		return volume{MIX_GetTrackGain(sound::positional_channels[0])};
 	}
@@ -1011,7 +1046,7 @@ volume get_sound_volume()
 
 void set_sound_volume(volume vol)
 {
-	if(mix_ok) {
+	if(mixer) {
 		vol = clamp_gain(vol);
 
 		// Bell, timer and UI have separate tracks which we can't set up from this
@@ -1030,7 +1065,7 @@ void set_sound_volume(volume vol)
  */
 void set_bell_volume(volume vol)
 {
-	if(mix_ok) {
+	if(mixer) {
 		vol = clamp_gain(vol);
 
 		MIX_SetTrackGain(sound::bell_channels[0], vol);
@@ -1040,7 +1075,7 @@ void set_bell_volume(volume vol)
 
 void set_UI_volume(volume vol)
 {
-	if(mix_ok) {
+	if(mixer) {
 		vol = clamp_gain(vol);
 
 		for(channel& c : UI_channels) {
