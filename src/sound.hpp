@@ -43,7 +43,6 @@ struct driver_status
 
 bool init_sound();
 void close_sound();
-void reset_sound();
 
 void stop_music();
 void stop_sound();
