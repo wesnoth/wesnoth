@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-08-03 03:45 UTC\n"
-"PO-Revision-Date: 2026-06-24 22:54+1000\n"
+"PO-Revision-Date: 2026-08-04 17:40+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: none\n"
 "Language: en_GB\n"
@@ -575,23 +575,21 @@ msgid ""
 "combat, so explore at your leisure. To leave the overworld and preview or "
 "play a battle scenario, move Konrad to one of the marked hexes."
 msgstr ""
+"<b>This is an over-world.</b> There’s no movement cost or combat, so explore "
+"at your leisure. To leave the over-world and preview or play a battle "
+"scenario, move Konrad to one of the marked hexes."
 
 #. [lua]: wesnoth.wml_actions.display_overworld_tutorial
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:335
-#, fuzzy
-#| msgid ""
-#| "Tip: The season of the year changes every time you finish a battle. "
-#| "Winter battles will have longer nights and shorter days, often with more "
-#| "snow and ice. Summer battles are the opposite."
 msgid ""
 "overworld_help^After completing any scenario, the season of the year will "
 "change. Winter battles will have longer nights and shorter days, often with "
 "more snow and ice, while summer battles are the opposite. It’s currently "
 "autumn."
 msgstr ""
-"Tip: The season of the year changes every time you finish a battle. Winter "
+"After completing any scenario, the season of the year will change. Winter "
 "battles will have longer nights and shorter days, often with more snow and "
-"ice. Summer battles are the opposite."
+"ice, while summer battles are the opposite. It’s currently autumn."
 
 #. [lua]: wesnoth.wml_actions.display_overworld_tutorial
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:335
@@ -599,6 +597,8 @@ msgid ""
 "overworld_help^Each scenario provides unique rewards, as shown in its "
 "preview, and most will open new areas of the map to explore."
 msgstr ""
+"Each scenario provides unique rewards, as shown in its preview, and most "
+"will open new areas of the map to explore."
 
 #. [lua]: wesnoth.wml_actions.display_overworld_tutorial
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:354
@@ -607,6 +607,9 @@ msgid ""
 "before the finale. And Delfador and his elementals will only be around to "
 "help during your first battle, so choose wisely!"
 msgstr ""
+"Konrad only has time to fight a limited number of battles before the finale. "
+"And Delfador and his elementals will only be around to help during your "
+"first battle, so choose wisely!"
 
 #. [lua]: wesnoth.wml_actions.display_overworld_tutorial
 #. [lua]: wesnoth.wml_actions.display_lisar_tutorial
@@ -4246,12 +4249,12 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:235
 msgid ""
 "I have not located the Sceptre yet, but I am making progress. I shall send a "
-"messenger once we are ready to retrieve it — perhaps in "
-"$( $bm_milestone_scepter - $bm_turns ) battles’ time."
+"messenger once we are ready to retrieve it — perhaps in $"
+"( $bm_milestone_scepter - $bm_turns ) battles’ time."
 msgstr ""
 "I have not located the Sceptre yet, but I am making progress. I shall send a "
-"messenger once we are ready to retrieve it — perhaps in "
-"$( $bm_milestone_scepter - $bm_turns ) battles’ time."
+"messenger once we are ready to retrieve it — perhaps in $"
+"( $bm_milestone_scepter - $bm_turns ) battles’ time."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:240
