@@ -941,9 +941,8 @@ bool sdl_event_handler::hotkey_pressed_mouse(const hotkey::hotkey_ptr& key, cons
 		}
 
 		if(dispatcher->is_at(position)) {
-			if(dispatcher->execute_hotkey(hkey_cmd, down)) {
-				return true;
-			}
+			// TODO check modality of dispatcher before returning
+			return dispatcher->execute_hotkey(hkey_cmd, down);
 		}
 	}
 
