@@ -1719,6 +1719,29 @@ void server::handle_join_server_queue(player_iterator p, simple_wml::node& data)
 		game.set_attr_int("countdown_reservoir_time", queue.settings["countdown_reservoir_time"].to_int());
 		game.set_attr_int("countdown_action_bonus", queue.settings["countdown_action_bonus"].to_int());
 
+		game.set_attr_dup("modifications", queue.settings["modifications"].str().c_str());
+
+		// can't directly assign from the config since simple_wml doesn't own the value of the child tag name
+		// so need this workaround otherwise it tries to send for example: []...[/] instead of [multiplayer]...[/multiplayer]
+		static std::map<std::string, std::string> from_types = {
+			{"multiplayer", "multiplayer"},
+			{"era", "era"},
+			{"modification", "modification"},
+			{"campaign", "campaign"},
+		};
+		for(const config& qoptions : queue.settings.child_range("options")) {
+			simple_wml::node& options = game.add_child(from_types[qoptions["from_type"].str()].c_str());
+			options.set_attr_dup("id", qoptions["from_id"].str().c_str());
+
+			for(const config& qoption : qoptions.child_range("option")) {
+				simple_wml::node& option = options.add_child("option");
+				option.set_attr_dup("id", qoption["id"].str().c_str());
+				option.set_attr_dup("value", qoption["value"].str().c_str());
+			}
+		}
+
+		PLAIN_LOG << simple_wml::node_to_string(game);
+
 		// tell the final player to create and host the game
 		send_to_player(p, create_game_doc);
 	} else {
