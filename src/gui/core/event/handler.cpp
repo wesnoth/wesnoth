@@ -931,9 +931,7 @@ bool sdl_event_handler::hotkey_pressed_mouse(const hotkey::hotkey_ptr& key, cons
 
 	for(auto& dispatcher : dispatchers_ | utils::views::reverse) {
 		if(dispatcher->get_mouse_behavior() == dispatcher::mouse_behavior::all) {
-			if(dispatcher->execute_hotkey(hkey_cmd, down)) {
-				return true;
-			}
+			return dispatcher->execute_hotkey(hkey_cmd, down);
 		}
 
 		if(dispatcher->get_mouse_behavior() == dispatcher::mouse_behavior::none) {
@@ -941,7 +939,6 @@ bool sdl_event_handler::hotkey_pressed_mouse(const hotkey::hotkey_ptr& key, cons
 		}
 
 		if(dispatcher->is_at(position)) {
-			// TODO check modality of dispatcher before returning
 			return dispatcher->execute_hotkey(hkey_cmd, down);
 		}
 	}
@@ -951,20 +948,8 @@ bool sdl_event_handler::hotkey_pressed_mouse(const hotkey::hotkey_ptr& key, cons
 
 bool sdl_event_handler::hotkey_pressed(const hotkey::hotkey_ptr& key, const bool down)
 {
-	auto& hkey_cmd = hotkey::get_hotkey_command(key->get_command()).command;
-
-	if(keyboard_focus_) {
-		if(keyboard_focus_->execute_hotkey(hkey_cmd, down)) {
-			return true;
-		}
-	}
-
-	for(auto& dispatcher : dispatchers_ | utils::views::reverse) {
-		if(dispatcher->get_want_keyboard_input()) {
-			if(dispatcher->execute_hotkey(hkey_cmd, down)) {
-				return true;
-			}
-		}
+	if(dispatcher* dispatcher = keyboard_dispatcher()) {
+		return dispatcher->execute_hotkey(hotkey::get_hotkey_command(key->get_command()).command, down);
 	}
 
 	return false;

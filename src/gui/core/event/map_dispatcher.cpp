@@ -74,7 +74,7 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 bool map_dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id, const bool down)
 {
 	// Local hotkey
-	if(!down && dispatcher::execute_hotkey(id, down)) {
+	if(down && dispatcher::execute_hotkey(id, down)) {
 		PLAIN_LOG << "execute_hotkey called";
 		return true;
 	}
