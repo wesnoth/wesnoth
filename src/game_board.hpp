@@ -75,7 +75,6 @@ public:
 	// Constructors, trivial dtor, and const accessors
 
 	game_board(const config& level);
-	virtual ~game_board();
 
 	virtual const std::vector<team>& teams() const override
 	{
@@ -124,9 +123,7 @@ public:
 		return labels_;
 	}
 
-	// Copy and swap idiom, because we have a scoped pointer.
-
-	game_board(const game_board & other);
+	game_board(const game_board & other) = delete;
 	game_board& operator=(const game_board& other) = delete;
 
 	friend void swap(game_board & one, game_board & other);

@@ -43,19 +43,6 @@ game_board::game_board(const config& level)
 {
 }
 
-game_board::game_board(const game_board& other)
-	: teams_(other.teams_)
-	, labels_(other.labels_)
-	, map_(new gamemap(*(other.map_)))
-	, unit_id_manager_(other.unit_id_manager_)
-	, units_(other.units_)
-{
-}
-
-game_board::~game_board()
-{
-}
-
 // TODO: Fix this so that we swap pointers to maps
 // However, then anytime gameboard is overwritten, resources::gamemap must be updated. So might want to
 // just get rid of resources::gamemap and replace with resources::gameboard->map() at that point.
