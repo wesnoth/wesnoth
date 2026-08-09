@@ -147,6 +147,9 @@ public:
 	team();
 	virtual ~team();
 
+	team(team&&) noexcept = default;
+	team& operator=(team&&) noexcept = default;
+
 	/**
 	 * Stores the attributes recognized by [side]. These should be stripped
 	 * from a side's config before using it to create the side's leader.
