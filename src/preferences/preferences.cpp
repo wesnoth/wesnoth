@@ -894,7 +894,7 @@ void prefs::save_hotkeys()
 void prefs::clear_hotkeys()
 {
 	hotkey::reset_default_hotkeys();
-	preferences_.clear_children("hotkey");
+	preferences_.clear_children(prefs_list::hotkey);
 }
 
 void prefs::add_alias(const std::string &alias, const std::string &command)

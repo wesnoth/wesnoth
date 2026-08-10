@@ -847,6 +847,7 @@ private:
 		prefs_list::achievements,
 		prefs_list::completed_campaigns,
 		prefs_list::history,
+		prefs_list::hotkey,
 		prefs_list::options,
 		prefs_list::server,
 		prefs_list::game_preset,
