@@ -28,12 +28,29 @@
 
 #include <list>
 #include <mutex>
+#include <queue>
+#include <unordered_map>
 #include <utility>
 
 static lg::log_domain log_audio("audio");
 #define DBG_AUDIO LOG_STREAM(debug, log_audio)
 #define LOG_AUDIO LOG_STREAM(info, log_audio)
 #define ERR_AUDIO LOG_STREAM(err, log_audio)
+
+namespace utils
+{
+template<typename Container, typename Value>
+auto find_in(Container& map, const Value& value) -> utils::optional_reference<typename Container::mapped_type>
+{
+	auto iter = map.find(value);
+	if(iter == map.end()) {
+		return utils::nullopt;
+	}
+
+	return iter->second;
+}
+
+} // namespace utils
 
 namespace sound
 {
@@ -75,12 +92,57 @@ const auto positional_channels   = utils::span{channel_pool}.subspan<3, 8>();
 const auto UI_channels           = utils::span{channel_pool}.subspan<11, 2>();
 const auto SFX_channels          = utils::span{channel_pool}.subspan<13, 19>();
 
-// filename, audio
-std::map<std::string, std::shared_ptr<MIX_Audio>> music_cache;
-std::vector<std::string> music_cache_insertion_order;
+class audio_cache
+{
+public:
+	explicit audio_cache(std::size_t size)
+		: max_size(size)
+	{
+	}
 
-std::map<std::string, std::shared_ptr<MIX_Audio>> sound_cache;
-std::vector<std::string> sound_cache_insertion_order;
+	MIX_Audio* get_or_insert(MIX_Mixer* mixer, const std::string& filename)
+	{
+		if(auto cached_audio = utils::find_in(cache, filename)) {
+			DBG_AUDIO << "cache hit for " << filename;
+			return cached_audio->get();
+		}
+
+		DBG_AUDIO << "cache miss for " << filename;
+		MIX_Audio* audio = MIX_LoadAudio(mixer, filename.data(), false);
+
+		if(cache.size() == max_size) {
+			std::string to_erase = cache_insertion_order.front();
+			DBG_AUDIO << "Dropping music file from cache: " << to_erase;
+
+			cache.erase(to_erase);
+			cache_insertion_order.pop();
+		}
+
+		cache.try_emplace(filename, audio, &MIX_DestroyAudio);
+		cache_insertion_order.push(filename);
+		return audio;
+	}
+
+	void clear()
+	{
+		cache.clear();
+		cache_insertion_order = {};
+	}
+
+private:
+	const std::size_t max_size{0};
+
+	using audio_ptr = std::unique_ptr<MIX_Audio, decltype(&MIX_DestroyAudio)>;
+	std::unordered_map<std::string, audio_ptr> cache;
+
+	std::queue<std::string> cache_insertion_order;
+};
+
+constexpr std::size_t music_cache_limit = 30;
+constexpr std::size_t sound_cache_limit = 500;
+
+audio_cache music_cache{music_cache_limit};
+audio_cache sound_cache{sound_cache_limit};
 
 MIX_Mixer* mixer = nullptr;
 std::size_t mixer_init_counter = 0;
@@ -92,9 +154,6 @@ utils::rate_counter music_refresh_rate{20};
 bool want_new_music = false;
 auto fade_out_time = 5000ms;
 bool no_fading = false;
-
-const std::size_t music_cache_limit = 30;
-const std::size_t sound_cache_limit = 500;
 
 std::vector<std::string> played_before;
 
@@ -564,33 +623,15 @@ void play_new_music()
 	// before attempting to play new music.
 	MIX_StopTrack(music_channels[0], 0);
 
-	std::shared_ptr<MIX_Audio> music;
-	if(music_cache.count(filename) != 0) {
-		music = music_cache[filename];
-		DBG_AUDIO << "cache hit for " << filename;
-	} else {
-		music.reset(MIX_LoadAudio(mixer, filename.c_str(), false), &MIX_DestroyAudio);
-		DBG_AUDIO << "cache miss for " << filename;
-	}
+	MIX_Audio* music = music_cache.get_or_insert(mixer, filename);
+	MIX_SetTrackAudio(music_channels[0], music);
 
 	// Fade in the new music
-	MIX_SetTrackAudio(music_channels[0], music.get());
-
 	sdl3_properties props;
 	SDL_SetNumberProperty(props, MIX_PROP_PLAY_FADE_IN_MILLISECONDS_NUMBER, fading_time.count());
 
 	if(!MIX_PlayTrack(music_channels[0], props)) {
 		ERR_AUDIO << "Could not play music: " << SDL_GetError() << " " << filename << " ";
-	} else if(music_cache.count(filename) == 0) {
-		music_cache.emplace(filename, music);
-		music_cache_insertion_order.emplace_back(filename);
-
-		if(music_cache.size() > music_cache_limit) {
-			std::string to_erase = music_cache_insertion_order[0];
-			DBG_AUDIO << "Uncaching music file " << to_erase;
-			music_cache_insertion_order.erase(music_cache_insertion_order.begin());
-			music_cache.erase(to_erase);
-		}
 	}
 
 	want_new_music = false;
@@ -867,20 +908,10 @@ void play_sound_internal(const std::string& files,
 	pos.z = 0;
 	MIX_SetTrack3DPosition(free_channel, &pos);
 
-	std::shared_ptr<MIX_Audio> sound;
-	if(sound_cache.count(real_path) != 0) {
-		sound = sound_cache[real_path];
-		DBG_AUDIO << "cache hit for " << real_path;
-	} else {
-		sound.reset(MIX_LoadAudio(mixer, real_path.c_str(), false), &MIX_DestroyAudio);
-		DBG_AUDIO << "cache miss for " << real_path;
-	}
-
-	MIX_SetTrackAudio(free_channel, sound.get());
+	MIX_Audio* sound = sound_cache.get_or_insert(mixer, real_path);
+	MIX_SetTrackAudio(free_channel, sound);
 
 	sdl3_properties props;
-
-	bool res;
 	if(loop_ticks > 0ms) {
 		if(fadein_ticks > 0ms) {
 			SDL_SetNumberProperty(props, MIX_PROP_PLAY_FADE_IN_MILLISECONDS_NUMBER, fadein_ticks.count());
@@ -896,11 +927,8 @@ void play_sound_internal(const std::string& files,
 		}
 	}
 
-	res = MIX_PlayTrack(free_channel, props);
-
-	if(!res) {
+	if(!MIX_PlayTrack(free_channel, props)) {
 		ERR_AUDIO << "error playing sound effect " << real_path << " : " << SDL_GetError();
-		// still keep it in the sound cache, in case we want to try again later
 		return;
 	} else if(group == sound_tracks::type::sound_source) {
 		// first->first since emplace returns an iterator to a pair (what we actually want) and a boolean
@@ -913,18 +941,6 @@ void play_sound_internal(const std::string& files,
 			DBG_AUDIO << "in callback to erase soundsource mapping for id " << *static_cast<unsigned int*>(userdata);
 			soundsource_map.erase(*static_cast<unsigned int*>(userdata));
 		}, key);
-	}
-
-	if(res && sound_cache.count(real_path) == 0) {
-		sound_cache.emplace(real_path, sound);
-		sound_cache_insertion_order.emplace_back(real_path);
-
-		if(sound_cache.size() > sound_cache_limit) {
-			std::string to_erase = sound_cache_insertion_order[0];
-			DBG_AUDIO << "Uncaching sound file " << to_erase;
-			sound_cache_insertion_order.erase(sound_cache_insertion_order.begin());
-			sound_cache.erase(to_erase);
-		}
 	}
 }
 
@@ -1033,9 +1049,7 @@ void set_UI_volume(volume vol)
 void flush_cache()
 {
 	music_cache.clear();
-	music_cache_insertion_order.clear();
 	sound_cache.clear();
-	sound_cache_insertion_order.clear();
 }
 
 } // end namespace sound
