@@ -383,6 +383,22 @@ rewrite_staged_dylib_deps() {
 		esac
 
 		dep_name=$(basename "${dep}")
+
+		# Swift runtime/overlay libraries (e.g. libswiftCoreMedia.dylib) are part
+		# of macOS and live in the dyld shared cache under /usr/lib/swift. Newer
+		# SDKs sometimes emit them as @rpath references (observed on the x86_64
+		# SDL3 slice built against the macOS 27 SDK) instead of an absolute
+		# /usr/lib/swift path, which the /usr/lib/* skip above would have caught.
+		# They cannot be staged into the app bundle, so point them back at their
+		# OS location and let dyld resolve them from the shared cache at runtime.
+		case "${dep_name}" in
+			libswift*.dylib)
+				install_name_tool -change "${dep}" "/usr/lib/swift/${dep_name}" "${dylib_path}" \
+					|| die "Failed to rewrite ${dep} in ${dylib_path}."
+				continue
+				;;
+		esac
+
 		staged_dep_name=$(staged_name_for_dependency "${dep_name}") \
 			|| die "Missing staged dependency ${dep_name} required by ${dylib_path}."
 		install_name_tool -change "${dep}" "@loader_path/${staged_dep_name}" "${dylib_path}" \
