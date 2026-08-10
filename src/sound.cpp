@@ -26,9 +26,9 @@
 
 #include <SDL3_mixer/SDL_mixer.h>
 
+#include <algorithm>
 #include <list>
 #include <mutex>
-#include <queue>
 #include <unordered_map>
 #include <utility>
 
@@ -104,38 +104,56 @@ public:
 	{
 		if(auto cached_audio = utils::find_in(cache, filename)) {
 			DBG_AUDIO << "cache hit for " << filename;
-			return cached_audio->get();
+			cached_audio->last_access = cache_item::clock::now();
+			return cached_audio->value.get();
 		}
 
 		DBG_AUDIO << "cache miss for " << filename;
 		MIX_Audio* audio = MIX_LoadAudio(mixer, filename.data(), false);
 
 		if(cache.size() == max_size) {
-			std::string to_erase = cache_insertion_order.front();
-			DBG_AUDIO << "Dropping music file from cache: " << to_erase;
-
+			auto to_erase = least_recently_used();
+			DBG_AUDIO << "Dropping music file from cache: " << to_erase->first;
 			cache.erase(to_erase);
-			cache_insertion_order.pop();
 		}
 
-		cache.try_emplace(filename, audio, &MIX_DestroyAudio);
-		cache_insertion_order.push(filename);
+		cache.try_emplace(filename, audio);
 		return audio;
 	}
 
 	void clear()
 	{
 		cache.clear();
-		cache_insertion_order = {};
 	}
 
 private:
+	struct cache_item
+	{
+		explicit cache_item(MIX_Audio* ptr)
+			: value(ptr, &MIX_DestroyAudio)
+		{
+		}
+
+		/** @note: SDL keeps its own refcount of MIX_Audio objects. */
+		std::unique_ptr<MIX_Audio, decltype(&MIX_DestroyAudio)> value;
+
+		using clock = std::chrono::steady_clock;
+		clock::time_point last_access = clock::now();
+	};
+
 	const std::size_t max_size{0};
+	std::unordered_map<std::string, cache_item> cache;
 
-	using audio_ptr = std::unique_ptr<MIX_Audio, decltype(&MIX_DestroyAudio)>;
-	std::unordered_map<std::string, audio_ptr> cache;
-
-	std::queue<std::string> cache_insertion_order;
+	auto least_recently_used() const -> decltype(cache)::const_iterator
+	{
+#ifdef __cpp_lib_ranges
+		return std::ranges::min_element(cache, {},
+			[](const auto& value) { return value.second.last_access; });
+#else
+		return std::min_element(cache.begin(), cache.end(),
+			[](const auto& lhs, const auto& rhs) { return lhs.second.last_access < rhs.second.last_access; });
+#endif
+	}
 };
 
 constexpr std::size_t music_cache_limit = 30;
