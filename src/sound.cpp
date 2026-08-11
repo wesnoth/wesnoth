@@ -185,7 +185,6 @@ std::vector<std::string> played_before;
 //
 std::vector<std::shared_ptr<sound::music_track>> current_track_list;
 std::shared_ptr<sound::music_track> current_track;
-unsigned int current_track_index = 0;
 std::shared_ptr<sound::music_track> previous_track;
 
 std::vector<std::shared_ptr<sound::music_track>>::const_iterator find_track(const sound::music_track& track)
@@ -196,12 +195,14 @@ std::vector<std::shared_ptr<sound::music_track>>::const_iterator find_track(cons
 
 } // end anon namespace
 
-utils::optional<unsigned int> get_current_track_index()
+utils::optional<std::size_t> get_current_track_index()
 {
-	if(current_track_index >= current_track_list.size()){
-		return {};
+	if(!current_track) {
+		return std::nullopt;
 	}
-	return current_track_index;
+
+	auto iter = utils::ranges::find(current_track_list, current_track);
+	return std::distance(current_track_list.begin(), iter);
 }
 std::shared_ptr<music_track> get_current_track()
 {
@@ -247,15 +248,9 @@ void remove_track(unsigned int i)
 		return;
 	}
 
-	if(i == current_track_index) {
-		// Let the track finish playing
-		if(current_track){
-			current_track->set_play_once(true);
-		}
-		// Set current index to the new size of the list
-		current_track_index = current_track_list.size() - 1;
-	} else if(i < current_track_index) {
-		current_track_index--;
+	// Let the track finish playing
+	if(current_track && current_track == current_track_list[i]) {
+		current_track->set_play_once(true);
 	}
 
 	current_track_list.erase(current_track_list.begin() + i);
@@ -329,25 +324,22 @@ std::shared_ptr<sound::music_track> choose_track()
 {
 	assert(!current_track_list.empty());
 
-	if(current_track_index >= current_track_list.size()) {
-		current_track_index = 0;
-	}
-
-	if(current_track_list[current_track_index]->shuffle()) {
-		unsigned int track = 0;
-
+	std::size_t next_index{0};
+	if(!current_track || current_track->shuffle()) {
 		if(current_track_list.size() > 1) {
 			do {
-				track = randomness::rng::default_instance().get_random_int(0, current_track_list.size()-1);
-			} while(!track_ok(current_track_list[track]->file_path()));
+				next_index = randomness::rng::default_instance().get_random_int(0, current_track_list.size() - 1);
+			} while(!track_ok(current_track_list[next_index]->file_path()));
 		}
-
-		current_track_index = track;
+	} else {
+		auto current_index = get_current_track_index();
+		next_index = current_index.value()++ % current_track_list.size();
 	}
 
-	DBG_AUDIO << "Next track will be " << current_track_list[current_track_index]->file_path();
-	played_before.push_back(current_track_list[current_track_index]->file_path());
-	return current_track_list[current_track_index];
+	std::shared_ptr next_track = current_track_list[next_index];
+	DBG_AUDIO << "Next track will be " << next_track->file_path();
+	played_before.push_back(current_track->file_path());
+	return next_track;
 }
 
 std::string pick_one(const std::string& files)
@@ -576,7 +568,6 @@ void play_music_once(const std::string& file)
 	if(auto track = sound::music_track::create(file)) {
 		set_current_track(std::move(track));
 		current_track->set_play_once(true);
-		current_track_index = current_track_list.size();
 		play_music();
 	}
 }
@@ -603,7 +594,6 @@ void play_track(unsigned int i)
 	if(i >= current_track_list.size()) {
 		set_current_track(choose_track());
 	} else {
-		current_track_index = i;
 		set_current_track(current_track_list[i]);
 	}
 	play_music();
@@ -679,7 +669,6 @@ void play_music_config(const config& music_node, bool allow_interrupt_current_tr
 	// If they say play once, we don't alter playlist.
 	if(track->play_once()) {
 		set_current_track(std::move(track));
-		current_track_index = current_track_list.size();
 		play_music();
 		return;
 	}
@@ -700,13 +689,6 @@ void play_music_config(const config& music_node, bool allow_interrupt_current_tr
 
 		// Copy the track pointer so our local variable remains non-null.
 		iter = current_track_list.insert(insert_at, track);
-		auto new_track_index = std::distance(current_track_list.cbegin(), iter);
-
-		// If we inserted the new track *before* the current track, adjust
-		// cached index so it still points to the same element.
-		if(new_track_index <= current_track_index) {
-			++current_track_index;
-		}
 	} else {
 		ERR_AUDIO << "tried to add duplicate track '" << track->file_path() << "'";
 	}
@@ -714,7 +696,6 @@ void play_music_config(const config& music_node, bool allow_interrupt_current_tr
 	// They can tell us to start playing this list immediately.
 	if(track->immediate()) {
 		set_current_track(*iter);
-		current_track_index = std::distance(current_track_list.cbegin(), iter);
 		play_music();
 	} else if(!track->append() && !allow_interrupt_current_track && current_track) {
 		// Make sure the current track will finish first
