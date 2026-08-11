@@ -333,14 +333,14 @@ int lua_kernel_base::intf_show_lua_console(lua_State *L)
 
 static int impl_name_generator_call(lua_State *L)
 {
-	name_generator* gen = static_cast<name_generator*>(lua_touserdata(L, 1));
+	name_generator* gen = static_cast<name_generator*>(luaL_checkudata(L, 1, Gen));
 	lua_pushstring(L, gen->generate().c_str());
 	return 1;
 }
 
 static int impl_name_generator_collect(lua_State *L)
 {
-	name_generator* gen = static_cast<name_generator*>(lua_touserdata(L, 1));
+	name_generator* gen = static_cast<name_generator*>(luaL_checkudata(L, 1, Gen));
 	gen->~name_generator();
 	return 0;
 }
@@ -945,6 +945,8 @@ lua_kernel_base::lua_kernel_base()
 		{ nullptr, nullptr}
 	};
 	luaL_setfuncs(L, generator, 0);
+	lua_pushstring(L, Gen);
+	lua_setfield(L, -2, "__metatable");
 
 	// Create formula bridge metatables
 	cmd_log_ << lua_formula_bridge::register_metatables(L);
