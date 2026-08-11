@@ -477,7 +477,6 @@ bool init_sound()
 		set_bell_volume(prefs::get().bell_volume());
 
 		LOG_AUDIO << "Audio initialized.";
-		play_music();
 	}
 
 	return true;
