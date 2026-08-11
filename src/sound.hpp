@@ -159,7 +159,6 @@ void set_UI_volume(volume vol);
 utils::optional<unsigned int> get_current_track_index();
 std::shared_ptr<sound::music_track> get_current_track();
 std::shared_ptr<sound::music_track> get_previous_music_track();
-void set_previous_track(std::shared_ptr<music_track>);
 unsigned int get_num_tracks();
 void remove_track(unsigned int i);
 void play_track(unsigned int i);
