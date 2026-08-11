@@ -75,25 +75,47 @@ int impl_rng_draw(lua_State* L)
 	return 1;
 }
 
+int impl_rng_tostring(lua_State* L)
+{
+	mt_rng* rng = static_cast<mt_rng*>(luaL_checkudata(L, 1, Rng));
+	luaW_getglobal(L, "string", "format");
+	lua_pushstring(L, "Rng: %#x");
+	lua_pushinteger(L, rng->get_random_seed());
+	lua_call(L, 2, 1);
+	return 1;
+}
+
 // End Lua Rng bindings
 
 void load_tables(lua_State* L)
 {
+	// Create the global Rng table, with create() as its only element
+	lua_createtable(L, 0, 1);
+	lua_pushcfunction(L, &impl_rng_create);
+	lua_setfield(L, -2, "create");
+	lua_setglobal(L, Rng);
+	
+	// Create the metatable for Rng objects
 	luaL_newmetatable(L, Rng);
+	static luaL_Reg const meta_callbacks[] {
+		{ "__gc",           &impl_rng_destroy},
+		{ "__tostring",     &impl_rng_tostring},
+		{ nullptr, nullptr }
+	};
+	luaL_setfuncs(L, meta_callbacks, 0);
 
 	static luaL_Reg const callbacks[] {
-		{ "create",         &impl_rng_create},
-		{ "__gc",           &impl_rng_destroy},
 		{ "seed", 	    &impl_rng_seed},
 		{ "draw",	    &impl_rng_draw},
 		{ nullptr, nullptr }
 	};
+	luaL_newlibtable(L, callbacks);
 	luaL_setfuncs(L, callbacks, 0);
 
-	lua_pushvalue(L, -1); //make a copy of this table, set it to be its own __index table
 	lua_setfield(L, -2, "__index");
-
-	lua_setglobal(L, Rng);
+	lua_pushstring(L, Rng);
+	lua_setfield(L, -2, "__metatable");
+	lua_pop(L, 1);
 }
 
 } // end namespace lua_map_rng
