@@ -56,9 +56,6 @@ class preferences_dialog : public modal_dialog
 public:
 	preferences_dialog(const pref_constants::PREFERENCE_VIEW initial_view = pref_constants::VIEW_DEFAULT);
 
-	/** The display function -- see @ref modal_dialog for more information. */
-	DEFINE_SIMPLE_DISPLAY_WRAPPER(preferences_dialog)
-
 private:
 	virtual const std::string& window_id() const override;
 

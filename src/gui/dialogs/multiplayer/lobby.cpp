@@ -596,6 +596,7 @@ void mp_lobby::pre_show()
 	keyboard_capture(chatbox_);
 
 	chatbox_->set_active_window_changed_callback([this]() { player_list_dirty_ = true; });
+	chatbox_->set_theme_reload_callback([this]() { set_retval(RELOAD_UI); });
 	chatbox_->load_log(default_chat_log, true);
 
 	find_widget<button>("create").set_retval(CREATE);
