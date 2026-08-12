@@ -133,8 +133,14 @@ function return_table:execution(cfg,data)
     -- remember that the threat evaluations already also factor in each unit's alignment for a +/- 25%
     -- and remember that we consider our units' next-turn moves, but only our enemies' this-turn moves
     local function is_safe_hex( hex, enemy_adjustment )
-        local this_turn_lawful_bonus = wesnoth.schedule.get_time_of_day(nil,          wesnoth.current.turn                            ).lawful_bonus;
-        local next_turn_lawful_bonus = wesnoth.schedule.get_time_of_day(nil, math.min(wesnoth.current.turn+1, wesnoth.scenario.turns) ).lawful_bonus;
+        -- get_time_of_day() throws errors if we try to get a turn number past the turn limit
+        -- so set next_turn to wesnoth.current.turn+1, but never greater than wesnoth.scenario.turns (if it's not -1 / infinite turns)
+        local next_turn = wesnoth.current.turn + 1;
+        if wesnoth.scenario.turns>0 then next_turn=math.min(next_turn, wesnoth.scenario.turns) end
+
+        local next_turn_lawful_bonus = wesnoth.schedule.get_time_of_day(nil, next_turn           ).lawful_bonus;
+        local this_turn_lawful_bonus = wesnoth.schedule.get_time_of_day(nil, wesnoth.current.turn).lawful_bonus;
+
         local is_good_tod = (
             (cfg.retreat_tod=='none') or -- if retreat_tod=none, assume it's always a good ToD
             (cfg.retreat_tod=='nighttime' and this_turn_lawful_bonus>=0) or
