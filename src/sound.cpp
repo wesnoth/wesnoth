@@ -198,10 +198,15 @@ std::vector<std::shared_ptr<sound::music_track>>::const_iterator find_track(cons
 utils::optional<std::size_t> get_current_track_index()
 {
 	if(!current_track) {
-		return std::nullopt;
+		return utils::nullopt;
 	}
 
+	// The current track could be incidental music and not in the playlist
 	auto iter = utils::ranges::find(current_track_list, current_track);
+	if(iter == current_track_list.end()) {
+		return utils::nullopt;
+	}
+
 	return std::distance(current_track_list.begin(), iter);
 }
 std::shared_ptr<music_track> get_current_track()
@@ -324,16 +329,23 @@ std::shared_ptr<sound::music_track> choose_track()
 {
 	assert(!current_track_list.empty());
 
+	auto current_index = get_current_track_index();
 	std::size_t next_index{0};
-	if(!current_track || current_track->shuffle()) {
+
+	//
+	// Shuffle if:
+	// - There is no current track OR
+	// - The current track is not in the playlist OR
+	// - The current playlist track specifies to do so
+	//
+	if(!current_index || current_track->shuffle()) {
 		if(current_track_list.size() > 1) {
 			do {
 				next_index = randomness::rng::default_instance().get_random_int(0, current_track_list.size() - 1);
 			} while(!track_ok(current_track_list[next_index]->file_path()));
 		}
 	} else {
-		auto current_index = get_current_track_index();
-		next_index = current_index.value()++ % current_track_list.size();
+		next_index = (current_index.value() + 1) % current_track_list.size();
 	}
 
 	std::shared_ptr next_track = current_track_list[next_index];
