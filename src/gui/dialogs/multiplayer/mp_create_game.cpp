@@ -228,17 +228,8 @@ void mp_create_game::quick_mp_setup(saved_game& state, const config presets)
 	}
 
 	// handle potential option sources
-	if(presets.has_child("multiplayer")) {
-		params.options.append_children(config{"multiplayer", presets.mandatory_child("multiplayer")});
-	}
-	if(presets.has_child("era")) {
-		params.options.append_children(config{"era", presets.mandatory_child("era")});
-	}
-	if(presets.has_child("modification")) {
-		params.options.append_children(config{"modification", presets.mandatory_child("modification")});
-	}
-	if(presets.has_child("campaign")) {
-		params.options.append_children(config{"campaign", presets.mandatory_child("campaign")});
+	if(presets.has_child("options")) {
+		params.options = presets.mandatory_child("options");
 	}
 }
 
