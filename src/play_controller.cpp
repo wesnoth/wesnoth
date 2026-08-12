@@ -1001,6 +1001,9 @@ void play_controller::check_victory()
 		not_defeated,
 		gamestate().remove_from_carryover_on_defeat_
 	);
+	// Report defeats immediately after the engine evaluates the active victory
+	// rules, so persistence does not depend on the later end-of-scenario flow.
+	notify_sides_defeated(not_defeated);
 
 	if(invalidate_all) {
 		gui_->invalidate_all();
@@ -1013,6 +1016,8 @@ void play_controller::check_victory()
 	if(found_player || found_network_player) {
 		pump().fire("enemies_defeated");
 		if(is_regular_game_end()) {
+			// The regular end path may return before the common notification below.
+			notify_sides_victorious(not_defeated);
 			return;
 		}
 	}
@@ -1025,6 +1030,9 @@ void play_controller::check_victory()
 		// This level has asked not to be ended by this condition.
 		return;
 	}
+	// Persist the detected winners even when the scenario remains active.
+	// This lets the competitive-game record reflect victory immediately.
+	notify_sides_victorious(not_defeated);
 
 	if(video::headless()) {
 		LOG_AIT << "winner: ";
