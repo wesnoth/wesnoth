@@ -1409,7 +1409,12 @@ void unit_type::apply_scenario_fix(const config& cfg)
 	if(get_cfg().has_child("variation")) {
 		// Make sure the variations are created.
 		unit_types.build_unit_type(*this, VARIATIONS);
-		for (auto& cv : cfg.child_range("variation")){
+		// Make sure what generic modification was applied to all variations.
+		for(auto& v : variations_) {
+			v.second.apply_scenario_fix(cfg);
+		}
+		// Apply modification for unique variation.
+		for (auto& cv : cfg.child_range("variation")) {
 			for(auto& [variation_id, variation_type] : variations_) {
 				if(cv["variation_id"] == variation_id) {
 					variation_type.apply_scenario_fix(cv);
