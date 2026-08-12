@@ -40,6 +40,7 @@
 #include "server/wesnothd/player_network.hpp"
 #include "server/common/simple_wml.hpp"
 #include "server/common/user_handler.hpp"
+#include "server/common/competitive_game_security.hpp"
 
 #ifdef HAVE_MYSQLPP
 #include "server/common/forum_user_handler.hpp"
@@ -73,6 +74,25 @@ static lg::log_domain log_server("server");
 /** normal events */
 #define LOG_SERVER LOG_STREAM(info, log_server)
 #define DBG_SERVER LOG_STREAM(debug, log_server)
+
+namespace
+{
+	// Resume metadata is optional for ordinary games, but partial metadata must
+	// still be rejected rather than silently treated as a normal game.
+	bool has_any_competitive_resume_metadata(const simple_wml::node& settings)
+	{
+		return !settings["ranked_game_id"].empty()
+			|| !settings["ranked_resume_token"].empty()
+			|| !settings["ranked_resume_signature"].empty();
+	}
+
+	bool has_complete_competitive_resume_metadata(const simple_wml::node& settings)
+	{
+		return !settings["ranked_game_id"].empty()
+			&& !settings["ranked_resume_token"].empty()
+			&& !settings["ranked_resume_signature"].empty();
+	}
+}
 
 static lg::log_domain log_config("config");
 #define ERR_CONFIG LOG_STREAM(err, log_config)
@@ -227,6 +247,7 @@ server::server(int port,
 	, input_path_()
 #endif
 	, uuid_("")
+	, competitive_resume_secret_()
 	, config_file_(config_file)
 	, cfg_(read_config())
 	, accepted_versions_()
@@ -461,6 +482,7 @@ void server::load_config(bool reload)
 
 	save_replays_ = cfg_["save_replays"].to_bool();
 	replay_save_path_ = cfg_["replay_save_path"].str();
+	competitive_resume_secret_ = cfg_["competitive_resume_secret"].str();
 
 	tor_ip_list_ = utils::split(cfg_["tor_ip_list_path"].empty()
 		? ""
@@ -1599,6 +1621,14 @@ void server::cleanup_game(game* game_ptr)
 
 	if(user_handler_){
 		user_handler_->db_update_game_end(uuid_, game_ptr->db_id(), game_ptr->get_replay_filename());
+		if(const simple_wml::node* settings = game_ptr->level().root().child("multiplayer")) {
+			// Cleanup is the final fallback for games that ended without receiving a
+			// client victory report, such as a window close after game over.
+			const std::string competitive_game_id = settings->attr("ranked_game_id").to_string();
+			if(!competitive_game_id.empty()) {
+				user_handler_->db_complete_competitive_game(competitive_game_id);
+			}
+		}
 	}
 
 	simple_wml::node* const gamelist = games_and_users_list_.child("gamelist");
@@ -1627,6 +1657,77 @@ void server::cleanup_game(game* game_ptr)
 	delete game_ptr;
 }
 
+bool server::validate_competitive_resume(const simple_wml::node& settings, config* resume_info) const
+{
+	// The token is checked both against the database hash and the server-only
+	// HMAC signature; matching tournament metadata prevents cross-game reuse.
+	const std::string resume_id = settings["ranked_game_id"].to_string();
+	const std::string resume_token = settings["ranked_resume_token"].to_string();
+	const std::string resume_signature = settings["ranked_resume_signature"].to_string();
+	if(resume_id.empty() || resume_token.empty() || resume_signature.empty() || competitive_resume_secret_.empty() || !user_handler_) {
+		return false;
+	}
+
+	const config info = user_handler_->db_competitive_game_resume_info(resume_id, competitive_game_security::sha256(resume_token));
+	if(resume_info) {
+		*resume_info = info;
+	}
+	return resume_signature == competitive_game_security::hmac_sha256(competitive_resume_secret_, resume_id + ":" + resume_token)
+		&& info["valid"].to_bool()
+		&& info["tournament_id"].str() == settings["tournament_id"].to_string()
+		&& info["tournament_game_id"].str() == settings["tournament_game_id"].to_string()
+		&& (info["status"] == "active" || info["status"] == "completed");
+}
+
+bool server::validate_tournament_team_composition(
+	const game& g,
+	player_iterator player,
+	const std::string& tournament_id,
+	const std::string& tournament_game_id,
+	std::map<int, std::string>& tournament_team_ids) const
+{
+	// Build the side-to-team mapping from the current lobby setup, then compare
+	// its equality relations with Tournament Manager rather than trusting a
+	// client-provided team identifier.
+	std::vector<std::pair<std::string, std::string>> team_composition;
+	bool valid_team_composition = true;
+
+	for(const simple_wml::node* side : g.get_sides_list()) {
+		const std::string username = side->attr("player_id").to_string();
+		if(username.empty()) {
+			continue;
+		}
+		const std::string wesnoth_team_id = side->attr("team_name").to_string().empty()
+			? side->attr("side").to_string()
+			: side->attr("team_name").to_string();
+		const std::string tournament_team_id = user_handler_->db_get_tournament_team_id(tournament_id, tournament_game_id, username);
+		if(tournament_team_id.empty()) {
+			valid_team_composition = false;
+			WRN_SERVER << player->client_ip() << "\t" << username << " has no tournament team assignment for tournament '"
+				<< tournament_id << "', game '" << tournament_game_id << "', side " << side->attr("side").to_int() << ".";
+			continue;
+		}
+		tournament_team_ids[side->attr("side").to_int()] = tournament_team_id;
+		team_composition.emplace_back(wesnoth_team_id, tournament_team_id);
+	}
+
+	for(std::size_t i = 0; i < team_composition.size(); ++i) {
+		for(std::size_t j = i + 1; j < team_composition.size(); ++j) {
+			// Team membership is identified by the complete Wesnoth team_name.
+			if((team_composition[i].first == team_composition[j].first) != (team_composition[i].second == team_composition[j].second)) {
+				valid_team_composition = false;
+			}
+		}
+	}
+
+	if(!valid_team_composition) {
+		WRN_SERVER << player->client_ip() << "\t" << player->info().name() << " attempted to start tournament game '" << g.name()
+			<< "' with a team composition that does not match Tournament Manager (tournament '" << tournament_id
+			<< "', game '" << tournament_game_id << "').";
+	}
+	return valid_team_composition;
+}
+
 void server::handle_join_game(player_iterator player, simple_wml::node& join)
 {
 	int game_id = join["id"].to_int();
@@ -1645,6 +1746,7 @@ void server::handle_join_game(player_iterator player, simple_wml::node& join)
 	// a ranked or tournament join.
 	const simple_wml::node* game_settings_node = g ? g->level().root().child("multiplayer") : nullptr;
 	const simple_wml::node& game_settings = game_settings_node ? *game_settings_node : games_and_users_list_.root();
+	const bool valid_competitive_resume = validate_competitive_resume(game_settings);
 
 	static simple_wml::document leave_game_doc("[leave_game]\n[/leave_game]\n", simple_wml::INIT_COMPRESSED);
 	if(!g) {
@@ -1668,7 +1770,9 @@ void server::handle_join_game(player_iterator player, simple_wml::node& join)
 		send_localized_message(player, "ranked_access_required");
 		send_to_player(player, games_and_users_list_);
 		return;
-	} else if(!observer && !game_settings["tournament_id"].empty() && (!user_handler_ || !user_handler_->can_join_tournament(player->info().name(), game_settings["tournament_id"].to_string(), game_settings["tournament_game_id"].to_string()))) {
+	} else if(!observer && !game_settings["tournament_id"].empty() && !valid_competitive_resume && (!user_handler_ || !user_handler_->can_join_tournament(player->info().name(), game_settings["tournament_id"].to_string(), game_settings["tournament_game_id"].to_string()))) {
+		// A valid resume keeps the original match authorization; a new join must
+		// still be checked against the current Tournament Manager assignment.
 		send_to_player(player, leave_game_doc);
 		send_localized_message(player, "tournament_join_denied");
 		send_to_player(player, games_and_users_list_);
@@ -1846,13 +1950,26 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			// Validate the creator before publishing the game in the lobby. Client
 			// widget state is not trusted for ranked or tournament authorization.
 			if(const simple_wml::node* m = data.child("multiplayer")) {
+				const std::string resume_id = m->attr("ranked_game_id").to_string();
+				config resume_info;
+				bool valid_resume = false;
+				const bool resume_attempt = has_any_competitive_resume_metadata(*m);
+				if(resume_attempt) {
+					valid_resume = validate_competitive_resume(*m, &resume_info);
+					if(!valid_resume) {
+						WRN_SERVER << p->client_ip() << "\t" << player.name() << " attempted to load altered or unavailable competitive save for game '"
+							<< g.name() << "' (instance UUID '" << uuid_ << "', game ID " << g.db_id() << ", logical ID '" << resume_id << "').";
+						delete_game(g.id());
+						return;
+					}
+				}
 				if(m->attr("ranked_mode").to_bool(false) && (!user_handler_ || !user_handler_->is_ranked_user(player.name()))) {
 					send_localized_message(p, "ranked_access_required");
 					delete_game(g.id());
 					return;
 				}
 				const std::string tournament_id = m->attr("tournament_id").to_string();
-				if(!tournament_id.empty()) {
+				if(!tournament_id.empty() && !valid_resume) {
 					bool tournament_is_ranked = false;
 					if(!user_handler_ || !user_handler_->can_create_tournament_game(player.name(), tournament_id, m->attr("tournament_game_id").to_string(), tournament_is_ranked)) {
 						send_localized_message(p, "tournament_creation_denied");
@@ -2080,6 +2197,27 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		// perform controller tweaks, assigning sides as human for their owners etc.
 		g.perform_controller_tweaks();
 
+		std::map<int, std::string> tournament_team_ids;
+		const simple_wml::node& game_settings = *g.level().root().child("multiplayer");
+		const std::string tournament_id = game_settings["tournament_id"].to_string();
+		const std::string tournament_game_id = game_settings["tournament_game_id"].to_string();
+		const bool resume_attempt = has_complete_competitive_resume_metadata(game_settings);
+		if(!resume_attempt && !tournament_id.empty() && user_handler_) {
+			// Do not create a second logical match for the same Tournament Manager
+			// game, and do not start until the side/team relationships are valid.
+			if(user_handler_->db_competitive_tournament_game_exists(tournament_id, tournament_game_id)) {
+				WRN_SERVER << p->client_ip() << "\t" << player.name() << " attempted to start tournament game '" << g.name()
+					<< "' more than once (tournament '" << tournament_id << "', game '" << tournament_game_id << "').";
+				send_localized_message(p, "tournament_game_already_recorded");
+				return;
+			}
+			if(!validate_tournament_team_composition(g, p, tournament_id, tournament_game_id, tournament_team_ids)) {
+				send_localized_message(p, "tournament_team_mismatch");
+				// Keep the lobby alive so the host can correct the sides and retry.
+				return;
+			}
+		}
+
 		// Send notification of the game starting immediately.
 		// g.start_game() will send data that assumes
 		// the [start_game] message has been sent
@@ -2087,8 +2225,54 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		g.start_game(p);
 
 		if(user_handler_) {
-			const simple_wml::node& m = *g.level().root().child("multiplayer");
+			simple_wml::node& m = *g.level().root().child("multiplayer");
 			DBG_SERVER << simple_wml::node_to_string(m);
+			const std::string saved_competitive_game_id = m["ranked_game_id"].to_string();
+			const std::string saved_resume_token = m["ranked_resume_token"].to_string();
+			const bool resume_attempt = has_complete_competitive_resume_metadata(m);
+			const bool logical_reload = g.is_reload() || resume_attempt;
+			// Reloads reuse the existing logical match; only a new game receives fresh
+			// competitive credentials and a new database lifecycle row.
+			const config resume_info = resume_attempt
+				? user_handler_->db_competitive_game_resume_info(saved_competitive_game_id, competitive_game_security::sha256(saved_resume_token))
+				: config{};
+			std::vector<std::pair<int, std::string>> loaded_players;
+			for(const simple_wml::node* side : g.get_sides_list()) {
+				const std::string username = side->attr("player_id").to_string();
+				if(!username.empty()) {
+					loaded_players.emplace_back(side->attr("side").to_int(), username);
+				}
+			}
+			const bool different_players = resume_attempt && resume_info["status"] == "active"
+				&& !user_handler_->db_competitive_game_players_match(saved_competitive_game_id, loaded_players);
+			if(resume_attempt && resume_info["status"] == "active" && !different_players) {
+				// Manual saves leave competitive sides idle. The original players
+				// resume control of those sides when the active match is continued.
+				for(const auto& [side_number, username] : loaded_players) {
+					user_handler_->db_update_competitive_player(saved_competitive_game_id, side_number, username, "active", "resume");
+				}
+			}
+			if(resume_attempt && (resume_info["status"] == "completed" || different_players)) {
+				// A completed competitive save is opened as an ordinary analysis
+				// game. A save loaded with different players follows the same rule.
+				// Keep the result notification, but remove all competitive metadata
+				// before the game can generate new lifecycle updates.
+				simple_wml::document reload_notice;
+				simple_wml::node& reload = reload_notice.root().add_child("competitive_reload");
+				reload.set_attr_dup("status", resume_info["status"].str().c_str());
+				reload.set_attr_dup("mode", resume_info["mode"].str().c_str());
+				reload.set_attr("different_players", different_players ? "yes" : "no");
+				reload.set_attr_dup("tournament_id", resume_info["tournament_id"].str().c_str());
+				reload.set_attr_dup("tournament_game_id", resume_info["tournament_game_id"].str().c_str());
+				g.send_data(reload_notice);
+				m.set_attr("ranked_mode", "no");
+				m.set_attr("ranked_game_id", "");
+				m.set_attr("ranked_resume_token", "");
+				m.set_attr("ranked_resume_signature", "");
+				m.set_attr("tournament_id", "");
+				m.set_attr("tournament_game_id", "");
+				m.set_attr("tournament_name", "");
+			}
 			// [addon] info handling
 			std::set<std::string> primary_keys;
 			for(const auto& addon : m.children("addon")) {
@@ -2113,20 +2297,53 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 				WRN_SERVER << "Game content info missing for game with uuid '" << uuid_ << "', game ID '" << g.db_id() << "', named '" << g.name() << "'";
 			}
 
-			// Store both human-readable names and immutable IDs in game_content_info.
-			// Together, tournament and tournament_game identify the exact pending
-			// Tournament Manager pairing that this Wesnoth game reports.
-			const std::string ranked = m["ranked_mode"].to_bool(false) ? "yes" : "no";
-			user_handler_->db_insert_game_content_info(uuid_, g.db_id(), "ranked", ranked, ranked, "", "");
 			const std::string tournament_id = m["tournament_id"].to_string();
-			const std::string tournament_name = tournament_id.empty() || m["tournament_name"].empty()
-				? (tournament_id.empty() ? "No" : tournament_id)
-				: m["tournament_name"].to_string();
-			user_handler_->db_insert_game_content_info(uuid_, g.db_id(), "tournament", tournament_name, tournament_id.empty() ? "No" : tournament_id, "", "");
 			const std::string tournament_game_id = m["tournament_game_id"].to_string();
-			user_handler_->db_insert_game_content_info(uuid_, g.db_id(), "tournament_game", tournament_name, tournament_game_id.empty() ? "No" : tournament_game_id, "", "");
 
-			user_handler_->db_insert_game_info(uuid_, g.db_id(), server_id_, g.name(), g.is_reload(), m["observer"].to_bool(), !m["private_replay"].to_bool(), g.has_password());
+			const bool competitive = m["ranked_mode"].to_bool(false) || !tournament_game_id.empty();
+			std::string competitive_game_id = m["ranked_game_id"].to_string();
+			std::string resume_token = m["ranked_resume_token"].to_string();
+			if(competitive && competitive_game_id.empty() && !logical_reload) {
+				// Generate credentials only after authorization and team checks pass.
+				competitive_game_id = competitive_game_security::generate_identifier();
+				resume_token = competitive_game_security::generate_resume_token();
+				if(competitive_game_id.empty() || resume_token.empty()) {
+					ERR_SERVER << "Could not generate secure metadata for competitive game '" << g.name() << "' (game ID " << g.db_id() << ").";
+					competitive_game_id.clear();
+					resume_token.clear();
+				}
+			}
+			if(competitive && !competitive_game_id.empty() && !resume_token.empty()) {
+				if(competitive_resume_secret_.empty()) {
+					ERR_SERVER << "Competitive game '" << competitive_game_id << "' cannot enable save continuation because competitive_resume_secret is not configured.";
+				} else if(!logical_reload) {
+					// Persist only the token hash; the plaintext token is sent to clients
+					// through the signed metadata packet and is never stored in SQL.
+					const std::string mode = m["ranked_mode"].to_bool(false) ? "ranked" : "tournament";
+					user_handler_->db_insert_competitive_game(competitive_game_id, mode, tournament_id, tournament_game_id,
+						competitive_game_security::sha256(resume_token));
+				}
+				simple_wml::document metadata;
+				simple_wml::node& competitive_node = metadata.root().add_child("competitive_game");
+				const std::string signature = competitive_game_security::hmac_sha256(competitive_resume_secret_, competitive_game_id + ":" + resume_token);
+				competitive_node.set_attr_dup("id", competitive_game_id.c_str());
+				competitive_node.set_attr_dup("resume_token", resume_token.c_str());
+				competitive_node.set_attr_dup("signature", signature.c_str());
+				if(logical_reload) {
+					const config resume_info = user_handler_->db_competitive_game_resume_info(competitive_game_id, competitive_game_security::sha256(resume_token));
+					competitive_node.set_attr("reload", "yes");
+					competitive_node.set_attr_dup("status", resume_info["status"].str().c_str());
+					competitive_node.set_attr_dup("mode", resume_info["mode"].str().c_str());
+					competitive_node.set_attr_dup("tournament_id", resume_info["tournament_id"].str().c_str());
+					competitive_node.set_attr_dup("tournament_game_id", resume_info["tournament_game_id"].str().c_str());
+				}
+				m.set_attr_dup("ranked_game_id", competitive_game_id.c_str());
+				m.set_attr_dup("ranked_resume_token", resume_token.c_str());
+				m.set_attr_dup("ranked_resume_signature", signature.c_str());
+				g.send_data(metadata);
+			}
+
+			user_handler_->db_insert_game_info(uuid_, g.db_id(), server_id_, g.name(), logical_reload, m["observer"].to_bool(), !m["private_replay"].to_bool(), g.has_password(), competitive_game_id);
 
 			const simple_wml::node::child_list& sides = g.get_sides_list();
 			for(unsigned side_index = 0; side_index < sides.size(); ++side_index) {
@@ -2168,6 +2385,14 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 				}
 
 				user_handler_->db_insert_game_player_info(uuid_, g.db_id(), side["player_id"].to_string(), side["side"].to_int(), side["is_host"].to_bool(), side["faction"].to_string(), version, source, side["current_player"].to_string(), utils::join(leaders));
+				if(competitive && !competitive_game_id.empty() && !logical_reload) {
+					// Starter usernames and team assignments are immutable; later events
+					// update only the lifecycle status and reason.
+					const std::string wesnoth_team_id = side["team_name"].to_string().empty() ? side["side"].to_string() : side["team_name"].to_string();
+					const auto tournament_team = tournament_team_ids.find(side["side"].to_int());
+					const std::string tournament_team_id = tournament_team == tournament_team_ids.end() ? "" : tournament_team->second;
+					user_handler_->db_insert_competitive_player(competitive_game_id, side["side"].to_int(), side["player_id"].to_string(), !side["player_id"].empty(), wesnoth_team_id, tournament_team_id);
+				}
 			}
 		}
 
@@ -2247,6 +2472,14 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			return;
 		}
 		g.transfer_side_control(p, *change);
+		if(user_handler_) {
+			const simple_wml::node* competitive_settings = g.level().root().child("multiplayer");
+			const std::string competitive_game_id = competitive_settings ? competitive_settings->attr("ranked_game_id").to_string() : "";
+			const int side_number = change->attr("side").to_int();
+			if(!competitive_game_id.empty() && side_number > 0) {
+				user_handler_->db_update_competitive_player(competitive_game_id, side_number, change->attr("player").to_string(), "active", "control_transfer");
+			}
+		}
 		g.describe_slots();
 		update_game_in_lobby(g);
 
@@ -2293,6 +2526,82 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		}
 
 		return;
+	} else if(const simple_wml::node* defeated = data.child("side_defeated")) {
+		// Accept defeat reports only from the player currently assigned to that
+		// side, then persist the result before broadcasting it to the game.
+		if(!g.is_player(p)) {
+			return;
+		}
+		const simple_wml::node* settings = g.level().root().child("multiplayer");
+		const std::string competitive_game_id = settings ? settings->attr("ranked_game_id").to_string() : "";
+		const int side_number = defeated->attr("side").to_int();
+		const auto& sides = g.get_sides_list();
+		if(competitive_game_id.empty() || side_number < 1 || static_cast<std::size_t>(side_number) > sides.size()
+			|| (*sides[side_number - 1])["player_id"].to_string() != player.name()) {
+			WRN_SERVER << p->client_ip() << "\t" << player.name() << " reported invalid defeat for game '" << g.name()
+				<< "' (instance UUID '" << uuid_ << "', game ID " << g.db_id() << ", side " << side_number << ").";
+			return;
+		}
+		const std::string reason = defeated->attr("reason").to_string();
+		if(reason.empty()) {
+			WRN_SERVER << p->client_ip() << "\t" << player.name() << " reported defeat without a reason for game '" << g.name() << "'.";
+			return;
+		}
+		if(user_handler_) {
+			user_handler_->db_update_competitive_player(competitive_game_id, side_number, player.name(), "defeated", reason);
+			user_handler_->db_complete_competitive_game(competitive_game_id);
+		}
+		LOG_SERVER << p->client_ip() << "\t" << player.name() << " reported side " << side_number << " defeated in game '" << g.name()
+			<< "' (instance UUID '" << uuid_ << "', game ID " << g.db_id() << ", reason '" << reason << "').";
+		g.send_data(data);
+		return;
+	} else if(const simple_wml::node* victorious = data.child("side_victorious")) {
+		// Persist victory independently of scenario cleanup so external consumers
+		// can determine the result from the database without the server log.
+		if(!g.is_player(p)) {
+			return;
+		}
+		const simple_wml::node* settings = g.level().root().child("multiplayer");
+		const std::string competitive_game_id = settings ? settings->attr("ranked_game_id").to_string() : "";
+		const int side_number = victorious->attr("side").to_int();
+		const auto& sides = g.get_sides_list();
+		if(competitive_game_id.empty() || side_number < 1 || static_cast<std::size_t>(side_number) > sides.size()
+			|| (*sides[side_number - 1])["player_id"].to_string() != player.name()) {
+			WRN_SERVER << p->client_ip() << "\t" << player.name() << " reported invalid victory for game '" << g.name()
+				<< "' (instance UUID '" << uuid_ << "', game ID " << g.db_id() << ", side " << side_number << ").";
+			return;
+		}
+		if(user_handler_) {
+			user_handler_->db_update_competitive_player(competitive_game_id, side_number, player.name(), "victory", "victory_check");
+			user_handler_->db_complete_competitive_game(competitive_game_id);
+		}
+		LOG_SERVER << p->client_ip() << "\t" << player.name() << " reported side " << side_number << " victorious in game '" << g.name()
+			<< "' (instance UUID '" << uuid_ << "', game ID " << g.db_id() << ").";
+		g.send_data(data);
+		return;
+	} else if(const simple_wml::node* save = data.child("competitive_save_created")) {
+		// Record only that an artifact was created; save contents and credentials
+		// remain outside the database lifecycle row.
+		const std::string kind = save->attr("kind").to_string();
+		if(!g.is_player(p) || (kind != "manual" && kind != "replay")) {
+			return;
+		}
+		const simple_wml::node* settings = g.level().root().child("multiplayer");
+		const std::string competitive_game_id = settings ? settings->attr("ranked_game_id").to_string() : "";
+		if(competitive_game_id.empty()) {
+			return;
+		}
+		if(user_handler_) {
+			user_handler_->db_insert_competitive_save(competitive_game_id, uuid_, g.db_id(), player.name(), kind);
+		}
+		LOG_SERVER << p->client_ip() << "\t" << player.name() << " created a competitive " << kind << " for game '" << g.name()
+			<< "' (instance UUID '" << uuid_ << "', game ID " << g.db_id() << ").";
+		simple_wml::document notification;
+		simple_wml::node& saved = notification.root().add_child("competitive_save");
+		saved.set_attr_dup("player", player.name().c_str());
+		saved.set_attr_dup("kind", kind.c_str());
+		g.send_data(notification);
+		return;
 	} else if(const simple_wml::node* unban = data.child("unban")) {
 		g.unban_user(*unban, p);
 		return;
@@ -2314,6 +2623,31 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 
 		return;
 	} else if(data.child("turn")) {
+		// Surrender is carried inside the synchronized turn command, so record it
+		// before forwarding the turn to the game state.
+		if(user_handler_) {
+			bool surrender_recorded = false;
+			const simple_wml::node* settings = g.level().root().child("multiplayer");
+			const std::string competitive_game_id = settings ? settings->attr("ranked_game_id").to_string() : "";
+			const simple_wml::node* turn = data.child("turn");
+			if(!competitive_game_id.empty() && turn) {
+				for(const auto& command : turn->children("command")) {
+					if(!command->child("surrender")) {
+						continue;
+					}
+					const auto& sides = g.get_sides_list();
+					for(std::size_t side_index = 0; side_index < sides.size(); ++side_index) {
+						if((*sides[side_index])["player_id"].to_string() == player.name()) {
+							user_handler_->db_update_competitive_player(competitive_game_id, static_cast<int>(side_index + 1), player.name(), "surrendered", "surrender");
+							surrender_recorded = true;
+						}
+					}
+				}
+			}
+			if(surrender_recorded) {
+				user_handler_->db_complete_competitive_game(competitive_game_id);
+			}
+		}
 		// Notify the game of the commands, and if it changes
 		// the description, then sync the new description
 		// to players in the lobby.

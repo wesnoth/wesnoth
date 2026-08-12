@@ -1461,6 +1461,19 @@ bool game::remove_player(player_iterator player, const bool disconnect, const bo
 
 	DBG_GAME << debug_player_info();
 	DBG_GAME << "removing player...";
+	// Preserve the transient idle state in the competitive record before the
+	// player is removed from the side list. Terminal outcomes are protected by
+	// dbconn and cannot be overwritten by this disconnect update.
+	if(const simple_wml::node* settings = level_.root().child("multiplayer"); settings && server.get_user_handler()) {
+		const std::string competitive_game_id = settings->attr("ranked_game_id").to_string();
+		if(!competitive_game_id.empty()) {
+			for(std::size_t side_index = 0; side_index < sides_.size(); ++side_index) {
+				if(sides_[side_index] == player) {
+					server.get_user_handler()->db_update_competitive_player(competitive_game_id, static_cast<int>(side_index + 1), player->info().name(), "idle", disconnect ? "disconnect" : "leave");
+				}
+			}
+		}
+	}
 
 	const bool host = (player == owner_);
 	const bool observer = is_observer(player);

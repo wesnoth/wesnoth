@@ -20,6 +20,8 @@ class config;
 #include "exceptions.hpp"
 
 #include <string>
+#include <utility>
+#include <vector>
 
 #include <boost/asio/io_context.hpp>
 
@@ -132,8 +134,17 @@ public:
 	virtual bool can_create_tournament_game(const std::string& name, const std::string& tournament_id, const std::string& tournament_game_id, bool& ranked) = 0;
 	virtual bool is_ranked_user(const std::string& name) = 0;
 	virtual bool can_join_tournament(const std::string& name, const std::string& tournament_id, const std::string& tournament_game_id) = 0;
+	virtual std::string db_get_tournament_team_id(const std::string& tournament_id, const std::string& tournament_game_id, const std::string& name) = 0;
+	virtual bool db_competitive_tournament_game_exists(const std::string& tournament_id, const std::string& tournament_game_id) = 0;
 	virtual void async_get_and_send_game_history(boost::asio::io_context& io_service, wesnothd::server& s, any_socket_ptr socket, int player_id, int offset, std::string& search_game_name, int search_content_type, std::string& search_content) =0;
-	virtual void db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, int reload, int observers, int is_public, int has_password) = 0;
+	virtual void db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, int reload, int observers, int is_public, int has_password, const std::string& competitive_game_id) = 0;
+	virtual void db_insert_competitive_game(const std::string& competitive_game_id, const std::string& mode, const std::string& tournament_id, const std::string& tournament_game_id, const std::string& resume_token_hash) = 0;
+	virtual void db_update_competitive_player(const std::string& competitive_game_id, int side_number, const std::string& username, const std::string& status, const std::string& reason) = 0;
+	virtual void db_insert_competitive_player(const std::string& competitive_game_id, int side_number, const std::string& username, bool starter, const std::string& wesnoth_team_id, const std::string& tournament_team_id) = 0;
+	virtual void db_insert_competitive_save(const std::string& competitive_game_id, const std::string& uuid, int game_id, const std::string& username, const std::string& kind) = 0;
+	virtual config db_competitive_game_resume_info(const std::string& competitive_game_id, const std::string& resume_token_hash) = 0;
+	virtual bool db_competitive_game_players_match(const std::string& competitive_game_id, const std::vector<std::pair<int, std::string>>& players) = 0;
+	virtual void db_complete_competitive_game(const std::string& competitive_game_id) = 0;
 	virtual void db_update_game_end(const std::string& uuid, int game_id, const std::string& replay_location) = 0;
 	virtual void db_insert_game_player_info(const std::string& uuid, int game_id, const std::string& username, int side_number, int is_host, const std::string& faction, const std::string& version, const std::string& source, const std::string& current_user, const std::string& leaders) = 0;
 	virtual unsigned long long db_insert_game_content_info(const std::string& uuid, int game_id, const std::string& type, const std::string& name, const std::string& id, const std::string& addon_id, const std::string& addon_version) = 0;

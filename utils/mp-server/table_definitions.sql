@@ -68,6 +68,7 @@ create table extra
 -- OBSERVERS: Y/N flag for whether the game allows observers
 -- PASSWORD: Y/N flag for whether the game had a password set
 -- PUBLIC: Y/N flag for whether the game will have a publicly accesible replay created for it
+-- COMPETITIVE_GAME_ID: logical ranked/tournament match identifier shared by reloads
 create table game_info
 (
     INSTANCE_UUID    CHAR(36) NOT NULL,
@@ -82,9 +83,11 @@ create table game_info
     OBSERVERS        BIT(1) NOT NULL,
     PASSWORD         BIT(1) NOT NULL,
     PUBLIC           BIT(1) NOT NULL,
+    COMPETITIVE_GAME_ID CHAR(36) COLLATE utf8mb4_general_ci NULL,
     PRIMARY KEY (INSTANCE_UUID, GAME_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 CREATE INDEX START_TIME_IDX ON game_info(START_TIME);
+CREATE INDEX COMPETITIVE_GAME_IDX ON game_info(COMPETITIVE_GAME_ID);
 
 -- information about the players in a particular game present in game_info
 -- this is accurate at the start of the game, but is not currently updated if a side changes owners, someone disconnects, etc
@@ -111,6 +114,60 @@ create table game_player_info
     PRIMARY KEY (INSTANCE_UUID, GAME_ID, SIDE_NUMBER)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 CREATE INDEX USER_ID_IDX ON game_player_info(USER_ID);
+
+-- One logical ranked or tournament match. A reload creates another game_info
+-- row, while this row remains the authoritative match lifecycle.
+-- RESUME_TOKEN_HASH stores only a digest; the opaque token is never persisted.
+create table competitive_game
+(
+    COMPETITIVE_GAME_ID CHAR(36) COLLATE utf8mb4_general_ci NOT NULL,
+    MODE                VARCHAR(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+    TOURNAMENT_ID       VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+    TOURNAMENT_GAME_ID  VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+    RESUME_TOKEN_HASH   CHAR(64) NOT NULL,
+    STATUS              VARCHAR(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
+    CREATED_AT          TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    COMPLETED_AT        TIMESTAMP NULL DEFAULT NULL,
+    PRIMARY KEY (COMPETITIVE_GAME_ID),
+    UNIQUE KEY RESUME_TOKEN_HASH_IDX (RESUME_TOKEN_HASH)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE INDEX COMPETITIVE_TOURNAMENT_GAME_IDX ON competitive_game(TOURNAMENT_ID, TOURNAMENT_GAME_ID);
+
+-- Current state of every side in a logical competitive match. This is
+-- intentionally separate from game_player_info, which is only a start snapshot.
+-- STATUS may be active, victory, defeated, surrendered, or idle.
+create table competitive_game_player
+(
+    COMPETITIVE_GAME_ID CHAR(36) COLLATE utf8mb4_general_ci NOT NULL,
+    SIDE_NUMBER         SMALLINT UNSIGNED NOT NULL,
+    USER_NAME           VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+    WESNOTH_TEAM_ID     VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+    TOURNAMENT_TEAM_ID  VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+    STATUS              VARCHAR(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'active',
+    STATUS_REASON       VARCHAR(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+    STARTER             BIT(1) NOT NULL DEFAULT 1,
+    UPDATED_AT          TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (COMPETITIVE_GAME_ID, SIDE_NUMBER),
+    CONSTRAINT COMPETITIVE_PLAYER_GAME_FK FOREIGN KEY (COMPETITIVE_GAME_ID)
+        REFERENCES competitive_game(COMPETITIVE_GAME_ID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Audit of manual saves. Autosaves and replay files are deliberately not
+-- inserted here, so inspecting a replay cannot create a continuation event.
+create table competitive_game_save
+(
+    SAVE_ID             BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    COMPETITIVE_GAME_ID CHAR(36) COLLATE utf8mb4_general_ci NOT NULL,
+    INSTANCE_UUID       CHAR(36) COLLATE utf8mb4_general_ci NOT NULL,
+    GAME_ID             INT UNSIGNED NOT NULL,
+    USER_NAME           VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+    SAVE_KIND           VARCHAR(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'manual',
+    CREATED_AT          TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (SAVE_ID),
+    KEY COMPETITIVE_SAVE_GAME_IDX (COMPETITIVE_GAME_ID),
+    CONSTRAINT COMPETITIVE_SAVE_GAME_FK FOREIGN KEY (COMPETITIVE_GAME_ID)
+        REFERENCES competitive_game(COMPETITIVE_GAME_ID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- information about the scenario/era/modifications for the game
 -- TYPE: one of era/scenario/modification/campaign

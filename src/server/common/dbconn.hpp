@@ -76,6 +76,10 @@ public:
 	bool is_ranked_user(const std::string& name);
 	/** Execute db_tournament_join_query for a player's entry in a pending game. */
 	bool can_join_tournament(const std::string& name, const std::string& tournament_id, const std::string& tournament_game_id);
+	/** Return the Tournament Manager team assigned to a player in a pending game. */
+	std::string get_tournament_team_id(const std::string& tournament_id, const std::string& tournament_game_id, const std::string& name);
+	/** Check the local competitive table before exposing a pending game again. */
+	bool competitive_tournament_game_exists(const std::string& tournament_id, const std::string& tournament_game_id);
 
 	/**
 	 * This is an asynchronous query that is executed on a separate connection to retrieve the game history for the
@@ -147,6 +151,7 @@ public:
 
 	/**
 	 * @see forum_user_handler::db_insert_game_info().
+	 * Empty competitive IDs are stored as SQL NULL for ordinary games.
 	 */
 	void insert_game_info(
 		const std::string& uuid,
@@ -156,7 +161,28 @@ public:
 		int reload,
 		int observers,
 		int is_public,
-		int has_password);
+		int has_password,
+		const std::string& competitive_game_id);
+
+	/** Create the logical lifecycle row and store only the hashed resume token. */
+	void insert_competitive_game(
+		const std::string& competitive_game_id,
+		const std::string& mode,
+		const std::string& tournament_id,
+		const std::string& tournament_game_id,
+		const std::string& resume_token_hash);
+	/** Update a side without replacing its immutable original username. */
+	void update_competitive_player(const std::string& competitive_game_id, int side_number, const std::string& username, const std::string& status, const std::string& reason);
+	/** Record the original side owner and both tournament and Wesnoth team IDs. */
+	void insert_competitive_player(const std::string& competitive_game_id, int side_number, const std::string& username, bool starter, const std::string& wesnoth_team_id, const std::string& tournament_team_id);
+	/** Record a successful manual save without storing save contents or tokens. */
+	void insert_competitive_save(const std::string& competitive_game_id, const std::string& uuid, int game_id, const std::string& username, const std::string& kind);
+	/** Return the authoritative lifecycle metadata for a valid competitive save token. */
+	config competitive_game_resume_info(const std::string& competitive_game_id, const std::string& resume_token_hash);
+	/** Require an exact starter-side and case-insensitive username match on reload. */
+	bool competitive_game_players_match(const std::string& competitive_game_id, const std::vector<std::pair<int, std::string>>& players);
+	/** Mark a match complete when a whole team has a terminal result. */
+	void complete_competitive_game(const std::string& competitive_game_id);
 
 	/**
 	 * @see forum_user_handler::db_update_game_end().
@@ -310,6 +336,7 @@ private:
 	std::string db_player_tournaments_query_;
 	std::string db_ranked_user_query_;
 	std::string db_tournament_join_query_;
+	std::string db_tournament_team_query_;
 	/** The name of the table that contains phpbb forum thread information */
 	std::string db_topics_table_;
 	/** The name of the table that contains add-on information. */
