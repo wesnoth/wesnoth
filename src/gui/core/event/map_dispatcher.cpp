@@ -68,6 +68,8 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 		}
 		return is_selected;
 	});
+	connect_signal<event::SDL_KEY_DOWN>(std::bind(
+		&map_dispatcher::key_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6));
 }
 
 bool map_dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id, const bool down)
@@ -210,6 +212,17 @@ bool map_dispatcher::show_menu(const theme::menu* menu, const point& loc, bool c
 	// TODO: should be migrated to gui2. command_executor shouldn't have menu expansion as responsibility.
 	cmd_exec->show_menu(menu->items(), loc, context_menu);
 	return true;
+}
+
+void map_dispatcher::key_down(const event::ui_event /*event*/,
+										 bool& handled,
+										 const SDL_Keycode key,
+										 SDL_Keymod /*modifier*/)
+{
+	if (key == SDLK_ESCAPE || key == SDLK_AC_BACK) {
+		controller_.get_hotkey_command_executor()->execute_quit_command();
+		handled = true;
+	}
 }
 
 bool map_dispatcher::is_at(const point& /*coordinate*/) const
