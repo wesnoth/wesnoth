@@ -60,6 +60,9 @@ public:
 	 */
 	std::string get_tournaments();
 
+	/** Return whether the Tournament Manager enables ranked games for a player. */
+	bool is_ranked_user(const std::string& name);
+
 	/**
 	 * This is an asynchronous query that is executed on a separate connection to retrieve the game history for the
 	 * provided player.
@@ -286,6 +289,13 @@ private:
 	std::string db_user_group_table_;
 	/** The text of the SQL query to use to retrieve any currently active tournaments. */
 	std::string db_tournament_query_;
+	/**
+	 * SQL query used to determine whether a player may play ranked games.
+	 *
+	 * The query receives the nickname as its only parameter and must return a
+	 * single numeric value: 1 for enabled and 0 for disabled.
+	 */
+	std::string db_ranked_user_query_;
 	/** The name of the table that contains phpbb forum thread information */
 	std::string db_topics_table_;
 	/** The name of the table that contains add-on information. */
@@ -294,6 +304,15 @@ private:
 	std::string db_connection_history_table_;
 	/** The name of the table that contains the add-on authors information */
 	std::string db_addon_authors_table_;
+
+	/**
+	 * Account and connection for the optional Tournament Manager database.
+	 *
+	 * These are kept separate from the forum database because Tournament
+	 * Manager may use a different schema, account, or database host.
+	 */
+	mariadb::account_ref tournament_account_;
+	mariadb::connection_ref tournament_connection_;
 
 	/**
 	 * This is used to write out error text when an SQL-related exception occurs.
