@@ -23,6 +23,8 @@
 
 #include "ai/lua/core.hpp"
 #include "ai/composite/aspect.hpp"
+#include "scripting/lua_attributes.hpp"
+#include "scripting/lua_common.hpp" // for new(L)
 #include "scripting/lua_unit.hpp"
 #include "scripting/push_check.hpp"
 #include "ai/lua/lua_object.hpp" // (Nephro)
@@ -45,6 +47,15 @@ static lg::log_domain log_ai_engine_lua("ai/engine/lua");
 #define ERR_LUA LOG_STREAM(err, log_ai_engine_lua)
 
 static char const aisKey[] = "ai contexts";
+static char const atkKey[] = "attack analysis";
+
+template<> struct lua_object_traits<ai::attack_analysis> {
+	inline static auto metatable = atkKey;
+	inline static ai::attack_analysis get(lua_State* L, int n) {
+		auto atk = static_cast<ai::attack_analysis*>(luaL_checkudata(L, n, atkKey));
+		return *atk;
+	}
+};
 
 namespace ai {
 
@@ -109,10 +120,14 @@ void lua_ai_context::set_persistent_data(const config &cfg)
 	lua_settop(L, top);
 }
 
+static ai::engine_lua &get_engine(lua_State *L, int n)
+{
+	return *(static_cast<ai::engine_lua*>(lua_touserdata(L, n)));
+}
+
 static ai::engine_lua &get_engine(lua_State *L)
 {
-	return *(static_cast<ai::engine_lua*>(
-			lua_touserdata(L, lua_upvalueindex(1))));
+	return get_engine(L, lua_upvalueindex(1));
 }
 
 static ai::readonly_context &get_readonly_context(lua_State *L)
@@ -502,21 +517,16 @@ static int cfun_ai_get_villages_per_scout(lua_State *L)
 }
 // End of aspect section
 
-static int cfun_attack_rating(lua_State *L)
+static int impl_attack_rating(lua_State *L)
 {
-	int top = lua_gettop(L);
-	// the attack_analysis table should be on top of the stack
-	lua_getfield(L, -1, "att_ptr"); // [-2: attack_analysis; -1: pointer to attack_analysis object in c++]
-	// now the pointer to our attack_analysis C++ object is on top
-	const attack_analysis* aa_ptr = static_cast< attack_analysis * >(lua_touserdata(L, -1));
+	// the attack_analysis userdata should be on top of the stack
+	const attack_analysis* aa_ptr = static_cast< attack_analysis * >(luaL_checkudata(L, -1, atkKey));
+	// the engine pointer is stored as the first uservalue
+	lua_getiuservalue(L, -1, 1);
+	auto& roc = get_engine(L, -1).get_readonly_context();
 
-	//[-2: attack_analysis; -1: pointer to attack_analysis object in c++]
-
-	double aggression = get_readonly_context(L).get_aggression();
-
-	double rating = aa_ptr->rating(aggression, get_readonly_context(L));
-
-	lua_settop(L, top);
+	double aggression = roc.get_aggression();
+	double rating = aa_ptr->rating(aggression, roc);
 
 	lua_pushnumber(L, rating);
 	return 1;
@@ -547,84 +557,129 @@ static void push_movements(lua_State *L, const std::vector< std::pair < map_loca
 
 }
 
+static int impl_atkstat_destroy(lua_State* L)
+{
+	auto atk = static_cast<attack_analysis*>(luaL_checkudata(L, -1, atkKey));
+	atk->~attack_analysis();
+	return 0;
+}
+
+static int impl_atkstat_tostring(lua_State* L)
+{
+	// The attack analysis userdata should be at the top of the stack.
+	auto atk = static_cast<attack_analysis*>(luaL_checkudata(L, -1, atkKey));
+	luaW_getglobal(L, "string", "format");
+	lua_pushstring(L, "attack analysis @ (%d,%d)");
+	lua_pushinteger(L, atk->target.wml_x());
+	lua_pushinteger(L, atk->target.wml_y());
+	lua_call(L, 3, 1);
+	return 1;
+}
+
+#define ATTACK_GETTER(name, type) LATTR_GETTER(name, type, attack_analysis, atk)
+static luaW_Registry atkAnalysisReg{"attack analysis"};
+
+static int impl_atkstat_get(lua_State* L)
+{
+	return atkAnalysisReg.get(L);
+}
+
+static int impl_atkstat_dir(lua_State* L)
+{
+	return atkAnalysisReg.dir(L);
+}
+
 static void push_attack_analysis(lua_State *L, const attack_analysis& aa)
 {
-	lua_newtable(L);
-
-	// Pushing a pointer to the current object
-	lua_pushstring(L, "att_ptr");
-	lua_pushlightuserdata(L, const_cast<attack_analysis*>(&aa));
-	lua_rawset(L, -3);
-
-	// Registering callback function for the rating method
-	lua_pushstring(L, "rating");
+	new(L, 1) attack_analysis(aa);
+	if(luaL_newmetatable(L, atkKey)) {
+		static luaL_Reg const callbacks[] {
+			{ "__gc",           &impl_atkstat_destroy},
+			{ "__tostring",     &impl_atkstat_tostring},
+			{ "__index",        &impl_atkstat_get},
+			{ "__dir",          &impl_atkstat_dir},
+			{ nullptr, nullptr }
+		};
+		luaL_setfuncs(L, callbacks, 0);
+		lua_pushstring(L, atkKey);
+		lua_setfield(L, -2, "__metatable");
+	}
+	lua_setmetatable(L, -2);
+	// Record the engine pointer for this attack analysis
 	lua_pushlightuserdata(L, &get_engine(L));
-	lua_pushcclosure(L, &cfun_attack_rating, 1);
-	lua_rawset(L, -3);
+	lua_setiuservalue(L, -2, 1);
+}
 
-	lua_pushstring(L, "movements");
-	push_movements(L, aa.movements);
-	lua_rawset(L, -3);
+ATTACK_GETTER("rating", lua_index_raw) {
+	(void)atk;
+	lua_pushcfunction(L, &impl_attack_rating);
+	return lua_index_raw(L);
+}
 
-	lua_pushstring(L, "target");
-	luaW_pushlocation(L, aa.target);
-	lua_rawset(L, -3);
+ATTACK_GETTER("movements", lua_index_raw) {
+	(void)atk;
+	push_movements(L, atk.movements);
+	return lua_index_raw(L);
+}
 
-	lua_pushstring(L, "target_value");
-	lua_pushnumber(L, aa.target_value);
-	lua_rawset(L, -3);
+ATTACK_GETTER("target", map_location) {
+	return atk.target;
+}
 
-	lua_pushstring(L, "avg_losses");
-	lua_pushnumber(L, aa.avg_losses);
-	lua_rawset(L, -3);
+ATTACK_GETTER("target_value", double) {
+	return atk.target_value;
+}
 
-	lua_pushstring(L, "chance_to_kill");
-	lua_pushnumber(L, aa.chance_to_kill);
-	lua_rawset(L, -3);
+ATTACK_GETTER("avg_losses", double) {
+	return atk.avg_losses;
+}
 
-	lua_pushstring(L, "avg_damage_inflicted");
-	lua_pushnumber(L, aa.avg_damage_inflicted);
-	lua_rawset(L, -3);
+ATTACK_GETTER("chance_to_kill", double) {
+	return atk.chance_to_kill;
+}
 
-	lua_pushstring(L, "target_starting_damage");
-	lua_pushinteger(L, aa.target_starting_damage);
-	lua_rawset(L, -3);
+ATTACK_GETTER("avg_damage_inflicted", double) {
+	return atk.avg_damage_inflicted;
+}
 
-	lua_pushstring(L, "avg_damage_taken");
-	lua_pushnumber(L, aa.avg_damage_taken);
-	lua_rawset(L, -3);
+ATTACK_GETTER("target_starting_damage", int) {
+	return atk.target_starting_damage;
+}
 
-	lua_pushstring(L, "resources_used");
-	lua_pushnumber(L, aa.resources_used);
-	lua_rawset(L, -3);
+ATTACK_GETTER("avg_damage_taken", double) {
+	return atk.avg_damage_taken;
+}
 
-	lua_pushstring(L, "terrain_quality");
-	lua_pushnumber(L, aa.terrain_quality);
-	lua_rawset(L, -3);
+ATTACK_GETTER("resources_used", double) {
+	return atk.resources_used;
+}
 
-	lua_pushstring(L, "alternative_terrain_quality");
-	lua_pushnumber(L, aa.alternative_terrain_quality);
-	lua_rawset(L, -3);
+ATTACK_GETTER("terrain_quality", double) {
+	return atk.terrain_quality;
+}
 
-	lua_pushstring(L, "vulnerability");
-	lua_pushnumber(L, aa.vulnerability);
-	lua_rawset(L, -3);
+ATTACK_GETTER("alternative_terrain_quality", double) {
+	return atk.alternative_terrain_quality;
+}
 
-	lua_pushstring(L, "support");
-	lua_pushnumber(L, aa.support);
-	lua_rawset(L, -3);
+ATTACK_GETTER("vulnerability", double) {
+	return atk.vulnerability;
+}
 
-	lua_pushstring(L, "leader_threat");
-	lua_pushboolean(L, aa.leader_threat);
-	lua_rawset(L, -3);
+ATTACK_GETTER("support", double) {
+	return atk.support;
+}
 
-	lua_pushstring(L, "uses_leader");
-	lua_pushboolean(L, aa.uses_leader);
-	lua_rawset(L, -3);
+ATTACK_GETTER("leader_threat", bool) {
+	return atk.leader_threat;
+}
 
-	lua_pushstring(L, "is_surrounded");
-	lua_pushboolean(L, aa.is_surrounded);
-	lua_rawset(L, -3);
+ATTACK_GETTER("uses_leader", bool) {
+	return atk.uses_leader;
+}
+
+ATTACK_GETTER("is_surrounded", bool) {
+	return atk.is_surrounded;
 }
 
 static void push_move_map(lua_State *L, const move_map& m)
