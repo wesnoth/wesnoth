@@ -1,32 +1,30 @@
 # translation of tutorial to Hebrew
 # Ely Levy <nakeee@gmail.com>, 2005, 2006.
 # Ariel Ben-Yehuda <ariel.bys@gmail.com>, 2009.
+# arikari <arielxfr@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-08-03 03:45 UTC\n"
-"PO-Revision-Date: 2009-03-19 23:55+0200\n"
-"Last-Translator: \n"
-"Language-Team: en_US <kde-i18n-doc@lists.kde.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2026-08-11 04:00+0300\n"
+"Last-Translator: arikari <arielxfr@gmail.com>\n"
+"Language-Team: Hebrew\n"
+"Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 0.2\n"
 
 #. [label]
 #: data/campaigns/Heir_To_The_Throne_Classic/gui/character_selection.cfg:19
 msgid "Select Character"
-msgstr ""
+msgstr "בחירת דמות"
 
 #. [label]
 #: data/campaigns/Heir_To_The_Throne_Classic/gui/character_selection.cfg:30
-#, fuzzy
-#| msgid "Who would you like to play?"
 msgid "Who do you want to play as?"
-msgstr "את מי אתה רוצה לשחק (התכונות זהות)?"
+msgstr "את מי תרצה לשחק?"
 
 #. [widget]: id=name
 #. [side]: type=Tutorial_Fighter, id=student
@@ -43,7 +41,7 @@ msgstr "קונרד"
 #: data/campaigns/Heir_To_The_Throne_Classic/lua/character_selection.lua:34
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:181
 msgid "Li’sar"
-msgstr "ליזאר"
+msgstr "לי'סאר"
 
 #. [scenario]: id=tutorial
 #. Hello, translators! The tutorial is meant to be a bit funny at the start,
@@ -51,9 +49,8 @@ msgstr "ליזאר"
 #. If you have any questions, ask in the forums or, the #wesnoth-dev channel on irc.libera.chat,
 #. or https://discord.gg/battleforwesnoth.
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:9
-#, fuzzy
 msgid "Wesnoth Tutorial — Part I"
-msgstr "הדרכת ווסנות'"
+msgstr "הדרכת ווסנות' – חלק א'"
 
 #. [side]: type=Tutorial_Fighter, id=student
 #. [side]
@@ -61,7 +58,7 @@ msgstr "הדרכת ווסנות'"
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:27
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:105
 msgid "team_name^Student"
-msgstr ""
+msgstr "תלמיד"
 
 #. [unit]: id=Delfador, type=Elder Mage
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:75
@@ -74,26 +71,21 @@ msgid ""
 "<i>Heir to the Throne, Classic</i> optionally includes the old <i>Battle "
 "Training</i> tutorial. Play <i>Battle Training</i>?"
 msgstr ""
+"<i>יורש הכתר, קלאסי</i> כולל באופן אופציונלי את ההדרכה הישנה <i>אימון קרבי</"
+"i>. לשחק ב<i>אימון קרבי</i>?"
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:113
 msgid "Yes"
-msgstr ""
+msgstr "כן"
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:118
 msgid "No"
-msgstr ""
+msgstr "לא"
 
 #. [objectives]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:149
-#, fuzzy
-#| msgid ""
-#| "You will learn the basics of:\n"
-#| "Movement\n"
-#| "Attacking\n"
-#| "Healing\n"
-#| "Recruiting"
 msgid ""
 "You will learn the basics of:\n"
 "• <small>Movement</small>\n"
@@ -101,11 +93,11 @@ msgid ""
 "• <small>Healing</small>\n"
 "• <small>Recruiting</small>"
 msgstr ""
-"שיעור זה ילמד אותך דברים אלו:\n"
-"תנועה\n"
-"התקפה\n"
-"ריפוי\n"
-"גיוס"
+"תלמד את היסודות של:\n"
+"• <small>תנועה</small>\n"
+"• <small>התקפה</small>\n"
+"• <small>ריפוי</small>\n"
+"• <small>גיוס</small>"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:155
@@ -121,16 +113,15 @@ msgstr "מצא את עצמך מת"
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:167
 msgid ""
 "You cannot end your turn until you have completed the lesson on movement!"
-msgstr ""
+msgstr "אינך יכול לסיים את תורך עד שתשלים את שיעור התנועה!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:176
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:190
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:198
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:198
-#, fuzzy
 msgid "Welcome to Wesnoth!"
-msgstr "*ברוכ(ה) הבא(ה) לווסנות'!"
+msgstr "ברוך הבא לווסנות'!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:178
@@ -139,51 +130,55 @@ msgid ""
 "Part 1 will teach you the basics about movement, attacking, healing, and "
 "recruiting. Firstly, you’ll choose a hero (both heroes play the same)."
 msgstr ""
+"זוהי הדרכה בת שני חלקים המיועדת למי שחדש במשחק. חלק 1 ילמד אותך את היסודות "
+"של תנועה, התקפה, ריפוי וגיוס. ראשית, תבחר גיבור (שני הגיבורים משחקים באותו "
+"אופן)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:192
-#, fuzzy
 msgid ""
 "For this tutorial, you are playing as Konrad. You are standing on the keep, "
 "and your mentor Delfador is on the east side of the river. You can move the "
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
-msgstr "אתה עומד במצודה, ומורך דלפדור כעת נמצא בגדה המזרחית של הנהר"
+msgstr ""
+"בהדרכה זו אתה משחק בתפקיד קונרד. אתה עומד על המצודה, ומדריכך דלפדור נמצא בצד "
+"המזרחי של הנהר. אפשר להעביר את העכבר מעל יחידה כדי לראות סיכום של יכולותיה "
+"ונתוניה בצד ימין של המסך."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:200
-#, fuzzy
 msgid ""
 "For this tutorial, you are playing as Li’sar. You are standing on the keep, "
 "and your mentor Delfador is on the east side of the river. You can move the "
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
-msgstr "אתה עומד במצודה, ומורך דלפדור כעת נמצא בגדה המזרחית של הנהר"
+msgstr ""
+"בהדרכה זו אתה משחק בתפקיד לי'סאר. אתה עומד על המצודה, ומדריכך דלפדור נמצא "
+"בצד המזרחי של הנהר. אפשר להעביר את העכבר מעל יחידה כדי לראות סיכום של "
+"יכולותיה ונתוניה בצד ימין של המסך."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:206
-#, fuzzy
-#| msgid "Left click on Konrad"
 msgid "Click on Konrad"
-msgstr "כפתור שמאלי על קונרד"
+msgstr "לחץ על קונרד"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:208
-#, fuzzy
-#| msgid "Left click on Li’sar"
 msgid "Click on Li’sar"
-msgstr "כפתור שמאלי על ליזאר"
+msgstr "לחץ על לי'סאר"
 
 #. [then]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:350
 msgid "To undo your last move, press <b>u</b> or use the right-click menu."
 msgstr ""
+"כדי לבטל את המהלך האחרון שלך, לחץ <b>u</b> או השתמש בתפריט לחיצה ימנית."
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:390
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:395
 msgid "Movement"
-msgstr ""
+msgstr "תנועה"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:391
@@ -195,6 +190,11 @@ msgid ""
 "simply click on Konrad and then your destination. (You can press <b>u</b> to "
 "undo a move if you move to the wrong place.)"
 msgstr ""
+"כשאתה מרחף מעל יחידה או בוחר בה, במקרה הזה קונרד, המקומות שאליהם הוא יכול "
+"לנוע מודגשים. לכל היחידות יש מספר מסוים של <i>נקודות תנועה</i>, שקובעות כמה "
+"משושים היחידה יכולה לנוע בכל תור. בדרך כלל, תנועה של משושה אחד בשטח שטוח "
+"צורכת נקודת תנועה אחת. כדי לנוע, פשוט לחץ על קונרד ולאחר מכן על היעד. (אפשר "
+"ללחוץ <b>u</b> כדי לבטל מהלך אם נעת למקום הלא נכון.)"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:396
@@ -206,20 +206,21 @@ msgid ""
 "simply click on Li’sar and then your destination. (You can press <b>u</b> to "
 "undo a move if you move to the wrong place.)"
 msgstr ""
+"כשאתה מרחף מעל יחידה או בוחר בה, במקרה הזה לי'סאר, המקומות שאליהם היא יכולה "
+"לנוע מודגשים. לכל היחידות יש מספר מסוים של <i>נקודות תנועה</i>, שקובעות כמה "
+"משושים היחידה יכולה לנוע בכל תור. בדרך כלל, תנועה של משושה אחד בשטח שטוח "
+"צורכת נקודת תנועה אחת. כדי לנוע, פשוט לחץ על לי'סאר ולאחר מכן על היעד. (אפשר "
+"ללחוץ <b>u</b> כדי לבטל מהלך אם נעת למקום הלא נכון.)"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:406
-#, fuzzy
-#| msgid "Move Konrad to the keep"
 msgid "Move Konrad next to Delfador"
-msgstr "הזז את קונרד למצודה"
+msgstr "הזז את קונרד לצד דלפדור"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:408
-#, fuzzy
-#| msgid "Move Li’sar to the keep"
 msgid "Move Li’sar next to Delfador"
-msgstr "הזז את ליזאר למצודה"
+msgstr "הזז את לי'סאר לצד דלפדור"
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:436
@@ -228,10 +229,8 @@ msgstr "בוקר טוב דלפדור. האם הגיעה השעה לתקוף דב
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:437
-#, fuzzy
-#| msgid "Good morning, Delfador! Is it time to attack things?"
 msgid "female^Good morning, Delfador! Is it time to attack things?"
-msgstr "בוקר טוב דלפדור. האם הגיעה השעה לתקוף דברים?"
+msgstr "בוקר טוב, דלפדור! הגיע הזמן לתקוף משהו?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:442
@@ -245,10 +244,8 @@ msgstr "מצאת אורק שאני יכול לחסל? אולי איזה טרול
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:448
-#, fuzzy
-#| msgid "Have you found an orc for me to fight, huh? A troll?"
 msgid "female^Have you found an orc for me to fight, huh? A troll?"
-msgstr "מצאת אורק שאני יכול לחסל? אולי איזה טרול?"
+msgstr "מצאת לי אורק להילחם בו? טרול?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:453
@@ -262,64 +259,58 @@ msgstr "... את הקונטנה (סוג של בובה לאימון באומנו�
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:516
-#, fuzzy
 msgid "A quintain? You want me to fight a dummy?"
-msgstr "קונטנה? אתה רוצה שאעמיד פנים שאני נלחם בבובה?"
+msgstr "בובת-אימונים? אתה רוצה שאני אילחם בבובה?"
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:517
-#, fuzzy
 msgid "female^A quintain? You want me to fight a dummy?"
-msgstr "קונטנה? אתה רוצה שאעמיד פנים שאני נלחם בבובה?"
+msgstr "בובת-אימונים? את רוצה שאני אילחם בבובה?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:523
-#, fuzzy
 msgid ""
 "Young man, you have $student_hp hitpoints and a sword. I’m fairly sure "
 "you’ll win."
-msgstr "ילד, יש לך 32 נקודות פגיעה וחרב חדה. אני די בטוח שתנצח."
+msgstr "בחור צעיר, יש לך $student_hp נקודות חיים וחרב. אני די בטוח שתנצח."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:528
-#, fuzzy
 msgid ""
 "female^Young lady, you have $student_hp hitpoints and a sword. I’m fairly "
 "sure you’ll win."
-msgstr "ילד, יש לך 32 נקודות פגיעה וחרב חדה. אני די בטוח שתנצח."
+msgstr "עלמה צעירה, יש לך $student_hp נקודות חיים וחרב. אני די בטוח שתנצחי."
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:534
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:539
 msgid "Attacking"
-msgstr ""
+msgstr "התקפה"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:535
-#, fuzzy
 msgid ""
 "To attack the quintain, first select the attacker (Konrad), then the target "
 "(the quintain). You will see an attack description. Click <b>Attack</b> when "
 "you’re ready."
 msgstr ""
-"בשביל לתקוף את הקונטנה, קודם סמן את התוקף (קונרד) ואז את המטרה (הקונטנה). "
-"אתה תראה את תיאור ההתקפה. כשתלחץ אישור, קונרד יתקוף"
+"כדי לתקוף את בובת-האימונים, בחר תחילה בתוקף (קונרד), ולאחר מכן ביעד (בובת-"
+"האימונים). תראה תיאור התקפה. לחץ <b>התקפה</b> כשתהיה מוכן."
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:540
-#, fuzzy
 msgid ""
 "To attack the quintain, first select the attacker (Li’sar), then the target "
 "(the quintain). You will see an attack description. Click <b>Attack</b> when "
 "you’re ready."
 msgstr ""
-"בשביל לתקוף את הקונטנה, קודם סמן את התוקף (ליזאר) ואז את המטרה (הקונטנה). "
-"אתה תראה את תיאור ההתקפה. כשתלחץ אישור, ליזאר תתקוף"
+"כדי לתקוף את בובת-האימונים, בחר תחילה בתוקף (לי'סאר), ולאחר מכן ביעד (בובת-"
+"האימונים). תראה תיאור התקפה. לחץ <b>התקפה</b> כשתהיה מוכן."
 
 #. [disallow_end_turn]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:545
 msgid "You cannot end your turn until you have attacked the dummy!"
-msgstr ""
+msgstr "אינך יכול לסיים את תורך עד שתתקוף את הבובה!"
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:564
@@ -328,9 +319,8 @@ msgstr "הי! הקונטנה תוקפת בחזרה!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:569
-#, fuzzy
 msgid "Hmm, perhaps we should have started with a doll."
-msgstr "המם, אולי היה עדיף להתחיל עם בובה."
+msgstr "הממ, אולי היה כדאי להתחיל עם בובת-סמרטוטים."
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:574
@@ -339,10 +329,8 @@ msgstr "לסגת?"
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:575
-#, fuzzy
-#| msgid "Should I retreat?"
 msgid "female^Should I retreat?"
-msgstr "לסגת?"
+msgstr "כדאי שאסוג?"
 
 #. [message]: speaker=Delfador
 #. [message]: speaker=Galdrad
@@ -353,39 +341,32 @@ msgstr "רעיון טוב!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:606
-#, fuzzy
 msgid ""
 "Unfortunately, you’ve used up your turn attacking the quintain. The quintain "
 "now gets to attack."
-msgstr "לרוע המזל, בזבזת את תורך בהתקפה על הקונטינה. עכשיו הגיע תורה."
+msgstr ""
+"לצערך, בזבזת את התור שלך בתקיפת בובת-האימונים. עכשיו התור של הבובה לתקוף."
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:611
-#, fuzzy
 msgid "The <i>dummy</i> gets a turn?"
-msgstr "לבובה יש תור!?"
+msgstr "ל<i>בובה</i> יש תור משלה?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:616
-#, fuzzy
-#| msgid ""
-#| "Yes. It’s a magical quintain.\n"
-#| "Now, this quintain gets 5 chances to hit you for 3 damage each. If it "
-#| "hits every time, you’ll drop from $student_hp to $future_hp hit points. "
-#| "Brace yourself!"
 msgid ""
 "Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
-"chances. If it hits every time, you’ll drop from $student_hp to "
-"$($student_hp-15) hitpoints. Brace yourself!"
+"chances. If it hits every time, you’ll drop from $student_hp to $"
+"($student_hp-15) hitpoints. Brace yourself!"
 msgstr ""
-"כן. היא בובה קסומה.\n"
-"כעת, לבובה יש 5 ניסיונות פגיעה וכל פגיעה מורידה 3 נזק. עם כל הניסיונות "
-"פוגעים, אתה תרד מ $student_hp ל $future_hp נק\"פ. התגונן!"
+"כן. זו בובת-אימונים קסומה! אם היא פוגעת בך, היא גורמת 3 נזק, ויש לה 5 "
+"סיכויים. אם היא תפגע בכל פעם, תרד מ-$student_hp ל-$($student_hp-15) נקודות "
+"חיים. התאזר באומץ!"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:622
 msgid "Turns"
-msgstr ""
+msgstr "תורות"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:623
@@ -398,6 +379,12 @@ msgid ""
 "turn it is, and any applicable turn limit, next to the flag icon at the top "
 "of the screen."
 msgstr ""
+"בכל תור, כל צד בתרחיש מקבל הזדמנות לבצע את מהלכו. לאחר שסיימת לעשות את כל מה "
+"שרצית לעשות בתור זה, לחץ על כפתור <b>סיום תור</b> בפינה הימנית התחתונה של "
+"המסך. שאר הצדדים, בין אם נשלטים על ידי הבינה המלאכותית ובין אם על ידי שחקנים "
+"אנושיים אחרים, יבצעו אז את מהלכם. בחלק מהתרחישים יש להשלים את המשימה במספר "
+"מוגבל של תורות. אפשר לראות מהו התור הנוכחי, ואת מגבלת התורות אם קיימת, ליד "
+"סמל הדגל בראש המסך."
 
 #. [event]
 #. [else]
@@ -412,32 +399,26 @@ msgstr "סיים את תורך"
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:649
 msgid ""
 "You cannot end your turn until you have completed the lesson on healing!"
-msgstr ""
+msgstr "אינך יכול לסיים את תורך עד שתשלים את שיעור הריפוי!"
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:664
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
-msgstr "אוי! אני צריך ריפוי! נשארו לי רק $student_hp נק\"פ!"
+msgstr "אוי! אני צריך ריפוי! נשארו לי רק $student_hp נק״ח!"
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:665
-#, fuzzy
-#| msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgid "female^Ouch! I need to heal! Only $student_hp hitpoints left!"
-msgstr "אוי! אני צריך ריפוי! נשארו לי רק $student_hp נק\"פ!"
+msgstr "אאוץ'! אני צריכה להירפא! נשארו לי רק $student_hp נקודות חיים!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:670
-#, fuzzy
-#| msgid ""
-#| "There is a village on the other side of the river. Visiting villages is a "
-#| "good idea, and ending your turn in one will heal you. To the village!"
 msgid ""
 "There are two villages within your reach. Visiting villages is a good idea, "
 "and ending your turn on one will heal you. To a village!"
 msgstr ""
-"יש כפר בצד השני של הנהר. ביקור בכפרים הוא רעיון מצוין, ועם תסיים את תורך "
-"באחד אתה תתרפא. אל הכפר!"
+"יש שני כפרים בטווח ההגעה שלך. כדאי לבקר בכפרים, וסיום התור באחד מהם ירפא "
+"אותך. אל הכפר!"
 
 #. [label]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:675
@@ -446,42 +427,36 @@ msgstr "כפר"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:688
-#, fuzzy
-#| msgid "Move Konrad to capture a village"
 msgid "Move Konrad to a nearby village"
-msgstr "הזז את קונרד וכבוש כפר"
+msgstr "הזז את קונרד לכפר סמוך"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:690
-#, fuzzy
-#| msgid "Move Li’sar to capture a village"
 msgid "Move Li’sar to a nearby village"
-msgstr "הזז את ליזאר וכבוש כפר"
+msgstr "הזז את לי'סאר לכפר סמוך"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:702
-#, fuzzy
 msgid "Villages"
-msgstr "כפר"
+msgstr "כפרים"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:703
-#, fuzzy
 msgid ""
 "You have captured a village! It now flies your colors and has been added to "
 "your total village count (the house icon at the top of the screen shows how "
 "many villages you currently control). Villages provide the gold needed to "
 "recruit units. Each turn, you gain 2 gold, plus 1 for every village you own."
 msgstr ""
-"כבשת כפר! עכשיו הוא מעלה את  דגלך והוא הוסף לסכום כפריף למעלה במסך (ליד "
-"תמונת הבית). כפרים נותנים את הזה הנדרש לגיוס יחידות. כל תור, אתה מקבל 2 זהב "
-"ועוד אחד לכל כפר הנמצא תחת שליתתך"
+"כבשת כפר! הוא מניף כעת את צבעיך ונוסף לספירת הכפרים הכוללת שלך (סמל הבית "
+"בראש המסך מציג כמה כפרים אתה שולט בהם כרגע). כפרים מספקים את הזהב הדרוש "
+"לגיוס יחידות. בכל תור, אתה מרוויח 2 זהב, ועוד 1 עבור כל כפר בבעלותך."
 
 #. [disallow_end_turn]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:718
 msgid ""
 "You cannot end your turn until you have completed the lesson on recruiting!"
-msgstr ""
+msgstr "אינך יכול לסיים את תורך עד שתשלים את שיעור הגיוס!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:727
@@ -491,14 +466,14 @@ msgid ""
 "whichever is less. In your case, you regained $student_hp_heal_amount "
 "hitpoints."
 msgstr ""
+"מכיוון שהתחלת את תורך בכפר, החזרת לעצמך קצת מבריאותך! כפרים מרפאים יחידות 8 "
+"נקודות חיים בכל תור, או עד להשלמת בריאותן במלואה, לפי הנמוך מביניהם. במקרה "
+"שלך, חזרו אליך $student_hp_heal_amount נקודות חיים."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:732
-#, fuzzy
 msgid "Now, it’s time to summon some help against that quintain."
-msgstr ""
-"עוד מעת תתרפא ב $hp_difference נק\"פ. אבל אני חושב שתצתרך קצת עזרה נגד "
-"הקונטינה."
+msgstr "עכשיו הגיע הזמן לזמן קצת עזרה נגד בובת-האימונים הזו."
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:737
@@ -507,23 +482,18 @@ msgstr "אגייס קצת אלפים!"
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:738
-#, fuzzy
-#| msgid "I’ll recruit some elves!"
 msgid "female^I’ll recruit some elves!"
-msgstr "אגייס קצת אלפים!"
+msgstr "אני אגייס כמה אלפים!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:743
-#, fuzzy
-#| msgid ""
-#| "A splendid idea. You can recruit two units if you return to the keep. You "
-#| "have plenty of gold for that."
 msgid ""
 "A splendid idea! It’s probably best not to attempt attacking the quintain "
 "this turn. Instead, you should return to the keep and recruit two units; you "
 "have plenty of gold for that."
 msgstr ""
-"רעיון מצוין. תוכל לגייס 2 יחידות עם תחזור למצודה. יש לך מספיק זהב לעשות זאת."
+"רעיון נהדר! כנראה עדיף לא לנסות לתקוף את בובת-האימונים בתור הזה. במקום זאת, "
+"כדאי שתחזור למצודה ותגייס שתי יחידות; יש לך די והותר זהב לכך."
 
 #. [label]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:748
@@ -543,11 +513,10 @@ msgstr "הזז את ליזאר למצודה"
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:781
 msgid "Recruiting"
-msgstr ""
+msgstr "גיוס"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:782
-#, fuzzy
 msgid ""
 "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the castle "
 "tiles around it by right-clicking and selecting <b>Recruit</b>. Note that "
@@ -555,21 +524,21 @@ msgid ""
 "to use them next turn. For this scenario, you have only one type of unit to "
 "choose from: the Elvish Fighter."
 msgstr ""
-"כשאתה נמצא במצודה, אתה יכול לגייס למשבצות הטירה שלייד ע\"י כפתור ימני על "
-"המשבצת ובחירה ב'גייס'. כרגע יש רק כלי אחד לבחור ממנו: הלוחם האלפי."
+"בכל פעם שאתה נמצא על <i>מצודה</i>, אתה יכול <i>לגייס</i> יחידות במשבצות "
+"הטירה שסביבה על ידי לחיצה ימנית ובחירה ב<b>גיוס</b>. שים לב שיחידות שגויסו "
+"לאחרונה אינן יכולות לפעול בתור שבו גייסת אותן; תוכל להשתמש בהן בתור הבא. "
+"בתרחיש הזה, יש לך רק סוג יחידה אחד לבחירה: לוחם אלפי."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:785
-#, fuzzy
-#| msgid "Left click on an Elvish Fighter"
 msgid "Recruit two Elvish Fighters"
-msgstr "כפתור שמאלי על הלוחם האלפי"
+msgstr "גייס שני לוחמים אלפיים"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:805
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:810
 msgid "Crowns"
-msgstr ""
+msgstr "כתרים"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:806
@@ -578,6 +547,8 @@ msgid ""
 "leader. In most scenarios, you will lose if your leader is killed. Be sure "
 "to keep him safe!"
 msgstr ""
+"הכתר הזהוב הקטן מעל המנהיג שלך (קונרד) מציין שהוא מנהיג הצד. ברוב התרחישים, "
+"תפסיד אם מנהיגך ייהרג. הקפד לשמור עליו!"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:811
@@ -586,30 +557,32 @@ msgid ""
 "leader. In most scenarios, you will lose if your leader is killed. Be sure "
 "to keep her safe!"
 msgstr ""
+"הכתר הזהוב הקטן מעל המנהיגה שלך (לי'סאר) מציין שהיא מנהיגת הצד. ברוב "
+"התרחישים, תפסיד אם מנהיגתך תיהרג. הקפד לשמור עליה!"
 
 #. [disallow_end_turn]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:854
 msgid ""
 "You cannot end your turn until you have completed the lesson on attacking!"
-msgstr ""
+msgstr "אינך יכול לסיים את תורך עד שתשלים את שיעור התקיפה!"
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:863
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
-msgstr ""
+msgstr "היי, בובת-האימונים רק החלימה 2 נקודות חיים! כדאי שאתקוף אותה מיד!"
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:864
 msgid ""
 "female^Hey, the quintain just healed 2 hitpoints! I’d better attack it at "
 "once!"
-msgstr ""
+msgstr "היי, בובת-האימונים רק החלימה 2 נקודות חיים! כדאי שאתקוף אותה מיד!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:869
 msgid "Yes, if a unit doesn’t do anything for a turn, it will slowly heal."
-msgstr ""
+msgstr "כן, אם יחידה לא עושה כלום במשך תור, היא מחלימה לאט לאט."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:874
@@ -617,16 +590,18 @@ msgid ""
 "Before you send your fighters against the quintain, you should know they "
 "have two kinds of attacks..."
 msgstr ""
+"לפני ששולח את הלוחמים שלך נגד בובת-האימונים, כדאי שתדע שיש להם שני סוגי "
+"התקפות..."
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:879
 msgid "I’ll tell them to use the one that does more damage!"
-msgstr ""
+msgstr "אני אגיד להם להשתמש בזו שגורמת יותר נזק!"
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:880
 msgid "female^I’ll tell them to use the one that does more damage!"
-msgstr ""
+msgstr "אני אגיד להם להשתמש בזו שגורמת יותר נזק!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:885
@@ -635,16 +610,18 @@ msgid ""
 "attacks) or the bow (3×3; or 3 damage on each hit, with 3 attacks)? I "
 "suppose you’ll find out..."
 msgstr ""
+"ואיזו זו תהיה? החרב (5–4; כלומר 5 נזק בכל פגיעה, עם 4 התקפות) או הקשת (3–3; "
+"כלומר 3 נזק בכל פגיעה, עם 3 התקפות)? אני מניח שתגלה..."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:888
 msgid "Attack the quintain with your fighters"
-msgstr ""
+msgstr "תקוף את בובת-האימונים עם הלוחמים שלך"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:892
 msgid "Traits"
-msgstr ""
+msgstr "תכונות"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:893
@@ -655,6 +632,10 @@ msgid ""
 "each turn, and units with the <i>intelligent</i> trait require 20% less "
 "experience to level up."
 msgstr ""
+"הקפד לבחון את <i>התכונות</i> של המגויסים החדשים שלך. הן רשומות תחת הגזע שלהם "
+"בסרגל הצד. תכונות יכולות להשפיע בעדינות על האופן שבו אתה משתמש בחייליך. "
+"לדוגמה, יחידות עם תכונת <i>מהיר</i> יכולות לנוע משושה נוסף בכל תור, ויחידות "
+"עם תכונת <i>אינטליגנטי</i> זקוקות ל-20% פחות ניסיון כדי לעלות דרגה."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:905
@@ -663,6 +644,8 @@ msgid ""
 "now would you? Use the fighters you recruited first; they’ll be a lot of "
 "help."
 msgstr ""
+"לא תעשה שוב משהו טיפשי כמו להסתער על בובת-האימונים בעצמך, נכון? השתמש קודם "
+"בלוחמים שגייסת; הם יהיו לך לעזר רב."
 
 #. [message]: speaker=Delfador
 #. a strong elf, so +1 damage
@@ -673,6 +656,9 @@ msgid ""
 "or 3 damage on each hit, with 5 attacks). The ranged attack (the bow) would "
 "have been safer."
 msgstr ""
+"האלף שלך השתמש בחרב (6–4; כלומר 6 נזק בכל פגיעה, עם 4 התקפות), שהיא התקפת "
+"<i>קרב פנים-אל-פנים</i>. בובת-האימונים הגנה עם התקפת הקרב שלה (3–5; כלומר 3 "
+"נזק בכל פגיעה, עם 5 התקפות). התקפת הטווח הרחוק (הקשת) הייתה בטוחה יותר."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:952
@@ -680,6 +666,8 @@ msgid ""
 "Elvish Fighters normally do 5×4 damage with their swords, but this elf has "
 "the <i>strong</i> trait, which increases the damage output of melee attacks."
 msgstr ""
+"לוחמים אלפיים גורמים בדרך כלל 5–4 נזק בחרבותיהם, אבל לאלף הזה יש את תכונת "
+"<i>חזק</i>, שמגדילה את תפוקת הנזק של התקפות קרב פנים-אל-פנים."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:958
@@ -689,6 +677,9 @@ msgid ""
 "or 3 damage on each hit, with 5 attacks). The ranged attack (the bow) would "
 "have been safer."
 msgstr ""
+"האלף שלך השתמש בחרב (5–4; כלומר 5 נזק בכל פגיעה, עם 4 התקפות), שהיא התקפת "
+"<i>קרב פנים-אל-פנים</i>. בובת-האימונים הגנה עם התקפת הקרב שלה (3–5; כלומר 3 "
+"נזק בכל פגיעה, עם 5 התקפות). התקפת הטווח הרחוק (הקשת) הייתה בטוחה יותר."
 
 #. [message]: speaker=Delfador
 #. a dextrous elf, so +1 damage
@@ -698,6 +689,9 @@ msgid ""
 "each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
 "attack, so it could not defend itself."
 msgstr ""
+"האלף שלך השתמש בקשת, שהיא התקפת <i>טווח רחוק</i> (4–3; כלומר 4 נזק בכל "
+"פגיעה, עם 3 התקפות). לבובת-האימונים אין התקפת טווח רחוק, רק התקפת קרב, ולכן "
+"היא לא יכלה להגן על עצמה."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:983
@@ -705,6 +699,8 @@ msgid ""
 "Elvish Fighters normally do 3×3 damage with their bows, but this elf has the "
 "<i>dextrous</i> trait, which increases the damage output of ranged attacks."
 msgstr ""
+"לוחמים אלפיים גורמים בדרך כלל 3–3 נזק בקשתותיהם, אבל לאלף הזה יש את תכונת "
+"<i>זריז</i>, שמגדילה את תפוקת הנזק של התקפות טווח רחוק."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:989
@@ -713,33 +709,35 @@ msgid ""
 "each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
 "attack, so it could not defend itself."
 msgstr ""
+"האלף שלך השתמש בקשת, שהיא התקפת <i>טווח רחוק</i> (3–3; כלומר 3 נזק בכל "
+"פגיעה, עם 3 התקפות). לבובת-האימונים אין התקפת טווח רחוק, רק התקפת קרב, ולכן "
+"היא לא יכלה להגן על עצמה."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1006
 msgid "Keep attacking with both elves until the quintain is finished!"
-msgstr ""
+msgstr "המשך לתקוף עם שני האלפים עד שבובת-האימונים תושמד!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1021
 msgid "Maybe you should recruit another elf?"
-msgstr ""
+msgstr "אולי כדאי שתגייס אלף נוסף?"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1030
 msgid "Unit Descriptions"
-msgstr ""
+msgstr "תיאורי יחידות"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1031
-#, fuzzy
 msgid ""
 "You can right-click on a unit to see a detailed <b>Unit Description</b>."
-msgstr "כפתור ימני על משבצת הטירה האחרת וגיס יחידה אחרת"
+msgstr "אפשר ללחוץ לחיצה ימנית על יחידה כדי לראות <b>תיאור יחידה</b> מפורט."
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1040
 msgid "Protect Your Troops"
-msgstr ""
+msgstr "הגן על חייליך"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1041
@@ -748,11 +746,14 @@ msgid ""
 "needed. Take special care of units with the highest <i>experience points "
 "(XP)</i> so they can gain levels and become more powerful."
 msgstr ""
+"זכור למשוך יחידות פצועות אחורה אל כפרים ולגייס עוד אם צריך. תן תשומת לב "
+"מיוחדת ליחידות עם <i>נקודות הניסיון (XP)</i> הגבוהות ביותר כדי שיוכלו לעלות "
+"דרגה ולהפוך לחזקות יותר."
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1050
 msgid "Support"
-msgstr ""
+msgstr "אחזקה"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1051
@@ -760,16 +761,18 @@ msgid ""
 "Each village you control will <i>support</i> one unit for free. After that, "
 "each unit costs you one gold per turn."
 msgstr ""
+"כל כפר בבעלותך <i>מחזיק</i> יחידה אחת ללא תשלום. מעבר לכך, כל יחידה עולה לך "
+"זהב אחד בכל תור."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1061
 msgid "You had really better finish off that quintain."
-msgstr ""
+msgstr "כדאי מאוד שתחסל את בובת-האימונים הזו סוף סוף."
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1070
 msgid "Advancement"
-msgstr ""
+msgstr "קידום"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1071
@@ -780,12 +783,15 @@ msgid ""
 "choose which one you want. However, second level units cost twice as much to "
 "support as first level units."
 msgstr ""
+"כשיחידה צוברת מספיק נקודות ניסיון (<i>סרגל הניסיון</i>, אם קיים, נמצא "
+"<b>מימין</b> ל<i>סרגל נקודות החיים</i>), היא תעלה דרגה. ללוחמים אלפיים יש "
+"שתי אפשרויות קידום, ותוכל לבחור באיזו מהן לבחור. עם זאת, יחידות מדרגה שנייה "
+"עולות פי שניים באחזקה לעומת יחידות מדרגה ראשונה."
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1080
-#, fuzzy
 msgid "Defenses"
-msgstr "הגן על מקום זה"
+msgstr "הגנה"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1081
@@ -798,21 +804,26 @@ msgid ""
 "which always has a 70% chance of hitting no matter what terrain their "
 "targets occupy."
 msgstr ""
+"בכל פעם שאחת מיחידותיך נבחרת, תראה אחוזים משתנים כשאתה מעביר את העכבר מעל "
+"המפה. ככל שהאחוז גבוה יותר, כך <i>ההגנה</i> של אותה יחידה בסוג השטח הזה "
+"גבוהה יותר. לדוגמה, לרוב היחידות יש הגנה טובה בטירות ובכפרים אך הגנה גרועה "
+"בנהרות. ליחידות מסוימות, כמו בובות-האימונים הללו, יש התקפה <i>קסומה</i>, "
+"שתמיד בעלת סיכוי של 70% לפגוע ללא קשר לשטח שבו נמצא היעד."
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1093
 msgid "Agh! This training is too much for me..."
-msgstr ""
+msgstr "אח! האימון הזה יותר מדי בשבילי..."
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1094
 msgid "female^Agh! This training is too much for me..."
-msgstr ""
+msgstr "אח! האימון הזה יותר מדי בשבילי..."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1130
 msgid "The quintain is destroyed, and I have gained more experience!"
-msgstr ""
+msgstr "בובת-האימונים הושמדה, וצברתי עוד ניסיון!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1135
@@ -820,6 +831,8 @@ msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you’ll become more powerful."
 msgstr ""
+"כן, אתה צובר ניסיון דרך קרב, בעיקר על ידי הריגת יריב. אם תצבור מספיק ניסיון, "
+"תהפוך לחזק יותר."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1141
@@ -827,6 +840,8 @@ msgid ""
 "Now, Konrad, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
 msgstr ""
+"עכשיו, קונרד, אשאיר לך עוד בובות להתאמן עליהן! אחר כך, יש לנו עבודה אמיתית "
+"לעשות..."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1146
@@ -834,11 +849,13 @@ msgid ""
 "Now, Li’sar, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
 msgstr ""
+"עכשיו, לי'סאר, אשאיר לך עוד בובות להתאמן עליהן! אחר כך, יש לנו עבודה אמיתית "
+"לעשות..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1208
 msgid "Note"
-msgstr ""
+msgstr "הערה"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1210
@@ -846,6 +863,8 @@ msgid ""
 "These dummies only attack if you are a single tile away. With care, you "
 "should be able to kill them one at a time."
 msgstr ""
+"הבובות הללו תוקפות רק אם אתה במרחק משבצת אחת מהן. בזהירות, אמור להיות לך "
+"אפשרי להרוג אותן אחת אחת."
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1219
@@ -853,6 +872,8 @@ msgid ""
 "Well, I think I know the basics. Onwards! Maybe I can fight in a real battle "
 "next?"
 msgstr ""
+"טוב, נראה לי שאני מכיר את היסודות. קדימה! אולי אוכל להילחם בקרב אמיתי בפעם "
+"הבאה?"
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1220
@@ -860,11 +881,13 @@ msgid ""
 "female^Well, I think I know the basics. Onwards! Maybe I can fight in a real "
 "battle next?"
 msgstr ""
+"טוב, נראה לי שאני מכירה את היסודות. קדימה! אולי אוכל להילחם בקרב אמיתי בפעם "
+"הבאה?"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1235
 msgid "Victory"
-msgstr ""
+msgstr "ניצחון"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1236
@@ -875,68 +898,71 @@ msgid ""
 "enemies. When you’re finished, click the <b>End Scenario</b> button to go on "
 "to the next scenario in the campaign."
 msgstr ""
+"אחרי הודעת הניצחון שלך, המפה תוצג באפור כדי לציין שהתרחיש הסתיים; זה נקרא "
+"<i>מצב שהייה</i>. עדיין תוכל לבחון את המיקומים הסופיים ואת מצב חייליך וכל "
+"אויב ששרד. כשתסיים, לחץ על כפתור <b>סיום תרחיש</b> כדי לעבור לתרחיש הבא "
+"בקמפיין."
 
 #. [scenario]: id=2_Tutorial
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:5
-#, fuzzy
 msgid "Wesnoth Tutorial — Part II"
-msgstr "הדרכת ווסנות'"
+msgstr "הדרכת ווסנות' – חלק ב'"
 
 #. [side]: type=Orcish Warrior, id=Thrag
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:44
 msgid "team_name^Orcs"
-msgstr ""
+msgstr "אורקים"
 
 #. [side]: type=Orcish Warrior, id=Thrag
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:48
 msgid "Thrag"
-msgstr ""
+msgstr "תראג"
 
 #. [unit]: id=Galdrad, type=Elvish Champion
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:111
 msgid "Galdrad"
-msgstr ""
+msgstr "גלדרד"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:127
 msgid "I hope I have a chance to retreat after this!"
-msgstr ""
+msgstr "אני מקווה שתהיה לי הזדמנות לסגת אחרי זה!"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:128
 msgid "One lucky attack by an Orcish Grunt, and I’m done for!"
-msgstr ""
+msgstr "מכה מוצלחת אחת מצד חוגר אורקי, ואני גמור!"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:129
 msgid "I could make use of some healing in a village."
-msgstr ""
+msgstr "יכולתי להשתמש בקצת ריפוי בכפר."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:130
 msgid "I had better retreat, before I get caught out with such low health!"
-msgstr ""
+msgstr "כדאי שאסוג, לפני שאיתפס עם בריאות נמוכה כל כך!"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:131
 msgid "female^I hope I have a chance to retreat after this!"
-msgstr ""
+msgstr "אני מקווה שתהיה לי הזדמנות לסגת אחרי זה!"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:132
 msgid "female^One lucky attack by an Orcish Grunt, and I’m done for!"
-msgstr ""
+msgstr "מכה מוצלחת אחת מצד חוגר אורקי, ואני גמורה!"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:133
 msgid "female^I could make use of some healing in a village."
-msgstr ""
+msgstr "יכולתי להשתמש בקצת ריפוי בכפר."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:134
 msgid ""
 "female^I had better retreat, before I get caught out with such low health!"
-msgstr ""
+msgstr "כדאי שאסוג, לפני שאיתפס עם בריאות נמוכה כל כך!"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:139
@@ -951,21 +977,19 @@ msgstr "מותו של קונרד"
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:155
 msgid "Death of Li’sar"
-msgstr "מותה של ליזאר"
+msgstr "מותה של לי'סאר"
 
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:166
-#, fuzzy
-#| msgid "Death of Konrad"
 msgid "Death of Galdrad"
-msgstr "מותו של קונרד"
+msgstr "מותו של גלדרד"
 
 #. [disallow_end_turn]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:187
 msgid ""
 "You cannot end your turn until you have recruited troops and captured a "
 "village!"
-msgstr ""
+msgstr "אינך יכול לסיים את תורך עד שתגייס חיילים ותכבוש כפר!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:200
@@ -974,6 +998,9 @@ msgid ""
 "teach you about recalling units, abilities and weapon specials, income and "
 "upkeep, long-distance movement, zone of control, and time of day."
 msgstr ""
+"ברוך שובך! זהו החלק השני של ההדרכה הדו-חלקית. חלק 2 ילמד אותך על השבת "
+"יחידות, יכולות ומאפייני נשק, הכנסה ואחזקה, תנועה למרחקים ארוכים, אזור שליטה, "
+"וזמני יום."
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:206
@@ -981,6 +1008,7 @@ msgid ""
 "Ho, Galdrad! Has Delfador conjured something else to beat me with? A flock "
 "of scarecrows, perhaps?"
 msgstr ""
+"הו, גלדרד! דלפדור המציא עוד משהו כדי להכות בי איתו? להקת דחלילים, אולי?"
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:207
@@ -988,6 +1016,7 @@ msgid ""
 "female^Ho, Galdrad! Has Delfador conjured something else to beat me with? A "
 "flock of scarecrows, perhaps?"
 msgstr ""
+"הו, גלדרד! דלפדור המציא עוד משהו כדי להכות בי איתו? להקת דחלילים, אולי?"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:213
@@ -997,6 +1026,9 @@ msgid ""
 "forests. You must defeat their leader so they never threaten us again. I "
 "will advise you."
 msgstr ""
+"זה לא משחק, קונרד! אורקים חנו מעבר לנהר. זו ארץ אלפים; הם טיפשים שנכנסו "
+"לכאן. אנחנו האלפים מהירים וקשה לפגוע בנו ביערות. עליך להביס את מנהיגם כדי "
+"שלעולם לא יאיימו עלינו שוב. אני אייעץ לך."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:218
@@ -1006,6 +1038,9 @@ msgid ""
 "forests. You must defeat their leader so they never threaten us again. I "
 "will advise you."
 msgstr ""
+"זה לא משחק, לי'סאר! אורקים חנו מעבר לנהר. זו ארץ אלפים; הם טיפשים שנכנסו "
+"לכאן. אנחנו האלפים מהירים וקשה לפגוע בנו ביערות. עלייך להביס את מנהיגם כדי "
+"שלעולם לא יאיימו עלינו שוב. אני אייעץ לך."
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:224
@@ -1014,10 +1049,8 @@ msgstr "מה עושים?"
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:225
-#, fuzzy
-#| msgid "What should I do?"
 msgid "female^What should I do?"
-msgstr "מה עושים?"
+msgstr "מה עליי לעשות?"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:228
@@ -1025,13 +1058,15 @@ msgid ""
 "First, we will have to deal with the Orcish Grunt stationed in the middle of "
 "the river. He should be little trouble."
 msgstr ""
+"ראשית, נצטרך להתמודד עם החוגר האורקי המוצב באמצע הנהר. הוא לא אמור להוות "
+"בעיה גדולה."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:230
 msgid ""
 "By then, their leader will have recruited more units to send against us and "
 "the real fight will begin."
-msgstr ""
+msgstr "עד אז, מנהיגם יגייס עוד יחידות לשלוח נגדנו והקרב האמיתי יתחיל."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:232
@@ -1041,6 +1076,10 @@ msgid ""
 "the north; but we could stand on the shore and force them to fight us from "
 "the water, where they are exposed and we are protected by the forest."
 msgstr ""
+"רואה את המים הכהים והכחולים האלה? הם עמוקים מדי לחציית שני הצדדים. האורקים "
+"יכולים לחצות באיטיות את רצועת המים הרדודים והבהירים יותר בצפון; אבל אנחנו "
+"יכולים לעמוד על החוף ולאלץ אותם להילחם בנו מתוך המים, שם הם חשופים ואנחנו "
+"מוגנים על ידי היער."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:234
@@ -1049,17 +1088,19 @@ msgid ""
 "the key: it has a village for healing injured units and forests in which we "
 "fight so well."
 msgstr ""
+"ההתקפה הסבירה יותר, אם כך, היא דרך הגשר. האי האמצעי הוא המפתח: יש בו כפר "
+"לריפוי יחידות פצועות ויערות שבהם אנו נלחמים כה טוב."
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:238
 msgid "Let’s go! Attack!"
-msgstr ""
+msgstr "בואו נזוז! להתקפה!"
 
 #. [message]: speaker=student
 #. The "us" in "let's" refers to Galdrad and Li'sar.
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:240
 msgid "female^Let’s go! Attack!"
-msgstr ""
+msgstr "בואו נזוז! להתקפה!"
 
 #. [message]: speaker=Galdrad
 #. Addressing Konrad
@@ -1067,7 +1108,7 @@ msgstr ""
 msgid ""
 "Hang on! You need to gather your forces. Or do you intend to fight the orcs "
 "single-handedly?"
-msgstr ""
+msgstr "רגע! עליך לאסוף את כוחותיך תחילה. או שאתה מתכוון להילחם באורקים לבד?"
 
 #. [message]: speaker=Galdrad
 #. Addressing Li'sar
@@ -1075,7 +1116,7 @@ msgstr ""
 msgid ""
 "female^Hang on! You need to gather your forces. Or do you intend to fight "
 "the orcs single-handedly?"
-msgstr ""
+msgstr "רגע! עלייך לאסוף את כוחותייך תחילה. או שאת מתכוונת להילחם באורקים לבד?"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:267
@@ -1085,6 +1126,9 @@ msgid ""
 "carefully, though; if a unit has too little experience, it might be better "
 "to recruit a new one."
 msgstr ""
+"אני רואה שיש לך חיילים ותיקים מהאימון שלך! כדאי ש<i>תשיב</i> אותם כדי להתחיל "
+"את הקרב עם יחידות מנוסות יותר. חשוב היטב, עם זאת; אם ליחידה יש מעט מדי "
+"ניסיון, אולי עדיף לגייס אחת חדשה."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:273
@@ -1092,6 +1136,8 @@ msgid ""
 "Some of your units have also managed to level up. They’re even more "
 "formidable, so you should recall them as well."
 msgstr ""
+"חלק מיחידותיך הצליחו גם לעלות דרגה. הן מרשימות אף יותר, אז כדאי שתשיב גם "
+"אותן."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:288
@@ -1101,11 +1147,14 @@ msgid ""
 "<i>recalled</i> them to battle this scenario. More experienced units would "
 "have been of help against these orcs."
 msgstr ""
+"לצערי, אף אחד מחייליך לא שרד את האימון שלך, אז תצטרך לגייס יחידות חדשות. "
+"אילו היו לך חיילים ותיקים, יכולת <i>להשיב</i> אותם לקרב בתרחיש הזה. יחידות "
+"מנוסות יותר היו מועילות נגד האורקים האלה."
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:294
 msgid "Recalling"
-msgstr ""
+msgstr "השבה"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:295
@@ -1118,6 +1167,12 @@ msgid ""
 "while your leader stands on a keep and select the <i>Recall</i> option. "
 "Remember to also recruit new troops in addition to recalling old ones."
 msgstr ""
+"בנוסף לגיוס יחידות חדשות בכל תרחיש, אתה יכול גם <i>להשיב</i> את הוותיקים "
+"המנוסים שלך מתרחישים קודמים, בעלות של 20 זהב כל אחד. כך תוכל לבנות צבא אדיר "
+"במהלך מספר תרחישים על ידי השבת חייליך בעלי הדרגה הגבוהה ביותר או אלה עם "
+"שילובים טובים של תכונות ויכולות. כדי להשיב יחידה, לחץ לחיצה ימנית בזמן "
+"שמנהיגך עומד על מצודה ובחר באפשרות <i>השבה</i>. זכור לגייס גם חיילים חדשים "
+"בנוסף להשבת ותיקים."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:300
@@ -1127,6 +1182,9 @@ msgid ""
 "them. Personally, I would recommend a balanced force of two archers, two "
 "fighters, and a shaman."
 msgstr ""
+"יש לך גם שני סוגי יחידות חדשים לגיוס בתרחיש הזה: קשתים אלפיים ושמאניות "
+"אלפיות. אספר לך עוד עליהם כשתגייס אותם. באופן אישי, הייתי ממליץ על כוח מאוזן "
+"של שני קשתים, שני לוחמים, ושמאנית אחת."
 
 #. [event]
 #. [on_undo]
@@ -1134,12 +1192,12 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:512
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:554
 msgid "Recruit or recall your troops"
-msgstr ""
+msgstr "גייס או השב את חייליך"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:317
 msgid "Elvish Shaman"
-msgstr ""
+msgstr "שמאנית אלפית"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:318
@@ -1149,11 +1207,14 @@ msgid ""
 "they do for one turn. However, she’s physically weaker than fighters and "
 "archers, so be careful when sending her into battle."
 msgstr ""
+"לשמאנית יש את היכולת <i>לרפא</i> יחידות ידידותיות סביבה. יש לה גם התקפה "
+"מיוחדת <i>שמאיטה</i> אויבים, וחוצה את הנזק שהם גורמים למשך תור אחד. עם זאת, "
+"היא חלשה יותר פיזית מלוחמים וקשתים, אז היזהר כשאתה שולח אותה לקרב."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:323
 msgid "The <i>Heal</i> Ability"
-msgstr ""
+msgstr "היכולת <i>ריפוי</i>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:325
@@ -1167,11 +1228,18 @@ msgid ""
 "A detailed explanation of healing may be found in the <i>Gameplay</i> "
 "section of the help (default hotkey: <b>F1</b>)."
 msgstr ""
+"בתחילת כל תור, יחידות בעלות ברית הסמוכות לשמאנית יחלימו 4 נקודות חיים, שזה "
+"רק חצי מהכמות שכפר היה מספק. השמאנית לא צוברת ניסיון מריפוי, רק מקרב, אך "
+"כדאי לקדם אותה בכל זאת – לקידום שלה בדרגה השנייה, דרואידה אלפית, יש ריפוי "
+"שווה-ערך לזה של כפר.\n"
+"\n"
+"הסבר מפורט על ריפוי אפשר למצוא בפרק <i>מהלך המשחק</i> בעזרה (מקש קיצור ברירת "
+"מחדל: <b>F1</b>)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:332
 msgid "Weapon Specials"
-msgstr ""
+msgstr "מאפייני נשק"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:334
@@ -1186,12 +1254,20 @@ msgid ""
 "A full list of abilities and weapon specials, along with traits, may be "
 "found in the help (default hotkey: <b>F1</b>)."
 msgstr ""
+"מאפייני נשק הם שינויי-התקפה מיוחדים שהופכים התקפות מסוימות לחזקות יותר. "
+"במקרה הזה, לשמאנית יש את המאפיין האטה בהתקפת ההסתבכות שלה. כשההתקפה הזו "
+"פוגעת בהצלחה באויב, היא תחצה את הנזק שהוא גורם למשך תור אחד. מאפייני נשק "
+"נוספים כוללים מכה ראשונה, שמאפשרת להתקפה הזו לפגוע תמיד ראשונה בלי קשר למי "
+"תוקף קודם, וקסום, שנותן להתקפה הזו סיכוי קבוע של 70% לפגוע.\n"
+"\n"
+"רשימה מלאה של יכולות ומאפייני נשק, יחד עם תכונות, אפשר למצוא בעזרה (מקש "
+"קיצור ברירת מחדל: <b>F1</b>)."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:364
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:375
 msgid "Multiple Healers"
-msgstr ""
+msgstr "מרפאות מרובות"
 
 #. [message]: speaker=narrator
 #. both healers are level one elvish shamans
@@ -1205,6 +1281,12 @@ msgid ""
 "adjacent units by 8 hitpoints per turn. A unit next to multiple healers is "
 "healed by the most advanced one."
 msgstr ""
+"כעת יש לך שתי מרפאות. עם זאת, כל יחידה יכולה לקבל ריפוי ממרפאה אחת בלבד – "
+"יחידה עדיין תחלים רק 4 נקודות חיים בכל תור גם כשהיא סמוכה לשתי השמאניות.\n"
+"\n"
+"אם אחת השמאניות תתקדם ותהפוך לדרואידה, היא תוכל לרפא יחידות סמוכות ב-8 "
+"נקודות חיים בכל תור. יחידה הסמוכה למספר מרפאות מרופאת על ידי המתקדמת ביותר "
+"מביניהן."
 
 #. [message]: speaker=narrator
 #. one healer is a level one shaman, but the other healer is a druid or (very unlikely) a shyde
@@ -1215,18 +1297,21 @@ msgid ""
 "healing from one healer — a unit next to multiple healers is healed by the "
 "most advanced one."
 msgstr ""
+"כעת יש לך שתי מרפאות. הדרואידה שלך יכולה לרפא יחידות סמוכות ב-8 נקודות חיים "
+"בכל תור, לעומת 4 של השמאנית שלך. עם זאת, כל יחידה יכולה לקבל ריפוי ממרפאה "
+"אחת בלבד – יחידה הסמוכה למספר מרפאות מרופאת על ידי המתקדמת ביותר מביניהן."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:384
 msgid "Healers and Villages"
-msgstr ""
+msgstr "מרפאות וכפרים"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:385
 msgid ""
 "A unit in a village will receive healing from the village instead of from "
 "adjacent healers."
-msgstr ""
+msgstr "יחידה בכפר תקבל ריפוי מהכפר במקום ממרפאות סמוכות."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:389
@@ -1236,13 +1321,14 @@ msgid ""
 "movement — the 2 hitpoints from rest-healing does combine with other sources "
 "of healing, so it’s often better to move a healer instead of an injured unit."
 msgstr ""
+"מרפאה אחת נוספת מאפשרת להן לרפא זו את זו או לכסות אזורים נפרדים בשדה הקרב. "
+"זה גם מאפשר תנועה טקטית טובה יותר – 2 נקודות החיים מריפוי-מנוחה כן מצטרפות "
+"למקורות ריפוי אחרים, אז לרוב עדיף להזיז מרפאה במקום יחידה פצועה."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:404
-#, fuzzy
-#| msgid "Elvish Fighter"
 msgid "Elvish Archer"
-msgstr "לוחם אלפי"
+msgstr "קשת אלפי"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:405
@@ -1252,6 +1338,10 @@ msgid ""
 "melee attacks with strong ranged attacks, and vice versa. This allows your "
 "units to take less damage overall when your enemy counterattacks."
 msgstr ""
+"בניגוד ללוחם האלפי, שיש לו התקפות קרב פנים-אל-פנים חזקות, לקשת האלפי יש "
+"התקפות טווח רחוק חזקות. כדאי לתקוף יחידות אויב בעלות התקפות קרב חזקות עם "
+"התקפות טווח רחוק חזקות, ולהפך. כך יחידותיך ספוגות פחות נזק בסך הכול כשהאויב "
+"תוקף בחזרה."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:431
@@ -1259,6 +1349,8 @@ msgid ""
 "You certainly have a fondness for shamans, I see. They will provide a lot of "
 "healing, but not much offensive potential."
 msgstr ""
+"אני רואה שיש לך חיבה מיוחדת לשמאניות. הן יספקו הרבה ריפוי, אבל לא הרבה "
+"פוטנציאל התקפי."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:442
@@ -1266,34 +1358,32 @@ msgid ""
 "While none of your recruited units can move yet, you still can. You need "
 "more income; there are some villages near the keep you can capture."
 msgstr ""
+"אף שאף אחת מהיחידות שגייסת עדיין לא יכולה לנוע, אתה עדיין יכול. אתה זקוק "
+"ליותר הכנסה; יש כמה כפרים ליד המצודה שאתה יכול לכבוש."
 
 #. [event]
 #. [on_undo]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:445
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:567
-#, fuzzy
-#| msgid "Move Konrad to capture a village"
 msgid "Capture a village"
-msgstr "הזז את קונרד וכבוש כפר"
+msgstr "כבוש כפר"
 
 #. [disallow_end_turn]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:448
-#, fuzzy
-#| msgid "Move Konrad to capture a village"
 msgid "You still have to capture a village!"
-msgstr "הזז את קונרד וכבוש כפר"
+msgstr "אתה עדיין צריך לכבוש כפר!"
 
 #. [then]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:480
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:547
 msgid ""
 "You forgot to recruit troops! You can press <b>u</b> to undo your last move."
-msgstr ""
+msgstr "שכחת לגייס חיילים! אפשר ללחוץ <b>u</b> כדי לבטל את המהלך האחרון שלך."
 
 #. [disallow_end_turn]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:483
 msgid "You still have to recruit troops!"
-msgstr ""
+msgstr "אתה עדיין צריך לגייס חיילים!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:491
@@ -1301,11 +1391,13 @@ msgid ""
 "Excellent! As Delfador mentioned earlier, each captured village will support "
 "one unit and provide you with 1 extra gold per turn."
 msgstr ""
+"מצוין! כפי שדלפדור ציין קודם, כל כפר שנכבש יחזיק יחידה אחת ויספק לך זהב נוסף "
+"בכל תור."
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:495
 msgid "Income and Upkeep"
-msgstr ""
+msgstr "הכנסה ואחזקה"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:496
@@ -1316,17 +1408,17 @@ msgid ""
 "per turn. Be careful, as owning too many units can cause you to have "
 "negative income and lose gold each turn!"
 msgstr ""
+"בכל תור, תרוויח 2 זהב ועוד אחד עבור כל כפר בבעלותך. עם זאת, <i>האחזקה</i> "
+"מנוכה מזה. אתה יכול להחזיק מספר יחידות בשווי הדרגות שלהן כמספר הכפרים "
+"שברשותך; מעבר לכך, עליך לשלם זהב אחד בכל תור. היזהר, שכן החזקת יותר מדי "
+"יחידות עלולה לגרום להכנסה שלילית ואיבוד זהב בכל תור!"
 
 #. [else]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:560
-#, fuzzy
 msgid ""
 "You forgot to capture a village! You can press <b>u</b> to undo your last "
 "move."
-msgstr ""
-"*אופס!\n"
-"הלכת למקום הלא נכון! אחרי הודעה זו, אתה יכול ללחוץ על 'u' כדי לבטל את המהלך, "
-"ואז לחזור שנית."
+msgstr "שכחת לכבוש כפר! אפשר ללחוץ <b>u</b> כדי לבטל את המהלך האחרון שלך."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:579
@@ -1334,6 +1426,8 @@ msgid ""
 "Now, young man, it is time to discuss strategy. Your units are ready to "
 "attack, and the orcish leader has begun gathering his own troops."
 msgstr ""
+"עכשיו, בחור צעיר, הגיע הזמן לדון באסטרטגיה. יחידותיך מוכנות לתקוף, ומנהיג "
+"האורקים החל לאסוף את כוחותיו שלו."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:584
@@ -1341,6 +1435,8 @@ msgid ""
 "Now, young lady, it is time to discuss strategy. Your units are ready to "
 "attack, and the orcish leader has begun gathering his own troops."
 msgstr ""
+"עכשיו, עלמה צעירה, הגיע הזמן לדון באסטרטגיה. יחידותייך מוכנות לתקוף, ומנהיג "
+"האורקים החל לאסוף את כוחותיו שלו."
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:590
@@ -1348,6 +1444,7 @@ msgid ""
 "Galdrad, if I go by the ford, I could sneak up near his keep and dispatch "
 "him quickly."
 msgstr ""
+"גלדרד, אם אלך דרך המעבורת, אוכל להתגנב קרוב למצודה שלו ולחסל אותו במהירות."
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:591
@@ -1355,6 +1452,7 @@ msgid ""
 "female^Galdrad, if I go by the ford, I could sneak up near his keep and "
 "dispatch him quickly."
 msgstr ""
+"גלדרד, אם אלך דרך המעבורת, אוכל להתגנב קרוב למצודה שלו ולחסל אותו במהירות."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:596
@@ -1366,6 +1464,11 @@ msgid ""
 "there; your Fighters will only suffer a 40% chance of being hit in return, "
 "while Shamans and Archers will only incur a 30% chance."
 msgstr ""
+"אתה יכול. עם זאת, לאלפים (ולאורקים) יש <i>הגנה</i> גרועה במים. תהיה פגיע "
+"יותר כשתנסה לחצות לאט את המעבורת; לאויב יהיה סיכוי של 80% לפגוע בך. מכיוון "
+"שלאלפים יש הגנה טובה ביער, הייתי ממליץ להישאר בין העצים ולתקוף את האורקים "
+"משם; ללוחמיך יהיה סיכוי של 40% בלבד להיפגע בחזרה, בעוד שלשמאניות ולקשתים "
+"יהיה סיכוי של 30% בלבד."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:601
@@ -1374,19 +1477,21 @@ msgid ""
 "our forces. It might do to send a few units to defend the banks, and the "
 "village there."
 msgstr ""
+"עם זאת, שים עין על המעבורת ההיא. האורקים עלולים לנסות להתגנב מאחורי "
+"כוחותינו. כדאי לשלוח כמה יחידות להגן על הגדות, ועל הכפר שם."
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:606
 msgid ""
 "Alright. The bridge it is, then, but I’ll be careful about the crossing."
-msgstr ""
+msgstr "בסדר. אם כך, הגשר הוא הבחירה, אבל אהיה זהיר בחצייה."
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:607
 msgid ""
 "female^Alright. The bridge it is, then, but I’ll be careful about the "
 "crossing."
-msgstr ""
+msgstr "בסדר. אם כך, הגשר הוא הבחירה, אבל אהיה זהירה בחצייה."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:610
@@ -1398,12 +1503,17 @@ msgid ""
 "villages on this side of the river. You should secure them for income and "
 "healing."
 msgstr ""
+"החוגר האורקי הזה עדיין חוסם את דרכנו. אין לו התקפות טווח רחוק, אז הקשתים שלך "
+"אמורים להיות מסוגלים להתמודד איתו בסיכון מועט. לצערנו, יחידותיך לא יכולות "
+"להגיע אליו בתור הזה, אבל אל תיתן להן להתבטל! הזז אותן למיקום כך שיוכלו לתקוף "
+"בתור הבא. יש גם כפרים נוספים בצד הזה של הנהר. כדאי לך להבטיח אותם עבור הכנסה "
+"וריפוי."
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:613
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1001
 msgid "Long-distance Movement"
-msgstr ""
+msgstr "תנועה למרחקים ארוכים"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:614
@@ -1413,19 +1523,21 @@ msgid ""
 "clicking on the destination. A number will indicate how many turns it will "
 "take to get there."
 msgstr ""
+"אפשר להורות ליחידה לנוע במשך מספר תורות על ידי בחירת היחידה ולחיצה על היעד. "
+"מספר יציין כמה תורות ייקח להגיע לשם."
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:619
 msgid ""
 "I think I’ll stick around the keep for now, in order to recruit more units."
-msgstr ""
+msgstr "אני חושב שאשאר ליד המצודה בינתיים, כדי לגייס עוד יחידות."
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:620
 msgid ""
 "female^I think I’ll stick around the keep for now, in order to recruit more "
 "units."
-msgstr ""
+msgstr "אני חושבת שאשאר ליד המצודה בינתיים, כדי לגייס עוד יחידות."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:626
@@ -1435,6 +1547,9 @@ msgid ""
 "battle can turn quickly, and you don’t want to find yourself cut off from "
 "recruiting reinforcements."
 msgstr ""
+"למדת היטב, קונרד. זה אכן רעיון טוב לשמור על מנהיגך בטוח ומוגן ובטווח המצודה "
+"שלך בתחילת המשחק. גלגל הקרב יכול להתהפך במהירות, ואתה לא רוצה למצוא את עצמך "
+"מנותק מגיוס תגבורות."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:631
@@ -1444,11 +1559,14 @@ msgid ""
 "battle can turn quickly, and you don’t want to find yourself cut off from "
 "recruiting reinforcements."
 msgstr ""
+"למדת היטב, לי'סאר. זה אכן רעיון טוב לשמור על מנהיגך בטוח ומוגן ובטווח המצודה "
+"שלך בתחילת המשחק. גלגל הקרב יכול להתהפך במהירות, ואת לא רוצה למצוא את עצמך "
+"מנותקת מגיוס תגבורות."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:701
 msgid "The tutorial isn’t meant to be this difficult"
-msgstr ""
+msgstr "ההדרכה לא אמורה להיות קשה כל כך"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:703
@@ -1459,11 +1577,16 @@ msgid ""
 "\n"
 "Please report the bug."
 msgstr ""
+"האורק על האי היה אמור לנוע מעל הגשר, כדי שיוכל להיתקף על ידי כמה אלפים בבת "
+"אחת. משהו שיבש את האירוע המתוכנן, מה שיקשה על התרחיש בכך שישאיר אותו במצב "
+"הגנתי.\n"
+"\n"
+"אנא דווח על הבאג."
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:715
 msgid "Tracking Enemy Movement"
-msgstr ""
+msgstr "מעקב אחר תנועת האויב"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:716
@@ -1472,22 +1595,25 @@ msgid ""
 "see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
 "command from the <b>Actions</b> menu."
 msgstr ""
+"אפשר לראות לאן אויב יכול להגיע על ידי העברת העכבר מעליו. אפשר לראות את כל "
+"מהלכי האויב האפשריים בבת אחת עם הפקודה <b>הצג מהלכי אויב</b> מתפריט "
+"<b>פעולות</b>."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:719
 msgid "We must occupy that island before the Wolf Riders reach it!"
-msgstr ""
+msgstr "עלינו לתפוס את האי הזה לפני שרוכבי הזאבים יגיעו אליו!"
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:724
 msgid "Can’t we just move around the orcs?"
-msgstr ""
+msgstr "לא נוכל פשוט לעקוף את האורקים?"
 
 #. [message]: speaker=student
 #. "we" refers to Li'sar, Galdrad, and the mixed-gender troops
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:726
 msgid "female^Can’t we just move around the orcs?"
-msgstr ""
+msgstr "לא נוכל פשוט לעקוף את האורקים?"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:739
@@ -1496,11 +1622,14 @@ msgid ""
 "i> and cannot move further that turn. To move your troops onto that island "
 "without wading slowly through the water, you’ll have to kill the Grunt."
 msgstr ""
+"לא. ברגע שאתה נע קרוב ליחידת אויב, אתה נכנס ל<i>אזור השליטה</i> שלה ולא תוכל "
+"לנוע יותר באותו תור. כדי להזיז את חייליך לאי ההוא בלי לחצות לאט במים, תצטרך "
+"להרוג את החוגר."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:743
 msgid "Zone of Control"
-msgstr ""
+msgstr "אזור שליטה"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:745
@@ -1512,6 +1641,11 @@ msgid ""
 "prevent stronger enemies from reaching key locations, such as villages, even "
 "if you have limited manpower."
 msgstr ""
+"המשושים הצמודים ישירות ליחידה מהווים את <i>אזור השליטה</i> שלה. כשיחידת אויב "
+"נכנסת למשושים הללו, היא לא יכולה לנוע יותר באותו תור. (יוצא מן הכלל הן "
+"יחידות עם יכולת <i>מסתנן</i>, שאינן מושפעות מאזורי שליטה.) אפשר להשתמש בכך "
+"כדי ליצור מצור שמונע מאויבים חזקים יותר להגיע למקומות מפתח, כמו כפרים, גם "
+"כשיש לך כוח אדם מוגבל."
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:772
@@ -1520,6 +1654,9 @@ msgid ""
 "out this turn. I should order them to grab more villages if they can and "
 "move everyone closer for next turn."
 msgstr ""
+"אני מקווה שאשרוד את מתקפת הנגד אם יחידותיי לא יצליחו לחסל את החוגר הזה בתור "
+"הזה. כדאי שאורה להן לתפוס עוד כפרים אם אפשר ולהזיז את כולם קרוב יותר לתור "
+"הבא."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:777
@@ -1527,6 +1664,8 @@ msgid ""
 "If one of your Shamans stands just behind you, she will heal you 4 hitpoints "
 "at the beginning of the next turn."
 msgstr ""
+"אם אחת השמאניות שלך תעמוד ממש מאחוריך, היא תרפא אותך 4 נקודות חיים בתחילת "
+"התור הבא."
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:783
@@ -1535,6 +1674,8 @@ msgid ""
 "out this turn. I’d better grab more villages if I can and move everyone "
 "closer for next turn."
 msgstr ""
+"אני מקווה שיחידותיי ישרדו את מתקפת הנגד אם לא אצליח לחסל את החוגר הזה בתור "
+"הזה. כדאי שאתפוס עוד כפרים אם אפשר ואזיז את כולם קרוב יותר לתור הבא."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:788
@@ -1542,6 +1683,8 @@ msgid ""
 "If one of your Shamans stands just behind your wounded units, she will heal "
 "each of them 4 hitpoints at the beginning of the next turn."
 msgstr ""
+"אם אחת השמאניות שלך תעמוד ממש מאחורי יחידותיך הפצועות, היא תרפא כל אחת מהן 4 "
+"נקודות חיים בתחילת התור הבא."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:824
@@ -1549,6 +1692,8 @@ msgid ""
 "One fewer orc to deal with, and our way across the bridge is clear! I also "
 "gained experience from striking the killing blow!"
 msgstr ""
+"אורק אחד פחות להתמודד איתו, והדרך שלנו מעבר לגשר פנויה! גם צברתי ניסיון ממתן "
+"המכה הקטלנית!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:825
@@ -1556,6 +1701,8 @@ msgid ""
 "female^One fewer orc to deal with, and our way across the bridge is clear! I "
 "also gained experience from striking the killing blow!"
 msgstr ""
+"אורק אחד פחות להתמודד איתו, והדרך שלנו מעבר לגשר פנויה! גם צברתי ניסיון ממתן "
+"המכה הקטלנית!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:846
@@ -1564,6 +1711,8 @@ msgid ""
 "multiple directions! Even though the orcs have low defense in water, they "
 "will overwhelm you with their numbers."
 msgstr ""
+"היזהר! אם תעמוד על הגשר תהיה חשוף להתקפה ממספר כיוונים! למרות שלאורקים יש "
+"הגנה נמוכה במים, הם יכריעו אותך בכמותם."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:862
@@ -1573,6 +1722,9 @@ msgid ""
 "without wading through the water, and you will be securely on a terrain with "
 "good defense."
 msgstr ""
+"כל הכבוד! כפר האי שלנו. אתה יכול להשתמש בעצים כדי להקים מצור נגד האורקים; הם "
+"יכולים לבוא רק דרך הגשר אחד אחרי השני בלי לחצות במים, ואתה תהיה מוגן היטב "
+"בשטח עם הגנה טובה."
 
 #. [then]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:874
@@ -1581,6 +1733,8 @@ msgid ""
 "it if they try to sneak around via the ford! It will be hard to dislodge "
 "them if they do."
 msgstr ""
+"אל תשכח את הכפר האחרון ליד התעלה. האורקים יכבשו אותו אם ינסו להתגנב דרך "
+"המעבורת! יהיה קשה להדוף אותם משם אם הם יעשו זאת."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:891
@@ -1589,6 +1743,8 @@ msgid ""
 "unit will have an 80% chance of being hit. Get back, and wait for them to "
 "attack you!"
 msgstr ""
+"מסוכן מאוד לעמוד במים כשיש אויבים בסביבה! ליחידה שלך יהיה סיכוי של 80% "
+"להיפגע. סג לאחור, וחכה שהם יתקפו אותך!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:917
@@ -1596,6 +1752,8 @@ msgid ""
 "You’re venturing away from your keep. You might need to recruit more units, "
 "and I doubt the orc leader will let you use his! Careful!"
 msgstr ""
+"אתה מתרחק מהמצודה שלך. ייתכן שתצטרך לגייס עוד יחידות, ואני מסופק אם מנהיג "
+"האורקים ייתן לך להשתמש בשלו! היזהר!"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:926
@@ -1603,6 +1761,8 @@ msgid ""
 "When moving a unit, the percentages shown are the unit’s defense on that "
 "hex. The higher the number, the less likely they are to get hit."
 msgstr ""
+"כשמזיזים יחידה, האחוזים המוצגים הם ההגנה של היחידה במשושה הזה. ככל שהמספר "
+"גבוה יותר, כך קטן הסיכוי שהיא תיפגע."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:941
@@ -1611,6 +1771,8 @@ msgid ""
 "unit into the village to stop the orcs capturing it. Whichever unit you "
 "choose will benefit from the village’s healing, too."
 msgstr ""
+"עלינו לתפוס את הכפר ההוא, אחרת הם יתפסו אותו בקרוב! הזז יחידה לכפר כדי למנוע "
+"מהאורקים לכבוש אותו. כל יחידה שתבחר תיהנה גם מהריפוי של הכפר."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:947
@@ -1621,12 +1783,15 @@ msgid ""
 "at night. Your elvish warriors are <i>neutral</i>: unaffected by the time of "
 "day."
 msgstr ""
+"היזהר! עכשיו לילה. אורקים הם <i>כאוטיים</i>, כלומר התקפותיהם חזקות כעת ב-25% "
+"יותר. ביום, התקפותיהם חלשות ב-25%, שזה הבדל ניכר. אתה <i>הגון</i>: חזק יותר "
+"ביום וחלש יותר בלילה. לוחמיך האלפיים הם <i>ניטרליים</i>: לא מושפעים מזמן "
+"היום."
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:950
-#, fuzzy
 msgid "Time of Day"
-msgstr "*ברוכ(ה) הבא(ה) לווסנות'!"
+msgstr "זמן היום"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:951
@@ -1637,6 +1802,10 @@ msgid ""
 "You can hover over the sky image below the minimap on the right to see the "
 "current time of day and who has the advantage."
 msgstr ""
+"במהלך תרחיש, זמן היום ישתנה ככל שהתורות חולפים. יש ארבעה <i>יישורים</i> "
+"שיחידה יכולה להיות: הגון, ניטרלי, כאוטי, או בין-ערביים. כל יישור מקבל בונוס "
+"או קנס שונה בהתאם לזמן היום. אפשר לרחף מעל תמונת השמיים מתחת למפה הזעירה "
+"מימין כדי לראות את זמן היום הנוכחי ולמי יש היתרון."
 
 #. [then]
 #. [else]
@@ -1655,11 +1824,20 @@ msgid ""
 "from villages or healers, combining for a total of up to 10 hitpoints per "
 "turn."
 msgstr ""
+"זכור להביא בחזרה את יחידותיך הפצועות לכפרים. שמאניות יכולות לרפא רק 4 נקודות "
+"חיים בכל תור, בעוד שכפרים יכולים לרפא אותן מהר יותר, 8 בכל תור.\n"
+"\n"
+"מקורות ריפוי שונים בדרך כלל לא מצטרפים. אם יחידה מתחילה את תורה סמוכה למספר "
+"מרפאות, או בכפר וסמוכה למרפאה, היא עדיין תרופא רק פעם אחת.\n"
+"\n"
+"ריפוי-מנוחה הוא יוצא מן הכלל לחוק הזה – אם יחידה לא עושה כלום במשך תור, היא "
+"תחלים 2 נקודות חיים בנוסף לכל ריפוי שהיא עשויה לקבל מכפרים או ממרפאות, בסך "
+"הכול עד 10 נקודות חיים בתור."
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1010
 msgid "Tracking Unused Units"
-msgstr ""
+msgstr "מעקב אחר יחידות לא בשימוש"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1011
@@ -1670,11 +1848,15 @@ msgid ""
 "accident later on. When <b>n</b> no longer selects a new unit, it’s safe to "
 "end your turn."
 msgstr ""
+"אפשר לוודא שאתה משתמש בכל חייליך על ידי לחיצה על <b>n</b> כדי לעבור מיחידה "
+"ליחידה. אם תלחץ על <b>רווח</b>, תוכל לסמן את היחידה הנבחרת כרגע כמי שסיימה "
+"את תורה, מה שמונע ממך להזיז אותה בטעות מאוחר יותר. כש-<b>n</b> כבר לא בוחר "
+"יחידה חדשה, בטוח לסיים את תורך."
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1019
 msgid "Status Table"
-msgstr ""
+msgstr "טבלת מצב"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1020
@@ -1684,11 +1866,14 @@ msgid ""
 "a side may be hidden; however, it is still useful to check this table when a "
 "scenario begins. You can access it in the <b>Menu</b> menu."
 msgstr ""
+"טבלת המצב מפרטת את מצבם הנוכחי ותנאי הפתיחה של הצדדים. ערפל ורעלה ישפיעו על "
+"מה שאתה יכול לראות בטבלה זו, ולעיתים צד עשוי להיות מוסתר; עם זאת, עדיין כדאי "
+"לבדוק את הטבלה הזו כשתרחיש מתחיל. אפשר לגשת אליה בתפריט <b>תפריט</b>."
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1028
 msgid "Speeding Up Animations"
-msgstr ""
+msgstr "האצת אנימציות"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1029
@@ -1697,11 +1882,14 @@ msgid ""
 "quicker. The <b>acceleration factor</b> can be set, and turned on by "
 "default, in the <b>Preferences</b> menu’s <b>General</b> tab."
 msgstr ""
+"החזקת <b>shift</b> תגרום לאנימציות התנועה והקרב להיות מהירות יותר. אפשר "
+"להגדיר את <b>מקדם ההאצה</b>, ולהפעיל אותו כברירת מחדל, בכרטיסייה <b>כללי</b> "
+"בתפריט <b>העדפות</b>."
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1037
 msgid "Victory Conditions"
-msgstr ""
+msgstr "תנאי ניצחון"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1038
@@ -1710,26 +1898,28 @@ msgid ""
 "conditions for a scenario are given under <b>Objectives</b> in the <b>Menu</"
 "b> menu."
 msgstr ""
+"בתרחיש הזה, עליך רק להביס את מנהיג האורקים כדי לנצח. תנאי הניצחון של תרחיש "
+"מופיעים תחת <b>מטרות</b> בתפריט <b>תפריט</b>."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1047
 msgid "Hurry up and defeat the orcs before they become entrenched!"
-msgstr ""
+msgstr "מהר, הבס את האורקים לפני שהם יתבצרו!"
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1075
 msgid "I have enough gold to recruit more units!"
-msgstr ""
+msgstr "יש לי מספיק זהב כדי לגייס עוד יחידות!"
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1076
 msgid "female^I have enough gold to recruit more units!"
-msgstr ""
+msgstr "יש לי מספיק זהב כדי לגייס עוד יחידות!"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1085
 msgid "Recruit the Right Units"
-msgstr ""
+msgstr "גייס את היחידות הנכונות"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1086
@@ -1737,13 +1927,15 @@ msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgstr ""
+"זכור לגייס חיילים שימושיים למצב. קשתים יעילים במיוחד נגד חוגרים, רוכבי זאבים "
+"ומנהיג האורקים."
 
 #. [then]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1125
 msgid ""
 "Beware of those orcs crossing the river! If they get into the forest they’ll "
 "be hard to dislodge!"
-msgstr ""
+msgstr "היזהר מהאורקים שחוצים את הנהר! אם הם ייכנסו ליער יהיה קשה להדוף אותם!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1165
@@ -1751,6 +1943,7 @@ msgid ""
 "That unit is about one kill (8 experience points) away from gaining a level! "
 "Do not let it die!"
 msgstr ""
+"היחידה הזו במרחק הריגה אחת (8 נקודות ניסיון) מעליית דרגה! אל תיתן לה למות!"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1187
@@ -1758,6 +1951,8 @@ msgid ""
 "Their leader has moved into that village! He’s not as stupid as I thought. "
 "The village heals him each turn and provides good defense."
 msgstr ""
+"מנהיגם נכנס לכפר הזה! הוא לא טיפש כמו שחשבתי. הכפר מרפא אותו בכל תור ומספק "
+"הגנה טובה."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1198
@@ -1765,6 +1960,8 @@ msgid ""
 "That unit has captured our village! You’d better get him out; it heals him "
 "each turn and provides good defense."
 msgstr ""
+"היחידה הזו כבשה את הכפר שלנו! כדאי שתוציא אותו משם; הוא מרפא אותו בכל תור "
+"ומספק הגנה טובה."
 
 #. [message]: speaker=unit
 #. The speaker is female
@@ -1773,6 +1970,8 @@ msgid ""
 "Using me to attack is risky! I can slow the opponent with my ranged attack, "
 "but I hope you have a plan if I miss!"
 msgstr ""
+"להשתמש בי כדי לתקוף זה מסוכן! אני יכולה להאט את היריב בהתקפת הטווח הרחוק "
+"שלי, אבל אני מקווה שיש לך תוכנית אם אחטיא!"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1227
@@ -1782,11 +1981,14 @@ msgid ""
 "important to decide which units you want to advance, and give those units "
 "the best chances to gain experience."
 msgstr ""
+"אתה קרוב להרוג את מנהיגם! מכיוון שהוא בדרגה שנייה, היחידה שתחסל אותו תרוויח "
+"16 נקודות ניסיון. בקמפיין, חשוב להחליט אילו יחידות ברצונך לקדם, ולתת להן את "
+"הסיכויים הטובים ביותר לצבור ניסיון."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1231
 msgid "You have almost finished the tutorial"
-msgstr ""
+msgstr "כמעט סיימת את ההדרכה"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1233
@@ -1794,6 +1996,8 @@ msgid ""
 "In a campaign you may have ten or even twenty scenarios to build your army, "
 "but this tutorial will conclude after you defeat Thrag."
 msgstr ""
+"בקמפיין עשויים להיות לך עשרה ואפילו עשרים תרחישים לבניית צבאך, אבל הדרכה זו "
+"תסתיים לאחר שתביס את תראג."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1259
@@ -1801,6 +2005,8 @@ msgid ""
 "We will miss $unit.name| because he had $unit.experience experience points. "
 "He would have advanced a level soon."
 msgstr ""
+"נתגעגע ל$unit.name|, כי היו לו $unit.experience נקודות ניסיון. הוא היה עולה "
+"דרגה בקרוב."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1265
@@ -1808,33 +2014,36 @@ msgid ""
 "We will miss $unit.name| because she had $unit.experience experience points. "
 "She would have advanced a level soon."
 msgstr ""
+"נתגעגע ל$unit.name|, כי היו לה $unit.experience נקודות ניסיון. היא הייתה "
+"עולה דרגה בקרוב."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1294
 msgid ""
 "We will miss $unit.name|, but at least he was not one of our experienced "
 "troops!"
-msgstr ""
+msgstr "נתגעגע ל$unit.name|, אך לפחות הוא לא היה אחד מחיילינו המנוסים!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1300
 msgid ""
 "We will miss $unit.name|, but at least she was not one of our experienced "
 "troops!"
-msgstr ""
+msgstr "נתגעגע ל$unit.name|, אך לפחות היא לא הייתה אחת מחיילינו המנוסים!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1317
 msgid ""
-"Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
-"name|."
+"Higher level units are powerful, but not invulnerable. We’ll miss you, "
+"$unit.name|."
 msgstr ""
+"יחידות בדרגה גבוהה יותר חזקות, אך לא בלתי פגיעות. נתגעגע אליך, $unit.name|."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1331
 msgid ""
 "Losing a healer hurts all the troops! Keep them out of the enemy’s reach!"
-msgstr ""
+msgstr "אובדן מרפאה פוגע בכל החיילים! שמור אותן הרחק מטווח האויב!"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1345
@@ -1842,6 +2051,8 @@ msgid ""
 "Beware of the orc leader: he can do 36 hitpoints of damage at night! Attack "
 "with many units at once during the day."
 msgstr ""
+"היזהר ממנהיג האורקים: הוא יכול לגרום 36 נקודות נזק בלילה! תקוף עם יחידות "
+"רבות בבת אחת במהלך היום."
 
 #. [message]: speaker=unit
 #. The speaker is female
@@ -1853,6 +2064,10 @@ msgid ""
 "always has a 70% chance to hit, but it is not as powerful as the similar "
 "attack wielded by the Elvish Sorceress."
 msgstr ""
+"עלייה בדרגה ריפאה אותי לגמרי! אני מסוגלת לרפא יחידות 8 נקודות חיים בכל תור, "
+"במקום רק 4, וגם עשויה לרפא אותן מרעל אם אינן יכולות להגיע לכפר! גם רכשתי "
+"התקפה <i>קסומה</i> חדשה, כלומר יש לה תמיד סיכוי של 70% לפגוע, אך היא לא חזקה "
+"כמו ההתקפה הדומה שברשות הקוסמת האלפית."
 
 #. [message]: speaker=unit
 #. The speaker is female
@@ -1863,6 +2078,9 @@ msgid ""
 "damage each for 4 strikes. It also has the <i>magical</i> weapon special, "
 "meaning it always has a 70% chance to hit."
 msgstr ""
+"עלייה בדרגה ריפאה אותי לגמרי! אני כבר לא יכולה לרפא יחידות סמוכות, אבל "
+"בתמורה, יש לי התקפת אש-פיות חדשה וחזקה שגורמת 7 נזק בכל אחת מ-4 מכות. יש לה "
+"גם את מאפיין הנשק <i>קסום</i>, כלומר יש לה תמיד סיכוי של 70% לפגוע."
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1387
@@ -1872,6 +2090,9 @@ msgid ""
 "ability, and I deal 9 damage each for 4 attacks. Use me to dislodge hard-to-"
 "hit units."
 msgstr ""
+"עלייה בדרגה ריפאה אותי לגמרי! כשאני תוקף, תמיד יש לי סיכוי של לפחות 60% "
+"לפגוע עם קשתי הארוכה הודות ליכולת ה<i>קלעות</i> שלי, ואני גורם 9 נזק בכל אחת "
+"מ-4 התקפות. השתמש בי כדי להדוף יחידות שקשה לפגוע בהן."
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1388
@@ -1881,6 +2102,9 @@ msgid ""
 "i> ability, and I deal 9 damage each for 4 attacks. Use me to dislodge hard-"
 "to-hit units."
 msgstr ""
+"עלייה בדרגה ריפאה אותי לגמרי! כשאני תוקפת, תמיד יש לי סיכוי של לפחות 60% "
+"לפגוע עם קשתי הארוכה הודות ליכולת ה<i>קלעות</i> שלי, ואני גורמת 9 נזק בכל "
+"אחת מ-4 התקפות. השתמש בי כדי להדוף יחידות שקשה לפגוע בהן."
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1401
@@ -1889,6 +2113,9 @@ msgid ""
 "and I have a special ability: <i>Ambush</i>. I can hide in forests where "
 "enemies can only see me if they are right next to me."
 msgstr ""
+"עלייה בדרגה ריפאה אותי לגמרי! אני טוב גם עם קשת וגם עם חרב, ויש לי יכולת "
+"מיוחדת: <i>מארב</i>. אני יכול להסתתר ביערות שבהם אויבים יכולים לראות אותי רק "
+"אם הם ממש לידי."
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1402
@@ -1897,6 +2124,9 @@ msgid ""
 "sword, and I have a special ability: <i>Ambush</i>. I can hide in forests "
 "where enemies can only see me if they are right next to me."
 msgstr ""
+"עלייה בדרגה ריפאה אותי לגמרי! אני טובה גם עם קשת וגם עם חרב, ויש לי יכולת "
+"מיוחדת: <i>מארב</i>. אני יכולה להסתתר ביערות שבהם אויבים יכולים לראות אותי "
+"רק אם הם ממש לידי."
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1416
@@ -1906,6 +2136,10 @@ msgid ""
 "than the Elvish Hero, but my ability allows my allies to fight better. First "
 "level units around me do 25% more damage, so position me carefully!"
 msgstr ""
+"עלייה בדרגה ריפאה אותי לגמרי! אני טוב גם עם קשת וגם עם חרב, ויש לי יכולת "
+"מיוחדת: <i>מנהיגות</i>. אני גורם פחות נזק בעצמי מגיבור אלפי, אבל היכולת שלי "
+"מאפשרת לבני-בריתי להילחם טוב יותר. יחידות בדרגה ראשונה סביבי גורמות 25% יותר "
+"נזק, אז מקם אותי בקפידה!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1429
@@ -1915,6 +2149,9 @@ msgid ""
 "abilities of the Elvish Captain, my superior fighting skills allow my "
 "attacks to do more damage!"
 msgstr ""
+"עלייה בדרגה ריפאה אותי לגמרי! אני מיומן במיוחד עם החרב, וגורם 8 נזק ב-4 "
+"התקפות. אף שאין לי את יכולות המנהיגות של קברניט אלפי, כישורי הלחימה המעולים "
+"שלי מאפשרים להתקפותיי לגרום ליותר נזק!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1442
@@ -1924,6 +2161,9 @@ msgid ""
 "abilities, my fighting skills will allow me to beat the orcs by dealing more "
 "damage!"
 msgstr ""
+"עלייה בדרגה ריפאה אותי לגמרי! השתפרתי בשימוש בחרב, וגורם 9 נזק ב-4 התקפות. "
+"למרות שאין לי יכולות מיוחדות, כישורי הלחימה שלי יאפשרו לי להביס את האורקים "
+"על ידי גרימת יותר נזק!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1443
@@ -1933,31 +2173,34 @@ msgid ""
 "abilities, my fighting skills will allow me to beat the orcs by dealing more "
 "damage!"
 msgstr ""
+"עלייה בדרגה ריפאה אותי לגמרי! השתפרתי בשימוש בחרב, וגורמת 9 נזק ב-4 התקפות. "
+"למרות שאין לי יכולות מיוחדות, כישורי הלחימה שלי יאפשרו לי להביס את האורקים "
+"על ידי גרימת יותר נזק!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1452
 msgid "You took too long! Now we’ll never be rid of these orcs!"
-msgstr ""
+msgstr "לקח לך יותר מדי זמן! עכשיו לעולם לא ניפטר מהאורקים האלה!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1468
 msgid "That... was foolish. Next time I should be more careful."
-msgstr ""
+msgstr "זה... היה טיפשי. בפעם הבאה אהיה זהיר יותר."
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1469
 msgid "female^That... was foolish. Next time I should be more careful."
-msgstr ""
+msgstr "זה... היה טיפשי. בפעם הבאה אהיה זהירה יותר."
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1487
 msgid "Agh! Who will guide you to victory now?"
-msgstr ""
+msgstr "אח! מי ינחה אתכם לניצחון עכשיו?"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1506
 msgid "You have beaten the orcs! Well done."
-msgstr ""
+msgstr "הבסת את האורקים! כל הכבוד."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1511
@@ -1965,11 +2208,13 @@ msgid ""
 "You can also refer to the in-game help browser if you ever need to refresh "
 "your memory on gameplay mechanics."
 msgstr ""
+"אתה יכול גם להיעזר בעזרה המובנית של המשחק אם אי פעם תזדקק לרענן את זיכרונך "
+"לגבי מנגנוני המשחק."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1521
 msgid "Now, continue onwards to play “Heir to the Throne, Classic”..."
-msgstr ""
+msgstr "עכשיו, המשך הלאה למשחק \"יורש הכתר, קלאסי\"..."
 
 #. [unit_type]: id=Tutorial_Fighter, race=human
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Tutorial_Fighter.cfg:4
@@ -1985,8 +2230,8 @@ msgid ""
 "attack from enemies. However, they have the potential to become great "
 "warriors one day."
 msgstr ""
-"צעירים ונועזים,לוחמים נלחמים עם חרב, ופגיעים להתקפות מאוייבים. אולם יש להם "
-"את היכולת להפוך, יום אחד, ללוחמים אדירים."
+"צעירים ונועזים,לוחמים נלחמים עם חרב, ופגיעים להתקפות מאויבים. אולם יש להם את "
+"היכולת להפוך, יום אחד, ללוחמים אדירים."
 
 #. [unit_type]: id=Tutorial_Fighteress, gender=female, race=human
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Tutorial_Fighteress.cfg:4
@@ -1996,7 +2241,7 @@ msgstr "לוחמת"
 #. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Tutorial_Quintain.cfg:4
 msgid "Quintain"
-msgstr "קונטנה"
+msgstr "בובת אימונים"
 
 #. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Tutorial_Quintain.cfg:16
@@ -2004,11 +2249,13 @@ msgid ""
 "Quintains are used to practice swordplay and jousting on. It would be "
 "extremely unusual to be attacked by one."
 msgstr ""
+"בובות-אימונים משמשות לתרגול סיוף ורכיבה עם רומח. יהיה זה חריג ביותר להיתקף "
+"על ידי אחת מהן."
 
 #. [unit_type]: id=Tutorial Warrior, race=human
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Tutorial_Warrior.cfg:4
 msgid "Warrior"
-msgstr ""
+msgstr "איש-קרב"
 
 #. [unit_type]: id=Tutorial Warrior, race=human
 #. [unit_type]: id=Tutorial Warrioress, gender=female, race=human
@@ -2018,32 +2265,28 @@ msgid ""
 "With more experience, Fighters have honed their skills with the sword and "
 "become powerful Warriors."
 msgstr ""
+"עם יותר ניסיון, לוחמים משכללים את כישוריהם עם החרב והופכים לאנשי-קרב חזקים."
 
 #. [unit_type]: id=Tutorial Warrioress, gender=female, race=human
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Tutorial_Warrioress.cfg:4
-#, fuzzy
-#| msgid "female^Fighter"
 msgid "female^Warrior"
-msgstr "לוחמת"
+msgstr "אשת-קרב"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/utils/tutorial_utils.cfg:63
 msgid "Undo"
-msgstr ""
+msgstr "ביטול מהלך"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/utils/tutorial_utils.cfg:65
 msgid ""
 "Don’t forget, you can press <b>u</b> to undo most things if you make a "
 "mistake."
-msgstr ""
+msgstr "אל תשכח, אתה יכול ללחוץ <b>u</b> כדי לבטל רוב הדברים אם טעית."
 
 #: data/campaigns/Heir_To_The_Throne_Classic/utils/tutorial_utils.cfg:128
-#, fuzzy
 msgid "Click a mouse button or press the spacebar to continue..."
-msgstr ""
-"\n"
-"*לחץ על הכפתור השמאלי או על רווח כדי להמשיך"
+msgstr "לחץ על כפתור עכבר או לחץ על מקש הרווח כדי להמשיך..."
 
 #~ msgid "sword"
 #~ msgstr "חרב"
@@ -2144,7 +2387,7 @@ msgstr ""
 #~ "female^You’re about to be healed by $hp_difference hitpoints, but it’s "
 #~ "time to summon some help against that quintain."
 #~ msgstr ""
-#~ "עוד מעת תתרפא ב $hp_difference נק\"פ. אבל אני חושב שתצתרך קצת עזרה נגד "
+#~ "עוד מעת תתרפא ב $hp_difference נק״ח. אבל אני חושב שתצתרך קצת עזרה נגד "
 #~ "הקונטינה."
 
 #, fuzzy
@@ -2217,10 +2460,10 @@ msgstr ""
 #~ msgstr "לחץ על כפתור \"סיים תור\""
 
 #~ msgid "Turns run out"
-#~ msgstr "סוף התורים"
+#~ msgstr "נגמרו התורות"
 
 #~ msgid "Elder Mage"
-#~ msgstr "זקן קוסמים"
+#~ msgstr "קוסם זקן"
 
 #, fuzzy
 #~ msgid ""

@@ -1,15 +1,15 @@
 # Hebrew translations for Battle for Wesnoth package
 # Copyright (C) 2006 Wesnoth development team.
 # Automatically generated, 2006.
-#
+# arikari <arielxfr@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-dev\n"
 "POT-Creation-Date: 2026-08-02 22:46-0500\n"
-"PO-Revision-Date: 2006-08-22 00:19+0200\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
-"Language: \n"
+"PO-Revision-Date: 2026-08-11 04:00+0300\n"
+"Last-Translator: arikari <arielxfr@gmail.com>\n"
+"Language-Team: Hebrew\n"
+"Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,66 +20,66 @@ msgstr ""
 #: doc/man/wesnoth.6:16
 #, no-wrap
 msgid "WESNOTH"
-msgstr ""
+msgstr "WESNOTH"
 
 #. type: TH
 #: doc/man/wesnoth.6:16 doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2022"
-msgstr ""
+msgstr "2022"
 
 # type: TH
 #. type: TH
 #: doc/man/wesnoth.6:16
 #, no-wrap
 msgid "wesnoth"
-msgstr ""
+msgstr "wesnoth"
 
 # type: TH
 #. type: TH
 #: doc/man/wesnoth.6:16
 #, no-wrap
 msgid "Battle for Wesnoth"
-msgstr ""
+msgstr "הקרב על ווסנות'"
 
 # type: SH
 #. type: SH
 #: doc/man/wesnoth.6:18 doc/man/wesnothd.6:18
 #, no-wrap
 msgid "NAME"
-msgstr ""
+msgstr "שם"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:20
 msgid "wesnoth - Battle for Wesnoth, a turn-based fantasy strategy game"
-msgstr ""
+msgstr "wesnoth - הקרב על ווסנות', משחק אסטרטגיה פנטזיה מבוסס-תורות"
 
 # type: SH
 #. type: SH
 #: doc/man/wesnoth.6:21 doc/man/wesnothd.6:24
 #, no-wrap
 msgid "SYNOPSIS"
-msgstr ""
+msgstr "תקציר"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:26
 msgid "B<wesnoth> [I<OPTIONS>] [I<PATH_TO_DATA>]"
-msgstr ""
+msgstr "B<wesnoth> [I<OPTIONS>] [I<PATH_TO_DATA>]"
 
 # type: SH
 #. type: SH
 #: doc/man/wesnoth.6:27 doc/man/wesnothd.6:36
 #, no-wrap
 msgid "DESCRIPTION"
-msgstr ""
+msgstr "תיאור"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:32
 msgid "Battle for B<Wesnoth> is a turn-based fantasy strategy game."
-msgstr ""
+msgstr "הקרב על B<Wesnoth> הוא משחק אסטרטגיה פנטזיה מבוסס-תורות."
 
 # type: Plain text
 #. type: Plain text
@@ -94,32 +94,38 @@ msgid ""
 "Wesnoth's large community of online players. Create your own custom units, "
 "scenarios or campaigns, and share them with others."
 msgstr ""
+"הביסו את כל מנהיגי האויב באמצעות מבחר חיילים שנבחר בקפידה, תוך ניהול נכון של "
+"משאבי הזהב והכפרים שלכם. לכל היחידות יש חוזקות וחולשות משלהן; כדי לנצח, יש "
+"לפרוס את הכוחות שלכם באופן המיטבי תוך מניעת אותה אפשרות מהאויב. ככל שהיחידות "
+"צוברות ניסיון, הן רוכשות יכולות חדשות והופכות חזקות יותר. שחקו בשפה שלכם "
+"ובחנו את כישוריכם מול יריב מחשב חכם, או הצטרפו לקהילה הגדולה של שחקני "
+"ווסנות' המקוונים. צרו יחידות, תרחישים או קמפיינים משלכם, ושתפו אותם עם אחרים."
 
 # type: SH
 #. type: SH
 #: doc/man/wesnoth.6:43 doc/man/wesnothd.6:41
 #, no-wrap
 msgid "OPTIONS"
-msgstr ""
+msgstr "אפשרויות"
 
 #. type: TP
 #: doc/man/wesnoth.6:45
 #, no-wrap
 msgid "B<--addon-info>"
-msgstr ""
+msgstr "B<--addon-info>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:48
 msgid ""
 "Shows a button on the add-ons manager to query the add-ons server for "
 "various information."
-msgstr ""
+msgstr "מציג כפתור במנהל התוספים לשליחת שאילתה לשרת התוספים לקבלת מידע מגוון."
 
 #. type: TP
 #: doc/man/wesnoth.6:48
 #, no-wrap
 msgid "B<--all-translations>"
-msgstr ""
+msgstr "B<--all-translations>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:52
@@ -127,12 +133,14 @@ msgid ""
 "Show all translations in the in-game language selection list, even if they "
 "are deemed insufficiently complete."
 msgstr ""
+"מציג את כל התרגומים ברשימת בחירת השפה שבתוך המשחק, גם אם הם נחשבים לא שלמים "
+"מספיק."
 
 #. type: TP
 #: doc/man/wesnoth.6:52
 #, no-wrap
 msgid "B<-c[>I<id_campaign>B<],\\ --campaign[>I<=id_campaign>B<]>"
-msgstr ""
+msgstr "B<-c[>I<id_campaign>B<],\\ --campaign[>I<=id_campaign>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:57
@@ -140,12 +148,14 @@ msgid ""
 "goes directly to the campaign with id I<id_campaign>.  A selection menu will "
 "appear if no id was specified."
 msgstr ""
+"עובר ישירות לקמפיין עם המזהה I<id_campaign>. אם לא צוין מזהה, יופיע תפריט "
+"בחירה."
 
 #. type: TP
 #: doc/man/wesnoth.6:57
 #, no-wrap
 msgid "B<--campaign-difficulty[>I<=difficulty>B<]>"
-msgstr ""
+msgstr "B<--campaign-difficulty[>I<=difficulty>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:61
@@ -153,36 +163,38 @@ msgid ""
 "The difficulty of the specified campaign (1 to max). If none specified, the "
 "campaign difficulty selection widget will appear."
 msgstr ""
+"רמת הקושי של הקמפיין שצוינה (1 עד המקסימום). אם לא צוינה, יופיע רכיב בחירת "
+"רמת הקושי של הקמפיין."
 
 #. type: TP
 #: doc/man/wesnoth.6:61
 #, no-wrap
 msgid "B<--campaign-scenario>I<\\ id_scenario>"
-msgstr ""
+msgstr "B<--campaign-scenario>I<\\ id_scenario>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:64
 msgid ""
 "The id of the scenario from the specified campaign. The default is the first "
 "scenario."
-msgstr ""
+msgstr "המזהה של התרחיש מתוך הקמפיין שצוינה. ברירת המחדל היא התרחיש הראשון."
 
 #. type: TP
 #: doc/man/wesnoth.6:64
 #, no-wrap
 msgid "B<--campaign-skip-story>"
-msgstr ""
+msgstr "B<--campaign-skip-story>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:69
 msgid "Skip [story] screens and dialog through the end of the B<start> event."
-msgstr ""
+msgstr "דילוג על מסכי [story] ודו-שיח עד לסיום אירוע ה-B<start>."
 
 #. type: TP
 #: doc/man/wesnoth.6:69
 #, no-wrap
 msgid "B<--clock>"
-msgstr ""
+msgstr "B<--clock>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:72
@@ -190,23 +202,25 @@ msgid ""
 "Adds the option to show a clock for testing the drawing timer. Also adds the "
 "option for showing the GUI Test Dialog."
 msgstr ""
+"מוסיף אפשרות להצגת שעון לבדיקת מתזמן הציור. מוסיף גם אפשרות להצגת חלון "
+"הבדיקה של ממשק המשתמש הגרפי (GUI Test Dialog)."
 
 #. type: TP
 #: doc/man/wesnoth.6:72
 #, no-wrap
 msgid "B<--core>I<\\ id_core>"
-msgstr ""
+msgstr "B<--core>I<\\ id_core>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:75
 msgid "Overrides the loaded core with the one whose id is specified."
-msgstr ""
+msgstr "עוקף את הליבה שנטענה בליבה שהמזהה שלה צוין."
 
 #. type: TP
 #: doc/man/wesnoth.6:75
 #, no-wrap
 msgid "B<--data-dir>I<\\ directory>"
-msgstr ""
+msgstr "B<--data-dir>I<\\ directory>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:78
@@ -214,24 +228,26 @@ msgid ""
 "Overrides the data directory with the one specified. The data directory is "
 "the one that contains subdirectories 'data', 'fonts', 'images' and others."
 msgstr ""
+"עוקף את תיקיית הנתונים בתיקייה שצוינה. תיקיית הנתונים היא זו שמכילה את תת-"
+"התיקיות 'data', 'fonts', 'images' ואחרות."
 
 #. type: TP
 #: doc/man/wesnoth.6:78
 #, no-wrap
 msgid "B<--data-path>"
-msgstr ""
+msgstr "B<--data-path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:81
 msgid "prints the path of the data directory and exits."
-msgstr ""
+msgstr "מדפיס את הנתיב של תיקיית הנתונים ויוצא."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:81
 #, no-wrap
 msgid "B<-d, --debug>"
-msgstr ""
+msgstr "B<-d, --debug>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:86
@@ -240,34 +256,36 @@ msgid ""
 "https://www.wesnoth.org/wiki/CommandMode for more information about command "
 "mode)."
 msgstr ""
+"מפעיל אפשרויות מצב פקודה נוספות בתוך המשחק (לפרטים נוספים ראו את דף הוויקי "
+"בכתובת https://www.wesnoth.org/wiki/CommandMode)."
 
 #. type: TP
 #: doc/man/wesnoth.6:86
 #, no-wrap
 msgid "B<--debug-lua>"
-msgstr ""
+msgstr "B<--debug-lua>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:89
 msgid "enables some Lua debugging mechanisms"
-msgstr ""
+msgstr "מפעיל מנגנוני דיבוג מסוימים של Lua"
 
 #. type: TP
 #: doc/man/wesnoth.6:89
 #, no-wrap
 msgid "B<--strict-lua>"
-msgstr ""
+msgstr "B<--strict-lua>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:92
 msgid "disallow deprecated Lua API calls"
-msgstr ""
+msgstr "אוסר קריאות API מיושנות של Lua"
 
 #. type: TP
 #: doc/man/wesnoth.6:92
 #, no-wrap
 msgid "B<-D,\\ --diff>I<\\ left-file>B<\\ >I<right-file>"
-msgstr ""
+msgstr "B<-D,\\ --diff>I<\\ left-file>B<\\ >I<right-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:98
@@ -276,12 +294,15 @@ msgid ""
 "them through B<-p> first). Outputs the diff as DiffWML on standard output or "
 "to the file indicated by I<--output>."
 msgstr ""
+"משווה בין שני קובצי WML; לא מבצע עיבוד מקדים (preprocess) עליהם קודם (לשם "
+"כך, יש להריץ אותם קודם דרך B<-p>). מציג את ההשוואה כ-DiffWML בפלט הסטנדרטי "
+"או לקובץ שצוין ב-I<--output>."
 
 #. type: TP
 #: doc/man/wesnoth.6:98
 #, no-wrap
 msgid "B<-e[>I<file>B<],\\ --editor[>I<=file>B<]>"
-msgstr ""
+msgstr "B<-e[>I<file>B<],\\ --editor[>I<=file>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:105
@@ -289,13 +310,15 @@ msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-l> B<--load>."
 msgstr ""
+"מפעיל ישירות את עורך המפות שבתוך המשחק. אם צוין I<file>, שקול לשימוש ב-B<-l> "
+"B<--load>."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:105
 #, no-wrap
 msgid "B<--fps>"
-msgstr ""
+msgstr "B<--fps>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:110
@@ -304,40 +327,42 @@ msgid ""
 "a corner of the screen as well as writes these values to a file in the "
 "userdata directory."
 msgstr ""
+"מציג את מספר התמונות לשנייה שהמשחק רץ בהן כרגע בפינת המסך, וגם כותב את "
+"הערכים הללו לקובץ בתיקיית נתוני המשתמש."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:110
 #, no-wrap
 msgid "B<-f, --fullscreen>"
-msgstr ""
+msgstr "B<-f, --fullscreen>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:113
 msgid "runs the game in full screen mode."
-msgstr ""
+msgstr "מריץ את המשחק במצב מסך מלא."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:113 doc/man/wesnothd.6:51
 #, no-wrap
 msgid "B<-h, --help>"
-msgstr ""
+msgstr "B<-h, --help>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:116
 msgid ""
 "displays a summary of command line options to standard output, and exits."
-msgstr ""
+msgstr "מציג תקציר של אפשרויות שורת הפקודה בפלט הסטנדרטי, ויוצא."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:116
 #, no-wrap
 msgid "B<-l,\\ --load>I<\\ file>"
-msgstr ""
+msgstr "B<-l,\\ --load>I<\\ file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:127
@@ -347,12 +372,15 @@ msgid ""
 "from I<file> open. If it is a directory, the editor will start with a load "
 "map dialog opened there."
 msgstr ""
+"טוען את המשחק השמור I<file> מתיקיית שמירת המשחקים הסטנדרטית. אם משתמשים גם "
+"באפשרות B<-e> או B<--editor>, מפעיל את העורך עם המפה מתוך I<file> פתוחה. אם "
+"מדובר בתיקייה, העורך יופעל עם חלון בחירת מפה לטעינה הפתוח שם."
 
 #. type: TP
 #: doc/man/wesnoth.6:127
 #, no-wrap
 msgid "B<-L,\\ --language>I<\\ lang>"
-msgstr ""
+msgstr "B<-L,\\ --language>I<\\ lang>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:134
@@ -360,13 +388,14 @@ msgid ""
 "uses language I<lang> (symbol) this session.  Example: B<--language "
 "ang_GB@latin>"
 msgstr ""
+"משתמש בשפה I<lang> (סמל) בהפעלה הנוכחית. דוגמה: B<--language ang_GB@latin>"
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:134 doc/man/wesnothd.6:54
 #, no-wrap
 msgid "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
-msgstr ""
+msgstr "B<--log->I<level>B<=>I<domain1>B<,>I<domain2>B<,>I<...>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:151
@@ -378,23 +407,29 @@ msgid ""
 "B<deprecation> defaults to B<none> unless combined with the B<-d> option.  "
 "This option can be specified multiple times."
 msgstr ""
+"קובע את רמת החומרה של תחומי היומן (log domains). ניתן להשתמש בתו הכללי B<*> "
+"כדי להתאים קבוצת משנה של תחומים, למשל gui/* או conf* או * (האחרון תואם לכל "
+"התחומים). רמות זמינות: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,\\ "
+"B<none>. כברירת מחדל, רמת B<warning> משמשת עבור רוב התחומים, אך "
+"B<deprecation> ברירת המחדל שלה היא B<none> אלא אם משולבת עם האפשרות B<-d>. "
+"ניתן לציין אפשרות זו מספר פעמים."
 
 #. type: TP
 #: doc/man/wesnoth.6:151
 #, no-wrap
 msgid "B<--log-precise>"
-msgstr ""
+msgstr "B<--log-precise>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:154
 msgid "shows the timestamps in log output with more precision."
-msgstr ""
+msgstr "מציג את חותמות הזמן בפלט היומן בדיוק רב יותר."
 
 #. type: TP
 #: doc/man/wesnoth.6:154
 #, no-wrap
 msgid "B<--log-strict>I<\\ level>"
-msgstr ""
+msgstr "B<--log-strict>I<\\ level>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:163
@@ -403,12 +438,15 @@ msgid ""
 "this I<level> or more severe will cause the unit test to fail regardless of "
 "the victory result. Only relevant when used with B<-u>."
 msgstr ""
+"קובע את I<level> ההקפדה של רושם היומן (logger). כל הודעה שנשלחת לתחומי יומן "
+"ברמה זו או חמורה יותר תגרום לכישלון בדיקת היחידה (unit test) ללא קשר לתוצאת "
+"הניצחון. רלוונטי רק בשימוש עם B<-u>."
 
 #. type: TP
 #: doc/man/wesnoth.6:163
 #, no-wrap
 msgid "B<--logdomains[>I<=filter>B<]>"
-msgstr ""
+msgstr "B<--logdomains[>I<=filter>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:168
@@ -416,12 +454,13 @@ msgid ""
 "lists defined log domains (only the ones containing I<filter> if used) and "
 "exits"
 msgstr ""
+"מציג רשימה של תחומי יומן מוגדרים (רק אלה המכילים את I<filter> אם צוין) ויוצא"
 
 #. type: TP
 #: doc/man/wesnoth.6:168
 #, no-wrap
 msgid "B<--no-log-to-file>"
-msgstr ""
+msgstr "B<--no-log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:171
@@ -430,12 +469,15 @@ msgid ""
 "WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created "
 "in the logs directory under the userdata folder."
 msgstr ""
+"מונע הפניה של פלט היומן לקובץ. ניתן גם להגדיר את משתנה הסביבה "
+"WESNOTH_NO_LOG_FILE כחלופה. קובצי יומן נוצרים בתיקיית logs שבתוך תיקיית "
+"נתוני המשתמש."
 
 #. type: TP
 #: doc/man/wesnoth.6:171
 #, no-wrap
 msgid "B<--log-to-file>"
-msgstr ""
+msgstr "B<--log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:174
@@ -443,12 +485,14 @@ msgid ""
 "log output is written to a file. Cancels the effect of --no-log-to-file "
 "whether implicit or explicit."
 msgstr ""
+"פלט היומן נכתב לקובץ. מבטל את ההשפעה של --no-log-to-file בין אם משתמעת ובין "
+"אם מפורשת."
 
 #. type: TP
 #: doc/man/wesnoth.6:174
 #, no-wrap
 msgid "B<--no-log-sanitize>"
-msgstr ""
+msgstr "B<--no-log-sanitize>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:177
@@ -456,12 +500,14 @@ msgid ""
 "disables the anonymization that's normally applied when logging, for example "
 "replacing usernames with USER."
 msgstr ""
+"מבטל את האנונימיזציה שמופעלת בדרך כלל בעת רישום ליומן, למשל החלפת שמות "
+"משתמשים ב-USER."
 
 #. type: TP
 #: doc/man/wesnoth.6:177
 #, no-wrap
 msgid "B<--wnoconsole>"
-msgstr ""
+msgstr "B<--wnoconsole>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:180
@@ -469,12 +515,14 @@ msgid ""
 "For Windows, when used with --no-log-to-file, results in output being "
 "written to cerr/cout instead of CONOUT. Otherwise, does nothing."
 msgstr ""
+"עבור Windows, כאשר משתמשים יחד עם --no-log-to-file, גורם לכתיבת הפלט ל-cerr/"
+"cout במקום ל-CONOUT. אחרת, אינו עושה דבר."
 
 #. type: TP
 #: doc/man/wesnoth.6:180
 #, no-wrap
 msgid "B<--max-fps>I<\\ fps>"
-msgstr ""
+msgstr "B<--max-fps>I<\\ fps>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:187
@@ -482,13 +530,15 @@ msgid ""
 "the number of frames per second the game can show, the value should be "
 "between B<1> and B<1000>, the default is the monitor's refresh rate."
 msgstr ""
+"מספר התמונות לשנייה שהמשחק יכול להציג; הערך צריך להיות בין B<1> ל-B<1000>, "
+"ברירת המחדל היא קצב הרענון של הצג."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:187
 #, no-wrap
 msgid "B<-m, --multiplayer>"
-msgstr ""
+msgstr "B<-m, --multiplayer>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:193
@@ -496,23 +546,25 @@ msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below."
 msgstr ""
+"מריץ משחק רב-משתתפים. יש אפשרויות נוספות שניתן להשתמש בהן יחד עם B<--"
+"multiplayer> כפי שמוסבר להלן."
 
 #. type: TP
 #: doc/man/wesnoth.6:193
 #, no-wrap
 msgid "B<--mp-test>"
-msgstr ""
+msgstr "B<--mp-test>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:196
 msgid "load the test mp scenarios."
-msgstr ""
+msgstr "טוען את תרחישי הבדיקה של רב-משתתפים."
 
 #. type: TP
 #: doc/man/wesnoth.6:196
 #, no-wrap
 msgid "B<--new-widgets>"
-msgstr ""
+msgstr "B<--new-widgets>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:199
@@ -521,37 +573,40 @@ msgid ""
 "experimental, don't fill bug reports since most are known. Parts of the "
 "library are deemed stable and will work without this switch."
 msgstr ""
+"קיים ערכת רכיבי-ממשק (widget toolkit) חדשה שעדיין בפיתוח, אפשרות זו מפעילה "
+"אותה. זהו מצב ניסיוני מאוד, נא לא לדווח על באגים כי רובם ידועים. חלקים "
+"מהספרייה נחשבים יציבים ויעבדו גם בלי מתג זה."
 
 #. type: TP
 #: doc/man/wesnoth.6:199
 #, no-wrap
 msgid "B<--noaddons>"
-msgstr ""
+msgstr "B<--noaddons>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:202
 msgid "disables loading of user addons."
-msgstr ""
+msgstr "מבטל טעינה של תוספי משתמש."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:202
 #, no-wrap
 msgid "B<--nocache>"
-msgstr ""
+msgstr "B<--nocache>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:205
 msgid "disables caching of game data."
-msgstr ""
+msgstr "מבטל שמירה במטמון (caching) של נתוני המשחק."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:205
 #, no-wrap
 msgid "B<--nogui>"
-msgstr ""
+msgstr "B<--nogui>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:213
@@ -559,36 +614,38 @@ msgid ""
 "runs the game without the GUI. Only available in combination with B<--"
 "multiplayer> or B<--screenshot> or B<--plugin>."
 msgstr ""
+"מריץ את המשחק ללא ממשק המשתמש הגרפי (GUI). זמין רק בשילוב עם B<--"
+"multiplayer> או B<--screenshot> או B<--plugin>."
 
 #. type: TP
 #: doc/man/wesnoth.6:213
 #, no-wrap
 msgid "B<--nobanner>"
-msgstr ""
+msgstr "B<--nobanner>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:216
 msgid "suppress the startup banner."
-msgstr ""
+msgstr "מדכא את באנר ההפעלה."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:216
 #, no-wrap
 msgid "B<--nomusic>"
-msgstr ""
+msgstr "B<--nomusic>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:219
 msgid "runs the game without music."
-msgstr ""
+msgstr "מריץ את המשחק ללא מוזיקה."
 
 #. type: TP
 #: doc/man/wesnoth.6:219
 #, no-wrap
 msgid "B<--noreplaycheck>"
-msgstr ""
+msgstr "B<--noreplaycheck>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:223
@@ -596,36 +653,37 @@ msgid ""
 "don't try to validate replay of unit test. Only relevant when used with B<-"
 "u>."
 msgstr ""
+"לא לנסות לאמת שידור חוזר (replay) של בדיקת יחידה. רלוונטי רק בשימוש עם B<-u>."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:223
 #, no-wrap
 msgid "B<--nosound>"
-msgstr ""
+msgstr "B<--nosound>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:226
 msgid "runs the game without sounds and music."
-msgstr ""
+msgstr "מריץ את המשחק ללא צלילים ומוזיקה."
 
 #. type: TP
 #: doc/man/wesnoth.6:226
 #, no-wrap
 msgid "B<--output>I<\\ file>"
-msgstr ""
+msgstr "B<--output>I<\\ file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:229
 msgid "output to the specified file. Applicable to diffing operations."
-msgstr ""
+msgstr "פלט לקובץ שצוין. רלוונטי לפעולות השוואה (diffing)."
 
 #. type: TP
 #: doc/man/wesnoth.6:229
 #, no-wrap
 msgid "B<--password>I<\\ password>"
-msgstr ""
+msgstr "B<--password>I<\\ password>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:234
@@ -633,12 +691,13 @@ msgid ""
 "uses I<password> when connecting to a server, ignoring other preferences. "
 "Unsafe."
 msgstr ""
+"משתמש ב-I<password> בעת התחברות לשרת, תוך התעלמות מהעדפות אחרות. לא בטוח."
 
 #. type: TP
 #: doc/man/wesnoth.6:234
 #, no-wrap
 msgid "B<--plugin>I<\\ script>"
-msgstr ""
+msgstr "B<--plugin>I<\\ script>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:239
@@ -647,12 +706,14 @@ msgid ""
 "function which will be run as a coroutine and periodically woken up with "
 "updates."
 msgstr ""
+"טוען I<script> שמגדיר תוסף (plugin) לווסנות'. קובץ ה-Lua צריך להחזיר פונקציה "
+"שתופעל כ-coroutine ותתעורר מעת לעת עם עדכונים."
 
 #. type: TP
 #: doc/man/wesnoth.6:239
 #, no-wrap
 msgid "B<-P,\\ --patch>I<\\ base-file>B<\\ >I<patch-file>"
-msgstr ""
+msgstr "B<-P,\\ --patch>I<\\ base-file>B<\\ >I<patch-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:244
@@ -661,12 +722,14 @@ msgid ""
 "files.  Outputs the patched WML to standard output or to the file indicated "
 "by I<--output>."
 msgstr ""
+"מחיל תיקון (patch) מסוג DiffWML על קובץ WML; אינו מבצע עיבוד מקדים לאף אחד "
+"מהקבצים. מציג את ה-WML המתוקן בפלט הסטנדרטי או לקובץ שצוין ב-I<--output>."
 
 #. type: TP
 #: doc/man/wesnoth.6:244
 #, no-wrap
 msgid "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
-msgstr ""
+msgstr "B<-p,\\ --preprocess>I<\\ source-file/folder>B<\\ >I<target-directory>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:254
@@ -680,23 +743,29 @@ msgid ""
 "preprocessor visit: https://wiki.wesnoth.org/PreprocessorRef#Command-"
 "line_preprocessor."
 msgstr ""
+"מבצע עיבוד מקדים לקובץ/תיקייה שצוינו. עבור כל קובץ ייכתבו קובץ .cfg רגיל "
+"וקובץ .cfg מעובד בתיקיית היעד שצוינה. אם צוינה תיקייה, היא תעובד רקורסיבית "
+"על פי כללי המעבד המקדים הידועים. המאקרואים המשותפים מתיקיית \"data/core/"
+"macros\" יעברו עיבוד מקדים לפני המשאבים שצוינו. דוגמה: B<-p ~/wesnoth/data/"
+"campaigns/tutorial ~/result.> לפרטים נוספים על המעבד המקדים ראו: https://"
+"wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor."
 
 #. type: TP
 #: doc/man/wesnoth.6:254
 #, no-wrap
 msgid "B<--preprocess-string>I<\\ source-string>"
-msgstr ""
+msgstr "B<--preprocess-string>I<\\ source-string>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:257
 msgid "preprocesses a given string and writes the output to stdout."
-msgstr ""
+msgstr "מבצע עיבוד מקדים למחרוזת נתונה וכותב את הפלט ל-stdout."
 
 #. type: TP
 #: doc/man/wesnoth.6:257
 #, no-wrap
 msgid "B<--preprocess-defines=>I<DEFINE1>B<,>I<DEFINE2>B<,>I<...>"
-msgstr ""
+msgstr "B<--preprocess-defines=>I<DEFINE1>B<,>I<DEFINE2>B<,>I<...>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:266
@@ -705,12 +774,15 @@ msgid ""
 "preprocess-string> command. If B<SKIP_CORE> is in the define list the \"data/"
 "core\" directory won't be preprocessed."
 msgstr ""
+"רשימה מופרדת בפסיקים של הגדרות (defines) לשימוש בפקודת B<--preprocess> או "
+"B<--preprocess-string>. אם B<SKIP_CORE> נמצא ברשימת ההגדרות, התיקייה \"data/"
+"core\" לא תעבור עיבוד מקדים."
 
 #. type: TP
 #: doc/man/wesnoth.6:266
 #, no-wrap
 msgid "B<--preprocess-input-macros>I<\\ source-file>"
-msgstr ""
+msgstr "B<--preprocess-input-macros>I<\\ source-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:275
@@ -719,12 +791,14 @@ msgid ""
 "Specifies a file that contains B<[preproc_define]>s to be included before "
 "preprocessing."
 msgstr ""
+"בשימוש רק על ידי פקודת B<--preprocess> או B<--preprocess-string>. מציין קובץ "
+"המכיל B<[preproc_define]>-ים שיש לכלול לפני העיבוד המקדים."
 
 #. type: TP
 #: doc/man/wesnoth.6:275
 #, no-wrap
 msgid "B<--preprocess-output-macros[>I<=target-file>B<]>"
-msgstr ""
+msgstr "B<--preprocess-output-macros[>I<=target-file>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:288
@@ -736,38 +810,46 @@ msgid ""
 "B<--preprocess-input-macros>.  This switch should be typed before the B<--"
 "preprocess> command."
 msgstr ""
+"בשימוש רק על ידי פקודת B<--preprocess> (אך לא על ידי פקודת B<--preprocess-"
+"string>). יפיק פלט של כל המאקרואים שעברו עיבוד מקדים אל קובץ היעד. אם לא "
+"צוין הקובץ, הפלט יהיה הקובץ '_MACROS_.cfg' בתיקיית היעד של פקודת "
+"ה-preprocess. את קובץ הפלט ניתן להעביר ל-B<--preprocess-input-macros>. יש "
+"להקליד מתג זה לפני פקודת B<--preprocess>."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:288
 #, no-wrap
 msgid "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
-msgstr ""
+msgstr "B<-r\\ >I<X>B<x>I<Y>B<,\\ --resolution\\ >I<X>B<x>I<Y>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:293
 msgid "sets the screen resolution. Example: B<-r> B<800x600>."
-msgstr ""
+msgstr "קובע את רזולוציית המסך. דוגמה: B<-r> B<800x600>."
 
 #. type: TP
 #: doc/man/wesnoth.6:293
 #, no-wrap
 msgid "B<--render-image>I<\\ image>B<\\ >I<output>"
-msgstr ""
+msgstr "B<--render-image>I<\\ image>B<\\ >I<output>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:296
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
-"outputs to a .png file. Image path functions are documented at https://wiki."
-"wesnoth.org/ImagePathFunctionWML."
+"outputs to a .png file. Image path functions are documented at https://"
+"wiki.wesnoth.org/ImagePathFunctionWML."
 msgstr ""
+"מקבל 'מחרוזת נתיב תמונה' תקנית של ווסנות' עם פונקציות נתיב-תמונה, ומפיק פלט "
+"לקובץ .png. פונקציות נתיב-תמונה מתועדות בכתובת https://wiki.wesnoth.org/"
+"ImagePathFunctionWML."
 
 #. type: TP
 #: doc/man/wesnoth.6:296
 #, no-wrap
 msgid "B<-R,\\ --report>"
-msgstr ""
+msgstr "B<-R,\\ --report>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:299
@@ -775,12 +857,14 @@ msgid ""
 "initializes game directories, prints build information suitable for use in "
 "bug reports, and exits."
 msgstr ""
+"מאתחל את תיקיות המשחק, מדפיס מידע בנייה (build information) המתאים לשימוש "
+"בדיווחי באגים, ויוצא."
 
 #. type: TP
 #: doc/man/wesnoth.6:299
 #, no-wrap
 msgid "B<--rng-seed>I<\\ number>"
-msgstr ""
+msgstr "B<--rng-seed>I<\\ number>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:306
@@ -788,24 +872,25 @@ msgid ""
 "seeds the random number generator with I<number>.  Example: B<--rng-seed> "
 "B<0>."
 msgstr ""
+"מזין את מחולל המספרים האקראיים בערך זרע I<number>. דוגמה: B<--rng-seed> B<0>."
 
 #. type: TP
 #: doc/man/wesnoth.6:306
 #, no-wrap
 msgid "B<--screenshot>I<\\ map>B<\\ >I<output>"
-msgstr ""
+msgstr "B<--screenshot>I<\\ map>B<\\ >I<output>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:313
 msgid ""
 "saves a screenshot of I<map> to I<output> without initializing a screen."
-msgstr ""
+msgstr "שומר צילום מסך של I<map> אל I<output> בלי לאתחל מסך."
 
 #. type: TP
 #: doc/man/wesnoth.6:313
 #, no-wrap
 msgid "B<-s[>I<host>B<],\\ --server[>I<=host>B<]>"
-msgstr ""
+msgstr "B<-s[>I<host>B<],\\ --server[>I<=host>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:318
@@ -813,34 +898,37 @@ msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server> B<server.wesnoth.org>."
 msgstr ""
+"מתחבר למארח שצוין אם קיים, אחרת מתחבר לשרת הראשון בהעדפות. דוגמה: B<--"
+"server> B<server.wesnoth.org>."
 
 #. type: TP
 #: doc/man/wesnoth.6:318
 #, no-wrap
 msgid "B<--showgui>"
-msgstr ""
+msgstr "B<--showgui>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:322
 msgid "runs the game with the GUI, overriding any implicit B<--nogui>."
 msgstr ""
+"מריץ את המשחק עם ממשק המשתמש הגרפי (GUI), תוך עקיפת כל B<--nogui> משתמע."
 
 #. type: TP
 #: doc/man/wesnoth.6:322
 #, no-wrap
 msgid "B<--strict-validation>"
-msgstr ""
+msgstr "B<--strict-validation>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:325
 msgid "validation errors are treated as fatal errors."
-msgstr ""
+msgstr "שגיאות אימות (validation) נחשבות שגיאות קטלניות."
 
 #. type: TP
 #: doc/man/wesnoth.6:325
 #, no-wrap
 msgid "B<-t[>I<scenario_id>B<],\\ --test[>I<=scenario_id>B<]>"
-msgstr ""
+msgstr "B<-t[>I<scenario_id>B<],\\ --test[>I<=scenario_id>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:335
@@ -849,12 +937,15 @@ msgid ""
 "with a B<[test]> WML tag. The default is B<test>.  A demonstration of the "
 "B<[micro_ai]> feature can be started with B<micro_ai_test>."
 msgstr ""
+"מריץ את המשחק בתרחיש בדיקה קטן. התרחיש צריך להיות מוגדר בתגית WML מסוג "
+"B<[test]>. ברירת המחדל היא B<test>. ניתן להפעיל הדגמה של תכונת "
+"ה-B<[micro_ai]> באמצעות B<micro_ai_test>."
 
 #. type: TP
 #: doc/man/wesnoth.6:335
 #, no-wrap
 msgid "B<--translations-over>I<\\ percent>"
-msgstr ""
+msgstr "B<--translations-over>I<\\ percent>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:341
@@ -862,23 +953,26 @@ msgid ""
 "Set the standard for deeming a translation is complete enough to show in the "
 "in-game language list to I<percent>.  Valid values are 0 to 100."
 msgstr ""
+"קובע את הרף לפיו תרגום נחשב שלם מספיק כדי להופיע ברשימת השפות שבתוך המשחק, "
+"לערך I<percent>. ערכים תקינים הם 0 עד 100."
 
 #. type: TP
 #: doc/man/wesnoth.6:341
 #, no-wrap
 msgid "B<-u,\\ --unit>I<\\ scenario-id>"
-msgstr ""
+msgstr "B<-u,\\ --unit>I<\\ scenario-id>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:345
 msgid "runs the specified test scenario as a unit test. Implies B<--nogui>."
 msgstr ""
+"מריץ את תרחיש הבדיקה שצוין כבדיקת יחידה (unit test). מרמז על B<--nogui>."
 
 #. type: TP
 #: doc/man/wesnoth.6:345
 #, no-wrap
 msgid "B<--unsafe-scripts>"
-msgstr ""
+msgstr "B<--unsafe-scripts>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:350
@@ -887,23 +981,26 @@ msgid ""
 "arbitrary packages. Do not do this with untrusted scripts! This action gives "
 "lua the same permissions as the wesnoth executable."
 msgstr ""
+"הופך את החבילה B<package> לזמינה לסקריפטי Lua, כך שהם יוכלו לטעון חבילות "
+"שרירותיות. אין לעשות זאת עם סקריפטים לא מהימנים! פעולה זו מעניקה ל-Lua את "
+"אותן הרשאות כמו לקובץ ההרצה של ווסנות'."
 
 #. type: TP
 #: doc/man/wesnoth.6:350
 #, no-wrap
 msgid "B<-S,\\ --use-schema>I<\\ path>"
-msgstr ""
+msgstr "B<-S,\\ --use-schema>I<\\ path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:354
 msgid "sets the WML schema for use with B<-V,\\ --validate>."
-msgstr ""
+msgstr "קובע את סכימת ה-WML לשימוש עם B<-V,\\ --validate>."
 
 #. type: TP
 #: doc/man/wesnoth.6:354
 #, no-wrap
 msgid "B<--userdata-dir>I<\\ name>"
-msgstr ""
+msgstr "B<--userdata-dir>I<\\ name>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:363
@@ -914,143 +1011,147 @@ msgid ""
 "also possible to specify a directory relative to the process working "
 "directory by using path starting with \".\\e\" or \"..\\e\"."
 msgstr ""
+"קובע את תיקיית נתוני המשתמש בשם I<name> תחת $HOME או \"My Documents\\eMy "
+"Games\" עבור Windows. ניתן גם לציין נתיב מוחלט לתיקיית נתוני המשתמש מחוץ "
+"ל-$HOME או ל-\"My Documents\\eMy Games\". ב-Windows ניתן גם לציין תיקייה "
+"יחסית לתיקיית העבודה של התהליך באמצעות נתיב שמתחיל ב-\".\\e\" או ב-\"..\\e\"."
 
 #. type: TP
 #: doc/man/wesnoth.6:363
 #, no-wrap
 msgid "B<--userdata-path>"
-msgstr ""
+msgstr "B<--userdata-path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:366
 msgid "prints the path of the userdata directory and exits."
-msgstr ""
+msgstr "מדפיס את הנתיב של תיקיית נתוני המשתמש ויוצא."
 
 #. type: TP
 #: doc/man/wesnoth.6:366
 #, no-wrap
 msgid "B<--username>I<\\ username>"
-msgstr ""
+msgstr "B<--username>I<\\ username>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:371
 msgid ""
 "uses I<username> when connecting to a server, ignoring other preferences."
-msgstr ""
+msgstr "משתמש ב-I<username> בעת התחברות לשרת, תוך התעלמות מהעדפות אחרות."
 
 #. type: TP
 #: doc/man/wesnoth.6:371
 #, no-wrap
 msgid "B<--validate>I<\\ path>"
-msgstr ""
+msgstr "B<--validate>I<\\ path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:374
 msgid "validates a file against the WML schema."
-msgstr ""
+msgstr "מאמת קובץ מול סכימת ה-WML."
 
 #. type: TP
 #: doc/man/wesnoth.6:374
 #, no-wrap
 msgid "B<--validate-addon>I<\\ addon_id>"
-msgstr ""
+msgstr "B<--validate-addon>I<\\ addon_id>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:377
 msgid "validates the WML of the given addon as you play."
-msgstr ""
+msgstr "מאמת את ה-WML של התוסף הנתון תוך כדי המשחק."
 
 #. type: TP
 #: doc/man/wesnoth.6:377
 #, no-wrap
 msgid "B<--validate-core>"
-msgstr ""
+msgstr "B<--validate-core>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:380
 msgid "validates the core WML as you play."
-msgstr ""
+msgstr "מאמת את ה-WML של הליבה תוך כדי המשחק."
 
 #. type: TP
 #: doc/man/wesnoth.6:380
 #, no-wrap
 msgid "B<--validate-schema>I<\\ path>"
-msgstr ""
+msgstr "B<--validate-schema>I<\\ path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:383
 msgid "validates a file as a WML schema."
-msgstr ""
+msgstr "מאמת קובץ כסכימת WML."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:383
 #, no-wrap
 msgid "B<--validcache>"
-msgstr ""
+msgstr "B<--validcache>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:386
 msgid "assumes that the cache is valid. (dangerous)"
-msgstr ""
+msgstr "מניח שהמטמון (cache) תקין. (מסוכן)"
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:386
 #, no-wrap
 msgid "B<-v, --version>"
-msgstr ""
+msgstr "B<-v, --version>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:389
 msgid "shows the version number and exits."
-msgstr ""
+msgstr "מציג את מספר הגרסה ויוצא."
 
 #. type: TP
 #: doc/man/wesnoth.6:389
 #, no-wrap
 msgid "B<--simple-version>"
-msgstr ""
+msgstr "B<--simple-version>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:392
 msgid "shows the version number and nothing else, then exits."
-msgstr ""
+msgstr "מציג את מספר הגרסה בלבד, בלי דבר נוסף, ואז יוצא."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:392
 #, no-wrap
 msgid "B<-w, --windowed>"
-msgstr ""
+msgstr "B<-w, --windowed>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:395
 msgid "runs the game in windowed mode."
-msgstr ""
+msgstr "מריץ את המשחק במצב חלון."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:395
 #, no-wrap
 msgid "B<--with-replay>"
-msgstr ""
+msgstr "B<--with-replay>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:400
 msgid "replays the game loaded with the B<--load> option."
-msgstr ""
+msgstr "משדר מחדש (replay) את המשחק שנטען באמצעות האפשרות B<--load>."
 
 # type: SH
 #. type: SH
 #: doc/man/wesnoth.6:401
 #, no-wrap
 msgid "Options for --multiplayer"
-msgstr ""
+msgstr "אפשרויות עבור --multiplayer"
 
 # type: Plain text
 #. type: Plain text
@@ -1060,25 +1161,27 @@ msgid ""
 "has to be replaced by a side number. It usually is 1 or 2 but depends on the "
 "number of players possible in the chosen scenario."
 msgstr ""
+"אפשרויות רב-משתתפים ייחודיות-לצד מסומנות ב-I<number>. יש להחליף את I<number> "
+"במספר צד. בדרך כלל זה 1 או 2, אך תלוי במספר השחקנים האפשרי בתרחיש הנבחר."
 
 #. type: TP
 #: doc/man/wesnoth.6:408
 #, no-wrap
 msgid "B<--ai-config>I<\\ number>B<:>I<value>"
-msgstr ""
+msgstr "B<--ai-config>I<\\ number>B<:>I<value>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:411
 msgid ""
 "selects a configuration file to load for the AI controller for this side."
-msgstr ""
+msgstr "בוחר קובץ הגדרות לטעינה עבור בקר הבינה המלאכותית (AI) של צד זה."
 
 #. type: TP
 #: doc/man/wesnoth.6:411
 #, no-wrap
 msgid "B<--algorithm>I<\\ number>B<:>I<value>"
-msgstr ""
+msgstr "B<--algorithm>I<\\ number>B<:>I<value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:421
@@ -1088,25 +1191,29 @@ msgid ""
 "either in \"data/ai/ais\" or \"data/ai/dev\" or an algorithm defined by an "
 "addon. Available values include: B<idle_ai> and B<experimental_ai>."
 msgstr ""
+"בוחר אלגוריתם לא סטנדרטי לשימוש על ידי בקר הבינה המלאכותית עבור צד זה. "
+"האלגוריתם מוגדר על ידי תגית B<[ai]>, שיכולה להיות אלגוריתם ליבה מ-\"data/ai/"
+"ais\" או \"data/ai/dev\", או אלגוריתם המוגדר על ידי תוסף. ערכים זמינים "
+"כוללים: B<idle_ai> ו-B<experimental_ai>."
 
 #. type: TP
 #: doc/man/wesnoth.6:421
 #, no-wrap
 msgid "B<--controller>I<\\ number>B<:>I<value>"
-msgstr ""
+msgstr "B<--controller>I<\\ number>B<:>I<value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:428
 msgid ""
 "selects the controller for this side. Available values: B<human>, B<ai> and "
 "B<null>."
-msgstr ""
+msgstr "בוחר את הבקר עבור צד זה. ערכים זמינים: B<human>, B<ai> ו-B<null>."
 
 #. type: TP
 #: doc/man/wesnoth.6:428
 #, no-wrap
 msgid "B<--era>I<\\ value>"
-msgstr ""
+msgstr "B<--era>I<\\ value>"
 
 # type: Plain text
 #. type: Plain text
@@ -1116,13 +1223,15 @@ msgid ""
 "The era is chosen by an id. Eras are described in the B<data/multiplayer/"
 "eras.cfg> file."
 msgstr ""
+"אפשרות זו משמשת לשחק בעידן הנבחר במקום עידן ה-B<Default>. העידן נבחר לפי "
+"מזהה. עידנים מתוארים בקובץ B<data/multiplayer/eras.cfg>."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnoth.6:435
 #, no-wrap
 msgid "B<--exit-at-end>"
-msgstr ""
+msgstr "B<--exit-at-end>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:439
@@ -1131,34 +1240,37 @@ msgid ""
 "which normally requires the user to click End Scenario.  This is also used "
 "for scriptable benchmarking."
 msgstr ""
+"יוצא ברגע שהתרחיש מסתיים, בלי להציג את חלון הניצחון/תבוסה שבדרך כלל מחייב את "
+"המשתמש ללחוץ על 'סיום תרחיש'. משמש גם למדידת ביצועים (benchmarking) "
+"בסקריפטים."
 
 #. type: TP
 #: doc/man/wesnoth.6:439
 #, no-wrap
 msgid "B<--ignore-map-settings>"
-msgstr ""
+msgstr "B<--ignore-map-settings>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:442
 msgid "do not use map settings, use default values instead."
-msgstr ""
+msgstr "אינו משתמש בהגדרות המפה, ומשתמש בערכי ברירת המחדל במקום."
 
 #. type: TP
 #: doc/man/wesnoth.6:442
 #, no-wrap
 msgid "B<--label>I<\\ label>"
-msgstr ""
+msgstr "B<--label>I<\\ label>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:447
 msgid "sets the I<label> for AIs."
-msgstr ""
+msgstr "קובע את ה-I<label> עבור בינות מלאכותיות."
 
 #. type: TP
 #: doc/man/wesnoth.6:447
 #, no-wrap
 msgid "B<--multiplayer-repeat>I<\\ value>"
-msgstr ""
+msgstr "B<--multiplayer-repeat>I<\\ value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:454
@@ -1166,12 +1278,14 @@ msgid ""
 "repeats a multiplayer game I<value> times. Best to use with B<--nogui> for "
 "scriptable benchmarking."
 msgstr ""
+"חוזר על משחק רב-משתתפים I<value> פעמים. מומלץ להשתמש יחד עם B<--nogui> "
+"למדידת ביצועים בסקריפטים."
 
 #. type: TP
 #: doc/man/wesnoth.6:454
 #, no-wrap
 msgid "B<--parm>I<\\ number>B<:>I<name>B<:>I<value>"
-msgstr ""
+msgstr "B<--parm>I<\\ number>B<:>I<name>B<:>I<value>"
 
 # type: Plain text
 #. type: Plain text
@@ -1181,12 +1295,15 @@ msgid ""
 "options used with B<--controller> and B<--algorithm>.  It should only be "
 "useful for people designing their own AI. (not yet documented completely)"
 msgstr ""
+"קובע פרמטרים נוספים עבור צד זה. פרמטר זה תלוי באפשרויות שבהן משתמשים עם B<--"
+"controller> ו-B<--algorithm>. שימושי בעיקר לאנשים המעצבים בינה מלאכותית "
+"משלהם. (עדיין לא מתועד באופן מלא)"
 
 #. type: TP
 #: doc/man/wesnoth.6:463
 #, no-wrap
 msgid "B<--scenario>I<\\ value>"
-msgstr ""
+msgstr "B<--scenario>I<\\ value>"
 
 # type: Plain text
 #. type: Plain text
@@ -1195,12 +1312,14 @@ msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
 msgstr ""
+"בוחר תרחיש רב-משתתפים לפי מזהה. מזהה תרחיש ברירת המחדל הוא "
+"B<multiplayer_The_Freelands>."
 
 #. type: TP
 #: doc/man/wesnoth.6:467
 #, no-wrap
 msgid "B<--side>I<\\ number>B<:>I<value>"
-msgstr ""
+msgstr "B<--side>I<\\ number>B<:>I<value>"
 
 # type: Plain text
 #. type: Plain text
@@ -1209,25 +1328,27 @@ msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
 msgstr ""
+"בוחר סיעה (faction) של העידן הנוכחי עבור צד זה. הסיעה נבחרת לפי מזהה. סיעות "
+"מתוארות בקובץ data/multiplayer.cfg."
 
 #. type: TP
 #: doc/man/wesnoth.6:472
 #, no-wrap
 msgid "B<--turns>I<\\ value>"
-msgstr ""
+msgstr "B<--turns>I<\\ value>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:475
 msgid ""
 "sets the number of turns for the chosen scenario. By default no turn limit "
 "is set."
-msgstr ""
+msgstr "קובע את מספר התורות עבור התרחיש הנבחר. כברירת מחדל אין הגבלת תורות."
 
 #. type: SH
 #: doc/man/wesnoth.6:476 doc/man/wesnothd.6:271
 #, no-wrap
 msgid "EXIT STATUS"
-msgstr ""
+msgstr "קוד יציאה"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:481
@@ -1236,6 +1357,8 @@ msgid ""
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
 "with the command line options."
 msgstr ""
+"קוד יציאה רגיל הוא 0. קוד יציאה 1 מציין שגיאת אתחול (SDL, וידאו, גופנים "
+"וכו'). קוד יציאה 2 מציין שגיאה באפשרויות שורת הפקודה."
 
 #. type: Plain text
 #: doc/man/wesnoth.6:491
@@ -1247,27 +1370,34 @@ msgid ""
 "passed, but the replay produced errors. These latter two are only returned "
 "if B<--noreplaycheck> is not passed."
 msgstr ""
+"בעת הרצת בדיקות יחידה (withB<\\ -u>), קוד היציאה שונה. קוד יציאה 0 מציין "
+"שהבדיקה עברה, ו-1 מציין שהבדיקה נכשלה. קוד יציאה 3 מציין שהבדיקה עברה, אך "
+"הפיקה קובץ שידור חוזר לא תקין. קוד יציאה 4 מציין שהבדיקה עברה, אך השידור "
+"החוזר הפיק שגיאות. שני הקודים האחרונים מוחזרים רק אם B<--noreplaycheck> לא "
+"הועבר."
 
 # type: SH
 #. type: SH
 #: doc/man/wesnoth.6:492 doc/man/wesnothd.6:275
 #, no-wrap
 msgid "AUTHOR"
-msgstr ""
+msgstr "מחבר"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:495
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
-msgstr ""
+msgstr "נכתב על ידי דיוויד וייט E<lt>davidnwhite@verizon.netE<gt>."
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnoth.6:497
 msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
-"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
+"נערך על ידי נילס קנויפר E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> וסוליטון E<lt>soliton.de@gmail.comE<gt>."
 
 # type: Plain text
 #. type: Plain text
@@ -1276,23 +1406,26 @@ msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
+"דף הוראות (manual) זה נכתב במקור על ידי סיריל בות'ורס "
+"E<lt>cyril@bouthors.orgE<gt>."
 
 #. type: Plain text
 #: doc/man/wesnoth.6:501 doc/man/wesnothd.6:282
 msgid "Visit the official homepage: https://www.wesnoth.org/"
-msgstr ""
+msgstr "בקרו באתר הרשמי: https://www.wesnoth.org/"
 
 # type: SH
 #. type: SH
 #: doc/man/wesnoth.6:502 doc/man/wesnothd.6:283
 #, no-wrap
 msgid "COPYRIGHT"
-msgstr ""
+msgstr "זכויות יוצרים"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:505 doc/man/wesnothd.6:286
 msgid "Copyright \\(co 2003-2025 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
+"זכויות יוצרים \\(co 2003-2025 דיוויד וייט E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
@@ -1302,58 +1435,60 @@ msgid ""
 "published by the Free Software Foundation.  There is NO warranty; not even "
 "for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 msgstr ""
+"זוהי תוכנה חופשית; תוכנה זו מורשית תחת רישיון GPL גרסה 2, כפי שפורסם על ידי "
+"Free Software Foundation. אין אחריות; אף לא לגבי סחירות או התאמה למטרה "
+"מסוימת."
 
 # type: SH
 #. type: SH
 #: doc/man/wesnoth.6:509 doc/man/wesnothd.6:290
 #, no-wrap
 msgid "SEE ALSO"
-msgstr ""
+msgstr "ראו גם"
 
-#
-#
 #. type: Plain text
 #: doc/man/wesnoth.6:511
 msgid "B<wesnothd>(6)"
-msgstr ""
+msgstr "B<wesnothd>(6)"
 
 # type: TH
 #. type: TH
 #: doc/man/wesnothd.6:16
 #, no-wrap
 msgid "WESNOTHD"
-msgstr ""
+msgstr "WESNOTHD"
 
 # type: TH
 #. type: TH
 #: doc/man/wesnothd.6:16
 #, no-wrap
 msgid "wesnothd"
-msgstr ""
+msgstr "wesnothd"
 
 # type: TH
 #. type: TH
 #: doc/man/wesnothd.6:16
 #, no-wrap
 msgid "Battle for Wesnoth multiplayer network daemon"
-msgstr ""
+msgstr "תהליך הרקע (daemon) לרשת רב-משתתפים של הקרב על ווסנות'"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:23
 msgid "wesnothd - Battle for B<Wesnoth> multiplayer network daemon"
-msgstr ""
+msgstr "wesnothd - תהליך הרקע (daemon) לרשת רב-משתתפים של הקרב על B<Wesnoth>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:32
 msgid "B<wesnothd> [\\|B<-dvw>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|]"
 msgstr ""
+"B<wesnothd> [\\|B<-dvw>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|]"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:35
 msgid "B<wesnothd> B<-V>"
-msgstr ""
+msgstr "B<wesnothd> B<-V>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:40
@@ -1362,13 +1497,16 @@ msgid ""
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client (/query ...) or the fifo."
 msgstr ""
+"מנהל משחקי רב-משתתפים של הקרב על ווסנות'. ראו https://www.wesnoth.org/wiki/"
+"ServerAdministration לגבי אילו פקודות השרת מקבל דרך לקוח ווסנות' (/"
+"query ...) או ה-fifo."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:43
 #, no-wrap
 msgid "B<-c\\ >I<path>B<,\\ --config>I<\\ path>"
-msgstr ""
+msgstr "B<-c\\ >I<path>B<,\\ --config>I<\\ path>"
 
 # type: Plain text
 #. type: Plain text
@@ -1378,25 +1516,28 @@ msgid ""
 "B<SERVER CONFIG> below for the syntax. You can reload the config with "
 "sending SIGHUP to the server process."
 msgstr ""
+"אומר ל-wesnothd איפה למצוא את קובץ ההגדרות לשימוש. ראו את הסעיף B<SERVER "
+"CONFIG> להלן לגבי התחביר. ניתן לטעון מחדש את ההגדרות על ידי שליחת SIGHUP "
+"לתהליך השרת."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:48
 #, no-wrap
 msgid "B<-d, --daemon>"
-msgstr ""
+msgstr "B<-d, --daemon>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:51
 msgid "runs wesnothd as a daemon."
-msgstr ""
+msgstr "מריץ את wesnothd כתהליך רקע (daemon)."
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:54
 msgid "tells you what the command line options do."
-msgstr ""
+msgstr "מסביר מה עושות אפשרויות שורת הפקודה."
 
 # type: Plain text
 #. type: Plain text
@@ -1407,13 +1548,16 @@ msgid ""
 "B<debug>.  By default the B<error> level is used and the B<info> level for "
 "the B<server> domain."
 msgstr ""
+"קובע את רמת החומרה של תחומי היומן. ניתן להשתמש ב-B<all> כדי להתאים לכל תחום "
+"יומן. רמות זמינות: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>. כברירת "
+"מחדל משתמשים ברמה B<error>, וברמה B<info> עבור תחום ה-B<server>."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:68
 #, no-wrap
 msgid "B<-p\\ >I<port>B<,\\ --port>I<\\ port>"
-msgstr ""
+msgstr "B<-p\\ >I<port>B<,\\ --port>I<\\ port>"
 
 # type: Plain text
 #. type: Plain text
@@ -1421,85 +1565,85 @@ msgstr ""
 msgid ""
 "binds the server to the specified port. If no port is specified, port "
 "B<15000> will be used."
-msgstr ""
+msgstr "מקשר את השרת לפורט שצוין. אם לא צוין פורט, ייעשה שימוש בפורט B<15000>."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:73
 #, no-wrap
 msgid "B<-V, --version>"
-msgstr ""
+msgstr "B<-V, --version>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:76
 msgid "shows version number and exits."
-msgstr ""
+msgstr "מציג את מספר הגרסה ויוצא."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:76
 #, no-wrap
 msgid "B<-v, --verbose>"
-msgstr ""
+msgstr "B<-v, --verbose>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:79
 msgid "turns debug logging on."
-msgstr ""
+msgstr "מפעיל רישום יומן (logging) לצורכי דיבוג."
 
 # type: SH
 #. type: SH
 #: doc/man/wesnothd.6:80
 #, no-wrap
 msgid "SERVER CONFIG"
-msgstr ""
+msgstr "הגדרות שרת"
 
 # type: SS
 #. type: SS
 #: doc/man/wesnothd.6:82
 #, no-wrap
 msgid "The general syntax is:"
-msgstr ""
+msgstr "התחביר הכללי הוא:"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:86
 msgid "[I<tag>]"
-msgstr ""
+msgstr "[I<tag>]"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:88
 msgid "I<key>=\"I<value>\""
-msgstr ""
+msgstr "I<key>=\"I<value>\""
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:90
 msgid "I<key>=\"I<value>,I<value>,...\""
-msgstr ""
+msgstr "I<key>=\"I<value>,I<value>,...\""
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:92
 msgid "[/I<tag>]"
-msgstr ""
+msgstr "[/I<tag>]"
 
 # type: SS
 #. type: SS
 #: doc/man/wesnothd.6:93
 #, no-wrap
 msgid "Global keys:"
-msgstr ""
+msgstr "מפתחות גלובליים:"
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:95
 #, no-wrap
 msgid "B<allow_remote_shutdown>"
-msgstr ""
+msgstr "B<allow_remote_shutdown>"
 
 # type: Plain text
 #. type: Plain text
@@ -1509,13 +1653,16 @@ msgid ""
 "they come from the fifo.  Set it to B<yes> to allow remote shutdown via a /"
 "query by an administrator."
 msgstr ""
+"אם נקבע ל-B<no> (ברירת המחדל), בקשות כיבוי (shut_down) והפעלה מחדש (restart) "
+"מתעלמות, אלא אם הן מגיעות מה-fifo. יש לקבוע ל-B<yes> כדי לאפשר כיבוי מרוחק "
+"דרך /query על ידי מנהל מערכת."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:99
 #, no-wrap
 msgid "B<ban_save_file>"
-msgstr ""
+msgstr "B<ban_save_file>"
 
 # type: Plain text
 #. type: Plain text
@@ -1524,13 +1671,15 @@ msgid ""
 "Full or relative path to a (gzip compressed) file that the server can read "
 "and write.  Bans will be saved to this file and read again on server start."
 msgstr ""
+"נתיב מלא או יחסי לקובץ (דחוס gzip) שהשרת יכול לקרוא ולכתוב אליו. חסימות "
+"(bans) יישמרו בקובץ זה וייקראו שוב בעת הפעלת השרת."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:103
 #, no-wrap
 msgid "B<connections_allowed>"
-msgstr ""
+msgstr "B<connections_allowed>"
 
 # type: Plain text
 #. type: Plain text
@@ -1539,12 +1688,14 @@ msgid ""
 "The number of allowed connections from the same IP. B<0> means infinite. "
 "(default: B<5>)"
 msgstr ""
+"מספר החיבורים המותרים מאותה כתובת IP. B<0> משמעו ללא הגבלה. (ברירת מחדל: "
+"B<5>)"
 
 #. type: TP
 #: doc/man/wesnothd.6:106
 #, no-wrap
 msgid "B<deny_unregistered_login>"
-msgstr ""
+msgstr "B<deny_unregistered_login>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:111
@@ -1552,29 +1703,34 @@ msgid ""
 "Whether to prevent users who are not registered with the B<user_handler> "
 "being used from logging in. (default: false)"
 msgstr ""
+"האם למנוע כניסה ממשתמשים שאינם רשומים אצל ה-B<user_handler> שבשימוש. (ברירת "
+"מחדל: false)"
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:111
 #, no-wrap
 msgid "B<disallow_names>"
-msgstr ""
+msgstr "B<disallow_names>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:118
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: B<*admin*,*admln*,*moderator*,*server*,"
-"ai,ai?,computer,human,network,player>."
+"(used if nothing is specified) are: "
+"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
 msgstr ""
+"שמות/כינויים שהשרת לא מקבל. נתמכים תבניות-כלליות (wildcard) עם B<*> ו-B<?>. "
+"לפרטים נוספים ראו B<glob>(7). ערכי ברירת המחדל (בשימוש אם לא צוין דבר) הם: "
+"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:118
 #, no-wrap
 msgid "B<fifo_path>"
-msgstr ""
+msgstr "B<fifo_path>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:122
@@ -1583,12 +1739,15 @@ msgid ""
 "from wesnoth).  If not specified defaults to the compile-time path (default: "
 "B</var/run/wesnothd/socket>)."
 msgstr ""
+"הנתיב ל-fifo שאליו ניתן לשלוח פקודות שרת (זהה ל-/query ... מתוך ווסנות'). אם "
+"לא צוין, ברירת המחדל היא הנתיב שנקבע בזמן ההידור (ברירת מחדל: B</var/run/"
+"wesnothd/socket>)."
 
 #. type: TP
 #: doc/man/wesnothd.6:122
 #, no-wrap
 msgid "B<id>"
-msgstr ""
+msgstr "B<id>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:125
@@ -1597,27 +1756,29 @@ msgid ""
 "information. Generally is the major.minor version of accepted clients, such "
 "as 1.16 or 1.17."
 msgstr ""
+"מזהה השרת בעת שימוש בפונקציונליות מסד הנתונים לאחסון מידע על משחקים. בדרך "
+"כלל זו גרסת major.minor של הלקוחות המקובלים, כגון 1.16 או 1.17."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:125
 #, no-wrap
 msgid "B<max_messages>"
-msgstr ""
+msgstr "B<max_messages>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:128
 msgid ""
 "The number of allowed messages in B<messages_time_period>. (default: B<4>)"
-msgstr ""
+msgstr "מספר ההודעות המותרות בתוך B<messages_time_period>. (ברירת מחדל: B<4>)"
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:128
 #, no-wrap
 msgid "B<messages_time_period>"
-msgstr ""
+msgstr "B<messages_time_period>"
 
 # type: Plain text
 #. type: Plain text
@@ -1625,40 +1786,40 @@ msgstr ""
 msgid ""
 "The time period (in seconds) message flooding is detected in. (default: "
 "B<10> seconds)"
-msgstr ""
+msgstr "פרק הזמן (בשניות) שבו מתגלה הצפת הודעות. (ברירת מחדל: B<10> שניות)"
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:131
 #, no-wrap
 msgid "B<motd>"
-msgstr ""
+msgstr "B<motd>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:134
 msgid "The message of the day."
-msgstr ""
+msgstr "הודעת היום (message of the day)."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:134
 #, no-wrap
 msgid "B<passwd>"
-msgstr ""
+msgstr "B<passwd>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:137
 msgid ""
 "The password used to gain admin privileges (via B</query admin >I<password>)."
-msgstr ""
+msgstr "הסיסמה המשמשת לקבלת הרשאות ניהול (דרך B</query admin >I<password>)."
 
 #. type: TP
 #: doc/man/wesnothd.6:137
 #, no-wrap
 msgid "B<replay_save_path>"
-msgstr ""
+msgstr "B<replay_save_path>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:140
@@ -1667,13 +1828,15 @@ msgid ""
 "trailing /!) Defaults to `' which means the directory wesnothd was started "
 "in."
 msgstr ""
+"התיקייה שבה השרת שומר שידורים חוזרים (replays) של משחקים. (נא לא לשכוח את "
+"ה-/ בסוף!) ברירת המחדל היא `' שמשמעה התיקייה שבה הופעל wesnothd."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:140
 #, no-wrap
 msgid "B<restart_command>"
-msgstr ""
+msgstr "B<restart_command>"
 
 # type: Plain text
 #. type: Plain text
@@ -1683,12 +1846,14 @@ msgid ""
 "B<restart> command. (Can only be issued via the fifo. See the "
 "B<allow_remote_shutdown> setting.)"
 msgstr ""
+"הפקודה שבה השרת משתמש כדי להפעיל תהליך שרת חדש דרך הפקודה B<restart>. (ניתן "
+"להנפיק רק דרך ה-fifo. ראו את ההגדרה B<allow_remote_shutdown>.)"
 
 #. type: TP
 #: doc/man/wesnothd.6:143
 #, no-wrap
 msgid "B<save_replays>"
-msgstr ""
+msgstr "B<save_replays>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:146
@@ -1696,45 +1861,48 @@ msgid ""
 "Defines whether the server will automatically save replays of games. "
 "(default: B<false>)"
 msgstr ""
+"מגדיר האם השרת ישמור אוטומטית שידורים חוזרים של משחקים. (ברירת מחדל: "
+"B<false>)"
 
 #. type: TP
 #: doc/man/wesnothd.6:146
 #, no-wrap
 msgid "B<tls_enabled>"
-msgstr ""
+msgstr "B<tls_enabled>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:149
 msgid "Enable use of TLS. If true, requires 3 following options to be set too."
 msgstr ""
+"מפעיל שימוש ב-TLS. אם מוגדר כ-true, נדרש להגדיר גם את 3 האפשרויות הבאות."
 
 #. type: TP
 #: doc/man/wesnothd.6:149
 #, no-wrap
 msgid "B<tls_fullchain>"
-msgstr ""
+msgstr "B<tls_fullchain>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:152
 msgid "TLS full certificate chain in .pem format"
-msgstr ""
+msgstr "שרשרת אישורי TLS מלאה בפורמט .pem"
 
 #. type: TP
 #: doc/man/wesnothd.6:152
 #, no-wrap
 msgid "B<tls_private_key>"
-msgstr ""
+msgstr "B<tls_private_key>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:155
 msgid "private key for TLS in .pem format"
-msgstr ""
+msgstr "מפתח פרטי עבור TLS בפורמט .pem"
 
 #. type: TP
 #: doc/man/wesnothd.6:155
 #, no-wrap
 msgid "B<tls_dh>"
-msgstr ""
+msgstr "B<tls_dh>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:158
@@ -1742,13 +1910,15 @@ msgid ""
 "TLS DH parameters, as .pem file. Generate with B<openssl dhparam -out "
 "filename.pem 4096>"
 msgstr ""
+"פרמטרי DH של TLS, כקובץ .pem. ליצירה יש להשתמש ב-B<openssl dhparam -out "
+"filename.pem 4096>"
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:158
 #, no-wrap
 msgid "B<versions_accepted>"
-msgstr ""
+msgstr "B<versions_accepted>"
 
 # type: Plain text
 #. type: Plain text
@@ -1758,19 +1928,21 @@ msgid ""
 "and B<?> from wildcard patterns are supported.  (defaults to the "
 "corresponding wesnoth version)"
 msgstr ""
+"רשימה מופרדת בפסיקים של מחרוזות גרסה שהשרת יקבל. נתמכות תבניות-כלליות "
+"(wildcard) עם B<*> ו-B<?>. (ברירת המחדל היא גרסת ווסנות' המתאימה)"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:164
 msgid "Example: B<versions_accepted=\"*\"> accepts any version string."
-msgstr ""
+msgstr "דוגמה: B<versions_accepted=\"*\"> מקבל כל מחרוזת גרסה."
 
 # type: SS
 #. type: SS
 #: doc/man/wesnothd.6:165
 #, no-wrap
 msgid "Global tags:"
-msgstr ""
+msgstr "תגיות גלובליות:"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:172
@@ -1778,39 +1950,41 @@ msgid ""
 "B<[redirect]> A tag to specify a server to redirect certain client versions "
 "to. Is not used if B<versions_accepted> is not set."
 msgstr ""
+"B<[redirect]> תגית לציון שרת שאליו יש להפנות גרסאות לקוח מסוימות. אינה "
+"בשימוש אם B<versions_accepted> לא הוגדר."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:173
 #, no-wrap
 msgid "B<host>"
-msgstr ""
+msgstr "B<host>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:176
 msgid "The address of the server to redirect to."
-msgstr ""
+msgstr "הכתובת של השרת שאליו יש להפנות."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:176
 #, no-wrap
 msgid "B<port>"
-msgstr ""
+msgstr "B<port>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:179
 msgid "The port to connect to."
-msgstr ""
+msgstr "הפורט שאליו יש להתחבר."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:179
 #, no-wrap
 msgid "B<version>"
-msgstr ""
+msgstr "B<version>"
 
 # type: Plain text
 #. type: Plain text
@@ -1819,6 +1993,8 @@ msgid ""
 "A comma separated list of versions to redirect. Behaves the same way as "
 "B<versions_accepted> in regard to wildcard patterns."
 msgstr ""
+"רשימה מופרדת בפסיקים של גרסאות להפניה. מתנהג באותו אופן כמו "
+"B<versions_accepted> בכל הנוגע לתבניות-כלליות."
 
 # type: Plain text
 #. type: Plain text
@@ -1827,26 +2003,27 @@ msgid ""
 "B<[ban_time]> A tag to define convenient keywords for temporary ban time "
 "lengths."
 msgstr ""
+"B<[ban_time]> תגית להגדרת מילות-מפתח נוחות עבור אורכי זמן של חסימה זמנית."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:189
 #, no-wrap
 msgid "B<name>"
-msgstr ""
+msgstr "B<name>"
 
 # type: Plain text
 #. type: Plain text
 #: doc/man/wesnothd.6:192
 msgid "The name used to reference the ban time."
-msgstr ""
+msgstr "השם המשמש להתייחסות לזמן החסימה."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:192
 #, no-wrap
 msgid "B<time>"
-msgstr ""
+msgstr "B<time>"
 
 # type: Plain text
 #. type: Plain text
@@ -1858,6 +2035,10 @@ msgid ""
 "Example: B<time=\"1D12h30m\"> results in a ban time of 1 day, 12 hours and "
 "30 minutes."
 msgstr ""
+"הגדרת אורך הזמן. הפורמט הוא: %d[%s[%d%s[...]]] כאשר %s הוא s (שניות), m "
+"(דקות), h (שעות), D (ימים), M (חודשים) או Y (שנים), ו-%d הוא מספר. אם לא "
+"ניתן מציין זמן, מניחים דקות (m). דוגמה: B<time=\"1D12h30m\"> נותן זמן חסימה "
+"של יום אחד, 12 שעות ו-30 דקות."
 
 # type: Plain text
 #. type: Plain text
@@ -1867,6 +2048,8 @@ msgid ""
 "connected client's requests to the specified server.  Accepts the same keys "
 "as B<[redirect]>."
 msgstr ""
+"B<[proxy]> תגית שאומרת לשרת לפעול כפרוקסי ולהעביר את בקשות הלקוח המחובר לשרת "
+"שצוין. מקבלת את אותם מפתחות כמו B<[redirect]>."
 
 #. type: Plain text
 #: doc/man/wesnothd.6:217
@@ -1878,61 +2061,66 @@ msgid ""
 "the Wesnoth source repository. Requires mysql support enabled. For cmake "
 "this is B<ENABLE_MYSQL> and for scons this is B<forum_user_handler.>"
 msgstr ""
+"B<[user_handler]> מגדיר את מנהל המשתמשים. אם לא קיים סעיף B<[user_handler]> "
+"בהגדרות, השרת ירוץ ללא שירות רישום כינויים. כל הטבלאות הנוספות הדרושות "
+"ל-B<forum_user_handler> כדי לפעול נמצאות ב-table_definitions.sql במאגר המקור "
+"של ווסנות'. דורש הפעלת תמיכה ב-mysql. עבור cmake זהו B<ENABLE_MYSQL>, ועבור "
+"scons זהו B<forum_user_handler>."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:218
 #, no-wrap
 msgid "B<db_host>"
-msgstr ""
+msgstr "B<db_host>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:221
 msgid "The hostname of the database server"
-msgstr ""
+msgstr "שם המארח של שרת מסד הנתונים"
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:221
 #, no-wrap
 msgid "B<db_name>"
-msgstr ""
+msgstr "B<db_name>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:224
 msgid "The name of the database"
-msgstr ""
+msgstr "שם מסד הנתונים"
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:224
 #, no-wrap
 msgid "B<db_user>"
-msgstr ""
+msgstr "B<db_user>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:227
 msgid "The name of the user under which to log into the database"
-msgstr ""
+msgstr "שם המשתמש שדרכו מתחברים למסד הנתונים"
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:227
 #, no-wrap
 msgid "B<db_password>"
-msgstr ""
+msgstr "B<db_password>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:230
 msgid "This user's password"
-msgstr ""
+msgstr "הסיסמה של משתמש זה"
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:230
 #, no-wrap
 msgid "B<db_users_table>"
-msgstr ""
+msgstr "B<db_users_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:233
@@ -1940,50 +2128,52 @@ msgid ""
 "The name of the table in which your phpbb forum saves its user data. Most "
 "likely this will be E<lt>table-prefixE<gt>_users (e.g. phpbb3_users)."
 msgstr ""
+"שם הטבלה שבה פורום ה-phpbb שלכם שומר את נתוני המשתמשים שלו. סביר להניח שיהיה "
+"זה E<lt>table-prefixE<gt>_users (למשל phpbb3_users)."
 
 # type: TP
 #. type: TP
 #: doc/man/wesnothd.6:233
 #, no-wrap
 msgid "B<db_extra_table>"
-msgstr ""
+msgstr "B<db_extra_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:236
 msgid ""
 "The name of the table in which wesnothd will save its own data about users."
-msgstr ""
+msgstr "שם הטבלה שבה wesnothd ישמור את הנתונים שלו על משתמשים."
 
 #. type: TP
 #: doc/man/wesnothd.6:236
 #, no-wrap
 msgid "B<db_game_info_table>"
-msgstr ""
+msgstr "B<db_game_info_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:239
 msgid ""
 "The name of the table in which wesnothd will save its own data about games."
-msgstr ""
+msgstr "שם הטבלה שבה wesnothd ישמור את הנתונים שלו על משחקים."
 
 #. type: TP
 #: doc/man/wesnothd.6:239
 #, no-wrap
 msgid "B<db_game_player_info_table>"
-msgstr ""
+msgstr "B<db_game_player_info_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:242
 msgid ""
 "The name of the table in which wesnothd will save its own data about the "
 "players in a game."
-msgstr ""
+msgstr "שם הטבלה שבה wesnothd ישמור את הנתונים שלו על השחקנים במשחק."
 
 #. type: TP
 #: doc/man/wesnothd.6:242
 #, no-wrap
 msgid "B<db_game_content_info_table>"
-msgstr ""
+msgstr "B<db_game_content_info_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:245
@@ -1991,12 +2181,14 @@ msgid ""
 "The name of the table in which wesnothd will save its own data about game "
 "content (scenario/era/modifications) used in a game."
 msgstr ""
+"שם הטבלה שבה wesnothd ישמור את הנתונים שלו על תוכן המשחק "
+"(תרחיש/עידן/שינויים) שבו נעשה שימוש במשחק."
 
 #. type: TP
 #: doc/man/wesnothd.6:245
 #, no-wrap
 msgid "B<db_user_group_table>"
-msgstr ""
+msgstr "B<db_user_group_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:248
@@ -2005,12 +2197,14 @@ msgid ""
 "Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
 "phpbb3_user_group)."
 msgstr ""
+"שם הטבלה שבה פורום ה-phpbb שלכם שומר את נתוני קבוצות המשתמשים שלו. סביר "
+"להניח שיהיה זה E<lt>table-prefixE<gt>_user_group (למשל phpbb3_user_group)."
 
 #. type: TP
 #: doc/man/wesnothd.6:248
 #, no-wrap
 msgid "B<db_tournament_query>"
-msgstr ""
+msgstr "B<db_tournament_query>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:251
@@ -2018,12 +2212,14 @@ msgid ""
 "The SQL query to find tournaments to announce on login. Should return "
 "tournament B<title>, B<status> and B<url>."
 msgstr ""
+"שאילתת ה-SQL למציאת טורנירים להכרזה בעת כניסה. צריכה להחזיר B<title>, "
+"B<status> ו-B<url> של הטורניר."
 
 #. type: TP
 #: doc/man/wesnothd.6:251
 #, no-wrap
 msgid "B<db_connection_history_table>"
-msgstr ""
+msgstr "B<db_connection_history_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:254
@@ -2031,12 +2227,14 @@ msgid ""
 "The name of the table in which to store login/logout times. Also used for "
 "matching IPs to users and vice versa."
 msgstr ""
+"שם הטבלה שבה מאוחסנים זמני כניסה/יציאה. משמשת גם להתאמת כתובות IP למשתמשים "
+"ולהפך."
 
 #. type: TP
 #: doc/man/wesnothd.6:254
 #, no-wrap
 msgid "B<db_topics_table>"
-msgstr ""
+msgstr "B<db_topics_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:257
@@ -2045,12 +2243,14 @@ msgid ""
 "information. Most likely this will be E<lt>table-prefixE<gt>_topics (e.g. "
 "phpbb3_topics)."
 msgstr ""
+"שם הטבלה שבה פורום ה-phpbb שלכם שומר את מידע הנושאים (השרשורים) שלו. סביר "
+"להניח שיהיה זה E<lt>table-prefixE<gt>_topics (למשל phpbb3_topics)."
 
 #. type: TP
 #: doc/man/wesnothd.6:257
 #, no-wrap
 msgid "B<db_banlist_table>"
-msgstr ""
+msgstr "B<db_banlist_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:260
@@ -2059,37 +2259,39 @@ msgid ""
 "Most likely this will be E<lt>table-prefixE<gt>_banlist (e.g. "
 "phpbb3_banlist)."
 msgstr ""
+"שם הטבלה שבה פורום ה-phpbb שלכם שומר את נתוני חסימות המשתמשים שלו. סביר "
+"להניח שיהיה זה E<lt>table-prefixE<gt>_banlist (למשל phpbb3_banlist)."
 
 #. type: TP
 #: doc/man/wesnothd.6:260
 #, no-wrap
 msgid "B<mp_mod_group>"
-msgstr ""
+msgstr "B<mp_mod_group>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:263
 msgid ""
 "The ID of the forum group to be considered as having moderation authority."
-msgstr ""
+msgstr "מזהה קבוצת הפורום שתיחשב כבעלת סמכות ניהול (moderation)."
 
 #. type: TP
 #: doc/man/wesnothd.6:263
 #, no-wrap
 msgid "B<forum_admin_group>"
-msgstr ""
+msgstr "B<forum_admin_group>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:266 doc/man/wesnothd.6:269
 msgid ""
 "The ID of one of the forum groups to be considered as having admin authority "
 "on the add-ons server."
-msgstr ""
+msgstr "מזהה אחת מקבוצות הפורום שתיחשב כבעלת סמכות ניהול (admin) בשרת התוספים."
 
 #. type: TP
 #: doc/man/wesnothd.6:266
 #, no-wrap
 msgid "B<site_admin_group>"
-msgstr ""
+msgstr "B<site_admin_group>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:274
@@ -2097,6 +2299,8 @@ msgid ""
 "Normal exit status is 0 when the server was properly shutdown. An exit "
 "status of 2 indicates an error with the command line options."
 msgstr ""
+"קוד יציאה רגיל הוא 0 כאשר השרת כובה כראוי. קוד יציאה 2 מציין שגיאה באפשרויות "
+"שורת הפקודה."
 
 # type: Plain text
 #. type: Plain text
@@ -2104,12 +2308,17 @@ msgstr ""
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
-"Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt>.  This manual page was originally "
+"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
+"נכתב על ידי דיוויד וייט E<lt>davidnwhite@verizon.netE<gt>. נערך על ידי נילס "
+"קנויפר E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, סוליטון "
+"E<lt>soliton.de@gmail.comE<gt> ותומאס באומהאואר "
+"E<lt>thomas.baumhauer@gmail.comE<gt>. דף הוראות (manual) זה נכתב במקור על "
+"ידי סיריל בות'ורס E<lt>cyril@bouthors.orgE<gt>."
 
 #. type: Plain text
 #: doc/man/wesnothd.6:293
 msgid "B<wesnoth>(6)"
-msgstr ""
+msgstr "B<wesnoth>(6)"
