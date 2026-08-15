@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-h2tt\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-08-03 03:45 UTC\n"
-"PO-Revision-Date: 2026-08-01 10:17-0300\n"
+"PO-Revision-Date: 2026-08-14 20:56-0300\n"
 "Last-Translator: Sebastián Lecchini <sebas38760@gmail.com>\n"
 "Language-Team: es\n"
 "Language: es\n"
@@ -591,23 +591,23 @@ msgid ""
 "combat, so explore at your leisure. To leave the overworld and preview or "
 "play a battle scenario, move Konrad to one of the marked hexes."
 msgstr ""
+"<b>Este es el mapa del mundo.</b> No hay coste de movimiento ni combate, así "
+"que puedes explorar a tu antojo. Para salir del mapa del mundo y "
+"previsualizar o jugar un escenario de batalla, mueve a Konrad a una de las "
+"casillas marcadas."
 
 #. [lua]: wesnoth.wml_actions.display_overworld_tutorial
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:335
-#, fuzzy
-#| msgid ""
-#| "Tip: The season of the year changes every time you finish a battle. "
-#| "Winter battles will have longer nights and shorter days, often with more "
-#| "snow and ice. Summer battles are the opposite."
 msgid ""
 "overworld_help^After completing any scenario, the season of the year will "
 "change. Winter battles will have longer nights and shorter days, often with "
 "more snow and ice, while summer battles are the opposite. It’s currently "
 "autumn."
 msgstr ""
-"Consejo: La estación del año cambia cada vez que terminas una batalla. Las "
-"batallas de invierno tendrán noches más largas y días más cortos, a menudo "
-"con más nieve y hielo. Las batallas de verano son lo opuesto."
+"Consejo: Cada vez que completes cualquier escenario la estación del año "
+"cambiará. Las batallas de invierno tendrán noches más largas y días más "
+"cortos, a menudo con más nieve y hielo. Las batallas de verano son lo "
+"opuesto. Ahora mismo es otoño"
 
 #. [lua]: wesnoth.wml_actions.display_overworld_tutorial
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:335
@@ -615,6 +615,8 @@ msgid ""
 "overworld_help^Each scenario provides unique rewards, as shown in its "
 "preview, and most will open new areas of the map to explore."
 msgstr ""
+"Cada escenario ofrece recompensas únicas, como se muestra en su vista "
+"previa, y la mayoría desbloqueará nuevas áreas del mapa para explorar."
 
 #. [lua]: wesnoth.wml_actions.display_overworld_tutorial
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:354
@@ -623,6 +625,9 @@ msgid ""
 "before the finale. And Delfador and his elementals will only be around to "
 "help during your first battle, so choose wisely!"
 msgstr ""
+"Konrad solo tiene tiempo para librar un número limitado de batallas antes "
+"del final. Y Delfador y sus elementales solo estarán presentes para ayudarte "
+"durante tu primera batalla, ¡así que elige sabiamente!"
 
 #. [lua]: wesnoth.wml_actions.display_overworld_tutorial
 #. [lua]: wesnoth.wml_actions.display_lisar_tutorial
@@ -4288,12 +4293,12 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:235
 msgid ""
 "I have not located the Sceptre yet, but I am making progress. I shall send a "
-"messenger once we are ready to retrieve it — perhaps in "
-"$( $bm_milestone_scepter - $bm_turns ) battles’ time."
+"messenger once we are ready to retrieve it — perhaps in $"
+"( $bm_milestone_scepter - $bm_turns ) battles’ time."
 msgstr ""
 "Aún no he localizado el Cetro, pero estoy progresando. Enviaré un mensajero "
-"una vez que estemos listos para recuperarlo — tal vez en "
-"$( $bm_milestone_scepter - $bm_turns ) batallas."
+"una vez que estemos listos para recuperarlo — tal vez en $"
+"( $bm_milestone_scepter - $bm_turns ) batallas."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:240
@@ -19580,9 +19585,9 @@ msgid ""
 "distance?! ...I’d be elated to see you, if you weren’t so clearly marching "
 "in rapport with the traitor prince. This is a surprise."
 msgstr ""
-"¡Alteza, la Princesa de Wesnoth! ¿Puedes ser tú, allá a lo lejos?! ..."
-"Estaría encantada de verte, si no estuvieras marchando tan claramente en "
-"sintonía con el príncipe traidor. Esto es una sorpresa."
+"¡Alteza, la Princesa de Wesnoth! ¿Puedes ser tú, allá a lo "
+"lejos?! ...Estaría encantada de verte, si no estuvieras marchando tan "
+"claramente en sintonía con el príncipe traidor. Esto es una sorpresa."
 
 #. [message]: speaker=Lisar
 #: data/campaigns/Heir_To_The_Throne/scenarios/41_Snow_Plains.cfg:220
