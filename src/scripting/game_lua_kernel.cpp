@@ -1442,9 +1442,10 @@ namespace {
 	}
 }
 
+static const char endLvlKey[] = "end level data";
 static int impl_end_level_data_get(lua_State* L)
 {
-	const end_level_data& data = *static_cast<end_level_data*>(lua_touserdata(L, 1));
+	const end_level_data& data = *static_cast<end_level_data*>(luaL_checkudata(L, 1, endLvlKey));
 	const char* m = luaL_checkstring(L, 2);
 
 	return_bool_attrib("linger_mode", data.transient.linger_mode);
@@ -1476,7 +1477,7 @@ namespace {
 
 int game_lua_kernel::impl_end_level_data_set(lua_State* L)
 {
-	end_level_data& data = *static_cast<end_level_data*>(lua_touserdata(L, 1));
+	end_level_data& data = *static_cast<end_level_data*>(luaL_checkudata(L, 1, endLvlKey));
 	const char* m = luaL_checkstring(L, 2);
 	end_level_committer commit(data, play_controller_);
 
@@ -1492,7 +1493,7 @@ int game_lua_kernel::impl_end_level_data_set(lua_State* L)
 
 static int impl_end_level_data_collect(lua_State* L)
 {
-	end_level_data* data = static_cast<end_level_data*>(lua_touserdata(L, 1));
+	end_level_data* data = static_cast<end_level_data*>(luaL_checkudata(L, 1, endLvlKey));
 	data->~end_level_data();
 	return 0;
 }
@@ -1751,13 +1752,15 @@ SCENARIO_GETTER("end_level_data", lua_index_raw) {
 	}
 	auto data = k.pc().get_end_level_data();
 	new(L) end_level_data(data);
-	if(luaL_newmetatable(L, "end level data")) {
+	if(luaL_newmetatable(L, endLvlKey)) {
 		static luaL_Reg const callbacks[] {
 			{ "__index", 	    &impl_end_level_data_get},
 			{ "__newindex",     k.end_level_set()},
 			{ "__gc",           &impl_end_level_data_collect},
 			{ nullptr, nullptr }
 		};
+		lua_pushstring(L, endLvlKey);
+		lua_setfield(L, -2, "__metatable");
 		luaL_setfuncs(L, callbacks, 0);
 	}
 	lua_setmetatable(L, -2);
