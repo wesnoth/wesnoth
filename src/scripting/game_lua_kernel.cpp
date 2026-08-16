@@ -1498,10 +1498,11 @@ static int impl_end_level_data_collect(lua_State* L)
 	return 0;
 }
 
+static const char mpsettingKey[] = "mp settings";
 static int impl_mp_settings_get(lua_State* L)
 {
-	void* p = lua_touserdata(L, lua_upvalueindex(1));
-	const mp_game_settings& settings = static_cast<play_controller*>(p)->get_mp_settings();
+	play_controller* p = *static_cast<play_controller**>(luaL_checkudata(L, 1, mpsettingKey));
+	const mp_game_settings& settings = p->get_mp_settings();
 	if(lua_type(L, 2) == LUA_TNUMBER) {
 		// Simulates a WML table with one [options] child and a variable number of [addon] children
 		// TODO: Deprecate this -> mp_settings.options and mp_settings.addons
@@ -1620,8 +1621,8 @@ static int impl_mp_settings_get(lua_State* L)
 
 static int impl_mp_settings_len(lua_State* L)
 {
-	void* p = lua_touserdata(L, lua_upvalueindex(1));
-	const mp_game_settings& settings = static_cast<play_controller*>(p)->get_mp_settings();
+	play_controller* p = *static_cast<play_controller**>(luaL_checkudata(L, 1, mpsettingKey));
+	const mp_game_settings& settings = p->get_mp_settings();
 	lua_pushinteger(L, settings.addons.size() + 1);
 	return 1;
 }
@@ -1790,15 +1791,14 @@ SCENARIO_GETTER("mp_settings", lua_index_raw) {
 		lua_pushnil(L);
 		return lua_index_raw(L);
 	}
-	lua_newuserdatauv(L, 0, 0);
+	using type = play_controller*;
+	new(L) type(&k.pc());
 	if(luaL_newmetatable(L, "mp settings")) {
-		lua_pushlightuserdata(L, &k.pc());
-		lua_pushcclosure(L, impl_mp_settings_get, 1);
+		lua_pushcfunction(L, impl_mp_settings_get);
 		lua_setfield(L, -2, "__index");
-		lua_pushlightuserdata(L, &k.pc());
-		lua_pushcclosure(L, impl_mp_settings_len, 1);
+		lua_pushcfunction(L, impl_mp_settings_len);
 		lua_setfield(L, -2, "__len");
-		lua_pushstring(L, "mp settings");
+		lua_pushstring(L, mpsettingKey);
 		lua_setfield(L, -2, "__metatable");
 	}
 	lua_setmetatable(L, -2);
