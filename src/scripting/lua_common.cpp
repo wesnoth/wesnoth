@@ -63,7 +63,7 @@ namespace lua_common {
 static int impl_gettext(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 2);
-	char const *d = static_cast<char *>(lua_touserdata(L, 1));
+	char const *d = static_cast<char *>(luaL_checkudata(L, 1, gettextKey));
 	// Hidden metamethod, so d has to be a string. Use it to create a t_string.
 	if(lua_isstring(L, 3)) {
 		const char* pl = luaL_checkstring(L, 3);
@@ -77,7 +77,7 @@ static int impl_gettext(lua_State *L)
 
 static int impl_gettext_tostr(lua_State* L)
 {
-	char* d = static_cast<char*>(lua_touserdata(L, 1));
+	char* d = static_cast<char*>(luaL_checkudata(L, 1, gettextKey));
 	using namespace std::literals;
 	std::string str = "textdomain: "s + d;
 	lua_push(L, str);
