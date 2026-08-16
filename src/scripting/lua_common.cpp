@@ -204,7 +204,7 @@ static int impl_vconfig_get(lua_State *L)
 {
 	static const lua_named_tuple_builder tuple_builder{ {"tag", "contents"} };
 
-	vconfig *v = static_cast<vconfig *>(lua_touserdata(L, 1));
+	vconfig *v = static_cast<vconfig *>(luaL_checkudata(L, 1, vconfigKey));
 
 	if (lua_isnumber(L, 2))
 	{
@@ -268,7 +268,7 @@ static int impl_vconfig_get(lua_State *L)
 
 static int impl_vconfig_dir(lua_State* L)
 {
-	vconfig *v = static_cast<vconfig *>(lua_touserdata(L, 1));
+	vconfig *v = static_cast<vconfig *>(luaL_checkudata(L, 1, vconfigKey));
 	std::vector<std::string> attributes;
 	for(const auto& [key, value] : v->get_config().attribute_range()) {
 		attributes.push_back(key);
@@ -282,7 +282,7 @@ static int impl_vconfig_dir(lua_State* L)
  */
 static int impl_vconfig_size(lua_State *L)
 {
-	vconfig *v = static_cast<vconfig *>(lua_touserdata(L, 1));
+	vconfig *v = static_cast<vconfig *>(luaL_checkudata(L, 1, vconfigKey));
 	lua_pushinteger(L, v->null() ? 0 :
 		std::distance(v->ordered_begin(), v->ordered_end()));
 	return 1;
@@ -293,7 +293,7 @@ static int impl_vconfig_size(lua_State *L)
  */
 static int impl_vconfig_collect(lua_State *L)
 {
-	vconfig *v = static_cast<vconfig *>(lua_touserdata(L, 1));
+	vconfig *v = static_cast<vconfig *>(luaL_checkudata(L, 1, vconfigKey));
 	v->~vconfig();
 	return 0;
 }
@@ -322,7 +322,7 @@ static int impl_vconfig_pairs_iter(lua_State *L)
 static int impl_vconfig_pairs_collect(lua_State *L)
 {
 	typedef config::const_attr_itors const_attr_itors;
-	void* p = lua_touserdata(L, 1);
+	void* p = luaL_checkudata(L, 1, vconfigpairsKey);
 
 	// Triggers a false positive of C4189 with Visual Studio. Suppress.
 #if defined(_MSC_VER)
