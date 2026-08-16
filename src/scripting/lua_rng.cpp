@@ -19,6 +19,7 @@
 #include "mt_rng.hpp"
 #include "scripting/lua_kernel_base.hpp"
 #include "scripting/lua_common.hpp" // for new(L)
+#include "scripting/push_check.hpp"
 
 #include <string>
 
@@ -84,6 +85,13 @@ int impl_rng_tostring(lua_State* L)
 	return 1;
 }
 
+int impl_rng_dir(lua_State* L)
+{
+	static const std::vector<std::string> fields = {"draw", "seed"};
+	lua_push(L, fields);
+	return 1;
+}
+
 // End Lua Rng bindings
 
 void load_tables(lua_State* L)
@@ -99,6 +107,7 @@ void load_tables(lua_State* L)
 	static luaL_Reg const meta_callbacks[] {
 		{ "__gc",           &impl_rng_destroy},
 		{ "__tostring",     &impl_rng_tostring},
+		{ "__dir",          &impl_rng_dir},
 		{ nullptr, nullptr }
 	};
 	luaL_setfuncs(L, meta_callbacks, 0);
