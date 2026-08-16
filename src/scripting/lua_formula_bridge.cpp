@@ -301,14 +301,14 @@ variant lua_formula_bridge::fwrapper::evaluate(const formula_callable& variables
 
 static int impl_formula_collect(lua_State* L)
 {
-	lua_formula_bridge::fwrapper* form = static_cast<lua_formula_bridge::fwrapper*>(lua_touserdata(L, 1));
+	lua_formula_bridge::fwrapper* form = static_cast<lua_formula_bridge::fwrapper*>(luaL_checkudata(L, 1, formulaKey));
 	form->~fwrapper();
 	return 0;
 }
 
 static int impl_formula_tostring(lua_State* L)
 {
-	lua_formula_bridge::fwrapper* form = static_cast<lua_formula_bridge::fwrapper*>(lua_touserdata(L, 1));
+	lua_formula_bridge::fwrapper* form = static_cast<lua_formula_bridge::fwrapper*>(luaL_checkudata(L, 1, formulaKey));
 	const std::string str = form->str();
 	lua_pushlstring(L, str.c_str(), str.size());
 	return 1;
