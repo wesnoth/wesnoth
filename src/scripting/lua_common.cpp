@@ -145,7 +145,7 @@ static int impl_tstring_concat(lua_State *L)
 
 static int impl_tstring_len(lua_State* L)
 {
-	t_string* t = static_cast<t_string*>(lua_touserdata(L, 1));
+	t_string* t = static_cast<t_string*>(luaL_checkudata(L, 1, tstringKey));
 	lua_pushnumber(L, t->size());
 	return 1;
 }
@@ -155,7 +155,7 @@ static int impl_tstring_len(lua_State* L)
  */
 static int impl_tstring_collect(lua_State *L)
 {
-	t_string *t = static_cast<t_string *>(lua_touserdata(L, 1));
+	t_string *t = static_cast<t_string *>(luaL_checkudata(L, 1, tstringKey));
 	t->t_string::~t_string();
 	return 0;
 }
@@ -178,8 +178,8 @@ static int impl_tstring_le(lua_State *L)
 
 static int impl_tstring_eq(lua_State *L)
 {
-	t_string *t1 = static_cast<t_string *>(lua_touserdata(L, 1));
-	t_string *t2 = static_cast<t_string *>(lua_touserdata(L, 2));
+	t_string *t1 = static_cast<t_string *>(luaL_checkudata(L, 1, tstringKey));
+	t_string *t2 = static_cast<t_string *>(luaL_checkudata(L, 2, tstringKey));
 	lua_pushboolean(L, translation::compare(t1->get(), t2->get()) == 0);
 	return 1;
 }
@@ -190,7 +190,7 @@ static int impl_tstring_eq(lua_State *L)
  */
 static int impl_tstring_tostring(lua_State *L)
 {
-	t_string *t = static_cast<t_string *>(lua_touserdata(L, 1));
+	t_string *t = static_cast<t_string *>(luaL_checkudata(L, 1, tstringKey));
 	lua_pushstring(L, t->c_str());
 	return 1;
 }
