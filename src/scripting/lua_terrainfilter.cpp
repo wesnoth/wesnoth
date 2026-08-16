@@ -738,10 +738,7 @@ bool luaW_is_mgfilter(lua_State* L, int index)
 
 lua_mapgen::filter* luaW_to_mgfilter(lua_State *L, int index)
 {
-	if(luaW_is_mgfilter(L, index)) {
-		return static_cast<lua_mapgen::filter*>(lua_touserdata(L, index));
-	}
-	return nullptr;
+	return static_cast<lua_mapgen::filter*>(luaL_checkudata(L, index, terrinfilterKey));
 }
 
 lua_mapgen::filter_ptr luaW_check_mgfilter(lua_State *L, int index, bool allow_compile)
@@ -749,7 +746,7 @@ lua_mapgen::filter_ptr luaW_check_mgfilter(lua_State *L, int index, bool allow_c
 	if(luaW_is_mgfilter(L, index)) {
 		lua_mapgen::filter_ptr ptr;
 		ptr.get_deleter() = [](lua_mapgen::filter*) {}; // don't delete the Lua-held filter pointer
-		ptr.reset(static_cast<lua_mapgen::filter*>(lua_touserdata(L, index)));
+		ptr.reset(static_cast<lua_mapgen::filter*>(luaL_checkudata(L, index, terrinfilterKey)));
 		return ptr;
 	}
 	if(allow_compile && lua_istable(L, index)) {
