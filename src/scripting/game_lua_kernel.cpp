@@ -4637,12 +4637,16 @@ static int intf_modify_ai_old(lua_State *L)
 	return 0;
 }
 
-static int cfun_exec_candidate_action(lua_State *L)
+static int impl_exec_candidate_action(lua_State *L)
 {
 	bool exec = luaW_toboolean(L, -1);
 	lua_pop(L, 1);
 
 	lua_getfield(L, -1, "ca_ptr");
+	if(!lua_islightuserdata(L, -1)) {
+		lua_pushstring(L, "Could not execute candidate action - invalid pointer");
+		return lua_error(L);
+	}
 
 	ai::candidate_action *ca = static_cast<ai::candidate_action*>(lua_touserdata(L, -1));
 	lua_pop(L, 2);
@@ -4654,9 +4658,13 @@ static int cfun_exec_candidate_action(lua_State *L)
 	return 1;
 }
 
-static int cfun_exec_stage(lua_State *L)
+static int impl_exec_stage(lua_State *L)
 {
 	lua_getfield(L, -1, "stg_ptr");
+	if(!lua_islightuserdata(L, -1)) {
+		lua_pushstring(L, "Could not execute stage - invalid pointer");
+		return lua_error(L);
+	}
 	ai::stage *stg = static_cast<ai::stage*>(lua_touserdata(L, -1));
 	lua_pop(L, 2);
 	stg->play_stage();
@@ -4685,7 +4693,7 @@ static void push_component(lua_State *L, ai::component* c, const std::string &ct
 		lua_rawset(L, -3);
 
 		lua_pushstring(L, "exec");
-		lua_pushcclosure(L, &cfun_exec_candidate_action, 0);
+		lua_pushcfunction(L, &impl_exec_candidate_action);
 		lua_rawset(L, -3);
 	}
 
@@ -4695,7 +4703,7 @@ static void push_component(lua_State *L, ai::component* c, const std::string &ct
 		lua_rawset(L, -3);
 
 		lua_pushstring(L, "exec");
-		lua_pushcclosure(L, &cfun_exec_stage, 0);
+		lua_pushcfunction(L, &impl_exec_stage);
 		lua_rawset(L, -3);
 	}
 
@@ -5967,6 +5975,10 @@ void game_lua_kernel::push_builtin_effect()
  */
 int game_lua_kernel::cfun_wml_action(lua_State *L)
 {
+	if(!lua_islightuserdata(L, lua_upvalueindex(1))) {
+		lua_pushstring(L, "Could not execute wml action: upvalue was tampered with");
+		return lua_error(L);
+	}
 	game_events::wml_action::handler h = reinterpret_cast<game_events::wml_action::handler>
 		(lua_touserdata(L, lua_upvalueindex(1)));
 
@@ -5999,6 +6011,10 @@ using wml_conditional_handler = bool(*)(const vconfig&);
  */
 static int cfun_wml_condition(lua_State *L)
 {
+	if(!lua_islightuserdata(L, lua_upvalueindex(1))) {
+		lua_pushstring(L, "Could not evaluate wml condition: upvalue was tampered with");
+		return lua_error(L);
+	}
 	wml_conditional_handler h = reinterpret_cast<wml_conditional_handler>
 		(lua_touserdata(L, lua_upvalueindex(1)));
 

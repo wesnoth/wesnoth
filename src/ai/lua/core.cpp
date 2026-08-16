@@ -123,6 +123,11 @@ void lua_ai_context::set_persistent_data(const config &cfg)
 
 static ai::engine_lua &get_engine(lua_State *L, int n)
 {
+	if(!lua_islightuserdata(L, n)) {
+		lua_pushstring(L, "AI engine pointer was invalid");
+		lua_error(L);
+		// lua_error never returns, so the below return will not execute.
+	}
 	return *(static_cast<ai::engine_lua*>(lua_touserdata(L, n)));
 }
 
