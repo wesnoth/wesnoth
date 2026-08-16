@@ -338,6 +338,17 @@ static int impl_name_generator_call(lua_State *L)
 	return 1;
 }
 
+static int impl_name_generator_tostring(lua_State *L)
+{
+	name_generator* gen = static_cast<name_generator*>(luaL_checkudata(L, 1, Gen));
+	luaW_getglobal(L, "string", "format");
+	lua_pushstring(L, "%s: %s");
+	lua_pushstring(L, Gen);
+	lua_pushstring(L, gen->type().c_str());
+	lua_call(L, 2, 1);
+	return 1;
+}
+
 static int impl_name_generator_collect(lua_State *L)
 {
 	name_generator* gen = static_cast<name_generator*>(luaL_checkudata(L, 1, Gen));
@@ -941,6 +952,7 @@ lua_kernel_base::lua_kernel_base()
 	luaL_newmetatable(L, Gen);
 	static luaL_Reg const generator[] {
 		{ "__call", &impl_name_generator_call},
+		{ "__tostring", &impl_name_generator_tostring},
 		{ "__gc", &impl_name_generator_collect},
 		{ nullptr, nullptr}
 	};

@@ -50,6 +50,7 @@ public:
 	 * @return the word
 	 */
 	std::string generate() const override;
+	std::string type() const override { return "cfg"; }
 
 	~context_free_grammar_generator();
 };
