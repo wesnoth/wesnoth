@@ -34,6 +34,7 @@ public:
 	// Defined in name_generator_factory.cpp
 	std::string generate(const std::map<std::string,std::string>& variables) const;
 	virtual std::string generate() const { return ""; }
+	virtual std::string type() const { return "unknown"; }
 	name_generator() {}
 	virtual ~name_generator() {}
 };
@@ -43,4 +44,5 @@ class proxy_name_generator : public name_generator {
 public:
 	proxy_name_generator(const name_generator& b) : base(b) {}
 	std::string generate() const override { return base.generate(); }
+	std::string type() const override { return base.type(); }
 };
