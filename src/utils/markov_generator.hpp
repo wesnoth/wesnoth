@@ -27,4 +27,5 @@ class markov_generator : public name_generator {
 public:
 	markov_generator(const std::vector<std::string>& items, std::size_t chain_size, std::size_t max_len);
 	std::string generate() const override;
+	std::string type() const override { return "markov"; }
 };
