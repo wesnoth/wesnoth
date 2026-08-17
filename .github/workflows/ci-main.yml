@@ -113,7 +113,7 @@ jobs:
                 cmake "$@" -DCMAKE_BUILD_TYPE="$CFG" -DCXX_STD="$CXX_STD" \
                   -DEXTRA_FLAGS_CONFIG="-pipe" -DENABLE_MYSQL=true -DENABLE_STRICT_COMPILATION=true \
                   -DENABLE_NLS=false -DENABLE_LTO="$LTO" -DFORCE_COLOR_OUTPUT=true -DLTO_JOBS=2 \
-                  -DENABLE_SYSTEM_LUA="$SYS_LUA -DCLANG_TIDY=true" -DCMAKE_PREFIX_PATH="/usr/local/lib/cmake/SDL3;/usr/local/lib/cmake/SDL3_image;/usr/local/lib/cmake/SDL3_mixer" -S . -B .
+                  -DENABLE_SYSTEM_LUA="$SYS_LUA" -DCLANG_TIDY=true -DCMAKE_PREFIX_PATH="/usr/local/lib/cmake/SDL3;/usr/local/lib/cmake/SDL3_image;/usr/local/lib/cmake/SDL3_mixer" -S . -B .
               }
               # still need the rest of /usr/local/lib/cmake for SDL3 for now
               rm -R /usr/local/lib/cmake/boost*
