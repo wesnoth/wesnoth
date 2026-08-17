@@ -39,26 +39,32 @@ std::string format_time_summary(const std::chrono::system_clock::time_point& t)
 		// save is from today
 		format_string = prefs::get().use_twelve_hour_clock_format()
 			// TRANSLATORS: 12-hour time, eg '1:59 PM'
+			// xgettext: no-c-format
 			? _("%I:%M %p")
 			// TRANSLATORS: 24-hour time, eg '13:59'
+			// xgettext: no-c-format
 			: _("%H:%M");
 
 	} else if(curr_time.month() == save_time.month() && curr_time.index() == save_time.index()) {
 		// save is from this week
 		format_string = prefs::get().use_twelve_hour_clock_format()
 			// TRANSLATORS: Day of week + 12-hour time, eg 'Sunday, 1:59 PM'
+			// xgettext: no-c-format
 			? _("%A, %I:%M %p")
 			// TRANSLATORS: Day of week + 24-hour time, eg 'Sunday, 13:59'
+			// xgettext: no-c-format
 			: _("%A, %H:%M");
 
 	} else if(curr_time.year() == save_time.year()) {
 		// save is from current year
 		// TRANSLATORS: Month + day of month, eg 'Nov 02'. Format for your locale.
+		// xgettext: no-c-format
 		format_string = _("%b %d");
 
 	} else {
 		// save is from a different year
 		// TRANSLATORS: Month + day of month + year, eg 'Nov 02 2021'. Format for your locale.
+		// xgettext: no-c-format
 		format_string = _("%b %d %Y");
 	}
 #else
@@ -88,30 +94,36 @@ std::string format_time_summary(const std::chrono::system_clock::time_point& t)
 			// save is from today
 			if(prefs::get().use_twelve_hour_clock_format() == false) {
 				// TRANSLATORS: 24-hour time, eg '13:59'
+				// xgettext: no-c-format
 				format_string = _("%H:%M");
 			}
 			else {
 				// TRANSLATORS: 12-hour time, eg '1:59 PM'
+				// xgettext: no-c-format
 				format_string = _("%I:%M %p");
 			}
 		} else if(days_apart > 0 && days_apart <= current_time.tm_wday) {
 			// save is from this week
 			if(prefs::get().use_twelve_hour_clock_format() == false) {
 				// TRANSLATORS: Day of week + 24-hour time, eg 'Sunday, 13:59'
+				// xgettext: no-c-format
 				format_string = _("%A, %H:%M");
 			}
 			else {
 				// TRANSLATORS: Day of week + 12-hour time, eg 'Sunday, 1:59 PM'
+				// xgettext: no-c-format
 				format_string = _("%A, %I:%M %p");
 			}
 		} else {
 			// save is from current year
 			// TRANSLATORS: Month + day of month, eg 'Nov 02'. Format for your locale.
+			// xgettext: no-c-format
 			format_string = _("%b %d");
 		}
 	} else {
 		// save is from a different year
 		// TRANSLATORS: Month + day of month + year, eg 'Nov 02 2021'. Format for your locale.
+		// xgettext: no-c-format
 		format_string = _("%b %d %Y");
 	}
 #endif
