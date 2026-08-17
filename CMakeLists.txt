@@ -270,7 +270,7 @@ if(NOT MSVC)
 
 ### Enable clang-tidy linting
 	if (CLANG_TIDY)
-		set(CMAKE_CXX_CLANG_TIDY "clang-tidy -Wno-unknown-warning-option")
+		set(CMAKE_CXX_CLANG_TIDY clang-tidy --extra-arg=-Wno-unknown-warning-option)
 	endif()
 
 ### Set the final compiler flags.
