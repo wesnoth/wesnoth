@@ -59,10 +59,17 @@ static int intf_cleanup ( lua_State* L )
 
 static int intf_tostring( lua_State* L )
 {
-	lua_function * d = static_cast< lua_function *> (luaL_checkudata(L, 1, cpp_function));
-	// d is not null, if it was null then checkudata raised a lua error and a longjump was executed.
+	luaL_checkudata(L, 1, cpp_function);
+	lua_pushstring(L, " function: C++");
+	return 1;
+}
+
+static int intf_tostring2(lua_State* L)
+{
+	lua_Debug info;
+	lua_getinfo(L, ">S", &info);
 	std::stringstream result;
-	result << "c++ function: " << std::hex << d;
+	result << "function: " << info.what;
 	lua_pushstring(L, result.str().c_str());
 	return 1;
 }
@@ -82,6 +89,15 @@ void register_metatable ( lua_State* L )
 	lua_setfield(L, -2, "__index");
 
 	lua_pop(L, 1);
+	
+	// Also set the metatable for regular functions
+	lua_pushcfunction(L, intf_tostring2);
+	lua_createtable(L, 0, 1);
+	lua_pushvalue(L, -2);
+	lua_setfield(L, -2, "__tostring");
+	lua_pushstring(L, "function");
+	lua_setfield(L, -2, "__metatable");
+	lua_setmetatable(L, -2);
 }
 
 void push_function( lua_State* L, const lua_function & f )
