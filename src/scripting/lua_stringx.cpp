@@ -314,6 +314,24 @@ static int intf_str_format(lua_State* L)
 		// replace the first argument with the coerced value
 		lua_replace(L, 1);
 	}
+	// raise an error if the string contains a %p specifier
+	bool in_specifier = false, found_digit = false;
+	for(const char* str = luaL_checkstring(L, 1); *str; ++str) {
+		if(*str == '%') {
+			in_specifier = !in_specifier;
+		} else if(in_specifier) {
+			if(*str == '-') {
+				if(found_digit) in_specifier = false;
+			} else if(isdigit(*str)) {
+				found_digit = true;
+			} else if(*str == 'p') {
+				lua_pushstring(L, "%p format specifier is not supported");
+				return lua_error(L);
+			} else {
+				in_specifier = false;
+			}
+		}
+	}
 	// grab the original string.format function from the closure...
 	lua_pushvalue(L, lua_upvalueindex(1));
 	// ...move it to the bottom of the stack...
