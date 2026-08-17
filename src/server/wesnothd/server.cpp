@@ -1668,15 +1668,23 @@ void server::handle_join_game(player_iterator player, simple_wml::node& join)
 	}
 }
 
+static std::set<std::string> from_types = {
+	"multiplayer",
+	"era",
+	"modification",
+	"campaign",
+};
 void setup_queue_options(const std::string& type, const config& qoptions, simple_wml::node& game)
 {
-	for(const config& option_type : qoptions.child_range("multiplayer")) {
+	// simple_wml doesn't own the tag name, so it needs to use something with a longer lifetime
+	auto static_type_hack = from_types.find(type);
+	for(const config& option_type : qoptions.child_range(type)) {
 		simple_wml::node& options = game.add_child("options");
-		simple_wml::node& type = options.add_child("multiplayer");
-		type.set_attr_dup("id", option_type["id"].str().c_str());
+		simple_wml::node& type_node = options.add_child(static_type_hack->c_str());
+		type_node.set_attr_dup("id", option_type["id"].str().c_str());
 
 		for(const config& qoption : option_type.child_range("option")) {
-			simple_wml::node& option = type.add_child("option");
+			simple_wml::node& option = type_node.add_child("option");
 			option.set_attr_dup("id", qoption["id"].str().c_str());
 			option.set_attr_dup("value", qoption["value"].str().c_str());
 		}
