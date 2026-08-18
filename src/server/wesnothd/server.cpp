@@ -1668,6 +1668,21 @@ void server::handle_join_game(player_iterator player, simple_wml::node& join)
 	}
 }
 
+static void setup_queue_options(const char* type, const config& qoptions, simple_wml::node& game)
+{
+	for(const config& option_type : qoptions.child_range(type)) {
+		simple_wml::node& options = game.add_child("options");
+		simple_wml::node& type_node = options.add_child(type);
+		type_node.set_attr_dup("id", option_type["id"].str().c_str());
+
+		for(const config& qoption : option_type.child_range("option")) {
+			simple_wml::node& option = type_node.add_child("option");
+			option.set_attr_dup("id", qoption["id"].str().c_str());
+			option.set_attr_dup("value", qoption["value"].str().c_str());
+		}
+	}
+}
+
 void server::handle_join_server_queue(player_iterator p, simple_wml::node& data)
 {
 	int queue_id = data.attr("queue_id").to_int();
@@ -1705,14 +1720,28 @@ void server::handle_join_server_queue(player_iterator p, simple_wml::node& data)
 
 		game.set_attr_dup("scenario", scenarios[index].c_str());
 		game.set_attr_dup("era", queue.settings["era"].str().c_str());
-		game.set_attr_int("fog", queue.settings["fog"].to_int());
-		game.set_attr_int("shroud", queue.settings["shroud"].to_int());
+		game.set_attr_dup("fog", queue.settings["fog"].str().c_str());
+		game.set_attr_dup("shroud", queue.settings["shroud"].str().c_str());
 		game.set_attr_int("village_gold", queue.settings["village_gold"].to_int());
 		game.set_attr_int("village_support", queue.settings["village_support"].to_int());
 		game.set_attr_int("experience_modifier", queue.settings["experience_modifier"].to_int());
-		game.set_attr_int("countdown", queue.settings["countdown"].to_int());
-		game.set_attr_int("random_start_time", queue.settings["random_start_time"].to_int());
-		game.set_attr_int("shuffle_sides", queue.settings["shuffle_sides"].to_int());
+		game.set_attr_dup("random_start_time", queue.settings["random_start_time"].str().c_str());
+		game.set_attr_dup("shuffle_sides", queue.settings["shuffle_sides"].str().c_str());
+
+		game.set_attr_dup("countdown", queue.settings["countdown"].str().c_str());
+		game.set_attr_int("countdown_init_time", queue.settings["countdown_init_time"].to_int());
+		game.set_attr_int("countdown_turn_bonus", queue.settings["countdown_turn_bonus"].to_int());
+		game.set_attr_int("countdown_reservoir_time", queue.settings["countdown_reservoir_time"].to_int());
+		game.set_attr_int("countdown_action_bonus", queue.settings["countdown_action_bonus"].to_int());
+
+		game.set_attr_dup("modifications", queue.settings["modifications"].str().c_str());
+
+		for(const config& qoptions : queue.settings.child_range("options")) {
+			setup_queue_options("multiplayer", qoptions, game);
+			setup_queue_options("era", qoptions, game);
+			setup_queue_options("modification", qoptions, game);
+			setup_queue_options("campaign", qoptions, game);
+		}
 
 		// tell the final player to create and host the game
 		send_to_player(p, create_game_doc);
