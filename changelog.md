@@ -1,17 +1,6 @@
-## Version 1.18.7+dev
-### Add-ons client
-### Add-ons server
-### Campaigns
-### Editor
-### Multiplayer
-### Lua API
-### Packaging
-### Terrain
+## Version 1.18.8
 ### Translations
    * Updated translations: Bengali, Chinese (Simplified), Czech, German, Hebrew, Hungarian, Portuguese (Brazil), Spanish
-### Units
-### User interface
-### WML Engine
 ### Miscellaneous and Bug Fixes
   * CMake build system:
      * Make Boost::system optional with boost 1.69 or later (necessary for compatibility with 1.89 and later).
