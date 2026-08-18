@@ -227,7 +227,6 @@ void mp_create_game::quick_mp_setup(saved_game& state, const config presets)
 		create.active_mods().push_back(mod);
 	}
 
-	// handle potential option sources
 	if(presets.has_child("options")) {
 		params.options = presets.mandatory_child("options");
 	}
