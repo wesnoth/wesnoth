@@ -357,6 +357,16 @@ void campaign_selection::pre_show()
 	connect_signal_mouse_left_click(find_widget<button>("proceed"),
 		std::bind(&campaign_selection::proceed, this));
 
+	// Pressing Enter closes the window with retval::OK via the base window's default
+	// key handling, which doesn't account for the 'Get Add-ons' entry. Redirect to
+	// OPEN_ADDON_MANAGER if the dummy entry is selected.
+	set_exit_hook(window::exit_hook::ok_only, [this, &tree] {
+		if(tree.selected_item() && tree.selected_item()->id() == PAGE_ID_GET_ADDONS) {
+			set_retval(OPEN_ADDON_MANAGER, false);
+		}
+		return true;
+	});
+
 #ifdef __IPHONEOS__
 	// On iOS, opening the campaign browser should not immediately summon the
 	// software keyboard just because the optional filter field exists.
@@ -569,15 +579,11 @@ void campaign_selection::proceed()
 
 	const std::string& campaign_id = tree.selected_item()->id();
 	if(!campaign_id.empty()) {
-		if (campaign_id == PAGE_ID_GET_ADDONS) {
-			set_retval(OPEN_ADDON_MANAGER);
-		} else {
-			auto iter = std::find(page_ids_.begin(), page_ids_.end(), campaign_id);
-			if(iter != page_ids_.end()) {
-				choice_ = std::distance(page_ids_.begin(), iter);
-			}
-			set_retval(retval::OK);
+		auto iter = std::find(page_ids_.begin(), page_ids_.end(), campaign_id);
+		if(iter != page_ids_.end()) {
+			choice_ = std::distance(page_ids_.begin(), iter);
 		}
+		set_retval(retval::OK);
 	}
 
 
