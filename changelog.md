@@ -2,17 +2,27 @@
 ### Add-ons client
 ### Add-ons server
 ### Campaigns
+   * The South Guard
+     * S01 "Born to the Banner": reduced difficulty on Hard.
 ### Editor
 ### Multiplayer
+   * Update multiplayer maps:
+     * Freelands - reduce the amount of swamp terrain, replace more of mycelium with regular fungus
+     * Silverhead Crossing - bring P1 keep a bit closer for easier access, replace more of mycelium with regular fungus
+     * Fallenstar Lake - replace 1 forest hex on each side with flat terrain for easier village access, replace more of mycelium with regular fungus
+     * Den of Onis - make side passages wider, replace more of mycelium with regular fungus
 ### Lua API
 ### Packaging
 ### Terrain
 ### Translations
    * Updated translations: Bengali, British English, Czech, German, Hebrew, Hungarian, Spanish
+   * Fixed: Dwarvish Witness was missing from 1.19.26's POT files
+   * Fixed: Rogue Mage was missing from the POT files since 1.19.15
 ### Units
 ### User interface
 ### WML Engine
 ### Miscellaneous and Bug Fixes
+   * Fixed several audio issues that resulted from the SDL3 migration
 ### Android
 
 ## Version 1.19.26
