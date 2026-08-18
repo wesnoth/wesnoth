@@ -1,0 +1,297 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2022 wesnothd "תהליך הרקע (daemon) לרשת רב\-משתתפים של הקרב על ווסנות'"
+.
+.SH שם
+.
+wesnothd \- תהליך הרקע (daemon) לרשת רב\-משתתפים של הקרב על \fBWesnoth\fP
+.
+.SH תקציר
+.
+\fBwesnothd\fP [\|\fB\-dv\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|] [\|\fB\-t\fP
+\fInumber\fP\|] [\|\fB\-T\fP \fInumber\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH תיאור
+.
+מנהל משחקי רב\-משתתפים של הקרב על ווסנות'. ראו
+https://www.wesnoth.org/wiki/ServerAdministration לגבי אילו פקודות השרת מקבל
+דרך לקוח ווסנות' (/query ...) או ה\-fifo.
+.
+.SH אפשרויות
+.
+.TP 
+\fB\-c\ \fP\fIpath\fP\fB,\ \-\-config\fP\fI\ path\fP
+אומר ל\-wesnothd איפה למצוא את קובץ ההגדרות לשימוש. ראו את הסעיף \fBSERVER CONFIG\fP להלן לגבי התחביר. ניתן לטעון מחדש את ההגדרות על ידי שליחת SIGHUP
+לתהליך השרת.
+.TP 
+\fB\-d, \-\-daemon\fP
+מריץ את wesnothd כתהליך רקע (daemon).
+.TP 
+\fB\-h, \-\-help\fP
+מסביר מה עושות אפשרויות שורת הפקודה.
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
+קובע את רמת החומרה של תחומי היומן. ניתן להשתמש ב\-\fBall\fP כדי להתאים לכל תחום
+יומן. רמות זמינות: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. כברירת מחדל
+משתמשים ברמה \fBerror\fP, וברמה \fBinfo\fP עבור תחום ה\-\fBserver\fP.
+.TP 
+\fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
+מקשר את השרת לפורט שצוין. אם לא צוין פורט, ייעשה שימוש בפורט \fB15000\fP.
+.TP 
+\fB\-t\ \fP\fInumber\fP\fB,\ \-\-threads\fP\fI\ number\fP
+sets the maximum number of waiting worker threads for network I/O to n
+(default: \fB5\fP,\ max:\ \fB30\fP).
+.TP 
+\fB\-T\ \fP\fInumber\fP\fB,\ \-\-max\-threads\fP\fI\ number\fP
+sets the maximum number of worker threads that will be created.  If set to
+\fB0\fP there will be no limit (default: \fB0\fP).
+.TP 
+\fB\-V, \-\-version\fP
+מציג את מספר הגרסה ויוצא.
+.TP 
+\fB\-v, \-\-verbose\fP
+מפעיל רישום יומן (logging) לצורכי דיבוג.
+.
+.SH "הגדרות שרת"
+.
+.SS "התחביר הכללי הוא:"
+.
+.P
+[\fItag\fP]
+.IP
+\fIkey\fP="\fIvalue\fP"
+.IP
+\fIkey\fP="\fIvalue\fP,\fIvalue\fP,..."
+.P
+[/\fItag\fP]
+.
+.SS "מפתחות גלובליים:"
+.
+.TP 
+\fBallow_remote_shutdown\fP
+אם נקבע ל\-\fBno\fP (ברירת המחדל), בקשות כיבוי (shut_down) והפעלה מחדש (restart)
+מתעלמות, אלא אם הן מגיעות מה\-fifo. יש לקבוע ל\-\fByes\fP כדי לאפשר כיבוי מרוחק
+דרך /query על ידי מנהל מערכת.
+.TP 
+\fBban_save_file\fP
+נתיב מלא או יחסי לקובץ (דחוס gzip) שהשרת יכול לקרוא ולכתוב אליו. חסימות
+(bans) יישמרו בקובץ זה וייקראו שוב בעת הפעלת השרת.
+.TP 
+\fBcompress_stored_rooms\fP
+Determines whether the rooms file should be read and written to in
+compressed form. Defaults to \fByes\fP.
+.TP 
+\fBconnections_allowed\fP
+מספר החיבורים המותרים מאותה כתובת IP. \fB0\fP משמעו ללא הגבלה. (ברירת מחדל:
+\fB5\fP)
+.TP 
+\fBdeny_unregistered_login\fP
+האם למנוע כניסה ממשתמשים שאינם רשומים אצל ה\-\fBuser_handler\fP שבשימוש. (ברירת
+מחדל: false)
+.TP 
+\fBdisallow_names\fP
+Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
+patterns are supported. See \fBglob\fP(7)  for more details.  Default values
+(used if nothing is specified) are:
+\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+.TP 
+\fBfifo_path\fP
+הנתיב ל\-fifo שאליו ניתן לשלוח פקודות שרת (זהה ל\-/query ... מתוך ווסנות'). אם
+לא צוין, ברירת המחדל היא הנתיב שנקבע בזמן ההידור (ברירת מחדל:
+\fB/var/run/wesnothd/socket\fP).
+.TP 
+\fBmax_messages\fP
+מספר ההודעות המותרות בתוך \fBmessages_time_period\fP. (ברירת מחדל: \fB4\fP)
+.TP 
+\fBmessages_time_period\fP
+פרק הזמן (בשניות) שבו מתגלה הצפת הודעות. (ברירת מחדל: \fB10\fP שניות)
+.TP 
+\fBmotd\fP
+הודעת היום (message of the day).
+.TP 
+\fBnew_room_policy\fP
+Determines who can create new rooms on the server. Available values are
+\fBeveryone\fP, \fBregistered\fP, \fBadmin\fP and \fBnobody\fP, and give the permission
+respectively to everyone, registered users, admin users or disables new room
+creation. Default value is \fBeveryone\fP.
+.TP 
+\fBpasswd\fP
+הסיסמה המשמשת לקבלת הרשאות ניהול (דרך \fB/query admin \fP\fIpassword\fP).
+.TP 
+\fBreplay_save_path\fP
+התיקייה שבה השרת שומר שידורים חוזרים (replays) של משחקים. (נא לא לשכוח את
+ה\-/ בסוף!) ברירת המחדל היא `' שמשמעה התיקייה שבה הופעל wesnothd.
+.TP 
+\fBrestart_command\fP
+הפקודה שבה השרת משתמש כדי להפעיל תהליך שרת חדש דרך הפקודה \fBrestart\fP. (ניתן
+להנפיק רק דרך ה\-fifo. ראו את ההגדרה \fBallow_remote_shutdown\fP.)
+.TP 
+\fBroom_save_file\fP
+Path to a file where the room info should be stored. This file is read on
+server startup and written to later. If empty or not set, rooms are not
+loaded and not saved.
+.TP 
+\fBsave_replays\fP
+מגדיר האם השרת ישמור אוטומטית שידורים חוזרים של משחקים. (ברירת מחדל:
+\fBfalse\fP)
+.TP 
+\fBtls_enabled\fP
+מפעיל שימוש ב\-TLS. אם מוגדר כ\-true, נדרש להגדיר גם את 3 האפשרויות הבאות.
+.TP 
+\fBtls_fullchain\fP
+שרשרת אישורי TLS מלאה בפורמט .pem
+.TP 
+\fBtls_private_key\fP
+מפתח פרטי עבור TLS בפורמט .pem
+.TP 
+\fBtls_dh\fP
+פרמטרי DH של TLS, כקובץ .pem. ליצירה יש להשתמש ב\-\fBopenssl dhparam \-out filename.pem 4096\fP
+.TP 
+\fBversions_accepted\fP
+רשימה מופרדת בפסיקים של מחרוזות גרסה שהשרת יקבל. נתמכות תבניות\-כלליות
+(wildcard) עם \fB*\fP ו\-\fB?\fP. (ברירת המחדל היא גרסת ווסנות' המתאימה)
+.br
+דוגמה: \fBversions_accepted="*"\fP מקבל כל מחרוזת גרסה.
+.TP 
+\fBid\fP
+מזהה השרת בעת שימוש בפונקציונליות מסד הנתונים לאחסון מידע על משחקים. בדרך
+כלל זו גרסת major.minor של הלקוחות המקובלים, כגון 1.16 או 1.17.
+.
+.SS "תגיות גלובליות:"
+.
+.P
+\fB[redirect]\fP תגית לציון שרת שאליו יש להפנות גרסאות לקוח מסוימות. אינה
+בשימוש אם \fBversions_accepted\fP לא הוגדר.
+.RS
+.TP 
+\fBhost\fP
+הכתובת של השרת שאליו יש להפנות.
+.TP 
+\fBport\fP
+הפורט שאליו יש להתחבר.
+.TP 
+\fBversion\fP
+רשימה מופרדת בפסיקים של גרסאות להפניה. מתנהג באותו אופן כמו
+\fBversions_accepted\fP בכל הנוגע לתבניות\-כלליות.
+.RE
+.P
+\fB[ban_time]\fP תגית להגדרת מילות\-מפתח נוחות עבור אורכי זמן של חסימה זמנית.
+.RS
+.TP 
+\fBname\fP
+השם המשמש להתייחסות לזמן החסימה.
+.TP 
+\fBtime\fP
+הגדרת אורך הזמן. הפורמט הוא: %d[%s[%d%s[...]]] כאשר %s הוא s (שניות), m
+(דקות), h (שעות), D (ימים), M (חודשים) או Y (שנים), ו\-%d הוא מספר. אם לא
+ניתן מציין זמן, מניחים דקות (m). דוגמה: \fBtime="1D12h30m"\fP נותן זמן חסימה של
+יום אחד, 12 שעות ו\-30 דקות.
+.RE
+.P
+\fB[proxy]\fP תגית שאומרת לשרת לפעול כפרוקסי ולהעביר את בקשות הלקוח המחובר לשרת
+שצוין. מקבלת את אותם מפתחות כמו \fB[redirect]\fP.
+.RE
+.P
+\fB[user_handler]\fP מגדיר את מנהל המשתמשים. אם לא קיים סעיף \fB[user_handler]\fP
+בהגדרות, השרת ירוץ ללא שירות רישום כינויים. כל הטבלאות הנוספות הדרושות
+ל\-\fBforum_user_handler\fP כדי לפעול נמצאות ב\-table_definitions.sql במאגר המקור
+של ווסנות'. דורש הפעלת תמיכה ב\-mysql. עבור cmake זהו \fBENABLE_MYSQL\fP, ועבור
+scons זהו \fBforum_user_handler\fP.
+.RS
+.TP 
+\fBdb_host\fP
+שם המארח של שרת מסד הנתונים
+.TP 
+\fBdb_name\fP
+שם מסד הנתונים
+.TP 
+\fBdb_user\fP
+שם המשתמש שדרכו מתחברים למסד הנתונים
+.TP 
+\fBdb_password\fP
+הסיסמה של משתמש זה
+.TP 
+\fBdb_users_table\fP
+שם הטבלה שבה פורום ה\-phpbb שלכם שומר את נתוני המשתמשים שלו. סביר להניח שיהיה
+זה <table\-prefix>_users (למשל phpbb3_users).
+.TP 
+\fBdb_extra_table\fP
+שם הטבלה שבה wesnothd ישמור את הנתונים שלו על משתמשים.
+.TP 
+\fBdb_game_info_table\fP
+שם הטבלה שבה wesnothd ישמור את הנתונים שלו על משחקים.
+.TP 
+\fBdb_game_player_info_table\fP
+שם הטבלה שבה wesnothd ישמור את הנתונים שלו על השחקנים במשחק.
+.TP 
+\fBdb_game_modification_info_table\fP
+The name of the table in which wesnothd will save its own data about the
+modifications used in a game.
+.TP 
+\fBdb_user_group_table\fP
+שם הטבלה שבה פורום ה\-phpbb שלכם שומר את נתוני קבוצות המשתמשים שלו. סביר
+להניח שיהיה זה <table\-prefix>_user_group (למשל phpbb3_user_group).
+.TP 
+\fBdb_connection_history_table\fP
+שם הטבלה שבה מאוחסנים זמני כניסה/יציאה. משמשת גם להתאמת כתובות IP למשתמשים
+ולהפך.
+.TP 
+\fBdb_topics_table\fP
+שם הטבלה שבה פורום ה\-phpbb שלכם שומר את מידע הנושאים (השרשורים) שלו. סביר
+להניח שיהיה זה <table\-prefix>_topics (למשל phpbb3_topics).
+.TP 
+\fBdb_banlist_table\fP
+שם הטבלה שבה פורום ה\-phpbb שלכם שומר את נתוני חסימות המשתמשים שלו. סביר
+להניח שיהיה זה <table\-prefix>_banlist (למשל phpbb3_banlist).
+.TP 
+\fBmp_mod_group\fP
+מזהה קבוצת הפורום שתיחשב כבעלת סמכות ניהול (moderation).
+.RE
+.
+.SH "קוד יציאה"
+.
+קוד יציאה רגיל הוא 0 כאשר השרת כובה כראוי. קוד יציאה 2 מציין שגיאה באפשרויות
+שורת הפקודה.
+.
+.SH מחבר
+.
+נכתב על ידי דיוויד וייט <davidnwhite@verizon.net>. נערך על ידי נילס
+קנויפר <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net>, סוליטון
+<soliton.de@gmail.com> ותומאס באומהאואר
+<thomas.baumhauer@gmail.com>. דף הוראות (manual) זה נכתב במקור על
+ידי סיריל בות'ורס <cyril@bouthors.org>.
+.br
+בקרו באתר הרשמי: https://www.wesnoth.org/
+.
+.SH "זכויות יוצרים"
+.
+Copyright \(co 2003\-2024 David White <davidnwhite@verizon.net>
+.br
+זוהי תוכנה חופשית; תוכנה זו מורשית תחת רישיון GPL גרסה 2, כפי שפורסם על ידי
+Free Software Foundation. אין אחריות; אף לא לגבי סחירות או התאמה למטרה
+מסוימת.
+.
+.SH "ראו גם"
+.
+\fBwesnoth\fP(6)
+

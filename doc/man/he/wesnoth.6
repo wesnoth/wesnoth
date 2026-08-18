@@ -1,0 +1,431 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTH 6 2022 wesnoth "הקרב על ווסנות'"
+.
+.SH שם
+wesnoth \- הקרב על ווסנות', משחק אסטרטגיה פנטזיה מבוסס\-תורות
+.
+.SH תקציר
+.
+\fBwesnoth\fP [\fIOPTIONS\fP] [\fIPATH_TO_DATA\fP]
+.
+.SH תיאור
+.
+הקרב על \fBWesnoth\fP הוא משחק אסטרטגיה פנטזיה מבוסס\-תורות.
+
+הביסו את כל מנהיגי האויב באמצעות מבחר חיילים שנבחר בקפידה, תוך ניהול נכון של
+משאבי הזהב והכפרים שלכם. לכל היחידות יש חוזקות וחולשות משלהן; כדי לנצח, יש
+לפרוס את הכוחות שלכם באופן המיטבי תוך מניעת אותה אפשרות מהאויב. ככל שהיחידות
+צוברות ניסיון, הן רוכשות יכולות חדשות והופכות חזקות יותר. שחקו בשפה שלכם
+ובחנו את כישוריכם מול יריב מחשב חכם, או הצטרפו לקהילה הגדולה של שחקני
+ווסנות' המקוונים. צרו יחידות, תרחישים או קמפיינים משלכם, ושתפו אותם עם
+אחרים.
+.
+.SH אפשרויות
+.
+.TP 
+\fB\-\-all\-translations\fP
+מציג את כל התרגומים ברשימת בחירת השפה שבתוך המשחק, גם אם הם נחשבים לא שלמים
+מספיק.
+.TP 
+\fB\-\-bunzip2\fP\fI\ infile.bz2\fP
+decompresses a file which should be in bzip2 format and stores it without
+the .bz2 suffix. The \fIinfile.bz2\fP will be removed.
+.TP 
+\fB\-\-bzip2\fP\fI\ infile\fP
+compresses a file in bzip2 format, stores it as \fIinfile\fP.bz2 and removes
+\fIinfile\fP.
+.TP 
+\fB\-c[\fP\fIid_campaign\fP\fB],\ \-\-campaign[\fP\fI=id_campaign\fP\fB]\fP
+עובר ישירות לקמפיין עם המזהה \fIid_campaign\fP. אם לא צוין מזהה, יופיע תפריט
+בחירה.
+.TP 
+\fB\-\-campaign\-difficulty[\fP\fI=difficulty\fP\fB]\fP
+רמת הקושי של הקמפיין שצוינה (1 עד המקסימום). אם לא צוינה, יופיע רכיב בחירת
+רמת הקושי של הקמפיין.
+.TP 
+\fB\-\-campaign\-scenario\fP\fI\ id_scenario\fP
+המזהה של התרחיש מתוך הקמפיין שצוינה. ברירת המחדל היא התרחיש הראשון.
+.TP 
+\fB\-\-campaign\-skip\-story\fP
+דילוג על מסכי [story] ודו\-שיח עד לסיום אירוע ה\-\fBstart\fP.
+.TP 
+\fB\-\-clock\fP
+Adds the option to show a clock for testing the drawing timer.
+.TP 
+\fB\-\-config\-dir\fP\fI\ name\fP
+Deprecated, use \fB\-\-userdata\-dir\fP.
+.TP 
+\fB\-\-config\-path\fP
+Deprecated, use \fB\-\-userdata\-path\fP.
+.TP 
+\fB\-\-core\fP\fI\ id_core\fP
+overrides the loaded core with the one whose id is specified.
+.TP 
+\fB\-\-data\-dir\fP\fI\ directory\fP
+overrides the data directory with the one specified
+.TP 
+\fB\-\-data\-path\fP
+מדפיס את הנתיב של תיקיית הנתונים ויוצא.
+.TP 
+\fB\-d, \-\-debug\fP
+מפעיל אפשרויות מצב פקודה נוספות בתוך המשחק (לפרטים נוספים ראו את דף הוויקי
+בכתובת https://www.wesnoth.org/wiki/CommandMode).
+.TP 
+\fB\-\-debug\-lua\fP
+מפעיל מנגנוני דיבוג מסוימים של Lua
+.TP 
+\fB\-\-strict\-lua\fP
+אוסר קריאות API מיושנות של Lua
+.TP 
+\fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+משווה בין שני קובצי WML; לא מבצע עיבוד מקדים (preprocess) עליהם קודם (לשם
+כך, יש להריץ אותם קודם דרך \fB\-p\fP). מציג את ההשוואה כ\-DiffWML בפלט הסטנדרטי
+או לקובץ שצוין ב\-\fI\-\-output\fP.
+.TP 
+\fB\-e[\fP\fIfile\fP\fB],\ \-\-editor[\fP\fI=file\fP\fB]\fP
+מפעיל ישירות את עורך המפות שבתוך המשחק. אם צוין \fIfile\fP, שקול לשימוש ב\-\fB\-l\fP
+\fB\-\-load\fP.
+.TP 
+\fB\-\-fps\fP
+מציג את מספר התמונות לשנייה שהמשחק רץ בהן כרגע בפינת המסך, וגם כותב את
+הערכים הללו לקובץ בתיקיית נתוני המשתמש.
+.TP 
+\fB\-f, \-\-fullscreen\fP
+מריץ את המשחק במצב מסך מלא.
+.TP 
+\fB\-\-gunzip\fP\fI\ infile.gz\fP
+decompresses a file which should be in gzip format and stores it without the
+\&.gz suffix. The \fIinfile.gz\fP will be removed.
+.TP 
+\fB\-\-gzip\fP\fI\ infile\fP
+compresses a file in gzip format, stores it as \fIinfile\fP.gz and removes
+\fIinfile\fP.
+.TP 
+\fB\-h, \-\-help\fP
+מציג תקציר של אפשרויות שורת הפקודה בפלט הסטנדרטי, ויוצא.
+.TP 
+\fB\-l,\ \-\-load\fP\fI\ file\fP
+טוען את המשחק השמור \fIfile\fP מתיקיית שמירת המשחקים הסטנדרטית. אם משתמשים גם
+באפשרות \fB\-e\fP או \fB\-\-editor\fP, מפעיל את העורך עם המפה מתוך \fIfile\fP פתוחה. אם
+מדובר בתיקייה, העורך יופעל עם חלון בחירת מפה לטעינה הפתוח שם.
+.TP 
+\fB\-L,\ \-\-language\fP\fI\ lang\fP
+משתמש בשפה \fIlang\fP (סמל) בהפעלה הנוכחית. דוגמה: \fB\-\-language ang_GB@latin\fP
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
+sets the severity level of the log domains.  \fBall\fP can be used to match any
+log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default the \fBwarning\fP level is used for most domains, but
+\fBdeprecation\fP defaults to \fBnone\fP unless combined with the \fB\-d\fP option.
+.TP 
+\fB\-\-log\-precise\fP
+מציג את חותמות הזמן בפלט היומן בדיוק רב יותר.
+.TP 
+\fB\-\-log\-strict\fP
+sets the strict level of the logger. Any messages sent to log domains of
+this level or more severe will cause the unit test to fail regardless of the
+victory result. Only relevant when used with \fB\-u\fP.
+.TP 
+\fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
+מציג רשימה של תחומי יומן מוגדרים (רק אלה המכילים את \fIfilter\fP אם צוין) ויוצא
+.TP 
+\fB\-\-no\-log\-to\-file\fP
+prevents redirecting logged output to a file. Log files are created in the
+logs directory under the userdata folder.
+.TP 
+\fB\-\-log\-to\-file\fP
+פלט היומן נכתב לקובץ. מבטל את ההשפעה של \-\-no\-log\-to\-file בין אם משתמעת ובין
+אם מפורשת.
+.TP 
+\fB\-\-wnoconsole\fP
+עבור Windows, כאשר משתמשים יחד עם \-\-no\-log\-to\-file, גורם לכתיבת הפלט
+ל\-cerr/cout במקום ל\-CONOUT. אחרת, אינו עושה דבר.
+.TP 
+\fB\-\-max\-fps\fP\fI\ fps\fP
+מספר התמונות לשנייה שהמשחק יכול להציג; הערך צריך להיות בין \fB1\fP ל\-\fB1000\fP,
+ברירת המחדל היא קצב הרענון של הצג.
+.TP 
+\fB\-m, \-\-multiplayer\fP
+מריץ משחק רב\-משתתפים. יש אפשרויות נוספות שניתן להשתמש בהן יחד עם
+\fB\-\-multiplayer\fP כפי שמוסבר להלן.
+.TP 
+\fB\-\-mp\-test\fP
+טוען את תרחישי הבדיקה של רב\-משתתפים.
+.TP 
+\fB\-\-new\-widgets\fP
+קיים ערכת רכיבי\-ממשק (widget toolkit) חדשה שעדיין בפיתוח, אפשרות זו מפעילה
+אותה. זהו מצב ניסיוני מאוד, נא לא לדווח על באגים כי רובם ידועים. חלקים
+מהספרייה נחשבים יציבים ויעבדו גם בלי מתג זה.
+.TP 
+\fB\-\-nodelay\fP
+runs the game without any delays for graphic benchmarking. This is
+automatically enabled by \fB\-\-nogui\fP.
+.TP 
+\fB\-\-noaddons\fP
+מבטל טעינה של תוספי משתמש.
+.TP 
+\fB\-\-nocache\fP
+מבטל שמירה במטמון (caching) של נתוני המשחק.
+.TP 
+\fB\-\-nogui\fP
+מריץ את המשחק ללא ממשק המשתמש הגרפי (GUI). זמין רק בשילוב עם
+\fB\-\-multiplayer\fP או \fB\-\-screenshot\fP או \fB\-\-plugin\fP.
+.TP 
+\fB\-\-nobanner\fP
+מדכא את באנר ההפעלה.
+.TP 
+\fB\-\-nomusic\fP
+מריץ את המשחק ללא מוזיקה.
+.TP 
+\fB\-\-noreplaycheck\fP
+לא לנסות לאמת שידור חוזר (replay) של בדיקת יחידה. רלוונטי רק בשימוש עם
+\fB\-u\fP.
+.TP 
+\fB\-\-nosound\fP
+מריץ את המשחק ללא צלילים ומוזיקה.
+.TP 
+\fB\-\-output\fP\fI\ file\fP
+פלט לקובץ שצוין. רלוונטי לפעולות השוואה (diffing).
+.TP 
+\fB\-\-password\fP\fI\ password\fP
+משתמש ב\-\fIpassword\fP בעת התחברות לשרת, תוך התעלמות מהעדפות אחרות. לא בטוח.
+.TP 
+\fB\-\-plugin\fP\fI\ script\fP
+(experimental) load a \fIscript\fP which defines a Wesnoth plugin. Similar to
+\fB\-\-script\fP, but Lua file should return a function which will be run as a
+coroutine and periodically woken up with updates.
+.TP 
+\fB\-P,\-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
+מחיל תיקון (patch) מסוג DiffWML על קובץ WML; אינו מבצע עיבוד מקדים לאף אחד
+מהקבצים. מציג את ה\-WML המתוקן בפלט הסטנדרטי או לקובץ שצוין ב\-\fI\-\-output\fP.
+.TP 
+\fB\-p,\ \-\-preprocess\fP\fI\ source\-file/folder\fP\fB\ \fP\fItarget\-directory\fP
+מבצע עיבוד מקדים לקובץ/תיקייה שצוינו. עבור כל קובץ ייכתבו קובץ .cfg רגיל
+וקובץ .cfg מעובד בתיקיית היעד שצוינה. אם צוינה תיקייה, היא תעובד רקורסיבית
+על פי כללי המעבד המקדים הידועים. המאקרואים המשותפים מתיקיית
+"data/core/macros" יעברו עיבוד מקדים לפני המשאבים שצוינו. דוגמה: \fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP לפרטים נוספים על המעבד המקדים
+ראו: https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
+.TP 
+\fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
+comma separated list of defines to be used by the \fB\-\-preprocess\fP
+command. If \fBSKIP_CORE\fP is in the define list the "data/core" directory
+won't be preprocessed.
+.TP 
+\fB\-\-preprocess\-input\-macros\fP\fI\ source\-file\fP
+used only by the \fB\-\-preprocess\fP command. Specifies a file that contains
+\fB[preproc_define]\fPs to be included before preprocessing.
+.TP 
+\fB\-\-preprocess\-output\-macros[\fP\fI=target\-file\fP\fB]\fP
+used only by the \fB\-\-preprocess\fP command. Will output all preprocessed
+macros in the target file. If the file is not specified the output will be
+file '_MACROS_.cfg' in the target directory of preprocess's command. The
+output file can be passed to \fB\-\-preprocess\-input\-macros\fP.  This switch
+should be typed before the \fB\-\-preprocess\fP command.
+.TP 
+\fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
+קובע את רזולוציית המסך. דוגמה: \fB\-r\fP \fB800x600\fP.
+.TP 
+\fB\-\-render\-image\fP\fI\ image\fP\fB\ \fP\fIoutput\fP
+מקבל 'מחרוזת נתיב תמונה' תקנית של ווסנות' עם פונקציות נתיב\-תמונה, ומפיק פלט
+לקובץ .png. פונקציות נתיב\-תמונה מתועדות בכתובת
+https://wiki.wesnoth.org/ImagePathFunctionWML.
+.TP 
+\fB\-R,\ \-\-report\fP
+מאתחל את תיקיות המשחק, מדפיס מידע בנייה (build information) המתאים לשימוש
+בדיווחי באגים, ויוצא.
+.TP 
+\fB\-\-rng\-seed\fP\fI\ number\fP
+מזין את מחולל המספרים האקראיים בערך זרע \fInumber\fP. דוגמה: \fB\-\-rng\-seed\fP
+\fB0\fP.
+.TP 
+\fB\-\-screenshot\fP\fI\ map\fP\fB\ \fP\fIoutput\fP
+שומר צילום מסך של \fImap\fP אל \fIoutput\fP בלי לאתחל מסך.
+.TP 
+\fB\-\-script\fP\fI\ file\fP
+(experimental)  \fIfile\fP containing a Lua script to control the client.
+.TP 
+\fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
+מתחבר למארח שצוין אם קיים, אחרת מתחבר לשרת הראשון בהעדפות. דוגמה:
+\fB\-\-server\fP \fBserver.wesnoth.org\fP.
+.TP 
+\fB\-\-showgui\fP
+מריץ את המשחק עם ממשק המשתמש הגרפי (GUI), תוך עקיפת כל \fB\-\-nogui\fP משתמע.
+.TP 
+\fB\-\-strict\-validation\fP
+שגיאות אימות (validation) נחשבות שגיאות קטלניות.
+.TP 
+\fB\-t[\fP\fIscenario_id\fP\fB],\ \-\-test[\fP\fI=scenario_id\fP\fB]\fP
+מריץ את המשחק בתרחיש בדיקה קטן. התרחיש צריך להיות מוגדר בתגית WML מסוג
+\fB[test]\fP. ברירת המחדל היא \fBtest\fP. ניתן להפעיל הדגמה של תכונת
+ה\-\fB[micro_ai]\fP באמצעות \fBmicro_ai_test\fP.
+.TP 
+\fB\-\-translations\-over\fP\fI\ percent\fP
+קובע את הרף לפיו תרגום נחשב שלם מספיק כדי להופיע ברשימת השפות שבתוך המשחק,
+לערך \fIpercent\fP. ערכים תקינים הם 0 עד 100.
+.TP 
+\fB\-u,\ \-\-unit\fP\fI\ scenario\-id\fP
+מריץ את תרחיש הבדיקה שצוין כבדיקת יחידה (unit test). מרמז על \fB\-\-nogui\fP.
+.TP 
+\fB\-\-unsafe\-scripts\fP
+הופך את החבילה \fBpackage\fP לזמינה לסקריפטי Lua, כך שהם יוכלו לטעון חבילות
+שרירותיות. אין לעשות זאת עם סקריפטים לא מהימנים! פעולה זו מעניקה ל\-Lua את
+אותן הרשאות כמו לקובץ ההרצה של ווסנות'.
+.TP 
+\fB\-S,\-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\-\-validate\fP.
+.TP 
+\fB\-\-userconfig\-dir\fP\fI\ name\fP
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy
+Games". On Windows it is also possible to specify a directory relative to
+the process working directory by using path starting with ".\e" or "..\e".
+Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
+other systems to the userdata path.
+.TP 
+\fB\-\-userconfig\-path\fP
+prints the path of the user configuration directory and exits.
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ name\fP
+קובע את תיקיית נתוני המשתמש בשם \fIname\fP תחת $HOME או "My Documents\eMy
+Games" עבור Windows. ניתן גם לציין נתיב מוחלט לתיקיית נתוני המשתמש מחוץ
+ל\-$HOME או ל\-"My Documents\eMy Games". ב\-Windows ניתן גם לציין תיקייה יחסית
+לתיקיית העבודה של התהליך באמצעות נתיב שמתחיל ב\-".\e" או ב\-"..\e".
+.TP 
+\fB\-\-userdata\-path\fP
+מדפיס את הנתיב של תיקיית נתוני המשתמש ויוצא.
+.TP 
+\fB\-\-username\fP\fI\ username\fP
+משתמש ב\-\fIusername\fP בעת התחברות לשרת, תוך התעלמות מהעדפות אחרות.
+.TP 
+\fB\-\-validate\fP\fI\ path\fP
+מאמת קובץ מול סכימת ה\-WML.
+.TP 
+\fB\-\-validate\-addon\fP\fI\ addon_id\fP
+מאמת את ה\-WML של התוסף הנתון תוך כדי המשחק.
+.TP 
+\fB\-\-validate\-core\fP
+מאמת את ה\-WML של הליבה תוך כדי המשחק.
+.TP 
+\fB\-\-validate\-schema \ path\fP
+מאמת קובץ כסכימת WML.
+.TP 
+\fB\-\-validcache\fP
+מניח שהמטמון (cache) תקין. (מסוכן)
+.TP 
+\fB\-v, \-\-version\fP
+מציג את מספר הגרסה ויוצא.
+.TP 
+\fB\-\-simple\-version\fP
+מציג את מספר הגרסה בלבד, בלי דבר נוסף, ואז יוצא.
+.TP 
+\fB\-w, \-\-windowed\fP
+מריץ את המשחק במצב חלון.
+.TP 
+\fB\-\-with\-replay\fP
+משדר מחדש (replay) את המשחק שנטען באמצעות האפשרות \fB\-\-load\fP.
+.
+.SH "אפשרויות עבור \-\-multiplayer"
+.
+אפשרויות רב\-משתתפים ייחודיות\-לצד מסומנות ב\-\fInumber\fP. יש להחליף את \fInumber\fP
+במספר צד. בדרך כלל זה 1 או 2, אך תלוי במספר השחקנים האפשרי בתרחיש הנבחר.
+.TP 
+\fB\-\-ai\-config\fP\fI\ number\fP\fB:\fP\fIvalue\fP
+בוחר קובץ הגדרות לטעינה עבור בקר הבינה המלאכותית (AI) של צד זה.
+.TP 
+\fB\-\-algorithm\fP\fI\ number\fP\fB:\fP\fIvalue\fP
+בוחר אלגוריתם לא סטנדרטי לשימוש על ידי בקר הבינה המלאכותית עבור צד
+זה. האלגוריתם מוגדר על ידי תגית \fB[ai]\fP, שיכולה להיות אלגוריתם ליבה
+מ\-"data/ai/ais" או "data/ai/dev", או אלגוריתם המוגדר על ידי תוסף. ערכים
+זמינים כוללים: \fBidle_ai\fP ו\-\fBexperimental_ai\fP.
+.TP 
+\fB\-\-controller\fP\fI\ number\fP\fB:\fP\fIvalue\fP
+בוחר את הבקר עבור צד זה. ערכים זמינים: \fBhuman\fP, \fBai\fP ו\-\fBnull\fP.
+.TP 
+\fB\-\-era\fP\fI\ value\fP
+אפשרות זו משמשת לשחק בעידן הנבחר במקום עידן ה\-\fBDefault\fP. העידן נבחר לפי
+מזהה. עידנים מתוארים בקובץ \fBdata/multiplayer/eras.cfg\fP.
+.TP 
+\fB\-\-exit\-at\-end\fP
+יוצא ברגע שהתרחיש מסתיים, בלי להציג את חלון הניצחון/תבוסה שבדרך כלל מחייב את
+המשתמש ללחוץ על 'סיום תרחיש'. משמש גם למדידת ביצועים (benchmarking)
+בסקריפטים.
+.TP 
+\fB\-\-ignore\-map\-settings\fP
+אינו משתמש בהגדרות המפה, ומשתמש בערכי ברירת המחדל במקום.
+.TP 
+\fB\-\-label\fP\fI\ label\fP
+קובע את ה\-\fIlabel\fP עבור בינות מלאכותיות.
+.TP 
+\fB\-\-multiplayer\-repeat\fP\fI\ value\fP
+חוזר על משחק רב\-משתתפים \fIvalue\fP פעמים. מומלץ להשתמש יחד עם \fB\-\-nogui\fP
+למדידת ביצועים בסקריפטים.
+.TP 
+\fB\-\-parm\fP\fI\ number\fP\fB:\fP\fIname\fP\fB:\fP\fIvalue\fP
+קובע פרמטרים נוספים עבור צד זה. פרמטר זה תלוי באפשרויות שבהן משתמשים עם
+\fB\-\-controller\fP ו\-\fB\-\-algorithm\fP. שימושי בעיקר לאנשים המעצבים בינה מלאכותית
+משלהם. (עדיין לא מתועד באופן מלא)
+.TP 
+\fB\-\-scenario\fP\fI\ value\fP
+בוחר תרחיש רב\-משתתפים לפי מזהה. מזהה תרחיש ברירת המחדל הוא
+\fBmultiplayer_The_Freelands\fP.
+.TP 
+\fB\-\-side\fP\fI\ number\fP\fB:\fP\fIvalue\fP
+בוחר סיעה (faction) של העידן הנוכחי עבור צד זה. הסיעה נבחרת לפי מזהה. סיעות
+מתוארות בקובץ data/multiplayer.cfg.
+.TP 
+\fB\-\-turns\fP\fI\ value\fP
+קובע את מספר התורות עבור התרחיש הנבחר. כברירת מחדל אין הגבלת תורות.
+.
+.SH "קוד יציאה"
+.
+קוד יציאה רגיל הוא 0. קוד יציאה 1 מציין שגיאת אתחול (SDL, וידאו, גופנים
+וכו'). קוד יציאה 2 מציין שגיאה באפשרויות שורת הפקודה.
+.br
+בעת הרצת בדיקות יחידה (with\fB\ \-u\fP), קוד היציאה שונה. קוד יציאה 0 מציין
+שהבדיקה עברה, ו\-1 מציין שהבדיקה נכשלה. קוד יציאה 3 מציין שהבדיקה עברה, אך
+הפיקה קובץ שידור חוזר לא תקין. קוד יציאה 4 מציין שהבדיקה עברה, אך השידור
+החוזר הפיק שגיאות. שני הקודים האחרונים מוחזרים רק אם \fB\-\-noreplaycheck\fP לא
+הועבר.
+.
+.SH מחבר
+.
+נכתב על ידי דיוויד וייט <davidnwhite@verizon.net>.
+.br
+נערך על ידי נילס קנויפר <crazy\-ivanovic@gmx.net>, ott
+<ott@gaon.net> וסוליטון <soliton.de@gmail.com>.
+.br
+דף הוראות (manual) זה נכתב במקור על ידי סיריל בות'ורס
+<cyril@bouthors.org>.
+.br
+בקרו באתר הרשמי: https://www.wesnoth.org/
+.
+.SH "זכויות יוצרים"
+.
+Copyright \(co 2003\-2024 David White <davidnwhite@verizon.net>
+.br
+זוהי תוכנה חופשית; תוכנה זו מורשית תחת רישיון GPL גרסה 2, כפי שפורסם על ידי
+Free Software Foundation. אין אחריות; אף לא לגבי סחירות או התאמה למטרה
+מסוימת.
+.
+.SH "ראו גם"
+.
+\fBwesnothd\fP(6)

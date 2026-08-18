@@ -136,16 +136,16 @@ wesnothd \- 韦诺之战（Battle for \fBWesnoth\fP）多人网络守护进程
 设置服务器是否自动保存游戏录像。（默认值：\fBfalse\fP）
 .TP 
 \fBtls_enabled\fP
-Enable use of TLS. If true, requires 3 following options to be set too.
+启用TLS。如果使用本选项，则接下去的三个选项必须设置。
 .TP 
 \fBtls_fullchain\fP
-TLS full certificate chain in .pem format
+\&.pem格式的TLS完整证书链
 .TP 
 \fBtls_private_key\fP
-private key for TLS in .pem format
+\&.pem格式的TLS私钥
 .TP 
 \fBtls_dh\fP
-TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam \-out filename.pem 4096\fP
+\&.pem格式的TLS DH参数文件。可用 \fBopenssl dhparam \-out filename.pem 4096\fP来生成
 .TP 
 \fBversions_accepted\fP
 服务器接受的客户端版本号列表，是以逗号分隔的字符串。支持\fB*\fP和\fB?\fP通配符。（默认为与服务器版本一致的wesnoth版本）
@@ -153,9 +153,7 @@ TLS DH parameters, as .pem file. Generate with \fBopenssl dhparam \-out filename
 例如: \fBversions_accepted="*"\fP 允许所有版本连接。
 .TP 
 \fBid\fP
-The ID of the server when using the database functionality to store game
-information. Generally is the major.minor version of accepted clients, such
-as 1.16 or 1.17.
+当使用数据库功能来存储游戏信息时，服务器的ID。通常是服务器可接受的客户端版本（大版本.小版本），如1.16或1.17。
 .
 .SS 全局标签：
 .
@@ -207,8 +205,7 @@ as 1.16 or 1.17.
 这个用户的密码
 .TP 
 \fBdb_users_table\fP
-The name of the table in which your phpbb forum saves its user data. Most
-likely this will be <table\-prefix>_users (e.g. phpbb3_users).
+你的phpbb论坛用于存放用户数据的表名。很可能是<table\-prefix>_users（例如phpbb3_users）。
 .TP 
 \fBdb_extra_table\fP
 用于保存wesnothd自有用户数据的表名。
@@ -223,23 +220,16 @@ likely this will be <table\-prefix>_users (e.g. phpbb3_users).
 用于保存wesnothd自有数据的表名，其中是与单场游戏中使用的模组相关的数据。
 .TP 
 \fBdb_user_group_table\fP
-The name of the table in which your phpbb forum saves its user group
-data. Most likely this will be <table\-prefix>_user_group
-(e.g. phpbb3_user_group).
+你的phpbb论坛用于存放用户组数据的表名。很可能是<table\-prefix>_users_group（例如phpbb3_users_group）。
 .TP 
 \fBdb_connection_history_table\fP
-The name of the table in which to store login/logout times. Also used for
-matching IPs to users and vice versa.
+存放登入/登出时间的表名。也用于用户与IP的双向匹配。
 .TP 
 \fBdb_topics_table\fP
-The name of the table in which your phpbb forum saves its topic (thread)
-information. Most likely this will be <table\-prefix>_topics
-(e.g. phpbb3_topics).
+你的phpbb论坛用于存放主题（讨论串）信息的表名。很可能是<table\-prefix>_topics（例如phpbb3_topics）。
 .TP 
 \fBdb_banlist_table\fP
-The name of the table in which your phpbb forum saves its user bans
-data. Most likely this will be <table\-prefix>_banlist
-(e.g. phpbb3_banlist).
+你的phpbb论坛用于存放用户封禁数据的表名。很可能是<table\-prefix>_banlist（例如phpbb3_banlist）。
 .TP 
 \fBmp_mod_group\fP
 论坛用户组ID，该组将被视为拥有管理员权限。
@@ -261,7 +251,7 @@ data. Most likely this will be <table\-prefix>_banlist
 .
 .SH 版权
 .
-Copyright \(co 2003\-2024 David White <davidnwhite@verizon.net>
+版权所有 \(co 2003\-2024 David White <davidnwhite@verizon.net>
 .br
 这是一款自由软件，使用由自由软件基金会发布的GPL版本2协议授权。使用本软件时*不*提供任何保证，甚至没有对“可销售性”和“针对某一特别目的之可用性”的保证。本段中文翻译不具有法律效力，只有GPL英文原本才具有法律效力。
 .
