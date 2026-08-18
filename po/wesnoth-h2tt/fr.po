@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-08-03 03:45 UTC\n"
+"POT-Creation-Date: 2026-08-18 15:19 UTC\n"
 "PO-Revision-Date: 2026-03-18 18:56+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -561,7 +561,7 @@ msgstr ""
 #. [object]
 #. [object]: description={MESSAGE}
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:81
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:585
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:587
 #: data/campaigns/Heir_To_The_Throne/utils/unified_characters.cfg:404
 msgid "New Recruits:"
 msgstr "Nouvelles recrues :"
@@ -4775,7 +4775,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1202
 #: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:207
 #: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:401
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:344
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:345
 #: data/campaigns/Heir_To_The_Throne/scenarios/26_The_Dwarven_Doors.cfg:445
 #: data/campaigns/Heir_To_The_Throne/scenarios/32_The_Swamp_of_Dread.cfg:549
 #: data/campaigns/Heir_To_The_Throne/scenarios/32_The_Swamp_of_Dread.cfg:770
@@ -10920,14 +10920,10 @@ msgid ""
 msgstr "Quant à toi, Delfador… tu vas regretter ce que tu as fait à mon frère."
 
 #. [floating_text]
-#: data/campaigns/Heir_To_The_Throne/scenarios/10_Elensefar_Before.cfg:903
-msgid "{ON_DIFFICULTY4 15 25 30 40} gold"
-msgstr "{ON_DIFFICULTY4 15 25 30 40} pièces d’or"
-
-#. [floating_text]
+#. $gold will be between 10 and 40.
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Elensefar_Before.cfg:914
-msgid "{ON_DIFFICULTY4 10 15 20 25} gold"
-msgstr "{ON_DIFFICULTY4 10 15 20 25} pièces d’or"
+msgid "$gold gold"
+msgstr ""
 
 #. [message]: role=lisar_skiff
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Elensefar_Before.cfg:960
@@ -15563,12 +15559,12 @@ msgid "scenario name^An Old Friend"
 msgstr "Un vieil ami"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:64
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:65
 msgid "Deoran"
 msgstr "Deoran"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:135
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:136
 msgid ""
 "You have led us to a dark part of the jungle, great-granddaughter. And "
 "undead? What are undead doing in Wesmere?!"
@@ -15577,7 +15573,7 @@ msgstr ""
 "Et des morts-vivants ? Que font des morts-vivants à Wesmere ?!"
 
 #. [message]: speaker=Chantal
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:140
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:141
 msgid ""
 "Not any undead. That dark rider is our friend Deoran, risen anew as a wight "
 "after Eldred so cruelly struck him down. He remembers nothing but echoes. It "
@@ -15588,12 +15584,12 @@ msgstr ""
 "terrassé par Eldred. Il ne se souvient que d'échos. C'est terrible, Kalenz !"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:144
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:145
 msgid "Death... I lowered my sword... A blade in my chest..."
 msgstr "La mort… J’ai abaissé mon épée… Une lame dans la poitrine…"
 
 #. [message]: speaker=Chantal
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:148
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:149
 msgid ""
 "I don’t know whether Deoran was turned to undeath as some insult of "
 "Asheviere’s or by the dark magic of Eldred’s fall, but now he has come here "
@@ -15604,7 +15600,7 @@ msgstr ""
 "maintenant il est venu ici, à Wesmere. Il m’a cherché..."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:152
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:153
 msgid ""
 "Deoran was a good man, and deserved better than the end he met. I know you "
 "and he were close, Chantal, and I am sorry."
@@ -15613,7 +15609,7 @@ msgstr ""
 "vous étiez proches, Chantal, et j’en suis désolé."
 
 #. [message]: speaker=Chantal
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:156
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:157
 msgid ""
 "I had not the heart to kill him... one death was enough pain. But I know "
 "that we cannot leave him to rampage through Wesmere. Now that you are here, "
@@ -15625,7 +15621,7 @@ msgstr ""
 "détruit, qu’il en soit ainsi."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:160
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:161
 msgid ""
 "Indeed, it would a mercy to put this cursed being out of his misery. But "
 "perhaps it can be done without the violence that you would so abhor."
@@ -15635,7 +15631,7 @@ msgstr ""
 "abhorrez tant."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:167
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:168
 msgid ""
 "Not far from here is a place of old magic; a burial ground once prepared for "
 "one of our lords of old. It was never used, but remains a place of great "
@@ -15648,7 +15644,7 @@ msgstr ""
 "crois qu'il a cherché ce tombeau."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:171
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:172
 msgid ""
 "If we can lure him into the tomb without destroying him, his tired bones may "
 "at last find the peace they have so long been denied. And your tired heart "
@@ -15659,40 +15655,40 @@ msgstr ""
 "arrière-petite-fille, trouvera enfin la paix."
 
 #. [objective]: condition=win
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:179
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:180
 msgid "Lure undead Deoran into the burial chamber, and leave him alone inside."
 msgstr ""
 "Attirez Deoran, le mort-vivant, dans la chambre funéraire et laissez-le seul "
 "à l'intérieur."
 
 #. [objective]: condition=lose
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:183
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:184
 msgid "Death of Deoran"
 msgstr "Mort de Deoran"
 
 #. [objective]: condition=lose
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:187
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:188
 msgid "Death of Kalenz or Chantal"
 msgstr "Mort de Kalenz ou Chantal"
 
 #. [note]
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:195
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:196
 #: data/campaigns/Heir_To_The_Throne/scenarios/31_Plunging_into_Darkness.cfg:539
 msgid "In this scenario, you can neither gain nor spend gold."
 msgstr "Dans ce scénario, vous ne pouvez ni gagner ni dépenser d’or."
 
 #. [note]
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:198
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:199
 msgid "Deoran will prefer to target Chantal."
 msgstr "Deoran préférera prendre Chantal pour cible."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:210
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:211
 msgid "Blackcrests... more, to the north... Rally! Form ranks..."
 msgstr "Crêtes noires… plus loin, au nord… Rassemblement ! Formez les rangs…"
 
 #. [message]: speaker=Chantal
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:223
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:224
 msgid ""
 "You don’t remember me, do you, Deoran... We shared good memories together, "
 "back in the Lintanir."
@@ -15701,13 +15697,13 @@ msgstr ""
 "bons souvenirs ensemble, à l'époque du Lintanir."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:227
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:228
 msgid "... Chantal? No, not here... War is no... place for you..."
 msgstr "Chantal ? Non, pas ici… La guerre n’est pas un endroit pour toi…"
 
 #. [message]: speaker=Deoran
 #. Deoran references Mebrin from TSG, and Kalenz's lich-eye potion from LoW
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:241
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:242
 msgid ""
 "Mebrin... I sense eye... of lich... Your time has come... once-wise sage..."
 msgstr ""
@@ -15716,66 +15712,66 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #. Deoran references Mebrin's line from TSG S06b: "I curse you, Deoran of Wesnoth! I curse you... may you one day know the same pain that your kind have inflicted on me..."
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:246
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:247
 msgid "You cursed me... you cursed me... to know the same pain..."
 msgstr ""
 "Tu m'as maudit... tu m'as maudit... pour que je connaisse la même douleur..."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:258
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:259
 msgid "He’s inside! Now we need to exit the tomb and leave him there."
 msgstr ""
 "Il est à l'intérieur ! Il faut maintenant sortir du tombeau et le laisser là."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:317
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:318
 msgid "There! Now shut the gate and the magic will begin to do its work."
 msgstr "Voilà ! Maintenant, fermez le portail et la magie va opérer."
 
 #. [message]: speaker=Chantal
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:329
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:330
 msgid "Is it working?"
 msgstr "Est-ce que ça fonctionne ?"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:333
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:334
 msgid "My... head..."
 msgstr "Ma... tête..."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:348
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:349
 msgid "I died. How am I here? I remember better places... happier times..."
 msgstr ""
 "Je suis mort. Comment suis-je arrivé là ? Je me souviens d'endroits plus "
 "beaux… de moments plus heureux…"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:352
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:353
 msgid "... goodbye, Chantal."
 msgstr "... au revoir, Chantal."
 
 #. [message]: speaker=Chantal
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:358
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:359
 msgid "Goodbye."
 msgstr "Au revoir."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:380
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:381
 msgid "Eldred—"
 msgstr "Eldred—"
 
 #. [message]: speaker=Chantal
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:386
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:387
 msgid "No! He has been broken to pieces..."
 msgstr "Non ! Il a été brisé en mille morceaux…"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:408
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:409
 msgid "Argh! I am finished!"
 msgstr "Aaah ! Je suis fini !"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:429
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:430
 msgid ""
 "The undead Deoran is beginning to cast his head wildly this way and that. If "
 "we cannot complete our task, I fear he shall soon flee into the river, and "
@@ -15787,12 +15783,12 @@ msgstr ""
 "d'autres contrées."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:436
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:437
 msgid "You cannot... trap me, Mebrin... I see my escape..."
 msgstr "Tu ne peux pas... me piéger, Mebrin... Je vois mon salut..."
 
 #. [message]: speaker=Chantal
-#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:442
+#: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:443
 msgid ""
 "Deoran has gone! We’ve taken too long to seal him away, and now we may never "
 "find him again..."
@@ -20140,9 +20136,9 @@ msgstr "50 pièces d'or"
 #: data/campaigns/Heir_To_The_Throne/scenarios/42_A_Crisis_of_Leadership.cfg:156
 #: data/campaigns/Heir_To_The_Throne/scenarios/42_A_Crisis_of_Leadership.cfg:158
 #: data/campaigns/Heir_To_The_Throne/scenarios/42_A_Crisis_of_Leadership.cfg:160
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:208
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:209
 #: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:210
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:211
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:212
 msgid "100 gold"
 msgstr "100 pièces d'or"
 
@@ -21404,7 +21400,7 @@ msgid "Woses"
 msgstr "Woses"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:239
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:241
 msgid ""
 "Here we are! Whatever evil lurks within these caves, we shall put an end to "
 "it."
@@ -21413,68 +21409,68 @@ msgstr ""
 "mettrons fin."
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:251
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:252
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:253
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:254
 msgid "Konrad, do you hear that sound? Look to the north. I wonder if—"
 msgstr ""
 "Konrad, entendez-vous ce bruit ? Regardez vers le nord. Je me demande si—"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:253
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:255
 msgid "Konrad, listen. Do you hear that? The trees are moving in the north!"
 msgstr ""
 "Konrad, entendez-vous cela ? Regardez vers le nord ! Les arbres bougent !"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:254
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:256
 msgid "Konrad, listen. Do you hear that? Look to the north. Woses!"
 msgstr "Konrad, entendez-vous cela ? Regardez vers le nord. Des woses !"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:255
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:256
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:257
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:258
 msgid "Whoah, did you hear that? Look north! The trees are moving!"
 msgstr ""
 "Whouaaah, avez-vous entendu ça ? Regardez vers le nord ! Les arbres bougent !"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:257
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:259
 msgid "Hark to the north, Konrad! There is movement among the trees!"
 msgstr "Écoutez vers le nord, Konrad ! Il y a du mouvement parmi les arbres !"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:258
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:260
 msgid "Hey, do you hear that? Look north! Th’ trees are moving!"
 msgstr ""
 "Hé, entendez-vous ça ? Regardez vers le nord ! Les arbres sont en train "
 "d’bouger !"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:259
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:261
 msgid "Do you hear that? Is — yes! Yes, look! A wose!"
 msgstr "Tu entends ça ? C'est… oui ! Oui, regarde ! Un wose !"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:260
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:262
 msgid "Hey, Konrad, did you hear dat? I tink dem trees are moving!"
 msgstr ""
 "Hé, Konrad, avez-vous entendu ça ? J’crois bien qu’ces arbres sont en train "
 "d’bouger !"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:261
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:263
 msgid "Delfador, do you hear that? Look to the north. Woses!"
 msgstr "Delfador, entendez-vous cela ? Regardez vers le nord. Des Woses !"
 
 #. [message]: speaker=Haralamdum
 #. Well, I say. Is that young Master Delfador?
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:272
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:274
 msgid "Well, I say ... hmm dum har ... young Master Delfador?"
 msgstr "Eh bien, je dis… hmm dum har… jeune Maître Delfador ?"
 
 #. [message]: speaker=Haralamdum
 #. So it is! How is the ambassador? He was here just the other day.
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:277
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:279
 msgid ""
 "Harum-alam-alam. So it is! Hmm hmm alam ... how is ... hum ... the "
 "ambassador? He was here ... hmm ... just the other day."
@@ -21483,7 +21479,7 @@ msgstr ""
 "l'ambassadeur ? Il était là… hmm… il y a quelques jours."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:281
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:283
 msgid ""
 "That was many years ago, I’m afraid. You are the woses who once resided at "
 "the Grey Grove? I see you have learned the language of men."
@@ -21494,7 +21490,7 @@ msgstr ""
 
 #. [message]: speaker=Haralamdum
 #. Hmm, yes. A very useful language. Now these undead... very troubling.
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:286
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:288
 msgid ""
 "Hmm ... yes ... alam ... alam dum ... very useful ... language ... yes ... "
 "hum ... now these undead ... harum ... very troubling."
@@ -21504,7 +21500,7 @@ msgstr ""
 
 #. [message]: speaker=Haralamdum
 #. I am sure you could help rid us of these infernal undead. Afterwards, we could perhaps help you too.
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:291
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:293
 msgid ""
 "I am sure ... dum hum ... you could help rid us of these ... alam hurum ... "
 "infernal undead ... yes, harum-alam-alam. Afterwards, we could perhaps... "
@@ -21515,17 +21511,17 @@ msgstr ""
 "pourrions peut-être… hmm… vous aider aussi. Har alam dum."
 
 #. [objective]: condition=win
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:299
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:301
 msgid "Defeat the undead leader"
 msgstr "Vaincre le chef mort-vivant"
 
 #. [objective]: condition=lose
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:304
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:306
 msgid "Death of Haralamdum"
 msgstr "Mort d'Haralamdum"
 
 #. [message]: speaker=Lisar
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:325
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:327
 msgid ""
 "Konrad, this entrance is nearly flooded, and is too narrow for both our "
 "armies to enter. My soldiers and I will search for another way in."
@@ -21535,7 +21531,7 @@ msgstr ""
 "passage."
 
 #. [message]: speaker=Jeniver
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:339
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:341
 msgid ""
 "It’s so exciting to finally see woses up close! I hear they have a "
 "spectacular resistance to poison! Wose sap... curing — yes, if I could just "
@@ -21547,7 +21543,7 @@ msgstr ""
 "percer leurs secrets."
 
 #. [message]: speaker=Jeniver
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:343
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:345
 msgid ""
 "Now, err, well, of course sap extraction would be problematic from a live "
 "specimen, them being our allies and all. But, ah, we are on a battlefield. "
@@ -21558,7 +21554,7 @@ msgstr ""
 "champ de bataille. Ce n'est pas à nous de couper."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:347
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:349
 msgid ""
 "You’re asking me to help you rob the dead. Don’t you think that’s a bit "
 "ghoulish, Jeniver?"
@@ -21567,7 +21563,7 @@ msgstr ""
 "cela un peu macabre, Jeniver ?"
 
 #. [message]: speaker=Jeniver
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:351
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:353
 msgid ""
 "But just imagine the possibilities! I ask you to help me stand next to a "
 "wose when it dies. If I can, I’m sure — yes I’m sure I can gather enough sap "
@@ -21579,22 +21575,22 @@ msgstr ""
 "soigner les poisons."
 
 #. [message]: speaker=Jeniver
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:360
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:362
 msgid "It’s falling over! Oh, now’s my chance to collect some sap!"
 msgstr "Ça s'écoule ! Oh, c'est l'occasion rêvée de récupérer de la sève !"
 
 #. [object]
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:376
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:378
 msgid "Antivenom"
 msgstr "Antivenin"
 
 #. [object]
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:377
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:379
 msgid "Jeniver has gained the “<i>cures</i>” ability!"
 msgstr "Jeniver a acquis la capacité “<i>guérison</i>“ !"
 
 #. [message]: speaker=Jeniver
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:381
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:383
 msgid ""
 "It works! It works! Oh, I knew it! Now, err, I suppose I’d better quickly "
 "get back to the battle before the woses wonder what I was doing with their "
@@ -21605,7 +21601,7 @@ msgstr ""
 "ce que je faisais avec leur ami."
 
 #. [message]: speaker=Lisar
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:403
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:405
 msgid ""
 "Everyone ready? Good. Now that Konrad has distracted them from the west, "
 "we’ll push in from the east."
@@ -21614,7 +21610,7 @@ msgstr ""
 "l'ouest, nous allons attaquer par l'est."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:426
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:428
 msgid ""
 "The river is clean and fresh in this direction. There are no undead to hunt "
 "this way."
@@ -21623,22 +21619,22 @@ msgstr ""
 "vivant à pourchasser de ce côté."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:452
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:454
 msgid "Look, saurians! What business do you have in these caves?"
 msgstr "Regardez, des sauriens ! Que faites-vous dans ces grottes ?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:456
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:458
 msgid "Fssssh! Ssslay you! Ssslay you all!"
 msgstr "Fssssh ! Je vous massssacre ! Je vous massssacre tous !"
 
 #. [message]: speaker=Lisar {LISAR_VARIATION mad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:460
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:462
 msgid "I don’t think diplomacy will get us far with these ones."
 msgstr "Je ne pense pas que la diplomatie nous mènera bien loin avec ceux-ci."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:475
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:477
 msgid ""
 "The aggressive saurians are vanquished, but the undead are the greater evil "
 "here. We must not waver!"
@@ -21647,14 +21643,14 @@ msgstr ""
 "mal bien plus grand. Nous ne devons pas faiblir !"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:487
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:489
 msgid "Master. Is away. I guard. I will fight. Until Iliah. Malal returns."
 msgstr ""
 "Le maître est absent. Je veille. Je combattrai. Jusqu'au retour d'Iliah "
 "Malal."
 
 #. [message]: speaker=Delfador {DELFADOR_VARIATION mad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:491
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:493
 msgid ""
 "Your master Malal is gone, you undead fool! Go back to your eternal rest."
 msgstr ""
@@ -21662,7 +21658,7 @@ msgstr ""
 "éternel."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:495
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:497
 msgid ""
 "Iliah-Malal? That is the lich we fought in the swamp. What would one of his "
 "minions be doing here? And why is it so powerful!?"
@@ -21672,7 +21668,7 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #. reference to Eastern Invasion's "Dark Sanctuary" scenario
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:500
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:502
 msgid ""
 "It speaks of guarding — perhaps Malal has a sanctuary hidden somewhere else "
 "in these hills. I do not think we have time to search for it, though. "
@@ -21684,7 +21680,7 @@ msgstr ""
 "tâche pour un autre héros, en un autre temps."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:518
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:520
 msgid ""
 "There is an old book here, labeled <i>“Isaac Mallat — Journal.”</i> The "
 "running water has washed away most of the ink, but one passage is still "
@@ -21695,7 +21691,7 @@ msgstr ""
 "lisible…"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:523
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:525
 msgid ""
 "—died in my arms. My own brother! He could have been saved!! This imbecile "
 "king’s quarantine will be the end of us all."
@@ -21704,7 +21700,7 @@ msgstr ""
 "mise en quarantaine imposée par ce roi imbécile signera notre arrêt de mort."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:525
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:527
 msgid ""
 "I’m sure I’m not contagious. I’m sure there’s some way to cure it. If I "
 "sneak out of the village and make my way north to—"
@@ -21714,12 +21710,12 @@ msgstr ""
 
 #. [message]: speaker=Haralamdum
 #. Well done. Very good.
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:545
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:547
 msgid "Har hum har ... hmm ... well ... har alam dum ... good."
 msgstr "Har hum har... hmm... eh bien... har alam dum... bien."
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION glad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:549
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:551
 msgid ""
 "Those undead will bother you no more, Sir Wose. Will you join us? We march "
 "towards Weldyn, to depose the dark queen Asheviere."
@@ -21730,7 +21726,7 @@ msgstr ""
 
 #. [message]: speaker=Haralamdum
 #. March? So hasty. No, we are not soldiers, not at all. And we are not many.
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:554
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:556
 msgid ""
 "March? So hasty. Harum-alam-alam ... no, we are not soldiers ... harum ... "
 "not at all. And we are not ... hum ... not many."
@@ -21739,19 +21735,19 @@ msgstr ""
 "soldats… harum… pas du tout. Et nous ne sommes pas… hum… nombreux."
 
 #. [message]: speaker=Haralamdum
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:558
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:560
 msgid "Hmm ... but there was something ... something to help ..."
 msgstr "Hmm… mais il y avait quelque chose… quelque chose pour aider…"
 
 #. [message]: speaker=Haralamdum
 #. Oh, yes. The dust.
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:564
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:566
 msgid "Har dum ... oh, yes, the dust."
 msgstr "Har dum... oh, oui, la poussière."
 
 #. [message]: speaker=Haralamdum
 #. Dust carried by a skeleton. Something magical. I put it— where did I put it...
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:569
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:571
 msgid ""
 "Dust carried ... har alam dum ... by a skeleton. Something magical. I put "
 "it ... harum ... where did I put it..."
@@ -21760,7 +21756,7 @@ msgstr ""
 "magique. Je l’ai mis… harum… où l’ai-je mis…"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:576
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:578
 msgid ""
 "I see it — a pouch of powdered sapphire! A valuable component for all kinds "
 "of spells. I used the last of my supply in the defense of Elensefar, and "
@@ -21772,7 +21768,7 @@ msgstr ""
 "Haralamdum."
 
 #. [message]: speaker=Delfador {DELFADOR_VARIATION mentoring}
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:580
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:582
 msgid ""
 "Konrad, with this I can conjure up powerful earthen elementals. Malal must "
 "have stashed it away here. Now it is ours."
@@ -21781,22 +21777,22 @@ msgstr ""
 "a dû le planquer ici. Maintenant, il est à nous."
 
 #. [object]
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:586
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:588
 msgid "Delfador can now recruit Granite Golems!"
 msgstr "Delfador peut désormais recruter des golems de granit !"
 
 #. [message]: speaker=Haralamdum
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:606
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:608
 msgid "Harum ... huff ..."
 msgstr "Hum ... hum ..."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:612
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:614
 msgid "The woses have been defeated! The undead have won."
 msgstr "Les woses ont été vaincus ! Les morts-vivants ont gagné."
 
 #. [message]: speaker=Lisar
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:627
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:629
 msgid ""
 "We should hurry, Konrad. There are storm clouds on the horizon. If we take "
 "too long to finish our battle and it starts to rain, this entire cave system "
@@ -21807,7 +21803,7 @@ msgstr ""
 "tout le réseau de grottes risque d'être inondé."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:638
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:640
 msgid ""
 "It’s starting to rain, and these caves are about to flood! The undead can "
 "survive underwater, but I can’t. Even the merfolk must surface often for "
@@ -21819,7 +21815,7 @@ msgstr ""
 "l'attaque."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:643
+#: data/campaigns/Heir_To_The_Throne/scenarios/44_Underground_Channels.cfg:645
 msgid ""
 "It’s starting to rain, and these caves are about to flood! The undead can "
 "survive underwater, but I can’t. We’ll have to break off the attack."
@@ -26309,6 +26305,12 @@ msgid ""
 msgstr ""
 "Delfador est un chef, et il peut recruter des élémentaux lorsqu'il se trouve "
 "sur un donjon."
+
+#~ msgid "{ON_DIFFICULTY4 15 25 30 40} gold"
+#~ msgstr "{ON_DIFFICULTY4 15 25 30 40} pièces d’or"
+
+#~ msgid "{ON_DIFFICULTY4 10 15 20 25} gold"
+#~ msgstr "{ON_DIFFICULTY4 10 15 20 25} pièces d’or"
 
 #~ msgid ""
 #~ "The Great Continent is a place of many possibilities.\n"

@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-08-02 22:45-0500\n"
+"POT-Creation-Date: 2026-08-18 10:18-0500\n"
 "PO-Revision-Date: 2026-05-23 19:45-0300\n"
 "Last-Translator: Sebastián Lecchini<sebas38760@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -3549,7 +3549,7 @@ msgstr "Cargar módulo"
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
 #: src/gui/dialogs/editor/edit_unit.cpp:296
-#: src/preferences/preferences.cpp:1352
+#: src/preferences/preferences.cpp:1291
 msgid "Select"
 msgstr "Seleccionar"
 
@@ -4364,7 +4364,6 @@ msgstr "Editor de tipos de unidad"
 
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1200
-#: data/gui/themes/default/dialogs/preferences/01_general.cfg:226
 msgid "Main Stats"
 msgstr "Estadísticas principales"
 
@@ -5028,6 +5027,7 @@ msgstr ""
 #. [widget]: id=tab_label
 #: data/gui/themes/default/dialogs/game_version.cfg:887
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:564
+#: data/gui/themes/default/dialogs/preferences/01_general.cfg:226
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:405
 #: data/gui/themes/default/dialogs/server_info.cfg:181
 #: src/hotkey/hotkey_command.cpp:51
@@ -8281,8 +8281,8 @@ msgstr "Descargando datos de la sala"
 #: src/gui/dialogs/lua_interpreter.cpp:628
 msgid "The lua console can only be used in debug mode! (Run ‘:debug’ first)"
 msgstr ""
-"¡La consola de lua solo puede usarse en modo depuración! (Ejecute primero "
-"':debug')"
+"¡La consola de lua solo puede usarse en modo depuración! (Ejecute primero ':"
+"debug')"
 
 #: src/gui/dialogs/lua_interpreter.cpp:629
 msgid "lua console"
@@ -9819,11 +9819,11 @@ msgstr "Mostrar consola Lua"
 msgid "Unrecognized Command"
 msgstr "Comando desconocido"
 
-#: src/preferences/preferences.cpp:1309
+#: src/preferences/preferences.cpp:1248
 msgid "No known themes. Try changing from within an existing game."
 msgstr "No hay temas conocidos. Intente cambiarlos desde un juego existente."
 
-#: src/preferences/preferences.cpp:1346
+#: src/preferences/preferences.cpp:1285
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
@@ -9834,15 +9834,15 @@ msgstr ""
 "local. Se encuentra normalmente en la misma carpeta que el ejecutable del "
 "juego."
 
-#: src/preferences/preferences.cpp:1350
+#: src/preferences/preferences.cpp:1289
 msgid "Find Server Application"
 msgstr "Encontrar la aplicación de servidor"
 
-#: src/preferences/preferences.cpp:1832
+#: src/preferences/preferences.cpp:1771
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/preferences.cpp:1834
+#: src/preferences/preferences.cpp:1773
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
@@ -10565,8 +10565,8 @@ msgstr "En la sección «[$section|]», falta el subtipo obligatorio «[$tag|]»
 #~ "necesita dar una contraseña si desea utilizar un nombre de usuario "
 #~ "registrado.\n"
 #~ "\n"
-#~ "El foro de «La batalla por Wesnoth» se encuentra en https://"
-#~ "forums.wesnoth.org/ (sólo en inglés)."
+#~ "El foro de «La batalla por Wesnoth» se encuentra en https://forums."
+#~ "wesnoth.org/ (sólo en inglés)."
 
 #~ msgid "Available at titlescreen"
 #~ msgstr "Disponible en la pantalla de título"

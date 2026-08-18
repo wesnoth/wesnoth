@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-08-02 22:45-0500\n"
+"POT-Creation-Date: 2026-08-18 10:18-0500\n"
 "PO-Revision-Date: 2026-06-23 19:13+0500\n"
 "Last-Translator: Alexandr Obolonkin (Alexinor) <obolonkin@proton.me>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
@@ -3521,7 +3521,7 @@ msgstr "Загрузить ядро"
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
 #: src/gui/dialogs/editor/edit_unit.cpp:296
-#: src/preferences/preferences.cpp:1352
+#: src/preferences/preferences.cpp:1291
 msgid "Select"
 msgstr "Выбрать"
 
@@ -4332,7 +4332,6 @@ msgstr "Редактор типа юнитов"
 
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1200
-#: data/gui/themes/default/dialogs/preferences/01_general.cfg:226
 msgid "Main Stats"
 msgstr "Основная статистика"
 
@@ -4992,6 +4991,7 @@ msgstr ""
 #. [widget]: id=tab_label
 #: data/gui/themes/default/dialogs/game_version.cfg:887
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:564
+#: data/gui/themes/default/dialogs/preferences/01_general.cfg:226
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:405
 #: data/gui/themes/default/dialogs/server_info.cfg:181
 #: src/hotkey/hotkey_command.cpp:51
@@ -9775,11 +9775,11 @@ msgstr "Показать Lua-консоль"
 msgid "Unrecognized Command"
 msgstr "Непонятная команда"
 
-#: src/preferences/preferences.cpp:1309
+#: src/preferences/preferences.cpp:1248
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Неизвестная тема. Попробуйте поменять в существующей игре."
 
-#: src/preferences/preferences.cpp:1346
+#: src/preferences/preferences.cpp:1285
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
@@ -9789,15 +9789,15 @@ msgstr ""
 "многопользовательского сервера и требуется для размещения локальных сетевых "
 "игр. Оно обычно находится в той же папке, что и исполняемый файл игры."
 
-#: src/preferences/preferences.cpp:1350
+#: src/preferences/preferences.cpp:1289
 msgid "Find Server Application"
 msgstr "Найти серверное приложение"
 
-#: src/preferences/preferences.cpp:1832
+#: src/preferences/preferences.cpp:1771
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/preferences.cpp:1834
+#: src/preferences/preferences.cpp:1773
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 

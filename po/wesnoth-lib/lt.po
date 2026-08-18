@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-08-02 22:45-0500\n"
+"POT-Creation-Date: 2026-08-18 10:18-0500\n"
 "PO-Revision-Date: 2019-03-28 21:51+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
@@ -3344,7 +3344,7 @@ msgstr "Įkelti branduolį"
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
 #: src/gui/dialogs/editor/edit_unit.cpp:296
-#: src/preferences/preferences.cpp:1352
+#: src/preferences/preferences.cpp:1291
 msgid "Select"
 msgstr "Pasirinkti"
 
@@ -4193,7 +4193,6 @@ msgstr "Kitas karys"
 
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1200
-#: data/gui/themes/default/dialogs/preferences/01_general.cfg:226
 #, fuzzy
 #| msgid "Game Stats"
 msgid "Main Stats"
@@ -4848,6 +4847,7 @@ msgstr ""
 #. [widget]: id=tab_label
 #: data/gui/themes/default/dialogs/game_version.cfg:887
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:564
+#: data/gui/themes/default/dialogs/preferences/01_general.cfg:226
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:405
 #: data/gui/themes/default/dialogs/server_info.cfg:181
 #: src/hotkey/hotkey_command.cpp:51
@@ -9717,26 +9717,26 @@ msgstr "Rodyti Lua konsolę"
 msgid "Unrecognized Command"
 msgstr "Neatpažinta komanda"
 
-#: src/preferences/preferences.cpp:1309
+#: src/preferences/preferences.cpp:1248
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""
 
-#: src/preferences/preferences.cpp:1346
+#: src/preferences/preferences.cpp:1285
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
 "normally be found in the same folder as the game executable."
 msgstr ""
 
-#: src/preferences/preferences.cpp:1350
+#: src/preferences/preferences.cpp:1289
 msgid "Find Server Application"
 msgstr "Rasti serverio vykdomąjį failą"
 
-#: src/preferences/preferences.cpp:1832
+#: src/preferences/preferences.cpp:1771
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/preferences.cpp:1834
+#: src/preferences/preferences.cpp:1773
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 

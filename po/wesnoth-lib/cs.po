@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-08-02 22:45-0500\n"
+"POT-Creation-Date: 2026-08-18 10:18-0500\n"
 "PO-Revision-Date: 2026-05-24 08:34+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -300,8 +300,8 @@ msgid ""
 "identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgstr ""
 "<italic>text='Pouště'</italic> mají poněkud odlišné složení než malé jámy "
-"s pískem nebo pláže, hru ale ovlivňují obdobně. Podívej se na "
-"<ref>dst='..terrain_sand' text='písek'</ref>."
+"s pískem nebo pláže, hru ale ovlivňují obdobně. Podívej se na <ref>dst='.."
+"terrain_sand' text='písek'</ref>."
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -3193,8 +3193,8 @@ msgid ""
 "campaign_landing^For a full list of changes, consult our official changelog "
 "at https://www.wesnoth.org/start/1.20/"
 msgstr ""
-"Úplný seznam změn najdeš v oficiálním záznamu na adrese https://"
-"www.wesnoth.org/start/1.20/."
+"Úplný seznam změn najdeš v oficiálním záznamu na adrese https://www.wesnoth."
+"org/start/1.20/."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:248
@@ -3485,7 +3485,7 @@ msgstr "Načíst jádro"
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
 #: src/gui/dialogs/editor/edit_unit.cpp:296
-#: src/preferences/preferences.cpp:1352
+#: src/preferences/preferences.cpp:1291
 msgid "Select"
 msgstr "Vybrat"
 
@@ -4297,7 +4297,6 @@ msgstr "Editor typu jednotky"
 
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1200
-#: data/gui/themes/default/dialogs/preferences/01_general.cfg:226
 msgid "Main Stats"
 msgstr "Základní statistiky"
 
@@ -4961,6 +4960,7 @@ msgstr "Tahová strategická hra s motivem fantasy a otevřeným zdrojovým k�
 #. [widget]: id=tab_label
 #: data/gui/themes/default/dialogs/game_version.cfg:887
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:564
+#: data/gui/themes/default/dialogs/preferences/01_general.cfg:226
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:405
 #: data/gui/themes/default/dialogs/server_info.cfg:181
 #: src/hotkey/hotkey_command.cpp:51
@@ -8296,8 +8296,8 @@ msgid ""
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
 "S databází pro ověření verze rozšíření, která je potřebná pro čekárnu hry "
-"více hráčů, není něco v pořádku. Prosím nahlas to na https://"
-"bugs.wesnoth.org."
+"více hráčů, není něco v pořádku. Prosím nahlas to na https://bugs.wesnoth."
+"org."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:992
 msgid "This game is password protected. Join using moderator rights anyway?"
@@ -9704,11 +9704,11 @@ msgstr "Zobrazit Lua konzoli"
 msgid "Unrecognized Command"
 msgstr "Neznámý příkaz"
 
-#: src/preferences/preferences.cpp:1309
+#: src/preferences/preferences.cpp:1248
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Žádné známé motivy. Zkus změnit během existující hry."
 
-#: src/preferences/preferences.cpp:1346
+#: src/preferences/preferences.cpp:1285
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
@@ -9718,16 +9718,16 @@ msgstr ""
 "hráčů a je požadována pro pořádání her na místní síti. Obvykle se nachází ve "
 "stejné složce jako spustitelný soubor hry."
 
-#: src/preferences/preferences.cpp:1350
+#: src/preferences/preferences.cpp:1289
 msgid "Find Server Application"
 msgstr "Najít aplikaci serveru"
 
-#: src/preferences/preferences.cpp:1832
+#: src/preferences/preferences.cpp:1771
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
 # formát času pro 2x12 + AM/PM
-#: src/preferences/preferences.cpp:1834
+#: src/preferences/preferences.cpp:1773
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 

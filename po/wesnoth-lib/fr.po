@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Lib-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-08-02 22:45-0500\n"
+"POT-Creation-Date: 2026-08-18 10:18-0500\n"
 "PO-Revision-Date: 2024-06-05 14:43+0100\n"
 "Last-Translator: Thierry <ameilthi@gmail.com>\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
@@ -3541,7 +3541,7 @@ msgstr "Charger le noyau"
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
 #: src/gui/dialogs/editor/edit_unit.cpp:296
-#: src/preferences/preferences.cpp:1352
+#: src/preferences/preferences.cpp:1291
 msgid "Select"
 msgstr "Sélectionner"
 
@@ -4361,7 +4361,6 @@ msgstr "Éditeur d'unité"
 
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1200
-#: data/gui/themes/default/dialogs/preferences/01_general.cfg:226
 msgid "Main Stats"
 msgstr "Statistiques principales"
 
@@ -5022,6 +5021,7 @@ msgstr ""
 #. [widget]: id=tab_label
 #: data/gui/themes/default/dialogs/game_version.cfg:887
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:564
+#: data/gui/themes/default/dialogs/preferences/01_general.cfg:226
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:405
 #: data/gui/themes/default/dialogs/server_info.cfg:181
 #: src/hotkey/hotkey_command.cpp:51
@@ -9820,12 +9820,12 @@ msgstr "Afficher la console Lua"
 msgid "Unrecognized Command"
 msgstr "Commande non reconnue"
 
-#: src/preferences/preferences.cpp:1309
+#: src/preferences/preferences.cpp:1248
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""
 "Aucun thème connu. Essayez de le changer à partie d'une partie en cours."
 
-#: src/preferences/preferences.cpp:1346
+#: src/preferences/preferences.cpp:1285
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
@@ -9835,15 +9835,15 @@ msgstr ""
 "serveur multijoueur et est requis pour héberger des parties en réseau local. "
 "Il se trouve normalement dans le même répertoire que l’exécutable du jeu."
 
-#: src/preferences/preferences.cpp:1350
+#: src/preferences/preferences.cpp:1289
 msgid "Find Server Application"
 msgstr "Rechercher le serveur d’application"
 
-#: src/preferences/preferences.cpp:1832
+#: src/preferences/preferences.cpp:1771
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/preferences.cpp:1834
+#: src/preferences/preferences.cpp:1773
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 

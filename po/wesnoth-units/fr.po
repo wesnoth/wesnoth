@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Units-1.16.6\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-08-03 03:45 UTC\n"
+"POT-Creation-Date: 2026-08-18 15:19 UTC\n"
 "PO-Revision-Date: 2024-02-13 18:32+0100\n"
 "Last-Translator: alberic89 <alberic89@gmx.com>\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
@@ -55,6 +55,8 @@ msgstr "masse"
 #: data/core/units/dunefolk/Sky_Hunter.cfg:136
 #: data/core/units/humans/Loyalist_Bowman.cfg:23
 #: data/core/units/orcs/Crossbowman.cfg:32 data/core/units/orcs/Slurbow.cfg:32
+#: data/internal/Rogue_Mage/units/Bandit_Rogue_Mage.cfg:26
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:44
 msgid "short sword"
 msgstr "épée courte"
 
@@ -86,6 +88,10 @@ msgstr "onde glaciale"
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:67
 #: data/core/units/undead/Necro_Lich.cfg:49
 #: data/core/units/undead/Necromancer.cfg:49
+#: data/internal/Rogue_Mage/units/Bandit_Arcane_Enforcer.cfg:59
+#: data/internal/Rogue_Mage/units/Bandit_Rogue_Mage.cfg:35
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:65
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:62
 msgid "shadow wave"
 msgstr "onde obscure"
 
@@ -253,6 +259,9 @@ msgstr "toucher"
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:26
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:23
 #: data/core/units/humans/Mage_of_Light.cfg:46
+#: data/internal/Dwarvish_Witness/units/Dwarvish_Annalist.cfg:33
+#: data/internal/Dwarvish_Witness/units/Dwarvish_Loremaster.cfg:34
+#: data/internal/Dwarvish_Witness/units/Dwarvish_Witness.cfg:29
 msgid "flail"
 msgstr "fléau d'armes"
 
@@ -355,6 +364,7 @@ msgstr "épée"
 #: data/core/units/orcs/Ruler.cfg:34 data/core/units/orcs/Slurbow.cfg:41
 #: data/core/units/orcs/Slurbow.cfg:50 data/core/units/orcs/Sovereign.cfg:35
 #: data/core/units/undead/Skele_Death_Knight.cfg:39
+#: data/internal/Rogue_Mage/units/Bandit_Arcane_Enforcer.cfg:50
 msgid "crossbow"
 msgstr "arbalète"
 
@@ -8910,6 +8920,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/orcs/Ruler.cfg:25 data/core/units/orcs/Sovereign.cfg:26
 #: data/core/units/orcs/Warlord.cfg:30 data/core/units/orcs/Warrior.cfg:38
+#: data/internal/Rogue_Mage/units/Bandit_Arcane_Enforcer.cfg:41
 msgid "greatsword"
 msgstr "grande épée"
 
@@ -10296,6 +10307,149 @@ msgstr ""
 "qu’il diffère de la magie des elfes et de celle des ondins. Les autres races "
 "ne peuvent qu’en deviner les secrets."
 
+#. [unit_type]: id=Arcane Enforcer, race=human, gender=male,female
+#. "enforcer" as in "gang enforcer"
+#: data/internal/Rogue_Mage/units/Bandit_Arcane_Enforcer.cfg:6
+#, fuzzy
+#| msgid "Drake Enforcer"
+msgid "Arcane Enforcer"
+msgstr "Exécuteur dracan"
+
+#. [unit_type]: id=Arcane Enforcer, race=human, gender=male,female
+#: data/internal/Rogue_Mage/units/Bandit_Arcane_Enforcer.cfg:21
+msgid ""
+"The harsh, violent life of an outlaw does not readily lend itself to magical "
+"study. Rogue mages who survive their first few years often do so with the "
+"aid of organized bandit gangs, who are more than happy to provide protection "
+"in return for muscle and loyalty. Outfitted with stolen crossbows and "
+"augmenting their piecemeal armor with scraps of half-remembered magic, these "
+"ex-magi brawl with surprising competence, especially under the cover of "
+"darkness."
+msgstr ""
+
+#. [female]: gender=female
+#: data/internal/Rogue_Mage/units/Bandit_Arcane_Enforcer.cfg:122
+#, fuzzy
+#| msgid "female^Drake Enforcer"
+msgid "female^Arcane Enforcer"
+msgstr "Exécutrice dracane"
+
+#. [unit_type]: id=Rogue Mage, race=human, gender=male,female
+#: data/internal/Rogue_Mage/units/Bandit_Rogue_Mage.cfg:5
+#, fuzzy
+#| msgid "Red Mage"
+msgid "Rogue Mage"
+msgstr "Mage rouge"
+
+#. [unit_type]: id=Rogue Mage, race=human, gender=male,female
+#: data/internal/Rogue_Mage/units/Bandit_Rogue_Mage.cfg:19
+msgid ""
+"Not every student has the skill and temperament to become a mage. Novices "
+"often find themselves abandoned by their masters, sometimes for attempting "
+"to practice forbidden arts, but more often for mundane transgressions such "
+"as theft or embezzlement, or even a simple lack of funds.\n"
+"\n"
+"While most of these failed wizards switch to other paths, a driven few turn "
+"to banditry as a way of continuing to fund their independent studies. Now "
+"completely outside the law, Rogue Mages do whatever is necessary to support "
+"themselves, and will often dabble in the use of black magic as a result. "
+"Although they are rarely as skilled as wizards with more formal training, "
+"their spells can still be quite dangerous, and their banditry has resulted "
+"in moderate skill with the short sword."
+msgstr ""
+
+#. [female]: gender=female
+#: data/internal/Rogue_Mage/units/Bandit_Rogue_Mage.cfg:80
+#, fuzzy
+#| msgid "female^Red Mage"
+msgid "female^Rogue Mage"
+msgstr "Mage rouge"
+
+#. [unit_type]: id=Shadow Lord, race=human, gender=male,female
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:5
+#, fuzzy
+#| msgid "Shadow"
+msgid "Shadow Lord"
+msgstr "Ombre"
+
+#. [unit_type]: id=Shadow Lord, race=human, gender=male,female
+#. I think of regular mages as modern-day professors, or perhaps ancient greek philosophers. In comparison, a Shadow Lord is more like an unemployed, obsessive savant who hasn't showered in three months but somehow discovered the secret to cold fusion while working alone in his dingy apartment.
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:20
+msgid ""
+"The fruits of the paths of either light or darkness are well known to magi: "
+"the brilliance of a white mage or the deep gloom of a necromancer. Much less "
+"well known is the art of the Shadow Lord, those few who master a union of "
+"both white and black magic. Though decades of zealous study and self-neglect "
+"have left them drained of strength, these savants have transcended the need "
+"for crude physical weapons, instead channeling their energies into "
+"devastatingly accurate magical attacks that undercut their enemies’ defenses."
+msgstr ""
+
+#. [attack]: type=blade
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:47
+#, fuzzy
+#| msgid "war blade"
+msgid "astral blade"
+msgstr "lame de guerre"
+
+#. [damage_type]: id=cold_damage
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:53
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:51
+#, fuzzy
+#| msgid "chill wave"
+msgid "chill"
+msgstr "onde glaciale"
+
+#. [damage_type]: id=cold_damage
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:54
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:52
+msgid ""
+"This attack can deal either blade or cold damage, depending on which would "
+"be more effective."
+msgstr ""
+
+#. [damage_type]: id=cold_damage
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:55
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:53
+msgid ""
+"This unit’s melee attack can deal either blade or cold damage, depending on "
+"which would be more effective."
+msgstr ""
+
+# À syncroniser avec la traduction de Dark Horse (si elle change)
+#. [female]: gender=female
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:103
+#, fuzzy
+#| msgid "female^Dark Horse"
+msgid "female^Shadow Lord"
+msgstr "Jument des ténèbres"
+
+#. [unit_type]: id=Shadow Mage, race=human, gender=male,female
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:5
+#, fuzzy
+#| msgid "shadow wave"
+msgid "Shadow Mage"
+msgstr "onde obscure"
+
+#. [unit_type]: id=Shadow Mage, race=human, gender=male,female
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:18
+msgid ""
+"Dabbling in many schools of magic yet not fully embracing any, the "
+"impoverished, obsessive study of an independent mage can sometimes yield "
+"impressive results. Unrestrained by the structure of formal apprenticeship, "
+"Shadow Magi have learned to weave together spell and sword, seizing the "
+"secrets of both light and darkness with equal fervor. One of the many fruits "
+"of their labor is the unnerving power to vanish and evade seemingly-lethal "
+"blows, only to reappear moments later and strike in sudden retaliation."
+msgstr ""
+
+#. [female]: gender=female
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:100
+#, fuzzy
+#| msgid "female^Red Mage"
+msgid "female^Shadow Mage"
+msgstr "Mage rouge"
+
 #~ msgid ""
 #~ "Small but deadly in large numbers, fire ants possess fierce fangs and an "
 #~ "unusual ability to generate fire. Though these creatures typically "
@@ -10374,27 +10528,6 @@ msgstr ""
 #~ "Jadis de grands guerriers sillonnant les plaines, ces cavaliers montés "
 #~ "sur le squelette de leur cheval sont sortis de la tombe par une magie "
 #~ "impie pour semer la peur et la destruction."
-
-#, fuzzy
-#~| msgid "Shadow"
-#~ msgid "Shadow Lord"
-#~ msgstr "Ombre"
-
-#, fuzzy
-#~| msgid "war blade"
-#~ msgid "astral blade"
-#~ msgstr "lame de guerre"
-
-#, fuzzy
-#~| msgid "chill wave"
-#~ msgid "chill"
-#~ msgstr "onde glaciale"
-
-# À syncroniser avec la traduction de Dark Horse (si elle change)
-#, fuzzy
-#~| msgid "female^Dark Horse"
-#~ msgid "female^Shadow Lord"
-#~ msgstr "Jument des ténèbres"
 
 #, fuzzy
 #~| msgid "fire"
