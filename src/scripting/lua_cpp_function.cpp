@@ -89,7 +89,7 @@ void register_metatable ( lua_State* L )
 	lua_setfield(L, -2, "__index");
 
 	lua_pop(L, 1);
-	
+
 	// Also set the metatable for regular functions
 	lua_pushcfunction(L, intf_tostring2);
 	lua_createtable(L, 0, 1);
