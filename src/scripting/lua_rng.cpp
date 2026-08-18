@@ -93,7 +93,7 @@ void load_tables(lua_State* L)
 	lua_pushcfunction(L, &impl_rng_create);
 	lua_setfield(L, -2, "create");
 	lua_setglobal(L, Rng);
-	
+
 	// Create the metatable for Rng objects
 	luaL_newmetatable(L, Rng);
 	static luaL_Reg const meta_callbacks[] {
