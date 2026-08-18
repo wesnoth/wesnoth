@@ -341,6 +341,7 @@ void campaign_selection::pre_show()
 
 	/***** Setup campaign tree. *****/
 	tree_view& tree = find_widget<tree_view>("campaign_tree");
+	menu_button& rng_menu = find_widget<menu_button>("rng_menu");
 
 	connect_signal_notify_modified(tree,
 		std::bind(&campaign_selection::campaign_selected, this));
@@ -357,13 +358,33 @@ void campaign_selection::pre_show()
 	connect_signal_mouse_left_click(find_widget<button>("proceed"),
 		std::bind(&campaign_selection::proceed, this));
 
-	// Pressing Enter closes the window with retval::OK via the base window's default
-	// key handling, which doesn't account for the 'Get Add-ons' entry. Redirect to
-	// OPEN_ADDON_MANAGER if the dummy entry is selected.
-	set_exit_hook(window::exit_hook::ok_only, [this, &tree] {
-		if(tree.selected_item() && tree.selected_item()->id() == PAGE_ID_GET_ADDONS) {
-			set_retval(OPEN_ADDON_MANAGER, false);
+	// Pressing Enter closes the window with retval::OK via the base window's default key handling,
+	// bypassing proceed() entirely (which is called by the 'proceed' button and the tree's double-click.
+	// So the finalisation that used to live only in proceed() - resolving which page was chosen,
+	// redirecting to the add-on manager for the dummy 'Get Add-ons' entry, and persisting the
+	// RNG/modification settings - is done here instead, right before the window actually closes. This
+	// covers every path that can produce retval::OK uniformly.
+	set_exit_hook(window::exit_hook::ok_only, [this, &tree, &rng_menu] {
+		if(!tree.selected_item()) {
+			return false;
 		}
+
+		const std::string& campaign_id = tree.selected_item()->id();
+		if(campaign_id == PAGE_ID_GET_ADDONS) {
+			set_retval(OPEN_ADDON_MANAGER, false);
+			return true;
+		}
+
+		auto iter = std::find(page_ids_.begin(), page_ids_.end(), campaign_id);
+		if(iter == page_ids_.end()) {
+			return false;
+		}
+		choice_ = std::distance(page_ids_.begin(), iter);
+
+		rng_mode_ = RNG_MODE(std::clamp<unsigned>(rng_menu.get_value(), RNG_DEFAULT, RNG_BIASED));
+		prefs::get().set_campaign_rng_mode(rng_mode_prefs[rng_mode_]);
+		prefs::get().set_modifications(engine_.active_mods(), false);
+
 		return true;
 	});
 
@@ -475,7 +496,6 @@ void campaign_selection::pre_show()
 	// Set up RNG mode dropdown
 	//
 	// New installs default to "Reduced RNG"; existing installs restore the last selection.
-	menu_button& rng_menu = find_widget<menu_button>("rng_menu");
 	auto rng_it = std::find(rng_mode_prefs.begin(), rng_mode_prefs.end(), prefs::get().campaign_rng_mode());
 	rng_menu.set_selected(rng_it != rng_mode_prefs.end()
 		? static_cast<unsigned>(std::distance(rng_mode_prefs.begin(), rng_it))
@@ -573,25 +593,14 @@ void campaign_selection::proceed()
 {
 	tree_view& tree = find_widget<tree_view>("campaign_tree");
 
-	if(tree.empty() || !tree.selected_item()) {
+	if(tree.empty() || !tree.selected_item() || tree.selected_item()->id().empty()) {
 		return;
 	}
 
-	const std::string& campaign_id = tree.selected_item()->id();
-	if(!campaign_id.empty()) {
-		auto iter = std::find(page_ids_.begin(), page_ids_.end(), campaign_id);
-		if(iter != page_ids_.end()) {
-			choice_ = std::distance(page_ids_.begin(), iter);
-		}
-		set_retval(retval::OK);
-	}
-
-
-	rng_mode_ = RNG_MODE(std::clamp<unsigned>(find_widget<menu_button>("rng_menu").get_value(), RNG_DEFAULT, RNG_BIASED));
-
-	prefs::get().set_campaign_rng_mode(rng_mode_prefs[rng_mode_]);
-
-	prefs::get().set_modifications(engine_.active_mods(), false);
+	// The exit hook set up in pre_show() resolves the selection, redirects to the
+	// add-on manager if needed, and persists the RNG/mod settings once the window
+	// actually closes.
+	set_retval(retval::OK);
 }
 
 void campaign_selection::mod_toggled()
