@@ -1668,7 +1668,7 @@ void server::handle_join_game(player_iterator player, simple_wml::node& join)
 	}
 }
 
-void setup_queue_options(const char* type, const config& qoptions, simple_wml::node& game)
+static void setup_queue_options(const char* type, const config& qoptions, simple_wml::node& game)
 {
 	for(const config& option_type : qoptions.child_range(type)) {
 		simple_wml::node& options = game.add_child("options");
