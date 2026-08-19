@@ -84,7 +84,7 @@ namespace wesnothd
 {
 // we take profiling info on every n requests
 int request_sample_frequency = 1;
-version_info secure_version = version_info("1.14.4");
+version_info secure_version = version_info("1.18.8");
 
 static void make_add_diff(
 		const simple_wml::node& src, const char* gamelist, const char* type, simple_wml::document& out, int index = -1)
