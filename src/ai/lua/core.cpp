@@ -615,7 +615,7 @@ static void push_attack_analysis(lua_State *L, const attack_analysis& aa)
 	lua_pushlightuserdata(L, &get_engine(L));
 	lua_setiuservalue(L, -2, 1);
 }
-	
+
 ATTACK_GETTER("rating", lua_index_raw) {
 	(void)atk;
 	lua_pushcfunction(L, &impl_attack_rating);
