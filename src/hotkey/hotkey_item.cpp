@@ -23,6 +23,7 @@
 #include "hotkey/hotkey_command.hpp"
 #include "key.hpp"
 #include "log.hpp"
+#include "preferences/preferences_list.hpp"
 #include "sdl/input.hpp" // for sdl::get_mods
 #include "serialization/unicode.hpp"
 #include "utils/general.hpp"
@@ -410,7 +411,7 @@ const hotkey_ptr get_hotkey(const SDL_Event& event)
 void load_default_hotkeys(const game_config_view& cfg)
 {
 	hotkey_list new_hotkeys;
-	for(const config& hk : cfg.child_range("hotkey")) {
+	for(const config& hk : cfg.child_range(prefs_list::hotkey)) {
 		if(hotkey_ptr item = load_from_config(hk); !item->null()) {
 			new_hotkeys.push_back(std::move(item));
 		}
@@ -422,7 +423,7 @@ void load_default_hotkeys(const game_config_view& cfg)
 
 void load_custom_hotkeys(const game_config_view& cfg)
 {
-	for(const config& hk : cfg.child_range("hotkey")) {
+	for(const config& hk : cfg.child_range(prefs_list::hotkey)) {
 		if(hotkey_ptr item = load_from_config(hk); !item->null()) {
 			item->unset_default();
 			add_hotkey(item);
@@ -434,7 +435,7 @@ void reset_default_hotkeys()
 {
 	hotkeys_.clear();
 
-	if(!default_hotkey_cfg_.child_range("hotkey").empty()) {
+	if(!default_hotkey_cfg_.child_range(prefs_list::hotkey).empty()) {
 		load_default_hotkeys(default_hotkey_cfg_);
 	} else {
 		ERR_G << "no default hotkeys set yet; all hotkeys are now unassigned!";
@@ -448,11 +449,11 @@ const hotkey_list& get_hotkeys()
 
 void save_hotkeys(config& cfg)
 {
-	cfg.clear_children("hotkey");
+	cfg.clear_children(prefs_list::hotkey);
 
 	for(hotkey_ptr& item : hotkeys_) {
 		if((!item->is_default() && item->active()) || (item->is_default() && item->is_disabled())) {
-			item->save(cfg.add_child("hotkey"));
+			item->save(cfg.add_child(prefs_list::hotkey));
 		}
 	}
 }

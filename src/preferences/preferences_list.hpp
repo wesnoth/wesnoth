@@ -131,6 +131,8 @@ struct preferences_list_defines
 	ADDPREF(history)
 	/** the most recent multiplayer server hostname */
 	ADDPREF(host)
+	/** changed hotkeys */
+	ADDPREF(hotkey)
 	/** whether to play idle animations */
 	ADDPREF(idle_anim)
 	/** how frequently to play idle animations */
@@ -452,6 +454,7 @@ struct preferences_list_defines
 		hide_whiteboard,
 		history,
 		host,
+		hotkey,
 		idle_anim,
 		idle_anim_rate,
 		lobby_joins,
