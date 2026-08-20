@@ -567,6 +567,7 @@ static int impl_atkstat_destroy(lua_State* L)
 {
 	auto atk = static_cast<attack_analysis*>(luaL_checkudata(L, -1, atkKey));
 	atk->~attack_analysis();
+	return 0;
 }
 
 static int impl_atkstat_tostring(lua_State* L)
@@ -616,11 +617,13 @@ static void push_attack_analysis(lua_State *L, const attack_analysis& aa)
 }
 	
 ATTACK_GETTER("rating", lua_index_raw) {
+	(void)atk;
 	lua_pushcfunction(L, &impl_attack_rating);
 	return lua_index_raw(L);
 }
 
 ATTACK_GETTER("movements", lua_index_raw) {
+	(void)atk;
 	push_movements(L, atk.movements);
 	return lua_index_raw(L);
 }
