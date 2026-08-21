@@ -66,7 +66,7 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 	// Touch hotkey
 	register_hotkey(hotkey::HOTKEY_TOUCH_HEX, [this](auto&&...) {
 		auto& mhandler = controller_.get_mouse_handler_base();
-		map_location loc = mhandler.get_last_hex();
+		map_location loc = display::get_singleton()->mouseover_hex();
 		bool is_selected = loc.valid();
 		if (is_selected) {
 			mhandler.touch_action(loc, controller_.is_browsing());
