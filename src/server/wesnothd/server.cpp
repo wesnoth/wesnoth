@@ -492,12 +492,14 @@ void server::load_config(bool reload)
 				update.set_attr_dup("action", "add");
 				update.set_attr_dup("display_name", info.display_name.c_str());
 				update.set_attr_int("players_required", info.players_required);
+				update.set_attr_dup("required_addons",  utils::join(info.required_addons).c_str());
 
 				send_to_lobby(queue_update);
 			} else if(
 				queue_info_.count(id) == 1 && (
 					info.display_name != queue_info_.at(id).display_name ||
-					info.players_required != queue_info_.at(id).players_required
+					info.players_required != queue_info_.at(id).players_required ||
+					info.required_addons != queue_info_.at(id).required_addons
 				)
 			) {
 				simple_wml::document queue_update;
@@ -506,6 +508,7 @@ void server::load_config(bool reload)
 				update.set_attr_dup("action", "update");
 				update.set_attr_dup("display_name", info.display_name.c_str());
 				update.set_attr_int("players_required", info.players_required);
+				update.set_attr_dup("required_addons",  utils::join(info.required_addons).c_str());
 
 				send_to_lobby(queue_update);
 			}
@@ -875,6 +878,7 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 		queue_node.set_attr_dup("display_name", queue.display_name.c_str());
 		queue_node.set_attr_int("players_required", queue.players_required);
 		queue_node.set_attr_dup("current_players", utils::join(queue.players_in_queue).c_str());
+		queue_node.set_attr_dup("required_addons", utils::join(queue.required_addons).c_str());
 	}
 	coro_send_doc(socket, join_lobby_response, yield);
 
