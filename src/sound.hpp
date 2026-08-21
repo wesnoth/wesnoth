@@ -156,7 +156,7 @@ void set_sound_volume(volume vol);
 void set_bell_volume(volume vol);
 void set_UI_volume(volume vol);
 
-utils::optional<unsigned int> get_current_track_index();
+utils::optional<std::size_t> get_current_track_index();
 std::shared_ptr<sound::music_track> get_current_track();
 std::shared_ptr<sound::music_track> get_previous_music_track();
 unsigned int get_num_tracks();
