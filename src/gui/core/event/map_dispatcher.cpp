@@ -1,8 +1,10 @@
 #include "gui/core/event/map_dispatcher.hpp"
 #include "gui/core/event/handler.hpp"
+#include "gui/widgets/settings.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
+#include "sdl/input.hpp"
 #include "video.hpp"
 
 namespace gui2
@@ -40,6 +42,9 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 	connect_signal<SDL_WHEEL_DOWN>(std::bind(
 		&map_dispatcher::mouse_wheel, this, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6));
 
+	connect_signal<SDL_LONG_TOUCH>(std::bind(
+		&map_dispatcher::long_touch, this, std::placeholders::_3, std::placeholders::_5));
+
 	// Mouse Hotkeys
 	register_hotkey(hotkey::HOTKEY_SELECT_AND_ACTION, [this](auto&&...) {
 		auto& mhandler = controller_.get_mouse_handler_base();
@@ -68,6 +73,8 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 		}
 		return is_selected;
 	});
+
+	// Keyboard special keys (ESC)
 	connect_signal<event::SDL_KEY_DOWN>(std::bind(
 		&map_dispatcher::key_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6));
 }
@@ -195,6 +202,38 @@ void map_dispatcher::mouse_wheel(
 	mhandler.mouse_wheel(scroll.x, -scroll.y, controller_.is_browsing());
 
 	handled = true;
+}
+
+static int drag_threshold()
+{
+	// Function uses window resolution as an estimate of users perception of distance
+	// Tune this variable if necessary:
+	const unsigned threshold_1080p = 14; // threshold number of pixels for 1080p
+	double screen_diagonal = std::hypot(settings::screen_width, settings::screen_height);
+	const double scale_factor = threshold_1080p / std::hypot(1080,1920);
+	return static_cast<int>(screen_diagonal * scale_factor);
+}
+
+void map_dispatcher::long_touch(
+	bool& handled,
+	const point& p)
+{
+	auto& mhandler = controller_.get_mouse_handler_base();
+
+	if(!mhandler.dragging_started()) {
+		float x_now;
+	 	float y_now;
+	 	sdl::get_mouse_state(&x_now, &y_now);
+
+		int dx = p.x - x_now;
+		int dy = p.y - y_now;
+		int threshold = drag_threshold();
+		bool yes_actually_dragging = dx * dx + dy * dy >= threshold * threshold;
+
+	 	if(!yes_actually_dragging) {
+			mouse_right_down(handled, p);
+		}
+	}
 }
 
 bool map_dispatcher::show_menu(const theme::menu* menu, const point& loc, bool context_menu)

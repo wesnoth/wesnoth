@@ -164,6 +164,7 @@ enum ui_event : uint32_t {
 	SHOW_HELPTIP                   = encode_category(31, event_category::mouse),
 	SDL_TOUCH_UP                   = encode_category(32, event_category::mouse),
 	SDL_TOUCH_DOWN                 = encode_category(33, event_category::mouse),
+	SDL_LONG_TOUCH                 = encode_category(63, event_category::mouse),
 
 	SDL_KEY_DOWN                   = encode_category(34, event_category::keyboard),
 
