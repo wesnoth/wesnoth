@@ -132,6 +132,8 @@ bool show_unmoved_orb;
 
 int reach_map_border_opacity;
 int reach_map_tint_opacity;
+int reach_map_darken_opacity;
+bool reach_map_darken_tex;
 
 //
 // Music constants
@@ -206,6 +208,7 @@ std::string
 	mouseover,
 	selected,
 	editor_brush,
+	unreachable,
 	linger,
 	// GUI elements
 	observer,
@@ -359,6 +362,7 @@ void load_config(const config &v)
 		mouseover    = i["mouseover"].str();
 		selected     = i["selected"].str();
 		editor_brush = i["editor_brush"].str();
+		unreachable  = i["unreachable"].str();
 		linger       = i["linger"].str();
 
 		observer   = i["observer"].str();
@@ -379,8 +383,10 @@ void load_config(const config &v)
 	shroud_prefix = v["shroud_prefix"].str();
 	fog_prefix    = v["fog_prefix"].str();
 	reach_map_prefix 	= v["reach_map_prefix"].str();
-	reach_map_border_opacity = v["reach_map_border_opacity"].to_int(100);
-	reach_map_tint_opacity   = v["reach_map_tint_opacity"].to_int(50);//tint is at 50% by default instead of 100% to allow players to make it more opaque than normal
+	reach_map_border_opacity = v["reach_map_border_opacity"].to_int(60);
+	reach_map_tint_opacity   = v["reach_map_tint_opacity"].to_int(30);
+	reach_map_darken_opacity = v["reach_map_darken_opacity"].to_int(60);
+	reach_map_darken_tex = v["reach_map_darken_tex"].to_bool(true);
 
 	add_color_info(game_config_view::wrap(v), true);
 
