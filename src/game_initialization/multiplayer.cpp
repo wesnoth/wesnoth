@@ -26,6 +26,7 @@
 #include "gettext.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/gui.hpp"
 #include "gui/dialogs/multiplayer/lobby.hpp"
 #include "gui/dialogs/multiplayer/mp_create_game.hpp"
 #include "gui/dialogs/multiplayer/mp_join_game.hpp"
@@ -575,6 +576,10 @@ bool mp_manager::enter_lobby_mode()
 			case gui2::dialogs::mp_lobby::RELOAD_CONFIG:
 				// Let this function's caller reload the config and re-call.
 				return false;
+			case gui2::dialogs::mp_lobby::RELOAD_UI:
+				// Apply the new GUI2 theme, then rebuild the lobby window.
+				gui2::switch_theme(prefs::get().gui2_theme());
+				break;
 			default:
 				// Needed to handle the Quit signal and exit the loop
 				return true;

@@ -19,6 +19,9 @@
 #include "game_version.hpp"
 #include "gui/dialogs/multiplayer/mp_report.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
+#include "gui/dialogs/title_screen.hpp"
+#include "gui/gui.hpp"
+#include "gui/widgets/chatbox.hpp"
 #include "map_command_handler.hpp"
 #include "preferences/preferences.hpp"
 
@@ -119,7 +122,18 @@ void chat_command_handler::do_remove()
 
 void chat_command_handler::do_display()
 {
-	gui2::dialogs::preferences_dialog::display(pref_constants::VIEW_FRIENDS);
+	gui2::dialogs::preferences_dialog pref_dlg(pref_constants::VIEW_FRIENDS);
+	pref_dlg.show();
+	if(pref_dlg.get_retval() == gui2::dialogs::title_screen::RELOAD_UI) {
+		// Only the MP lobby chat needs special handling (closing and rebuilding
+		// its still-open owning window); everywhere else, applying the new theme
+		// in place is enough since there's no persistent GUI2 window to redraw.
+		if(auto* chat_box = dynamic_cast<gui2::chatbox*>(&chat_handler_)) {
+			chat_box->handle_gui2_theme_reload();
+		} else {
+			gui2::switch_theme(prefs::get().gui2_theme());
+		}
+	}
 }
 
 void chat_command_handler::do_version() {
