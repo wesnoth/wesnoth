@@ -1760,6 +1760,8 @@ SCENARIO_GETTER("end_level_data", lua_index_raw) {
 			{ "__gc",           &impl_end_level_data_collect},
 			{ nullptr, nullptr }
 		};
+		lua_pushstring(L, endLvlKey);
+		lua_setfield(L, -1, "__metatable");
 		luaL_setfuncs(L, callbacks, 0);
 	}
 	lua_setmetatable(L, -2);
