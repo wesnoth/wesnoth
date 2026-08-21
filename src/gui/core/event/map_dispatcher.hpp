@@ -27,6 +27,7 @@ public:
 	void mouse_middle_up(bool& handled, const point& p);
 	void mouse_middle_down(bool& handled, const point& p);
 	void mouse_wheel(bool& handled, const point& p, const point& scroll);
+	void long_touch(bool& handled, const point& p);
 
 	bool show_menu(const theme::menu* menu, const point& loc, bool context_menu);
 

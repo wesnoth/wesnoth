@@ -377,7 +377,7 @@ private:
 	friend void capture_keyboard(dispatcher* dispatcher);
 
 	int long_press_timer_id_;
-	void long_press_callback(int x, int y);
+	void long_press_callback(const point& position);
 };
 
 sdl_event_handler::sdl_event_handler()
@@ -424,19 +424,17 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		case SDL_EVENT_MOUSE_BUTTON_DOWN:
 			{
+				const point position{static_cast<int>(event.button.x), static_cast<int>(event.button.y)};
+
 				if(events::is_touch(event.button)) {
-					PLAIN_LOG << "long touch start";
-					int x = event.button.x;
-					int y = event.button.y;
 
 					if(long_press_timer_id_ == 0) {
 						long_press_timer_id_ = gui2::add_timer(
 							gui2::settings::popup_show_delay,
-							std::bind(&sdl_event_handler::long_press_callback, this, x, y));
+							std::bind(&sdl_event_handler::long_press_callback, this, position));
 					}
 				}
 
-				const point position{static_cast<int>(event.button.x), static_cast<int>(event.button.y)};
 				const hotkey::hotkey_ptr hk = hotkey::get_hotkey(event);
 				bool done = false;
 				if(!hk->null()) {
@@ -561,6 +559,10 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 		// Silently ignored events.
 		case SDL_EVENT_KEY_UP:
 			key_up(event);
+			break;
+
+		case SDL_LONG_TOUCH:
+			// handled in long_press_callback
 			break;
 
 		default:
@@ -793,12 +795,11 @@ void sdl_event_handler::mouse_wheel(const point& position, const point& scroll)
 	}
 }
 
-void sdl_event_handler::long_press_callback(int x, int y)
+void sdl_event_handler::long_press_callback(const point& position)
 {
 	if(long_press_timer_id_ != 0) {
-		PLAIN_LOG << "long press long_press_callback";
-		// Fire right click
-		mouse_button_down({x, y}, 3);
+		// Fire long touch event
+		mouse(SDL_LONG_TOUCH, position);
 	}
 }
 
