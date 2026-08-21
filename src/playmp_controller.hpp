@@ -18,6 +18,8 @@
 
 #include "playsingle_controller.hpp"
 
+#include <set>
+
 struct mp_game_metadata;
 class playmp_controller : public playsingle_controller
 {
@@ -31,6 +33,8 @@ public:
 	void receive_actions() override;
 	void send_actions() override;
 	void surrender(int side_number);
+	void save_game() override;
+	void save_replay() override;
 
 	class hotkey_handler;
 
@@ -59,6 +63,8 @@ protected:
 
 	virtual void on_not_observer() override;
 	virtual bool is_host() const override;
+	void notify_sides_defeated(const std::set<unsigned>& not_defeated) override;
+	void notify_sides_victorious(const std::set<unsigned>& not_defeated) override;
 	void remove_blindfold();
 
 	blindfold blindfold_;
@@ -76,6 +82,16 @@ private:
 
 	/// Check for and Handle incoming data from the multiplayer server
 	PROCESS_DATA_RESULT process_network_data_impl(const config& cfg, bool chat_only = false);
+	/** Display a normal server message or the localized competitive denial. */
+	void process_server_message(const config& message);
+	/** Handle the server decision for a loaded competitive save. */
+	bool process_competitive_reload(const config& cfg);
+	/** Store and, when needed, display the server-issued competitive metadata. */
+	bool process_competitive_game(const config& cfg);
+	/** Announce that a player created a competitive save or replay. */
+	bool process_competitive_save(const config& cfg);
+	/** Display a persisted defeat notification received from wesnothd. */
+	bool process_side_defeated(const config& cfg);
 
 	/// Handle incoming [turn] from the multiplayer server
 	PROCESS_DATA_RESULT process_network_turn_impl(const config& t, bool chat_only = false);
@@ -88,10 +104,14 @@ private:
 
 	/// Send [change_controller] to the multiplayer server
 	void send_change_side_controller(int side, const std::string& player);
+	/** Notify the server after a manual competitive save or replay is created. */
+	void notify_competitive_save_created(const std::string& kind);
 
 	/// Helper to preprocess infoming network data.
 	playturn_network_adapter network_reader_;
 	/// Information about our connection to the multiplayer server.
 	/// null when we are not connected to the multiplayer server
 	mp_game_metadata* mp_info_;
+	std::set<unsigned> reported_defeated_sides_;
+	std::set<unsigned> reported_victorious_sides_;
 };
