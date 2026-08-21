@@ -320,11 +320,12 @@ std::vector<texture> footsteps_images(const map_location& loc, const pathfind::m
 	}
 	const std::string foot_speed_prefix = "footsteps/" + footprints + "/";
 
-	// Generate a red tint string based on movement cost.
+	// Custom colour per movement-cost step: no tint, then brown-orange, then strong red at 3+.
 	std::string color_mod;
-	if(move_cost > 1) {
-		int reduction = std::min(255, (move_cost - 1) * 85);
-		color_mod = "~CS(0,-" + std::to_string(reduction) + ",-" + std::to_string(reduction) + ")";
+	if(move_cost == 2) {
+		color_mod = "~CS(-10,-70,-200)";
+	} else if(move_cost >= 3) {
+		color_mod = "~CS(0,-255,-255)";
 	}
 
 	texture teleport;
