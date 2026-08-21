@@ -52,8 +52,7 @@ static char const atkKey[] = "attack analysis";
 template<> struct lua_object_traits<ai::attack_analysis> {
 	inline static auto metatable = atkKey;
 	inline static ai::attack_analysis get(lua_State* L, int n) {
-		// The attack analysis userdata should be at the top of the stack.
-		auto atk = static_cast<ai::attack_analysis*>(luaL_checkudata(L, -1, atkKey));
+		auto atk = static_cast<ai::attack_analysis*>(luaL_checkudata(L, n, atkKey));
 		return *atk;
 	}
 };
