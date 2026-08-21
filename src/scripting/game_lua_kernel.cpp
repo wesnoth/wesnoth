@@ -1501,8 +1501,8 @@ static int impl_end_level_data_collect(lua_State* L)
 static const char mpsettingKey[] = "mp settings";
 static int impl_mp_settings_get(lua_State* L)
 {
-	void* p = luaL_checkudata(L, 1, mpsettingKey);
-	const mp_game_settings& settings = static_cast<play_controller*>(p)->get_mp_settings();
+	play_controller* p = *static_cast<play_controller**>(luaL_checkudata(L, 1, mpsettingKey));
+	const mp_game_settings& settings = p->get_mp_settings();
 	if(lua_type(L, 2) == LUA_TNUMBER) {
 		// Simulates a WML table with one [options] child and a variable number of [addon] children
 		// TODO: Deprecate this -> mp_settings.options and mp_settings.addons
@@ -1621,8 +1621,8 @@ static int impl_mp_settings_get(lua_State* L)
 
 static int impl_mp_settings_len(lua_State* L)
 {
-	void* p = luaL_checkudata(L, 1, mpsettingKey);
-	const mp_game_settings& settings = static_cast<play_controller*>(p)->get_mp_settings();
+	play_controller* p = *static_cast<play_controller**>(luaL_checkudata(L, 1, mpsettingKey));
+	const mp_game_settings& settings = p->get_mp_settings();
 	lua_pushinteger(L, settings.addons.size() + 1);
 	return 1;
 }
