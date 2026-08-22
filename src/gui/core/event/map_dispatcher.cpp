@@ -48,11 +48,13 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 	// Mouse Hotkeys
 	register_hotkey(hotkey::HOTKEY_SELECT_AND_ACTION, [this](auto&&...) {
 		auto& mhandler = controller_.get_mouse_handler_base();
-		bool is_selected = mhandler.get_last_hex().valid();
-		if (is_selected) {
+		if (mhandler.get_last_hex().valid()) {
 			mhandler.select_or_action(controller_.is_browsing());
 		}
-		return is_selected;
+
+		// we also want to run the mouse handler, see mouse_left_down below,
+		// otherwise drag does not work.
+		return false;
 	});
 	register_hotkey(hotkey::HOTKEY_DESELECT_HEX, [this](auto&&...) {
 		auto& mhandler = controller_.get_mouse_handler_base();
@@ -71,11 +73,13 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 	register_hotkey(hotkey::HOTKEY_TOUCH_HEX, [this](auto&&...) {
 		auto& mhandler = controller_.get_mouse_handler_base();
 		map_location loc = display::get_singleton()->mouseover_hex();
-		bool is_selected = loc.valid();
-		if (is_selected) {
+		if (loc.valid()) {
 			mhandler.touch_action(loc, controller_.is_browsing());
 		}
-		return is_selected;
+
+		// we also want to run the mouse handler, see mouse_left_down below,
+		// otherwise drag does not work.
+		return false;
 	});
 
 	// Keyboard special keys (ESC)
@@ -116,8 +120,7 @@ void map_dispatcher::mouse_motion(
 	const point& p)
 {
 	auto& mhandler = controller_.get_mouse_handler_base();
-	map_location loc = display::get_singleton()->hex_clicked_on(p.x, p.y);
-	mhandler.mouse_update(controller_.is_browsing(), loc);
+	mhandler.mouse_motion(p.x, p.y, controller_.is_browsing());
 
 	handled = true;
 }
@@ -127,8 +130,7 @@ void map_dispatcher::touch_motion(
 	const point& p)
 {
 	auto& mhandler = controller_.get_mouse_handler_base();
-	map_location loc = display::get_singleton()->hex_clicked_on(p.x, p.y);
-	mhandler.mouse_update(controller_.is_browsing(), loc);
+	mhandler.touch_motion(p.x, p.y, controller_.is_browsing());
 
 	handled = true;
 }
@@ -137,6 +139,7 @@ void map_dispatcher::mouse_left_up(
 	bool& handled,
 	const point& p)
 {
+	// Top panel menu
 	const theme::menu* const m = display::get_singleton()->menu_pressed(p);
 	if(m != nullptr) {
 		const rect& menu_loc = m->location(video::game_canvas());
