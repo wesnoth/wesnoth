@@ -1739,6 +1739,7 @@ void mouse_handler::cycle_units(const bool browse, const bool reverse)
 
 	if(unit_in_cycle(it)) {
 		gui().scroll_to_tile(it->get_location(), game_display::WARP);
+		gui().highlight_hex(it->get_location());
 
 		select_hex(it->get_location(), browse);
 		//		mouse_update(browse);
