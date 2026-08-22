@@ -39,6 +39,7 @@ dbconn::dbconn(const config& c)
 	, db_game_content_info_table_(c["db_game_content_info_table"].str())
 	, db_user_group_table_(c["db_user_group_table"].str())
 	, db_tournament_query_(c["db_tournament_query"].str())
+	, db_ranked_user_query_(c["db_ranked_user_query"].str())
 	, db_topics_table_(c["db_topics_table"].str())
 	, db_addon_info_table_(c["db_addon_info_table"].str())
 	, db_connection_history_table_(c["db_connection_history_table"].str())
@@ -55,6 +56,26 @@ dbconn::dbconn(const config& c)
 	catch(const mariadb::exception::base& e)
 	{
 		log_sql_exception("Failed to connect to the database!", e);
+	}
+
+	// Ranked capability is optional. Do not attempt a second connection for
+	// servers that have not configured Tournament Manager support.
+	if(!db_ranked_user_query_.empty()) {
+		try
+		{
+			tournament_account_ = mariadb::account::create(
+				c["tournament_db_host"].str(),
+				c["tournament_db_user"].str(),
+				c["tournament_db_password"].str(),
+				c["tournament_db_name"].str(),
+				c["tournament_db_port"].to_int(3306));
+			tournament_account_->set_connect_option(mysql_option::MYSQL_SET_CHARSET_NAME, std::string("utf8mb4"));
+			tournament_connection_ = mariadb::connection::create(tournament_account_);
+		}
+		catch(const mariadb::exception::base& e)
+		{
+			log_sql_exception("Failed to connect to the Tournament Manager database!", e);
+		}
 	}
 }
 
@@ -119,6 +140,26 @@ std::string dbconn::get_tournaments()
 	{
 		log_sql_exception("Could not retrieve the tournaments!", e);
 		return "";
+	}
+}
+
+bool dbconn::is_ranked_user(const std::string& name)
+{
+	// A missing configuration or unavailable Tournament Manager database must
+	// never grant ranked access. It does not affect ordinary games, which do not
+	// call this method.
+	if(db_ranked_user_query_.empty() || !tournament_connection_) {
+		return false;
+	}
+
+	try {
+		// The configured query is parameterized so nicknames are never inserted
+		// directly into SQL text.
+		return get_single_long(tournament_connection_, db_ranked_user_query_, {name}) == 1;
+	} catch(const mariadb::exception::base& e) {
+		// Fail closed when Tournament Manager cannot answer the capability check.
+		log_sql_exception("Could not verify ranked access!", e);
+		return false;
 	}
 }
 
