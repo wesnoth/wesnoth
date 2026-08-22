@@ -118,13 +118,10 @@ language_def::language_def()
 }
 
 language_def::language_def(const config& cfg)
-#ifndef _WIN32
 	: localename(cfg["locale"])
 	, alternates(utils::split(cfg["alternates"]))
-#else
-	: localename(cfg["windows_locale"].str("C"))
-	, alternates(utils::split(cfg["windows_alternates"]))
-#endif
+	, windows_locale(cfg["windows_locale"].str("C"))
+	, windows_alternates(utils::split(cfg["windows_alternates"]))
 	, language(cfg["name"].t_str())
 	, sort_name(cfg["sort_name"].str(language))
 	, rtl(cfg["dir"] == "rtl")
@@ -287,8 +284,17 @@ void set_language(const language_def& locale)
 	}
 #endif
 
+#ifdef _WIN32
+	// Windows has no knowledge of most POSIX locale IDs, so the OS-level setlocale() call
+	// (date/time formatting and collation only) uses the windows_locale override instead.
+	// Catalogue look-up below still uses the portable POSIX locale name, since gettext-style
+	// catalogue matching doesn't go through the OS locale database.
+	wesnoth_setlocale(LC_COLLATE, locale.windows_locale, &locale.windows_alternates);
+	wesnoth_setlocale(LC_TIME, locale.windows_locale, &locale.windows_alternates);
+#else
 	wesnoth_setlocale(LC_COLLATE, localename, &locale.alternates);
 	wesnoth_setlocale(LC_TIME, localename, &locale.alternates);
+#endif
 	translation::set_language(localename, &locale.alternates);
 	load_strings(false);
 }
