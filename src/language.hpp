@@ -31,6 +31,17 @@ struct language_def
 
 	std::string localename;
 	std::vector<std::string> alternates;
+
+	/**
+	 * Windows has no knowledge of most POSIX locale IDs, so on that platform the OS-level
+	 * setlocale() call (LC_COLLATE/LC_TIME only) uses these instead. Everything else —
+	 * translation catalogue look-up, preferences saving, language_selection matching — always
+	 * uses localename/alternates above, so languages with no real Windows locale don't
+	 * collide with each other or lose their translations.
+	 */
+	std::string windows_locale;
+	std::vector<std::string> windows_alternates;
+
 	t_string language;
 	std::string sort_name;
 
