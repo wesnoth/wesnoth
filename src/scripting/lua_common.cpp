@@ -63,7 +63,7 @@ namespace lua_common {
 static int impl_gettext(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 2);
-	char const *d = static_cast<char *>(lua_touserdata(L, 1));
+	char const *d = static_cast<char *>(luaL_checkudata(L, 1, gettextKey));
 	// Hidden metamethod, so d has to be a string. Use it to create a t_string.
 	if(lua_isstring(L, 3)) {
 		const char* pl = luaL_checkstring(L, 3);
@@ -77,7 +77,7 @@ static int impl_gettext(lua_State *L)
 
 static int impl_gettext_tostr(lua_State* L)
 {
-	char* d = static_cast<char*>(lua_touserdata(L, 1));
+	char* d = static_cast<char*>(luaL_checkudata(L, 1, gettextKey));
 	using namespace std::literals;
 	std::string str = "textdomain: "s + d;
 	lua_push(L, str);
@@ -145,7 +145,7 @@ static int impl_tstring_concat(lua_State *L)
 
 static int impl_tstring_len(lua_State* L)
 {
-	t_string* t = static_cast<t_string*>(lua_touserdata(L, 1));
+	t_string* t = static_cast<t_string*>(luaL_checkudata(L, 1, tstringKey));
 	lua_pushnumber(L, t->size());
 	return 1;
 }
@@ -155,7 +155,7 @@ static int impl_tstring_len(lua_State* L)
  */
 static int impl_tstring_collect(lua_State *L)
 {
-	t_string *t = static_cast<t_string *>(lua_touserdata(L, 1));
+	t_string *t = static_cast<t_string *>(luaL_checkudata(L, 1, tstringKey));
 	t->t_string::~t_string();
 	return 0;
 }
@@ -178,8 +178,8 @@ static int impl_tstring_le(lua_State *L)
 
 static int impl_tstring_eq(lua_State *L)
 {
-	t_string *t1 = static_cast<t_string *>(lua_touserdata(L, 1));
-	t_string *t2 = static_cast<t_string *>(lua_touserdata(L, 2));
+	t_string *t1 = static_cast<t_string *>(luaL_checkudata(L, 1, tstringKey));
+	t_string *t2 = static_cast<t_string *>(luaL_checkudata(L, 2, tstringKey));
 	lua_pushboolean(L, translation::compare(t1->get(), t2->get()) == 0);
 	return 1;
 }
@@ -190,7 +190,7 @@ static int impl_tstring_eq(lua_State *L)
  */
 static int impl_tstring_tostring(lua_State *L)
 {
-	t_string *t = static_cast<t_string *>(lua_touserdata(L, 1));
+	t_string *t = static_cast<t_string *>(luaL_checkudata(L, 1, tstringKey));
 	lua_pushstring(L, t->c_str());
 	return 1;
 }
@@ -204,7 +204,7 @@ static int impl_vconfig_get(lua_State *L)
 {
 	static const lua_named_tuple_builder tuple_builder{ {"tag", "contents"} };
 
-	vconfig *v = static_cast<vconfig *>(lua_touserdata(L, 1));
+	vconfig *v = static_cast<vconfig *>(luaL_checkudata(L, 1, vconfigKey));
 
 	if (lua_isnumber(L, 2))
 	{
@@ -268,7 +268,7 @@ static int impl_vconfig_get(lua_State *L)
 
 static int impl_vconfig_dir(lua_State* L)
 {
-	vconfig *v = static_cast<vconfig *>(lua_touserdata(L, 1));
+	vconfig *v = static_cast<vconfig *>(luaL_checkudata(L, 1, vconfigKey));
 	std::vector<std::string> attributes;
 	for(const auto& [key, value] : v->get_config().attribute_range()) {
 		attributes.push_back(key);
@@ -282,7 +282,7 @@ static int impl_vconfig_dir(lua_State* L)
  */
 static int impl_vconfig_size(lua_State *L)
 {
-	vconfig *v = static_cast<vconfig *>(lua_touserdata(L, 1));
+	vconfig *v = static_cast<vconfig *>(luaL_checkudata(L, 1, vconfigKey));
 	lua_pushinteger(L, v->null() ? 0 :
 		std::distance(v->ordered_begin(), v->ordered_end()));
 	return 1;
@@ -293,7 +293,7 @@ static int impl_vconfig_size(lua_State *L)
  */
 static int impl_vconfig_collect(lua_State *L)
 {
-	vconfig *v = static_cast<vconfig *>(lua_touserdata(L, 1));
+	vconfig *v = static_cast<vconfig *>(luaL_checkudata(L, 1, vconfigKey));
 	v->~vconfig();
 	return 0;
 }
@@ -322,7 +322,7 @@ static int impl_vconfig_pairs_iter(lua_State *L)
 static int impl_vconfig_pairs_collect(lua_State *L)
 {
 	typedef config::const_attr_itors const_attr_itors;
-	void* p = lua_touserdata(L, 1);
+	void* p = luaL_checkudata(L, 1, vconfigpairsKey);
 
 	// Triggers a false positive of C4189 with Visual Studio. Suppress.
 #if defined(_MSC_VER)

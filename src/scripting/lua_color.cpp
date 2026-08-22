@@ -32,11 +32,7 @@ static bool luaW_iscolor(lua_State* L, int index)
 
 static color_range& LuaW_checkcolor(lua_State *L, int index)
 {
-	if(!luaW_iscolor(L, index)) {
-		luaW_type_error(L, index, "color");
-		throw "luaW_type_error returned";
-	}
-	return *static_cast<color_range*>(lua_touserdata(L, index));
+	return *static_cast<color_range*>(luaL_checkudata(L, index, colorKey));
 }
 
 
@@ -59,7 +55,7 @@ static int luaW_pushsinglecolor(lua_State *L, const color_t& color)
 
 static int impl_color_collect(lua_State *L)
 {
-	color_range *c = static_cast<color_range *>(lua_touserdata(L, 1));
+	color_range *c = static_cast<color_range *>(luaL_checkudata(L, 1, colorKey));
 	c->color_range::~color_range();
 	return 0;
 }
