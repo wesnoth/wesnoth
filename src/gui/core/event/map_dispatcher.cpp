@@ -63,6 +63,10 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 		return is_selected;
 	});
 
+	// Touch drag
+	connect_signal<SDL_TOUCH_MOTION>(std::bind(
+		&map_dispatcher::touch_motion, this, std::placeholders::_3, std::placeholders::_5));
+
 	// Touch hotkey
 	register_hotkey(hotkey::HOTKEY_TOUCH_HEX, [this](auto&&...) {
 		auto& mhandler = controller_.get_mouse_handler_base();
@@ -108,6 +112,17 @@ bool map_dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id, const bool 
 }
 
 void map_dispatcher::mouse_motion(
+	bool& handled,
+	const point& p)
+{
+	auto& mhandler = controller_.get_mouse_handler_base();
+	map_location loc = display::get_singleton()->hex_clicked_on(p.x, p.y);
+	mhandler.mouse_update(controller_.is_browsing(), loc);
+
+	handled = true;
+}
+
+void map_dispatcher::touch_motion(
 	bool& handled,
 	const point& p)
 {
