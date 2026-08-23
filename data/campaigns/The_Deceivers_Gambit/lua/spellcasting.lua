@@ -198,7 +198,7 @@ function display_skills_dialog(selecting)
                     end
 
                     -- if the button is clickable (i.e. a castable spell), set on_button_click
-                     local function initialize_button( buttonid, skill, small )
+                    local function initialize_button( buttonid, skill, small )
                         if (dialog2[buttonid].type=="button") then
                             -- cancel spell
                             local function delfador_has_object(object_id) return wesnoth.units.find_on_map{ id='Delfador', T.filter_wml{T.modifications{T.object{id=object_id}}} }[1] end
