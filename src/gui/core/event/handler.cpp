@@ -818,6 +818,10 @@ dispatcher* sdl_event_handler::keyboard_dispatcher()
 	return nullptr;
 }
 
+// FIXME the three events below fire *all* dispatchers, unlike mouse.
+// without any regard to stacking or is_at, whereas touch really should follow
+// mouse-like semantics.
+
 void sdl_event_handler::touch_motion(const point& position, const point& distance)
 {
 	for(auto& dispatcher : dispatchers_ | utils::views::reverse) {

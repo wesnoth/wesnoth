@@ -13,6 +13,11 @@ namespace gui2
 namespace event
 {
 
+namespace
+{
+	bool is_touch = false;
+}
+
 map_dispatcher::map_dispatcher(play_controller& controller)
 	: controller_(controller)
 {
@@ -76,6 +81,10 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 		if (loc.valid()) {
 			mhandler.touch_action(loc, controller_.is_browsing());
 		}
+
+		// FIXME since touch and mouse events are mixed, and the mouse handler
+		// doesn't have full sdl event details, we need this for now for touch detection
+		is_touch = true;
 
 		// we also want to run the mouse handler, see mouse_left_down below,
 		// otherwise drag does not work.
@@ -153,6 +162,7 @@ void map_dispatcher::mouse_left_up(
 	map_location loc = display::get_singleton()->hex_clicked_on(p.x, p.y);
 	mhandler.mouse_update(controller_.is_browsing(), loc);
 
+	is_touch = false;
 	mhandler.clear_dragging(p.x, p.y, controller_.is_browsing());
 	mhandler.left_mouse_up(p.x, p.y, controller_.is_browsing());
 	mhandler.clear_drag_from_hex();
@@ -168,7 +178,11 @@ void map_dispatcher::mouse_left_down(
 	mhandler.mouse_update(controller_.is_browsing(), loc);
 
 	mhandler.cancel_dragging();
-	mhandler.init_dragging_left();
+	if(is_touch) {
+		mhandler.init_dragging_touch();
+	} else {
+		mhandler.init_dragging_left();
+	}
 	mhandler.left_click(p.x, p.y, controller_.is_browsing());
 	handled = true;
 }

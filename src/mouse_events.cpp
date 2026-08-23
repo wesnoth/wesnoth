@@ -149,6 +149,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 				std::pow(static_cast<double>(drag_from_.x - pos.x), 2) +
 				std::pow(static_cast<double>(drag_from_.y - pos.y), 2);
 
+			if(drag_distance > drag_threshold() * drag_threshold()) {
 			if(drag_distance > drag_threshold()*drag_threshold()) {
 				dragging_started_ = true;
 			}
