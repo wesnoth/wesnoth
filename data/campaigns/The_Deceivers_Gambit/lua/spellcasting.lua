@@ -198,8 +198,7 @@ function display_skills_dialog(selecting)
                     end
 
                     -- if the button is clickable (i.e. a castable spell), set on_button_click
-                    local function initialize_button( buttonid, skill, small )
-                        local polymorphed = (delfador.race~='human') and not skill.id:find('polymorph', 1, true) -- polymorph doesn't block itself
+                     local function initialize_button( buttonid, skill, small )
                         if (dialog2[buttonid].type=="button") then
                             -- cancel spell
                             local function delfador_has_object(object_id) return wesnoth.units.find_on_map{ id='Delfador', T.filter_wml{T.modifications{T.object{id=object_id}}} }[1] end
@@ -214,7 +213,7 @@ function display_skills_dialog(selecting)
                             elseif (wml.variables['spellcasted_this_turn']) then
                                 dialog2[buttonid].label = small and _"<span size='small'>1 spell/turn</span>" or _"<span> Can only cast\n1 spell per turn</span>"
                                 dialog2[buttonid].enabled = false
-                            elseif (polymorphed) then
+                            elseif (delfador.race~='human') then
                                 dialog2[buttonid].label = small and _"<span size='small'>Polymorphed</span>" or _"<span>  Blocked by\n  Polymorph</span>"
                                 dialog2[buttonid].enabled = false
                             elseif (wesnoth.units.find_on_map{ id='Delfador', T.filter_location{radius=3, T.filter{id='delfador_mirror3'}} }[1]) then   -- mirror delfador counterspell
@@ -247,7 +246,7 @@ function display_skills_dialog(selecting)
 
                         -- attacks and passives are plain labels, so they can't be clicked or disabled.
                         -- but polymorph still blocks them, so make that clear to the player (especially for important passives like Contingency)
-                        elseif (polymorphed) then
+                        elseif (delfador.race~='human' and not skill.id:find('polymorph', 1, true)) then
                             dialog2[buttonid].label = _"<span>  Blocked by\n  Polymorph</span>"
                         end
                     end
