@@ -917,11 +917,10 @@ void play_sound_internal(const std::string& files,
 
 	sdl3_properties props;
 	if(loop_ticks > 0ms) {
+		SDL_SetNumberProperty(props, MIX_PROP_PLAY_LOOPS_NUMBER, -1);
 		if(fadein_ticks > 0ms) {
 			SDL_SetNumberProperty(props, MIX_PROP_PLAY_FADE_IN_MILLISECONDS_NUMBER, fadein_ticks.count());
 			SDL_SetNumberProperty(props, MIX_PROP_PLAY_MAX_MILLISECONDS_NUMBER, loop_ticks.count());
-		} else {
-			SDL_SetNumberProperty(props, MIX_PROP_PLAY_LOOPS_NUMBER, -1);
 		}
 	} else {
 		if(fadein_ticks > 0ms) {
