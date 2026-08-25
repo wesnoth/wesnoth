@@ -80,7 +80,7 @@ void campaign_selection::campaign_selected()
 	const bool can_proceed = campaign_id != PAGE_ID_MISSING_CAMPAIGNS && campaign_id != PAGE_ID_LANDING_PAGE;
 	const bool actual_campaign = can_proceed && campaign_id != PAGE_ID_GET_ADDONS;
 
-	button& ok_button = find_widget<button>("proceed");
+	button& ok_button = find_widget<button>("ok");
 	ok_button.set_active(can_proceed);
 	ok_button.set_label((campaign_id == PAGE_ID_GET_ADDONS) ? _("game^Get Add-ons") : _("game^Play"));
 
@@ -354,9 +354,6 @@ void campaign_selection::pre_show()
 	connect_signal_notify_modified(sort_time,
 		std::bind(&campaign_selection::toggle_sorting_selection, this, DATE));
 
-	connect_signal_mouse_left_click(find_widget<button>("proceed"),
-		std::bind(&campaign_selection::proceed, this));
-
 #ifdef __IPHONEOS__
 	// On iOS, opening the campaign browser should not immediately summon the
 	// software keyboard just because the optional filter field exists.
@@ -553,16 +550,15 @@ void campaign_selection::add_campaign_to_tree(const config& campaign)
 		});
 
 	node.set_id(campaign["id"]);
-	connect_signal_mouse_left_double_click(
-		node.find_widget<toggle_panel>("tree_view_node_label"),
-		std::bind(&campaign_selection::proceed, this)
-	);
 }
 
-void campaign_selection::proceed()
+void campaign_selection::post_show()
 {
-	tree_view& tree = find_widget<tree_view>("campaign_tree");
+	if(get_retval() != retval::OK) {
+		return;
+	}
 
+	tree_view& tree = find_widget<tree_view>("campaign_tree");
 	if(tree.empty() || !tree.selected_item()) {
 		return;
 	}
@@ -580,11 +576,8 @@ void campaign_selection::proceed()
 		}
 	}
 
-
 	rng_mode_ = RNG_MODE(std::clamp<unsigned>(find_widget<menu_button>("rng_menu").get_value(), RNG_DEFAULT, RNG_BIASED));
-
 	prefs::get().set_campaign_rng_mode(rng_mode_prefs[rng_mode_]);
-
 	prefs::get().set_modifications(engine_.active_mods(), false);
 }
 
