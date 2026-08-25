@@ -447,8 +447,6 @@ void play_controller::init_side_begin()
 	gui_->set_playing_team_index(std::size_t(current_side() - 1));
 
 	update_viewing_player();
-
-	gamestate().gamedata_.last_selected = map_location::null_location();
 }
 
 void play_controller::maybe_do_init_side()
