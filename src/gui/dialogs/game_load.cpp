@@ -54,7 +54,7 @@ static lg::log_domain log_gameloaddlg{"gui/dialogs/game_load_dialog"};
 
 namespace gui2::dialogs
 {
-	
+
 const std::vector<std::string> rng_modes{"", "deterministic", "biased"};
 
 REGISTER_DIALOG(game_load)
