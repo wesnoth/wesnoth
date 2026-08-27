@@ -1040,6 +1040,7 @@ template std::pair<int, map_location> active_ability_list::get_extremum<std::gre
 specials_context_t::specials_context_t(specials_combatant&& att, specials_combatant&& def)
 	: attacker(std::move(att))
 	, defender(std::move(def))
+	, is_for_listing(false)
 {
 	if (attacker.at) {
 		attacker.at->context_ = this;
