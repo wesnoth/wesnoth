@@ -264,8 +264,6 @@ bool luaW_checkvariable(lua_State *L, variable_access_create& v, int n);
 
 bool luaW_tableget(lua_State *L, int index, const char* key);
 
-void luaW_pushsafe_tostring(lua_State* L, int index);
-
 std::string_view luaW_tostring(lua_State *L, int index);
 std::string_view luaW_tostring_or_default(lua_State *L, int index, std::string_view def = std::string_view());
 

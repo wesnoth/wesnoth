@@ -74,6 +74,23 @@ static int intf_tostring2(lua_State* L)
 	return 1;
 }
 
+static int intf_thread_tostring(lua_State* L)
+{
+	luaL_checktype(L, 1, LUA_TTHREAD);
+	luaW_getglobal(L, "coroutine", "status");
+	lua_pushvalue(L, 1);
+	lua_call(L, 1, 1);
+	lua_pushfstring(L, "thread: %s", luaL_checkstring(L, -1));
+	return 1;
+}
+
+static int intf_light_userdata_tostring(lua_State* L)
+{
+	luaL_checktype(L, 1, LUA_TLIGHTUSERDATA);
+	lua_pushstring(L, "userdata: light");
+	return 1;
+}
+
 void register_metatable ( lua_State* L )
 {
 	luaL_newmetatable(L, cpp_function);
@@ -98,6 +115,26 @@ void register_metatable ( lua_State* L )
 	lua_pushstring(L, "function");
 	lua_setfield(L, -2, "__metatable");
 	lua_setmetatable(L, -2);
+
+	lua_newthread(L);
+	lua_createtable(L, 0, 1);
+	lua_pushcfunction(L, intf_thread_tostring);
+	lua_setfield(L, -2, "__tostring");
+	lua_pushstring(L, "thread");
+	lua_setfield(L, -2, "__metatable");
+	lua_setmetatable(L, -2);
+
+	lua_pop(L, 1);
+
+	lua_pushlightuserdata(L, nullptr);
+	lua_createtable(L, 0, 1);
+	lua_pushcfunction(L, intf_light_userdata_tostring);
+	lua_setfield(L, -2, "__tostring");
+	lua_pushstring(L, "userdata: light");
+	lua_setfield(L, -2, "__metatable");
+	lua_setmetatable(L, -2);
+
+	lua_pop(L, 1);
 }
 
 void push_function( lua_State* L, const lua_function & f )
