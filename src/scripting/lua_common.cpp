@@ -1145,6 +1145,55 @@ bool luaW_tableget(lua_State *L, int index, const char* key)
 	return true;
 }
 
+// Push the string representation of the Lua value at index. Honor its __tostring
+// method and preserve scalar formatting. For tables, userdata, functions, and
+// threads whose default string includes a memory address, use the metatable name
+// or Lua type instead.
+void luaW_pushsafe_tostring(lua_State* L, int index)
+{
+	// Negative Lua indices are relative to the stack top and would point elsewhere after a push.
+	index = lua_absindex(L, index);
+
+	// If the value defines __tostring, use it exactly as Lua normally would.
+	// The generic type name below is only for values without their own string representation.
+	if(luaL_callmeta(L, index, "__tostring")) {
+		if(!lua_isstring(L, -1)) {
+			luaL_error(L, "'__tostring' must return a string");
+		}
+		lua_tolstring(L, -1, nullptr);
+		return;
+	}
+
+	switch(lua_type(L, index)) {
+	case LUA_TSTRING:
+		lua_pushvalue(L, index);
+		return;
+	case LUA_TNUMBER:
+		// lua_tolstring converts its stack slot in place, so convert a copy.
+		lua_pushvalue(L, index);
+		lua_tolstring(L, -1, nullptr);
+		return;
+	case LUA_TBOOLEAN:
+		lua_pushstring(L, lua_toboolean(L, index) ? "true" : "false");
+		return;
+	case LUA_TNIL:
+		lua_pushliteral(L, "nil");
+		return;
+	default:
+		break;
+	}
+
+	// Named metatables already provide base descriptions. Reuse them for stringification.
+	const int name_type = luaL_getmetafield(L, index, "__name");
+	if(name_type == LUA_TSTRING) {
+		return;
+	}
+	if(name_type != LUA_TNIL) {
+		lua_pop(L, 1);
+	}
+	lua_pushstring(L, luaL_typename(L, index));
+}
+
 std::string_view luaW_tostring(lua_State *L, int index)
 {
 	std::size_t len = 0;

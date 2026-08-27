@@ -208,6 +208,36 @@ static int intf_current_version(lua_State* L) {
 	return 1;
 }
 
+static int intf_safe_tostring(lua_State* L)
+{
+	// tostring requires one argument. Report an error when the stack has no first value.
+	luaL_checkany(L, 1);
+	luaW_pushsafe_tostring(L, 1);
+	return 1;
+}
+
+static int intf_std_print(lua_State* L)
+{
+	// Lua's print calls luaL_tolstring and writes each result before converting the
+	// next argument. For tables, functions, threads, and userdata, luaL_tolstring's
+	// default result includes a memory address. Use luaW_pushsafe_tostring without
+	// changing the order in which arguments are converted and written.
+	const int nargs = lua_gettop(L);
+	for(int i = 1; i <= nargs; ++i) {
+		std::size_t length = 0;
+		luaW_pushsafe_tostring(L, i);
+		const char* string = lua_tolstring(L, -1, &length);
+		assert(string);
+		if(i > 1) {
+			lua_writestring("\t", 1);
+		}
+		lua_writestring(string, length);
+		lua_pop(L, 1);
+	}
+	lua_writeline();
+	return 0;
+}
+
 /**
  * Replacement print function -- instead of printing to std::cout, print to the command log.
  * Intended to be bound to this' command_log at registration time.
@@ -782,6 +812,11 @@ lua_kernel_base::lua_kernel_base()
 		lua_pop(L, 1);  /* remove lib */
 	}
 
+	// luaopen_base installs the standard tostring function, so install the replacement
+	// after library initialization and before any core or scenario Lua code can run.
+	lua_pushcfunction(L, intf_safe_tostring);
+	lua_setglobal(L, "tostring");
+
 	// Disable functions from os which we don't want.
 	lua_getglobal(L, "os");
 	lua_pushnil(L);
@@ -848,8 +883,8 @@ lua_kernel_base::lua_kernel_base()
 	// Override the print function
 	cmd_log_ << "Redirecting print function...\n";
 
-	lua_getglobal(L, "print");
-	lua_setglobal(L, "std_print"); //storing original impl as 'std_print'
+	lua_pushcfunction(L, intf_std_print);
+	lua_setglobal(L, "std_print");
 	lua_settop(L, 0); //clear stack, just to be sure
 
 	lua_setwarnf(L, &::impl_warn, L);

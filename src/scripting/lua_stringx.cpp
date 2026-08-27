@@ -22,6 +22,7 @@
 #include "variable.hpp" // for config_variable_set
 
 #include <boost/algorithm/string/trim.hpp>
+#include <cstring>
 
 
 namespace lua_stringx {
@@ -302,41 +303,62 @@ static int intf_str_trim(lua_State* L)
 	return 1;
 }
 
-// Override string.format to coerce the format to a string
+// Wesnoth replaces the string.format function from Lua's standard library with
+// this wrapper. The wrapper accepts translatable format strings, rejects %p, and
+// delegates the remaining work to the standard-library formatter. That formatter
+// converts %s values with luaL_tolstring instead of calling the global tostring
+// function, so it would bypass Wesnoth's replacement and could include memory
+// addresses in the result. Convert each %s value with luaW_pushsafe_tostring first.
+// The standard-library formatter then applies validation, width, and precision.
 static int intf_str_format(lua_State* L)
 {
 	int nargs = lua_gettop(L);
 	if(luaW_iststring(L, 1)) {
-		// get the tostring() function and call it on the first argument
+		// Wesnoth accepts translatable strings as formats. Convert the format to
+		// a plain Lua string before inspecting its bytes.
 		lua_getglobal(L, "tostring");
 		lua_pushvalue(L, 1);
 		lua_call(L, 1, 1);
-		// replace the first argument with the coerced value
 		lua_replace(L, 1);
 	}
-	// raise an error if the string contains a %p specifier
-	bool in_specifier = false, found_digit = false;
-	for(const char* str = luaL_checkstring(L, 1); *str; ++str) {
-		if(*str == '%') {
-			in_specifier = !in_specifier;
-		} else if(in_specifier) {
-			if(*str == '-') {
-				if(found_digit) in_specifier = false;
-			} else if(isdigit(*str)) {
-				found_digit = true;
-			} else if(*str == 'p') {
-				lua_pushstring(L, "%p format specifier is not supported");
-				return lua_error(L);
-			} else {
-				in_specifier = false;
-			}
+	// Lua's formatter reads bytes after an embedded NUL, so inspect the full Lua string.
+	std::size_t format_length = 0;
+	const char* cursor = luaL_checklstring(L, 1, &format_length);
+	const char* const end = cursor + format_length;
+	// %% is literal text and consumes no argument. Every other conversion uses
+	// the next argument, beginning at stack index 2 after the format string.
+	std::size_t argument = 2;
+
+	while(cursor < end) {
+		if(*cursor++ != '%') {
+			continue;
 		}
+		if(cursor < end && *cursor == '%') {
+			++cursor;
+			continue;
+		}
+
+		// Skip optional flags, width, and precision to identify the conversion itself.
+		while(cursor < end && *cursor != '\0' && std::strchr("-+#0 123456789.", *cursor)) {
+			++cursor;
+		}
+		if(cursor == end) {
+			break;
+		}
+
+		const char conversion = *cursor++;
+		if(conversion == 'p') {
+			return luaL_error(L, "%%p format specifier is not supported");
+		}
+		if(conversion == 's' && argument <= static_cast<std::size_t>(nargs)) {
+			const int argument_index = static_cast<int>(argument);
+			luaW_pushsafe_tostring(L, argument_index);
+			lua_replace(L, argument_index);
+		}
+		++argument;
 	}
-	// grab the original string.format function from the closure...
 	lua_pushvalue(L, lua_upvalueindex(1));
-	// ...move it to the bottom of the stack...
 	lua_insert(L, 1);
-	// ...and finally pass along all the arguments to it.
 	lua_call(L, nargs, 1);
 	return 1;
 }
@@ -393,7 +415,6 @@ int luaW_open(lua_State* L) {
 	lua_setmetatable(L, -2);
 	lua_pop(L, 1);
 
-	// Override string.format so it can accept a t_string
 	lua_getglobal(L, "string");
 	lua_getfield(L, -1, "format");
 	lua_pushcclosure(L, &intf_str_format, 1);
