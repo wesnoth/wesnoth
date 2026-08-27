@@ -293,7 +293,7 @@ function return_table:execution(cfg,data)
     local retreatmap_leader = location_set.of_pairs(wesnoth.current.map.find{ T['filter'](cfg.filter_retreat_target) });
     for x,y in retreatmap_leader:clone():iter() do
         -- only guard near-leader hexes that're actually threatened
-		-- only consider enemies: comparing allies-vs-enemies might lead to a situation where we don't try to guard our leader because we have tons of units hiding behind him
+        -- only consider enemies: comparing allies-vs-enemies might lead to a situation where we don't try to guard our leader because we have tons of units hiding behind him
         if threatmap[{x,y}].enemies<=0 then retreatmap_leader:remove(x,y) end
     end
     locationset_expand(retreatmap_leader, cfg.leader_protect_radius, { skip_impassable=true, skip_unwalkable=skip_unwalkable });
@@ -729,7 +729,7 @@ function return_table:execution(cfg,data)
             if next(already_occupied)~=nil and already_occupied[1].id~=myunit.id then goto next_hex end
 
             -- 2) add value depending on the terrain (for us, not to the base hex)
-			local value = hex.value;
+            local value = hex.value;
             local defense = myunit:defense_on( wesnoth.current.map.get{x,y}.terrain );
             value = value + VALUE__defense * defense;
 
