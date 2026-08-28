@@ -216,20 +216,15 @@ static int intf_safe_tostring(lua_State* L)
 	// Shared __tostring methods make Lua's standard conversion safe for functions,
 	// threads, and light userdata. Tables and full userdata use individual metatables,
 	// so values without __tostring are handled below instead of passed to luaL_tolstring.
-	switch(lua_type(L, 1)) {
-	case LUA_TTABLE:
-	case LUA_TUSERDATA:
-		break;
-	default:
-		luaL_tolstring(L, 1, nullptr);
-		return 1;
-	}
 
 	// If the value defines __tostring, use it exactly as Lua normally would.
 	// The generic type name below is only for values without their own string representation.
 	const int tostring_type = luaL_getmetafield(L, 1, "__tostring");
-	if(tostring_type != LUA_TNIL) {
-		lua_pop(L, 1);
+	if(tostring_type != LUA_TNIL
+		|| (lua_type(L, 1) != LUA_TTABLE && lua_type(L, 1) != LUA_TUSERDATA)) {
+		if(tostring_type != LUA_TNIL) {
+			lua_pop(L, 1);
+		}
 		luaL_tolstring(L, 1, nullptr);
 		return 1;
 	}

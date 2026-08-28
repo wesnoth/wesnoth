@@ -19,6 +19,7 @@
 #include "scripting/push_check.hpp"
 
 #include "formula/string_utils.hpp"
+#include "utils/span.hpp"
 #include "variable.hpp" // for config_variable_set
 
 #include <boost/algorithm/string/trim.hpp>
@@ -337,31 +338,22 @@ static int intf_str_format(lua_State* L)
 	}
 	// raise an error if the string contains a %p specifier
 	// Lua's formatter reads bytes after an embedded NUL, so inspect the full Lua string.
+	bool in_specifier = false;
 	std::size_t format_length = 0;
-	const char* cursor = luaL_checklstring(L, 1, &format_length);
-	const char* const end = cursor + format_length;
-
-	while(cursor < end) {
-		if(*cursor++ != '%') {
-			continue;
-		}
-		if(cursor < end && *cursor == '%') {
-			++cursor;
-			continue;
-		}
-
-		// Skip optional flags, width, and precision to identify the conversion itself.
-		while(cursor < end && *cursor != '\0' && std::strchr("-+#0 123456789.", *cursor)) {
-			++cursor;
-		}
-		if(cursor == end) {
-			break;
-		}
-
-		const char conversion = *cursor++;
-		if(conversion == 'p') {
-			lua_pushstring(L, "%p format specifier is not supported");
-			return lua_error(L);
+	const char* str = luaL_checklstring(L, 1, &format_length);
+	for(char c : utils::span<const char>(str, format_length)) {
+		if(c == '%') {
+			in_specifier = !in_specifier;
+		} else if(in_specifier) {
+			if(c == 'p') {
+				lua_pushstring(L, "%p format specifier is not supported");
+				return lua_error(L);
+			}
+			// strchr cannot test NUL as an ordinary character because its character list
+			// is NUL-terminated, so check it separately.
+			if(c == '\0' || std::strchr("-+#0 123456789.", c) == nullptr) {
+				in_specifier = false;
+			}
 		}
 	}
 	// grab the original string.format function from the closure...
