@@ -1268,18 +1268,23 @@ bool mouse_handler::move_unit_along_current_route()
 	gui().select_hex(map_location());
 
 	bool interrupted = false;
+	bool halted_by_discovery = false;
 	std::size_t num_moves = 0;
 
 	if(intended_route.steps.size() > 1) {
 		num_moves = move_unit_along_route(intended_route.steps, interrupted);
+
+		// Sightings, ambushes, blockers and WML aborts store no goto, so the remainder
+		// is not resumed automatically; the player must use Continue Move.
+		halted_by_discovery = interrupted;
 
 		interrupted = interrupted || num_moves + 1 < intended_route.steps.size();
 		next_unit_ = intended_route.steps[num_moves];
 	}
 
 	// TRIGGER FLASH-FADE:
-	// If the unit didn't finish the path (0 MP or interruption), visualize the remainder.
-	if(intended_route.steps.size() > num_moves + 1) {
+	// If the unit ran out of movement, visualize the remainder it will travel later.
+	if(!halted_by_discovery && intended_route.steps.size() > num_moves + 1) {
 		pathfind::marked_route remaining_route;
 		for(auto i = intended_route.steps.begin() + num_moves; i != intended_route.steps.end(); ++i) {
 			remaining_route.steps.push_back(*i);
