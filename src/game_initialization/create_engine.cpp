@@ -552,12 +552,14 @@ void create_engine::set_current_era_index(const std::size_t index, bool force)
 	current_era_index_ = index;
 
 	dependency_manager_->try_era_by_index(index, force);
+	current_era_id_ = dependency_manager_->get_era();
 }
 
-void create_engine::set_current_era_id(const std::string& id, bool force)
+void create_engine::set_current_era_index(const std::string& id, bool force)
 {
 	std::size_t index = dependency_manager_->get_era_index(id);
 
+	current_era_id_ = id;
 	current_era_index_ = index;
 
 	dependency_manager_->try_era_by_index(index, force);
@@ -653,6 +655,11 @@ const mp_game_settings& create_engine::get_parameters()
 	DBG_MP << "getting parameter values";
 
 	int era_index = current_level().allow_era_choice() ? current_era_index_ : 0;
+	// in case of joining a server queue with an unknown era
+	// the depcheck's get_era_index() returns -1 when not found
+	if(era_index == -1) {
+		throw config::error(_("Era not found: ")+current_era_id_);
+	}
 	state_.classification().era_id = eras_[era_index]->id;
 	state_.mp_settings().mp_era_name = eras_[era_index]->name;
 
