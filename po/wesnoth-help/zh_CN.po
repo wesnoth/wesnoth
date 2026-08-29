@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2022 Wesnoth development team
+# Copyright (C) 2005-2026 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Translators and their initial years of participation:
@@ -10,21 +10,22 @@
 # CloudiDust <cloudidust@gmail.com>, 2010.
 # Dugucloud <dugucloud@qq.com>, 2010.
 # Yifan <yyf1992@mail.ustc.edu.cn>, 2015.
+# vimacs <vimacs.hacks@gmail.com>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-05-20 17:25-0500\n"
-"PO-Revision-Date: 2026-04-10 18:16+0800\n"
-"Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
+"PO-Revision-Date: 2026-08-20 21:25+0800\n"
+"Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #. [damage_type]: id=arcane_damage
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:548
@@ -39,6 +40,8 @@ msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
 msgstr ""
+"此攻击将奥术类型与所用武器的类型相结合，因此对手的奥术抗性不会对使用者造成惩"
+"罚。"
 
 #. [damage_type]: id=arcane_damage
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:550
@@ -47,6 +50,8 @@ msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
 msgstr ""
+"当对手对奥术附着武器的原类型的抗性，高于奥术抗性时，此单位可使用奥术类型攻"
+"击。"
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
@@ -744,40 +749,23 @@ msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:172
-#, fuzzy
-#| msgid "Editor Terrain-Overlay Graphics"
 msgid "Terrain Elevation Graphics"
-msgstr "编辑器地形遮罩图形"
+msgstr "地形高低差图形"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:173
-#, fuzzy
-#| msgid ""
-#| "editor^Maps generally look similar in the editor to their appearance in "
-#| "the game. There are a few exceptions, where different graphics are used "
-#| "in the editor; all the overlays described here are found in the terrain "
-#| "palette’s “special” group."
 msgid ""
 "A cosmetic elevation effect that looks a little different in the editor than "
 "in the game due to visual aids in the editor; all the overlays described "
 "here are found in the terrain palette’s “elevation” group."
 msgstr ""
-"通常，在编辑器中的地图，看起来与在游戏中是相似的。不过也有例外，此时编辑器中"
-"使用的图形与游戏中是不同的。此处描述的遮罩都可以在地形调色板的“特殊”组中找"
-"到。"
+"装饰性的高低差效果，由于在编辑器中带有视觉辅助显示，其外观与游戏中略有不同；"
+"此处介绍的所有覆盖层均可在地形调色板的“高低差”分组中找到。"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:176
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<bold>text='Advanced'</bold>"
 msgid "editor^<bold>text='Direct Overlays'</bold>"
-msgstr ""
-"\n"
-"\n"
-"<bold>text='高级'</bold>"
+msgstr "<bold>text='直接覆盖层'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:178
@@ -789,24 +777,21 @@ msgid ""
 "map, where you will want to allow the use of other overlay terrains, you "
 "will want to combine these with the “markers” described in the next section."
 msgstr ""
+"断崖与沟壑\n"
+"\n"
+"断崖、沟壑及类似的地形元素与标准地形叠加层非常相似，可以直接当作标准地形叠加"
+"层来使用。不过，对于地图上较大的区域——您可能希望允许使用其他地形叠加层——建议"
+"将这些元素与下一节所述的“标记”结合使用。"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:183
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<bold>text='Advanced'</bold>"
 msgid "editor^<bold>text='Elevation Floodfill'</bold>"
-msgstr ""
-"\n"
-"\n"
-"<bold>text='高级'</bold>"
+msgstr "<bold>text='高低差泛洪填充'</bold>"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:185
 msgid "Raised elevation on-map marker"
-msgstr ""
+msgstr "地图上的高低差标记"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:186
@@ -825,6 +810,14 @@ msgid ""
 "Placing a high region next to a low region does not result in larger "
 "cliffs.\n"
 msgstr ""
+"高低差的编辑器调色板图标\n"
+"\n"
+"若要将某块地形抬高或降低，同时仍能使用其他覆盖层地形（如树木），你需要使用这"
+"些标记。在地图上放置其中一个箭头后，地图会以颜色编码的雾状区域进行填充；无论"
+"是雾状区域还是箭头，在游戏中都不可见。被标记的区域会带有一个边缘台阶，使其看"
+"起来比相邻的地块更高或更低。\n"
+"共有两个高标记和两个低标记，因此最多可以创建五层台地（最低、较低、正常、较"
+"高、最高）。将高区域与低区域相邻放置并不会产生更大的悬崖。\n"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:193
@@ -846,6 +839,19 @@ msgid ""
 "The graphics used to represent the ledge borders are determined by the base "
 "terrain.\n"
 msgstr ""
+"<bold>text='如何使用'</bold>\n"
+"\n"
+"标记箭头本身用处不大，但断崖/沟壑类型的地形可以用来限定填充区域的范围。\n"
+"\n"
+"一个使用示例如下：\n"
+"1. 从编辑器调色板中选择断崖（^Qhh），使用单格绘制工具在一张空白的全草地地图上"
+"勾勒出一块大区域。\n"
+"2. 在区域内的某个地块上放置一个“标记-高”（^_mh）箭头（不要放在断崖边界"
+"上）。\n"
+"3. 现在整个区域应该都被抬高了，只要你不覆盖标记或断崖覆盖层，就可以根据需要添"
+"加其他地形覆盖层。\n"
+"\n"
+"用于表示边缘台阶的图像由基础地形决定。\n"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:204
@@ -855,6 +861,9 @@ msgid ""
 "filtering a location by elevation is not simple.' italic='yes' font_size=10 "
 "</format>"
 msgstr ""
+"<format>text='UMC作者须知： 被填充的地块其地形代码不会被更改，其他任何属性也"
+"不会受到影响，因此按海拔高度来筛选位置并不简单。' italic='yes' font_size=10 "
+"</format>"
 
 #. [topic]: id=editor_deprecated_overlay
 #: data/core/editor/help.cfg:210
@@ -1084,11 +1093,13 @@ msgid ""
 "in. This will only rename that folder and update any references to it in the "
 "_main.cfg file. Any other place will need to be updated manually."
 msgstr ""
+"允许更改附加组件的 ID，也就是它所在文件夹的名称。此操作仅会重命名该文件夹，并"
+"更新_main.cfg文件中对其的所有引用。其他所有地方都需要手动更新。"
 
 #. [topic]: id=editor_pbl_editor
 #: data/core/editor/help.cfg:334
 msgid "Add-on Publishing Editor"
-msgstr ""
+msgstr "附加组件发布编辑器"
 
 #. [topic]: id=editor_pbl_editor
 #: data/core/editor/help.cfg:335
@@ -1097,6 +1108,8 @@ msgid ""
 "publishing an add-on to the add-ons server for other players to download. "
 "The Validate button will check whether all required fields have valid values."
 msgstr ""
+"允许配置附加组件的_server.pbl文件，该文件是将附加组件发布到附加组件服务器，供"
+"其他玩家下载时所必需的。“验证”按钮会检查所有必填字段是否都具有有效值。"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:343
@@ -1171,6 +1184,11 @@ msgid ""
 "scenario mode is required in order for your maps to be selectable during "
 "game creation."
 msgstr ""
+"在任一模式下，系统都会提示你选择一个附加组件，用于存放你创建的场景。这可以是"
+"一个已有的附加组件，也可以是一个全新的附加组件。如果你选择使用全新的附加组"
+"件，那么该附加组件的所有必需文件和文件夹都会被自动创建，同时还会分配一个默认"
+"ID。除非你正在编辑一个已经存在的地图文件，否则必须使用场景模式，这样你创建的"
+"地图才能在创建游戏时被选到。"
 
 #. [topic]: id=..editor
 #: data/core/editor/help.cfg:358
@@ -1291,22 +1309,6 @@ msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:407
-#, fuzzy
-#| msgid ""
-#| "<header>text='The files: .map and .cfg'</header>\n"
-#| "\n"
-#| "The map editor saves exactly one file, either a .map (for terrain mode) "
-#| "or a .cfg (for scenario mode). In scenario mode the terrain map is saved "
-#| "inside the .cfg file; there is no separate .map file. If you start "
-#| "editing in terrain mode and then switch to scenario mode then an old .map "
-#| "file might remain, but this is not updated by the scenario editor.\n"
-#| "\n"
-#| "Loading a .cfg file has different results depending on the contents of "
-#| "the .cfg file. For .cfg files that were created by the scenario editor, "
-#| "it will open the .cfg in the scenario editor. However, for .cfg files "
-#| "that use a separate .map file (which can't be created by the scenario "
-#| "editor), the editor may follow the link and open the corresponding .map "
-#| "in terrain-only mode, as if the .map file was chosen in the file selector."
 msgid ""
 "<header>text='The files: .map and .cfg'</header>\n"
 "\n"
@@ -1323,15 +1325,13 @@ msgid ""
 msgstr ""
 "<header>text='文件：.map和.cfg'</header>\n"
 "\n"
-"地图编辑器只保存一个文件，要么是.map（用于地形模式），要么是.cfg（用于场景模"
-"式）。在场景模式下，地形图被保存在.cfg文件中，而没有单独的.map文件。如果你在"
-"地形模式下开始编辑，然后切换到场景模式，那么旧的.map文件可能会保留下来，但场"
-"景编辑器不会更新这个文件。\n"
+"地图编辑器在地形模式下保存一个文件（.map），而在场景模式下则保存两个文件（既"
+"有.map也有.cfg）。\n"
 "\n"
 "根据.cfg文件的内容，载入.cfg文件会产生不同的结果。对于由场景编辑器创建的.cfg"
-"文件，则会在场景编辑器中打开该文件。然而，对于使用单独的.map文件（这类文件不"
-"能由场景编辑器创建）的.cfg文件，编辑器可能会跟随链接并在仅地形模式下打开相应"
-"的.map，就像在文件选择器中选择了.map文件一样。"
+"文件，则会在场景编辑器中打开该文件。然而，对于不能由场景编辑器打开的.cfg文"
+"件，编辑器将尝试找到场景的地图数据，并在“仅地形”模式下打开相应的.map文件，就"
+"像在文件选择器中选择了.map文件一样。在此类情况下，推荐直接载入.map文件即可。"
 
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:419
@@ -1371,6 +1371,27 @@ msgid ""
 "  ◦ inside the [scenario] element, use “include_file=\"other.cfg\"” to load "
 "the additional cfg file"
 msgstr ""
+"加载 .cfg 文件时，场景编辑器能够识别由场景编辑器创建的文件，但对于手动编辑过"
+"的文件可能会遇到困难。\n"
+"\n"
+"一种方案是创建一个独立的WML文件（同样使用.cfg扩展名），利用WML预处理器来包含"
+"编辑器创建的文件。这个独立文件同时包含[scenario]标签以及任何手动编辑的WML（例"
+"如事件）。采用这种工作流程，附加组件的文件结构可能如下所示：\n"
+"\n"
+"<header>text='示例'</header>\n"
+"如果你的附加组件仅在 1.18 及更高版本中使用，则建议使用新的include_file属性来"
+"加载包含额外WML的.cfg文件到场景中。\n"
+"\n"
+"• _main.cfg:\n"
+"  ◦ 使用“[binary_path]”将附加组件的目录添加到二进制路径中，这样“map_file”就会"
+"搜索“maps”目录\n"
+"• maps/first.map\n"
+"  ◦ 这是场景编辑器在场景模式下保存时创建的.map文件\n"
+"• scenarios/other.cfg\n"
+"  ◦ 这是包含场景编辑器无法识别的所有内容的.cfg文件\n"
+"• scenarios/first.cfg\n"
+"  ◦ 在[scenario]元素中，使用“map_file=\"first.map\"”来加载地图文件\n"
+"  ◦ 在[scenario]元素中，使用“include_file=\"other.cfg\"”来加载额外的cfg文件"
 
 #. [topic]: id=editor_masks
 #: data/core/editor/help.cfg:443
@@ -1548,16 +1569,6 @@ msgstr ""
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:509
-#, fuzzy
-#| msgid ""
-#| "<header>text='Files created by the Scenario Editor'</header>\n"
-#| "\n"
-#| "In scenario mode, the editor saves the data as a .cfg file with embedded "
-#| "map data. When loading a .cfg file, the scenario editor understands files "
-#| "created by the scenario editor itself, but is likely to have difficulty "
-#| "with files that have been edited by hand; problems can be avoided by "
-#| "<ref>dst='editor_separate_events_file' text='using a separate .cfg file'</"
-#| "ref> for the hand-edited parts."
 msgid ""
 "<header>text='Files created by the Scenario Editor'</header>\n"
 "\n"
@@ -1571,10 +1582,11 @@ msgid ""
 msgstr ""
 "<header>text='由场景编辑器创建的文件'</header>\n"
 "\n"
-"在场景模式中，编辑器将数据保存为内嵌地图数据的.cfg文件。当加载.cfg文件时，场"
-"景编辑器能解析由场景编辑器自己创建的文件，但对那些被手工编辑过的文件可能存在"
-"解析上的困难。通过<ref>dst='editor_separate_events_file' text='使用单独的.cfg"
-"文件'</ref>来存储手工编辑的部分，这一问题可以解决。"
+"在场景模式中，编辑器将场景数据保存为.cfg文件，而地图数据保存为单独的.map文"
+"件。场景通过map_file引用.map文件。当加载.cfg文件时，场景编辑器能够解析由场景"
+"编辑器自己创建的文件，但对那些被手工编辑过的文件可能存在解析上的困难。通过"
+"<ref>dst='editor_separate_events_file' text='使用单独的.cfg文件'</ref>来存储"
+"手工编辑的部分，这一问题可以解决。"
 
 #. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
@@ -4385,32 +4397,6 @@ msgstr "安装附加组件"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:649
-#, fuzzy
-#| msgid ""
-#| "User-made add-ons can be obtained and updated through the "
-#| "<italic>text='Add-ons'</italic> option in the main menu. After connecting "
-#| "to the add-ons server (by default <italic>text='add-ons.wesnoth.org'</"
-#| "italic>), you will be presented with a list of add-ons available on the "
-#| "server for downloading.\n"
-#| "\n"
-#| "The installation status for each add-on is shown below each entry. For "
-#| "add-ons that are <italic>text='upgradable'</italic> or "
-#| "<italic>text='outdated'</italic> on the server, their installed and "
-#| "published versions will be shown in the <italic>text='Version'</italic> "
-#| "column.\n"
-#| "\n"
-#| "To search for add-ons by keywords, type any relevant terms in any order "
-#| "in the search box, separated by spaces. You can also sort the add-on list "
-#| "by clicking the column headers. It is also possible to choose to only "
-#| "display add-ons of specific categories by clicking on the "
-#| "<bold>text='Type'</bold> dropdown.\n"
-#| "\n"
-#| "To install an add-on, select it from the list and click the "
-#| "<bold>text='+'</bold> icon, or simply double-click on the add-on’s title. "
-#| "If the window is too small to show them inline, the <bold>text='Addon "
-#| "Details'</bold> button provides you with additional details about the add-"
-#| "on, such as its full description, installation status, and available "
-#| "translations."
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -4434,21 +4420,22 @@ msgid ""
 "provides you with additional details about the add-on, such as its full "
 "description, installation status, and available translations."
 msgstr ""
-"通过主菜单中的<bold>text='附加组件'</bold>选项，玩家可以下载或者更新用户自制"
-"的附加组件。连接到附加组件服务器后（默认为<bold>text='add-ons.wesnoth.org'</"
-"bold>），你可以看到一份可供下载的组件列表。\n"
+"通过主菜单中的<bold>text='附加组件'</bold>选项，玩家可以获取或者更新用户制作"
+"的附加组件。连接到附加组件服务器后（默认为<italic>text='add-"
+"ons.wesnoth.org'</italic>），你可以看到一份在服务器上可供下载的附加组件列"
+"表。\n"
 "\n"
-"在每个条目下显示了该组件的安装状态。对于服务器中<bold>text='可升级的'</bold>"
-"或者<bold>text='已过期的'</bold>的附加组件，它们的所安装版本号和最新版本号都"
-"会被列在<bold>text='版本'</bold>栏中。\n"
+"在每个条目下显示了该附加组件的安装状态。对于服务器上<bold>text='可升级的'</"
+"bold>或者<bold>text='已过期的'</bold>的附加组件，它们的已安装版本号和最新版本"
+"号都会被列在<bold>text='版本'</bold>列中。\n"
 "\n"
-"要通过关键字搜索组件，只需要在搜索框中键入任何相关条目，并以空格隔开即可。你"
-"也可以通过点击各栏的顶端来为附加组件排序。通过点击右上角的<bold>text='类型'</"
-"bold>下拉框，你也可以让游戏只显示特定类别的附加组件。\n"
+"要通过关键字搜索附加组件，只需要在搜索框中以任意顺序键入任意相关条目，并以空"
+"格隔开即可。你也可以通过点击各列的顶端来为附加组件排序。通过点击"
+"<bold>text='类型'</bold>下拉框，你也可以让游戏只显示特定类别的附加组件。\n"
 "\n"
-"要安装某个附加组件，只需从列表中选取他，并点击<bold>text='+'</bold>按钮，或者"
-"双击附加组件的标题。 <bold>text='附加组件细节'</bold> 按钮可以提供关于该附加"
-"组件的一些更多的细节，比如其完整描述、安装状态以及可用的翻译。"
+"要安装某个附加组件，只需从列表中选取之，并点击<bold>text='+'</bold>图标，或者"
+"双击附加组件的标题即可。<bold>text='附加组件细节'</bold> 按钮可以提供关于该附"
+"加组件的更多细节，比如其完整描述、安装状态以及可用的翻译。"
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:662
@@ -5136,15 +5123,6 @@ msgstr "隐蔽"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:350
-#, fuzzy
-#| msgid ""
-#| "This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to "
-#| "it.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in a village, except if they "
-#| "have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in villages, and remain undetected by its enemies, except "
 "by those standing next to it.\n"
@@ -5153,8 +5131,7 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
-"此单位可以隐藏在村庄里（水中村庄除外）而不会被敌人发觉，除了那些与他相邻的敌"
-"人之外。\n"
+"此单位可以隐藏在村庄里而不会被敌人发觉，除了那些与他相邻的敌人之外。\n"
 "\n"
 "当此单位在村庄里时，敌人看不见他，除非敌方有单位与他相邻。第一个发现此单位的"
 "敌方单位将立刻丧失其剩余的全部行动点数。"
@@ -5512,14 +5489,12 @@ msgid ""
 msgstr "因瘟疫而丧生的敌人将重生为亡灵，除非他们在丧生前驻扎在村庄里。"
 
 #: data/core/macros/special-notes.cfg:73
-#, fuzzy
-#| msgid ""
-#| "Foes who lose their life to the plague will rise again in unlife, unless "
-#| "they are standing on a village."
 msgid ""
 "Foes who lose their life to certain horrors of nature become nourishment for "
 "a rapidly growing larva, unless they are standing in a village."
-msgstr "因瘟疫而丧生的敌人将重生为亡灵，除非他们在丧生前驻扎在村庄里。"
+msgstr ""
+"丧命于某些自然恐怖生物之手的敌人，将成为快速成长中的幼虫的养分，除非他们正站"
+"在村庄里。"
 
 #: data/core/macros/special-notes.cfg:76
 msgid ""
@@ -5590,7 +5565,7 @@ msgstr ""
 msgid ""
 "Special Notes (1.14-style, please update to the new list format to avoid "
 "duplicates):"
-msgstr ""
+msgstr "特殊备注（1.14版本风格，请更新至新列表格式，以避免重复）："
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:12
@@ -6256,7 +6231,7 @@ msgstr ""
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:199
 msgid "stun"
-msgstr ""
+msgstr "击晕"
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:200
@@ -6264,17 +6239,14 @@ msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
+"此攻击势大力沉，令对手陷入眩晕，无法再维持控制区域。该效果在对手的下一回合结"
+"束时解除。"
 
 #. [stun]: id=stun
 #: data/core/macros/weapon_specials.cfg:201
-#, fuzzy
-#| msgid ""
-#| "This unit is able to slow its enemies, halving their movement speed and "
-#| "attack damage until they end a turn."
 msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
-msgstr ""
-"此单位能够使敌人减速，让他们的移动速度和攻击伤害都减半，直到他们的回合结束。"
+msgstr "此单位能够击晕敌人，扰乱他们的控制区域。"
 
 #: data/core/units.cfg:4
 msgid ""
@@ -7963,138 +7935,3 @@ msgstr "视野消耗"
 #: src/help/help_topic_generators.cpp:760
 msgid "Jamming Cost"
 msgstr "干扰消耗"
-
-#~ msgid "Flat"
-#~ msgstr "平原"
-
-#~ msgid "Village"
-#~ msgstr "村庄"
-
-#~ msgid ""
-#~ "When loading a .cfg file, the scenario editor understands files created "
-#~ "by the scenario editor, but is likely to have difficulty with files that "
-#~ "have been edited by hand.\n"
-#~ "\n"
-#~ "Files created by the scenario editor omit the opening [scenario] and "
-#~ "closing [/scenario] tags. If you are creating a campaign (or other add-"
-#~ "on), then those tags need to be added; there is more detail about this in "
-#~ "the <ref>dst='editor_map_format' text='map file format'</ref> "
-#~ "documentation.\n"
-#~ "\n"
-#~ "One workflow is to create a separate WML file, also with the .cfg "
-#~ "extension, which uses the WML preprocessor to include the editor-created "
-#~ "file. This separate file contains both the [scenario] tag and any hand-"
-#~ "edited WML such as events. With this workflow, the add-on’s file "
-#~ "structure could look like this:\n"
-#~ "\n"
-#~ "<header>text='For Wesnoth 1.14'</header>\n"
-#~ "\n"
-#~ "• _main.cfg:\n"
-#~ "  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
-#~ "• maps/map_from_01.cfg\n"
-#~ "  ◦ this is the file created by the scenario editor\n"
-#~ "• scenarios/01_Forest.cfg, instead of the opening [scenario] tag put in "
-#~ "these four lines:\n"
-#~ "  ◦ [scenario]\n"
-#~ "  ◦     {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
-#~ "  ◦ [/scenario]\n"
-#~ "  ◦ [+scenario]\n"
-#~ "\n"
-#~ "The first three of those lines insert the scenario-generated file inside "
-#~ "a [scenario] tag. The ‘+’ sign on the fourth line means that two scenario "
-#~ "tags will be combined, with attributes in the second one overriding "
-#~ "attributes in the first one.\n"
-#~ "\n"
-#~ "<header>text='1.16 and later'</header>\n"
-#~ "\n"
-#~ "If your add-on will only be used on 1.16 and later, there are new "
-#~ "features to load .cfg files via map_file, and to avoid repeating the add-"
-#~ "on’s name within the .cfg files.\n"
-#~ "\n"
-#~ "• _main.cfg:\n"
-#~ "  ◦ use “[binary_path]” to add add-on’s directories to the binary path, "
-#~ "which makes “map_file” search the “maps” directory.\n"
-#~ "  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
-#~ "• maps/map_from_01.cfg\n"
-#~ "  ◦ this is the file created by the scenario editor\n"
-#~ "• scenarios/01_Forest.cfg\n"
-#~ "  ◦ inside the [scenario] element, use “map_file=\"map_from_01.cfg\"” to "
-#~ "load that file"
-#~ msgstr ""
-#~ "当加载.cfg文件时，场景编辑器能解析由场景编辑器创建的文件，但对手工编辑过的"
-#~ "文件可能存在解析上的困难。\n"
-#~ "\n"
-#~ "由场景编辑器创建的文件省略了开头的[scenario]和结尾的[/scenario]标签。如果"
-#~ "你正在创建战役（或其他附加组件），那么需要添加这些标签。在"
-#~ "<ref>dst='editor_map_format' text='地图文件格式'</ref>文档中有更多关于这方"
-#~ "面的细节。\n"
-#~ "\n"
-#~ "一种典型的工作流如下：创建一个单独的WML文件，这个文件也是以.cfg为扩展名"
-#~ "的，文件中使用WML预处理器来包含编辑器创建的文件。这个单独的文件同时包含了"
-#~ "[scenario]标签和全部手工编辑的WML（如事件）。使用这一工作流时，附加组件的"
-#~ "文件结构可能是这样的：\n"
-#~ "\n"
-#~ "<header>text='针对韦诺1.14'</header>\n"
-#~ "\n"
-#~ "• _main.cfg：\n"
-#~ "  ◦ 使用 \"{./scenarios}\"来包含“scenarios”目录\n"
-#~ "• maps/map_from_01.cfg\n"
-#~ "  ◦ 这是由场景编辑器创建的文件\n"
-#~ "• scenarios/01_Forest.cfg，此文件不使用典型的[scenario]标签开头，而是包含"
-#~ "这四行：\n"
-#~ "  ◦ [scenario]\n"
-#~ "  ◦  {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
-#~ "  ◦ [/scenario]\n"
-#~ "  ◦ [+scenario]\n"
-#~ "\n"
-#~ "其中前三行在[scenario]标签内插入场景编辑器生成的文件。第四行的'+'号意味着"
-#~ "两个场景标签将被合并，第二个标签中的属性将覆盖第一个标签中的属性。\n"
-#~ "\n"
-#~ "<header>text='1.16及以后'</header>\n"
-#~ "\n"
-#~ "如果你的附加组件只用于1.16及以后的版本中，则可以通过map_file载入.cfg文件，"
-#~ "这些新功能可以避免在.cfg文件中重复附加组件的名字。\n"
-#~ "\n"
-#~ "• _main.cfg：\n"
-#~ "  ◦ 使用“[binary_path]”将附加组件目录添加到二进制文件路径中，这样一"
-#~ "来，“map_file”将搜索“maps”目录\n"
-#~ "  ◦ 使用“{./scenarios}”来包含“scenarios”目录\n"
-#~ "• maps/map_from_01.cfg\n"
-#~ "  ◦ 这是由场景编辑器创建的文件\n"
-#~ "• scenarios/01_Forest.cfg\n"
-#~ "  ◦ 在[scenario]元素中，使用“map_file=\"map_from_01.cfg”来加载该文件"
-
-#~ msgid ""
-#~ "<header>text='Which scenario files use the [scenario] tag'</header>\n"
-#~ "\n"
-#~ "Files created by the scenario editor have the contents of a WML scenario "
-#~ "element, but don’t include the opening [scenario] and closing [/scenario] "
-#~ "tags. For each .cfg file in the userdata folder’s editor/scenarios "
-#~ "subfolder, the game will automatically try to load a scenario from it to "
-#~ "include in the “Custom Scenarios” list (files that fail to load are "
-#~ "ignored). In this folder each file is a separate item - files that fail "
-#~ "to parse as a scenario are ignored, and files must not contain the "
-#~ "[scenario][/scenario] tags.\n"
-#~ "\n"
-#~ "The opposite applies when a scenario is part of a campaign or other add-"
-#~ "on. Typically each scenario has its own .cfg file, however this is "
-#~ "unnecessary - all of the WML in an add-on will be combined by the "
-#~ "preprocessor, it doesn’t matter whether the add-on is written as separate "
-#~ "files or not. The engine needs the [scenario]...[/scenario] (or "
-#~ "[multiplayer]...[/multiplayer]) tags to know which WML is part of each "
-#~ "scenario."
-#~ msgstr ""
-#~ "<header>text='哪些场景文件使用[scenario]标签'</header>\n"
-#~ "\n"
-#~ "由场景编辑器创建的文件中含有WML场景元素应该包含的内容，但不包括开头的"
-#~ "[scenario]和结尾的[/scenario]标签。对于用户数据文件夹的editor/scenarios子"
-#~ "文件夹中的每个.cfg文件，游戏会自动尝试从其中加载场景，以包括在“自定义场景”"
-#~ "列表中——加载失败的文件会被忽略。在此文件夹中，每个文件都是一个单独的项目——"
-#~ "未能被解析为场景的文件会被忽略，而且文件中不能包含[scenario][/scenario]标"
-#~ "签。\n"
-#~ "\n"
-#~ "当场景是战役或其他附加组件的一部分时，情况则相反。通常情况下，每个场景都有"
-#~ "自己的.cfg文件，但这不必要——一个附加组件中的所有WML都会被预处理器合并，无"
-#~ "论附加组件是否被写成多个独立的文件都无所谓。引擎需要[scenario]...[/"
-#~ "scenario]（或[multiplayer]...[/multiplayer]）标签来知道哪些WML是哪个场景的"
-#~ "一部分。"
