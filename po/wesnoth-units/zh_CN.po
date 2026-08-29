@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2022 Wesnoth development team
+# Copyright (C) 2005-2026 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Translators and their initial years of participation:
@@ -9,21 +9,22 @@
 # sylecn <sylecn AT yahoo DOT com DOT cn>, 2009.
 # CloudiDust <cloudidust@gmail.com>, 2010.
 # Yifan <yyf1992@mail.ustc.edu.cn>, 2015.
+# vimacs <vimacs.hacks@gmail.com>, 2024.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.16\n"
+"Project-Id-Version: wesnoth-1.20\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-08-18 15:19 UTC\n"
-"PO-Revision-Date: 2025-04-01 11:27+0800\n"
-"Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
+"PO-Revision-Date: 2026-08-23 19:24+0800\n"
+"Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.9\n"
 
 #. [attack]: type=impact
 #: data/campaigns/Dead_Water/units/Soldier_King.cfg:30
@@ -407,24 +408,6 @@ msgstr "圣骑士"
 #. [unit_type]: id=Paladin, race=human
 #: data/campaigns/Eastern_Invasion/units/Human_Terraent_Paladin.cfg:19
 #: data/core/units/humans/Horse_Paladin.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Knights of the highest virtue, Paladins have sworn their strength not to "
-#| "king and crown, but to ideals themselves; of chivalry, and the "
-#| "stewardship of everything that is good. They may serve in the armies of "
-#| "the world, but their first loyalties often lie with groups of their own "
-#| "making; secret, monastic orders that cross political and cultural "
-#| "boundaries. Rulers are sometimes wary of them, for the paladins’ loyalty "
-#| "is only as strong as the liege’s apparent virtue. This has led the more "
-#| "darkly ambitious to either attempt to defame and disperse these groups, "
-#| "or more rarely, to conjure elaborate deceptions to keep these otherwise "
-#| "staunchly loyal troops in service.\n"
-#| "\n"
-#| "Full paladins are generally not quite as fearsome as the ‘Grand Knights’ "
-#| "that champion most armies, but they are first-class fighters nonetheless. "
-#| "Additionally, their wisdom and piety grants these warrior monks certain "
-#| "curious abilities; a paladin is very powerful in fighting magical or "
-#| "unnatural things, and most have some skill at medicine and healing."
 msgid ""
 "Knights of the highest virtue, Paladins have sworn their strength not to "
 "king and crown, but to ideals themselves; of chivalry, and the stewardship "
@@ -566,24 +549,19 @@ msgstr "诅咒"
 #. [unit_type]: id=Pirate Flagship, race=ship
 #: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Flagship.cfg:9
 msgid "Pirate Flagship"
-msgstr ""
+msgstr "海盗旗舰"
 
 #. [unit_type]: id=Pirate Flagship, race=ship
 #. [unit_type]: id=Pirate Carrack, race=ship
 #: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Flagship.cfg:24
 #: data/core/units/boats/Carrack_Pirate.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Pirate galleons are to transport ships what wolves are to sheep. The "
-#| "pirates who crew them are more than happy to help relieve other ships of "
-#| "their weighty cargo."
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. The pirates "
 "who crew them are more than happy to help relieve other ships of their "
 "weighty cargo, or to fight as privateers in return for coin."
 msgstr ""
 "如果说运输船是羊，海盗船就是狼。船上的海盗们非常乐意帮助别的船只卸下那些沉重"
-"的货物，免得超载。"
+"的货物，或受雇为私掠者以赚取金钱。"
 
 #. [attack]: type=impact
 #. [attack]: type=fire
@@ -610,37 +588,28 @@ msgstr "巨槌"
 #. [attack]: type=pierce
 #: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Flagship.cfg:38
 #: data/core/units/boats/Carrack_Pirate.cfg:36
-#, fuzzy
-#| msgid "ballista"
 msgid "ballistae"
-msgstr "投石器"
+msgstr "弩炮"
 
 #. [attack]: type=pierce
 #: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Flagship.cfg:47
 #: data/core/units/boats/Carrack_Pirate.cfg:45
-#, fuzzy
-#| msgid "Trapper"
 msgid "grapple"
-msgstr "陷阱猎人"
+msgstr "抓钩"
 
 #. [unit_type]: id=Pirate Skiff, race=ship
 #: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Skiff.cfg:9
 msgid "Pirate Skiff"
-msgstr ""
+msgstr "海盗小艇"
 
 #. [unit_type]: id=Pirate Skiff, race=ship
 #. [unit_type]: id=Skiff, race=ship
 #: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Skiff.cfg:26
 #: data/core/units/boats/Skiff.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Propelled by oars or small sails, boats are used to travel short "
-#| "distances and in shallows where large ships cannot navigate."
 msgid ""
 "Propelled by oars or small sails, Skiffs are used to travel short distances "
 "and in shallows where large ships cannot navigate."
-msgstr ""
-"小艇以桨或者小型帆做为动力，用于短途旅行或者在大船无法航行的浅水中航行。"
+msgstr "小艇以桨或者小帆为动力，用于短途旅行，以及在大船无法航行的浅水中航行。"
 
 #. [attack]: type=pierce
 #: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Skiff.cfg:41
@@ -649,10 +618,8 @@ msgstr ""
 #: data/core/units/boats/Orc_Battle-Barge.cfg:36
 #: data/core/units/boats/Raider_Coastal.cfg:41
 #: data/core/units/boats/Raider_Iron.cfg:42 data/core/units/boats/Skiff.cfg:37
-#, fuzzy
-#| msgid "Poacher"
 msgid "archers"
-msgstr "偷猎者"
+msgstr "射手"
 
 #. [unit_type]: id=Bowman Thea, race=human, gender=female
 #. [unit_type]: id=Bowman, race=human, gender=male
@@ -665,13 +632,6 @@ msgstr "弓手"
 #. [unit_type]: id=Bowman, race=human, gender=male
 #: data/campaigns/Of_Pearls_and_Pirates/units/Thea1.cfg:17
 #: data/core/units/humans/Loyalist_Bowman.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The use of archery in shooting something other than game was seen from "
-#| "its inception, and archers have been indispensable in warfare since time "
-#| "immemorial. Usually of humble origins, hailing from the peasantry or "
-#| "woodsmen, military bowmen are trained to competence with both a bow and a "
-#| "short sword, and are very common on the battlefield."
 msgid ""
 "The use of archery in shooting something other than game was seen from its "
 "inception, and archers have been indispensable in warfare since time "
@@ -726,16 +686,6 @@ msgstr "大师弓手"
 #. [unit_type]: id=Master Bowman, race=human, gender=male
 #: data/campaigns/Of_Pearls_and_Pirates/units/Thea3.cfg:18
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Master bowmen have reached the zenith of their art, inasmuch as any human "
-#| "is capable. Armed with both a sword, and a great yew bow, these warriors "
-#| "crown battalions of archers with their presence, bringing down many a foe "
-#| "with their well-aimed shots. Their skill with the sword is also not to be "
-#| "discounted; they are easily as good with it as any novice swordsman. Of "
-#| "the many races in the world, only the elves surpass humanity in archery, "
-#| "and their human counterparts have speculated, perhaps in envy, that this "
-#| "is only by dint of age."
 msgid ""
 "Master Bowmen have reached the zenith of their art, inasmuch as any human is "
 "capable. Armed with both a sword, and a great yew bow, these warriors crown "
@@ -1061,14 +1011,6 @@ msgstr "锤"
 #. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardsman.cfg:17
 #: data/core/units/dwarves/Guardsman.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The dwarven race has always been famed for its sturdiness of build, and "
-#| "many of their warriors outfit themselves to take advantage of this. "
-#| "Dwarven guardsmen march into battle with tower shields and spears. Most "
-#| "often, their role is to hold the line, and to take a heavy toll on those "
-#| "who try to break it. As the line marches forward, they act to secure its "
-#| "hard-won advance."
 msgid ""
 "The dwarven race has always been famed for its sturdiness of build, and many "
 "of their warriors outfit themselves to take advantage of this. Dwarven "
@@ -1157,14 +1099,6 @@ msgstr "小斧"
 
 #. [unit_type]: id=Dwarvish Masked Sentinel, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Sentinel.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Champions among their fellow troops, the dwarven sentinels form the "
-#| "bulwark of their battle lines. Leading a direct assault against a line "
-#| "that they fortify, is often out of the question; it tends toward being "
-#| "suicidal, rather than merely ineffectual. These dwarves are masters of "
-#| "the melee, and can hold a patch of earth with the single-minded tenacity "
-#| "of an oak."
 msgid ""
 "Champions among their fellow troops, the Dwarven Sentinels form the bulwark "
 "of their battle lines. Leading a direct assault against a line that they "
@@ -1335,10 +1269,8 @@ msgstr "拳头"
 
 #. [unit_type]: id=Wandering Scarab
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Wandering_Scarab.cfg:4
-#, fuzzy
-#| msgid "Horned Scarab"
 msgid "Wandering Scarab"
-msgstr "有角圣甲虫"
+msgstr "游荡圣甲虫"
 
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:36
@@ -1377,7 +1309,7 @@ msgstr "箭雨"
 #. [effect]: type=pierce
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:579
 msgid "Snipe"
-msgstr ""
+msgstr "狙击"
 
 #. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:4
@@ -1417,23 +1349,18 @@ msgstr "吸血蝙蝠"
 
 #. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Vampire bats are flying beasts that feed on the blood of other creatures. "
-#| "While their fangs are not very powerful, the health of victims is drained "
-#| "away along with their blood, and given to the Bats."
 msgid ""
 "Vampire Bats are flying beasts that feed on the blood of other creatures. "
 "While their fangs are not very powerful, the health of victims is drained "
 "away along with their blood, and given to the Bats."
 msgstr ""
-"吸血蝙蝠是以鲜血为食的飞畜。虽然它们的牙的撕咬并不能造成很大伤害，受害者的体"
-"力与血液会被一同吸走，并成为蝙蝠的所有物。"
+"吸血蝙蝠是以其他生物的鲜血为食的飞畜。虽然它们的尖牙并不强，但受害者的体力和"
+"鲜血会被一同吸走，并成为蝙蝠的所有物。"
 
 #. [unit_type]: id=Canoe, race=ship
 #: data/core/units/boats/Canoe.cfg:5
 msgid "Canoe"
-msgstr ""
+msgstr "划子"
 
 #. [unit_type]: id=Canoe, race=ship
 #: data/core/units/boats/Canoe.cfg:34
@@ -1443,11 +1370,13 @@ msgid ""
 "barriers or between unconnected bodies of water. Almost every intelligent "
 "race has some form of Canoe."
 msgstr ""
+"划子是一种小型开放式水上载具，常用于运输或狩猎。其轻量化的构造使其能够被携带"
+"绕过障碍，或在互不相通的水域之间转运。几乎每一个智慧种族都有某种形式的划子。"
 
 #. [unit_type]: id=Merchant Carrack, race=ship
 #: data/core/units/boats/Carrack_Merchant.cfg:4
 msgid "Merchant Carrack"
-msgstr ""
+msgstr "商用卡瑞克帆船"
 
 #. [unit_type]: id=Merchant Carrack, race=ship
 #: data/core/units/boats/Carrack_Merchant.cfg:22
@@ -1457,16 +1386,18 @@ msgid ""
 "platform, and their spacious holds can carry both medical supplies and "
 "repair equipment."
 msgstr ""
+"商用卡瑞克帆船是配有大型货舱的快速船只。虽然它们并非为战争而设计，但其宽大而"
+"稳定的甲板是良好的射箭平台，宽敞的货舱也能同时装载医疗物资和维修设备。"
 
 #. [unit_type]: id=Pirate Carrack, race=ship
 #: data/core/units/boats/Carrack_Pirate.cfg:4
 msgid "Pirate Carrack"
-msgstr ""
+msgstr "海盗卡瑞克帆船"
 
 #. [unit_type]: id=Derelict, race=ship
 #: data/core/units/boats/Derelict_Ship.cfg:4
 msgid "Derelict"
-msgstr ""
+msgstr "海上弃船"
 
 #. [unit_type]: id=Derelict, race=ship
 #. [unit_type]: id=Ghost Ship, race=ship
@@ -1477,13 +1408,13 @@ msgid ""
 "are merely ruined ships that will soon sink, but there are tales of others "
 "that haunt certain waterways for generations."
 msgstr ""
+"海上弃船是被遗弃的残骸，继续在海面上漂流。大多数只是即将沉没的残破船只，但另"
+"有传说称，有些会在某些水域出没数代人之久。"
 
 #. [unit_type]: id=Elvish Cutter, race=ship
 #: data/core/units/boats/Elf_Cutter.cfg:5
-#, fuzzy
-#| msgid "Elvish Outrider"
 msgid "Elvish Cutter"
-msgstr "精灵先锋骑卫"
+msgstr "精灵快帆船"
 
 #. [unit_type]: id=Elvish Cutter, race=ship
 #: data/core/units/boats/Elf_Cutter.cfg:19
@@ -1494,6 +1425,9 @@ msgid ""
 "Artfully grafted together from still-living trees, these sleek ships can "
 "recover from minor injuries without their crews’ intervention."
 msgstr ""
+"精灵生性并非航海种族，他们更偏爱森林的宁静孤寂。尽管如此，河流贸易和运输仍有"
+"一定需求，尤其是在韦米尔和林塔尼尔这两个飞地之间。这些线条流畅的船只由仍然存"
+"活的树木巧妙嫁接而成，无需船员干预即可从轻微损伤中自愈。"
 
 #. [attack]: type=pierce
 #: data/core/units/boats/Elf_Cutter.cfg:34
@@ -1501,14 +1435,12 @@ msgstr ""
 #: data/core/units/boats/Elf_Sloop.cfg:35
 #: data/core/units/boats/Elf_Sloop.cfg:44
 msgid "marksmen"
-msgstr ""
+msgstr "神射手"
 
 #. [unit_type]: id=Elvish Sloop, race=ship
 #: data/core/units/boats/Elf_Sloop.cfg:5
-#, fuzzy
-#| msgid "Elvish Scout"
 msgid "Elvish Sloop"
-msgstr "精灵侦察兵"
+msgstr "精灵纵帆船"
 
 #. [unit_type]: id=Elvish Sloop, race=ship
 #: data/core/units/boats/Elf_Sloop.cfg:20
@@ -1518,11 +1450,13 @@ msgid ""
 "times of crisis, for their living timber can survive only a handful of years "
 "after being launched."
 msgstr ""
+"这些最强大的精灵船只线条流畅，缀满绿植，能够安然无恙地经受风浪与风暴。这样的"
+"庞然大物只在危急时刻才会出现，因为它们的活木在下水后仅能存活数年。"
 
 #. [unit_type]: id=Fireship, race=ship
 #: data/core/units/boats/Fireship.cfg:4
 msgid "Fireship"
-msgstr ""
+msgstr "火船"
 
 #. [unit_type]: id=Fireship, race=ship
 #: data/core/units/boats/Fireship.cfg:21
@@ -1532,25 +1466,26 @@ msgid ""
 "they also shed burning embers. Sometimes they have a skeleton crew to guide "
 "them, but often they just drift along on unseen winds and currents."
 msgstr ""
+"火船通常是被点燃的废弃船只或注定沉没的船只，以最后一击制造混乱。其主要危险在"
+"于爆燃的冲撞，但也会散落燃烧的余烬。有时会有寥寥数名船员操控它们，但更多时候"
+"只是随风浪与暗流漂荡。"
 
 #. [dummy]: id=deteriorate
 #: data/core/units/boats/Fireship.cfg:26
 msgid "deteriorate"
-msgstr ""
+msgstr "恶化"
 
 #. [dummy]: id=deteriorate
 #: data/core/units/boats/Fireship.cfg:27
 msgid ""
 "This unit is deteriorating. It cannot be healed, and loses 10 hitpoints at "
 "the start of each of its turns."
-msgstr ""
+msgstr "此单位正在恶化。它无法被治愈，且在每个自身回合开始时失去10点生命值。"
 
 #. [unit_type]: id=Ghost Ship, race=ship
 #: data/core/units/boats/Ghost_Ship.cfg:16
-#, fuzzy
-#| msgid "Ghost"
 msgid "Ghost Ship"
-msgstr "鬼魂"
+msgstr "幽灵船"
 
 #. [attack]: type=fire
 #: data/core/units/boats/Ghost_Ship.cfg:49
@@ -1563,7 +1498,7 @@ msgstr "闪电"
 #. [attack]: type=cold
 #: data/core/units/boats/Ghost_Ship.cfg:59
 msgid "lost souls"
-msgstr ""
+msgstr "失落之灵"
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Legacy_Boat.cfg:7
@@ -1572,20 +1507,15 @@ msgstr "小艇"
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Legacy_Boat.cfg:23
-#, fuzzy
-#| msgid ""
-#| "Propelled by oars or small sails, boats are used to travel short "
-#| "distances and in shallows where large ships cannot navigate."
 msgid ""
 "Propelled by oars or small sails, Boats are used to travel short distances "
 "and in shallows where large ships cannot navigate."
-msgstr ""
-"小艇以桨或者小型帆做为动力，用于短途旅行或者在大船无法航行的浅水中航行。"
+msgstr "小艇以桨或者小帆做为动力，用于短途旅行或者在大船无法航行的浅水中航行。"
 
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Legacy_Galleon.cfg:6
 msgid "Galleon"
-msgstr "大帆船"
+msgstr "盖伦帆船"
 
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Legacy_Galleon.cfg:21
@@ -1596,6 +1526,9 @@ msgid ""
 "Isle, before even the times of Haldric. Centuries later, their skillfully-"
 "crafted designs continue to be used by many Wesnothian sailors."
 msgstr ""
+"盖伦帆船是大型坚固的木质船只，主要用于在河流与海洋上快速地大批量运输货物。最"
+"早的盖伦帆船是很久以前由绿岛的古代水手建造的，甚至早于哈尔德里克的时代。数个"
+"世纪之后，它们精湛的设计仍被许多韦诺水手所沿用。"
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Legacy_Pirate_Galleon.cfg:7
@@ -1604,18 +1537,13 @@ msgstr "海盗船"
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Legacy_Pirate_Galleon.cfg:23
-#, fuzzy
-#| msgid ""
-#| "Pirate galleons are to transport ships what wolves are to sheep. The "
-#| "pirates who crew them are more than happy to help relieve other ships of "
-#| "their weighty cargo."
 msgid ""
 "Pirate Galleons are to transport ships what wolves are to sheep. The pirates "
 "who crew them are more than happy to help relieve other ships of their "
 "weighty cargo."
 msgstr ""
 "如果说运输船是羊，海盗船就是狼。船上的海盗们非常乐意帮助别的船只卸下那些沉重"
-"的货物，免得超载。"
+"的货物。"
 
 #. [attack]: type=pierce
 #: data/core/units/boats/Legacy_Pirate_Galleon.cfg:26
@@ -1639,10 +1567,8 @@ msgstr ""
 
 #. [unit_type]: id=Orcish Barge, race=ship
 #: data/core/units/boats/Orc_Barge.cfg:5
-#, fuzzy
-#| msgid "Orcish Archer"
 msgid "Orcish Barge"
-msgstr "兽人弓箭手"
+msgstr "兽人驳船"
 
 #. [unit_type]: id=Orcish Barge, race=ship
 #: data/core/units/boats/Orc_Barge.cfg:28
@@ -1663,13 +1589,21 @@ msgid ""
 "These barges are very ineffective in the high seas; little better than a "
 "floating wreck."
 msgstr ""
+"兽人驳船是粗陋的造物，几乎没有任何在其他船只上能见到的工艺水准。但它们在速度"
+"与优雅上的不足，却被坚固的耐用性和在河流与沼泽中航行的实用性所弥补。它们的主"
+"要行进方式依靠一张由三点固定的大型对称帆，用于顺风推进。当水流与风向导致偏离"
+"航向时，船员必须使用撑杆和船锚将驳船推向预定方向。\n"
+"\n"
+"驳船可用作补给或部队的运输工具，当备有药品时，还能为受伤的战士提供一个安全的"
+"休憩之所——类似于村庄。它们没有任何专门的武器，也无法冲撞，但船员配备了足够多"
+"的粗制兽人弓，足以形成威慑。\n"
+"\n"
+"这些驳船在公海上极其低效，几乎与漂浮的残骸无异。"
 
 #. [unit_type]: id=Orcish Battle Barge, race=ship
 #: data/core/units/boats/Orc_Battle-Barge.cfg:5
-#, fuzzy
-#| msgid "Orcish Ruler"
 msgid "Orcish Battle Barge"
-msgstr "兽人统治者"
+msgstr "兽人战斗驳船"
 
 #. [unit_type]: id=Orcish Battle Barge, race=ship
 #: data/core/units/boats/Orc_Battle-Barge.cfg:30
@@ -1683,18 +1617,21 @@ msgid ""
 "These barges are very ineffective in the high seas; little better than a "
 "floating wreck."
 msgstr ""
+"尽管设计简陋，驳船却拥有惊人的实用性：可大宗运送货物或人员，能在浅水或沼泽中"
+"航行，还能为受伤的战士提供安全的休息场所。它们也提供了宽阔而稳定的平台，足以"
+"架设攻城器械——兽人对此心知肚明。\n"
+"\n"
+"这些驳船在公海上极其低效；几乎与漂浮的残骸无异。"
 
 #. [attack]: type=impact
 #: data/core/units/boats/Orc_Battle-Barge.cfg:45
 msgid "catapult"
-msgstr ""
+msgstr "石弩"
 
 #. [unit_type]: id=Orcish Rigship, race=ship
 #: data/core/units/boats/Orc_Rigship.cfg:5
-#, fuzzy
-#| msgid "Orcish Nightblade"
 msgid "Orcish Rigship"
-msgstr "兽人夜刃"
+msgstr "兽人锁具船"
 
 #. [unit_type]: id=Orcish Rigship, race=ship
 #: data/core/units/boats/Orc_Rigship.cfg:19
@@ -1706,6 +1643,9 @@ msgid ""
 "The so-called “Rigship” is but one of many designs bearing testament to "
 "their skill."
 msgstr ""
+"大多数兽人对帆船没什么需求，他们更喜欢在心之山脉的干燥峰峦与丘陵间征战。但在"
+"泰陆的西北海岸，在毕图克和提里加兹这两座城市，兽人造船师一直在努力精进他们的"
+"技艺。所谓的“索具船”只是众多彰显其技艺的设计之一。"
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
@@ -1713,17 +1653,13 @@ msgstr ""
 #: data/core/units/boats/Orc_Rigship.cfg:42
 #: data/core/units/boats/Orc_Warship.cfg:34
 #: data/core/units/boats/Orc_Warship.cfg:43
-#, fuzzy
-#| msgid "crossbow"
 msgid "crossbows"
 msgstr "十字弩"
 
 #. [unit_type]: id=Orcish Warship, race=ship
 #: data/core/units/boats/Orc_Warship.cfg:5
-#, fuzzy
-#| msgid "Orcish Warrior"
 msgid "Orcish Warship"
-msgstr "兽人战士"
+msgstr "兽人战船"
 
 #. [unit_type]: id=Orcish Warship, race=ship
 #: data/core/units/boats/Orc_Warship.cfg:20
@@ -1733,11 +1669,14 @@ msgid ""
 "shipwrights of the Tirigaz coast have not forgotten that lesson, and devote "
 "significant effort to the construction of newer and ever-better vessels."
 msgstr ""
+"当兽人首次走下船只，踏足泰陆的西岸时，他们发现了一片未受破坏的天堂，可以肆意"
+"扩张。提里加兹海岸的造船师们并未忘记这一教训，投入了大量精力建造更新、更精良"
+"的船只。"
 
 #. [unit_type]: id=Raft, race=ship
 #: data/core/units/boats/Raft.cfg:5
 msgid "Raft"
-msgstr ""
+msgstr "筏"
 
 #. [unit_type]: id=Raft, race=ship
 #: data/core/units/boats/Raft.cfg:21
@@ -1749,13 +1688,15 @@ msgid ""
 "These Rafts are very ineffective in the high seas; little better than a "
 "floating wreck."
 msgstr ""
+"筏可以是高效的顺河运输工具，但也可能是出于绝望而临时拼凑的载具，由更大船只的"
+"残骸修补而成。\n"
+"\n"
+"这些筏在公海上极其低效，几乎与漂浮的残骸无异。"
 
 #. [unit_type]: id=Coastal Raider, race=ship
 #: data/core/units/boats/Raider_Coastal.cfg:4
-#, fuzzy
-#| msgid "Wolf Rider"
 msgid "Coastal Raider"
-msgstr "狼骑手"
+msgstr "沿海掠袭船"
 
 #. [unit_type]: id=Coastal Raider, race=ship
 #: data/core/units/boats/Raider_Coastal.cfg:25
@@ -1772,13 +1713,18 @@ msgid ""
 "not possess any specific armaments, but oared propulsion makes the vessel "
 "much more maneuverable when ramming or beaching."
 msgstr ""
+"虽然卡瑞克帆船和柯克船依靠壮观的船帆来驾驭风力，但桨帆船和掠袭船则由划桨船员"
+"的肌肉力量推进。这有一个缺点，即需要更多船员，而且确实限制了运输的速度和效"
+"率。但这些看似的弱点也使船只较少受到天气变幻和海盗掠夺的影响。\n"
+"\n"
+"沿海掠袭船是一种非常基础的战舰，具有防冲撞保护，用于在浅水和沿海水域快速运送"
+"武装部队。它们没有任何特定的武器装备，但桨推进使船只在冲撞或抢滩时更具机动"
+"性。"
 
 #. [unit_type]: id=Iron Raider, race=ship
 #: data/core/units/boats/Raider_Iron.cfg:4
-#, fuzzy
-#| msgid "Gryphon Rider"
 msgid "Iron Raider"
-msgstr "狮鹫骑手"
+msgstr "铁甲掠袭船"
 
 #. [unit_type]: id=Iron Raider, race=ship
 #: data/core/units/boats/Raider_Iron.cfg:26
@@ -1790,6 +1736,9 @@ msgid ""
 "also make the vessel less vulnerable to the whims of weather and the "
 "predations of pirates."
 msgstr ""
+"虽然卡瑞克帆船和柯克船依靠壮观的船帆来驾驭风力，但桨帆船和掠袭船则由划桨船员"
+"的肌肉力量推进。这有一个缺点，即需要更多船员，而且确实限制了运输的速度和效"
+"率。但这些看似的弱点也使船只较少受到天气变幻和海盗掠夺的影响。"
 
 #. [unit_type]: id=Iron Raider, race=ship
 #: data/core/units/boats/Raider_Iron.cfg:28
@@ -1799,11 +1748,14 @@ msgid ""
 "escorts of slower cargo ships in rivers and coasts, where their heavy iron "
 "bow allows them to ram foes without fear of self-inflicted damage."
 msgstr ""
+"铁甲掠袭船是经验丰富的沿海掠袭船，经过加固后成为更难对付的目标和更具杀伤力的"
+"进攻者。它们常被用作河流与海岸上较慢货船的前线护卫，其沉重的铁制船首使它们能"
+"够冲撞敌人而无需担心自身受损。"
 
 #. [unit_type]: id=Skiff, race=ship
 #: data/core/units/boats/Skiff.cfg:5
 msgid "Skiff"
-msgstr ""
+msgstr "轻舟"
 
 #. [unit_type]: id=Drake Arbiter, race=drake, gender=male,female
 #: data/core/units/drakes/Arbiter.cfg:4
@@ -1953,19 +1905,6 @@ msgstr "龙人冲击者"
 
 #. [unit_type]: id=Drake Clasher, race=drake, gender=male,female
 #: data/core/units/drakes/Clasher.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The Clashers are members of a unique caste among the drakes. Their thick "
-#| "armor, while compensating for the drakes’ natural weakness against spears "
-#| "and arrows, is so heavy and restricting that they are not able to fly or "
-#| "muster enough breath to use their inner fire. They have embraced this "
-#| "handicap, completely encasing their wings to emphasize that they do not "
-#| "need flight to triumph in battle.\n"
-#| "\n"
-#| "This is also the only caste that is allowed to break taboo and fight with "
-#| "spears in addition to the drake’s traditional metal claws, which makes "
-#| "them particularly good at \"resolving\" territorial disputes with other "
-#| "drakes and enforcing the laws of their tribe."
 msgid ""
 "The Clashers are members of a unique caste among the drakes. Their thick "
 "armor, while compensating for the drakes’ natural weakness against spears "
@@ -2629,19 +2568,6 @@ msgstr "沙丘鹞骑"
 
 #. [unit_type]: id=Dune Harrier, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Harrier.cfg:23
-#, fuzzy
-#| msgid ""
-#| "While harriers can fulfill a similar role to striders in hampering enemy "
-#| "forces, their epithet is actually derived from the harrier hawks they "
-#| "employ to maintain contact with the bulk of a Dunefolk troop. Most "
-#| "commonly found operating behind enemy lines, harriers are usually tasked "
-#| "with providing useful intelligence on enemy troop movements, which alone "
-#| "is enough of an edge for most Dunefolk armies to outmaneuver their foes. "
-#| "However, when the time is right, these agile warriors gather together and "
-#| "strike at the rear of weakened supply lines or flanks. A rain of bolas "
-#| "followed by a piercing thrust of spears is often enough to severely "
-#| "cripple the target, allowing the main Dunefolk force to close in and "
-#| "finish the job."
 msgid ""
 "While Harriers can fulfill a similar role to Striders in hampering enemy "
 "forces, their epithet is actually derived from the harrier hawks they employ "
@@ -2668,20 +2594,6 @@ msgstr "沙丘草药师"
 
 #. [unit_type]: id=Dune Herbalist, race=dunefolk
 #: data/core/units/dunefolk/Herbalist.cfg:22
-#, fuzzy
-#| msgid ""
-#| "As those responsible for caring for the ill and wounded among the "
-#| "Dunefolk, herbalists possess both the medicinal skills to heal a variety "
-#| "of afflictions and the skill to seek and gather restorative herbs. Their "
-#| "motivations are many; some look to it as an adventure or as a steady "
-#| "source of pay while others feel it to be a duty to their society. No "
-#| "matter the reason, these healers are an invaluable part of Dunefolk "
-#| "society and are especially useful for their ability to administer quick "
-#| "treatments in the midst of battle or while traveling in the desert.\n"
-#| "\n"
-#| "Even among the nomadic Dunefolk, herbalists journey a great deal in "
-#| "search of the various flora and fauna that supply their work. Hardened by "
-#| "their travels, many of these men are even able to heal themselves."
 msgid ""
 "As those responsible for caring for the ill and wounded among the Dunefolk, "
 "Herbalists possess both the medicinal skills to heal a variety of "
@@ -2764,20 +2676,6 @@ msgstr "沙丘掠袭骑"
 
 #. [unit_type]: id=Dune Marauder, race=dunefolk
 #: data/core/units/dunefolk/Marauder.cfg:31
-#, fuzzy
-#| msgid ""
-#| "Some find themselves well suited to the life of a raider and may even "
-#| "form their own clans with like-minded individuals. Ever roaming the "
-#| "deserts for unwary travelers or vulnerable caravans, these horsemen make "
-#| "their livelihood off scavenging and pilfering. Having no particular "
-#| "specialty, marauders are neither the strongest warriors, nor the most "
-#| "dextrous archers, but are nevertheless among the most dangerous enemies "
-#| "out in the desert due to their sheer maneuverability. A coordinated "
-#| "marauder attack can wipe out medium-sized camps before any response is "
-#| "possible, and guerrilla tactics may allow them to prevail against "
-#| "stronger foes where brute force does not. For this reason, they are "
-#| "sometimes hired by small armies or wealthier caravans as a deterrent to "
-#| "unwanted raids."
 msgid ""
 "Some find themselves well suited to the life of a raider and may even form "
 "their own clans with like-minded individuals. Ever roaming the deserts for "
@@ -2794,10 +2692,10 @@ msgstr ""
 "有些人发现自己很适合作为劫掠骑来生活，甚至可能与志同道合的人组成自己的部落。"
 "这些骑手经常在沙漠中游荡，寻找不小心的旅行者或脆弱的商队，他们以搜刮和偷窃为"
 "生。劫掠者没有特别的专长，既不是最强壮的武士，也不是最灵巧的弓箭手，但由于强"
-"大的机动性，仍然是沙漠中最危险的敌人之一。掠袭者的一次经过协调的进攻可以在对"
+"大的机动性，仍然是沙漠中最危险的敌人之一。掠袭骑的一次经过协调的进攻可以在对"
 "手反应过来之前消灭中等规模的营地，而游击战术让他们在面对蛮力无法战胜的强敌时"
-"有可能取得胜利。出于这个原因，他们有时会被小型军队或较富裕的商队雇佣，以遏制"
-"（其他人的）劫掠。"
+"有可能取得胜利。出于这个原因，他们有时会被小型军队或较富裕的商队雇佣，以威慑"
+"不速之客的劫掠。"
 
 #. [attack]: type=fire
 #: data/core/units/dunefolk/Marauder.cfg:62
@@ -2809,7 +2707,7 @@ msgstr "火炬"
 #. [attack]: type=pierce
 #: data/core/units/dunefolk/Marauder.cfg:71
 msgid "rope dart"
-msgstr ""
+msgstr "绳镖"
 
 #. [unit_type]: id=Dune Paragon, race=dunefolk
 #: data/core/units/dunefolk/Paragon.cfg:8
@@ -2867,16 +2765,6 @@ msgstr "沙丘劫掠骑"
 
 #. [unit_type]: id=Dune Raider, race=dunefolk
 #: data/core/units/dunefolk/Raider.cfg:30
-#, fuzzy
-#| msgid ""
-#| "Though rarely found in organized armies, raiders are a staple among the "
-#| "nomadic Dunefolk, who regularly ambush rival caravans and camps at night. "
-#| "In these scenarios, raw power is of little concern. The greatest "
-#| "importance is placed on speed — striking quickly and spreading as much "
-#| "chaos as possible in the shortest time possible allows these riders to "
-#| "get in and out of the blitz without fear of counterattack. Raiders are "
-#| "the fastest of the Dunefolk, capable of outpacing nearly anything they "
-#| "might encounter in the sandy deserts."
 msgid ""
 "Though rarely found in organized armies, Raiders are a staple among the "
 "nomadic Dunefolk, who regularly ambush rival caravans and camps at night. In "
@@ -2896,7 +2784,7 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/dunefolk/Raider.cfg:68
 msgid "dart"
-msgstr ""
+msgstr "飞镖"
 
 #. [unit_type]: id=Dune Rider, race=dunefolk
 #: data/core/units/dunefolk/Rider.cfg:8
@@ -2929,17 +2817,6 @@ msgstr "沙丘浪游者"
 
 #. [unit_type]: id=Dune Rover, race=dunefolk
 #: data/core/units/dunefolk/Rover.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Originating from the nomadic wanderers of the open deserts, rovers are "
-#| "the representation of the most well-balanced Dunefolk soldier: flexible, "
-#| "mobile, equally effective in defense and offense as well as in ranged or "
-#| "close combat. They are experienced hunters and trackers, hardy "
-#| "inhabitants of the deserts and hills that they call home. While lacking "
-#| "training as formal troops, the skills these rovers employ for survival in "
-#| "the desert translate readily to warfare. Their unique trait of fighting "
-#| "best at dawn or dusk corresponds with the time when desert temperatures "
-#| "are the most habitable."
 msgid ""
 "Originating from the nomadic wanderers of the open deserts, Rovers are the "
 "representation of the most well-balanced Dunefolk soldier: flexible, mobile, "
@@ -2953,8 +2830,8 @@ msgstr ""
 "浪游者起源于空旷沙漠上的漫游者，是最为均衡的沙丘游民单位的代表：灵活，机动，"
 "攻守兼备，远近全能。他们是经验丰富的猎人和追踪者，是沙漠和丘陵之中坚强的住"
 "民，他们把那些地方叫做家园。虽然缺少作为正规部队的训练，但这些浪游者用于生存"
-"的技能，轻而易举地便能用于战争。他们最擅长在清晨或者傍晚战斗的特性，是因为在"
-"沙漠中，那些是温度最合适于居住的时段。"
+"的技能，轻而易举地便能用于战争。他们最擅长在清晨或者傍晚战斗，是因为在沙漠"
+"中，那是温度最合适于居住的时段。"
 
 #. [unit_type]: id=Dune Scorcher, race=dunefolk, gender=male,female
 #: data/core/units/dunefolk/Scorcher.cfg:9
@@ -2963,16 +2840,6 @@ msgstr "沙丘焦燃者"
 
 #. [unit_type]: id=Dune Scorcher, race=dunefolk, gender=male,female
 #: data/core/units/dunefolk/Scorcher.cfg:22
-#, fuzzy
-#| msgid ""
-#| "The scorcher’s moniker is derived not from the destruction they wreak on "
-#| "adversarial formations, but on their own singed appearances. By "
-#| "experimenting endlessly with their equipment, most scorchers inevitably "
-#| "overstep their bounds at some point and are seared by the highly volatile "
-#| "Sanbaar sap that soaks their weapons. Bearing their burns as a mark of "
-#| "pride in their work, these archers relish igniting great swaths of flame "
-#| "on the battlefield, though this sometimes also results in unintended "
-#| "friendly fire."
 msgid ""
 "The Scorcher’s moniker is derived not from the destruction they wreak on "
 "adversarial formations, but on their own singed appearances. By "
@@ -2999,17 +2866,6 @@ msgstr "沙丘散兵"
 
 #. [unit_type]: id=Dune Skirmisher, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Skirmisher.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Born and raised out on the open sands, skirmishers are accustomed to the "
-#| "harsh, arid desert heat and inhospitable terrain. Compared to even other "
-#| "Dunefolk, these nomads are unnaturally agile on the unstable dunes, "
-#| "allowing them to safeguard their herds and hunt the barrens with ease. "
-#| "When applied to battle, the same agility allows them to both slip through "
-#| "enemy lines and avoid all manner of attack. These skills make skirmishers "
-#| "effective saboteurs, capable of cutting off escape routes and supply "
-#| "lines, assassinating key units, or pincering an enemy formation into a "
-#| "disadvantageous position."
 msgid ""
 "Born and raised out on the open sands, Skirmishers are accustomed to the "
 "harsh, arid desert heat and inhospitable terrain. Compared to even other "
@@ -3067,16 +2923,6 @@ msgstr "沙丘士兵"
 
 #. [unit_type]: id=Dune Soldier, race=dunefolk
 #: data/core/units/dunefolk/Soldier.cfg:20
-#, fuzzy
-#| msgid ""
-#| "While most Dunefolk castes serve an additional practical purpose beyond "
-#| "only direct warfare, cities and caravans usually train a group of "
-#| "soldiers completely dedicated to military purposes. By practicing "
-#| "intensely to hone their skills in swordplay, these warriors learn to "
-#| "navigate tricky fights in close quarters, mastering their enemies through "
-#| "melee combat. A typical Dunefolk formation makes use of this adeptness by "
-#| "placing soldiers in a spaced pattern, allowing them to assault and "
-#| "overwhelm clustered enemy lines by engaging them in quasi-single combat."
 msgid ""
 "While most Dunefolk castes serve an additional practical purpose beyond only "
 "direct warfare, cities and caravans usually train a group of Soldiers "
@@ -3100,19 +2946,6 @@ msgstr "沙丘矛卫"
 
 #. [unit_type]: id=Dune Spearguard, race=dunefolk
 #: data/core/units/dunefolk/Spearguard.cfg:20
-#, fuzzy
-#| msgid ""
-#| "The push and pull of any battle requires varying degrees of offense and "
-#| "defense. The Dunefolk no doubt value offense as the greater of the two "
-#| "and typically focus most of their efforts on training skilled swordsmen. "
-#| "However, in any band of warriors, a small number of soldiers opt to trade "
-#| "in their swords and instead fulfill the vital role of defenders. Guarding "
-#| "crucial supply lines and vantage points, spearguards are most often "
-#| "positioned slightly behind the main line and used as a supporting force "
-#| "or a deterrent to flanking attacks. Though these fighters tend to see "
-#| "less direct combat than their sword-wielding brethren, they are highly "
-#| "skilled with spear and shield and more than capable of repelling most "
-#| "advances."
 msgid ""
 "The push and pull of any battle requires varying degrees of offense and "
 "defense. The Dunefolk no doubt value offense as the greater of the two and "
@@ -3179,19 +3012,6 @@ msgstr "沙丘迅骑"
 
 #. [unit_type]: id=Dune Strider, race=dunefolk, gender=female
 #: data/core/units/dunefolk/Strider.cfg:22
-#, fuzzy
-#| msgid ""
-#| "The power of any Dunefolk assault is inhibited by one major drawback: "
-#| "organized Dunefolk forces tend to be rather slow. Because of this, enemy "
-#| "forces often have the ability to regroup and call upon reinforcements, in "
-#| "which case a second assault becomes much more difficult. To combat this, "
-#| "striders exchange their rudimentary slings with heavy bolas, allowing "
-#| "them to slow retreating lines from the side and prevent a clean escape. "
-#| "The same tactic can be applied in the opposite scenario of a Dunefolk "
-#| "retreat; an advancing army can be hampered, allowing injured Dunefolk "
-#| "warriors time to recuperate. The danger of such a tactic is that despite "
-#| "their elusiveness, striders are fairly fragile in direct combat and are "
-#| "easily taken down if left exposed."
 msgid ""
 "The power of any Dunefolk assault is inhibited by one major drawback: "
 "organized Dunefolk forces tend to be rather slow. Because of this, enemy "
@@ -3220,17 +3040,6 @@ msgstr "沙丘裂断骑"
 
 #. [unit_type]: id=Dune Sunderer, race=dunefolk
 #: data/core/units/dunefolk/Sunderer.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Among the many different type of Dune horsemen, there are those who most "
-#| "enjoy the frantic melee at the heart of battle. Bearing short-ranged "
-#| "maces, these sunderers are sturdy, robust warriors who have both the "
-#| "disposition and skill to survive multiple skirmishes. Though not "
-#| "particularly creative or special warriors, such a rider is not impotent "
-#| "in any way — even a small group of sunderers is powerful enough to breach "
-#| "most enemy lines through sheer force. In a situation that requires it, "
-#| "these horsemen also possess enough skill at archery to weaken enemy "
-#| "forces or pick off fleeing stragglers."
 msgid ""
 "Among the many different type of Dune horsemen, there are those who most "
 "enjoy the frantic melee at the heart of battle. Bearing short-ranged maces, "
@@ -3366,19 +3175,6 @@ msgstr "沙丘风骑"
 
 #. [unit_type]: id=Dune Windbolt, race=dunefolk
 #: data/core/units/dunefolk/Windbolt.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Archery on horseback presents a number of additional challenges that very "
-#| "few are able to overcome. What separates the renowned windbolts from "
-#| "other bowmen is their ability to not only master these difficulties, but "
-#| "turn them into advantages instead. Making use of their steeds’ great "
-#| "speed, a windbolt is actually a better archer when mounted as compared to "
-#| "on land. The extra momentum from riding on horseback provides additional "
-#| "force to their already potent shots, and by riding in meandering "
-#| "patterns, these bowmen are able to curve the trajectories of their "
-#| "arrows, reaching targets they might not be able to otherwise. Having "
-#| "honed their craft to its apex, windbolts are the undisputed masters of "
-#| "ranged combat among the Dunefolk."
 msgid ""
 "Archery on horseback presents a number of additional challenges that very "
 "few are able to overcome. What separates the renowned Windbolts from other "
@@ -3417,6 +3213,12 @@ msgid ""
 "usually use their knowledge for warfare, they can be threatening warriors "
 "when defending their homes."
 msgstr ""
+"虽然双足飞龙通常性情温和，但受到挑衅时很容易变成凶猛而暴怒的野兽。当真正被激"
+"怒时，它们甚至能比较轻松地将经验丰富的战士撕成碎片。大多数旅人在它们强大的威"
+"压面前会逃跑或战斗，但少数人能够驯服这些野生生物。这些沙丘骑手花费数年甚至数"
+"十年的时间与它们建立纽带，慢慢培养信任，直到真正掌握天空。其中最经验丰富的双"
+"足飞龙骑手已成为这片大地上最伟大、最受尊崇的旅者。虽然通常不会将所学用于战"
+"争，但在保卫家园时，他们也能成为令人畏惧的战士。"
 
 #. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/core/units/dwarves/Arcanister.cfg:4
@@ -3517,12 +3319,6 @@ msgstr "矮人矿工"
 
 #. [unit_type]: id=Dwarvish Miner, race=dwarf
 #: data/core/units/dwarves/Miner.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Dwarvish miners are the grunt workers of dwarvish society. They take the "
-#| "precious ores out of the ground, but do not ever take part in the "
-#| "crafting of weapons or artifacts. They have no military training, but "
-#| "they can still do some damage with their picks."
 msgid ""
 "Dwarvish Miners are the grunt workers of dwarvish society. They take the "
 "precious ores out of the ground, but do not ever take part in the crafting "
@@ -3530,7 +3326,7 @@ msgid ""
 "weighty pickaxes can deal substantial damage."
 msgstr ""
 "矮人矿工是矮人社会的底层工人。他们从地下开采珍贵的矿石，但从不参与武器或器物"
-"的制作。他们没有受过军事训练，但他们仍然可以用自己的镐造成一些伤害。"
+"的制作。他们没有受过军事训练，但他们沉重的镐仍然可以造成严重伤害。"
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Miner.cfg:26
@@ -3563,12 +3359,6 @@ msgstr "矮人符文工匠"
 
 #. [unit_type]: id=Dwarvish Runesmith, race=dwarf
 #: data/core/units/dwarves/Runesmith.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Dwarvish runesmiths, now practiced at their craft, carve arcane runes "
-#| "into their weapons and armor. These runes infuse the runesmith’s blows "
-#| "with power and accuracy, and disrupt the blows of their enemies, causing "
-#| "them to strike softly, weakly and on the armor of the defender."
 msgid ""
 "Dwarvish Runesmiths, now practiced at their craft, carve arcane runes into "
 "their weapons and armor. These runes infuse the Runesmith’s blows with power "
@@ -3576,7 +3366,7 @@ msgid ""
 "softly, weakly and on the armor of the defender."
 msgstr ""
 "矮人符文工匠熟悉自己的手艺——在武器和铠甲上雕刻奥术符文。这些符文使得符文工匠"
-"的攻击更强更准，同时也会干扰敌方的攻击，使得这些攻击变得软弱或是仅仅打在防守"
+"的攻击更强更准，同时也会干扰敌方的攻击，使这些攻击变得软弱，或是仅仅打在防守"
 "方的铠甲上。"
 
 #. [unit_type]: id=Dwarvish Scout, race=dwarf
@@ -3609,14 +3399,6 @@ msgstr "矮人哨卫"
 
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Champions among their fellow troops, the dwarven sentinels form the "
-#| "bulwark of their battle lines. Leading a direct assault against a line "
-#| "that they fortify, is often out of the question; it tends toward being "
-#| "suicidal, rather than merely ineffectual. Equipped with the strongest of "
-#| "Knalgan armor, these dwarves are masters of the melee and can hold a "
-#| "patch of earth with the single-minded tenacity of an oak."
 msgid ""
 "Champions among their fellow troops, the Dwarven Sentinels form the bulwark "
 "of their battle lines. Leading a direct assault against a line that they "
@@ -3757,16 +3539,6 @@ msgstr "精灵队长"
 
 #. [unit_type]: id=Elvish Captain, race=elf
 #: data/core/units/elves/Captain.cfg:26
-#, fuzzy
-#| msgid ""
-#| "Elvish captains usually command patrols and garrisons that stand guard "
-#| "over the vast forests in elvish territory. Unlike leaders from other "
-#| "races, they are most proficient at navigating small skirmishes rather "
-#| "than large-scale battles, and are especially skilled at defensive "
-#| "maneuvering. Captains typically lead small units that remain together for "
-#| "extended periods of time, allowing them to personally mentor and befriend "
-#| "their troops. They are often observed to lead through camaraderie and "
-#| "amicability, but still command great respect from their kin."
 msgid ""
 "Elvish Captains usually command patrols and garrisons that stand guard over "
 "the vast forests in elvish territory. Unlike leaders from other races, they "
@@ -3816,20 +3588,6 @@ msgstr "精灵德鲁伊"
 
 #. [unit_type]: id=Elvish Druid, race=elf, gender=female
 #: data/core/units/elves/Druid.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Some elves choose to deepen their connection to the corporeal world, "
-#| "thereby enhancing their already potent abilities to foster and manipulate "
-#| "natural energies. Perhaps the most notable effect of these druids’ magic "
-#| "is the marked sense of motion in the deep woodlands that they preserve. "
-#| "Outsiders wandering through Elven woods often speak of entangling roots "
-#| "and vines, moving nearly as fast as a warrior’s marching pace, or the "
-#| "creaking shamble of ancient trees, lumbering across entire camps in just "
-#| "a single night. The forest and the earth become almost like a connected "
-#| "entity, something that lives and breathes like a single massive organism. "
-#| "As it flourishes under the druids’ careful tending, the forest kindles "
-#| "their magics in turn, symbiotically enhancing the already potent powers "
-#| "that these elves possess."
 msgid ""
 "Some elves choose to deepen their connection to the corporeal world, thereby "
 "enhancing their already potent abilities to foster and manipulate natural "
@@ -3887,7 +3645,7 @@ msgstr ""
 #. in game mechanics an upgrade of the Shaman’s slowing “entangle”, but in lore has the different magic style of the Enchantress’s unit description
 #: data/core/units/elves/Enchantress.cfg:36 data/core/units/elves/Sylph.cfg:38
 msgid "ethereal web"
-msgstr ""
+msgstr "以太之网"
 
 #. [attack]: type=arcane
 #: data/core/units/elves/Enchantress.cfg:46
@@ -3993,19 +3751,6 @@ msgstr "精灵女领主"
 
 #. [unit_type]: id=Elvish Lady, gender=female, race=elf
 #: data/core/units/elves/Lady.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Usually strongly connected with the earthly aspect of Elven magic, noble "
-#| "ladies of the elvish enclaves are associated with wisdom and "
-#| "preservation. As those entrusted with maintaining many of the more "
-#| "venerated Elvish traditions, they play a large role in safeguarding the "
-#| "tranquility and natural wonder of their renowned forest sanctuaries. "
-#| "Unlike their counterparts in the lords, many of whom gain great "
-#| "individual insight through their use of arcane magic, most ladies spread "
-#| "their power throughout the societal orders that they guide, often at some "
-#| "cost to their own personal abilities. For this reason, they serve most "
-#| "often as diplomats and peacekeepers, holding high authority during times "
-#| "of amity and taking a lesser role in times of war."
 msgid ""
 "Usually strongly connected with the earthly aspect of elven magic, noble "
 "Ladies of the elvish enclaves are associated with wisdom and preservation. "
@@ -4098,19 +3843,6 @@ msgstr "精灵元帅"
 
 #. [unit_type]: id=Elvish Marshal, race=elf
 #: data/core/units/elves/Marshal.cfg:26
-#, fuzzy
-#| msgid ""
-#| "Elves are not often the instigators of open war, but will not shy away "
-#| "when the time comes to do battle. To this end, they maintain a small "
-#| "number of strategically-minded marshals at all times. Selected from the "
-#| "most talented patrol captains, these commanders undergo extensive "
-#| "training in various military styles, including those of the humans and "
-#| "orcs. They are unorthodox, but brilliant strategists who excel at "
-#| "breaking down large battlefronts into smaller skirmishes, transforming "
-#| "ordinary campaigns into dispersed guerrilla warfare. Engaging elves in "
-#| "their own homes is a daunting task for any invasion force, precisely "
-#| "because of the skillful maneuvering of the marshals who are entrusted "
-#| "with the protection of their people."
 msgid ""
 "Elves are not often the instigators of open war, but will not shy away when "
 "the time comes to do battle. To this end, they maintain a small number of "
@@ -4133,7 +3865,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:4
 msgid "Elvish Outrider"
-msgstr "精灵先锋骑卫"
+msgstr "精灵游骑兵"
 
 #. [unit_type]: id=Elvish Outrider, race=elf
 #: data/core/units/elves/Outrider.cfg:19
@@ -4168,20 +3900,23 @@ msgid ""
 "The truth of this tale, one can only surmise, but doubtless, Outriders the "
 "fastest do comprise."
 msgstr ""
-"昔有一精灵，贝兰是为名，欲之遥远地，御马而独行。\n"
-"一十三日夜，日夜不经停，何处可小憩，湖边仙子居。\n"
-"“彼方有果木，叶茂散芳馨，娜娅吾好友，汝可见得清？”\n"
-"欢呼又雀跃，骏马且嘶鸣，满心欣又喜，足下正趯趯。\n"
-"霎时大风起，狂暴乱无匹，有声便入耳，飘渺若灵气。\n"
-"“且慢且止停，尔尔小精灵，吾林与吾果，恕吾不汝予。”\n"
-"“吾与吾爱马，身心俱已疲，料汝定有知，且容吾休憩！”\n"
-"“汝身乏又累，吾确知分明，若要得吾助，相逐定吾心。”\n"
-"贝兰便应允，共赴果木下，云飞伴风啸，人马似莫及。\n"
-"岂曰莫能及，人马疾如电，转瞬越劲风，竟无声一点。\n"
-"时如驹过隙，灵仙两相逐，及至果木下，贝兰胜当先。\n"
-"仙子誉精灵，恩泽被同胞，人马便离去，永沐仙赦免。\n"
+"从前有个精灵名叫贝兰德，动身前往遥远的所在。\n"
+"他一连骑行十三天，片刻不曾歇息，直到踏入湖畔仙子的居境。\n"
+"“快瞧呀，娜莉娅！”他欢声喊道，“你可望见那棵苹果树了？”\n"
+"回答他的是一声嘶鸣，娜莉娅欢声跃起，撒开轻快的碎步便跑将出去。\n"
+"谁知未出片刻，便有一阵狂风卷来，呼啸四野，风里飘来空灵的声音：\n"
+"“站住，你这精灵！这片林子归我所有——果子，一颗也不给你，也不给你的坐骑。”\n"
+"精灵回道：“求您开恩，容我们喘口气。我们赶了太远的路，这一副狼狈模样，您定是能"
+"瞧见吧？”\n"
+"“你们倦了，我瞧出来了，确是如此。可要想博得我的宽赦，咱们得赛上一场。”\n"
+"骑手应允了。双方便朝着那苹果树，一齐发足奔去。\n"
+"一声长啸，一阵疾卷，狂风飞驰而出，把骑手远远甩在身后。\n"
+"可眨眼之间，只见电光般的影子掠过，马蹄轻捷，一人一马竟堪堪抢过了风头。\n"
+"一来一回，愈奔愈疾，末了，终究是矫健的精灵抢先抵达。\n"
+"“好极了，”仙子随风飘至，说道，“我的宽赦便赐予你，也赐予你的亲族。”\n"
+"于是贝兰德与娜莉娅告辞而去，从此身上永远带着仙子的宽赦。\n"
 "\n"
-"逸闻真伪，止能度之，精灵先锋，皆有迅足。"
+"这故事是真是假，只好任君揣测；但有一事是确凿无疑，最为迅捷者，游骑兵是也。"
 
 # 在”灼热双日之下“战役中，单位”Quenoth Ranger“的描述中特别提到，把这些奎诺单位称为”Ranger“并不准确，因为”Quenoth
 # Ranger“和曾经拥有同样“Ranger”头衔的那些“自然探险家”并没有多少相同之处。
@@ -4193,18 +3928,6 @@ msgstr "精灵巡林者"
 
 #. [unit_type]: id=Elvish Ranger, race=elf, gender=male,female
 #: data/core/units/elves/Ranger.cfg:20
-#, fuzzy
-#| msgid ""
-#| "The silent watchers of the forests, Elvish rangers are masters of stealth "
-#| "and reconnaissance. Many are explorers and loners, preferring to wander "
-#| "through the towering trees sheltering the natural beauty of their homes, "
-#| "of which they are fiercely protective. While they possess considerable "
-#| "skill in both blade and bow, these archers are less adept at fighting "
-#| "other warriors on even terms, preferring instead to ambush their enemies "
-#| "from the shadows in the woods. A surprise attack from rangers can cripple "
-#| "a force many times their size and will often compel attacking armies to "
-#| "withdraw rather than risk a game of prolonged guerrilla warfare in the "
-#| "forests."
 msgid ""
 "The silent watchers of the forests, Elvish Rangers are masters of stealth "
 "and reconnaissance. Many are explorers and loners, preferring to wander "
@@ -4242,21 +3965,6 @@ msgstr "精灵骑手"
 
 #. [unit_type]: id=Elvish Rider, race=elf
 #: data/core/units/elves/Rider.cfg:21
-#, fuzzy
-#| msgid ""
-#| "The prevalence of guerrilla tactics in Elven strategy results in great "
-#| "emphasis on maintaining highly mobile units capable of fighting on an "
-#| "adaptable battlefront. This style of warfare requires rapid communication "
-#| "between small skirmish groups and the ability to quickly transfer troops "
-#| "between combat zones. Experienced Elvish riders know this well and thus "
-#| "devote most of their time to improving their horsemanship rather than "
-#| "their individual fighting skills. The speed at which they travel through "
-#| "the forest would be suicidal for any other cavalry, and they are "
-#| "tenacious enough to ride for as much as two or three days at a time "
-#| "without resting. While the intelligence and communication these horsemen "
-#| "provide is invaluable, the lack of combat prowess and front line "
-#| "engagement means that these riders are the oft unsung heroes of war, left "
-#| "supporting their brethren from the back lines."
 msgid ""
 "The prevalence of guerrilla tactics in elven strategy results in great "
 "emphasis on maintaining highly mobile units capable of fighting on an "
@@ -4287,19 +3995,6 @@ msgstr "精灵侦察兵"
 
 #. [unit_type]: id=Elvish Scout, race=elf
 #: data/core/units/elves/Scout.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Although the equines bred by the wood elves are much faster and more "
-#| "agile than regular horses, they tend to be quite a bit harder to master. "
-#| "It takes many years to train these fickle ponies, but once tamed, they "
-#| "are among the most devoted mounts. These unique horses allow Elvish "
-#| "horsemen to outpace most other cavalry on open ground and even ride "
-#| "through thick forests at full gallop. Though these riders possess some "
-#| "skill in wielding swords and bows, their greatest effectiveness lies in "
-#| "their ability to scout and outmaneuver enemy forces. Elvish scouts are "
-#| "most often used as messengers or support units and are adept at quickly "
-#| "transferring information between patrols, whom they also reinforce when "
-#| "necessary."
 msgid ""
 "Although the equines bred by the wood elves are much faster and more agile "
 "than regular horses, they tend to be quite a bit harder to master. It takes "
@@ -4409,19 +4104,6 @@ msgstr "精灵女巫"
 
 #. [unit_type]: id=Elvish Sorceress, race=elf, gender=female
 #: data/core/units/elves/Sorceress.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Elven magic most commonly diverges among two paths — manipulation of the "
-#| "natural, or corporeal world, and divination into the arcane plane. The "
-#| "latter, as a power that is difficult to control and ill-understood even "
-#| "by most of its practitioners, is not often sought after by the Elves. "
-#| "Wielders of the arcane face significant risk in studying the volatile "
-#| "nature of their discipline and quickly learn to respect the disruptive "
-#| "power of their craft. This destructive nature most commonly manifests "
-#| "itself as gouts of ‘faerie fire’, which is among the most readily "
-#| "mastered skills for an Elvish sorceress. While a rather superficial "
-#| "application of this art, the Elves nonetheless hold the arcane flame in "
-#| "high regard and are careful to utilize it with judicious caution."
 msgid ""
 "Elven magic most commonly diverges among two paths — manipulation of the "
 "natural, or corporeal world, and divination into the arcane plane. The "
@@ -4536,19 +4218,6 @@ msgstr "地精骑士"
 
 #. [unit_type]: id=Goblin Knight, race=wolf
 #: data/core/units/goblins/Knight.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Battle experience strengthens not only the combat prowess of both mount "
-#| "and rider, but also heartens the bond between them. While a human knight "
-#| "may ride different steeds into battle, a ‘goblin knight’ refers to goblin "
-#| "and wolf together as a single unit, fiercely loyal to one another almost "
-#| "to a fault.\n"
-#| "\n"
-#| "Among orcs, the riders are treated as a class above goblins, even when "
-#| "separated from their mount. Orcish grunts, while feeling themselves "
-#| "superior to goblins, recognize that picking a fight with the rider is "
-#| "also picking a fight with jaws that strike faster than a sword, and "
-#| "almost as hard."
 msgid ""
 "Battle experience strengthens not only the combat prowess of both mount and "
 "rider, but also heartens the bond between them. While a human knight may "
@@ -4576,12 +4245,6 @@ msgstr "地精掠夺者"
 
 #. [unit_type]: id=Goblin Pillager, race=wolf
 #: data/core/units/goblins/Pillager.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Some Goblins train their wolves to overcome their fear of fire. In raids, "
-#| "these goblins take a supporting role; they will torch the homes and crops "
-#| "of their foes, and also carry nets to wreak havoc against those "
-#| "attempting to rally for defense or reprisal."
 msgid ""
 "Some goblins train their wolves to overcome their fear of fire. In raids, "
 "these goblins take a supporting role; they will torch the homes and crops of "
@@ -4606,13 +4269,6 @@ msgstr "地精煽动者"
 
 #. [unit_type]: id=Goblin Rouser, race=goblin
 #: data/core/units/goblins/Rouser.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Standard-bearers are an oddity amongst goblins. A goblin who has survived "
-#| "enough battles to be considered a veteran is rare enough, and it is rarer "
-#| "still for the other goblins to recognize and respect his veteran status. "
-#| "Nonetheless, a rouser’s frenzied goading effectively steels the less "
-#| "veteran fighters to strive harder and longer before they die."
 msgid ""
 "Standard-bearers are an oddity amongst goblins. A goblin who has survived "
 "enough battles to be considered a veteran is rare enough, and it is rarer "
@@ -4714,13 +4370,6 @@ msgstr "高阶骑士"
 
 #. [unit_type]: id=Grand Knight, race=human
 #: data/core/units/humans/Horse_Grand_Knight.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Grand Knights have reached the acme of skill with sword and lance. "
-#| "Wearing full plate, and riding steeds bred more for power than for speed, "
-#| "these warriors form the core of any serious cavalry force. A grand knight "
-#| "at the head of a charge is a terrifying sight for infantry, and is often "
-#| "enough to break right through a defensive line."
 msgid ""
 "Grand Knights have reached the acme of skill with sword and lance. Wearing "
 "full plate, and riding steeds bred more for power than for speed, these "
@@ -4730,7 +4379,7 @@ msgid ""
 msgstr ""
 "高阶骑士达到了剑术和长矛技能的顶峰。他们全身披着板甲，身下的坐骑是为了力量而"
 "不是速度而培育的。这些武士是任何不可小视的骑兵部队的核心力量。高阶骑士带头冲"
-"锋是让所有步兵畏惧万分的景象，而且往往能一次就冲破防线。"
+"锋是让所有步兵畏惧万分的景象，往往足以直接冲破防线。"
 
 #. [unit_type]: id=Knight, race=human
 #: data/core/units/humans/Horse_Knight.cfg:4
@@ -4780,15 +4429,6 @@ msgstr "骑师"
 
 #. [unit_type]: id=Horseman, race=human
 #: data/core/units/humans/Horseman.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Often hailing from the wilder and untamed regions of Wesnoth, Horsemen "
-#| "are trained from childhood to ride and to follow a strict code of honor. "
-#| "A charge made by a horseman is a powerful though risky tactic, the worth "
-#| "of which has been proven time and time again on the battlefield. Horsemen "
-#| "excel against most infantry, especially those who have fallen out of "
-#| "line, but must take care against both spearmen and archers for whom their "
-#| "large size provide inviting targets."
 msgid ""
 "Often hailing from the wilder and untamed regions of Wesnoth, Horsemen are "
 "trained from childhood to ride and to follow a strict code of honor. A "
@@ -4805,16 +4445,6 @@ msgstr ""
 
 #. [unit_type]: id=Cavalryman, race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Cavalrymen are distinguished from horsemen by their tactics and "
-#| "equipment. A cavalryman wears heavier armor, and carries a sword and "
-#| "shield, rather than a lance. Their tactics do not include charging; "
-#| "instead they maneuver to slash with a sword, using both horse and rider "
-#| "as an effective tool of melee.\n"
-#| "\n"
-#| "Cavalrymen are very useful for taking and holding positions on open "
-#| "ground, for screening friendly soldiers, and also for scouting work."
 msgid ""
 "Cavalrymen are distinguished from Horsemen by their tactics and equipment. A "
 "Cavalryman wears heavier armor, and carries a sword and shield, rather than "
@@ -4880,18 +4510,6 @@ msgstr "剑客"
 
 #. [unit_type]: id=Fencer, race=human
 #: data/core/units/humans/Loyalist_Fencer.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Fencers belong to a school of thought that considers the armor most "
-#| "soldiers wear in combat to be their own worst enemy. While armor can only "
-#| "soften a blow, evading it leaves the defender completely unharmed. Being "
-#| "able to reliably dodge any offensive move is a luxury only afforded to "
-#| "the fit of body, and then only to those who endure rigorous training.\n"
-#| "\n"
-#| "Outfitted with only a dagger and saber, fencers are light on their feet "
-#| "and useful in many situations where their armor-bound peers are at a "
-#| "disadvantage. They relish dancing circles around troops like heavy "
-#| "infantry, mocking the weight of their full armor."
 msgid ""
 "Fencers belong to a school of thought that considers the armor most soldiers "
 "wear in combat to be their own worst enemy. While armor can only soften a "
@@ -4956,22 +4574,6 @@ msgstr "戟兵"
 
 #. [unit_type]: id=Halberdier, race=human
 #: data/core/units/humans/Loyalist_Halberdier.cfg:18
-#, fuzzy
-#| msgid ""
-#| "A halberd is a heavy weapon and difficult to use, but very powerful in "
-#| "the hands of an expert. It is also much more flexible than the spear from "
-#| "which it descended. As any halberdier can tell you, the weapon possesses "
-#| "four primary striking points, two more than a spear or pike; these are "
-#| "the tip, the blade, the spike at the base of the shaft, and the inner "
-#| "point on the blade, which can be used in a motion pulling back towards "
-#| "the wielder. All this makes for a very versatile weapon in melee, "
-#| "especially against cavalry.\n"
-#| "\n"
-#| "However, a halberd is notably more expensive to craft than a spear, and "
-#| "in the hands of a novice, much less effective. In the armies of Wesnoth, "
-#| "it is customary only to grant these weapons to veteran pikemen, who have "
-#| "proven that they have the skill to employ them properly on the field of "
-#| "war."
 msgid ""
 "A halberd is a heavy weapon and difficult to use, but very powerful in the "
 "hands of an expert. It is also much more flexible than the spear from which "
@@ -5010,13 +4612,6 @@ msgstr "重装步兵"
 
 #. [unit_type]: id=Heavy Infantryman, race=human
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Heavy infantry are brawny fighters clad in full plate and wielding "
-#| "massive impact weapons. Though they fight with unmatched power in melee "
-#| "combat, they have poor mobility and are best employed in static defense "
-#| "of fortified positions. A few of these in battle line will stiffen it "
-#| "considerably, albeit at an obvious cost in tactical flexibility."
 msgid ""
 "Heavy Infantry are brawny fighters clad in full plate and wielding massive "
 "impact weapons. Though they fight with unmatched power in melee combat, they "
@@ -5138,15 +4733,6 @@ msgstr "长矛兵"
 
 #. [unit_type]: id=Pikeman, race=human
 #: data/core/units/humans/Loyalist_Pikeman.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Promising spearmen in the armies of Wesnoth are often graduated to "
-#| "wielding pikes, and are outfitted with something far superior to the "
-#| "motley collection of leather armor they wore as recruits. A pike is a "
-#| "much longer weapon than a spear, and thus facilitates different combat "
-#| "tactics. A wall of pikemen is the bane of any cavalry charge, and with "
-#| "proper discipline and tactics, pikemen can also hold most other infantry "
-#| "at bay."
 msgid ""
 "Promising Spearmen in the armies of Wesnoth are often graduated to wielding "
 "pikes, and are outfitted with something far superior to the motley "
@@ -5157,8 +4743,8 @@ msgid ""
 msgstr ""
 "韦诺的军队中有前途的矛兵通常会得到晋升而使用长矛，身上披挂的护甲也比他们还是"
 "新兵时的杂牌皮甲要好得多。因为长矛比普通的矛要长，因此所采用的战术也就不同。"
-"长矛兵组成的人墙是骑兵冲锋的克星。同时，纪律严明、战术清晰的长矛兵也能对抗绝"
-"大多数类型的其他步兵。"
+"长矛兵组成的人墙是骑兵冲锋的克星。同时，纪律严明、战术清晰的长矛兵也能抵挡住"
+"绝大多数类型的其他步兵。"
 
 #. [special_note]
 #: data/core/units/humans/Loyalist_Pikeman.cfg:19
@@ -5233,16 +4819,6 @@ msgstr "震慑步兵"
 
 #. [unit_type]: id=Shock Trooper, race=human
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Shock troopers are the elite of the heavy infantry, and a significant "
-#| "part of their use is mere intimidation. The only men who can enter their "
-#| "ranks are prodigiously well-built, and when clad in black plate brimming "
-#| "with spikes, they are a fearsome sight to behold. The sight of Shock "
-#| "Troopers breaking an enemy often does the same to the morale of any "
-#| "opposition, who sometimes wonder if such armor covers monsters, rather "
-#| "than men. The drawback of such heavy armor is, of course, the time it "
-#| "takes to move into and out of combat."
 msgid ""
 "Shock Troopers are the elite of the heavy infantry, and a significant part "
 "of their use is mere intimidation. The only men who can enter their ranks "
@@ -5266,14 +4842,6 @@ msgstr "矛兵"
 
 #. [unit_type]: id=Spearman, race=human
 #: data/core/units/humans/Loyalist_Spearman.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Swords are, for many, an expensive luxury, and one which peasants can ill "
-#| "afford. Spears are much easier to make and will do well even without a "
-#| "spearhead, though most can afford one. Clad in leather armor, and often "
-#| "armed with a shield and a few javelins, spearmen are the staple of most "
-#| "armies, often thrown into the front lines with only the most basic "
-#| "training."
 msgid ""
 "Swords are, for many, an expensive luxury, and one which peasants can ill "
 "afford. Spears are much easier to make and will do well even without a "
@@ -5283,8 +4851,8 @@ msgid ""
 msgstr ""
 "剑对许多人来说是奢侈的武器，那些农夫是买不起的。制造矛则很容易，甚至没有尖的"
 "矛也一样好用，虽然绝大部分人还是可以买得起一个。矛兵身披皮甲，并常常装备盾牌"
-"和少量的标枪。他们是大多数军队的主要组成部分，经常只是接受了最最基本的训练就"
-"被投入前线。"
+"和少量的标枪。他们是大多数军队的主要组成部分，经常只是接受了最基本的训练就被"
+"投入前线。"
 
 #. [unit_type]: id=Swordsman, race=human
 #: data/core/units/humans/Loyalist_Swordsman.cfg:4
@@ -5517,25 +5085,6 @@ msgstr "银袍法师"
 
 #. [unit_type]: id=Silver Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_Silver.cfg:20
-#, fuzzy
-#| msgid ""
-#| "The many paths that a mage can take in study lead to strikingly different "
-#| "ends. Often viewed as sages, or wandering mystics, silver magi act under "
-#| "an agenda which is obscure even to their own colleagues. Though helpful "
-#| "to the magisteriums which often employ them in the field, they remain "
-#| "somewhat aloof.\n"
-#| "\n"
-#| "They have, in fact, their own order amongst the ranks of magi, an order "
-#| "which withholds certain secrets from their peers. One of these is an "
-#| "apparent ability to cross great distances, faster than one could possibly "
-#| "travel on foot. Members of the silver order ardently refuse to discuss "
-#| "the workings of this with any of their fellow magi, and on those rare "
-#| "occasions when others have pried into their work, they have abandoned the "
-#| "endeavor, never to speak of it again.\n"
-#| "\n"
-#| "Silver magi are often more physically adept than other magi, and their "
-#| "skills are of undeniable use on the battlefield, if one can manage to "
-#| "induce the mage to apply them."
 msgid ""
 "The many paths that a mage can take in study lead to strikingly different "
 "ends. Often viewed as sages, or wandering mystics, Silver Magi act under an "
@@ -5586,18 +5135,6 @@ msgstr "白袍法师"
 
 #. [unit_type]: id=White Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_White.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Some magi, as they learn about the world around them, and learn the truth "
-#| "of the suffering and squalor in which humanity too often lives, find that "
-#| "they cannot bring themselves to be cloistered into a life of study. These "
-#| "men and women give up the life of a mage, and join monastic orders, "
-#| "dedicating the skills they have been given to the good of all. After "
-#| "their ordination, they often travel the world, ministering to sickness "
-#| "and injury.\n"
-#| "\n"
-#| "Though not trained for combat, they are a potent ally against magical or "
-#| "unnatural things."
 msgid ""
 "Some magi, as they learn about the world and the truth of the suffering and "
 "squalor in which humanity too often lives, find that they cannot bring "
@@ -5637,15 +5174,6 @@ msgstr "光明法师"
 
 #. [unit_type]: id=Mage of Light, race=human, gender=male,female
 #: data/core/units/humans/Mage_of_Light.cfg:20
-#, fuzzy
-#| msgid ""
-#| "After years of experience, the most devout of white magi develop vast "
-#| "spiritual powers. By strict devotion to the path of the light, they can "
-#| "call upon its aid to chase away the shadows of the night.\n"
-#| "\n"
-#| "Following a strict code of piety and honor, these men and women work "
-#| "tirelessly to bring life and order to the troubled world in which they "
-#| "live."
 msgid ""
 "After years of experience, the most devout of white magi develop vast "
 "magical powers related to healing and purification. By strict devotion to "
@@ -5681,15 +5209,6 @@ msgstr "游寇"
 
 #. [unit_type]: id=Outlaw, race=human, gender=male,female
 #: data/core/units/humans/Outlaw.cfg:18
-#, fuzzy
-#| msgid ""
-#| "After some years of service, former ‘footpads’ rise up in the ranks of "
-#| "their fellow outlaws. Having proven themselves in combat, they are given "
-#| "more dangerous tasks, and a greater share of the spoils. Though many "
-#| "opponents would mock their choice of weaponry, the outlaws are well aware "
-#| "of its deadly capacity, and also of the ready availability of ammunition. "
-#| "Outlaws are somewhat ill at ease fighting during the day, preferring the "
-#| "cover of nightfall."
 msgid ""
 "After some years of service, former ‘Footpads’ rise up in the ranks of their "
 "fellow outlaws. Having proven themselves in combat, they are given more "
@@ -5716,14 +5235,6 @@ msgstr "刺客"
 
 #. [unit_type]: id=Assassin, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Assassin.cfg:20
-#, fuzzy
-#| msgid ""
-#| "The greatest of thieves are sometimes tasked to take far more than their "
-#| "victim’s belongings. Masters of knife-fighting and uncannily light on "
-#| "their feet, these menacing figures will employ any means to dispatch "
-#| "their victims, be it poisoned knives thrown from afar, or a dagger "
-#| "planted in the back. Deadly at night, assassins are less able fighting "
-#| "under the sun."
 msgid ""
 "The greatest of thieves are sometimes tasked to take far more than their "
 "victim’s belongings. Masters of knife-fighting and uncannily light on their "
@@ -5774,14 +5285,6 @@ msgstr "走卒"
 
 #. [unit_type]: id=Footpad, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Footpad.cfg:18
-#, fuzzy
-#| msgid ""
-#| "These petty criminals are often derisively called ‘footpads’ by their "
-#| "superiors, for they are tasked with any job that requires a great deal of "
-#| "running around, often being employed as couriers, or scouts. The "
-#| "endurance and agility they gain from this serves them well in combat, and "
-#| "despite their inferior weaponry they are quite good at harrying their "
-#| "enemies, especially under cover of darkness."
 msgid ""
 "These petty criminals are often derisively called ‘Footpads’ by their "
 "superiors, for they are tasked with any job that requires a great deal of "
@@ -5845,14 +5348,6 @@ msgstr "飞贼"
 
 #. [unit_type]: id=Rogue, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Rogue.cfg:19
-#, fuzzy
-#| msgid ""
-#| "The ringleaders of any group of thieves earn their positions by skill. "
-#| "These rogues have spent many an unpleasant moment darting through crowds "
-#| "and dodging away from those who wish them ill, a set of skills which is "
-#| "very handy in a fight. Masters of knifework, they can also throw knives "
-#| "with reliable accuracy, and their long hours of prowling around at night "
-#| "leave them more comfortable fighting in the dark."
 msgid ""
 "The ringleaders of any group of thieves earn their positions by skill. These "
 "Rogues have spent many an unpleasant moment darting through crowds and "
@@ -5922,13 +5417,6 @@ msgstr "暴徒"
 
 #. [unit_type]: id=Thug, race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Thugs come from a wide variety of sources; while a few are born into "
-#| "thuggery, many are former soldiers deemed unfit to serve in the army or "
-#| "peasants thrown off their lands. They become thugs as a means of "
-#| "sustenance. Regardless of their background, they all share a penchant for "
-#| "beating their victims with large clubs."
 msgid ""
 "Thugs come from a wide variety of sources; while a few are born into "
 "thuggery, many are former soldiers deemed unfit to serve in the army or "
@@ -6005,22 +5493,6 @@ msgstr "猎手"
 
 #. [unit_type]: id=Huntsman, race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Hunting is a popular sport of noblemen, but it can also be a livelihood "
-#| "for commoners. Like any other craft, it has men of masterful skill in its "
-#| "practice. Huntsmen know all the tricks of their trade, and are skilled at "
-#| "navigating the wilderness, at tracking, and at the use of the bow. They "
-#| "are a fair shot at moving targets, and targets hiding under brush and "
-#| "cover; a skill wrought from years of practice at shooting game, and one "
-#| "which garrisoned bowmen often lack.\n"
-#| "\n"
-#| "Master hunters are employed by any group living in or passing through "
-#| "wild country, be they men of the law, or those working against it. Even "
-#| "nature itself can have deadly surprises, and any commander who fails to "
-#| "hire a such a guide can lose his men to nothing more than terrain. Good "
-#| "woodsmen can save lives, ease travel, provide food, and their skill with "
-#| "a bow is capitally useful in a fight."
 msgid ""
 "Hunting is a popular sport of noblemen, but it can also be a livelihood for "
 "commoners. Like any other craft, it has men of masterful skill in its "
@@ -6055,16 +5527,6 @@ msgstr "偷猎者"
 
 #. [unit_type]: id=Poacher, race=human
 #: data/core/units/humans/Woodsman_Poacher.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Though not trained as warriors, the skills possessed by a hunter "
-#| "(especially those of archery) are useful in battle. Any group of soldiers "
-#| "or bandits traveling through the wild will need a few poachers in their "
-#| "employ, not merely for hunting but for lending a hand in any serious "
-#| "fight.\n"
-#| "\n"
-#| "Because of their experience, these hunters are unusually capable at "
-#| "night, and in forests and swamps."
 msgid ""
 "Though not trained as warriors, the skills possessed by a hunter (especially "
 "those of archery) are useful in battle. Any group of soldiers or bandits "
@@ -6087,20 +5549,6 @@ msgstr "游侠"
 
 #. [unit_type]: id=Ranger, race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Rangers are wild men and wanderers, who have chosen to shun the company "
-#| "of their fellow men for myriad reasons. They have spent the better part "
-#| "of their lives in the thick of nature, and know many of its secrets. They "
-#| "are excellent pathfinders and explorers, and can find food and shelter "
-#| "where other men would find only sticks and stones.\n"
-#| "\n"
-#| "The presence of these men troubles the more authoritarian of rulers; they "
-#| "are an element that knights and landed armies cannot control. They are "
-#| "men of dubious motives, and are the first to scoff at any royal decree, "
-#| "if they even hear of it at all. Rangers can be hired, but they are just "
-#| "as likely to be in the employ of bandits, as they are to be in the king’s "
-#| "service."
 msgid ""
 "Rangers are wild men and wanderers, who have chosen to shun the company of "
 "their fellow men for myriad reasons. Unaccustomed to places of civilization, "
@@ -6190,14 +5638,6 @@ msgstr "人鱼占卜师"
 
 #. [unit_type]: id=Mermaid Diviner, race=merman, gender=female
 #: data/core/units/merfolk/Diviner.cfg:23
-#, fuzzy
-#| msgid ""
-#| "Years of devotion may endow a priestess with great wisdom on the workings "
-#| "of the world, and grants some the favor of the light. The power thus "
-#| "given to these ladies of the water is a recurring motif in tale and song; "
-#| "such as the that of the knights of the silver spire, cornered and slain "
-#| "to a man at the banks of the Alavynne, but who rode again the next day, "
-#| "in full number, and wrought the downfall of the crimson duke."
 msgid ""
 "Years of devotion may endow a priestess with great wisdom on the workings of "
 "the world, and grants some the favor of the light. The power thus given to "
@@ -6506,14 +5946,6 @@ msgstr ""
 "表现出敌意，但当有人靠近时它们还是会咬人的。"
 
 #: data/core/units/monsters/Ant_Egg.cfg:4
-#, fuzzy
-#| msgid ""
-#| "The giant ant eggs have a tough, leathery shell that takes a dedicated "
-#| "effort to break through. While this shell makes it difficult to know the "
-#| "status of the inhabitant from the outside, it does not obscure the "
-#| "outside world from the rapidly developing ant larva within. Any predator "
-#| "or foe who approaches an ant egg or breaches the shell of an adjacent "
-#| "brood member will spur that ant to hatch as a fully formed adult."
 msgid ""
 "The Giant Ant Eggs have a tough, leathery shell that takes a dedicated "
 "effort to break through. While this shell makes it difficult to know the "
@@ -6535,7 +5967,6 @@ msgstr "巨蚁卵"
 # Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
 #. [unit_type]: id=Giant Ant Egg, race=monster
 #: data/core/units/monsters/Ant_Egg.cfg:71
-#, fuzzy
 msgid ""
 "Giant Ants are common in almost any environment, and the eggs from which "
 "they emerge can often be found in caves or any sheltered environment. Most "
@@ -6544,7 +5975,7 @@ msgid ""
 "\n"
 msgstr ""
 "巨型蚂蚁几乎在任何环境中都很常见，它们的卵通常可在洞穴或任何遮蔽处发现。多数"
-"蚁卵来自蚁群中的某位蚁后，但工蚁会将其搬运至适宜地点孵化。"
+"蚁卵来自蚁群中的某位蚁后，但工蚁会将其搬运至适宜地点孵化。\n"
 
 #. [unit_type]: id=Fire Ant Egg
 #: data/core/units/monsters/Ant_Egg.cfg:169
@@ -6553,12 +5984,6 @@ msgstr "火蚁卵"
 
 #. [unit_type]: id=Fire Ant Egg
 #: data/core/units/monsters/Ant_Egg.cfg:174
-#, fuzzy
-#| msgid ""
-#| "In large numbers, Fire Ants can be a real menace, and those threatening "
-#| "numbers start with their eggs. Most Fire Ant eggs come from one of the "
-#| "colony queens, but the workers transport them to any suitable location.\n"
-#| "\n"
 msgid ""
 "In large numbers, Fire Ants can be a real menace, and those threatening "
 "numbers start with their eggs. Most Fire Ant Eggs come from one of the "
@@ -6579,13 +6004,6 @@ msgstr "火蚁"
 #. [unit_type]: id=Firebane Ant, race=monster
 #: data/core/units/monsters/Ant_Fire.cfg:53
 #: data/core/units/monsters/Ant_Firebane.cfg:51
-#, fuzzy
-#| msgid ""
-#| "Small but deadly in large numbers, fire ants possess fierce fangs and an "
-#| "unusual ability to generate fire. Though these creatures typically "
-#| "function as scavengers, a burrow of fire ants can become aggressive when "
-#| "provoked and have even been known to attack small groups of threatening "
-#| "troops."
 msgid ""
 "Small but deadly in large numbers, Fire Ants possess fierce fangs and an "
 "unusual ability to generate fire. Though these creatures typically function "
@@ -6619,7 +6037,7 @@ msgstr "火蚁拥有锋利的颚和一种不寻常的喷火能力，蚁后也不
 #. [unit_type]: id=Firebane Ant, race=monster
 #: data/core/units/monsters/Ant_Firebane.cfg:11
 msgid "Firebane Ant"
-msgstr ""
+msgstr "烈火蚁"
 
 #. [unit_type]: id=Firebomb Ant, race=monster
 #: data/core/units/monsters/Ant_Firebomb.cfg:11
@@ -6628,13 +6046,6 @@ msgstr "火弹蚁"
 
 #. [unit_type]: id=Firebomb Ant, race=monster
 #: data/core/units/monsters/Ant_Firebomb.cfg:53
-#, fuzzy
-#| msgid ""
-#| "More developed and specialized Fire Ants can take different forms. The "
-#| "firebomb ants can produce and carry large quantities of their flammable "
-#| "spray in a swollen abdomen, which can make for a fearsome attack, but it "
-#| "also makes them weak to physical attacks and they cannot sustain the fire "
-#| "as their health fails."
 msgid ""
 "More developed and specialized Fire Ants can take different forms. The "
 "Firebomb Ants can produce and carry large quantities of their flammable "
@@ -6654,7 +6065,6 @@ msgstr "巨蚁后"
 # Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
 #. [unit_type]: id=Giant Ant Queen, gender=female, race=monster
 #: data/core/units/monsters/Ant_Queen.cfg:21
-#, fuzzy
 msgid ""
 "Giant Ants are common in almost any environment, from caverns deep under the "
 "earth to the tops of tall mountains. The queens are not royalty as many "
@@ -6678,7 +6088,6 @@ msgstr "战蚁"
 
 #. [unit_type]: id=Soldier Ant, race=monster
 #: data/core/units/monsters/Ant_Soldier.cfg:19
-#, fuzzy
 msgid ""
 "Giant Ants are common in almost any environment, from caverns deep under the "
 "earth to the tops of tall mountains. Most common are the nondescript workers "
@@ -6695,12 +6104,6 @@ msgstr "穴居熊"
 
 #. [unit_type]: id=Cave Bear, race=monster
 #: data/core/units/monsters/Bear.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Cave Bears are large, powerful beasts with sharp claws and large teeth. "
-#| "Adapted to roaming the dark caves, they have a keen sense of smell and "
-#| "hearing, but poor eyesight. When a rival predator, or some other threat, "
-#| "gets too close, a bear will reliably attack."
 msgid ""
 "Cave Bears are large, powerful beasts with sharp claws and large teeth. "
 "Adapted to roaming the dark caves, they have a keen sense of smell and "
@@ -6717,11 +6120,6 @@ msgstr "林地野猪"
 
 #. [unit_type]: id=Woodland Boar, race=monster
 #: data/core/units/monsters/Boar.cfg:35
-#, fuzzy
-#| msgid ""
-#| "As boars age, their already formidable teeth grow longer and more "
-#| "numerous. A mature, tamed boar is a valuable asset to any farmer, but an "
-#| "angry wild boar is a challenge even to the best hunters."
 msgid ""
 "As Boars age, their already formidable teeth grow longer and more numerous. "
 "A mature, tamed Boar is a valuable asset to any farmer, but an angry wild "
@@ -6747,11 +6145,6 @@ msgstr "小猪"
 
 #. [unit_type]: id=Piglet, race=monster
 #: data/core/units/monsters/Boar_Piglet.cfg:35
-#, fuzzy
-#| msgid ""
-#| "Young piglets are curious but just as ill-tempered as their parents, if a "
-#| "little less of a challenge in combat. But seldom is a piglet found that "
-#| "does not have a protective adult boar watching over them."
 msgid ""
 "Young Piglets are curious but just as ill-tempered as their parents, if a "
 "little less of a challenge in combat. But seldom is a Piglet found that does "
@@ -6767,15 +6160,6 @@ msgstr "食人鱼"
 
 #. [unit_type]: id=Caribe, race=monster
 #: data/core/units/monsters/Caribe.cfg:29
-#, fuzzy
-#| msgid ""
-#| "The giant caribe are seldom encountered in the inland rivers near Weldyn, "
-#| "but tales of their ferocious attacks have spread far and wide. Their "
-#| "angry red eyes are embedded in an armored face. While it is their teeth "
-#| "that are a dangerous weapon, they do posses small, bony arms and claws, "
-#| "which they can use to extricate themselves from situations dire to most "
-#| "other fish. These fish are unusually clever and should not be "
-#| "underestimated."
 msgid ""
 "The giant Caribe are seldom encountered in the inland rivers near Weldyn, "
 "but tales of their ferocious attacks have spread far and wide. Their angry "
@@ -6796,10 +6180,6 @@ msgstr "猎手食人鱼"
 
 #. [unit_type]: id=Hunter Caribe, race=monster
 #: data/core/units/monsters/Caribe_Hunter.cfg:30
-#, fuzzy
-#| msgid ""
-#| "As they age, the giant caribe become bigger and more dangerous. They also "
-#| "learn to use seaweed to ensnare prey or enemies."
 msgid ""
 "As they age, the giant Caribe become bigger and more dangerous. They also "
 "learn to use seaweed to ensnare prey or enemies."
@@ -6824,7 +6204,7 @@ msgstr ""
 #. [unit_type]: id=Forest Lion, race=cats
 #: data/core/units/monsters/Cat_Forest.cfg:4
 msgid "Forest Lion"
-msgstr ""
+msgstr "森林狮"
 
 #. [unit_type]: id=Forest Lion, race=cats
 #: data/core/units/monsters/Cat_Forest.cfg:32
@@ -6834,11 +6214,13 @@ msgid ""
 "their odd, triply branched tail, which they seem to use for camouflage and "
 "disruptive patterning."
 msgstr ""
+"森林狮是浅棕色的猫科动物，体型与狼大致相当，在黄昏和黎明时分于树林与山丘间捕"
+"猎。它们最显著的特征是那条奇特的三叉尾巴，似乎用于伪装，有着干扰性斑纹。"
 
 #. [unit_type]: id=Jumpcat, race=cats
 #: data/core/units/monsters/Cat_Jump.cfg:4
 msgid "Jumpcat"
-msgstr ""
+msgstr "跃猫"
 
 #. [unit_type]: id=Jumpcat, race=cats
 #: data/core/units/monsters/Cat_Jump.cfg:30
@@ -6851,11 +6233,15 @@ msgid ""
 "mostly driven by instinct, but they are sometimes used as assassins by more "
 "sophisticated handlers."
 msgstr ""
+"跃猫是感官敏锐、反应迅捷的机会主义捕食者，但体型瘦小，因此若能击中便很容易被"
+"解决，若击不中则很容易被吓跑。这些奇特生物最显著的特征之一是它们尾巴上携带的"
+"由树枝、黏土和岩石组成的坚硬团块，这是它们的主要攻击武器。它们的行为大多受本"
+"能驱使，但有时也会被更老练的驯养者用作刺客。"
 
 #. [unit_type]: id=Redtail Cat, race=cats
 #: data/core/units/monsters/Cat_Redtail.cfg:4
 msgid "Redtail Cat"
-msgstr ""
+msgstr "红尾猫"
 
 #. [unit_type]: id=Redtail Cat, race=cats
 #: data/core/units/monsters/Cat_Redtail.cfg:33
@@ -6868,6 +6254,10 @@ msgid ""
 "maneuvering, common folklore says these cats are actually malevolent fire "
 "spirits, and heralds of bad luck."
 msgstr ""
+"红尾猫是强大的捕食者，通常潜伏在山麓和森林中，但捕猎时远走他乡，因此曾在许多"
+"意想不到的地方被人遇到。它们最显著的特征是尾巴上近乎火焰般的颜色，使人忽略了"
+"它们深色的躯体以及危险的牙齿和利爪。很可能由于它们的体色和敏捷的身手，民间传"
+"说称这些猫其实是邪恶的火灵，是不祥的预兆。"
 
 #. [unit_type]: id=Swamp Lizard, race=monster
 #: data/core/units/monsters/Crocodile.cfg:13
@@ -7073,35 +6463,24 @@ msgstr "火焰爪"
 
 #. [unit_type]: id=Fire Wisp, race=monster
 #: data/core/units/monsters/Fire_Wisp.cfg:4
-#, fuzzy
-#| msgid "Fire Wraith"
 msgid "Fire Wisp"
 msgstr "火焰幽魂"
 
 #. [unit_type]: id=Fire Wisp, race=monster
 #: data/core/units/monsters/Fire_Wisp.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Fire Guardians are spirits of smoke and flame. No one is exactly sure "
-#| "where they come from, but they are occasionally summoned by powerful "
-#| "mages to do their bidding. When not being controlled they like to frolic "
-#| "in pools of lava and take great delight in burning anything they can "
-#| "reach."
 msgid ""
 "Fire Wisps are spirits of smoke and flame. When not being ordered around "
 "they like to frolic in pools of lava and take great delight in burning "
 "anything they can reach."
 msgstr ""
-"烈火卫士是烟与火之魂。没有人确知他们从何而来，但有时他们会被强大的法师召唤过"
+"火焰幽魂是烟与火之魂。没有人确知他们从何而来，但有时他们会被强大的法师召唤过"
 "来作为仆从。在没有被控制时，他们喜欢在熔岩池中嬉戏，也非常乐于燃尽一切可以碰"
 "到的东西。"
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Fire_Wisp.cfg:44
-#, fuzzy
-#| msgid "fire breath"
 msgid "fire bash"
-msgstr "火焰吐息"
+msgstr "火焰猛击"
 
 #. [unit_type]: id=Fire Wraith, race=monster
 #: data/core/units/monsters/Fire_Wraith.cfg:8
@@ -7284,7 +6663,7 @@ msgstr "蛛网"
 #. [unit_type]: id=Horned Scarab, race=monster
 #: data/core/units/monsters/Horned_Scarab.cfg:4
 msgid "Horned Scarab"
-msgstr "有角圣甲虫"
+msgstr "角甲虫"
 
 #. [unit_type]: id=Horned Scarab, race=monster
 #: data/core/units/monsters/Horned_Scarab.cfg:20
@@ -7297,6 +6676,10 @@ msgid ""
 "insects will defend themselves with great ferocity, and few men alive would "
 "fain to face their penetrating barbs."
 msgstr ""
+"能在荒凉不毛之地勉强求生的生物，都会发现自己发生了不可逆转的改变。角甲虫坚"
+"韧、身披重甲，且据说能长到巨大的体型；它们在流沙上的敏捷，丝毫不亚于其喜晴的"
+"表亲在空中的灵活。独行旅者尤其要警惕它们带刺的角。虽然天性温顺，但这些昆虫在"
+"自卫时会变得极为凶猛，鲜有活人愿意面对它们那穿透一切的尖刺。"
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Horned_Scarab.cfg:48
@@ -7310,13 +6693,6 @@ msgstr "赤骏"
 
 #. [unit_type]: id=Bay Horse, race=horse
 #: data/core/units/monsters/Horse.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Bay horses are defined more by their coloration than their size or "
-#| "temperament, and can be found anywhere from the battlefield to the farm "
-#| "to the wild plains and woodlands. Though an unencumbered horse will tend "
-#| "to flee if possible, they will fight back with a powerful kick when "
-#| "cornered."
 msgid ""
 "Bay Horses are defined more by their coloration than their size or "
 "temperament, and can be found anywhere from the battlefield to the farm to "
@@ -7400,12 +6776,6 @@ msgstr "巨駥"
 
 #. [unit_type]: id=Great Horse, race=horse
 #: data/core/units/monsters/Horse_Great.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Great horses are significantly larger than the usual domesticated horse, "
-#| "but despite their similar appearance, they are wild animals. Their "
-#| "obstinate and often feisty temperaments make them too difficult to tame, "
-#| "though many an arrogant prince or warlord has tried and failed."
 msgid ""
 "Great Horses are significantly larger than the usual domesticated horse, but "
 "despite their similar appearance, they are wild animals. Their obstinate and "
@@ -7534,7 +6904,7 @@ msgstr ""
 #. [unit_type]: id=Raven, race=raven
 #: data/core/units/monsters/Raven.cfg:4
 msgid "Raven"
-msgstr "渡鸦"
+msgstr "乌鸦"
 
 #. [unit_type]: id=Raven, race=raven
 #: data/core/units/monsters/Raven.cfg:18
@@ -7545,18 +6915,19 @@ msgid ""
 "vivacious behavior ties them to the legacy of battle and its consequences "
 "for the living, rather than rot and the finality of the tomb."
 msgstr ""
+"乌鸦随军而行，以战争遗留的残渣与尸体为食。因此，它们常与死亡、战争和命运联系"
+"在一起。它们通常不与死灵法术相关联，因为它们肆无忌惮、生机勃勃的习性使它们与"
+"战斗的遗产及其对生者的影响相联系，而不是与腐烂或者坟墓所代表的终结相联系。"
 
 # Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
 #. [unit_type]: id=War Harbinger, race=raven
 #: data/core/units/monsters/Raven_Harbinger.cfg:4
-#, fuzzy
 msgid "War Harbinger"
 msgstr "战争预兆"
 
 # Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
 #. [unit_type]: id=War Harbinger, race=raven
 #: data/core/units/monsters/Raven_Harbinger.cfg:19
-#, fuzzy
 msgid ""
 "Ravens follow armies to feast upon the refuse and corpses that are the fruit "
 "of war. This leads to folk wisdom that the dark birds are agents of the "
@@ -7571,23 +6942,20 @@ msgstr ""
 # Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
 #. [unit_type]: id=Dark Omen, race=raven
 #: data/core/units/monsters/Raven_Omen.cfg:4
-#, fuzzy
 msgid "Dark Omen"
 msgstr "黑暗预兆"
 
 # Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
 #. [unit_type]: id=Dark Omen, race=raven
 #: data/core/units/monsters/Raven_Omen.cfg:18
-#, fuzzy
 msgid ""
 "Ravens follow armies to feast upon the refuse and corpses that are the fruit "
 "of war. This leads to folk wisdom that the dark birds are agents of the "
 "supernatural forces associated with conflict. The unusual abilities "
 "displayed by some have only supported this notion."
 msgstr ""
-"乌鸦尾随军队，以战争衍生的垃圾与尸体为食。这一习性催生了民间传说，认为这些黑"
-"色鸟禽是冲突中超自然力量的代言者。某些乌鸦展现出的异常能力，更佐证了这种观"
-"点。"
+"乌鸦随军而行，以战争衍生的垃圾与尸体为食。民间由此流传一种说法：这些黑鸟是象"
+"征冲突的超自然力量的使者。某些乌鸦展现出的异常能力，更佐证了这种观点。"
 
 #. [unit_type]: id=Roc, race=monster
 #: data/core/units/monsters/Roc.cfg:4
@@ -7597,7 +6965,6 @@ msgstr "鹏鸟"
 # Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
 #. [unit_type]: id=Roc, race=monster
 #: data/core/units/monsters/Roc.cfg:20
-#, fuzzy
 msgid ""
 "In remote desert mountains, far from any city or settlement, enormous "
 "raptors are rumoured to nest in the lofty crags. Travellers and nomads claim "
@@ -7635,14 +7002,6 @@ msgstr "岩蝎"
 
 #. [unit_type]: id=Rock Scorpion, race=monster
 #: data/core/units/monsters/Rock_Scorpion.cfg:47
-#, fuzzy
-#| msgid ""
-#| "Rock scorpions have featured in tales of highwaymen and drunks, but there "
-#| "has been scant evidence that they truly exist. They've been described as "
-#| "stealthy monsters with a hide of solid rock, and sharp, crystalline "
-#| "claws. Unlike most scorpions, they do not deliver their poison with a "
-#| "piercing stinger, but instead spray their enemies with a noxious, "
-#| "volatile stream."
 msgid ""
 "Rock Scorpions have featured in tales of highwaymen and drunks, but there "
 "has been scant evidence that they truly exist. They’ve been described as "
@@ -7661,14 +7020,12 @@ msgstr "喷射"
 
 #. [unit_type]: id=Sand Scamperer, race=monster
 #: data/core/units/monsters/Sand_Scamperer.cfg:8
-#, fuzzy
 msgid "Sand Scamperer"
 msgstr "凿沙兽"
 
 # Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
 #. [unit_type]: id=Sand Scamperer, race=monster
 #: data/core/units/monsters/Sand_Scamperer.cfg:23
-#, fuzzy
 msgid ""
 "This impressive creature swiftly moves through the scorching desert sand. "
 "Its body is covered in a thick, sand-colored exoskeleton absorbing any "
@@ -7730,7 +7087,6 @@ msgstr "影跳蛛"
 # Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
 #. [unit_type]: id=Shadow Jumping Spider, race=monster
 #: data/core/units/monsters/Shadow_Jumping_Spider.cfg:30
-#, fuzzy
 msgid ""
 "Unlike the feared Giant Spider that uses poison and webs to catch prey, the "
 "Shadow Jumper relies on speed and the element of surprise. These stealthy, "
@@ -7846,10 +7202,6 @@ msgstr "狼"
 
 #. [unit_type]: id=Wolf, race=wolf
 #: data/core/units/monsters/Wolf.cfg:34
-#, fuzzy
-#| msgid ""
-#| "Wolves are aggressive animals that hunt in packs. Although weak "
-#| "individually, a wolf pack can kill even the strongest man in minutes."
 msgid ""
 "Wolves are aggressive animals that hunt in packs. Although weak "
 "individually, a Wolf pack can kill even the strongest man in minutes."
@@ -7870,6 +7222,9 @@ msgid ""
 "match. Posing a considerable threat to even experienced soldiers, direwolves "
 "are avoided by all but madmen."
 msgstr ""
+"“恐狼”与普通狼的区别仅在于体型和颜色。它们的肩高通常超过马匹，食量也与之相"
+"称。即使对经验丰富的士兵，它们也会构成相当大的威胁，除了疯子之外，所有人都会"
+"对其避而远之。"
 
 #. [unit_type]: id=Great Wolf, race=wolf
 #: data/core/units/monsters/Wolf_Great.cfg:4
@@ -7894,15 +7249,6 @@ msgstr "雪人"
 
 #. [unit_type]: id=Yeti, race=monster
 #: data/core/units/monsters/Yeti.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Little is known about Yetis, ape-like creatures said to live in remote "
-#| "and snow-covered mountains. Few profess to have seen one, and their "
-#| "existence is doubted by many. Most accounts agree on several factors "
-#| "though — while slow and simple-minded, yetis are extremely resilient, and "
-#| "can kill any they encounter with their bare fists. This is enough to keep "
-#| "even the doubtful from venturing too far onto the mountains they are said "
-#| "to inhabit."
 msgid ""
 "Little is known about Yetis, ape-like creatures said to live in remote and "
 "snow-covered mountains. Few profess to have seen one, and their existence is "
@@ -8038,6 +7384,13 @@ msgid ""
 "absorbing some of the damage. Though their small shields do little against "
 "ranged attacks, this tactic nevertheless makes them sturdy fighters in melee."
 msgstr ""
+"资深娜迦守卫学会了一种独特的战斗风格，与其他种族的重步兵截然不同。通过结合重"
+"锤的惯性与身体的柔韧性，他们能够发动一连串迅疾而沉重的打击。\n"
+"\n"
+"这种技巧若有时间准备便能发挥强大威力，但在压力下却难以施展。在防御方面，盾卫"
+"转而利用自身天生的柔韧性来保护自己，顺着打击的方向弯曲身体，从而吸收部分伤"
+"害。尽管他们的小盾牌对远程攻击几乎毫无作用，但这一战术仍然使他们成为近战中的"
+"顽强战士。"
 
 #. [unit_type]: id=Naga Myrmidon, race=naga, gender=male,female
 #: data/core/units/nagas/Myrmidon.cfg:4
@@ -8183,7 +7536,7 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/nagas/Sicarius.cfg:38
 msgid "trishula"
-msgstr ""
+msgstr "三叉戟"
 
 #. [female]: gender=female
 #: data/core/units/nagas/Sicarius.cfg:92
@@ -8235,45 +7588,6 @@ msgstr "娜迦灵风武士"
 
 #. [unit_type]: id=Naga Zephyr, race=naga, gender=male,female
 #: data/core/units/nagas/Zephyr.cfg:19
-#, fuzzy
-#| msgid ""
-#| "The Southern Naga commonly recount a curious story about the Wind Spirit, "
-#| "Zefra and the aetherial chakram:\n"
-#| "\n"
-#| "In the distant past, there was a chakram wielder who was possessed of "
-#| "legendary skill. It is said that he could cleave the very seas with a "
-#| "flurry of blades, fell a hundred foes before a single could reach him, "
-#| "and deflect a thousand arrows without being struck. Called by the name of "
-#| "Xylrix, tempest, he was a warrior whose arrogance was as great as his "
-#| "talent. He was always more than willing to boast his prowess to any and "
-#| "all who would watch him. Then one day, while flaunting himself to a band "
-#| "of young Nagini, he chose a sacred Allnai tree as his target.\n"
-#| "\n"
-#| "‘Watch,’ he bellowed, and split the tree straight in two.\n"
-#| "\n"
-#| "In that moment, a great wind surrounded him and the Wind Spirit’s voice "
-#| "echoed in his ears, ‘You think yourself mighty for slaying my hapless "
-#| "offspring? Though talent you possess, no mortal should trifle with the "
-#| "divinity that guides them.’\n"
-#| "\n"
-#| "He retorted, ‘Come, spirit. I am not afraid. No weapon, steel, water, or "
-#| "wind, shall stand up to my rings.’\n"
-#| "\n"
-#| "The wind whirled ever faster, a torrent of gale force spiraling and "
-#| "spiraling in a gyrating dance of fury. He felt himself lifted from the "
-#| "ground, spinning at a tremendous rate, rendered utterly hapless at the "
-#| "mercy of Zefra’s wrath. Face upturned in terror, he let go of his blades "
-#| "and suddenly saw it in the whirling tempest—the twirling motion of the "
-#| "ringed chakrams, patterned in the very wind itself.\n"
-#| "\n"
-#| "As quickly as the storm came, it vanished, leaving Xylrix to contemplate "
-#| "his broken weapons. When he finally returned to his home many days later, "
-#| "he announced his new name: Zephyr, a warrior who serves the Wind on which "
-#| "his blades fly.\n"
-#| "\n"
-#| "While the old tales drive the elite warriors of this legacy to focus on "
-#| "the thrown blade, this doesn't mean they are weak in melee combat, as the "
-#| "unbalanced chakram can be enhanced with spikes and smaller blades.\n"
 msgid ""
 "The Southern Naga commonly recount a curious story about the Wind Spirit, "
 "Zefra and the aetherial chakram:\n"
@@ -8369,11 +7683,6 @@ msgstr "幼年食人魔"
 
 #. [unit_type]: id=Young Ogre, race=ogre
 #: data/core/units/ogres/Young_Ogre.cfg:23
-#, fuzzy
-#| msgid ""
-#| "When still young, Ogres are sometimes captured and taken into armies to "
-#| "be trained. They cannot manage weapons skillfully, but they compensate "
-#| "for that lack with great strength."
 msgid ""
 "When still young, ogres are sometimes captured and taken into armies to be "
 "trained. They cannot manage weapons skillfully, but they compensate for that "
@@ -8389,16 +7698,6 @@ msgstr "兽人弓箭手"
 
 #. [unit_type]: id=Orcish Archer, race=orc
 #: data/core/units/orcs/Archer.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Although bows are sometimes regarded as cowardly armaments among orcs, "
-#| "the pragmatic nature of orcish warfare makes frequent use of these "
-#| "weapons, which are well-suited for those of smaller stature or build. A "
-#| "favored tactic among orcish archers is the use of flaming arrows to sow "
-#| "chaos among enemy lines, softening tough opponents for their bigger and "
-#| "stronger brethren to finish off on the frontlines. While typically poorly "
-#| "equipped themselves, these orcs can nonetheless be quite effective in "
-#| "large numbers."
 msgid ""
 "Although bows are sometimes regarded as cowardly armaments among orcs, the "
 "pragmatic nature of orcish warfare makes frequent use of these weapons, "
@@ -8442,15 +7741,6 @@ msgstr "兽人弩手"
 
 #. [unit_type]: id=Orcish Crossbowman, race=orc
 #: data/core/units/orcs/Crossbowman.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Despite the heavy importance placed on combat prowess by most orcs, very "
-#| "few tribes have any semblance of formal training in any of the warring "
-#| "arts. Because of this, orcish bowmen are rather ineffective at wielding "
-#| "longbows pilfered from human or elven archers, instead preferring to arm "
-#| "themselves with more easily handled crossbows. Simplistic but potent, "
-#| "these weapons can still be deadly even when handled roughly by "
-#| "inexperienced warriors."
 msgid ""
 "Despite the heavy importance placed on combat prowess by most orcs, very few "
 "tribes have any semblance of formal training in any of the warring arts. "
@@ -8544,15 +7834,6 @@ msgstr "兽人统治者"
 
 #. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:19
-#, fuzzy
-#| msgid ""
-#| "A common misconception about the hierarchy of orcish clans is the notion "
-#| "that orcs only value brute strength. Although the leader of a smaller "
-#| "orcish troop may be the strongest fighter amongst them, the ruler of a "
-#| "large tribe has the difficult task of stifling internal feuding and in-"
-#| "fighting — something that cannot be accomplished by force alone. Such an "
-#| "orc is inevitably the most shrewd and perceptive among his peers and has "
-#| "won the respect of his brethren through leadership rather than coercion."
 msgid ""
 "A common misconception about the hierarchy of orcish clans is the notion "
 "that orcs only value brute strength. Although the leader of a smaller orcish "
@@ -8688,15 +7969,6 @@ msgstr "兽人战士"
 
 #. [unit_type]: id=Orcish Warrior, race=orc
 #: data/core/units/orcs/Warrior.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Orcish swordplay focuses almost strictly on offense, making use of their "
-#| "natural stamina to outlast their opponents through sheer resilience. A "
-#| "more seasoned orcish warrior is thus commonly seen wielding two blades, "
-#| "choosing to forego a shield and instead trade hits with enemies in melee "
-#| "range. Though a rather brutish tactic, it is still quite effective for "
-#| "these fighters, who lack the training and finesse to act on more complex "
-#| "strategies."
 msgid ""
 "Orcish swordplay focuses almost strictly on offense, making use of their "
 "natural stamina to outlast their opponents through sheer resilience. A more "
@@ -8772,12 +8044,6 @@ msgstr "蜥蜴人标枪兵"
 
 #. [unit_type]: id=Saurian Javelineer, race=lizard, gender=female
 #: data/core/units/saurians/Javelineer.cfg:19
-#, fuzzy
-#| msgid ""
-#| "After years of combat practice, saurians warriors that are the most "
-#| "talented in the skill of spear throwing might advance to the ranks of the "
-#| "javelineers. With better equipment and exceptional aim, saurian "
-#| "javelineers are not to be underestimated."
 msgid ""
 "After years of combat practice, saurians warriors that are the most talented "
 "in the skill of spear throwing might advance to the ranks of the "
@@ -8790,18 +8056,10 @@ msgstr ""
 #. [unit_type]: id=Saurian Oracle, race=lizard
 #: data/core/units/saurians/Oracle.cfg:4
 msgid "Saurian Oracle"
-msgstr "蜥蜴人神谕"
+msgstr "蜥蜴人神谕使"
 
 #. [unit_type]: id=Saurian Oracle, race=lizard
 #: data/core/units/saurians/Oracle.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Certain saurians are seen dressed in arcane regalia and covered head to "
-#| "toe in horrifying, esoteric shapes and markings, both with paint and "
-#| "tattoo. Some suspect them to be visionaries, or oracles amongst their "
-#| "ilk. But whatever ‘societal’ function they may have, they are undeniably "
-#| "powerful in the strange magics their kind possess, and are beings to be "
-#| "wary of if ever seen."
 msgid ""
 "Certain saurians are seen dressed in arcane regalia and covered head to toe "
 "in horrifying, esoteric shapes and markings, both with paint and tattoo. "
@@ -8919,11 +8177,6 @@ msgstr "巨魔英雄"
 
 #. [unit_type]: id=Troll Hero, race=troll
 #: data/core/units/trolls/Hero.cfg:16
-#, fuzzy
-#| msgid ""
-#| "Some trolls are born with an exceptional share of the strength and "
-#| "vitality that characterizes their race. In a society where might makes "
-#| "right, those of their ilk revere them as heroes."
 msgid ""
 "Some trolls are born with an exceptional share of the strength and vitality "
 "that characterizes their race. In a society where might makes right, those "
@@ -8977,11 +8230,6 @@ msgstr "巨魔萨满"
 
 #. [unit_type]: id=Troll Shaman, race=troll
 #: data/core/units/trolls/Troll_Shaman.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Troll shamans are the mystical leaders of the trolls. Though not as "
-#| "strong or tough as other trolls, their true power lies in their fire "
-#| "magic, which they use to blast enemies with gouts of flame."
 msgid ""
 "Troll Shamans are the mystical leaders of the trolls. Though not as strong "
 "or tough as other trolls, their true power lies in their fire magic, which "
@@ -9026,13 +8274,6 @@ msgstr "巨魔幼崽"
 
 #. [unit_type]: id=Troll Whelp, race=troll
 #: data/core/units/trolls/Whelp.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Describing a troll as a whelp is something of an oxymoron, given that "
-#| "their bodies are already much hardier than that of a grown man. They are "
-#| "clumsy and not yet capable of walking properly, forced instead to shamble "
-#| "about on all fours, but any difficulty this causes them is more than made "
-#| "up for by the raw strength of their race."
 msgid ""
 "Describing a troll as a Whelp is something of an oxymoron, given that their "
 "bodies are already much hardier than that of a grown man. They are clumsy "
@@ -9051,14 +8292,6 @@ msgstr "食尸妖鬼"
 
 #. [unit_type]: id=Ghast, race=undead
 #: data/core/units/undead/Corpse_Ghast.cfg:20
-#, fuzzy
-#| msgid ""
-#| "The ghast is a creature taken from humankind’s most primal nightmares. "
-#| "Unlike their lesser cousins, ghouls and necrophages, ghasts are not "
-#| "patient enough to wait for their victim to die from poison before "
-#| "consuming the body. They attack directly with their enormous mouths, "
-#| "trying to rip the flesh straight from their foes. Once their enemy is "
-#| "defeated, they eat the rest of the body, gaining strength in the process."
 msgid ""
 "The Ghast is a creature taken from humankind’s most primal nightmares. "
 "Unlike their lesser cousins, Ghouls and Necrophages, Ghasts are not patient "
@@ -9079,17 +8312,6 @@ msgstr "食尸鬼"
 
 #. [unit_type]: id=Ghoul, race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Only the more perverse and sadistic of necromancers know what must be "
-#| "done to turn a person into a ghoul, and it is a secret they are not "
-#| "telling. The result, however, is all too well known; it is a beast that "
-#| "knows nothing of its days as a human being, a creature that shambles "
-#| "about as naked as the day it was born, and gorges itself on the flesh of "
-#| "the dead.\n"
-#| "\n"
-#| "It is because of such things that necromancy is condemned with an almost "
-#| "primal hatred in all civilized lands."
 msgid ""
 "Only the more perverse and sadistic of necromancers know what must be done "
 "to turn a person into a Ghoul, and it is a secret they are not telling. The "
@@ -9104,7 +8326,6 @@ msgstr ""
 "可告人的秘密。但是，其结果却是再清楚不过：一只完全忘却了自己作为人的前生的野"
 "兽。这只生物四处蹒跚而行，用死尸的血肉填饱自己的肚子，他赤裸着，正如同他出生"
 "的那天一样。\n"
-"\n"
 "这种事情，正是死灵术被几乎所有的文明国度以一种近乎本能的憎恨所谴责的原因。"
 
 #. [unit_type]: id=Necrophage, race=undead
@@ -9114,16 +8335,6 @@ msgstr "食尸恶鬼"
 
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:19
-#, fuzzy
-#| msgid ""
-#| "The necrophage, or ‘devourer of the dead’, is a monstrous, corpulent "
-#| "thing, which bears only a crude resemblance to a man. They appear to be "
-#| "quite rotten in spite of their ability to move; they are rife with "
-#| "disease and poisons of the blood, and have a stench to match. But the "
-#| "most revolting fact about these creatures, apparent only to those who can "
-#| "perceive the traces of foul magic on them, is that they were somehow made "
-#| "from living men — a process about which almost nothing is known, but "
-#| "which can be nothing but nightmarish."
 msgid ""
 "The Necrophage, or ‘devourer of the dead’, is a monstrous, corpulent thing, "
 "which bears only a crude resemblance to a man. They appear to be quite "
@@ -9155,10 +8366,8 @@ msgstr "臭虫"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:171
 #: data/core/units/undead/Corpse_Walking.cfg:170
-#, fuzzy
-#| msgid "wc_variation^Rat"
 msgid "wc_variation^Cat"
-msgstr "鼠"
+msgstr "猫"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:187
@@ -9235,9 +8444,8 @@ msgstr "蝎"
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:376
 #: data/core/units/undead/Corpse_Walking.cfg:375
-#, fuzzy
 msgid "wc_variation^Scuttler"
-msgstr "蜘蛛"
+msgstr "疾驰者"
 
 #. [variation]
 #: data/core/units/undead/Corpse_Soulless.cfg:385
@@ -9344,23 +8552,6 @@ msgstr "黑暗巫师"
 
 #. [unit_type]: id=Dark Sorcerer, gender=male,female, race=human
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The dread inspired by black magic is enhanced by the secrecy and fell "
-#| "rumors which surround it. Dark sorcerers have begun to unlock the secrets "
-#| "of life and death, the latter of which is all too easy to inflict. This "
-#| "labor gives the first glimmerings of the connection between the soul and "
-#| "inert matter, and the first successful experiments in manipulating this "
-#| "bond. The terrible unknown that lurks beyond death is glimpsed, and will "
-#| "inevitably be fathomed.\n"
-#| "\n"
-#| "Despite any design they may have of using this to wrest their own "
-#| "immortality from nature’s grasp, the first results of their work have "
-#| "immediate, and unpleasant applications. The life they breathe into dead "
-#| "matter can create servants for them, servants which will work, but which "
-#| "will also kill, and will never question their masters. These creations "
-#| "have a loyalty any tyrant would dream of, and it is tempting to those "
-#| "with even the slightest desire for power."
 msgid ""
 "The dread inspired by black magic is enhanced by the secrecy and fell rumors "
 "which surround it. Dark Sorcerers have begun to unlock the secrets of life "
@@ -9431,18 +8622,6 @@ msgstr "巫妖"
 
 #. [unit_type]: id=Lich, race=undead
 #: data/core/units/undead/Necro_Lich.cfg:19
-#, fuzzy
-#| msgid ""
-#| "A lich is the physical embodiment of black magic’s first goal: the quest "
-#| "to achieve immortality. Though a great deal is sacrificed in the rebirth, "
-#| "in becoming a lich one cheats death of that which truly gives it terror. "
-#| "For it is the mind that is retained, and the spirit which follows, though "
-#| "the body may wither away.\n"
-#| "\n"
-#| "It is not known, save perhaps by the inner circles of necromancy, whether "
-#| "life is prolonged indefinitely or simply extended. The fact that this "
-#| "question can be raised at all is a testament to the magnitude of what "
-#| "their order has achieved."
 msgid ""
 "A Lich is the physical embodiment of black magic’s first goal: the quest to "
 "achieve immortality. Though a great deal is sacrificed in the rebirth, in "
@@ -9670,13 +8849,6 @@ msgstr "骷髅弓箭手"
 
 #. [unit_type]: id=Skeleton Archer, race=undead
 #: data/core/units/undead/Skeleton_Archer.cfg:16
-#, fuzzy
-#| msgid ""
-#| "A skeleton archer is little different from the ‘skeletons’ which often "
-#| "accompany it — it is a sin against nature, a warrior raised from the dead "
-#| "to fight once again. In their masters’ hands, these soldiers will do "
-#| "anything to achieve the tasks laid before them, for death holds no fear "
-#| "for one who is already dead."
 msgid ""
 "A Skeleton Archer is little different from the ‘skeletons’ which often "
 "accompany it — it is a sin against nature, a warrior raised from the dead to "
@@ -9758,15 +8930,6 @@ msgstr "幽鬼"
 
 #. [unit_type]: id=Spectre, race=undead
 #: data/core/units/undead/Spirit_Spectre.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Sometimes called the ‘hollow men’, spectres form the right arm of their "
-#| "masters’ powers. They are an unholy terror to the living, for they are "
-#| "quite as deadly as their appearance suggests.\n"
-#| "\n"
-#| "The creation of these is itself no mean feat, but the real danger in "
-#| "encountering one is that it is likely only the harbinger of a much more "
-#| "dangerous force that will follow in its wake."
 msgid ""
 "Sometimes called the ‘hollow men’, Spectres form the right arm of their "
 "masters’ powers. They are an unholy terror to the living, for they are quite "
@@ -9896,7 +9059,7 @@ msgstr ""
 #. [unit_type]: id=Wose Sapling, race=wose
 #: data/core/units/wose/Wose_Sapling.cfg:4
 msgid "Wose Sapling"
-msgstr "树人幼体"
+msgstr "树人幼苗"
 
 #. [unit_type]: id=Wose Sapling, race=wose
 #: data/core/units/wose/Wose_Sapling.cfg:18
@@ -9910,6 +9073,12 @@ msgid ""
 "Like most woses, Saplings rarely seek out conflict, although strikes from "
 "their thrashing branches can cause some damage."
 msgstr ""
+"体型最小的树人被称为幼苗，尚未获得其长辈那般强大的力量。虽然人们对这些神秘生"
+"物的生命周期知之甚少，但许多人推测它们的生长速度比真正的树木还要缓慢得多。若"
+"果真如此，即便是它们所谓的幼苗也可能已有数十年的岁数。\n"
+"\n"
+"与大多数树人一样，幼苗很少主动挑起冲突，不过它们挥舞枝条的抽击也能造成一定的"
+"伤害。"
 
 #. [unit_type]: id=Wose Shaman, race=wose
 #: data/core/units/wose/Wose_Shaman.cfg:4
@@ -9927,14 +9096,17 @@ msgid ""
 "believed to be different from the magic of elves or merfolk. The details of "
 "this craft can only be speculated on by other races."
 msgstr ""
+"在被水淹没的潮湿林地中——那里只有隐居的居民才能进入——旅人们讲述着神秘的树人萨"
+"满的故事，据说他们花费数个世纪来掌握指挥森林植物的技艺。这种奇特的技艺仅是从"
+"少数历史遭遇中推断而来。在那些遭遇中，树人萨满运用自己的力量在战斗中阻碍敌"
+"人；人们普遍认为这与精灵或人鱼的魔法有所不同。这门技艺的细节，其他种族只能加"
+"以推测。"
 
 #. [unit_type]: id=Arcane Enforcer, race=human, gender=male,female
 #. "enforcer" as in "gang enforcer"
 #: data/internal/Rogue_Mage/units/Bandit_Arcane_Enforcer.cfg:6
-#, fuzzy
-#| msgid "Drake Enforcer"
 msgid "Arcane Enforcer"
-msgstr "龙人执行者"
+msgstr "奥术执行者"
 
 #. [unit_type]: id=Arcane Enforcer, race=human, gender=male,female
 #: data/internal/Rogue_Mage/units/Bandit_Arcane_Enforcer.cfg:21
@@ -9947,20 +9119,20 @@ msgid ""
 "ex-magi brawl with surprising competence, especially under the cover of "
 "darkness."
 msgstr ""
+"不法之徒那严酷而暴力的生活，并不利于魔法研习。那些在最初几年里存活下来的流浪"
+"法师，往往是有组织的强盗团伙在暗中相助；而这些团伙也非常乐意提供庇护，以换取"
+"武力与忠诚。这些前法师装备着偷来的弩，并用依稀记得的魔法残片强化他们拼凑的盔"
+"甲，战斗起来出人意料地干练，尤其是在夜幕的掩护下。"
 
 #. [female]: gender=female
 #: data/internal/Rogue_Mage/units/Bandit_Arcane_Enforcer.cfg:122
-#, fuzzy
-#| msgid "female^Drake Enforcer"
 msgid "female^Arcane Enforcer"
-msgstr "龙人执行者"
+msgstr "奥术执行者"
 
 #. [unit_type]: id=Rogue Mage, race=human, gender=male,female
 #: data/internal/Rogue_Mage/units/Bandit_Rogue_Mage.cfg:5
-#, fuzzy
-#| msgid "Red Mage"
 msgid "Rogue Mage"
-msgstr "红袍法师"
+msgstr "流浪法师"
 
 #. [unit_type]: id=Rogue Mage, race=human, gender=male,female
 #: data/internal/Rogue_Mage/units/Bandit_Rogue_Mage.cfg:19
@@ -9978,20 +9150,24 @@ msgid ""
 "their spells can still be quite dangerous, and their banditry has resulted "
 "in moderate skill with the short sword."
 msgstr ""
+"并非每个学生都具备成为法师的技艺与心性。学徒们常常发现自己被导师抛弃，有时是"
+"因为试图修习禁术，但更常见的是因为诸如盗窃、贪污之类的世俗过失，甚至仅仅是因"
+"为资金短缺。\n"
+"\n"
+"虽然这些失败的巫师大多会另谋出路，但少数执着者会转向强盗行径，以此继续资助他"
+"们的独立研习。如今完全游离于法律之外，流浪法师们不择手段地养活自己，结果往往"
+"会涉猎黑魔法的使用。尽管他们很少像受过正规训练的巫师那样技艺精湛，但他们的法"
+"术仍然相当危险，而且他们的强盗生涯也使他们在短剑的使用方面具备了一定的造诣。"
 
 #. [female]: gender=female
 #: data/internal/Rogue_Mage/units/Bandit_Rogue_Mage.cfg:80
-#, fuzzy
-#| msgid "female^Red Mage"
 msgid "female^Rogue Mage"
-msgstr "红袍法师"
+msgstr "流浪法师"
 
 #. [unit_type]: id=Shadow Lord, race=human, gender=male,female
 #: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:5
-#, fuzzy
-#| msgid "Shadow"
 msgid "Shadow Lord"
-msgstr "暗影"
+msgstr "暗影领主"
 
 #. [unit_type]: id=Shadow Lord, race=human, gender=male,female
 #. I think of regular mages as modern-day professors, or perhaps ancient greek philosophers. In comparison, a Shadow Lord is more like an unemployed, obsessive savant who hasn't showered in three months but somehow discovered the secret to cold fusion while working alone in his dingy apartment.
@@ -10005,21 +9181,22 @@ msgid ""
 "for crude physical weapons, instead channeling their energies into "
 "devastatingly accurate magical attacks that undercut their enemies’ defenses."
 msgstr ""
+"光明与黑暗之路的果实，法师们早已熟知：白袍法师的璀璨光辉，或是死灵法师的深沉"
+"阴霾。然而鲜为人知的是暗影领主的技艺——那些极少数将白魔法与黑魔法融会贯通之"
+"人。尽管数十年的狂热研习与自我忽视已使他们耗尽了力量，但这些博学之士已然超越"
+"了对粗陋物理武器的依赖，而是将自身能量倾注于极具毁灭性且精准无比的魔法攻击之"
+"中，以此瓦解敌人的防御。"
 
 #. [attack]: type=blade
 #: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:47
-#, fuzzy
-#| msgid "war blade"
 msgid "astral blade"
-msgstr "战刃"
+msgstr "星刃"
 
 #. [damage_type]: id=cold_damage
 #: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:53
 #: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:51
-#, fuzzy
-#| msgid "chill wave"
 msgid "chill"
-msgstr "冰寒波"
+msgstr "寒击"
 
 #. [damage_type]: id=cold_damage
 #: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:54
@@ -10027,7 +9204,7 @@ msgstr "冰寒波"
 msgid ""
 "This attack can deal either blade or cold damage, depending on which would "
 "be more effective."
-msgstr ""
+msgstr "此攻击可造成刃器或冰寒伤害，具体取决于哪种更为有效。"
 
 #. [damage_type]: id=cold_damage
 #: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:55
@@ -10035,21 +9212,17 @@ msgstr ""
 msgid ""
 "This unit’s melee attack can deal either blade or cold damage, depending on "
 "which would be more effective."
-msgstr ""
+msgstr "此单位的近战攻击可造成刃器或冰寒伤害，具体取决于哪种更为有效。"
 
 #. [female]: gender=female
 #: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:103
-#, fuzzy
-#| msgid "female^Dark Horse"
 msgid "female^Shadow Lord"
-msgstr "黯骏"
+msgstr "暗影领主"
 
 #. [unit_type]: id=Shadow Mage, race=human, gender=male,female
 #: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:5
-#, fuzzy
-#| msgid "shadow wave"
 msgid "Shadow Mage"
-msgstr "暗影波"
+msgstr "暗影法师"
 
 #. [unit_type]: id=Shadow Mage, race=human, gender=male,female
 #: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:18
@@ -10062,106 +9235,12 @@ msgid ""
 "of their labor is the unnerving power to vanish and evade seemingly-lethal "
 "blows, only to reappear moments later and strike in sudden retaliation."
 msgstr ""
+"涉猎诸多魔法学派，却未完全皈依任何一派，独立法师那贫困而执着的钻研有时也能产"
+"生令人瞩目的成果。不受正规学徒制度的束缚，暗影法师学会了将法术与剑术交织融"
+"合，以同等的热情攫取光明与黑暗的秘密。他们众多成果之一，是那种令人不安的能力"
+"——消失并闪避看似致命的打击，然后于片刻后重新现身，发动突然的反击。"
 
 #. [female]: gender=female
 #: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:100
-#, fuzzy
-#| msgid "female^Red Mage"
 msgid "female^Shadow Mage"
-msgstr "红袍法师"
-
-#~ msgid ""
-#~ "Small but deadly in large numbers, fire ants possess fierce fangs and an "
-#~ "unusual ability to generate fire. Though these creatures typically "
-#~ "function as scavengers, a burrow of fire ants can become aggressive when "
-#~ "provoked and have even been known to attack small groups of threatening "
-#~ "troops."
-#~ msgstr ""
-#~ "火蚁很小，但数量多时却很致命，它们拥有凶猛的尖牙和不寻常的造火能力。虽然这"
-#~ "些生物通常是作为食腐动物存在，但一窝火蚁在受到挑衅时会变得很有攻击性，已知"
-#~ "它们会攻击有威胁的小规模部队。"
-
-#~ msgid "taunting strike"
-#~ msgstr "嘲讽打击"
-
-# Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
-#, fuzzy
-#~ msgid "Strength Training"
-#~ msgstr "力量训练"
-
-#~ msgid "Bowmanship Training"
-#~ msgstr "弓术训练"
-
-#~ msgid "Strong Shots"
-#~ msgstr "强力射击"
-
-#~ msgid "Piercing Shot"
-#~ msgstr "穿透射击"
-
-#~ msgid ""
-#~ "This unit can burrow under loose dirt, sand, or leaves, concealing itself "
-#~ "if it does not change location."
-#~ msgstr ""
-#~ "此单位可以钻到松散的泥土、沙子或树叶下面，如果不改变位置，就能隐藏自己。"
-
-#~ msgid ""
-#~ "Horned Scarabs are large, rugged insects that can grow to be quite large, "
-#~ "making them a threat when they decide to be aggressive. Their primary "
-#~ "means of attack is the large, sharp horn growing from their head. Because "
-#~ "of their large size, armor, and horn, they cannot fly."
-#~ msgstr ""
-#~ "有角圣甲虫是大而粗犷的昆虫，可以长到相当大，因此，当它们决定攻击时，就会成"
-#~ "为威胁。它们的主要攻击手段是头上长出的大而尖锐的角。由于大体型、大外甲还有"
-#~ "大角，它们不能飞行。"
-
-#~ msgid ""
-#~ "Once great warriors across the plains, these mounted riders atop their "
-#~ "skeletal horses were raised from the ground by unholy magic to spread "
-#~ "fear and destruction."
-#~ msgstr ""
-#~ "曾经是平原之间的优秀武士，这些在骷髅马上的骑手是被邪恶的魔法从地下唤醒的，"
-#~ "以散播恐惧和毁灭。"
-
-#~ msgid "Galleons are blue-water ships built for trade and transport."
-#~ msgstr "大帆船是为商业和运输制造的海船。"
-
-#~ msgid "forceful scimitar strike"
-#~ msgstr "强力弯刀打击"
-
-#~ msgid "balanced scimitar slash"
-#~ msgstr "平衡弯刀砍击"
-
-#~ msgid "gossamer"
-#~ msgstr "蛛丝"
-
-#~ msgid "swamp lurk"
-#~ msgstr "沼泽潜伏"
-
-#~ msgid "female^swamp lurk"
-#~ msgstr "沼泽潜伏"
-
-#~ msgid ""
-#~ "This unit can hide in swamp, and remain undetected by its enemies.\n"
-#~ "\n"
-#~ "Enemy units cannot see this unit while it is in swamp, except if they "
-#~ "have units next to it. Any enemy unit that first discovers this unit "
-#~ "immediately loses all its remaining movement."
-#~ msgstr ""
-#~ "此单位可以隐藏在沼泽中，不被敌人发现。\n"
-#~ "\n"
-#~ "当此单位在沼泽中时，敌方单位无法看到它，除非有敌方单位在它旁边。任何首先发"
-#~ "现此单位的敌方单位都会立即失去其所有剩余的移动点数。"
-
-#~ msgid ""
-#~ "The veteran naga guards are more difficult to dislodge from their posts "
-#~ "because of effective use of a shield in melee techniques. This tactic "
-#~ "does nothing against ranged attacks, but the nagas can usually seek "
-#~ "better terrain advantage in such situations."
-#~ msgstr ""
-#~ "资深的娜迦卫士能在近战中能高效地使盾，故而很难从岗位上引开他们。这种战术对"
-#~ "远程攻击毫无作用，但在这种情况下，娜迦通常可以寻找更好的地形优势。"
-
-#~ msgid ""
-#~ "These woses are able to command forest plants such as vines and creepers "
-#~ "to hinder their enemies."
-#~ msgstr "这些树人会指挥森林植物，例如藤蔓来阻碍敌人。"
+msgstr "暗影法师"

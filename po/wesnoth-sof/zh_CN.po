@@ -1,25 +1,26 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2022 Wesnoth development team
+# Copyright (C) 2005-2026 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Translators and their initial years of participation:
 # luojie <lililjlj@gmail.com>, 2009.
 # CloudiDust <cloudidust@gmail.com>, 2010.
+# vimacs <vimacs.hacks@gmail.com>, 2024.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.16\n"
+"Project-Id-Version: wesnoth-1.20\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-06-23 03:16 UTC\n"
-"PO-Revision-Date: 2024-09-18 10:15+0800\n"
-"Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
+"PO-Revision-Date: 2026-08-24 21:15+0800\n"
+"Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.9\n"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:11
@@ -74,12 +75,14 @@ msgid ""
 "Their tale I now relate...</i>\n"
 "\n"
 msgstr ""
-"<b>韦诺之信，源出异邦，\n"
-"矮人之国，古旧之乡。\n"
-"符文术师，手艺非常，\n"
-"往昔旧事，历历难忘。\n"
-"追本溯源，且听我讲，\n"
-"伟哉大哉，圣火权杖……</b>\n"
+"韦诺旌旗雄且壮，\n"
+"徽记却不源本邦。\n"
+"出自冷峻古矮国，\n"
+"符文工匠亲手创。\n"
+"且听我把来历讲——\n"
+"圣火权杖何煌煌——\n"
+"铸杖诸匠有遗事，\n"
+"亦当为君道端详……\n"
 "\n"
 
 #. [campaign]: id=Sceptre_of_Fire
@@ -1108,7 +1111,7 @@ msgstr ""
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2p5_Reaching_the_Runecrafter.cfg:308
 msgid "Get back!"
-msgstr ""
+msgstr "回来！"
 
 #. [message]: speaker=Pidmer
 #: data/campaigns/Sceptre_of_Fire/scenarios/2p5_Reaching_the_Runecrafter.cfg:317
@@ -1555,15 +1558,15 @@ msgid ""
 "the far Northlands. Wolves and trolls, but even the snow and ice itself "
 "comes alive! We should be careful!"
 msgstr ""
+"精灵或许不会与我们为敌，但我听说遥远的北陆潜伏着许多其他危险。狼和巨魔，甚至"
+"还有冰雪本身都会活过来！我们得小心！"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:265
-#, fuzzy
-#| msgid "Right. We’ll probably have to fight our way through to his house."
 msgid ""
 "Right, we’ll probably have to fight our way through to his house. But we "
 "need to find it first."
-msgstr "对。我们恐怕得杀出一条血路才能到他的屋子里去了。"
+msgstr "对。我们恐怕得杀出一条血路才能到他的屋子那儿。但得先找到屋子才行。"
 
 #. [unit]: type=Gryphon, id=Krawg
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:285
@@ -1659,20 +1662,20 @@ msgstr "瑟萨冈"
 #. [message]: speaker=narrator
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:359
 msgid "Ah! Go away!"
-msgstr ""
+msgstr "啊！滚开！"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:369
 msgid ""
 "Was that Thursagan? Finding him wasn’t as difficult as I thought it would be."
-msgstr ""
+msgstr "那是瑟萨冈吗？找到他没我想的那么难嘛。"
 
 #. [message]: speaker=Baglur
 #. A bit of the accent, to make him more distinct from Rugnur
 #. "Aye, but it doesn't mean much unless he stops running away from us."
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:375
 msgid "Och, but it donna mean much unless he stops running away from us."
-msgstr ""
+msgstr "嗐，可他要老躲着咱，那也不顶啥用啊。"
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:392
@@ -1680,28 +1683,30 @@ msgid ""
 "This is just an empty shack, where could that old Runecrafter be hiding... "
 "Wait, this scrap of wood is actually a trap door!"
 msgstr ""
+"这只是间空无一人的棚屋，那个老符文工匠能藏在哪里呢……等等，这块木板竟然是个活"
+"板门！"
 
 #. [message]: speaker=Baglur
 #. "Come on out, Thursagan!  We need your help with some serious business!"
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:397
 msgid "C’mon out, Thursagan! We need’ya help with some serious business!"
-msgstr ""
+msgstr "快出来，瑟萨冈！咱有正经大事要你帮忙！"
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:401
 msgid ""
 "It’s no good, he’s not hiding under it, there’s just this collapsed tunnel."
-msgstr ""
+msgstr "没用，他没藏在下面，就只看到塌掉的隧道而已。"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:405
 msgid "We have to find him! Fan out!"
-msgstr ""
+msgstr "我们得找到他！散开去找！"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:409
 msgid "I don’t like this, we should stick together."
-msgstr ""
+msgstr "我觉得不行，我们应该集中行动。"
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:442
@@ -1709,6 +1714,8 @@ msgid ""
 "An empty shack... I thought I’d found the Runecrafter, but there’s no sign "
 "of anyone having been here recently."
 msgstr ""
+"空无一人的棚屋……我还以为找到了那个符文工匠，却完全没有最近有人在此停留的迹"
+"象。"
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:473
@@ -1716,6 +1723,7 @@ msgid ""
 "Another empty shack... But there is this suspicious slab of wood. Let’s see "
 "what’s underneath, shall we?"
 msgstr ""
+"又是一座空荡荡的棚屋……不过这儿有一块可疑的木板。看看下面藏着什么，如何？"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:483
@@ -1754,29 +1762,29 @@ msgstr "哦，我猜达司拓恩是想让我来打造，嗯？我才不去。"
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:507
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:563
 msgid "He just ducked back down underground..."
-msgstr ""
+msgstr "他刚刚又躲回地下去了……"
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:512
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:568
 msgid "... and collapsed the tunnel. He got away!"
-msgstr ""
+msgstr "……还弄塌了隧道。他跑了！"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:516
 msgid "He can’t get far, can he?"
-msgstr ""
+msgstr "他跑不远，对吧？"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:520
 msgid "Aye, the search continues."
-msgstr ""
+msgstr "是咯，搜索继续。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:529
 msgid ""
 "You are playing a dangerous game! I gave you my answer, now leave me be!"
-msgstr ""
+msgstr "你们在玩危险的游戏！我已经回答过你们了，现在让我清净吧！"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:533
@@ -1824,6 +1832,8 @@ msgid ""
 "You people just don’t seem to understand! I’m out here because I want no "
 "part of the nonsense of kings and those who crave power!"
 msgstr ""
+"你们这些家伙怎么就是不明白！我躲到这儿来，就是因为不想掺和国王和那些权力狂的"
+"荒唐勾当！"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:581
@@ -1837,7 +1847,7 @@ msgstr "不，等等，我没说清楚！我们得控制这种力量，制造一
 msgid ""
 "The Ruby causes madness, it is said. A magical cage that could protect the "
 "King would help us all."
-msgstr ""
+msgstr "据说红宝石会让人发疯。一个能保护国王的魔法牢笼，能帮得上我们所有人。"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:589
@@ -1866,12 +1876,12 @@ msgstr "好。那么，这里还有野生动物在游荡，我们得回洞穴里
 #. [message]: type=Snow Golem
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:679
 msgid "Ghaaah!"
-msgstr ""
+msgstr "嘎啊！"
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:683
 msgid "Yikes!"
-msgstr ""
+msgstr "哎呀！"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:716
@@ -2140,10 +2150,8 @@ msgstr "本地巨魔"
 
 #. [side]: type=Gray Bogeyman
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:260
-#, fuzzy
-#| msgid "Intruding Trolls"
 msgid "Intruders"
-msgstr "入侵巨魔"
+msgstr "入侵者"
 
 #. [side]: type=Direwolf Rider, type=Goblin Pillager
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:290
@@ -2178,6 +2186,8 @@ msgid ""
 "to trolls and other denizens of the darkness. Mining can take a while, this "
 "won’t be easy."
 msgstr ""
+"好吧，这些是东部矿场，盛产优质矿石，但也是巨魔和其他黑暗生物的栖息地。采矿可"
+"能需要一段时间，这轻松不了。"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:701
@@ -2191,36 +2201,26 @@ msgstr ""
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:705
-#, fuzzy
-#| msgid "Also, the only coal that wi’ melt this gold is here."
 msgid ""
 "Aye, these mines yield the needed gold, but also the only coal that wi’ melt "
 "that gold."
-msgstr "此外，唯一能够融化这种黄金的煤也产自这里。"
+msgstr "对，我们需要的黄金产自这些矿，而唯一能够融化这种黄金的煤也产自这里。"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:709
-#, fuzzy
-#| msgid ""
-#| "So we’re down here to, what, mine this gold and coal? That should be easy "
-#| "enough."
 msgid ""
 "So we’re down here to get both the gold and coal. Simple enough, even if we "
 "have to fight for it."
-msgstr "所以我们下来，那个，挖金子和煤矿？这事儿该是挺简单的。"
+msgstr "所以我们下来又挖金子又挖煤矿。够简单的，虽说我们得打几架才能得手。"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:713
-#, fuzzy
-#| msgid ""
-#| "Yes, although we will have to hire the miners — they don’t work for free. "
-#| "But beware, there are trolls and such down here..."
 msgid ""
 "Yes, although we will have to hire the miners — they don’t work for free. "
 "And you need to protect them while they do their work."
 msgstr ""
-"是的，虽然我们要出钱雇佣矿工——他们可不是无偿工作的。但小心，这里住着巨魔和类"
-"似生物……"
+"是的，不过我们要出钱雇佣矿工——他们可不是无偿工作的。而且他们干活的时候，你得"
+"保护他们。"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:717
@@ -2229,12 +2229,14 @@ msgid ""
 "caverns, we should be able to use the rails and carts, if we’re smart about "
 "it."
 msgstr ""
+"嗯，说得有道理……好吧，这些都是旧矿场，不是边境洞穴，只要咱们机灵点，应该能利"
+"用那些轨道和矿车。"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:741
 msgid ""
 "We’re not facing a united enemy, maybe we can use that to our advantage."
-msgstr ""
+msgstr "我们面对的并非团结一致的敌人，或许可以利用这一点。"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:762
@@ -3143,19 +3145,13 @@ msgstr ""
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:456
-#, fuzzy
-#| msgid ""
-#| "The country between here and Knalga will be swarming with elves. We had "
-#| "better head back to the abandoned mines north of the Arkan-thoria, where "
-#| "we gathered our gold and coal. At least there Alanin will have some hope "
-#| "of finding us."
 msgid ""
 "The country between here and Knalga will be swarming with elves. We had "
 "better head back to the abandoned mines north of the Arkan-thoria, where we "
 "gathered our gold and coal."
 msgstr ""
 "这里和纳尔迦之间的地区会有很多精灵四处活动。我们最好掉头回到阿坎-索丽亚北边的"
-"废矿坑，就是我们采集黄金和煤的地方。至少在那儿阿拉宁有找到我们的希望。"
+"废矿坑，就是我们采集黄金和煤的地方。"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:460
@@ -3372,8 +3368,6 @@ msgstr "虽然我成功的机会越来越小，但我必须履行我的职责。
 
 #. [message]: id=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:277
-#, fuzzy
-#| msgid "Oh no, more of them? And there I thought I could catch my breath…"
 msgid "Oh no, more of them? And there I thought I could catch my breath..."
 msgstr "哦不，他们来了更多人？我还以为能喘口气了……"
 
@@ -3575,18 +3569,13 @@ msgstr "您是哪位巨龙？"
 
 #. [message]: speaker=Khrakrahs
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:398
-#, fuzzy
-#| msgid ""
-#| "I am Khrakrahs, greatest dragon of all time! Haldric killed Shek’kahan my "
-#| "rival, but he was weaker than me, and you will not find me so easy to "
-#| "defeat. Now get out of my volcano!"
 msgid ""
 "I am Khrakrahs, greatest dragon of all time! Haldric killed Shek’kahan my "
 "brother, but he was weaker than me, and you will not find me so easy to "
 "defeat. Now get out of my volcano!"
 msgstr ""
-"我是柯拉卡拉斯，历史上最伟大的龙！哈德里克杀了我的对手沙克•卡悍，但他比我弱，"
-"你会发现我可不是那么容易被击败的。现在从我的火山里滚出去！"
+"我是柯拉卡拉斯，史上最伟大的龙！哈德里克杀了我的兄弟沙克•卡悍，但他比我弱，你"
+"会发现我可不是那么容易被击败的。现在从我的火山里滚出去！"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:402
@@ -3629,12 +3618,12 @@ msgstr "我不关心你们琐碎的争吵，我诅咒你们所有人！我诅咒
 #. [message]: speaker=Krawg
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:478
 msgid "Aww... Melted, stuck!"
-msgstr ""
+msgstr "嗷……融化，卡住！"
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:484
 msgid "I can’t pick this up, the gold is stuck!"
-msgstr ""
+msgstr "我拿不起来，金子卡住了！"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:490
@@ -3642,6 +3631,8 @@ msgid ""
 "Hrm, I see what you mean. The dragon’s hoard melted into the rock, we can’t "
 "just grab those gold coins. Too bad."
 msgstr ""
+"嗯，我明白你的意思了。巨龙的宝藏熔进了岩石里，我们没法直接拿走那些金币。真可"
+"惜。"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:511
@@ -3733,8 +3724,6 @@ msgstr "地下"
 
 #. [unit]: id=Gathor, type=Orcish Warrior
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:116
-#, fuzzy
-#| msgid "Bar'Gathor"
 msgid "Bar’Gathor"
 msgstr "巴·嘎萨"
 
@@ -4194,22 +4183,15 @@ msgstr "没错，但这没用，拉格纳。矮人和巨魔之间没有和平，
 
 #. [message]: speaker=Gathor
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1427
-#, fuzzy
-#| msgid ""
-#| "Ah ha! I knew it, there are intruders! And yet our damned bridge is "
-#| "broken, it was built by idiots. Come, come, bring planks, we’ve got to "
-#| "get across!"
 msgid ""
 "Ah ha! I knew it, there are intruders! And yet our damned bridge is broken, "
 "it was built by idiots."
-msgstr ""
-"啊哈！我就知道，有入侵者！但我们那该死的桥却坏了，真是白痴造的。来吧，来吧，"
-"把木板拿来，我们得过去！"
+msgstr "啊哈！我就知道，有入侵者！但我们那该死的桥却坏了，真是白痴造的。"
 
 #. [message]: speaker=Gathor
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1432
 msgid "Come, come, bring planks, we’ve got to get across!"
-msgstr ""
+msgstr "快点，把木板带上，我们得赶紧过去！"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1440
@@ -4533,7 +4515,7 @@ msgstr "此单位在防御时，总能用此攻击先发制人，但根本不能
 #. [unit_type]: id=Gray Bogeyman, race=monster
 #: data/campaigns/Sceptre_of_Fire/units/Cave_Bogeyman.cfg:4
 msgid "Gray Bogeyman"
-msgstr ""
+msgstr "灰皮妖怪"
 
 #. [unit_type]: id=Gray Bogeyman, race=monster
 #. [unit_type]: id=Cave Goblin, race=monster
@@ -4546,26 +4528,27 @@ msgid ""
 "lost the ability to craft tools or weapons, but their adaptation to the "
 "gloomy caves gives them large, clawed hands with which to dig or hunt."
 msgstr ""
+"由于早已被遗忘的原因，某个受诅咒的精灵或兽人血脉退入了深矿的黑暗洞穴，在此过"
+"程中丧失了文明与尊严，沦落到几乎与野兽无异的地步。他们已失去制造工具或武器的"
+"能力，但对阴暗洞穴的适应却使他们长出了巨大的利爪，用以挖掘或捕猎。"
 
 #. [attack]: type=pierce
 #: data/campaigns/Sceptre_of_Fire/units/Cave_Bogeyman.cfg:43
 #: data/campaigns/Sceptre_of_Fire/units/Cave_Goblin.cfg:38
 msgid "bite"
-msgstr ""
+msgstr "咬"
 
 #. [attack]: type=blade
 #: data/campaigns/Sceptre_of_Fire/units/Cave_Bogeyman.cfg:55
 #: data/campaigns/Sceptre_of_Fire/units/Cave_Goblin.cfg:50
 #: data/campaigns/Sceptre_of_Fire/units/Snow_Golem.cfg:53
 msgid "claws"
-msgstr ""
+msgstr "爪"
 
 #. [unit_type]: id=Cave Goblin, race=monster
 #: data/campaigns/Sceptre_of_Fire/units/Cave_Goblin.cfg:4
-#, fuzzy
-#| msgid "Goblins"
 msgid "Cave Goblin"
-msgstr "地精"
+msgstr "洞穴地精"
 
 #. [unit_type]: id=Cave Wyrm, race=monster
 #: data/campaigns/Sceptre_of_Fire/units/Cave_Wyrm.cfg:5
@@ -4618,7 +4601,7 @@ msgstr ""
 #. [unit_type]: id=SOF Fire Dragon
 #: data/campaigns/Sceptre_of_Fire/units/Fire_Dragon.cfg:8
 msgid "Legendary Fire Dragon"
-msgstr ""
+msgstr "传说火龙"
 
 #. [unit_type]: id=Haldric II, race=human
 #: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:4
@@ -4671,7 +4654,7 @@ msgstr ""
 #. [unit_type]: id=Snow Golem, race=monster
 #: data/campaigns/Sceptre_of_Fire/units/Snow_Golem.cfg:8
 msgid "Snow Golem"
-msgstr ""
+msgstr "雪魔像"
 
 #. [unit_type]: id=Snow Golem, race=monster
 #: data/campaigns/Sceptre_of_Fire/units/Snow_Golem.cfg:38
@@ -4682,6 +4665,10 @@ msgid ""
 "weaker Snow Imps. Others say the far north is a hostile land, and these "
 "monsters are simply a manifestation of that danger."
 msgstr ""
+"雪魔像是游荡于冰封北境、大致呈人形的存在，在自然界中似乎没有明确的角色，既非"
+"捕食者，亦非猎物。许多人说，由于它们与较弱的雪小鬼有所关联，它们是被遗忘的战"
+"争所遗留下的被遗忘的造物。另一些人则说，遥远的北方是一片充满敌意的土地，而这"
+"些怪物不过是那种危险的具象化。"
 
 #. [unit_type]: id=Snow Golem, race=monster
 #: data/campaigns/Sceptre_of_Fire/units/Snow_Golem.cfg:40
@@ -4692,17 +4679,21 @@ msgid ""
 "become misshapen and their movement thus compromised. This malformation is "
 "most obvious in their hand and arms, which take the most damage."
 msgstr ""
+"它们是由冰雪构成的，因此在有利的环境中能够自我修复和再生。然而，冰雪的再生似"
+"乎容易出现差错，因此尽管它们最初可能是按照理想战士的形象塑造的，如今却已变得"
+"畸形，行动也因此受到限制。这种畸形在它们的手和手臂上最为明显，因为这些部位承"
+"受了最多的伤害。"
 
 #. [attack]: type=cold
 #: data/campaigns/Sceptre_of_Fire/units/Snow_Golem.cfg:62
 #: data/campaigns/Sceptre_of_Fire/units/Snow_Imp.cfg:97
 msgid "snowball"
-msgstr ""
+msgstr "雪球"
 
 #. [unit_type]: id=Snow Imp, race=monster
 #: data/campaigns/Sceptre_of_Fire/units/Snow_Imp.cfg:5
 msgid "Snow Imp"
-msgstr ""
+msgstr "雪小鬼"
 
 #. [unit_type]: id=Snow Imp, race=monster
 #: data/campaigns/Sceptre_of_Fire/units/Snow_Imp.cfg:34
@@ -4713,6 +4704,9 @@ msgid ""
 "citizen’s improvised blunt weaponry makes them a hazard to inexperienced "
 "wanderers of the frozen northern lands."
 msgstr ""
+"雪小鬼是由冰雪召唤而来的简单生物，它们以惊人的力量吐出冰冻淤泥团来自卫求生。"
+"虽然它们行动迟缓、身体脆弱且惧怕火焰，但对普通平民临时拼凑的钝器具有抗性，这"
+"使它们成为冰封北境中缺乏经验的流浪者的一大威胁。"
 
 #. [set_menu_item]: id=sof_minecart_boarding_{VAR}
 #: data/campaigns/Sceptre_of_Fire/utils/cart-utils.cfg:221
@@ -4726,7 +4720,7 @@ msgstr "下矿车"
 
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:6
 msgid "$cost|g"
-msgstr ""
+msgstr "$cost|金币"
 
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:17
@@ -4797,15 +4791,13 @@ msgstr "使远程武器的精准度增加20%"
 
 #. [chance_to_hit]: id=accuracy_20
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:335
-#, fuzzy
-#| msgid "Accuracy"
 msgid "accuracy: +20%"
-msgstr "精准"
+msgstr "精准度：+20%"
 
 #. [chance_to_hit]: id=accuracy_20
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:336
 msgid "The accuracy of this weapon is increased by 20%"
-msgstr ""
+msgstr "此武器的精准度提高20%"
 
 #. [option]
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:345
@@ -4850,15 +4842,13 @@ msgstr "使远程武器的精准度增加10%"
 
 #. [chance_to_hit]: id=accuracy_10
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:459
-#, fuzzy
-#| msgid "Accuracy"
 msgid "accuracy: +10%"
-msgstr "精准"
+msgstr "精准度：+10%"
 
 #. [chance_to_hit]: id=accuracy_10
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:460
 msgid "The accuracy of this weapon is increased of 10%"
-msgstr ""
+msgstr "此武器的精准度提高10%"
 
 #. [option]
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:499
@@ -4868,7 +4858,7 @@ msgstr "使近战武器的伤害增加2"
 #. [terrain_type]: id=sof_barren_shack
 #: data/campaigns/Sceptre_of_Fire/utils/terrain.cfg:4
 msgid "Barren Shack"
-msgstr ""
+msgstr "荒芜棚屋"
 
 #. [terrain_type]: id=sof_ancient_stone_floor
 #: data/campaigns/Sceptre_of_Fire/utils/terrain.cfg:19
@@ -4913,12 +4903,12 @@ msgstr ""
 #. [regenerate]: id=sof_snow_regenerates
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:119
 msgid "cryoregenerates"
-msgstr ""
+msgstr "冰雪再生"
 
 #. [regenerate]: id=sof_snow_regenerates
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:120
 msgid "female^cryoregenerates"
-msgstr ""
+msgstr "冰雪再生"
 
 #. [regenerate]: id=sof_snow_regenerates
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:121
@@ -4926,51 +4916,5 @@ msgid ""
 "The unit will heal itself 8 HP per turn if on a frozen base terrain. If it "
 "is poisoned, it will remove the poison instead of healing."
 msgstr ""
-
-#~ msgid ""
-#~ "Except for trolls and ogres, right? I’ve heard they live in the far "
-#~ "Northlands. They’re probably lurking around here somewhere."
-#~ msgstr ""
-#~ "除了巨魔和食人魔，对吧？我听说他们就住在遥远的北陆。他们八成就潜伏在这周围"
-#~ "的什么地方。"
-
-# middle distance: any footrace distance usually from 800 to 1500 meters or from 880 yards to one mile.
-#~ msgid ""
-#~ "Screech!\n"
-#~ "<i>(Nods at the middle distance.)</i>"
-#~ msgstr ""
-#~ "嘶嘶！\n"
-#~ "<b>(向大约一公里开外点头。)</b>"
-
-#~ msgid "I see a house in the distance!"
-#~ msgstr "我看到远处有座屋子！"
-
-#~ msgid "Go away, you birds! Or I shall burn you out of the air!"
-#~ msgstr "死开！你们这些鸟！不然我就把你们变成空中烤鸟！"
-
-#~ msgid ""
-#~ "He doesn’t want to talk to gryphons, apparently. I think we’ll have to "
-#~ "get someone there he will talk to..."
-#~ msgstr "看上去他不怎么想搭理狮鹫。我觉得我们得找个他愿意搭理的人去……"
-
-#~ msgid ""
-#~ "Well, these are the eastern mines. Trolls and ogres live here, be "
-#~ "prepared to fight them; also, be prepared to spend quite some time here — "
-#~ "mining can take a while."
-#~ msgstr ""
-#~ "好吧，这儿就是东矿了。有巨魔和食人魔住在这里，做好战斗准备。也要做好在这里"
-#~ "多待会儿的准备——采矿得花点儿时间。"
-
-#~ msgid "Dwarvish Miner"
-#~ msgstr "矮人矿工"
-
-#~ msgid ""
-#~ "Dwarvish miners are the grunt workers of dwarvish society. They take the "
-#~ "precious ores out of the ground, but do not ever take part in the "
-#~ "crafting of weapons or artifacts."
-#~ msgstr ""
-#~ "矮人矿工是矮人社会的基本工人。他们从土里发掘出珍贵的矿石，但从不参与锻造武"
-#~ "器或法器。"
-
-#~ msgid "pick"
-#~ msgstr "镐"
+"此单位若位于冰冻基础地形上，每回合将自愈8点生命值。若此单位已中毒，则将解除中"
+"毒状态而非进行治疗。"

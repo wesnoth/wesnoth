@@ -1,5 +1,5 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2022 Wesnoth development team
+# Copyright (C) 2005-2026 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Translators and their initial years of participation:
@@ -7,21 +7,22 @@
 # Dionysus(unicon) <huang.wei.bhu@gmail.com>, 2007.
 # CloudiDust <cloudidust@gmail.com>, 2010.
 # Yifan <yyf1992@mail.ustc.edu.cn>, 2015.
+# vimacs <vimacs.hacks@gmail.com>, 2025.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.18\n"
+"Project-Id-Version: wesnoth-1.20\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-08-03 03:45 UTC\n"
-"PO-Revision-Date: 2025-05-26 15:31+0800\n"
-"Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
+"PO-Revision-Date: 2026-08-24 20:00+0800\n"
+"Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.9\n"
 
 #. [label]
 #: data/campaigns/Heir_To_The_Throne_Classic/gui/character_selection.cfg:19
@@ -78,18 +79,18 @@ msgid ""
 "<i>Heir to the Throne, Classic</i> optionally includes the old <i>Battle "
 "Training</i> tutorial. Play <i>Battle Training</i>?"
 msgstr ""
+"<b>王座继承人经典版</b>中包含了可选的旧版<b>战斗训练</b>教程。要玩<b>战斗训练"
+"</b>吗？"
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:113
 msgid "Yes"
-msgstr ""
+msgstr "是"
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:118
-#, fuzzy
-#| msgid "Note"
 msgid "No"
-msgstr "提示"
+msgstr "否"
 
 #. [objectives]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:149
@@ -357,8 +358,8 @@ msgstr "这<b>假人</b>也有进攻回合？"
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:616
 msgid ""
 "Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
-"chances. If it hits every time, you’ll drop from $student_hp to "
-"$($student_hp-15) hitpoints. Brace yourself!"
+"chances. If it hits every time, you’ll drop from $student_hp to $"
+"($student_hp-15) hitpoints. Brace yourself!"
 msgstr ""
 "是啊，这是一个魔法刺靶！如果它命中你，那么会造成3点伤害，而它有5次机会。如果"
 "它每次都命中，那么你的生命值会从$student_hp|降到 $($student_hp-15)。打起精神"
@@ -1986,8 +1987,8 @@ msgstr "我们会怀念$unit.name|的，不过至少她不是我们的老兵里�
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1317
 msgid ""
-"Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
-"name|."
+"Higher level units are powerful, but not invulnerable. We’ll miss you, "
+"$unit.name|."
 msgstr "高级单位是很强大，但并不是无敌的。我们会想念你的，$unit.name|。"
 
 #. [message]: speaker=Galdrad
@@ -2142,7 +2143,7 @@ msgstr "啊！现在谁会来指引你们夺取胜利？"
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1506
 msgid "You have beaten the orcs! Well done."
-msgstr ""
+msgstr "你击败了兽人！干得漂亮。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1511
@@ -2154,7 +2155,7 @@ msgstr "如果你需要回顾游戏机制，也可以随时参看游戏内的帮
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1521
 msgid "Now, continue onwards to play “Heir to the Throne, Classic”..."
-msgstr ""
+msgstr "现在，继续前去游玩“王座继承人经典版”……"
 
 #. [unit_type]: id=Tutorial_Fighter, race=human
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Tutorial_Fighter.cfg:4
@@ -2222,57 +2223,5 @@ msgid ""
 msgstr "别忘了，如果操作失误，你可以按<b>u</b>键来撤销大部分操作。"
 
 #: data/campaigns/Heir_To_The_Throne_Classic/utils/tutorial_utils.cfg:128
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<big>Click a mouse button or press the spacebar to continue...</big>"
 msgid "Click a mouse button or press the spacebar to continue..."
-msgstr ""
-"\n"
-"\n"
-"<big>点击鼠标按钮或者按空格键继续……</big>"
-
-#, fuzzy
-#~| msgid "Battle Training"
-#~ msgid "Battle Training — Old Tutorial"
-#~ msgstr "战斗训练"
-
-#~ msgid "Tutorial"
-#~ msgstr "教程"
-
-#, fuzzy
-#~| msgid ""
-#~| "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for "
-#~| "first-time players."
-#~ msgid ""
-#~ "Learn the basics of Wesnoth gameplay with a tutorial.\n"
-#~ "    \n"
-#~ msgstr "通过教程，学习韦诺的基础玩法。推荐第一次游玩的玩家游玩此教程。"
-
-#~ msgid "Beginner"
-#~ msgstr "初学者"
-
-#, fuzzy
-#~| msgid "Tutorial"
-#~ msgid "Old Tutorial"
-#~ msgstr "教程"
-
-#~ msgid "Completed the Tutorial"
-#~ msgstr "完成教程"
-
-#~ msgid "Complete the Battle Training."
-#~ msgstr "完成战斗训练。"
-
-#, fuzzy
-#~| msgid ""
-#~| "You have beaten the orcs! You may want to try one of the rookie-level "
-#~| "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</"
-#~| "i> is the easiest and is the recommended first campaign."
-#~ msgid ""
-#~ "You have beaten the orcs! You may want to try one of the novice-level "
-#~ "campaigns next. <i>A Tale of Two Brothers</i> is the easiest and is the "
-#~ "recommended first campaign."
-#~ msgstr ""
-#~ "你击败了兽人！接下去你或许可以试试看几个菜鸟级别的战役之一，这些战役里有策"
-#~ "略提示。<b>兄弟传说</b>是最简单的战役，也是推荐给新手的第一个战役。"
+msgstr "点击鼠标按钮或者按空格键继续……"
