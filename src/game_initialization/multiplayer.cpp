@@ -584,6 +584,10 @@ bool mp_manager::enter_lobby_mode()
 				gui2::show_error_message(error.message);
 			}
 
+			if(dlg_retval == gui2::dialogs::mp_lobby::CREATE_PRESET) {
+				connection->send_data(config{"leave_server_queue", config{"queue_id", queue_id}});
+			}
+
 			// Update lobby content
 			connection->send_data(config{"refresh_lobby"});
 		}

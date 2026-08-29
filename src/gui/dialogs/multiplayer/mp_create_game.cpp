@@ -156,13 +156,18 @@ void mp_create_game::quick_mp_setup(saved_game& state, const config presets)
 	// from pre_show
 	create.set_current_level_type(level_type::type::scenario);
 	const auto& levels = create.get_levels_by_type(level_type::type::scenario);
+	bool found_scenario = false;
 	for(std::size_t i = 0; i < levels.size(); i++) {
 		if(levels[i]->id() == presets["scenario"].str()) {
 			create.set_current_level(i);
+			found_scenario = true;
 		}
 	}
+	if(!found_scenario) {
+		throw config::error(_("Scenario not found: ")+presets["scenario"].str());
+	}
 
-	create.set_current_era_id(presets["era"]);
+	create.set_current_era_index(presets["era"]);
 
 	// from post_show
 	create.prepare_for_era_and_mods();
@@ -224,6 +229,13 @@ void mp_create_game::quick_mp_setup(saved_game& state, const config presets)
 	params.name = settings::game_name_default();
 
 	for(const std::string& mod : utils::split(presets["modifications"].str())) {
+		std::vector<std::string> missing_mods;
+		if(!game_config_manager::get()->game_config().find_child("modification", "id", mod)) {
+			missing_mods.emplace_back(mod);
+		}
+		if(!missing_mods.empty()) {
+			throw config::error(_("Modification(s) not found: ")+utils::join(missing_mods));
+		}
 		create.active_mods().push_back(mod);
 	}
 

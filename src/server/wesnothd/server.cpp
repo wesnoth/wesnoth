@@ -1773,7 +1773,7 @@ void server::handle_leave_server_queue(player_iterator p, simple_wml::node& data
 	// if they're in the queue, remove them
 	if(utils::contains(queue.players_in_queue, p->info().name())) {
 		queue.players_in_queue.erase(std::remove(queue.players_in_queue.begin(), queue.players_in_queue.end(), p->info().name()), queue.players_in_queue.end());
-		p->info().clear_queues();
+		p->info().remove_from_queue(queue_id);
 
 		send_queue_update(queue);
 	} else {

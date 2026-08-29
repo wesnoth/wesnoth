@@ -356,7 +356,7 @@ public:
 	void set_current_level(const std::size_t index);
 
 	void set_current_era_index(const std::size_t index, bool force = false);
-	void set_current_era_id(const std::string& id, bool force = false);
+	void set_current_era_index(const std::string& id, bool force = false);
 
 	std::size_t current_era_index() const
 	{
@@ -408,6 +408,7 @@ private:
 	std::size_t current_level_index_;
 
 	std::size_t current_era_index_;
+	std::string current_era_id_;
 
 	std::string level_name_filter_;
 	int player_count_filter_;
