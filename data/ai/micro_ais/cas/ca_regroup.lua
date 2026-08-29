@@ -1051,11 +1051,12 @@ function return_table:execution(cfg,data)
                 T.filter_location{ x=leader.x, y=leader.y, radius=cfg.leader_protect_radius+2 },
             });
             local hex = threatmap[{leader.x,leader.y}];
-                if #nearby_allies<=0 and #nearby_enemies>=4 and hex.enemies/4>hex.allies then frustration = frustration + 3
-            elseif #nearby_allies<=2 and #nearby_enemies>=2 and hex.enemies/3>hex.allies then frustration = frustration + 2
-            elseif #nearby_allies<=4 and #nearby_enemies>=0 and hex.enemies/2>hex.allies then frustration = frustration + 1
-            else                                                                              frustration = math.max(0, frustration - 1) end
---             wesnoth.interface.add_chat_message('frustration: '..frustration)
+                if #nearby_allies<=0 and #nearby_enemies>=4 and hex.enemies/3.0>hex.allies then frustration = frustration + 3
+            elseif #nearby_allies<=2 and #nearby_enemies>=2 and hex.enemies/2.0>hex.allies then frustration = frustration + 2
+            elseif #nearby_allies<=4 and #nearby_enemies>=0 and hex.enemies/1.5>hex.allies then frustration = frustration + 1
+            elseif #nearby_allies<=4 and #nearby_enemies>=0 and hex.enemies/0.8>hex.allies then frustration = frustration + 0
+            else                                                                                frustration = math.max(0, frustration - 1) end
+--            wesnoth.interface.add_chat_message('frustration: '..old_frustration..'->'..frustration)
 
             -- no matter how long we've been frustrated for, only require a single turn of safety to restore our normal AI
             if frustration>5 then frustration=5 end
@@ -1067,6 +1068,7 @@ function return_table:execution(cfg,data)
             -- use zone_guardian to force even suicidal attacks
             if frustration>=5 and old_frustration<5 then
                 wesnoth.game_events.fire('leader_frustrated', leader);
+--                wesnoth.interface.add_chat_message('triggering leader frustration!')
                 wesnoth.wml_actions.micro_ai({
                     ca_id='frustration_zone_guardian_'..leader.id,
                     ai_type='zone_guardian',
