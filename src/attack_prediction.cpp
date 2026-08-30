@@ -31,6 +31,7 @@
 #include "attack_prediction.hpp"
 
 #include "actions/attack.hpp"
+#include "attack_prediction_biased.hpp"
 #include "game_config.hpp"
 #include "preferences/preferences.hpp"
 #include "random.hpp"
@@ -2248,8 +2249,16 @@ void do_fight(const battle_context_unit_stats& stats,
 		summary_t& opp_summary,
 		double& self_not_hit,
 		double& opp_not_hit,
-		bool levelup_considered)
+		bool levelup_considered,
+		bool biased)
 {
+	// Every calculation below assumes independent strikes, which the Reduced RNG breaks.
+	if(biased) {
+		biased_rng::solve_fight(stats, opp_stats, strikes, opp_strikes, summary[0], opp_summary[0], self_not_hit,
+				opp_not_hit, levelup_considered);
+		return;
+	}
+
 	// Optimization only works in the simple cases (no slow, no drain,
 	// no petrify, no berserk, and no slowed results from an earlier combat).
 	if(!stats.slows && !opp_stats.slows && !stats.drains && !opp_stats.drains && !stats.petrifies
@@ -2367,11 +2376,20 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 	const std::vector<combat_slice> split = split_summary(u_, summary);
 	const std::vector<combat_slice> opp_split = split_summary(opponent.u_, opponent.summary);
 
-	bool use_monte_carlo_simulation =
-		fight_complexity(split.size(), opp_split.size(), u_, opponent.u_) > MONTE_CARLO_SIMULATION_THRESHOLD
+	// Exact predictions for the Reduced RNG, which both decline unless it is in use. A fight neither
+	// describes falls through to the routing below, which knows nothing of it.
+	const bool solve_biased = biased_rng::can_solve(u_, opponent.u_, summary, opponent.summary);
+	const bool replay_biased = !solve_biased
+		&& biased_rng::can_replay(u_, opponent.u_, summary, opponent.summary, slowed, opponent.slowed);
+
+	bool use_monte_carlo_simulation = !solve_biased
+		&& fight_complexity(split.size(), opp_split.size(), u_, opponent.u_) > MONTE_CARLO_SIMULATION_THRESHOLD
 		&& prefs::get().damage_prediction_allow_monte_carlo_simulation();
 
-	if(use_monte_carlo_simulation) {
+	if(replay_biased) {
+		biased_rng::replay_fight(u_, opponent.u_, summary, opponent.summary, self_not_hit, opp_not_hit,
+				levelup_considered, slowed, opponent.slowed);
+	} else if(use_monte_carlo_simulation) {
 		// A very complex fight. Use Monte Carlo simulation instead of exact
 		// probability calculations.
 		complex_fight(attack_prediction_mode::monte_carlo_simulation, u_, opponent.u_, u_.num_blows,
@@ -2380,7 +2398,7 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 	} else if(split.size() == 1 && opp_split.size() == 1) {
 		// No special treatment due to swarm is needed. Ignore the split.
 		do_fight(u_, opponent.u_, u_.num_blows, opponent.u_.num_blows, summary, opponent.summary, self_not_hit,
-		         opp_not_hit, levelup_considered);
+		         opp_not_hit, levelup_considered, solve_biased);
 	} else {
 		// Storage for the accumulated hit point distributions.
 		summary_t summary_result, opp_summary_result;
@@ -2408,7 +2426,7 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 				double sit_opp_not_hit = sit_prob;
 
 				do_fight(u_, opponent.u_, split[s].strikes, opp_split[t].strikes, sit_summary, sit_opp_summary,
-				         sit_self_not_hit, sit_opp_not_hit, levelup_considered);
+				         sit_self_not_hit, sit_opp_not_hit, levelup_considered, solve_biased);
 
 				// Collect the results.
 				self_not_hit += sit_self_not_hit;

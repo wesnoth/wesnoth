@@ -952,6 +952,8 @@
 		91E3564D1CACC62500774252 /* about.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599AC60EC62181008DD061 /* about.cpp */; };
 		91E3564E1CACC62500774252 /* animated.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599AB50EC62181008DD061 /* animated.cpp */; };
 		91E3564F1CACC62500774252 /* attack_prediction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599AD00EC62181008DD061 /* attack_prediction.cpp */; };
+		46A1C7DC2E51B3400091AA01 /* attack_prediction_biased.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46A1C7DA2E51B3400091AA01 /* attack_prediction_biased.cpp */; };
+		46A1C7DD2E51B3400091AA01 /* attack_prediction_biased.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46A1C7DA2E51B3400091AA01 /* attack_prediction_biased.cpp */; };
 		91E356511CACC62500774252 /* build_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91B621A11B76A3CC00B00E0F /* build_info.cpp */; };
 		91E356521CACC62500774252 /* carryover.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFB9FA7193BFAD900146ED0 /* carryover.cpp */; };
 		91E356531CACC62500774252 /* commandline_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F46C5DCB13A5074C00DD0816 /* commandline_options.cpp */; };
@@ -2721,6 +2723,8 @@
 		B5599AC80EC62181008DD061 /* boilerplate-header.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "boilerplate-header.cpp"; sourceTree = "<group>"; };
 		B5599ACB0EC62181008DD061 /* attack_prediction.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = attack_prediction.hpp; sourceTree = "<group>"; };
 		B5599AD00EC62181008DD061 /* attack_prediction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = attack_prediction.cpp; sourceTree = "<group>"; };
+		46A1C7DA2E51B3400091AA01 /* attack_prediction_biased.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = attack_prediction_biased.cpp; sourceTree = "<group>"; };
+		46A1C7DB2E51B3400091AA01 /* attack_prediction_biased.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = attack_prediction_biased.hpp; sourceTree = "<group>"; };
 		B5599FC90EC8FBCB008DD061 /* libfreetype.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.dylib; path = lib/libfreetype.dylib; sourceTree = "<group>"; };
 		B5599FFC0EC8FE2E008DD061 /* editor_common.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = editor_common.hpp; sourceTree = "<group>"; };
 		B5599FFF0EC8FE2E008DD061 /* editor_display.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = editor_display.cpp; sourceTree = "<group>"; };
@@ -3293,6 +3297,8 @@
 				B52EE8A2121359A600CFBDAB /* arrow.hpp */,
 				B5599AD00EC62181008DD061 /* attack_prediction.cpp */,
 				B5599ACB0EC62181008DD061 /* attack_prediction.hpp */,
+				46A1C7DA2E51B3400091AA01 /* attack_prediction_biased.cpp */,
+				46A1C7DB2E51B3400091AA01 /* attack_prediction_biased.hpp */,
 				B5599AC80EC62181008DD061 /* boilerplate-header.cpp */,
 				91B621801B766ED500B00E0F /* buffered_istream.hpp */,
 				91B621A11B76A3CC00B00E0F /* build_info.cpp */,
@@ -5506,6 +5512,7 @@
 				B59F96D5103478C900A57C1A /* aspect.cpp in Sources */,
 				B55BE03211234AAB00154E6C /* astarsearch.cpp in Sources */,
 				B5599B910EC62181008DD061 /* attack_prediction.cpp in Sources */,
+				46A1C7DC2E51B3400091AA01 /* attack_prediction_biased.cpp in Sources */,
 				B54AC6DF0FEA9EB5006F6FBD /* attack.cpp in Sources */,
 				46F92E4B2174F6A400602C1C /* walker_grid.cpp in Sources */,
 				46BED4D3205060EA00842FA5 /* crypt_blowfish.c in Sources */,
@@ -6143,6 +6150,7 @@
 				91E3564E1CACC62500774252 /* animated.cpp in Sources */,
 				EC3962F7265871F500EF3E8D /* tls_root_store.cpp in Sources */,
 				91E3564F1CACC62500774252 /* attack_prediction.cpp in Sources */,
+				46A1C7DD2E51B3400091AA01 /* attack_prediction_biased.cpp in Sources */,
 				46F92E042174F6A400602C1C /* sp_options_configure.cpp in Sources */,
 				4649B8902028909500827CFB /* gui.cpp in Sources */,
 				91E356511CACC62500774252 /* build_info.cpp in Sources */,
