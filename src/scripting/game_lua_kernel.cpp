@@ -416,8 +416,8 @@ int game_lua_kernel::intf_create_animator(lua_State* L)
 			{nullptr, nullptr},
 		};
 		luaL_setfuncs(L, metafuncs, 0);
-		lua_pushstring(L, "__metatable");
-		lua_setfield(L, -2, animatorKey);
+		lua_pushstring(L, animatorKey);
+		lua_setfield(L, -2, "__metatable");
 	}
 	lua_setmetatable(L, -2);
 	return 1;
