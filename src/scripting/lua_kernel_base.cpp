@@ -208,6 +208,70 @@ static int intf_current_version(lua_State* L) {
 	return 1;
 }
 
+static int intf_safe_tostring(lua_State* L)
+{
+	// tostring requires one argument. Report an error when the stack has no first value.
+	luaL_checkany(L, 1);
+
+	// Shared __tostring methods make Lua's standard conversion safe for functions,
+	// threads, and light userdata. Tables and full userdata use individual metatables,
+	// so values without __tostring are handled below instead of passed to luaL_tolstring.
+
+	// If the value defines __tostring, use it exactly as Lua normally would.
+	// The generic type name below is only for values without their own string representation.
+	const int tostring_type = luaL_getmetafield(L, 1, "__tostring");
+	if(tostring_type != LUA_TNIL
+		|| (lua_type(L, 1) != LUA_TTABLE && lua_type(L, 1) != LUA_TUSERDATA)) {
+		if(tostring_type != LUA_TNIL) {
+			lua_pop(L, 1);
+		}
+		luaL_tolstring(L, 1, nullptr);
+		return 1;
+	}
+
+	// Named metatables already provide base descriptions. Reuse them for stringification.
+	const int name_type = luaL_getmetafield(L, 1, "__name");
+	if(name_type == LUA_TSTRING) {
+		return 1;
+	}
+	if(name_type != LUA_TNIL) {
+		lua_pop(L, 1);
+	}
+	lua_pushstring(L, luaL_typename(L, 1));
+	return 1;
+}
+
+static int intf_std_print(lua_State* L)
+{
+	// Lua's print calls luaL_tolstring directly instead of the global
+	// tostring function. Tables and userdata without __tostring would therefore
+	// include memory addresses. Use Wesnoth's replacement without changing the
+	// order in which arguments are converted and written.
+	const int nargs = lua_gettop(L);
+	lua_getglobal(L, "tostring");
+	for(int i = 1; i <= nargs; ++i) {
+		lua_pushvalue(L, -1);
+		lua_pushvalue(L, i);
+		const int status = lua_pcall(L, 1, 1, 0);
+		// A jailbreak exception must not be returned as a normal Lua error.
+		lua_jailbreak_exception::rethrow();
+		if(status != LUA_OK) {
+			return lua_error(L);
+		}
+
+		std::size_t length = 0;
+		const char* string = luaL_checklstring(L, -1, &length);
+		if(i > 1) {
+			lua_writestring("\t", 1);
+		}
+		lua_writestring(string, length);
+		lua_pop(L, 1);
+	}
+	lua_pop(L, 1);
+	lua_writeline();
+	return 0;
+}
+
 /**
  * Replacement print function -- instead of printing to std::cout, print to the command log.
  * Intended to be bound to this' command_log at registration time.
@@ -793,6 +857,11 @@ lua_kernel_base::lua_kernel_base()
 		lua_pop(L, 1);  /* remove lib */
 	}
 
+	// luaopen_base installs the standard tostring function, so install the replacement
+	// after library initialization and before any core or scenario Lua code can run.
+	lua_pushcfunction(L, intf_safe_tostring);
+	lua_setglobal(L, "tostring");
+
 	// Disable functions from os which we don't want.
 	lua_getglobal(L, "os");
 	lua_pushnil(L);
@@ -859,8 +928,8 @@ lua_kernel_base::lua_kernel_base()
 	// Override the print function
 	cmd_log_ << "Redirecting print function...\n";
 
-	lua_getglobal(L, "print");
-	lua_setglobal(L, "std_print"); //storing original impl as 'std_print'
+	lua_pushcfunction(L, intf_std_print);
+	lua_setglobal(L, "std_print");
 	lua_settop(L, 0); //clear stack, just to be sure
 
 	lua_setwarnf(L, &::impl_warn, L);

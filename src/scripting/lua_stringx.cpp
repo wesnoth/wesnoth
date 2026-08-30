@@ -19,9 +19,11 @@
 #include "scripting/push_check.hpp"
 
 #include "formula/string_utils.hpp"
+#include "utils/span.hpp"
 #include "variable.hpp" // for config_variable_set
 
 #include <boost/algorithm/string/trim.hpp>
+#include <cstring>
 
 
 namespace lua_stringx {
@@ -303,6 +305,8 @@ static int intf_str_trim(lua_State* L)
 }
 
 // Override string.format to coerce the format to a string
+// Tables and userdata without __tostring are converted before delegation so
+// luaL_tolstring cannot include memory addresses in formatted output.
 static int intf_str_format(lua_State* L)
 {
 	int nargs = lua_gettop(L);
@@ -314,20 +318,40 @@ static int intf_str_format(lua_State* L)
 		// replace the first argument with the coerced value
 		lua_replace(L, 1);
 	}
+
+	for(int argument = 2; argument <= nargs; ++argument) {
+		const int type = lua_type(L, argument);
+		if(type != LUA_TTABLE && type != LUA_TUSERDATA) {
+			continue;
+		}
+
+		const int tostring_type = luaL_getmetafield(L, argument, "__tostring");
+		if(tostring_type != LUA_TNIL) {
+			lua_pop(L, 1);
+			continue;
+		}
+
+		lua_getglobal(L, "tostring");
+		lua_pushvalue(L, argument);
+		lua_call(L, 1, 1);
+		lua_replace(L, argument);
+	}
 	// raise an error if the string contains a %p specifier
-	bool in_specifier = false, found_digit = false;
-	for(const char* str = luaL_checkstring(L, 1); *str; ++str) {
-		if(*str == '%') {
+	// Lua's formatter reads bytes after an embedded NUL, so inspect the full Lua string.
+	bool in_specifier = false;
+	std::size_t format_length = 0;
+	const char* str = luaL_checklstring(L, 1, &format_length);
+	for(char c : utils::span<const char>(str, format_length)) {
+		if(c == '%') {
 			in_specifier = !in_specifier;
 		} else if(in_specifier) {
-			if(*str == '-') {
-				if(found_digit) in_specifier = false;
-			} else if(isdigit(*str)) {
-				found_digit = true;
-			} else if(*str == 'p') {
+			if(c == 'p') {
 				lua_pushstring(L, "%p format specifier is not supported");
 				return lua_error(L);
-			} else {
+			}
+			// strchr cannot test NUL as an ordinary character because its character list
+			// is NUL-terminated, so check it separately.
+			if(c == '\0' || std::strchr("-+#0 123456789.", c) == nullptr) {
 				in_specifier = false;
 			}
 		}
