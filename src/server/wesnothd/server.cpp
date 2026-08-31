@@ -845,6 +845,10 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 	}
 
 	simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
+	// Publish this as a lobby capability. The client uses it only for display;
+	// any future ranked-game authorization must be checked again by the server.
+	const bool ranked_enabled = user_handler_ && user_handler_->is_ranked_user(username);
+	player_cfg.set_attr("ranked_enabled", ranked_enabled ? "yes" : "no");
 
 	player_iterator new_player;
 	bool inserted;
