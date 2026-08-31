@@ -463,7 +463,7 @@ static int impl_audio_get(lua_State* L)
 	std::string m = luaL_checkstring(L, 2);
 	if(m != "volume") return 0;
 	sound::volume vol = prefs::get().sound_volume();
-	lua_pushnumber(L, sound::get_sound_volume() / vol);
+	lua_pushnumber(L, (sound::get_sound_volume() / vol).as_percent());
 	return 1;
 }
 
@@ -483,7 +483,7 @@ static int impl_audio_set(lua_State* L)
 	if(rel < 0.0f || rel > 100.0f) {
 		return luaL_argerror(L, 1, "volume must be in range 0..100");
 	}
-	sound::set_sound_volume(sound::volume{rel} * vol);
+	sound::set_sound_volume(sound::volume::from_percent(rel) * vol);
 	return 0;
 }
 
