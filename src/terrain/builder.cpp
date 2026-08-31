@@ -820,9 +820,9 @@ void terrain_builder::parse_mapstring(
 			} else if(terrain.base == t_translation::TB_STAR) {
 				add_constraints(br.constraints, map_location(x, y), t_translation::STAR, global_images);
 			} else {
-				ERR_NG << "Invalid terrain (" << t_translation::write_terrain_code(terrain) << ") in builder map";
-				assert(false);
-				return;
+				std::string error = "Invalid terrain (" + t_translation::write_terrain_code(terrain) + ") in [terrain_graphics] map=";
+				ERR_NG << error;
+				throw game::error(error);
 			}
 			x += 2;
 		}
