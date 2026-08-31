@@ -120,6 +120,21 @@ public:
 	 */
 	std::string get_tournaments();
 
+	/** Tournament/Ranked authorization facade used by wesnothd. The tournament
+	 * methods work with a concrete pending tournament-game ID. */
+	/** Return pending tournament games available to the authenticated player. */
+	config get_player_tournaments(const std::string& name);
+	/** Revalidate the selected game and return whether Tournament Manager marks it ranked. */
+	bool can_create_tournament_game(const std::string& name, const std::string& tournament_id, const std::string& tournament_game_id, bool& ranked);
+	/** Check whether the player is enabled for ranked games. */
+	bool is_ranked_user(const std::string& name);
+	/** Validate that the player may join the selected tournament game. */
+	bool can_join_tournament(const std::string& name, const std::string& tournament_id, const std::string& tournament_game_id);
+	/** Return the Tournament Manager team assigned to the player and game. */
+	std::string db_get_tournament_team_id(const std::string& tournament_id, const std::string& tournament_game_id, const std::string& name);
+	/** Check whether the selected tournament game already has a local match. */
+	bool db_competitive_tournament_game_exists(const std::string& tournament_id, const std::string& tournament_game_id);
+
 	/**
 	 * Runs an asynchronous query to fetch the user's game history data.
 	 * The result is then posted back to the main boost::asio thread to be sent to the requesting player.
@@ -146,8 +161,24 @@ public:
 	 * @param observers Whether observers are allowed.
 	 * @param is_public Whether the game's replay will be publicly available.
 	 * @param has_password Whether the game has a password.
+	 * @param competitive_game_id The competitive match identifier, when this
+	 *        game is associated with ranked or tournament metadata.
 	 */
-	void db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, int reload, int observers, int is_public, int has_password);
+	void db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, int reload, int observers, int is_public, int has_password, const std::string& competitive_game_id);
+	/** Persist the logical ranked or tournament match and its token hash. */
+	void db_insert_competitive_game(const std::string& competitive_game_id, const std::string& mode, const std::string& tournament_id, const std::string& tournament_game_id, const std::string& resume_token_hash);
+	/** Persist a lifecycle transition for one side without changing ownership. */
+	void db_update_competitive_player(const std::string& competitive_game_id, int side_number, const std::string& username, const std::string& status, const std::string& reason);
+	/** Persist the immutable starter, side, and team assignments. */
+	void db_insert_competitive_player(const std::string& competitive_game_id, int side_number, const std::string& username, bool starter, const std::string& wesnoth_team_id, const std::string& tournament_team_id);
+	/** Record a manual save or replay associated with the logical match. */
+	void db_insert_competitive_save(const std::string& competitive_game_id, const std::string& uuid, int game_id, const std::string& username, const std::string& kind);
+	/** Retrieve resume status and tournament metadata after token validation. */
+	config db_competitive_game_resume_info(const std::string& competitive_game_id, const std::string& resume_token_hash);
+	/** Validate that the current players match the recorded starter sides. */
+	bool db_competitive_game_players_match(const std::string& competitive_game_id, const std::vector<std::pair<int, std::string>>& players);
+	/** Complete the logical match once a team has reached a terminal result. */
+	void db_complete_competitive_game(const std::string& competitive_game_id);
 
 	/**
 	 * Update the game related information when the game ends.
