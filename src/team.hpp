@@ -398,6 +398,7 @@ public:
 
 	static color_t get_side_color(int side);
 	static color_t get_minimap_color(int side);
+	static color_t get_ui_font_color(int side);
 
 	static std::string get_side_color_id(unsigned side);
 	static t_string get_side_color_name_for_UI(unsigned side);

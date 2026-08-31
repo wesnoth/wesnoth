@@ -157,6 +157,7 @@ std::map<std::string, color_range, std::less<>> team_rgb_range;
 std::map<std::string, t_string, std::less<>> team_rgb_name;
 
 std::map<std::string, std::vector<color_t>, std::less<>> team_rgb_colors;
+std::map<std::string, color_t, std::less<>> team_rgb_ui_font_colors;
 
 std::vector<std::string> default_colors;
 
@@ -482,16 +483,45 @@ void add_color_info(const game_config_view& v, bool build_defaults)
 			}
 		}
 
-		team_rgb_range.emplace(id, color_range(temp));
+		// TODO: why are there so many team_rgb_something maps instead of a single one?
+
+		const auto cr = color_range{temp};
+		team_rgb_range.emplace(id, cr);
 		team_rgb_name.emplace(id, teamC["name"].t_str());
 
 		LOG_NG << "registered color range '" << id << "': " << team_rgb_range[id].debug();
 
-		// Generate palette of same name;
-		team_rgb_colors.emplace(id, generate_reference_palette(team_rgb_range[id]));
+		// Generate palette of same name:
+		const auto palette = generate_reference_palette(cr);
+		team_rgb_colors.emplace(id, palette);
+
+		// Predictate for "bright enough to show up on a dark background"
+		auto is_readable_ui_color = [](const color_t& c) {
+			// Completely arbitrary numbers here. This could consider the sum of two
+			// or all three channels, but brightness isn't linear and the background
+			// may be a gray overlay over terrain rather than pure black.
+			return 0x90 <= c.r
+				|| 0x90 <= c.g
+				|| 0x90 <= c.b;
+		};
+
+		if(is_readable_ui_color(cr.mid())) {
+			team_rgb_ui_font_colors.emplace(id, cr.mid());
+		} else {
+			LOG_NG << "Color too dark to be readable in the UI: " << id
+				<< " has mid() " << cr.mid().to_hex_string()
+				<< " and sum " << (cr.mid().r + cr.mid().g + cr.mid().b);
+			const auto it = std::find_if(palette.cbegin(), palette.cend(), is_readable_ui_color);
+			if(it != palette.cend()) {
+				LOG_NG << ".. using a lighter color in the UI: " << it->to_hex_string();
+				team_rgb_ui_font_colors.emplace(id, *it);
+			}
+			// else {fallback to white}
+			// The getter already handles that fallback, it's also used for any unrecognised id.
+		}
 
 		if(build_defaults && teamC["default"].to_bool()) {
-			default_colors.push_back(*a1);
+			default_colors.push_back(id);
 		}
 	}
 
@@ -515,6 +545,7 @@ void add_color_info(const game_config_view& v, bool build_defaults)
 void reset_color_info()
 {
 	default_colors.clear();
+	team_rgb_ui_font_colors.clear();
 	team_rgb_colors.clear();
 	team_rgb_name.clear();
 	team_rgb_range.clear();

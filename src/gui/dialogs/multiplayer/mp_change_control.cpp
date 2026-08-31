@@ -76,7 +76,7 @@ void mp_change_control::pre_show()
 		const int side = sides_.emplace_back(t.side());
 
 		std::string side_str = VGETTEXT("Side $side", {{"side", std::to_string(side)}});
-		side_str = markup::span_color(team::get_side_color(side), side_str);
+		side_str = markup::span_color(team::get_ui_font_color(side), side_str);
 
 		sides_list.add_row(widget_data{
 			{ "side", {

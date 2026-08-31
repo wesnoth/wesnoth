@@ -115,7 +115,7 @@ void display_chat_manager::add_chat_message(const std::chrono::system_clock::tim
 	}
 	color_t speaker_color;
 	if(side >= 1) {
-		speaker_color = team::get_side_color(side);
+		speaker_color = team::get_ui_font_color(side);
 	}
 
 	color_t message_color = chat_message_color;

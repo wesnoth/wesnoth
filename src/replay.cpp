@@ -155,7 +155,7 @@ chat_msg::chat_msg(const config &cfg)
 	int side = cfg["side"].to_int(0);
 	LOG_REPLAY << "side in message: " << side;
 	if(side != 0) {
-		color_ = team::get_side_color(side);
+		color_ = team::get_ui_font_color(side);
 	}
 }
 
