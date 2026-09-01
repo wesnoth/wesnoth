@@ -453,6 +453,13 @@ static int process_command_args(commandline_options& cmdline_opts)
 #endif
 		// if a pre-defined path does not exist this will empty it
 		game_config::path = filesystem::normalize_path(game_config::path, true, true);
+
+		// don't trust a pre-defined path that exists but has no actual game data
+		if(!game_config::path.empty() && !filesystem::file_exists(game_config::path + "/data/_main.cfg")) {
+			PLAIN_LOG << "Pre-defined path '" << game_config::path << "' is missing game data. Falling back to automatic directory detection.";
+			game_config::path.clear();
+		}
+
 		if(game_config::path.empty()) {
 			if(std::string exe_dir = filesystem::get_exe_dir(); !exe_dir.empty()) {
 				if(std::string auto_dir = filesystem::autodetect_game_data_dir(std::move(exe_dir)); !auto_dir.empty()) {
