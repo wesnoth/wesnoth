@@ -16,7 +16,11 @@ jobs:
     #   - https://gh.io/supported-runners-and-hardware-resources
     #   - https://gh.io/using-larger-runners
     # Consider using larger runners for possible analysis time improvements.
-    runs-on: wesnoth/wesnoth:2404-sdl3
+    # `runs-on` accepts runner labels, not Docker image names. Run every CodeQL step
+    # in the SDL3 container so initialization, compilation, and analysis share an environment.
+    runs-on: ubuntu-latest
+    container:
+      image: wesnoth/wesnoth:2404-sdl3
     timeout-minutes: 360
     permissions:
       actions: read
@@ -48,15 +52,6 @@ jobs:
         # For more details on CodeQL's query packs, refer to: https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#using-queries-in-ql-packs
         # queries: security-extended,security-and-quality
 
-    - name: Install dependencies
-      if: matrix.language == 'cpp'
-      run: |
-        sudo apt update
-        sudo apt install scons libboost-system1.83-dev libboost-filesystem1.83-dev libboost-iostreams1.83-dev \
-          libboost-serialization1.83-dev libboost-locale1.83-dev libboost-regex1.83-dev libboost-random1.83-dev \
-          libboost-program-options1.83-dev libboost-thread1.83-dev libboost-context1.83-dev libboost-test-dev \
-          libboost-coroutine1.83-dev libboost-graph1.83-dev libasio-dev libsdl2-dev libsdl2-image-dev \
-          libsdl2-mixer-dev libvorbis-dev libpango1.0-dev libssl-dev libcurl4-openssl-dev liblua5.4-dev
     # Autobuild attempts to build any compiled languages (C/C++, C#, Go, Java, or Swift).
     - name: Autobuild
       uses: github/codeql-action/autobuild@HEAD
