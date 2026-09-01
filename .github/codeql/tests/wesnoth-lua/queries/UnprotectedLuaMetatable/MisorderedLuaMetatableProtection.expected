@@ -1,0 +1,1 @@
+| test.cpp:84:5:84:16 | call to lua_setfield | The key and value are reversed: this call performs metatable['flipped protection'] = '__metatable', but protection requires metatable['__metatable'] = <value>. Push the protection value, then pass '__metatable' as lua_setfield's third argument. |
