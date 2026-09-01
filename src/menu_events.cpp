@@ -41,6 +41,7 @@
 #include "gui/dialogs/edit_label.hpp"
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/file_dialog.hpp"
+#include "gui/dialogs/floating_textbox.hpp"
 #include "gui/dialogs/game_stats.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/label_settings.hpp"
@@ -111,6 +112,12 @@ menu_handler::~menu_handler()
 {
 }
 
+void menu_handler::set_gui(game_display* gui)
+{
+	textbox_info_.reset();
+	gui_ = gui;
+}
+
 game_state& menu_handler::gamestate() const
 {
 	return pc_.gamestate();
@@ -126,7 +133,7 @@ game_board& menu_handler::board() const
 	return gamestate().board_;
 }
 
-gui::floating_textbox& menu_handler::get_textbox()
+std::shared_ptr<floating_textbox> menu_handler::get_textbox()
 {
 	return textbox_info_;
 }
@@ -224,11 +231,51 @@ void menu_handler::show_help()
 
 void menu_handler::speak()
 {
-	textbox_info_.show(gui::TEXTBOX_MESSAGE, _("Message:"), has_friends()
+	const std::string check_label = has_friends()
 		? board().is_observer()
 			? _("Send to observers only")
 			: _("Send to allies only")
-		: "", prefs::get().message_private(), *gui_);
+		: "";
+	textbox_info_.reset(
+		new floating_textbox(floating_textbox::MESSAGE, _("Message:"), check_label, prefs::get().message_private()));
+	textbox_info_->on_execute([this](const std::string& str) {
+		if (do_speak()) {
+			textbox_info_->memorize_command(str);
+		}
+ 	});
+	textbox_info_->on_completion([this]() {
+		std::set<std::string> dictionary;
+		for(const team& t : resources::controller->get_teams()) {
+			if(!t.is_empty()) {
+				dictionary.insert(t.current_player());
+			}
+		}
+
+		// Add observers
+		for(const std::string& o : gui_->observers()) {
+			dictionary.insert(o);
+		}
+
+		// Add nicks who whispered you
+		for(const std::string& w : gui_->get_chat_manager().whisperers()) {
+			dictionary.insert(w);
+		}
+
+		// Add nicks from friendlist
+		for(const auto& [name, _] : prefs::get().get_acquaintances_nice("friend")) {
+			dictionary.insert(name);
+		}
+
+		// Exclude own nick from tab-completion.
+		// NOTE why ?
+		dictionary.erase(prefs::get().login());
+		const std::string all_completions = textbox_info_->tab(dictionary);
+		if(!all_completions.empty()) {
+			gui_->get_chat_manager().add_chat_message(
+				std::chrono::system_clock::now(), "", 0, all_completions, events::chat_handler::MESSAGE_PRIVATE, false);
+		}
+	});
+	textbox_info_->show(true);
 }
 
 void menu_handler::whisper()
@@ -1069,15 +1116,34 @@ void menu_handler::search()
 		msg << " [" << last_search_ << "]";
 	}
 	msg << ':';
-	textbox_info_.show(gui::TEXTBOX_SEARCH, msg.str(), "", false, *gui_);
+	textbox_info_.reset(new floating_textbox(floating_textbox::SEARCH, msg.str(), "", false));
+	textbox_info_->on_execute([this](const std::string& str) {
+		do_search(str);
+		textbox_info_->memorize_command(str);
+	});
+	textbox_info_->on_completion([this]() {
+		std::set<std::string> dictionary;
+		for(const unit& u : resources::controller->get_units()) {
+			const map_location& loc = u.get_location();
+			if(!gui_->fogged(loc) && !(gui_->viewing_team().is_enemy(u.side()) && u.invisible(loc))) {
+				dictionary.insert(u.name());
+			}
+		}
+		// TODO List map labels
+		const std::string all_completions = textbox_info_->tab(dictionary);
+		if(!all_completions.empty()) {
+			gui_->get_chat_manager().add_chat_message(
+				std::chrono::system_clock::now(), "", 0, all_completions, events::chat_handler::MESSAGE_PRIVATE, false);
+		}
+	});
+	textbox_info_->show(true);
 }
 
 bool menu_handler::do_speak()
 {
 	// None of the two parameters really needs to be passed since the information belong to members of the class.
 	// But since it makes the called method more generic, it is done anyway.
-	return chat_handler::do_speak(
-			textbox_info_.box()->text(), textbox_info_.check() != nullptr ? textbox_info_.check()->checked() : false);
+	return chat_handler::do_speak(textbox_info_->get_value(), textbox_info_->checked());
 }
 
 void menu_handler::add_chat_message(const std::chrono::system_clock::time_point& time,
@@ -1591,7 +1657,7 @@ void console_handler::do_droid()
 		command_failed(VGETTEXT("Side ‘$side’ is not a human or AI player.", symbols));
 		return;
 	}
-	menu_handler_.textbox_info_.close();
+	menu_handler_.textbox_info_->close();
 }
 
 void console_handler::do_terrain()
@@ -1649,7 +1715,7 @@ void console_handler::do_idle()
 			}
 		}
 	}
-	menu_handler_.textbox_info_.close();
+	menu_handler_.textbox_info_->close();
 }
 
 void console_handler::do_theme()
@@ -1696,7 +1762,7 @@ void console_handler::do_control()
 	}
 
 	menu_handler_.request_control_change(side_num, player);
-	menu_handler_.textbox_info_.close();
+	menu_handler_.textbox_info_->close();
 }
 
 void console_handler::do_controller()
@@ -2131,7 +2197,47 @@ void menu_handler::do_ai_formula(const std::string& str, int /*side_num*/, mouse
 
 void menu_handler::user_command()
 {
-	textbox_info_.show(gui::TEXTBOX_COMMAND, translation::sgettext("prompt^Command:"), "", false, *gui_);
+	textbox_info_.reset(new floating_textbox(floating_textbox::COMMAND, translation::sgettext("prompt^Command:"), "", false));
+	textbox_info_->on_execute([this](const std::string& str) {
+		textbox_info_->memorize_command(str);
+		do_command(str);
+	});
+	textbox_info_->on_completion([this]() {
+		std::set<std::string> dictionary;
+		std::vector<std::string> commands = get_commands_list();
+		dictionary.insert(commands.begin(), commands.end());
+
+		for(const team& t : resources::controller->get_teams()) {
+			if(!t.is_empty()) {
+				dictionary.insert(t.current_player());
+			}
+		}
+
+		// Add observers
+		for(const std::string& o : gui_->observers()) {
+			dictionary.insert(o);
+		}
+
+		// Add nicks who whispered you
+		for(const std::string& w : gui_->get_chat_manager().whisperers()) {
+			dictionary.insert(w);
+		}
+
+		// Add nicks from friendlist
+		for(const auto& [name, _] : prefs::get().get_acquaintances_nice("friend")) {
+			dictionary.insert(name);
+		}
+
+		// Exclude own nick from tab-completion.
+		// NOTE why ?
+		dictionary.erase(prefs::get().login());
+		const std::string all_completions = textbox_info_->tab(dictionary);
+		if(!all_completions.empty()) {
+			gui_->get_chat_manager().add_chat_message(
+				std::chrono::system_clock::now(), "", 0, all_completions, events::chat_handler::MESSAGE_PRIVATE, false);
+		}
+	});
+	textbox_info_->show(true);
 }
 
 void menu_handler::request_control_change(int side_num, const std::string& player)
@@ -2157,7 +2263,15 @@ void menu_handler::custom_command()
 void menu_handler::ai_formula()
 {
 	if(!pc_.is_networked_mp()) {
-		textbox_info_.show(gui::TEXTBOX_AI, translation::sgettext("prompt^Formula:"), "", false, *gui_);
+		textbox_info_.reset(new floating_textbox(floating_textbox::AI, translation::sgettext("prompt^Formula:"), "", false));
+		textbox_info_->on_execute([this](const std::string& str) {
+			textbox_info_->memorize_command(str);
+			do_ai_formula(
+				str,
+				resources::controller->current_side(),
+				resources::controller->get_mouse_handler_base());
+		});
+		textbox_info_->show(true);
 	}
 }
 

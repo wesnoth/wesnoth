@@ -113,7 +113,13 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 	y = fy;
 
 	// This is from mouse_handler_base::mouse_motion_default()
-	tooltips::process(x, y);
+	// FIXME if check and is_gui2_tooltip is to be removed once all interactions
+	// are routed through gui2
+	if (is_gui2_tooltip_) {
+		tooltips::show(point{x, y});
+	} else {
+		tooltips::process(x, y);
+	}
 
 	if(simple_warp_) {
 		return;
@@ -143,6 +149,7 @@ void mouse_handler::touch_motion(int x, int y, const bool browse, bool update, m
 				std::pow(static_cast<double>(drag_from_.x - pos.x), 2) +
 				std::pow(static_cast<double>(drag_from_.y - pos.y), 2);
 
+			if(drag_distance > drag_threshold() * drag_threshold()) {
 			if(drag_distance > drag_threshold()*drag_threshold()) {
 				dragging_started_ = true;
 			}
@@ -611,8 +618,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 // Hook for notifying lua game kernel of mouse button events. We pass button as
 // a separate argument than the original SDL event in order to manage touch
 // emulation (e.g., long touch = right click) and such.
-bool mouse_handler::mouse_button_event(const SDL_MouseButtonEvent& event, uint8_t button,
-									   map_location loc, bool click)
+bool mouse_handler::mouse_button_event(uint8_t button, map_location loc, bool click, bool down)
 {
 	static const std::array<const std::string, 6> buttons = {
 		"",
@@ -630,7 +636,7 @@ bool mouse_handler::mouse_button_event(const SDL_MouseButtonEvent& event, uint8_
 	}
 
 	if(game_lua_kernel* lk = pc_.gamestate().lua_kernel_.get()) {
-		lk->mouse_button_callback(loc, buttons[button], (event.down ? "down" : "up"));
+		lk->mouse_button_callback(loc, buttons[button], (down ? "down" : "up"));
 
 		// Are we being asked to send a click event?
 		if (click) {

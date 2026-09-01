@@ -65,6 +65,7 @@
 #include "gui/dialogs/editor/tod_new_schedule.hpp"
 #include "gui/dialogs/end_credits.hpp"
 #include "gui/dialogs/file_dialog.hpp"
+#include "gui/dialogs/floating_textbox.hpp"
 #include "gui/dialogs/folder_create.hpp"
 #include "gui/dialogs/formula_debugger.hpp"
 #include "gui/dialogs/game_cache_options.hpp"
@@ -634,6 +635,10 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_migrate_version_selection_dialog)
 BOOST_AUTO_TEST_CASE(modeless_dialog_test_debug_clock)
 {
 	test_popup<debug_clock>();
+}
+BOOST_AUTO_TEST_CASE(modeless_dialog_test_floating_textbox)
+{
+	test_popup<floating_textbox>();
 }
 BOOST_AUTO_TEST_CASE(tooltip_test_tooltip_large)
 {
@@ -1294,6 +1299,15 @@ struct dialog_tester<file_dialog>
 	file_dialog* create()
 	{
 		return new file_dialog();
+	}
+};
+
+template<>
+struct dialog_tester<floating_textbox>
+{
+	floating_textbox* create()
+	{
+		return new floating_textbox(floating_textbox::MESSAGE, "test: ", "", false);
 	}
 };
 
