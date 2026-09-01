@@ -107,7 +107,9 @@ void help_browser::pre_show()
 		bool is_contents_visible = (topic_panel.get_visible() == widget::visibility::visible);
 		if (parent) {
 			topic_text.set_width(is_contents_visible ? win_w : rl_init_w);
-			show_topic(history_.at(history_pos_), false, true);
+			if(!history_.empty()) {
+				show_topic(history_.at(history_pos_), false, true);
+			}
 		}
 		topic_panel.set_visible(!is_contents_visible);
 		invalidate_layout();
@@ -194,8 +196,10 @@ void help_browser::show_topic(std::string topic_id, bool add_to_history, bool re
 {
 	if(reshow) {
 		const help::topic* topic = help::find_topic(toplevel_, topic_id);
-		find_widget<rich_label>("topic_text").set_dom(topic->text.parsed_text());
-		invalidate_layout();
+		if(topic) {
+			find_widget<rich_label>("topic_text").set_dom(topic->text.parsed_text());
+			invalidate_layout();
+		}
 		return;
 	}
 
@@ -281,6 +285,10 @@ void help_browser::on_topic_select()
 
 void help_browser::on_history_navigate(bool backwards)
 {
+	if(history_.empty()) {
+		return;
+	}
+
 	if(backwards) {
 		if (history_pos_ > 0) {
 			history_pos_--;

@@ -26,6 +26,7 @@
 #include "gui/dialogs/help_browser.hpp"
 #include "preferences/preferences.hpp"
 #include "terrain/terrain.hpp"
+#include "terrain/type_data.hpp"
 #include "units/types.hpp"
 #include "units/unit.hpp"
 
@@ -105,6 +106,7 @@ public:
 private:
 	std::size_t last_num_encountered_units_{0};
 	std::size_t last_num_encountered_terrains_{0};
+	std::size_t last_num_terrain_types_{0};
 
 	boost::tribool last_debug_state_{boost::indeterminate};
 
@@ -124,14 +126,21 @@ const section& help_manager::implementation::regenerate()
 	const auto& enc_units = prefs::get().encountered_units();
 	const auto& enc_terrains = prefs::get().encountered_terrains();
 
-	// More units or terrains encountered, or debug mode toggled
+	// Terrain combinations (base+overlay) can be synthesised ad-hoc as in the editor
+	// describing whatever is under the cursor, which grows this list without touching
+	// encountered_terrains.
+	const std::size_t num_terrain_types = terrain_type_data::get()->list().size();
+
+	// More units or terrains encountered, more terrain types known, or debug mode toggled
 	if(boost::indeterminate(last_debug_state_)
 		|| enc_units.size()    != last_num_encountered_units_
 		|| enc_terrains.size() != last_num_encountered_terrains_
+		|| num_terrain_types   != last_num_terrain_types_
 		|| last_debug_state_   != game_config::debug
 	) {
 		last_num_encountered_units_ = enc_units.size();
 		last_num_encountered_terrains_ = enc_terrains.size();
+		last_num_terrain_types_ = num_terrain_types;
 		last_debug_state_ = game_config::debug;
 
 		// Update the contents
