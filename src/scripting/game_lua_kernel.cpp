@@ -918,6 +918,8 @@ void game_lua_kernel::luaW_push_schedule(lua_State* L, int area_index)
 			{ nullptr, nullptr }
 		};
 		luaL_setfuncs(L, schedule_meta, 0);
+		lua_pushstring(L, "schedule");
+		lua_setfield(L, -2, "__metatable");
 	}
 	lua_setmetatable(L, -2);
 }
