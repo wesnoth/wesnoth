@@ -1555,6 +1555,8 @@ GAME_CONFIG_GETTER("palettes", lua_index_raw, lua_kernel_base) {
 	if(luaL_newmetatable(L, "color palettes")) {
 		lua_pushcfunction(L, impl_palette_get);
 		lua_setfield(L, -2, "__index");
+		lua_pushstring(L, "color palettes");
+		lua_setfield(L, -2, "__metatable");
 	}
 	lua_setmetatable(L, -2);
 	return lua_index_raw(L);
