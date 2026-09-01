@@ -17,7 +17,7 @@
  * Terrain-palette in the editor.
  */
 
-#define GETTEXT_DOMAIN "wesnoth-editor"
+#define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "editor/palette/terrain_palettes.hpp"
 
