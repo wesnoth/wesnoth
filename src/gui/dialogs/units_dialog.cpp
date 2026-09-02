@@ -146,6 +146,9 @@ void units_dialog::pre_show()
 	listbox& list = find_widget<listbox>("main_list");
 	connect_signal_notify_modified(list, std::bind(&units_dialog::list_item_clicked, this));
 
+	// Prevent close via OK (including keyboard Enter) if no units are available after filter.
+	set_exit_hook(window::exit_hook::ok_only, [&list] { return list.get_selected_row() != -1; });
+
 	connect_signal_mouse_left_click(
 		find_widget<button>("show_help"),
 		std::bind(&units_dialog::show_help, this));
@@ -383,9 +386,10 @@ void units_dialog::filter_text_changed(const std::string& text)
 			return match(filter_options_[row]);
 		});
 
-	// Disable rename and dismiss buttons if no units are shown
+	// Disable rename, dismiss, and OK buttons if no units are shown
 	find_widget<button>("rename").set_active(shown > 0);
 	find_widget<button>("dismiss").set_active(shown > 0);
+	find_widget<button>("ok").set_active(shown > 0);
 }
 
 void units_dialog::update_gender(const unit_race::GENDER val)
