@@ -39,6 +39,14 @@ jobs:
     steps:
     - { name: Checkout repository, uses: actions/checkout@v6, with: { submodules: "recursive" } }
 
+    - name: Remove files that break the build
+      run: rm -r /usr/local/include/boost /usr/local/lib/libboost*
+
+    - name: Install node for analyzing javascript
+      uses: actions/setup-node@HEAD
+      with:
+        node-version: 'latest'
+
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
       uses: github/codeql-action/init@HEAD
