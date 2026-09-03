@@ -165,15 +165,18 @@ class PendingPlural:
         self.pluraltype = 0
         self.numequals = 0
         self.ismultiline = False
+        self.skip_initial_newline = False
 
     def addline(self, value, isfirstline=False):
         if self.pluraltype == 3 and isfirstline and value == "":
-            # This should be handled by not adding (self.string + '\n') on the next call,
-            # but someone can implement that if they start using long-bracket strings.
-            raise NotImplementedError("Not implemented: handling of long-bracket strings that start with a newline.")
+            # Lua ignores the newline immediately after an opening long bracket.
+            self.skip_initial_newline = True
         if self.pluraltype == 3:
             value = value.replace('\\', r'\\')
-        if isfirstline:
+        if self.skip_initial_newline and not isfirstline:
+            self.skip_initial_newline = False
+            self.string = value
+        elif isfirstline:
             self.string = value
         else:
             self.string = self.string + '\n' + value
@@ -205,18 +208,21 @@ class PendingLuaString:
         self.ismultiline = ismultiline
         self.istranslatable = istranslatable
         self.numequals = numequals
+        self.skip_initial_newline = False
         if luatype != 'lua_plural':
             self.addline(luastring, True)
         self.plural = plural
 
     def addline(self, value, isfirstline=False):
         if self.luatype == 'luastr3' and isfirstline and value == "":
-            # This should be handled by not adding (self.string + '\n') on the next call,
-            # but someone can implement that if they start using long-bracket strings.
-            raise NotImplementedError("Not implemented: handling of long-bracket strings that start with a newline.")
+            # Lua ignores the newline immediately after an opening long bracket.
+            self.skip_initial_newline = True
         if self.luatype == 'luastr3':
             value = value.replace('\\', r'\\')
-        if isfirstline:
+        if self.skip_initial_newline and not isfirstline:
+            self.skip_initial_newline = False
+            self.luastring = value
+        elif isfirstline:
             self.luastring = value
         else:
             self.luastring = self.luastring + '\n' + value
