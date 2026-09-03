@@ -39,9 +39,6 @@ jobs:
     steps:
     - { name: Checkout repository, uses: actions/checkout@v6, with: { submodules: "recursive" } }
 
-    - name: Remove files that break the build
-      run: rm -r /usr/local/include/boost /usr/local/lib/libboost*
-
     - name: Install node for analyzing javascript
       uses: actions/setup-node@HEAD
       with:
@@ -62,7 +59,17 @@ jobs:
 
     # Autobuild attempts to build any compiled languages (C/C++, C#, Go, Java, or Swift).
     - name: Autobuild
+      if: matrix.language != 'cpp'
       uses: github/codeql-action/autobuild@HEAD
+
+    # can be removed again once our image has a normal build environment that autobuild can work with
+    - name: Build
+      if: matrix.language == 'cpp'
+      run: |
+        rm -r /usr/local/include/boost /usr/local/lib/libboost*
+        scons wesnoth wesnothd campaignd boost_unit_tests build=release ctool=clang cxxtool=clang++ \
+          cxx_std=17 extra_flags_config=-pipe forum_user_handler=true strict=true nls=false \
+          enable_lto=false system_lua=true force_color=true jobs=2
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@HEAD
