@@ -103,6 +103,7 @@ public:
 	virtual void check_objectives() = 0;
 
 	virtual void on_not_observer() = 0;
+	virtual void update_theme() = 0;
 
 	/**
 	 * Asks the user whether to continue on an OOS error.
