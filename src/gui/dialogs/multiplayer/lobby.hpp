@@ -132,6 +132,8 @@ private:
 
 	void user_dialog_callback(const mp::user_info* info);
 
+	void select_game_by_player(const mp::user_info* info);
+
 	void skip_replay_changed_callback();
 
 	static bool logout_prompt();
