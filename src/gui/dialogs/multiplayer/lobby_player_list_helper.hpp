@@ -62,14 +62,21 @@ private:
 	/** The double click callback bound to each player's tree node. */
 	std::function<void(const mp::user_info*)> user_callback;
 
+	/** Called with the newly-selected player when the tree's selection changes to one. */
+	std::function<void(const mp::user_info*)> game_select_callback;
+
 	/** Node-to-info mappings for easy access. */
 	std::map<const tree_view_node*, const mp::user_info*> info_map;
 
+	/** Connected to the tree's modified signal; forwards to @ref game_select_callback when a player is selected. */
+	void selected_node_changed();
+
 public:
-	lobby_player_list_helper(decltype(user_callback) ucb)
+	lobby_player_list_helper(decltype(user_callback) ucb, decltype(game_select_callback) gscb)
 		: player_lists()
 		, tree(nullptr)
 		, user_callback(ucb)
+		, game_select_callback(gscb)
 		, info_map()
 	{
 	}
