@@ -18,6 +18,7 @@
 
 #include <algorithm>
 #include <chrono>
+#include <ctime>
 #include <iomanip>
 #include <sstream>
 #include <string_view>
@@ -28,6 +29,17 @@
 
 namespace chrono
 {
+
+// Portable, re-entrant/thread-safe replacement for std::localtime(), which returns a pointer
+// to a statically-allocated buffer shared across all callers (and threads).
+inline std::tm* localtime_safe(std::tm* result, const std::time_t* time)
+{
+#ifdef _WIN32
+	return ::localtime_s(result, time) == 0 ? result : nullptr;
+#else
+	return ::localtime_r(time, result);
+#endif
+}
 #ifdef CPP20_CHRONO_SUPPORT
 
 using std::chrono::days;
@@ -62,7 +74,8 @@ inline auto serialize_timestamp(const std::chrono::system_clock::time_point& tim
 inline auto get_local_timestamp(const std::chrono::system_clock::time_point& time)
 {
 	auto as_time_t = std::chrono::system_clock::to_time_t(time);
-	return mktime(std::localtime(&as_time_t));
+	std::tm local_tm{};
+	return mktime(localtime_safe(&local_tm, &as_time_t));
 }
 
 // CAUTION: This does NOT return a language-localized string.  To achieve that,
@@ -71,7 +84,8 @@ inline auto format_local_timestamp(const std::chrono::system_clock::time_point& 
 {
 	std::ostringstream ss;
 	auto as_time_t = std::chrono::system_clock::to_time_t(time);
-	ss << std::put_time(std::localtime(&as_time_t), format.data());
+	std::tm local_tm{};
+	ss << std::put_time(localtime_safe(&local_tm, &as_time_t), format.data());
 	return ss.str();
 }
 

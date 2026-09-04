@@ -71,20 +71,16 @@ std::string format_time_summary(const std::chrono::system_clock::time_point& t)
 	const auto now = std::chrono::system_clock::now();
 
 	auto as_time_t = std::chrono::system_clock::to_time_t(now);
-	const std::tm* timeptr = std::localtime(&as_time_t);
-	if(timeptr == nullptr) {
+	std::tm current_time{};
+	if(chrono::localtime_safe(&current_time, &as_time_t) == nullptr) {
 		return "";
 	}
-
-	const std::tm current_time = *timeptr;
 
 	as_time_t = std::chrono::system_clock::to_time_t(t);
-	timeptr = std::localtime(&as_time_t);
-	if(timeptr == nullptr) {
+	std::tm save_time{};
+	if(chrono::localtime_safe(&save_time, &as_time_t) == nullptr) {
 		return "";
 	}
-
-	const std::tm save_time = *timeptr;
 
 	std::string format_string;
 
