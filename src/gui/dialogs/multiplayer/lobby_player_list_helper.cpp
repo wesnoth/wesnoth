@@ -167,6 +167,10 @@ void lobby_player_list_helper::init(window& w)
 {
 	tree = w.find_widget<tree_view>("player_tree", false, true);
 
+	// Jump to a newly-selected player's game if they are in one.
+	// A non-visible game will just leave no game selected.
+	connect_signal_notify_modified(*tree, std::bind(&lobby_player_list_helper::selected_node_changed, this));
+
 	player_lists = {
 		sub_list{tree, _("Selected Game"), true},
 		sub_list{tree, _("Lobby"), true},
@@ -177,6 +181,16 @@ void lobby_player_list_helper::init(window& w)
 const mp::user_info* lobby_player_list_helper::get_selected_info() const
 {
 	return info_map.at(tree->selected_item());
+}
+
+void lobby_player_list_helper::selected_node_changed()
+{
+	// The selected node could be a group header instead of a player, so look it
+	// up rather than using get_selected_info(), which assumes the look-up
+	// always succeeds.
+	if(const auto it = info_map.find(tree->selected_item()); it != info_map.end()) {
+		game_select_callback(it->second);
+	}
 }
 
 } // namespace gui2
