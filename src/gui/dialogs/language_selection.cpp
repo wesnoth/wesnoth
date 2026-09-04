@@ -64,7 +64,7 @@ language_selection::language_selection()
 		}
 	}
 
-	register_bool("show_all", true, show_all);
+	register_bool("show_all", true, [show_all]() { return show_all; });
 	// Markup needs to be enabled for the link to be highlighted
 	register_label("contrib_url", true, translations_wiki_url, true);
 	register_label("stats_url", true, translations_stats_url, true);
