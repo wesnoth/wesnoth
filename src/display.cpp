@@ -1490,17 +1490,16 @@ void display::draw_minimap()
 		return;
 	}
 
-	if(!minimap_renderer_) {
-		return;
-	}
-
 	const auto clipper = draw::reduce_clip(area);
 
 	// Draw the minimap background.
 	draw::fill(area, 31, 31, 23);
 
-	// Draw the minimap and update its location for mouse and units functions
-	minimap_location_ = std::invoke(minimap_renderer_, area);
+	// Draw the minimap and update its location for mouse and units functions.
+	// The renderer can be null if terrain and village drawing are both disabled,
+	// but units may still need to be drawn, so fall back to using the whole
+	// area for that.
+	minimap_location_ = minimap_renderer_ ? std::invoke(minimap_renderer_, area) : area;
 
 	draw_minimap_units();
 
