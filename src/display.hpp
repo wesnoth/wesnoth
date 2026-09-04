@@ -170,6 +170,9 @@ public:
 	/** remove_overlay will remove all overlays on a tile. */
 	void remove_overlay(const map_location& loc);
 
+	/** remove_overlays will remove all overlays on the map. */
+	void remove_overlays();
+
 	/** remove_single_overlay will remove a single overlay from a tile */
 	void remove_single_overlay(const map_location& loc, const std::string& toDelete);
 

@@ -133,6 +133,11 @@ void display::remove_overlay(const map_location& loc)
 	get_overlays().erase(loc);
 }
 
+void display::remove_overlays()
+{
+	get_overlays().clear();
+}
+
 void display::remove_single_overlay(const map_location& loc, const std::string& toDelete)
 {
 	utils::erase_if(get_overlays()[loc],

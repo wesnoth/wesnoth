@@ -342,6 +342,10 @@ void play_controller::reset_gamestate(const config& level, int replay_pos)
 
 	gui_->labels().set_team(nullptr);
 
+	// Item overlays (including their halos) are stored on the display, not the
+	// game state, so they need to be cleared here on reset. Refer GitHub #10866.
+	gui_->remove_overlays();
+
 	/* First destroy the old game state, then create the new one.
 	This is necessary to ensure that while the old AI manager is being destroyed,
 	all its member objects access the old manager instead of the new. */
