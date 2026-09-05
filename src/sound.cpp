@@ -340,9 +340,30 @@ std::shared_ptr<sound::music_track> choose_track()
 	//
 	if(!current_index || current_track->shuffle()) {
 		if(current_track_list.size() > 1) {
-			do {
-				next_index = randomness::rng::default_instance().get_random_int(0, current_track_list.size() - 1);
-			} while(!track_ok(current_track_list[next_index]->file_path()));
+			std::vector<std::size_t> candidates;
+			for(std::size_t i = 0; i < current_track_list.size(); ++i) {
+				if(track_ok(current_track_list[i]->file_path())) {
+					candidates.push_back(i);
+				}
+			}
+
+			if(candidates.empty()) {
+				// track_ok()'s fairness constraints could reject every track at once on a
+				// small playlist, which would otherwise dead-lock a loop only operating
+				// on acceptable tracks. Fall back to just not immediately repeating the
+				// current track in this case.
+				DBG_AUDIO << "No track satisfies the playlist fairness constraints; "
+					<< "falling back to any track other than the current one.";
+				for(std::size_t i = 0; i < current_track_list.size(); ++i) {
+					if(current_track_list[i]->file_path() != current_track->file_path()) {
+						candidates.push_back(i);
+					}
+				}
+			}
+
+			if(!candidates.empty()) {
+				next_index = candidates[randomness::rng::default_instance().get_random_int(0, candidates.size() - 1)];
+			}
 		}
 	} else {
 		next_index = (current_index.value() + 1) % current_track_list.size();
