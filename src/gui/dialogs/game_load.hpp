@@ -34,6 +34,7 @@ public:
 
 private:
 	virtual void pre_show() override;
+	virtual void post_show() override;
 
 	virtual const std::string& window_id() const override;
 
@@ -66,6 +67,8 @@ private:
 	field_bool* change_difficulty_;
 	field_bool* show_replay_;
 	field_bool* cancel_orders_;
+
+	utils::optional<std::string>& random_mode_;
 
 	config& summary_;
 
