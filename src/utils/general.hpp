@@ -16,6 +16,7 @@
 
 #include <algorithm>
 #include <cctype>
+#include <ctime>
 #include <functional>
 #include <string>
 
@@ -164,6 +165,21 @@ inline std::vector<T> from_range(Range&& range)
 {
 	return std::vector<T>(range.begin(), range.end());
 }
+
+
+/*
+ * Portable, re-entrant/thread-safe replacement for std::localtime(), which returns a pointer
+ * to a statically-allocated buffer shared across all callers (and threads).
+ */
+inline std::tm* localtime_r(std::tm* result, const std::time_t* time)
+{
+#ifdef _WIN32
+	return ::localtime_s(result, time) == 0 ? result : nullptr;
+#else
+	return ::localtime_r(time, result);
+#endif
+}
+
 
 /*
  * convienience function to turn different lambdas into a single function object.

@@ -15,6 +15,7 @@
 #pragma once
 
 #include "config_attribute_value.hpp"
+#include "utils/general.hpp"
 
 #include <algorithm>
 #include <chrono>
@@ -62,7 +63,8 @@ inline auto serialize_timestamp(const std::chrono::system_clock::time_point& tim
 inline auto get_local_timestamp(const std::chrono::system_clock::time_point& time)
 {
 	auto as_time_t = std::chrono::system_clock::to_time_t(time);
-	return mktime(std::localtime(&as_time_t));
+	std::tm local_tm{};
+	return mktime(utils::localtime_r(&local_tm, &as_time_t));
 }
 
 // CAUTION: This does NOT return a language-localized string.  To achieve that,
@@ -71,7 +73,8 @@ inline auto format_local_timestamp(const std::chrono::system_clock::time_point& 
 {
 	std::ostringstream ss;
 	auto as_time_t = std::chrono::system_clock::to_time_t(time);
-	ss << std::put_time(std::localtime(&as_time_t), format.data());
+	std::tm local_tm{};
+	ss << std::put_time(utils::localtime_r(&local_tm, &as_time_t), format.data());
 	return ss.str();
 }
 
