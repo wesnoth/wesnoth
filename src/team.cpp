@@ -952,6 +952,19 @@ color_t team::get_minimap_color(int side)
 	return get_side_color_range(side).rep();
 }
 
+color_t team::get_ui_font_color(int side)
+{
+	std::string index = get_side_color_id(side);
+	auto iter = game_config::team_rgb_ui_font_colors.find(index);
+
+	if(iter != game_config::team_rgb_ui_font_colors.end()) {
+		return iter->second;
+	}
+
+	// The fallback is white to have a high contrast with dark backgrounds.
+	return color_t{255, 255, 255};
+}
+
 std::string team::get_side_color_id(unsigned side)
 {
 	try {

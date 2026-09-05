@@ -161,7 +161,18 @@ namespace game_config
 	 */
 	extern std::map<std::string, color_range, std::less<>> team_rgb_range;
 	extern std::map<std::string, t_string, std::less<>> team_rgb_name;
+	/**
+	 * For colors defined by WML [color_range] tags, the palettes for team-based recoloring.
+	 * These are calculated from the 
+	 */
 	extern std::map<std::string, std::vector<color_t>, std::less<>> team_rgb_colors;
+	/**
+	 * For colors defined by WML [color_range] tags, something which can be used as the font
+	 * color for text in the UI; this requires it to be readable on a dark background.
+	 *
+	 * Typically the same as the "mid" color, but will be much lighter for the black team.
+	 */
+	extern std::map<std::string, color_t, std::less<>> team_rgb_ui_font_colors;
 
 	extern std::vector<std::string> default_colors;
 

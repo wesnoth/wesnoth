@@ -24,8 +24,15 @@
 using color_mapping = std::unordered_map<color_t, color_t>;
 
 /**
- * A color range definition is made of four reference RGB colors, used
+ * A color range definition includes four reference RGB colors. Three are used
  * for calculating conversions from a source/key palette.
+ *
+ * This C++ class corresponds to WML's [color_range]rgb= attribute; that
+ * WML tag has other responsibilities of being the "team color" definition.
+ * The other content of the [color_range] tags is parsed by the game_config
+ * class, and the data is held by several globals declared in game_config.hpp.
+ *
+ * Data held here:
  *
  *   1) The average shade of a unit's team-color portions
  *      (default: gray #808080)
@@ -33,7 +40,8 @@ using color_mapping = std::unordered_map<color_t, color_t>;
  *      (default: white)
  *   3) The minimum shadow shade of a unit's team-color portions
  *      (default: black)
- *   4) A plain high-contrast color, used for the markers on the mini-map
+ *   4) A color with high contrast to terrain colors, so that it can
+ *      be used for the markers on the mini-map.
  *      (default: same as the provided average shade, or gray #808080)
  *
  * The first three reference colors are used for converting a source palette
@@ -84,7 +92,7 @@ public:
 	/** Minimum color shade. */
 	color_t min() const { return min_; }
 
-	/** High-contrast shade, intended for the minimap markers. */
+	/** High-contrast against typical terrain colors, intended for the minimap markers. */
 	color_t rep() const { return rep_; }
 
 	bool operator==(const color_range& b) const
