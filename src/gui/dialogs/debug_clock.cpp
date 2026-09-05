@@ -22,7 +22,7 @@
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/pane.hpp"
 #include "gui/widgets/progress_bar.hpp"
-#include "serialization/chrono.hpp"
+#include "utils/general.hpp"
 
 #include <ctime>
 
@@ -127,7 +127,7 @@ void debug_clock::time::set_current_time()
 {
 	std::time_t now = ::std::time(nullptr);
 	std::tm stamp{};
-	chrono::localtime_safe(&stamp, &now);
+	utils::localtime_r(&stamp, &now);
 
 	hour = stamp.tm_hour;
 	minute = stamp.tm_min;

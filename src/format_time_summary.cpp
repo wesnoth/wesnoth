@@ -18,6 +18,7 @@
 #include "gettext.hpp"
 #include "preferences/preferences.hpp"
 #include "serialization/chrono.hpp"
+#include "utils/general.hpp"
 
 #include <cassert>
 #ifndef CPP20_CHRONO_SUPPORT
@@ -72,13 +73,13 @@ std::string format_time_summary(const std::chrono::system_clock::time_point& t)
 
 	auto as_time_t = std::chrono::system_clock::to_time_t(now);
 	std::tm current_time{};
-	if(chrono::localtime_safe(&current_time, &as_time_t) == nullptr) {
+	if(utils::localtime_r(&current_time, &as_time_t) == nullptr) {
 		return "";
 	}
 
 	as_time_t = std::chrono::system_clock::to_time_t(t);
 	std::tm save_time{};
-	if(chrono::localtime_safe(&save_time, &as_time_t) == nullptr) {
+	if(utils::localtime_r(&save_time, &as_time_t) == nullptr) {
 		return "";
 	}
 
