@@ -147,8 +147,8 @@ public:
 	 *
 	 * This is a wrapper for SDL_SetWindowIcon.
 	 *
-	 * @note The @p icon is a SDL_Surface and not a SDL_Texture, this
-	 * is part of the SDL 2 API.
+	 * @note The @p icon is a SDL_Surface and not a SDL_Texture, as required by
+	 * SDL_SetWindowIcon().
 	 *
 	 * @param icon                The new icon for the window.
 	 */

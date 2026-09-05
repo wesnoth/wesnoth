@@ -7,16 +7,13 @@ of a certain library, however, you can fetch the relevant files at the links bel
 libraries yourself. See the [instructions]#updating-boost-libraries)
 in the dependency repository for details.
 
-[**SDL 2:**](https://github.com/libsdl-org/SDL/releases/tag/release-2.30.8) You'll want the "GCC 32/64-bit" Development
+[**SDL 3:**](https://github.com/libsdl-org/SDL/releases) You'll want the "GCC 32/64-bit" Development
 Libraries.
 
 [**SDL_Image:**](https://github.com/libsdl-org/SDL_image/releases) Again, you'll want the "GCC 32/64-bit"
 Development Libraries.
 
 [**SDL_Mixer:**](https://github.com/libsdl-org/SDL_mixer/releases) Again, you'll want the "GCC 32/64-bit"
-Development Libraries.
-
-[**SDL_ttf:**](https://github.com/libsdl-org/SDL_ttf/releases) Again, you'll want the "GCC 32/64-bit"
 Development Libraries.
 
 The other libraries require complicated compilation procedures too in-depth to document here.
