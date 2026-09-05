@@ -20,6 +20,7 @@
 #include "gui/widgets/container_base.hpp"
 
 #include <map>
+#include <set>
 #include <string>
 
 class config;
@@ -85,6 +86,21 @@ public:
 
 	void load_log(std::map<std::string, chatroom_log>& log, bool show_lobby);
 
+	/**
+	 * Supplies an additional set of names to offer for auto-completion, on top of
+	 * whatever @ref mp::get_lobby_info reports.
+	 *
+	 * The main lobby's user list (@ref mp::lobby_info) is only kept up to date while
+	 * the main lobby screen is shown; a host or player sitting in the game staging
+	 * screen no longer receives lobby-wide roster updates from the server, so
+	 * callers there should keep this synchronised with their own live player/observer
+	 * list instead.
+	 */
+	void set_available_users(const std::set<std::string>& names)
+	{
+		available_users_ = names;
+	}
+
 protected:
 	/**
 	 * Initializes the internal sub-widget pointers.
@@ -134,6 +150,8 @@ private:
 	std::function<void(void)> active_window_changed_callback_;
 
 	std::map<std::string, chatroom_log>* log_;
+
+	std::set<std::string> available_users_;
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
