@@ -20,6 +20,7 @@
 // unit_tests.hpp. https://svn.boost.org/trac10/ticket/13387
 #include <boost/test/data/test_case.hpp> // for parametrized test
 #include <cmath>
+#include <limits>
 
 #include "config.hpp"
 #include "variable_info.hpp"
@@ -203,10 +204,10 @@ BOOST_AUTO_TEST_CASE(test_config_attribute_value)
 	x_dbl = c["x"].to_double();
 	BOOST_CHECK(std::abs(x_dbl - 1.499) < 1e-6);
 
-// check type conversion when assigned as a long long (int overflows)
+// check type conversion when assigned as a long long (int overflows and saturates)
 	c["x"] = 123456789123ll;
 	x_int = c["x"].to_int();
-	BOOST_CHECK_EQUAL(x_int, -1097262461);
+	BOOST_CHECK_EQUAL(x_int, std::numeric_limits<int>::max());
 	x_dbl = c["x"].to_double();
 	BOOST_CHECK_EQUAL(x_dbl, 1.23456789123e11);
 	x_sll = c["x"].to_long_long();
