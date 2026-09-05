@@ -30,6 +30,7 @@
 #include "formula/string_utils.hpp"
 #include "game_initialization/multiplayer.hpp"
 #include "gettext.hpp"
+#include "gui/gui.hpp"
 #include "log.hpp"
 #include "preferences/preferences.hpp"
 #include "scripting/plugins/manager.hpp"
@@ -268,6 +269,15 @@ void chatbox::user_relation_changed(const std::string& /*name*/)
 {
 	if(active_window_changed_callback_) {
 		active_window_changed_callback_();
+	}
+}
+
+void chatbox::handle_gui2_theme_reload()
+{
+	if(theme_reload_callback_) {
+		theme_reload_callback_();
+	} else {
+		gui2::switch_theme(prefs::get().gui2_theme());
 	}
 }
 
