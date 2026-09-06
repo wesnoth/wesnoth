@@ -111,6 +111,7 @@ private:
 					info.display_name = queue["display_name"].str();
 					info.players_required = queue["players_required"].to_int();
 					info.current_players = utils::split_set(queue["current_players"].str());
+					info.required_addons = utils::split_set(queue["addons"].str());
 					queues.emplace_back(info);
 				}
 			}
