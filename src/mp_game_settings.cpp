@@ -29,6 +29,69 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
 
+// Normal games start with no competitive metadata; callers add it explicitly
+// when the player selects ranked or tournament play.
+competitive_game_settings::competitive_game_settings() :
+	ranked_mode(false),
+	ranked_game_id(),
+	ranked_resume_token(),
+	ranked_resume_signature(),
+	tournament_id(),
+	tournament_name(),
+	tournament_game_id(),
+	tournament_phase_name(),
+	tournament_group_name(),
+	tournament_round_number(),
+	tournament_game_number()
+{}
+
+// Lobby and savegame configurations use the same flat attributes as the
+// server protocol, so this constructor is the single client-side reader.
+competitive_game_settings::competitive_game_settings(const config& cfg) :
+	ranked_mode(cfg["ranked_mode"].to_bool(false)),
+	ranked_game_id(cfg["ranked_game_id"].str()),
+	ranked_resume_token(cfg["ranked_resume_token"].str()),
+	ranked_resume_signature(cfg["ranked_resume_signature"].str()),
+	tournament_id(cfg["tournament_id"].str()),
+	tournament_name(cfg["tournament_name"].str()),
+	tournament_game_id(cfg["tournament_game_id"].str()),
+	tournament_phase_name(cfg["tournament_phase_name"].str()),
+	tournament_group_name(cfg["tournament_group_name"].str()),
+	tournament_round_number(cfg["tournament_round_number"].str()),
+	tournament_game_number(cfg["tournament_game_number"].str())
+{}
+
+void competitive_game_settings::clear()
+{
+	// Clearing resume data is also how the client marks a loaded game as
+	// analysis-only when wesnothd says that it cannot continue competitively.
+	*this = competitive_game_settings();
+}
+
+void competitive_game_settings::write(config& cfg) const
+{
+	// Keep the in-memory grouping private to the client; do not nest a new WML
+	// node because wesnothd and existing savegames expect flat attributes.
+	cfg["ranked_mode"] = ranked_mode;
+	cfg["ranked_game_id"] = ranked_game_id;
+	cfg["ranked_resume_token"] = ranked_resume_token;
+	cfg["ranked_resume_signature"] = ranked_resume_signature;
+	cfg["tournament_id"] = tournament_id;
+	cfg["tournament_name"] = tournament_name;
+	cfg["tournament_game_id"] = tournament_game_id;
+	cfg["tournament_phase_name"] = tournament_phase_name;
+	cfg["tournament_group_name"] = tournament_group_name;
+	cfg["tournament_round_number"] = tournament_round_number;
+	cfg["tournament_game_number"] = tournament_game_number;
+}
+
+bool competitive_game_settings::is_competitive() const
+{
+	// A tournament game is identified by its pending game ID, even when it is
+	// explicitly unranked.
+	return ranked_mode || !tournament_game_id.empty();
+}
+
 mp_game_settings::mp_game_settings() :
 	name(),
 	password(),
@@ -37,6 +100,7 @@ mp_game_settings::mp_game_settings() :
 	mp_scenario(),
 	mp_scenario_name(),
 	mp_campaign(),
+	competitive(),
 	side_users(),
 	num_turns(0),
 	village_gold(0),
@@ -68,6 +132,7 @@ mp_game_settings::mp_game_settings(const config& cfg)
 	, mp_scenario(cfg["mp_scenario"].str())
 	, mp_scenario_name(cfg["mp_scenario_name"].str())
 	, mp_campaign(cfg["mp_campaign"].str())
+	, competitive(cfg)
 	, side_users(utils::map_split(cfg["side_users"]))
 	, num_turns(cfg["mp_num_turns"].to_int())
 	, village_gold(cfg["mp_village_gold"].to_int())
@@ -97,6 +162,11 @@ mp_game_settings::mp_game_settings(const config& cfg)
 	}
 }
 
+bool mp_game_settings::is_competitive() const
+{
+	return competitive.is_competitive();
+}
+
 config mp_game_settings::to_config() const
 {
 	config cfg;
@@ -107,6 +177,9 @@ config mp_game_settings::to_config() const
 	cfg["mp_scenario"] = mp_scenario;
 	cfg["mp_scenario_name"] = mp_scenario_name;
 	cfg["mp_campaign"] = mp_campaign;
+	// Keep competitive metadata flat in the [multiplayer] payload expected by
+	// wesnothd, even though it is grouped in memory on the client.
+	competitive.write(cfg);
 	cfg["side_users"] = utils::join_map(side_users);
 	cfg["experience_modifier"] = xp_modifier;
 	cfg["mp_countdown"] = mp_countdown;

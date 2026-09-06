@@ -151,6 +151,8 @@ private:
 	field_bool* filter_friends_;
 	field_bool* filter_ignored_;
 	field_bool* filter_slots_;
+	field_bool* filter_ranked_;
+	field_bool* filter_tournament_;
 	field_bool* filter_invert_;
 	bool filter_auto_hosted_;
 	bool filter_game_presets_;
