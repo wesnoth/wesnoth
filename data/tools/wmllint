@@ -2804,32 +2804,36 @@ def translator(filename, mapxforms, textxform):
 
 vctypes = (".svn", ".git", ".hg")
 
-def interesting(fn):
+def interesting(path, exclude):
     "Is a file interesting for conversion purposes?"
-    return (fn.endswith(default_wml_extension) and not fn.endswith("_info.cfg")) or ismap(fn) or issave(fn)
+    if exclude and re.search(exclude, path):
+        if verbose:
+            print("wmllint: %s excluded" % path, file=sys.stderr)
+        return False
+    return (path.endswith(default_wml_extension) and not path.endswith("_info.cfg")) or ismap(path) or issave(path)
 
-def allcfgfiles(directory):
+def allcfgfiles(directory, exclude):
     "Get the names of all interesting files under directory."
-    datafiles = []
     if not os.path.isdir(directory):
-        if interesting(directory):
-            if not os.path.exists(directory):
-                print("wmllint: %s does not exist" % directory, file=sys.stderr)
+        return [os.path.normpath(directory)]
+
+    datafiles = []
+    for root, dirs, files in os.walk(directory):
+        keep = []
+        for dir in dirs:
+            path = os.path.join(root, dir)
+            if dir in vctypes or (exclude and re.search(exclude, path)):
+                if verbose:
+                    print("wmllint: %s excluded" % path, file=sys.stderr)
             else:
-                datafiles.append(directory)
-    else:
-        for root, dirs, files in os.walk(directory):
-            if root in ignore_directories:
-                continue
-            for vcsubdir in vctypes:
-                if vcsubdir in dirs:
-                    dirs.remove(vcsubdir)
-            for dir in dirs:
-                if os.path.join(root, dir) in ignore_directories:
-                    dirs.remove(dir)
-            for name in files:
-                if os.path.join(root, name) not in ignore_files and interesting(os.path.join(root, name)):
-                    datafiles.append(os.path.join(root, name))
+                keep.append(dir)
+        dirs[:] = keep # need to modify dirs in-place so os.walk sees it
+
+        for name in files:
+            path = os.path.join(root, name)
+            if interesting(path, exclude):
+                datafiles.append(path)
+
     datafiles.sort() # So diffs for same campaigns will cluster in reports
     return map(os.path.normpath, datafiles)
 
@@ -2866,13 +2870,13 @@ sides.""")
     parser.add_argument("-K", "--known", action="store_true",
                         help="""Suppress check for unknown unit types, recruits, races,
 scenarios, etc.""")
+    parser.add_argument("-e", "--exclude", action="append", default=[], help="Takes a regex and excludes files matching it.")
     # -Z --stringfreeze has been removed; it just disabled repairs of double spaces after sentence ends
     # -f --future has been removed; there have been no experimental conversions since 1.4
     # -p --progress has been removed; similar to existing -v -v
     parser.add_argument("directories", action="store", nargs="*",
                         help="Any number of directories. Each directory is converted.")
     parser.add_argument("--version", action="version", version="%(prog)s " + version.as_string)
-    parser.add_argument("--config", type=str, default="", help="Location of external toml config file to use.")
 
     namespace = parser.parse_args()
     clean = namespace.clean
@@ -2883,20 +2887,8 @@ scenarios, etc.""")
     stripcr = namespace.stripcr
     verbose = namespace.verbose
     inconsistency = namespace.known
-    config = namespace.config
+    exclude = namespace.exclude
     arguments = namespace.directories # a remnant of getopt...
-
-    ignore_files = []
-    ignore_directories = []
-    if config and os.path.exists(config):
-        with open(config, "rb") as f:
-            data = tomllib.load(f)
-            if data.get("include_dirs"):
-                arguments = data["include_dirs"]
-            if data.get("ignore_files"):
-                ignore_files = data["ignore_files"]
-            if data.get("ignore_directories"):
-                ignore_directories = data["ignore_directories"]
 
     if not arguments:
         print("No directory specified to run wmllint on")
@@ -3001,7 +2993,7 @@ scenarios, etc.""")
                 failed_any_dirs = True
                 print("wmllint: skipping non-existent path %s" % directory)
                 continue
-            for fn in allcfgfiles(directory):
+            for fn in allcfgfiles(directory, "|".join(exclude)):
                 if verbose >= 2:
                     print(fn + ":")
                 backup = fn + "-bak"
