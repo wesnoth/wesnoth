@@ -49,23 +49,9 @@ struct cursor_data
 	cursor_ptr cursor{nullptr, SDL_DestroyCursor};
 };
 
-//
 // Array with each available cursor type.
-// macOS needs 16x16 b&w cursors. TODO: is that still the case?
-//
 auto available_cursors = std::array
 {
-#ifdef __APPLE__
-	cursor_data{ "normal.png",          "normal.png",      0,  0  },
-	cursor_data{ "wait-alt.png",        "wait.png",        0,  0  },
-	cursor_data{ "ibeam.png",           "ibeam.png",       14, 14 },
-	cursor_data{ "move.png",            "move.png",        0,  0  },
-	cursor_data{ "attack.png",          "attack.png",      0,  0  },
-	cursor_data{ "select.png",          "select.png",      0,  0  },
-	cursor_data{ "move_drag_alt.png",   "move_drag.png",   2,  20 },
-	cursor_data{ "attack_drag_alt.png", "attack_drag.png", 3,  22 },
-	cursor_data{ "no_cursor.png",       "",                0,  0  }
-#else
 	cursor_data{ "normal.png",          "normal.png",      0,  0  },
 	cursor_data{ "wait.png",            "wait.png",        0,  0  },
 	cursor_data{ "ibeam.png",           "ibeam.png",       14, 14 },
@@ -75,7 +61,6 @@ auto available_cursors = std::array
 	cursor_data{ "move_drag.png",       "move_drag.png",   2,  20 },
 	cursor_data{ "attack_drag.png",     "attack_drag.png", 3,  22 },
 	cursor_data{ "no_cursor.png",       "",                0,  0  }
-#endif
 };
 
 static_assert(available_cursors.size() == cursor::NUM_CURSORS);
@@ -95,15 +80,10 @@ SDL_Cursor* create_cursor(const surface& surf)
 	}
 
 	// The width must be a multiple of 8 (SDL requirement)
-
-#ifdef __APPLE__
-	std::size_t cursor_width = 16;
-#else
 	std::size_t cursor_width = surf->w;
 	if((cursor_width % 8) != 0) {
 		cursor_width += 8 - (cursor_width % 8);
 	}
-#endif
 
 	std::vector<uint8_t> data((cursor_width * surf->h) / 8, 0);
 	std::vector<uint8_t> mask(data.size(), 0);
