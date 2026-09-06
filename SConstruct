@@ -11,7 +11,7 @@ EnsureSConsVersion(0,98,3)
 
 lua_ver = "5.4"
 
-import os, sys, shutil, re, subprocess
+import os, sys, shutil, re, shlex, subprocess
 from glob import glob
 from subprocess import Popen, PIPE, call, check_output
 from os import access, F_OK
@@ -689,9 +689,12 @@ for env in [test_env, client_env, env]:
 if not env['static_test']:
     test_env.Append(CPPDEFINES = "BOOST_TEST_DYN_LINK")
 
-if env['autorevision']:
+autorevision = File("#/utils/autorevision.sh").srcnode().abspath
+if env['autorevision'] and os.path.isfile(autorevision):
     try:
-        if call(env.subst("utils/autorevision.sh -t h > $build_dir/revision.h"), shell=True) == 0:
+        revision_header = env.subst("$build_dir/revision.h")
+        command = "{} -t h > {}".format(shlex.quote(autorevision), shlex.quote(revision_header))
+        if call(command, shell=True) == 0:
             env["have_autorevision"] = True
             if not call(env.subst("cmp -s $build_dir/revision.h src/revision.h"), shell=True) == 0:
                 call(env.subst("cp $build_dir/revision.h src/revision.h"), shell=True)

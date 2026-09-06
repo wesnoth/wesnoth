@@ -22,6 +22,8 @@
 #include "serialization/unicode.hpp"
 #include "utils/general.hpp"
 
+#include <boost/algorithm/string.hpp>
+
 #include <type_traits>
 
 static lg::log_domain log_sql_handler("sql_executor");
@@ -39,6 +41,10 @@ dbconn::dbconn(const config& c)
 	, db_game_content_info_table_(c["db_game_content_info_table"].str())
 	, db_user_group_table_(c["db_user_group_table"].str())
 	, db_tournament_query_(c["db_tournament_query"].str())
+	, db_player_tournaments_query_(c["db_player_tournaments_query"].str())
+	, db_ranked_user_query_(c["db_ranked_user_query"].str())
+	, db_tournament_join_query_(c["db_tournament_join_query"].str())
+	, db_tournament_team_query_(c["db_tournament_team_query"].str())
 	, db_topics_table_(c["db_topics_table"].str())
 	, db_addon_info_table_(c["db_addon_info_table"].str())
 	, db_connection_history_table_(c["db_connection_history_table"].str())
@@ -55,6 +61,152 @@ dbconn::dbconn(const config& c)
 	catch(const mariadb::exception::base& e)
 	{
 		log_sql_exception("Failed to connect to the database!", e);
+	}
+
+	// Tournament Manager may use a different schema, account, or port from the
+	// forum database. Only create this connection when at least one competitive
+	// query is configured, so existing servers without Tournament Manager support
+	// retain their previous startup behavior.
+	if(!db_player_tournaments_query_.empty() || !db_ranked_user_query_.empty() || !db_tournament_join_query_.empty()) {
+		try
+		{
+			tournament_account_ = mariadb::account::create(
+				c["tournament_db_host"].str(),
+				c["tournament_db_user"].str(),
+				c["tournament_db_password"].str(),
+				c["tournament_db_name"].str(),
+				c["tournament_db_port"].to_int(3306));
+			tournament_account_->set_connect_option(mysql_option::MYSQL_SET_CHARSET_NAME, std::string("utf8mb4"));
+			tournament_connection_ = mariadb::connection::create(tournament_account_);
+		}
+		catch(const mariadb::exception::base& e)
+		{
+			log_sql_exception("Failed to connect to the Tournament Manager database!", e);
+		}
+	}
+}
+
+config dbconn::get_player_tournaments(const std::string& name)
+{
+	// The query is optional to retain compatibility with servers that do not
+	// configure Tournament/Ranked support.
+	config result;
+	if(db_player_tournaments_query_.empty() || !tournament_connection_) {
+		return result;
+	}
+	try {
+		mariadb::result_set_ref rows = select(tournament_connection_, db_player_tournaments_query_, {name});
+		while(rows->next()) {
+			const std::string tournament_id = rows->get_string("ID");
+			const std::string tournament_game_id = rows->get_string("GAME_ID");
+			// The Tournament Manager and Wesnoth databases use separate
+			// connections, so filter out pairings already recorded locally after
+			// retrieving the pending tournament rows.
+			if(competitive_tournament_game_exists(tournament_id, tournament_game_id)) {
+				LOG_SQL << "Skipping tournament '" << tournament_id << "', game '" << tournament_game_id
+					<< "' for player '" << name << "' because it already has a competitive game.";
+				continue;
+			}
+			config& tournament = result.add_child("tournament");
+			tournament["id"] = tournament_id;
+			tournament["name"] = rows->get_string("NAME");
+			tournament["game_id"] = tournament_game_id;
+			tournament["phase_name"] = rows->get_string("PHASE_NAME");
+			tournament["group_name"] = rows->get_string("GROUP_NAME");
+			// The configured query returns these tournament sequence columns as
+			// SMALLINT. Convert them to strings for the WML payload consumed by the
+			// client.
+			tournament["round_number"] = std::to_string(rows->get_signed16("ROUND_NUMBER"));
+			tournament["game_number"] = std::to_string(rows->get_signed16("GAME_NUMBER"));
+			tournament["mode"] = rows->get_string("MODE");
+		}
+	} catch(const mariadb::exception::base& e) {
+		log_sql_exception("Could not retrieve the player's tournaments!", e);
+	}
+	return result;
+}
+
+bool dbconn::can_create_tournament_game(const std::string& name, const std::string& tournament_id, const std::string& tournament_game_id, bool& ranked)
+{
+	// Reuse the exact query that populated the selector. Keep its result alive
+	// while iterating child_range(); otherwise the range would reference a
+	// temporary config and could crash wesnothd during game creation.
+	const config tournaments = get_player_tournaments(name);
+	for(const config& tournament : tournaments.child_range("tournament")) {
+		if(tournament["id"] == tournament_id && tournament["game_id"] == tournament_game_id) {
+			ranked = boost::algorithm::iequals(tournament["mode"].str(), "ranked");
+			return true;
+		}
+	}
+
+	return false;
+}
+
+bool dbconn::is_ranked_user(const std::string& name)
+{
+	// Treat an unavailable query or a database failure as denied competitive
+	// access. Ordinary games do not call this method and remain available when
+	// the Tournament Manager database is absent.
+	if(db_ranked_user_query_.empty() || !tournament_connection_) {
+		return false;
+	}
+	try {
+		return get_single_long(tournament_connection_, db_ranked_user_query_, {name}) == 1;
+	} catch(const mariadb::exception::base& e) {
+		log_sql_exception("Could not verify ranked access!", e);
+		return false;
+	}
+}
+
+bool dbconn::can_join_tournament(const std::string& name, const std::string& tournament_id, const std::string& tournament_game_id)
+{
+	// The selected game ID identifies both permitted entries, so the query does
+	// not need the host nickname to reject unrelated tournament participants.
+	// A missing connection denies tournament access while ordinary games remain
+	// unaffected because they do not call this method.
+	if(db_tournament_join_query_.empty() || !tournament_connection_) {
+		return false;
+	}
+	try {
+		return get_single_long(tournament_connection_, db_tournament_join_query_, {tournament_id, tournament_game_id, name, name}) == 1;
+	} catch(const mariadb::exception::base& e) {
+		log_sql_exception("Could not verify tournament access!", e);
+		return false;
+	}
+}
+
+std::string dbconn::get_tournament_team_id(const std::string& tournament_id, const std::string& tournament_game_id, const std::string& name)
+{
+	// Team membership is authoritative in the Tournament Manager database; the
+	// result is copied into the Wesnoth competitive record for later validation.
+	if(db_tournament_team_query_.empty() || !tournament_connection_) {
+		return "";
+	}
+	try {
+		return get_single_string(tournament_connection_, db_tournament_team_query_, { tournament_id, tournament_game_id, name });
+	} catch(const mariadb::exception::base& e) {
+		log_sql_exception("Could not retrieve the tournament team for player `" + name + "`", e);
+		return "";
+	}
+}
+
+bool dbconn::competitive_tournament_game_exists(const std::string& tournament_id, const std::string& tournament_game_id)
+{
+	// This check intentionally uses the local Wesnoth database because the
+	// Tournament Manager query and this connection may use different databases.
+	if(tournament_id.empty() || tournament_game_id.empty()) {
+		return false;
+	}
+	try {
+		const std::string query =
+			"SELECT 1 FROM competitive_game "
+			"WHERE TOURNAMENT_ID = ? AND TOURNAMENT_GAME_ID = ? "
+			"LIMIT 1";
+		return exists(connection_, query,
+			{ tournament_id, tournament_game_id });
+	} catch(const mariadb::exception::base& e) {
+		log_sql_exception("Could not check whether tournament game `" + tournament_game_id + "` already has a competitive game", e);
+		return false;
 	}
 }
 
@@ -446,16 +598,210 @@ void dbconn::write_user_int(const std::string& column, const std::string& name, 
 	}
 }
 
-void dbconn::insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, int reload, int observers, int is_public, int has_password)
+void dbconn::insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, int reload, int observers, int is_public, int has_password, const std::string& competitive_game_id)
 {
+	// Ordinary games pass an empty competitive ID; NULL keeps them distinct from
+	// games that belong to a ranked or tournament lifecycle.
 	try
 	{
-		modify(connection_, "INSERT INTO `"+db_game_info_table_+"`(INSTANCE_UUID, GAME_ID, INSTANCE_VERSION, GAME_NAME, RELOAD, OBSERVERS, PUBLIC, PASSWORD) VALUES(?, ?, ?, ?, ?, ?, ?, ?)",
-			{ uuid, game_id, version, name, reload, observers, is_public, has_password });
+		const std::string query = "INSERT INTO `"+db_game_info_table_+"` "
+			"(INSTANCE_UUID, GAME_ID, INSTANCE_VERSION, GAME_NAME, RELOAD, OBSERVERS, PUBLIC, PASSWORD, COMPETITIVE_GAME_ID) "
+			"VALUES(?, ?, ?, ?, ?, ?, ?, ?, NULLIF(?, ''))";
+		modify(connection_, query,
+			{ uuid, game_id, version, name, reload, observers, is_public, has_password, competitive_game_id });
 	}
 	catch(const mariadb::exception::base& e)
 	{
 		log_sql_exception("Failed to insert game info row for UUID `"+uuid+"` and game ID `"+std::to_string(game_id)+"`", e);
+	}
+}
+
+void dbconn::insert_competitive_game(const std::string& competitive_game_id, const std::string& mode, const std::string& tournament_id, const std::string& tournament_game_id, const std::string& resume_token_hash)
+{
+	// The plaintext resume token never reaches this method; only its digest is
+	// stored so a database read does not grant resume authorization.
+	try
+	{
+		const std::string query =
+			"INSERT INTO competitive_game "
+			"(COMPETITIVE_GAME_ID, MODE, TOURNAMENT_ID, TOURNAMENT_GAME_ID, RESUME_TOKEN_HASH) "
+			"VALUES(?, ?, ?, ?, ?)";
+		modify(connection_, query,
+			{ competitive_game_id, mode, tournament_id, tournament_game_id, resume_token_hash });
+	}
+	catch(const mariadb::exception::base& e)
+	{
+		log_sql_exception("Failed to insert competitive game `"+competitive_game_id+"`", e);
+	}
+}
+
+void dbconn::update_competitive_player(const std::string& competitive_game_id, int side_number, const std::string&, const std::string& status, const std::string& reason)
+{
+	try
+	{
+		// A disconnect or controller change must not erase a terminal outcome already
+		// detected by the server. Terminal updates may replace a transient state,
+		// while transient updates are ignored after a side is defeated or surrendered.
+		const bool terminal_status = status == "defeated" || status == "surrendered" || status == "victory";
+		const std::string terminal_guard = terminal_status ? "" : " AND STATUS NOT IN ('defeated', 'surrendered', 'victory')";
+		// USER_NAME is the immutable original owner of the side. Lifecycle
+		// transitions must never replace it with a later controller or quitter.
+		const std::string query = "UPDATE competitive_game_player SET STATUS = ?, STATUS_REASON = ? "
+			"WHERE COMPETITIVE_GAME_ID = ? AND SIDE_NUMBER = ?" + terminal_guard;
+		modify(connection_, query,
+			{ status, reason, competitive_game_id, side_number });
+	}
+	catch(const mariadb::exception::base& e)
+	{
+		log_sql_exception("Failed to update side " + std::to_string(side_number) + " in competitive game `" + competitive_game_id + "`", e);
+	}
+}
+
+void dbconn::insert_competitive_player(const std::string& competitive_game_id, int side_number, const std::string& username, bool starter, const std::string& wesnoth_team_id, const std::string& tournament_team_id)
+{
+	// This row is created once per side. Later lifecycle updates change only the
+	// status and reason, preserving the original player/team assignment.
+	try
+	{
+		const std::string query =
+			"INSERT INTO competitive_game_player "
+			"(COMPETITIVE_GAME_ID, SIDE_NUMBER, USER_NAME, STARTER, WESNOTH_TEAM_ID, TOURNAMENT_TEAM_ID) "
+			"VALUES(?, ?, ?, ?, ?, ?)";
+		modify(connection_, query,
+			{ competitive_game_id, side_number, username, starter, wesnoth_team_id, tournament_team_id });
+	}
+	catch(const mariadb::exception::base& e)
+	{
+		log_sql_exception("Failed to insert side " + std::to_string(side_number) + " in competitive game `" + competitive_game_id + "`", e);
+	}
+}
+
+void dbconn::insert_competitive_save(const std::string& competitive_game_id, const std::string& uuid, int game_id, const std::string& username, const std::string& kind)
+{
+	try
+	{
+		const std::string query =
+			"INSERT INTO competitive_game_save "
+			"(COMPETITIVE_GAME_ID, INSTANCE_UUID, GAME_ID, USER_NAME, SAVE_KIND) "
+			"VALUES(?, ?, ?, ?, ?)";
+		modify(connection_, query,
+			{ competitive_game_id, uuid, game_id, username, kind });
+	}
+	catch(const mariadb::exception::base& e)
+	{
+		log_sql_exception("Failed to record a save for competitive game `" + competitive_game_id + "`", e);
+	}
+}
+
+config dbconn::competitive_game_resume_info(const std::string& competitive_game_id, const std::string& resume_token_hash)
+{
+	// A valid token identifies the stored lifecycle, but does not by itself make
+	// a completed game resumable; the caller still applies the returned status.
+	config result;
+	try
+	{
+		const std::string query =
+			"SELECT STATUS, MODE, TOURNAMENT_ID, TOURNAMENT_GAME_ID "
+			"FROM competitive_game "
+			"WHERE COMPETITIVE_GAME_ID = ? AND RESUME_TOKEN_HASH = ?";
+		mariadb::result_set_ref rows = select(connection_, query,
+			{ competitive_game_id, resume_token_hash });
+		if(rows->next()) {
+			result["valid"] = true;
+			result["status"] = rows->get_string("STATUS");
+			result["mode"] = rows->get_string("MODE");
+			result["tournament_id"] = rows->get_string("TOURNAMENT_ID");
+			result["tournament_game_id"] = rows->get_string("TOURNAMENT_GAME_ID");
+		}
+		return result;
+	}
+	catch(const mariadb::exception::base& e)
+	{
+		log_sql_exception("Failed to validate resume metadata for competitive game `" + competitive_game_id + "`", e);
+		return {};
+	}
+}
+
+bool dbconn::competitive_game_players_match(const std::string& competitive_game_id, const std::vector<std::pair<int, std::string>>& players)
+{
+	// Reload validation is based on the starter sides and exact side numbers;
+	// usernames are compared case-insensitively to match account semantics.
+	try
+	{
+		const std::string starter_count_query =
+			"SELECT COUNT(*) FROM competitive_game_player "
+			"WHERE COMPETITIVE_GAME_ID = ? AND STARTER = 1";
+		if(get_single_long(connection_, starter_count_query, { competitive_game_id }) != static_cast<long>(players.size())) {
+			return false;
+		}
+		for(const auto& [side_number, username] : players) {
+			const std::string player_query =
+				"SELECT 1 FROM competitive_game_player "
+				"WHERE COMPETITIVE_GAME_ID = ? AND SIDE_NUMBER = ? "
+				"AND STARTER = 1 AND UPPER(USER_NAME) = UPPER(?)";
+			if(!exists(connection_, player_query,
+				{ competitive_game_id, side_number, username })) {
+				return false;
+			}
+		}
+		return true;
+	}
+	catch(const mariadb::exception::base& e)
+	{
+		log_sql_exception("Failed to validate players for competitive game `" + competitive_game_id + "`", e);
+		return false;
+	}
+}
+
+void dbconn::complete_competitive_game(const std::string& competitive_game_id)
+{
+	try
+	{
+		// A surrender can end the game while the surviving player is already
+		// leaving, so the client may not get a chance to report its victory.
+		// Finalize remaining sides only after a complete team has lost. A single
+		// surrender in a multi-side team game must not decide the whole match.
+		const std::string winner_query =
+			"UPDATE competitive_game_player AS winner "
+			"SET STATUS = 'victory', STATUS_REASON = 'opponent_surrendered' "
+			"WHERE COMPETITIVE_GAME_ID = ? "
+			"AND STATUS NOT IN ('defeated', 'surrendered', 'victory') "
+			"AND EXISTS ("
+				"SELECT 1 FROM competitive_game_player AS losing_side "
+				"WHERE losing_side.COMPETITIVE_GAME_ID = winner.COMPETITIVE_GAME_ID "
+				"AND losing_side.STATUS IN ('defeated', 'surrendered') "
+				"AND NOT EXISTS ("
+					"SELECT 1 FROM competitive_game_player AS teammate "
+					"WHERE teammate.COMPETITIVE_GAME_ID = losing_side.COMPETITIVE_GAME_ID "
+					"AND COALESCE(NULLIF(teammate.TOURNAMENT_TEAM_ID, ''), teammate.WESNOTH_TEAM_ID) "
+					"= COALESCE(NULLIF(losing_side.TOURNAMENT_TEAM_ID, ''), losing_side.WESNOTH_TEAM_ID) "
+					"AND teammate.STATUS NOT IN ('defeated', 'surrendered')"
+				")"
+			")";
+		modify(connection_, winner_query,
+			{ competitive_game_id });
+		// Leaving a game with only transient idle states is not a competitive
+		// result. Keep it active so the Tournament Manager can await confirmation
+		// or a later continuation from a save. Complete as soon as one complete
+		// team has a final outcome, without waiting for scenario cleanup.
+		const std::string completion_query =
+			"UPDATE competitive_game "
+			"SET STATUS = 'completed', COMPLETED_AT = CURRENT_TIMESTAMP "
+			"WHERE COMPETITIVE_GAME_ID = ? AND STATUS = 'active' "
+			"AND EXISTS ("
+				"SELECT COALESCE(NULLIF(TOURNAMENT_TEAM_ID, ''), WESNOTH_TEAM_ID) AS TEAM_ID "
+				"FROM competitive_game_player "
+				"WHERE COMPETITIVE_GAME_ID = ? "
+				"GROUP BY COALESCE(NULLIF(TOURNAMENT_TEAM_ID, ''), WESNOTH_TEAM_ID) "
+				"HAVING COUNT(*) = SUM(STATUS IN ('defeated', 'surrendered')) "
+				"OR COUNT(*) = SUM(STATUS = 'victory')"
+			")";
+		modify(connection_, completion_query,
+			{ competitive_game_id, competitive_game_id });
+	}
+	catch(const mariadb::exception::base& e)
+	{
+		log_sql_exception("Failed to complete competitive game `" + competitive_game_id + "`", e);
 	}
 }
 void dbconn::update_game_end(const std::string& uuid, int game_id, const std::string& replay_location)
@@ -793,6 +1139,9 @@ long dbconn::get_single_long(const mariadb::connection_ref& connection, const st
 			case mariadb::value::type::unsigned64:
 			case mariadb::value::type::signed64:
 				return rslt->get_signed64(0);
+			case mariadb::value::type::double64:
+				// MariaDB 11.8 returns some aggregate expressions as DOUBLE.
+				return static_cast<long>(rslt->get_double(0));
 			default:
 				throw mariadb::exception::base("Value retrieved was not a long!");
 		}

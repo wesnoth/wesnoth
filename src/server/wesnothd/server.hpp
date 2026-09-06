@@ -30,6 +30,7 @@
 #include <boost/asio/steady_timer.hpp>
 
 #include <chrono>
+#include <map>
 #include <random>
 
 namespace wesnothd
@@ -46,6 +47,10 @@ public:
 	~server() {
 		destructed = true;
 	}
+
+	/** Accessors used by game state transitions that need competitive persistence. */
+	user_handler* get_user_handler() const { return user_handler_.get(); }
+	const std::string& database_uuid() const { return uuid_; }
 
 private:
 	void handle_new_client(socket_ptr socket);
@@ -72,6 +77,16 @@ private:
 	void handle_leave_server_queue(player_iterator p, simple_wml::node& data);
 	void disconnect_player(player_iterator player);
 	void remove_player(player_iterator player);
+	void make_session_response(simple_wml::document& response, const std::string& username, bool is_moderator);
+	/** Validate the signed metadata embedded in a competitive save or reload. */
+	bool validate_competitive_resume(const simple_wml::node& settings, config* resume_info = nullptr) const;
+	/** Validate Wesnoth-side teams against Tournament Manager assignments. */
+	bool validate_tournament_team_composition(
+		const game& g,
+		player_iterator player,
+		const std::string& tournament_id,
+		const std::string& tournament_game_id,
+		std::map<int, std::string>& tournament_team_ids) const;
 
 public:
 	template<class SocketPtr> void send_server_message(SocketPtr socket, const std::string& message, const std::string& type);
@@ -81,6 +96,13 @@ public:
 			player->socket()
 		);
 	}
+	/**
+	 * Send an informational identifier for translation by the receiving client.
+	 *
+	 * wesnothd does not know the client's locale, so competitive-play errors
+	 * must not be formatted as English text on the server.
+	 */
+	void send_localized_message(player_iterator player, const char* message_id);
 	void send_to_lobby(simple_wml::document& data, utils::optional<player_iterator> exclude = {});
 	void send_to_player(player_iterator player, simple_wml::document& data) {
 		utils::visit(
@@ -97,6 +119,14 @@ public:
 			);
 		}
 	}
+	/**
+	 * Evaluate ranked and tournament eligibility from a game's [multiplayer]
+	 * settings. This is shared by joins, staging controller changes, and
+	 * disconnect recovery so those paths enforce the same policy. If the
+	 * Tournament Manager database is unavailable, ordinary games remain allowed
+	 * while ranked and tournament games fail closed.
+	 */
+	bool user_can_join_game(const simple_wml::node& settings, const std::string& name);
 	void send_server_message_to_lobby(const std::string& message, utils::optional<player_iterator> exclude = {});
 	void send_server_message_to_all(const std::string& message, utils::optional<player_iterator> exclude = {});
 
@@ -166,6 +196,8 @@ private:
 #endif
 
 	std::string uuid_;
+	/** Secret used to authenticate competitive-save metadata. Never sent to clients. */
+	std::string competitive_resume_secret_;
 
 	const std::string config_file_;
 	config cfg_;

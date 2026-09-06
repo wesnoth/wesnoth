@@ -547,6 +547,14 @@ void game::transfer_side_control(player_iterator player, const simple_wml::node&
 		return;
 	}
 
+	// This second server-side check protects control transfers requested after
+	// staging, including chat commands and requests from older clients.
+	if(const simple_wml::node* settings = level_.root().child("multiplayer");
+		settings && !server.user_can_join_game(*settings, (*newplayer)->info().name())) {
+		server.send_localized_message(player, "side_assignment_denied");
+		return;
+	}
+
 	if(newplayer == old_player) {
 		// if the player is unchanged and the controller type (human or ai) is also unchanged then nothing to do
 		// else only need to change the controller type rather than the player who controls the side
@@ -1453,6 +1461,19 @@ bool game::remove_player(player_iterator player, const bool disconnect, const bo
 
 	DBG_GAME << debug_player_info();
 	DBG_GAME << "removing player...";
+	// Preserve the transient idle state in the competitive record before the
+	// player is removed from the side list. Terminal outcomes are protected by
+	// dbconn and cannot be overwritten by this disconnect update.
+	if(const simple_wml::node* settings = level_.root().child("multiplayer"); settings && server.get_user_handler()) {
+		const std::string competitive_game_id = settings->attr("ranked_game_id").to_string();
+		if(!competitive_game_id.empty()) {
+			for(std::size_t side_index = 0; side_index < sides_.size(); ++side_index) {
+				if(sides_[side_index] == player) {
+					server.get_user_handler()->db_update_competitive_player(competitive_game_id, static_cast<int>(side_index + 1), player->info().name(), "idle", disconnect ? "disconnect" : "leave");
+				}
+			}
+		}
+	}
 
 	const bool host = (player == owner_);
 	const bool observer = is_observer(player);
@@ -1519,7 +1540,15 @@ bool game::remove_player(player_iterator player, const bool disconnect, const bo
 			ai_transfer = true;
 		}
 
-		change_controller(side_index, owner_, username(owner_));
+		// A departing player normally transfers their side to the host. Do not
+		// grant that side to an ineligible host: leave it idle instead.
+		if(const simple_wml::node* settings = level_.root().child("multiplayer");
+			settings && !server.user_can_join_game(*settings, owner_->info().name())) {
+			sides_[side_index].reset();
+			side_controllers_[side_index] = side_controller::type::none;
+		} else {
+			change_controller(side_index, owner_, username(owner_));
+		}
 
 		// Check whether the host is actually a player and make him one if not.
 		if(!is_player(owner_)) {
@@ -1563,6 +1592,9 @@ void game::send_user_list(utils::optional<player_iterator> exclude)
 
 	simple_wml::document cfg;
 	simple_wml::node& list = cfg.root();
+	// The complete user list doubles as an authorization snapshot for staging.
+	// `eligible_for_side` deliberately covers both ranked and tournament rules.
+	const simple_wml::node* settings = level_.root().child("multiplayer");
 
 	for(auto pl : all_game_users()) {
 		simple_wml::node& user = list.add_child("user");
@@ -1572,6 +1604,8 @@ void game::send_user_list(utils::optional<player_iterator> exclude)
 		user.set_attr_dup("name", pl->info().name().c_str());
 		user.set_attr("host", is_owner(pl) ? "yes" : "no");
 		user.set_attr("observer", is_observer(pl) ? "yes" : "no");
+		const bool eligible_for_side = !settings || server.user_can_join_game(*settings, pl->info().name());
+		user.set_attr("eligible_for_side", eligible_for_side ? "yes" : "no");
 	}
 
 	send_data(cfg, exclude);

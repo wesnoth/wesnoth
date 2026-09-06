@@ -26,6 +26,7 @@
 #include <vector>
 
 // class player;
+class user_handler;
 
 namespace wesnothd
 {

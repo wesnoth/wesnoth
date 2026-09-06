@@ -23,6 +23,7 @@
 #include "config.hpp"
 
 #include <boost/asio/post.hpp>
+#include <boost/asio/system_executor.hpp>
 
 #include <cstdlib>
 #include <sstream>
@@ -229,16 +230,79 @@ std::string fuh::get_tournaments(){
 	return conn_.get_tournaments();
 }
 
+// Expose the player's pending tournament games through user_handler.
+config fuh::get_player_tournaments(const std::string& name){
+	// Keep tournament policy in dbconn; this handler only exposes it through
+	// the server-wide user_handler interface.
+	return conn_.get_player_tournaments(name);
+}
+
+// Delegate host eligibility and the tournament mode lookup to dbconn.
+bool fuh::can_create_tournament_game(const std::string& name, const std::string& tournament_id, const std::string& tournament_game_id, bool& ranked){
+	return conn_.can_create_tournament_game(name, tournament_id, tournament_game_id, ranked);
+}
+
+// Delegate ranked-access verification to the Tournament Manager database.
+bool fuh::is_ranked_user(const std::string& name){
+	return conn_.is_ranked_user(name);
+}
+
+// Delegate tournament-game join authorization to dbconn.
+bool fuh::can_join_tournament(const std::string& name, const std::string& tournament_id, const std::string& tournament_game_id){
+	return conn_.can_join_tournament(name, tournament_id, tournament_game_id);
+}
+
+std::string fuh::db_get_tournament_team_id(const std::string& tournament_id, const std::string& tournament_game_id, const std::string& name){
+	// Keep Tournament Manager lookup and SQL connection details inside dbconn.
+	return conn_.get_tournament_team_id(tournament_id, tournament_game_id, name);
+}
+
+bool fuh::db_competitive_tournament_game_exists(const std::string& tournament_id, const std::string& tournament_game_id){
+	// The handler exposes the local duplicate check to the Wesnoth server while
+	// leaving the query and database ownership in dbconn.
+	return conn_.competitive_tournament_game_exists(tournament_id, tournament_game_id);
+}
+
 void fuh::async_get_and_send_game_history(boost::asio::io_context& io_service, wesnothd::server& s, any_socket_ptr socket, int player_id, int offset, std::string& search_game_name, int search_content_type, std::string& search_content) {
-	boost::asio::post([this, &s, socket, player_id, offset, &io_service, search_game_name, search_content_type, search_content] {
+	boost::asio::post(boost::asio::system_executor{}, [this, &s, socket, player_id, offset, &io_service, search_game_name, search_content_type, search_content] {
 		boost::asio::post(io_service, [socket, &s, doc = conn_.get_game_history(player_id, offset, search_game_name, search_content_type, search_content)]{
 			s.send_to_player(socket, *doc);
 		});
 	 });
 }
 
-void fuh::db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, int reload, int observers, int is_public, int has_password){
-	conn_.insert_game_info(uuid, game_id, version, name, reload, observers, is_public, has_password);
+void fuh::db_insert_game_info(const std::string& uuid, int game_id, const std::string& version, const std::string& name, int reload, int observers, int is_public, int has_password, const std::string& competitive_game_id){
+	conn_.insert_game_info(uuid, game_id, version, name, reload, observers, is_public, has_password, competitive_game_id);
+}
+
+void fuh::db_insert_competitive_game(const std::string& competitive_game_id, const std::string& mode, const std::string& tournament_id, const std::string& tournament_game_id, const std::string& resume_token_hash){
+	// Competitive lifecycle policy remains in dbconn; this class only adapts the
+	// server-wide user_handler interface.
+	conn_.insert_competitive_game(competitive_game_id, mode, tournament_id, tournament_game_id, resume_token_hash);
+}
+
+void fuh::db_update_competitive_player(const std::string& competitive_game_id, int side_number, const std::string& username, const std::string& status, const std::string& reason){
+	conn_.update_competitive_player(competitive_game_id, side_number, username, status, reason);
+}
+
+void fuh::db_insert_competitive_player(const std::string& competitive_game_id, int side_number, const std::string& username, bool starter, const std::string& wesnoth_team_id, const std::string& tournament_team_id){
+	conn_.insert_competitive_player(competitive_game_id, side_number, username, starter, wesnoth_team_id, tournament_team_id);
+}
+
+void fuh::db_insert_competitive_save(const std::string& competitive_game_id, const std::string& uuid, int game_id, const std::string& username, const std::string& kind){
+	conn_.insert_competitive_save(competitive_game_id, uuid, game_id, username, kind);
+}
+
+config fuh::db_competitive_game_resume_info(const std::string& competitive_game_id, const std::string& resume_token_hash){
+	return conn_.competitive_game_resume_info(competitive_game_id, resume_token_hash);
+}
+
+bool fuh::db_competitive_game_players_match(const std::string& competitive_game_id, const std::vector<std::pair<int, std::string>>& players){
+	return conn_.competitive_game_players_match(competitive_game_id, players);
+}
+
+void fuh::db_complete_competitive_game(const std::string& competitive_game_id){
+	conn_.complete_competitive_game(competitive_game_id);
 }
 
 void fuh::db_update_game_end(const std::string& uuid, int game_id, const std::string& replay_location){
@@ -258,7 +322,7 @@ void fuh::db_set_oos_flag(const std::string& uuid, int game_id){
 }
 
 void fuh::async_test_query(boost::asio::io_context& io_service, int limit) {
-	boost::asio::post([this, limit, &io_service] {
+	boost::asio::post(boost::asio::system_executor{}, [this, limit, &io_service] {
 		ERR_UH << "async test query starts!";
 		int i = conn_.async_test_query(limit);
 		boost::asio::post(io_service, [i]{ ERR_UH << "async test query output: " << i; });

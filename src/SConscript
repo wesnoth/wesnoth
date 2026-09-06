@@ -206,13 +206,13 @@ else:
 #---boost_unit_tests---
 test_sources = GetSources("boost_unit_tests")
 if env["PLATFORM"] == 'darwin':
-    boost_unit_tests = test_env.WesnothProgram("boost_unit_tests", test_sources + libwesnoth_objects, have_client_prereqs)
+    boost_unit_tests = test_env.WesnothProgram("boost_unit_tests", test_sources + libwesnoth_objects, have_client_prereqs, OBJPREFIX = "tests_")
     test_env.Append(LINKFLAGS=['-Wl,-force_load', libwesnoth_widgets])
 elif env["PLATFORM"] == 'win32':
-    boost_unit_tests = test_env.WesnothProgram("boost_unit_tests", test_sources + libwesnoth_objects, have_client_prereqs)
+    boost_unit_tests = test_env.WesnothProgram("boost_unit_tests", test_sources + libwesnoth_objects, have_client_prereqs, OBJPREFIX = "tests_")
     test_env.Append(LINKFLAGS=['-Wl,--whole-archive', libwesnoth_widgets, '-Wl,--no-whole-archive'])
 else:
-    boost_unit_tests = test_env.WesnothProgram("boost_unit_tests", test_sources + libwesnoth_objects, have_client_prereqs)
+    boost_unit_tests = test_env.WesnothProgram("boost_unit_tests", test_sources + libwesnoth_objects, have_client_prereqs, OBJPREFIX = "tests_")
     test_env.Append(LINKFLAGS=['-Wl,--whole-archive', libwesnoth_widgets, '-Wl,--no-whole-archive'])
 Depends(boost_unit_tests, libwesnoth_widgets)
 #---end of getting sources---
