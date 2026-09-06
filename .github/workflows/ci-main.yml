@@ -30,8 +30,10 @@ jobs:
           ./utils/CI/utf8_bom_dog.sh
       - name: Run wmllint
         if: success() || failure()
+        shell: bash
         run: |
-          ./data/tools/wmllint --config=./data/tools/lint.toml ./data > ./wmllint.log 2>&1
+          excludes=(data/lan_server.cfg data/test/scenarios/cve_tests/test_cve_2018_1999023_2.cfg data/schema data/languages data/test/test/filesystem/enum)
+          data/tools/wmllint "${excludes[@]/*/--exclude=^&$}" data/ > ./wmllint.log 2>&1
           if [ "$(wc -l < wmllint.log)" != "0" ]; then cat wmllint.log; exit 1; fi
       - name: Whitespace and WML indentation check
         if: success() || failure()
