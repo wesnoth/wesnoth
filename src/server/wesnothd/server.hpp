@@ -137,11 +137,12 @@ private:
 
 	struct queue_info
 	{
-		queue_info(int id, const std::string& name, int required, config game)
+		queue_info(int id, const std::string& name, int required, std::string addons, config game)
 		: id(id)
 		, display_name(name)
 		, players_required(required)
 		, players_in_queue()
+		, required_addons(addons)
 		, settings(game)
 		{
 
@@ -151,6 +152,7 @@ private:
 		std::string display_name;
 		std::size_t players_required;
 		std::vector<std::string> players_in_queue;
+		std::string required_addons;
 		config settings;
 	};
 

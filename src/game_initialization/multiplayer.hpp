@@ -33,6 +33,7 @@ struct queue_info
 	std::string display_name;
 	int players_required;
 	std::set<std::string> current_players;
+	std::set<std::string> required_addons;
 };
 
 /** Max length of a player name. */

@@ -37,6 +37,7 @@
 #include "gui/dialogs/multiplayer/match_history.hpp"
 
 #include "addon/client.hpp"
+#include "addon/manager.hpp"
 #include "addon/manager_ui.hpp"
 #include "chat_log.hpp"
 #include "desktop/open.hpp"
@@ -729,6 +730,27 @@ void mp_lobby::join_queue()
 	const std::vector<mp::queue_info>& queues = mp::get_server_queues();
 	if(queues.size() > static_cast<std::size_t>(queues_listbox->get_selected_row())) {
 		const mp::queue_info& queue = queues[queues_listbox->get_selected_row()];
+
+		std::vector<std::string> installed = installed_addons();
+		std::vector<mp::game_info::required_addon> missing;
+		for(const std::string& required : queue.required_addons) {
+			if(!utils::contains(installed, required)) {
+				mp::game_info::required_addon req;
+				req.addon_id = required;
+				req.message = required;
+				req.outcome = mp::game_info::addon_req::NEED_DOWNLOAD;
+				missing.emplace_back(req);
+			}
+		}
+
+		if(!missing.empty()) {
+			if(handle_addon_requirements_gui(missing, mp::game_info::addon_req::NEED_DOWNLOAD)) {
+				set_retval(RELOAD_CONFIG);
+			} else {
+				return;
+			}
+		}
+
 		mp::send_to_server(config{"join_server_queue", config{"queue_id", queue.id}});
 	} else {
 		ERR_LB << "Attempted to join queue but couldn't find queue info";
@@ -868,6 +890,9 @@ void mp_lobby::process_network_data(const config& data)
 						}
 						if(queue_update->has_attribute("current_players")){
 							info.current_players = utils::split_set(queue_update["current_players"].str());
+						}
+						if(queue_update->has_attribute("addons")){
+							info.required_addons = utils::split_set(queue_update["addons"].str());
 						}
 					} else {
 						continue;
