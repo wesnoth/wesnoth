@@ -73,13 +73,13 @@ std::string format_time_summary(const std::chrono::system_clock::time_point& t)
 
 	auto as_time_t = std::chrono::system_clock::to_time_t(now);
 	std::tm current_time{};
-	if(utils::localtime_r(&current_time, &as_time_t) == nullptr) {
+	if(utils::localtime_r(&as_time_t, &current_time) == nullptr) {
 		return "";
 	}
 
 	as_time_t = std::chrono::system_clock::to_time_t(t);
 	std::tm save_time{};
-	if(utils::localtime_r(&save_time, &as_time_t) == nullptr) {
+	if(utils::localtime_r(&as_time_t, &save_time) == nullptr) {
 		return "";
 	}
 

@@ -171,7 +171,7 @@ inline std::vector<T> from_range(Range&& range)
  * Portable, re-entrant/thread-safe replacement for std::localtime(), which returns a pointer
  * to a statically-allocated buffer shared across all callers (and threads).
  */
-inline std::tm* localtime_r(std::tm* result, const std::time_t* time)
+inline std::tm* localtime_r(const std::time_t* time, std::tm* result)
 {
 #ifdef _WIN32
 	return ::localtime_s(result, time) == 0 ? result : nullptr;
