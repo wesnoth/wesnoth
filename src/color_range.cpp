@@ -114,6 +114,7 @@ std::string color_range::debug() const
 	  << ',' << max_.to_hex_string()
 	  << ',' << min_.to_hex_string()
 	  << ',' << rep_.to_hex_string()
+	  << ',' << font_color_.to_hex_string()
 	  << '}';
 
 	return o.str();
