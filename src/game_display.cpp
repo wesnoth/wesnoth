@@ -20,6 +20,7 @@
 
 #include "game_display.hpp"
 
+#include <cmath>
 #include <utility>
 
 
@@ -368,6 +369,36 @@ std::vector<texture> footsteps_images(const map_location& loc, const pathfind::m
 	return res;
 }
 
+/**
+ * Zoomed out, the prints are easily lost in the terrain.
+ * Boost visibility by blitting them repeatedly, fading the extra passes in as the map zooms out.
+ */
+struct zoom_boost_step_renderer
+{
+	std::vector<texture> images;
+
+	void operator()(const rect& dest) const {
+		// The zoom levels roughly double in size, so ramp in octaves to keep the steps even
+		constexpr double ramp_start = 216.0; // hex size where strengthening starts
+		constexpr double ramp_octaves = 3.7548; // log2(216/16), normalizes the ramp to 0-1
+
+		const double boost = std::clamp(std::log2(ramp_start / display::hex_size()) / ramp_octaves, 0.0, 1.0);
+
+		for(texture t : images) {
+			draw::blit(t, dest);
+
+			if(boost <= 0.0) {
+				continue;
+			}
+
+			t.set_alpha_mod(static_cast<uint8_t>(boost * 255));
+			draw::blit(t, dest);
+			draw::blit(t, dest);
+			t.set_alpha_mod(255);
+		}
+	}
+};
+
 struct flash_fade_step_renderer
 {
 	std::vector<texture> images;
@@ -486,11 +517,8 @@ void game_display::draw_hex(const map_location& loc)
 			// Draw standard footsteps for the current turn's route.
 			std::vector<texture> footstepImages = footsteps_images(loc, route_, dc_);
 			if(!footstepImages.empty()) {
-				drawing_buffer_add(drawing_layer::footsteps, loc, [images = std::move(footstepImages)](const rect& dest) {
-					for(const texture& t : images) {
-						draw::blit(t, dest);
-					}
-				});
+				drawing_buffer_add(drawing_layer::footsteps, loc,
+					zoom_boost_step_renderer{ std::move(footstepImages) });
 			}
 
 			// Draw the flash fade effect for queued (future turn) moves.
