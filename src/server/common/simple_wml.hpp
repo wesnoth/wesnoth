@@ -24,6 +24,7 @@
 #include <vector>
 
 #include "exceptions.hpp"
+#include "tstring.hpp"
 
 namespace simple_wml {
 
@@ -101,6 +102,11 @@ public:
 	bool to_bool(bool default_value=false) const;
 	int to_int() const;
 	std::string to_string() const;
+	t_string to_tstring() const;
+	
+	bool is_bool() const;
+	bool is_int() const;
+	bool is_tstring() const;
 
 	//returns a duplicate of the string span in a new[] allocated buffer
 	char* duplicate() const;
@@ -151,6 +157,7 @@ public:
 	node& set_attr_esc(const char* key, string_span value);
 
 	node& set_attr_int(const char* key, int value);
+	node& set_attr_tstring(const char* key, const t_string& value);
 
 	node& add_child(const char* name);
 	node& add_child_at(const char* name, std::size_t index);
@@ -284,6 +291,14 @@ public:
 
 	node& set_attr_dup(const char* key, const char* value) {
 		return root().set_attr_dup(key, value);
+	}
+	
+	node& set_attr_int(const char* key, int value) {
+		return root().set_attr_int(key, value);
+	}
+	
+	node& set_attr_tstring(const char* key, const t_string& value) {
+		return root().set_attr_tstring(key, value);
 	}
 
 	void take_ownership_of_buffer(char* buffer) {
