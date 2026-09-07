@@ -243,11 +243,12 @@ public:
 		std::vector<config> items_;
 	};
 
-	explicit theme(const config& cfg, const rect& screen);
+	explicit theme(std::shared_ptr<config> cfg, const rect& screen);
 	theme(const theme&) = delete;
 	theme& operator=(const theme&) = delete;
 	theme& operator=(theme&&) noexcept = default;
 
+	void reset(std::shared_ptr<config> cfg, const rect& screen);
 	bool set_resolution(const rect& screen);
 	void modify(const config &cfg);
 
@@ -289,12 +290,16 @@ private:
 	void remove_object(const std::string& id);
 	void set_object_location(theme::object& element, const std::string& rect_str, std::string ref_id);
 
-	//notify observers that the theme has been rebuilt completely
+	config& cfg()
+	{
+		return *cfg_;
+	}
+	// notify observers that the theme has been rebuilt completely
 	//atm this is used for replay_controller to add replay controls to the standard theme
 	events::generic_event theme_reset_event_;
 
 	std::string cur_theme;
-	config cfg_;
+	std::shared_ptr<config> cfg_;
 	std::vector<panel> panels_;
 	std::vector<label> labels_;
 	std::vector<menu> menus_;
@@ -313,14 +318,14 @@ private:
 	rect screen_dimensions_;
 	std::size_t cur_spec_width_, cur_spec_height_;
 
-	static inline std::map<std::string, config> known_themes{};
+	static inline std::map<std::string, std::shared_ptr<config>> known_themes{};
 
 public:
 	/** Copies the theme configs from the main game config. */
 	static void set_known_themes(const game_config_view* cfg);
 
 	/** Returns the saved config for the theme with the given ID. */
-	NOT_DANGLING static const config& get_theme_config(const std::string& id);
+	NOT_DANGLING static std::shared_ptr<config> get_theme_config(const std::string& id);
 
 	/** Returns minimal info about saved themes, optionally including hidden ones. */
 	static std::vector<theme_info> get_basic_theme_info(bool include_hidden = false);
