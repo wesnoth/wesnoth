@@ -108,9 +108,12 @@ static int impl_color_get(lua_State *L)
 	if(strcmp(m, "minimap") == 0) {
 		return luaW_pushsinglecolor(L, c.rep());
 	}
+	if(strcmp(m, "font_color") == 0) {
+		return luaW_pushsinglecolor(L, c.font_color());
+	}
 	// returns a string which can be used in Pango's foreground= attribute
 	if(strcmp(m, "pango_color") == 0) {
-		lua_push(L, c.mid().to_hex_string());
+		lua_push(L, c.font_color().to_hex_string());
 		return 1;
 	}
 	return 0;
@@ -118,7 +121,7 @@ static int impl_color_get(lua_State *L)
 
 static int impl_color_dir(lua_State* L)
 {
-	static const std::vector<std::string> keys{"min", "max", "mid", "minimap", "pango_color"};
+	static const std::vector<std::string> keys{"min", "max", "mid", "minimap", "font_color", "pango_color"};
 	lua_push(L, keys);
 	return 1;
 }

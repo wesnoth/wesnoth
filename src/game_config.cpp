@@ -482,16 +482,22 @@ void add_color_info(const game_config_view& v, bool build_defaults)
 			}
 		}
 
-		team_rgb_range.emplace(id, color_range(temp));
+		std::optional<color_t> font_color = std::nullopt;
+		const config::attribute_value* fc = teamC.get("font_color");
+		if(fc) {
+			font_color = color_t::from_hex_string(fc->str());
+		}
+
+		team_rgb_range.emplace(id, color_range(temp, font_color));
 		team_rgb_name.emplace(id, teamC["name"].t_str());
 
 		LOG_NG << "registered color range '" << id << "': " << team_rgb_range[id].debug();
 
-		// Generate palette of same name;
+		// Generate palette of same name:
 		team_rgb_colors.emplace(id, generate_reference_palette(team_rgb_range[id]));
 
 		if(build_defaults && teamC["default"].to_bool()) {
-			default_colors.push_back(*a1);
+			default_colors.push_back(id);
 		}
 	}
 
@@ -536,7 +542,7 @@ const color_range& color_info(std::string_view name)
 		}
 	}
 
-	team_rgb_range.emplace(name, color_range(temp));
+	team_rgb_range.emplace(name, color_range(temp, std::nullopt));
 	return color_info(name);
 }
 

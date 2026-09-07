@@ -19,6 +19,7 @@ class config;
 class color_range;
 
 #include "color.hpp"
+#include "color_range.hpp"
 #include "tstring.hpp"
 #include "game_config_view.hpp"
 
@@ -161,8 +162,18 @@ namespace game_config
 	 */
 	extern std::map<std::string, color_range, std::less<>> team_rgb_range;
 	extern std::map<std::string, t_string, std::less<>> team_rgb_name;
+	/**
+	 * For colors defined by WML [color_range] tags, the palettes for team-based recoloring.
+	 *
+	 * This is data calculated from the color_range structs, but isn't in those structs,
+	 * allowing them to be Plain Old Data.
+	 */
 	extern std::map<std::string, std::vector<color_t>, std::less<>> team_rgb_colors;
 
+	/**
+	 * The [color_range]id= attributes, equivalently the keys in the team_rgb_* maps,
+	 * for which [color_range]default=yes.
+	 */
 	extern std::vector<std::string> default_colors;
 
 	/**

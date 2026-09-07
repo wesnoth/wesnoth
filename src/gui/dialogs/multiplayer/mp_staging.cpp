@@ -304,13 +304,14 @@ void mp_staging::add_side_node(const ng::side_engine_ptr& side)
 	std::vector<config> color_options;
 	for(const auto& color_opt : side->color_options()) {
 		auto name = game_config::team_rgb_name.find(color_opt);
-		auto color = game_config::team_rgb_colors.find(color_opt);
+		auto color = game_config::team_rgb_range.find(color_opt);
 		auto team_color = _("Invalid Color");
 
-		if (name != game_config::team_rgb_name.end() && color != game_config::team_rgb_colors.end()) {
-			team_color = markup::span_color(color->second[0], name->second);
+		if (name != game_config::team_rgb_name.end() && color != game_config::team_rgb_range.end()) {
+			team_color = markup::span_color(color->second.font_color(), name->second);
 		}
 
+		// The name will be in the font_color shade, but the icon will be in the mid() shade, like a recolored unit
 		color_options.emplace_back(
 			"label", team_color,
 			"icon", (formatter() << "misc/status.png~RC(magenta>" << color_opt << ")").str()

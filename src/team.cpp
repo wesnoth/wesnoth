@@ -937,7 +937,7 @@ color_range team::get_side_color_range(int side)
 		return iter->second;
 	}
 
-	return color_range({255, 0, 0}, {255, 255, 255}, {0, 0, 0}, {255, 0, 0});
+	return color_range({255, 0, 0}, {255, 255, 255}, {0, 0, 0}, {255, 0, 0}, {255, 0, 0});
 }
 
 color_t team::get_side_color(int side)
@@ -950,6 +950,11 @@ color_t team::get_minimap_color(int side)
 	// Note: use mid() instead of rep() unless
 	// high contrast is needed over a map or minimap!
 	return get_side_color_range(side).rep();
+}
+
+color_t team::get_font_color(int side)
+{
+	return get_side_color_range(side).font_color();
 }
 
 std::string team::get_side_color_id(unsigned side)
