@@ -134,7 +134,7 @@ private:
 	typedef boost::asio::ip::tcp::resolver resolver;
 	resolver resolver_;
 
-	boost::asio::ssl::context tls_context_ { boost::asio::ssl::context::sslv23 };
+	boost::asio::ssl::context tls_context_ { boost::asio::ssl::context::tlsv13_client };
 
 	typedef std::unique_ptr<boost::asio::ip::tcp::socket> raw_socket;
 	typedef std::unique_ptr<boost::asio::ssl::stream<raw_socket::element_type>> tls_socket;

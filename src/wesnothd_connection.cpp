@@ -65,7 +65,7 @@ wesnothd_connection::wesnothd_connection(const std::string& host, const std::str
 	: worker_thread_()
 	, io_context_()
 	, resolver_(io_context_)
-	, tls_context_(boost::asio::ssl::context::sslv23)
+	, tls_context_(boost::asio::ssl::context::tlsv13_client)
 	, host_(host)
 	, service_(service)
 	, use_tls_(true)
