@@ -1164,7 +1164,7 @@ void game::handle_add_side_wml()
 
 void game::handle_controller_choice(const simple_wml::node& req)
 {
-	const std::size_t side_index = req["side"].to_int() - 1;
+	const std::size_t side_index = static_cast<std::size_t>(req["side"].to_int()) - 1;
 	auto new_controller = side_controller::get_enum(req["new_controller"].to_string());
 	auto old_controller = side_controller::get_enum(req["old_controller"].to_string());
 
@@ -1180,15 +1180,15 @@ void game::handle_controller_choice(const simple_wml::node& req)
 		return;
 	}
 
-	if(old_controller != this->side_controllers_[side_index]) {
-		send_and_record_server_message(
-			"Found unexpected old_controller= '" + side_controller::get_string(*old_controller) + "' in [request_choice] [change_controller]");
-	}
-
-	if(side_index >= sides_.size()) {
+	if(side_index >= sides_.size() || side_index >= side_controllers_.size()) {
 		send_and_record_server_message(
 			"Could not handle [request_choice] [change_controller] with invalid side '" + req["side"].to_string() + "'");
 		return;
+	}
+
+	if(old_controller != this->side_controllers_[side_index]) {
+		send_and_record_server_message(
+			"Found unexpected old_controller= '" + side_controller::get_string(*old_controller) + "' in [request_choice] [change_controller]");
 	}
 
 	const bool was_null = this->side_controllers_[side_index] == side_controller::type::none;
