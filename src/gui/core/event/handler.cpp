@@ -1266,6 +1266,9 @@ std::ostream& operator<<(std::ostream& stream, const ui_event event)
 		case SDL_TOUCH_MULTI_GESTURE:
 			stream << "SDL multi-touch gesture";
 			break;
+		case SDL_LONG_TOUCH:
+			stream << "SDL long touch";
+			break;
 		case SDL_RAW_EVENT:
 			stream << "SDL raw event";
 			break;
