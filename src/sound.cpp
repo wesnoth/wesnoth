@@ -332,20 +332,13 @@ bool track_ok(const std::string& id)
  */
 utils::optional<std::size_t> random_next_track_index()
 {
-	using iterator = decltype(current_track_list)::const_iterator;
-	auto indices = std::vector<iterator>(current_track_list.size());
-
-#ifdef __cpp_lib_ranges_iota
-	std::ranges::iota(indices, current_track_list.cbegin());
-	std::ranges::shuffle(indices, randomness::rng::default_instance());
-#else
-	std::iota(indices.begin(), indices.end(), current_track_list.cbegin());
+	auto indices = std::vector<std::size_t>(current_track_list.size());
+	std::iota(indices.begin(), indices.end(), 0);
 	std::shuffle(indices.begin(), indices.end(), randomness::rng::default_instance());
-#endif
 
-	for(const iterator& candidate : indices) {
-		if(track_ok((*candidate)->file_path())) {
-			return std::distance(current_track_list.cbegin(), candidate);
+	for(const auto i : indices) {
+		if(track_ok(current_track_list[i]->file_path())) {
+			return i;
 		}
 	}
 
