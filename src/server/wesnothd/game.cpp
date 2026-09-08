@@ -1929,10 +1929,14 @@ std::string game::debug_sides_info() const
 	result << "\t\t level, server\n";
 
 	for(const simple_wml::node* s : sides) {
+		const int side_number = (*s)["side"].to_int();
+		const std::size_t side_index = side_number > 0 ? static_cast<std::size_t>(side_number - 1) : side_controllers_.size();
+		const std::string side_controller = side_index < side_controllers_.size() ? side_controller::get_string(side_controllers_[side_index]) : "<invalid side>";
+
 		result
-			<< "side " << (*s)["side"].to_int()
+			<< "side " << side_number
 			<< " :\t" << (*s)["controller"].to_string()
-			<< "\t, " << side_controller::get_string(side_controllers_[(*s)["side"].to_int() - 1])
+			<< "\t, " << side_controller
 			<< "\t( " << (*s)["current_player"].to_string() << " )\n";
 	}
 
