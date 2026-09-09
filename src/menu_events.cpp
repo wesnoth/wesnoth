@@ -50,8 +50,10 @@
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/statistics_dialog.hpp"
 #include "gui/dialogs/terrain_layers.hpp"
+#include "gui/dialogs/title_screen.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/units_dialog.hpp"
+#include "gui/gui.hpp"
 #include "gui/widgets/retval.hpp"
 #include "help/help.hpp"
 #include "log.hpp"
@@ -204,8 +206,12 @@ void menu_handler::save_map()
 
 void menu_handler::preferences()
 {
-	// Causes MSVC ambiguity
-	gui2::dialogs::preferences_dialog::display();
+	gui2::dialogs::preferences_dialog pref_dlg;
+	pref_dlg.show();
+	if(pref_dlg.get_retval() == gui2::dialogs::title_screen::RELOAD_UI) {
+		gui2::switch_theme(prefs::get().gui2_theme());
+	}
+
 	// Needed after changing fullscreen/windowed mode or display resolution
 	gui_->queue_rerender();
 }

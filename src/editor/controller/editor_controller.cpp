@@ -36,8 +36,10 @@
 #include "gui/dialogs/file_dialog.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
+#include "gui/dialogs/title_screen.hpp"
 #include "gui/dialogs/units_dialog.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "gui/gui.hpp"
 
 #include "preferences/preferences.hpp"
 #include "resources.hpp"
@@ -1302,7 +1304,12 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, const po
 void editor_controller::preferences()
 {
 	gui_->clear_help_string();
-	gui2::dialogs::preferences_dialog::display();
+
+	gui2::dialogs::preferences_dialog pref_dlg;
+	pref_dlg.show();
+	if(pref_dlg.get_retval() == gui2::dialogs::title_screen::RELOAD_UI) {
+		gui2::switch_theme(prefs::get().gui2_theme());
+	}
 
 	gui_->queue_rerender();
 }

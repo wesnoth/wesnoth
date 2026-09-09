@@ -22,6 +22,7 @@
 #include "gui/dialogs/multiplayer/mp_join_game_password_prompt.hpp"
 #include "gui/dialogs/multiplayer/player_info.hpp"
 #include "gui/dialogs/preferences_dialog.hpp"
+#include "gui/dialogs/title_screen.hpp"
 
 #include "gui/core/timer.hpp"
 #include "gui/widgets/button.hpp"
@@ -595,6 +596,7 @@ void mp_lobby::pre_show()
 	keyboard_capture(chatbox_);
 
 	chatbox_->set_active_window_changed_callback([this]() { player_list_dirty_ = true; });
+	chatbox_->set_theme_reload_callback([this]() { set_retval(RELOAD_UI); });
 	chatbox_->load_log(default_chat_log, true);
 
 	find_widget<button>("create").set_retval(CREATE);
@@ -1039,7 +1041,12 @@ void mp_lobby::refresh_lobby()
 
 void mp_lobby::show_preferences_button_callback()
 {
-	gui2::dialogs::preferences_dialog::display();
+	gui2::dialogs::preferences_dialog pref_dlg;
+	pref_dlg.show();
+	if(pref_dlg.get_retval() == gui2::dialogs::title_screen::RELOAD_UI) {
+		set_retval(RELOAD_UI);
+		return;
+	}
 
 	refresh_lobby();
 }

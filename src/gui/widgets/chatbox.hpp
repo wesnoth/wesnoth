@@ -83,6 +83,17 @@ public:
 		active_window_changed_callback_ = f;
 	}
 
+	void set_theme_reload_callback(const std::function<void(void)>& f)
+	{
+		theme_reload_callback_ = f;
+	}
+
+	/**
+	 * Called by chat_command_handler::do_display() after Preferences opened
+	 * via a chat command (eg /friends) closes having changed the GUI2 theme.
+	 */
+	void handle_gui2_theme_reload();
+
 	void load_log(std::map<std::string, chatroom_log>& log, bool show_lobby);
 
 protected:
@@ -132,6 +143,8 @@ private:
 	std::size_t active_window_;
 
 	std::function<void(void)> active_window_changed_callback_;
+
+	std::function<void(void)> theme_reload_callback_;
 
 	std::map<std::string, chatroom_log>* log_;
 
