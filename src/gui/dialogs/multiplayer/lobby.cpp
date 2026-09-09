@@ -1110,7 +1110,12 @@ void mp_lobby::user_dialog_callback(const mp::user_info* info)
 		chatbox_->switch_to_window(t);
 	}
 
-	selected_game_id_ = info->game_id;
+	// Only follow a player to their game if they are actually in one.
+	// Otherwise leave the current selection alone instead of losing it on refresh.
+	// GitHub #1197.
+	if(info->game_id != 0) {
+		selected_game_id_ = info->game_id;
+	}
 
 	// do not update here as it can cause issues with removing the widget
 	// from within it's event handler. Should get updated as soon as possible
