@@ -974,6 +974,13 @@ std::string team::get_side_color_id(unsigned side)
 		// is being called to set up said side data. :P
 		return game_config::default_colors.at(index);
 	} catch(const std::out_of_range&) {
+		static const std::string fallback_id = "lightred";
+
+		// Validate that the fallback color exists
+		if(utils::contains(game_config::team_rgb_range, fallback_id)) {
+			return fallback_id;
+		}
+
 		// Side index was invalid! Coloring will fail!
 		return "";
 	}
