@@ -95,7 +95,8 @@ mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& j
 	, filter_game_presets_(false)
 	, filter_text_(nullptr)
 	, selected_game_id_()
-	, player_list_(std::bind(&mp_lobby::user_dialog_callback, this, std::placeholders::_1))
+	, player_list_(std::bind(&mp_lobby::user_dialog_callback, this, std::placeholders::_1),
+		std::bind(&mp_lobby::select_game_by_player, this, std::placeholders::_1))
 	, player_list_dirty_(true)
 	, gamelist_dirty_(true)
 	, last_lobby_update_()
@@ -1035,6 +1036,21 @@ void mp_lobby::enter_selected_game(JOIN_MODE mode)
 void mp_lobby::refresh_lobby()
 {
 	mp::send_to_server(config("refresh_lobby"));
+}
+
+void mp_lobby::select_game_by_player(const mp::user_info* info)
+{
+	if(info->game_id == 0 || info->game_id == selected_game_id_) {
+		return;
+	}
+
+	for(unsigned i = 0; i < lobby_info_.games().size(); ++i) {
+		if(lobby_info_.games()[i]->id == info->game_id) {
+			gamelistbox_->select_row(i);
+			update_selected_game();
+			break;
+		}
+	}
 }
 
 void mp_lobby::show_preferences_button_callback()
