@@ -708,24 +708,23 @@ void play_music_config(const config& music_node, bool allow_interrupt_current_tr
 		playlist.clear();
 	}
 
-	auto iter = find_track(*track);
 	// Avoid 2 tracks with the same name, since that can cause an infinite loop
 	// in choose_track(), 2 tracks with the same name will always return the
 	// current track and track_ok() doesn't allow that.
-	if(iter == playlist.end()) {
+	if(find_track(*track) == playlist.end()) {
 		auto insert_at = (i >= 0 && static_cast<std::size_t>(i) < playlist.size())
 			? playlist.begin() + i
 			: playlist.end();
 
 		// Copy the track pointer so our local variable remains non-null.
-		iter = playlist.insert(insert_at, track);
+		playlist.insert(insert_at, track);
 	} else {
 		ERR_AUDIO << "tried to add duplicate track '" << track->file_path() << "'";
 	}
 
 	// They can tell us to start playing this list immediately.
 	if(track->immediate()) {
-		set_current_track(*iter);
+		set_current_track(std::move(track));
 		play_music();
 	} else if(!track->append() && !allow_interrupt_current_track && current_track) {
 		// Make sure the current track will finish first
