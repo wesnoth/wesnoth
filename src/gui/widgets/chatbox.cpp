@@ -180,17 +180,17 @@ void chatbox::chat_input_keypress_callback(const SDL_Keycode key)
 	}
 
 	case SDLK_TAB: {
-		auto* li = mp::get_lobby_info();
-		if(!li) {
-			break;
-		}
+		std::set<std::string> unique_matches(available_users_);
 
-		std::vector<std::string> matches;
-		for(const auto& ui : li->users()) {
-			if(ui.name != prefs::get().login()) {
-				matches.push_back(ui.name);
+		if(auto* li = mp::get_lobby_info()) {
+			for(const auto& ui : li->users()) {
+				unique_matches.insert(ui.name);
 			}
 		}
+
+		unique_matches.erase(prefs::get().login());
+
+		std::vector<std::string> matches(unique_matches.begin(), unique_matches.end());
 
 		const bool line_start = utils::word_completion(input, matches);
 

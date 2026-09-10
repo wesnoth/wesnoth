@@ -105,6 +105,7 @@ void mp_staging::pre_show()
 	chat.room_window_open(N_("this game"), true, false);
 	chat.active_window_changed();
 	chat.load_log(default_chat_log, false);
+	chat.set_available_users(connect_engine_.connected_users());
 
 	//
 	// Set up player list
@@ -532,11 +533,16 @@ void mp_staging::network_handler()
 	}
 
 	// Update chat
-	find_widget<chatbox>("chat").process_network_data(data);
+	chatbox& chat = find_widget<chatbox>("chat");
+	chat.process_network_data(data);
 
 	// TODO: why is this needed...
 	const bool was_able_to_start = connect_engine_.can_start_game();
 	const bool quit_signal_received = connect_engine_.process_network_data(data);
+
+	// Keep the chat's auto-completion roster synchronised with who is actually connected,
+	// since this screen no longer receives the main lobby's user list updates.
+	chat.set_available_users(connect_engine_.connected_users());
 
 	if(quit_signal_received) {
 		set_retval(retval::CANCEL);
