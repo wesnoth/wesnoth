@@ -33,6 +33,7 @@ struct queue_info
 	std::string display_name;
 	int players_required;
 	std::set<std::string> current_players;
+	std::vector<std::string> required_addons;
 };
 
 /** Max length of a player name. */
@@ -79,6 +80,9 @@ std::string get_profile_link(int user_id);
 
 /** Gets the list of server-side queues received on login */
 std::vector<queue_info>& get_server_queues();
+
+/** Gets the list of addon ids required by a queue that are not currently installed. */
+std::vector<std::string> missing_queue_addons(const queue_info& queue);
 
 /** Returns the lobby_info object for the given session. */
 class lobby_info* get_lobby_info();

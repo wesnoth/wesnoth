@@ -143,8 +143,13 @@ private:
 		, players_required(required)
 		, players_in_queue()
 		, settings(game)
+		, required_addons()
 		{
-
+			for(const config& addon : settings.child_range("addon")) {
+				if(addon.has_attribute("id") && addon["required"].to_bool(false)) {
+					required_addons.push_back(addon["id"].str());
+				}
+			}
 		}
 
 		int id;
@@ -152,6 +157,7 @@ private:
 		std::size_t players_required;
 		std::vector<std::string> players_in_queue;
 		config settings;
+		std::vector<std::string> required_addons;
 	};
 
 	std::deque<login_log> failed_logins_;
