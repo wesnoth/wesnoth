@@ -184,13 +184,13 @@ std::vector<std::string> played_before;
 // Use the music_track default constructor to avoid trying to
 // invoke a log object while resolving paths.
 //
-std::vector<std::shared_ptr<sound::music_track>> current_track_list;
+std::vector<std::shared_ptr<sound::music_track>> playlist;
 std::shared_ptr<sound::music_track> current_track;
 std::shared_ptr<sound::music_track> previous_track;
 
 std::vector<std::shared_ptr<sound::music_track>>::const_iterator find_track(const sound::music_track& track)
 {
-	return utils::ranges::find(current_track_list, track,
+	return utils::ranges::find(playlist, track,
 		[](const std::shared_ptr<const sound::music_track>& ptr) { return *ptr; });
 }
 
@@ -203,12 +203,12 @@ utils::optional<std::size_t> get_current_track_index()
 	}
 
 	// The current track could be incidental music and not in the playlist
-	auto iter = utils::ranges::find(current_track_list, current_track);
-	if(iter == current_track_list.end()) {
+	auto iter = utils::ranges::find(playlist, current_track);
+	if(iter == playlist.end()) {
 		return utils::nullopt;
 	}
 
-	return std::distance(current_track_list.begin(), iter);
+	return std::distance(playlist.begin(), iter);
 }
 std::shared_ptr<music_track> get_current_track()
 {
@@ -225,16 +225,16 @@ std::shared_ptr<music_track> get_previous_music_track()
 
 unsigned int get_num_tracks()
 {
-	return current_track_list.size();
+	return playlist.size();
 }
 
 std::shared_ptr<music_track> get_track(unsigned int i)
 {
-	if(i < current_track_list.size()) {
-		return current_track_list[i];
+	if(i < playlist.size()) {
+		return playlist[i];
 	}
 
-	if(i == current_track_list.size()) {
+	if(i == playlist.size()) {
 		return current_track;
 	}
 
@@ -243,23 +243,23 @@ std::shared_ptr<music_track> get_track(unsigned int i)
 
 void set_track(unsigned int i, const std::shared_ptr<music_track>& to)
 {
-	if(i < current_track_list.size() && find_track(*to) != current_track_list.end()) {
-		current_track_list[i] = std::make_shared<music_track>(*to);
+	if(i < playlist.size() && find_track(*to) != playlist.end()) {
+		playlist[i] = std::make_shared<music_track>(*to);
 	}
 }
 
 void remove_track(unsigned int i)
 {
-	if(i >= current_track_list.size()) {
+	if(i >= playlist.size()) {
 		return;
 	}
 
 	// Let the track finish playing
-	if(current_track && current_track == current_track_list[i]) {
+	if(current_track && current_track == playlist[i]) {
 		current_track->set_play_once(true);
 	}
 
-	current_track_list.erase(current_track_list.begin() + i);
+	playlist.erase(playlist.begin() + i);
 }
 
 namespace
@@ -278,7 +278,7 @@ bool track_ok(const std::string& id)
 		return false;
 	}
 
-	if(current_track_list.size() <= 3) {
+	if(playlist.size() <= 3) {
 		return true;
 	}
 
@@ -306,7 +306,7 @@ bool track_ok(const std::string& id)
 	}
 
 	// If we've played this twice, must have played every other track.
-	if(num_played == 2 && played.size() != current_track_list.size() - 1) {
+	if(num_played == 2 && played.size() != playlist.size() - 1) {
 		LOG_AUDIO << "Played twice with only " << played.size() << " tracks between";
 		return false;
 	}
@@ -332,12 +332,12 @@ bool track_ok(const std::string& id)
  */
 utils::optional<std::size_t> random_next_track_index()
 {
-	auto indices = std::vector<std::size_t>(current_track_list.size());
+	auto indices = std::vector<std::size_t>(playlist.size());
 	std::iota(indices.begin(), indices.end(), 0);
 	std::shuffle(indices.begin(), indices.end(), randomness::rng::default_instance());
 
 	for(const auto i : indices) {
-		if(track_ok(current_track_list[i]->file_path())) {
+		if(track_ok(playlist[i]->file_path())) {
 			return i;
 		}
 	}
@@ -347,7 +347,7 @@ utils::optional<std::size_t> random_next_track_index()
 
 std::shared_ptr<sound::music_track> choose_track()
 {
-	assert(!current_track_list.empty());
+	assert(!playlist.empty());
 
 	auto current_index = get_current_track_index();
 	std::size_t next_index{0};
@@ -359,14 +359,14 @@ std::shared_ptr<sound::music_track> choose_track()
 	// - The current playlist track specifies to do so
 	//
 	if(!current_index || current_track->shuffle()) {
-		if(current_track_list.size() > 1) {
+		if(playlist.size() > 1) {
 			next_index = random_next_track_index().value_or(0);
 		}
 	} else {
-		next_index = (current_index.value() + 1) % current_track_list.size();
+		next_index = (current_index.value() + 1) % playlist.size();
 	}
 
-	std::shared_ptr next_track = current_track_list[next_index];
+	std::shared_ptr next_track = playlist[next_index];
 	DBG_AUDIO << "Next track will be " << next_track->file_path();
 	played_before.push_back(current_track->file_path());
 	return next_track;
@@ -604,7 +604,7 @@ void play_music_once(const std::string& file)
 
 void empty_playlist()
 {
-	current_track_list.clear();
+	playlist.clear();
 }
 
 void play_music()
@@ -621,10 +621,10 @@ void play_music()
 
 void play_track(unsigned int i)
 {
-	if(i >= current_track_list.size()) {
+	if(i >= playlist.size()) {
 		set_current_track(choose_track());
 	} else {
-		set_current_track(current_track_list[i]);
+		set_current_track(playlist[i]);
 	}
 	play_music();
 }
@@ -685,7 +685,7 @@ void play_music_config(const config& music_node, bool allow_interrupt_current_tr
 {
 	//
 	// FIXME: there is a memory leak somewhere in this function, seemingly related to the shared_ptrs
-	// stored in current_track_list.
+	// stored in playlist.
 	//
 	// vultraz 5/8/2017
 	//
@@ -705,20 +705,20 @@ void play_music_config(const config& music_node, bool allow_interrupt_current_tr
 
 	// Clear play list unless they specify append.
 	if(!track->append()) {
-		current_track_list.clear();
+		playlist.clear();
 	}
 
 	auto iter = find_track(*track);
 	// Avoid 2 tracks with the same name, since that can cause an infinite loop
 	// in choose_track(), 2 tracks with the same name will always return the
 	// current track and track_ok() doesn't allow that.
-	if(iter == current_track_list.end()) {
-		auto insert_at = (i >= 0 && static_cast<std::size_t>(i) < current_track_list.size())
-			? current_track_list.begin() + i
-			: current_track_list.end();
+	if(iter == playlist.end()) {
+		auto insert_at = (i >= 0 && static_cast<std::size_t>(i) < playlist.size())
+			? playlist.begin() + i
+			: playlist.end();
 
 		// Copy the track pointer so our local variable remains non-null.
-		iter = current_track_list.insert(insert_at, track);
+		iter = playlist.insert(insert_at, track);
 	} else {
 		ERR_AUDIO << "tried to add duplicate track '" << track->file_path() << "'";
 	}
@@ -746,7 +746,7 @@ void music_thinker::process()
 
 		bool is_playing = MIX_TrackPlaying(music_channels[0]);
 		bool is_paused = MIX_TrackPaused(music_channels[0]);
-		if(!music_start_time && !current_track_list.empty() && !is_playing && !is_paused) {
+		if(!music_start_time && !playlist.empty() && !is_playing && !is_paused) {
 			// Pick next track, add ending time to its start time.
 			set_current_track(choose_track());
 			music_start_time = now;
@@ -801,7 +801,7 @@ void commit_music_changes()
 		}
 
 		// If current track no longer on playlist, change it.
-		for(auto m : current_track_list) {
+		for(auto m : playlist) {
 			if(*current_track == *m) {
 				return;
 			}
@@ -809,7 +809,7 @@ void commit_music_changes()
 	}
 
 	// Victory empties playlist: if next scenario doesn't specify one...
-	if(current_track_list.empty()) {
+	if(playlist.empty()) {
 		return;
 	}
 
@@ -822,7 +822,7 @@ void write_music_play_list(config& snapshot)
 {
 	// First entry clears playlist, others append to it.
 	bool append = false;
-	for(auto m : current_track_list) {
+	for(auto m : playlist) {
 		m->write(snapshot, append);
 		append = true;
 	}
