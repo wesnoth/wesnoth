@@ -35,6 +35,26 @@ static lg::log_domain log_engine("engine");
 
 namespace game_events
 {
+namespace
+{
+/**
+ * If the given menu item is a toggle item, attempts to execute the given function on
+ * the item's toggle state variable. Invalid variable names are ignored.
+ */
+template<typename Func>
+void if_toggle_item(const wmi_manager::item_ptr& item, game_data& gamedata, Func func)
+{
+	if(item->is_toggle_item()) {
+		try {
+			func(gamedata.get_variable(item->toggle_state_variable()));
+		} catch(const invalid_variablename_exception&) {
+			// TODO: log a warning?
+		}
+	}
+}
+
+} // namespace
+
 wmi_manager::wmi_manager()
 	: wml_menu_items_()
 {
@@ -80,9 +100,7 @@ bool wmi_manager::fire_item(
 {
 	// Does this item exist?
 	item_ptr wmi = get_item(id);
-	if(!wmi) {
-		return false;
-	} else if(is_key_hold_repeat && !wmi->hotkey_repeat()) {
+	if(!wmi || (is_key_hold_repeat && !wmi->hotkey_repeat())) {
 		return false;
 	}
 
@@ -93,10 +111,15 @@ bool wmi_manager::fire_item(
 	gamedata.get_variable("y1") = hex.wml_y();
 	scoped_xy_unit highlighted_unit("unit", hex, units);
 
+	// Update toggle variable, if applicable, before running the event
+	if_toggle_item(wmi, gamedata, [](auto& state) { state = !state.to_bool(); });
+
 	// Can this item be shown?
 	if(wmi->can_show(hex, gamedata, fc)) {
 		wmi->fire_event(hex, gamedata);
 	}
+
+	// Restore old values
 	gamedata.get_variable("x1") = x1;
 	gamedata.get_variable("y1") = y1;
 	return true;
@@ -141,6 +164,9 @@ void wmi_manager::get_items(const map_location& hex,
 		// Allows variables to be substituted at invocation time
 		auto description = utils::interpolate_variables_into_string(item->menu_text(), gamedata);
 		items.emplace_back("id", item->hotkey_id(), "label", description, "icon", item->image());
+
+		// Write checkbox key separately; even an empty value manifests a toggle button.
+		if_toggle_item(item, gamedata, [&](auto& state) { items.back()["checkbox"] = state.to_bool(); });
 	}
 
 	// Restore old values
