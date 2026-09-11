@@ -467,6 +467,14 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	underlying_id_ = n_unit::unit_id(cfg["underlying_id"].to_size_t());
 	set_underlying_id(resources::gameboard ? resources::gameboard->unit_id_manager() : n_unit::id_manager::global_instance());
 
+	// Events nested inside [abilities] and [attack][specials] are always re-derived from
+	// abilities_/attacks_ on every reconstruction, so they must not be cached into the
+	// persisted events_ member which gets saved to file. [unstore_unit] would otherwise
+	// read both the saved copy and the still-present nested copy into the new events_,
+	// duplicating and bloating save files (GitHub #11569). Collect them into a local
+	// config instead; only genuine top-level [unit][event] tags are kept.
+	config ability_and_special_events;
+
 	if(vcfg) {
 		const vconfig& filter_recall = vcfg->child("filter_recall");
 		if(!filter_recall.null())
@@ -478,7 +486,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		for(const vconfig& abilities_tag : vcfg->get_children("abilities")) {
 			for(const auto& [key, child] : abilities_tag.all_ordered()) {
 				for(const vconfig& ability_event : child.get_children("event")) {
-					events_.add_child("event", ability_event.get_config());
+					ability_and_special_events.add_child("event", ability_event.get_config());
 				}
 			}
 		}
@@ -486,7 +494,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 			for(const vconfig& specials_tag : attack.get_children("specials")) {
 				for(const auto& [key, child] : specials_tag.all_ordered()) {
 					for(const vconfig& special_event : child.get_children("event")) {
-						events_.add_child("event", special_event.get_config());
+						ability_and_special_events.add_child("event", special_event.get_config());
 					}
 				}
 			}
@@ -500,7 +508,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		for(const config& abilities : cfg.child_range("abilities")) {
 			for(const auto [key, ability] : abilities.all_children_view()) {
 				for(const config& ability_event : ability.child_range("event")) {
-					events_.add_child("event", ability_event);
+					ability_and_special_events.add_child("event", ability_event);
 				}
 			}
 		}
@@ -508,7 +516,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 			for(const config& specials : attack.child_range("specials")) {
 				for(const auto [key, special] : specials.all_children_view()) {
 					for(const config& special_event : special.child_range("event")) {
-						events_.add_child("event", special_event);
+						ability_and_special_events.add_child("event", special_event);
 					}
 				}
 			}
@@ -517,6 +525,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 
 	if(resources::game_events && resources::lua_kernel) {
 		resources::game_events->add_events(events_.child_range("event"), *resources::lua_kernel);
+		resources::game_events->add_events(ability_and_special_events.child_range("event"), *resources::lua_kernel);
 	}
 
 	random_traits_ = cfg["random_traits"].to_bool(true);
