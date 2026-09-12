@@ -6848,16 +6848,12 @@
 				"EXCLUDED_ARCHS[sdk=iphoneos*]" = arm64e;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"LOCALEDIR=\\\"translations\\\"",
 					"LUA_USE_MACOSX=1",
-					"HAVE_LIBPNG=1",
 					"HAVE_HISTORY=1",
 				);
 				"GCC_PREPROCESSOR_DEFINITIONS[sdk=iphone*]" = (
-					"LOCALEDIR=\\\"translations\\\"",
 					"LUA_USE_MACOSX=1",
 					"LUA_USE_IOS=1",
-					"HAVE_LIBPNG=1",
 					"XML_STATIC=1",
 					"PCRE2_STATIC=1",
 				);
@@ -7410,17 +7406,13 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"LOCALEDIR=\\\"translations\\\"",
 					"LUA_USE_MACOSX=1",
-					"HAVE_LIBPNG=1",
 					"HAVE_HISTORY=1",
 					"LOAD_REVISION=1",
 				);
 				"GCC_PREPROCESSOR_DEFINITIONS[sdk=iphone*]" = (
-					"LOCALEDIR=\\\"translations\\\"",
 					"LUA_USE_MACOSX=1",
 					"LUA_USE_IOS=1",
-					"HAVE_LIBPNG=1",
 					"LOAD_REVISION=1",
 					"XML_STATIC=1",
 					"PCRE2_STATIC=1",
@@ -7616,17 +7608,13 @@
 				"EXCLUDED_ARCHS[sdk=iphoneos*]" = arm64e;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"LOCALEDIR=\\\"translations\\\"",
-					"LOAD_REVISION=1",
 					"LUA_USE_MACOSX=1",
-					"HAVE_LIBPNG=1",
 					"HAVE_HISTORY=1",
+					"LOAD_REVISION=1",
 				);
 				"GCC_PREPROCESSOR_DEFINITIONS[sdk=iphone*]" = (
-					"LOCALEDIR=\\\"translations\\\"",
 					"LUA_USE_MACOSX=1",
 					"LUA_USE_IOS=1",
-					"HAVE_LIBPNG=1",
 					"XML_STATIC=1",
 					"PCRE2_STATIC=1",
 				);
