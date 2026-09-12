@@ -267,6 +267,100 @@ The ID of one of the forum groups to be considered as having admin authority on 
 .B site_admin_group
 The ID of one of the forum groups to be considered as having admin authority on the add-ons server.
 .RE
+.TP
+.B [queues]
+Defines a list of queues
+.RS
+.TP
+.B [queue]
+A single queue defintion.
+.RS
+.TP
+.B id
+The numeric ID number of the queue. Must be unique.
+.TP
+.B display_name
+The name of the queue shown to users.
+.TP
+.B players_required
+The number of players the scenario requires.
+.TP
+.B addons
+Any add-ons required to be downloaded in order to join games in this queue.
+.TP
+.B [game]
+Defines the attributes the game has.
+.RS
+.TP
+.B scenario
+The scenario ID for the queue.
+.TP
+.B era
+The ID of the era to use.
+.TP
+.B fog
+Whether to have fog enabled.
+.TP
+.B shroud
+Whether to have shroud enabled.
+.TP
+.B village_gold
+How much gold each village provides.
+.TP
+.B village_support
+How much unit support each village provides
+.TP
+.B experience_modifier
+The experience modifier to use.
+.TP
+.B countdown
+Whether turn timers are enabled.
+.TP
+.B countdown_init_time
+The initial timer value in seconds.
+.TP
+.B countdown_turn_bonus
+The amount of additional time a player gets each turn
+.TP
+.B countdown_reservoir_time
+The granted number of seconds each turn to complete the turn bonus.
+.TP
+.B countdown_action_bonus
+The granted number of seconds for each unit who have done an action this turn.
+.TP
+.B random_start_time
+Whether to start at a random time of day.
+.TP
+.B shuffle_sides
+Whether to shuffle the sides' starting positions.
+.P
+.B [options]
+Additional options and their sources
+.RS
+.TP
+.B [multiplayer]|[era]|[modification]|[campaign]
+.RS
+.TP
+.B id
+The id of the content where the option comes from.
+.P
+.B [option]
+The option.
+.RS
+.TP
+.B id
+The id of the option.
+.TP
+.B value
+The option's value.
+.RE
+.RE
+.RE
+.RE
+.RE
+.RE
+
+
 .
 .SH EXIT STATUS
 .
