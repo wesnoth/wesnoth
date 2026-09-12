@@ -17,6 +17,7 @@
 
 #include "color.hpp"
 
+#include <optional>
 #include <string>
 #include <unordered_map>
 #include <vector>
@@ -24,8 +25,14 @@
 using color_mapping = std::unordered_map<color_t, color_t>;
 
 /**
- * A color range definition is made of four reference RGB colors, used
- * for calculating conversions from a source/key palette.
+ * Representing the "team color" information, this C++ class contains a subset
+ * of WML's [color_range] tag. The other content of the [color_range] tags is
+ * parsed by the game_config class, and the data is held by several globals
+ * declared in game_config.hpp.
+ *
+ * The main definition is made of three reference RGB colors, used for
+ * calculating conversions from a source/key palette with the external
+ * generate_color_mapping() method.
  *
  *   1) The average shade of a unit's team-color portions
  *      (default: gray #808080)
@@ -33,11 +40,14 @@ using color_mapping = std::unordered_map<color_t, color_t>;
  *      (default: white)
  *   3) The minimum shadow shade of a unit's team-color portions
  *      (default: black)
- *   4) A plain high-contrast color, used for the markers on the mini-map
- *      (default: same as the provided average shade, or gray #808080)
  *
- * The first three reference colors are used for converting a source palette
- * with the external generate_color_mapping() method.
+ * Some further colors are included because this mixes the responsibilities of
+ * being the "team color" class.
+ *
+ *   4) A color with high contrast to terrain colors, so that it can
+ *      be used for the markers on the mini-map.
+ *      (default: same as the provided average shade, or gray #808080)
+ *   5) A color with high contrast to dark backgrounds, used for text.
  */
 class color_range
 {
@@ -47,24 +57,27 @@ public:
 	* @param mid Average color shade.
 	* @param max Maximum (highlight) color shade
 	* @param min Minimum color shade
-	* @param rep High-contrast reference color
+	* @param rep High-contrast to terrain
+	* @param font High-contrast to a dark background
 	*/
-	color_range(color_t mid, color_t max = {255, 255, 255}, color_t min = {0, 0, 0}, color_t rep = {128, 128, 128})
+	color_range(color_t mid, color_t max, color_t min, color_t rep, color_t font)
 		: mid_(mid)
 		, max_(max)
 		, min_(min)
 		, rep_(rep)
+		, font_color_(font)
 	{}
 
 	/**
-	* Constructor, which expects four reference RGB colors.
-	* @param v STL vector with the four reference colors in order.
+	* Constructor, matching the WML tag's split of the rgb attribute in one argument,
+    * and the color for UI text in a different argument.
 	*/
-	color_range(const std::vector<color_t>& v)
+	color_range(const std::vector<color_t>& v, const std::optional<color_t>& font)
 		: mid_(v.size()     ? v[0] : color_t(128, 128, 128))
 		, max_(v.size() > 1 ? v[1] : color_t(255, 255, 255))
 		, min_(v.size() > 2 ? v[2] : color_t(0  , 0  , 0  ))
 		, rep_(v.size() > 3 ? v[3] : mid_)
+		, font_color_(font ? *font : mid_)
 	{}
 
 	/** Default constructor. */
@@ -73,6 +86,7 @@ public:
 		, max_(255, 255, 255)
 		, min_()
 		, rep_(128, 128, 128)
+		, font_color_(mid_)
 	{}
 
 	/** Average color shade. */
@@ -84,19 +98,23 @@ public:
 	/** Minimum color shade. */
 	color_t min() const { return min_; }
 
-	/** High-contrast shade, intended for the minimap markers. */
+	/** High-contrast against typical terrain colors, intended for the minimap markers. */
 	color_t rep() const { return rep_; }
+
+	/** High-contrast to dark backgrounds, intended for the text in the chat log, etc. */
+	color_t font_color() const { return font_color_; }
 
 	bool operator==(const color_range& b) const
 	{
-		return mid_ == b.mid() && max_ == b.max() && min_ == b.min() && rep_ == b.rep();
+		return mid_ == b.mid() && max_ == b.max() && min_ == b.min()
+			&& rep_ == b.rep() && font_color_ == b.font_color();
 	}
 
 	/** Return a string describing the color range for debug output. */
 	std::string debug() const;
 
 private:
-	color_t mid_ , max_ , min_ , rep_;
+	color_t mid_ , max_ , min_ , rep_, font_color_;
 };
 
 /**
