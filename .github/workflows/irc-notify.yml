@@ -20,6 +20,7 @@ jobs:
         run: |
           printf COMMIT_SUBJECT=%s "${MSG}" | head -n 1 >> "$GITHUB_ENV"
       - uses: rectalogic/notify-irc@v1
+        continue-on-error: true
         env: { COLOR: "\x03", BLUE: "02", PURPLE: "06", ACTOR: "\x0315${{ github.actor }}\x03" }
         with:
           channel: ${{ vars.IRC_CHANNEL }}
