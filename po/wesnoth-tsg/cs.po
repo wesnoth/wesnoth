@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-08-18 15:19 UTC\n"
-"PO-Revision-Date: 2026-05-17 15:21+0200\n"
+"PO-Revision-Date: 2026-08-08 20:03+0200\n"
 "Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -928,8 +928,8 @@ msgid ""
 "Besides, it only took $quintain_killers.length of you to deal with my dummy. "
 "What’s a dozen muscly bandits compared to that?"
 msgstr ""
-"Kromě toho, vypořádat se s mou figurínou ti trvalo jen $quintain_killers."
-"length kol. Co je proti tomu tucet svalnatých banditů?"
+"Kromě toho, vypořádat se s mou figurínou ti trvalo jen "
+"$quintain_killers.length kol. Co je proti tomu tucet svalnatých banditů?"
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:947
@@ -4266,6 +4266,8 @@ msgid ""
 "Lower your arms, countryman! ’tis I, Commander Deoran of the South Guard! We "
 "come pursued by elves, seeking refuge in your town."
 msgstr ""
+"Skloňte zbraně, krajane! To jsem já, velitel Deoran z Jižní hlídky! "
+"Pronásledují nás elfové a hledáme útočiště ve vašem městě."
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/05a_The_Long_March.cfg:711
@@ -4273,6 +4275,8 @@ msgid ""
 "Fellow men, hailing from the south? You’d better hurry across the river — "
 "I’m sure the commander will want to speak with you."
 msgstr ""
+"Jdete z jihu, přátelé? Raději si pospěšte přes řeku. Jsem si jistý, že "
+"s vámi bude chtít velitel mluvit."
 
 #. [companion_message]: speaker=Deoran
 #. reminder that the objectives require moving both Deoran and $companion_name to Southport
@@ -4281,6 +4285,8 @@ msgid ""
 "Keep moving, everyone! The sooner both Captain Mari and I reach Southport, "
 "the sooner we shall all be safe from the elves."
 msgstr ""
+"Všichni pohněte! Čím dřív se s kapitánkou Mari dostaneme do Jižního "
+"Přístavu, tím dřív budeme všichni v bezpečí před elfy."
 
 #. [companion_message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05a_The_Long_March.cfg:722
@@ -4288,6 +4294,8 @@ msgid ""
 "Keep moving, everyone! The sooner both Sir Gerrick and I reach Southport, "
 "the sooner we shall all be safe from the elves."
 msgstr ""
+"Všichni pohněte! Čím dřív se se sirem Gerrickem dostaneme do Jižního "
+"Přístavu, tím dřív budeme všichni v bezpečí před elfy."
 
 #. [companion_message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05a_The_Long_March.cfg:723
@@ -4295,13 +4303,15 @@ msgid ""
 "Keep moving, everyone! The sooner both Minister Hylas and I reach Southport, "
 "the sooner we shall all be safe from the elves."
 msgstr ""
+"Všichni pohněte! Čím dřív se s purkmistrem Hylasem dostaneme do Jižního "
+"Přístavu, tím dřív budeme všichni v bezpečí před elfy."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05a_The_Long_March.cfg:747
 msgid ""
 "At last — we have crossed the river, and reached refuge. Who is in command "
 "of here?"
-msgstr ""
+msgstr "Konečně. Překročili jsme řeku a dostali se do bezpečí. Kdo tu velí?"
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/05a_The_Long_March.cfg:753
@@ -4966,12 +4976,12 @@ msgstr "Do hlubin"
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:72
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:325
 msgid "Trolls"
-msgstr ""
+msgstr "Trollové"
 
 #. [side]
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:83
 msgid "Fauna"
-msgstr ""
+msgstr "Fauna"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:173
@@ -5005,7 +5015,7 @@ msgstr ""
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:183
 msgid "Caves"
-msgstr ""
+msgstr "Jeskyně"
 
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:185
@@ -5022,6 +5032,19 @@ msgid ""
 "such as Deoran, have a particularly\n"
 "hard time."
 msgstr ""
+"Pod zemí nesvítí slunce.\n"
+"\n"
+"V jeskyních a podobných\n"
+"temných místech\n"
+"se denní doba\n"
+"vždy považuje za noc.\n"
+"\n"
+"Podzemní terén je často\n"
+"obtížně průchodný\n"
+"a může být plný úzkých míst.\n"
+"Jednotky na koních,\n"
+"jako je Deoran,\n"
+"to mají obzvláště těžké."
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:205
@@ -5034,6 +5057,9 @@ msgid ""
 "Gods... that skull, those eyes. I had almost hoped the lady was right, but "
 "now... even in the Estmarks I never thought I’d live to lay eyes on an lich."
 msgstr ""
+"Bohové... ta lebka, ty oči. Skoro jsem doufal, že ta dáma měla pravdu, ale "
+"teď... ani ve Východním pohraničí by mě nikdy nenapadlo, že se dožiju toho, "
+"jak uvidím licha."
 
 #. [companion_message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:263
@@ -5041,6 +5067,8 @@ msgid ""
 "You’ve gone mad! Whatever you once were, you are nothing but evil now! Once "
 "Captain Mari and I defeat you, these lands will finally be safe."
 msgstr ""
+"Pomátl ses! Ať už jsi kdysi byl kdokoli, teď jsi už jen ztělesněním zla! "
+"Jakmile tě s kapitánkou Mari porazíme, budou tyto země konečně v bezpečí."
 
 #. [companion_message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:264
@@ -5048,6 +5076,8 @@ msgid ""
 "You’ve gone mad! Whatever you once were, you are nothing but evil now! Once "
 "Sir Gerrick and I defeat you, these lands will finally be safe."
 msgstr ""
+"Pomátl ses! Ať už jsi kdysi byl kdokoli, teď jsi už jen ztělesněním zla! "
+"Jakmile tě se sirem Gerrickem porazíme, budou tyto země konečně v bezpečí."
 
 #. [companion_message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:265
@@ -5055,6 +5085,9 @@ msgid ""
 "You’ve gone mad! Whatever you once were, you are nothing but evil now! Once "
 "Minister Hylas and I defeat you, these lands will finally be safe."
 msgstr ""
+"Pomátl ses! Ať už jsi kdysi byl kdokoli, teď jsi už jen ztělesněním zla! "
+"Jakmile tě se purkmistrem Hylasem porazíme, budou tyto země konečně v "
+"bezpečí."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:277
@@ -5062,17 +5095,19 @@ msgid ""
 "Look out, a troll! Stay back everyone, it might leave us alone if we keep "
 "our distance."
 msgstr ""
+"Pozor, troll! Všichni se držte dál, možná nás nechá na pokoji, když si "
+"zachováme odstup."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:282
 msgid "Who you? You dead one? I smash dead ones!"
-msgstr ""
+msgstr "Kdo ty? Ty být mrtvý? Mrtvé já rozmlátit!"
 
 #. [message]: type=Troll Rocklobber
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:287
 msgid ""
 "Mmm... no, dead ones do not speak. You humans. Humanses long time no see."
-msgstr ""
+msgstr "Mmm... ne, mrtví nemluvit. Vy člověkové. Člověky já dlouho nevidět."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:291
@@ -5080,7 +5115,7 @@ msgid ""
 "Humanses... I remember humanses. Humans go squish, fun to smash! What you "
 "doing in caves?"
 msgstr ""
-"Člověkové... Pamatuju člověky. Dají se mačkat, bžunda je majznout! Co děláte "
+"Člověkové... Pamatovat člověky. Moct je mačkat, bžunda je majznout! Co dělat "
 "v jeskyních?"
 
 #. [message]: speaker=Deoran
@@ -5098,8 +5133,8 @@ msgid ""
 "Deads! Nasty deads take our home, make us hide! I hates them! They too "
 "stupid to find us here, but we no leave here either."
 msgstr ""
-"Mrtví! Hnusní mrtví nám berou domov, nutí nás se schovávat! Nesnášet je! Moc "
-"hloupí, aby nás tu našli, ale my odtud taky nemoct odejít."
+"Mrtví! Hnusní mrtví nám brát domov! Nutí nás schovávat! Nesnášet je! Moc "
+"hloupí, aby nás tu najít. Ale my odtud taky nemoct odejít."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:303
@@ -5114,6 +5149,8 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:307
 msgid "Join? Join with humanses? Hmm. Okay. Humans friends. No squish friends."
 msgstr ""
+"Přidat se? Přidat se k člověkům? Hmm. Dobře. Člověci kamarádi. Kamarádi "
+"nebýt k mačkání."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:311
@@ -5121,13 +5158,13 @@ msgid ""
 "We help you beat deads, but after they gone we take back our home and you "
 "leave. Okay?"
 msgstr ""
-"Pomůžeme vám porazit mrtvé, ale až bude po nich, vezmeme si zpět svůj domov "
-"a vy odejdete. Dobře?"
+"My pomoct porazit mrtvé. Ale až po nich být, my vzít svůj domov zpět. Vy pak "
+"odejít. Dobře tak?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:319
 msgid "It’s a deal."
-msgstr ""
+msgstr "Dohodnuto."
 
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:327
@@ -5143,6 +5180,17 @@ msgid ""
 "trolls if these ones die, so take\n"
 "good care of them!"
 msgstr ""
+"Trollové jsou velká stvoření\n"
+"s kamennou kůží,\n"
+"která se cítí jako doma v jeskyních\n"
+"a na dalších skalnatých místech.\n"
+"Jejich úderné poškození je účinné\n"
+"proti kostlivcům a díky jejich\n"
+"regeneraci je těžké je zabít.\n"
+"\n"
+"Pokud tito trollové zemřou,\n"
+"nebudeš moci najmout další,\n"
+"takže se o ně dobře starej!"
 
 #. [message]: speaker=Mebrin
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:362
@@ -5150,6 +5198,8 @@ msgid ""
 "Pathetic. Ethiliel I would respect, but you? Humans are not worth my time to "
 "slay. Pursue me if you dare."
 msgstr ""
+"Jak ubohé. Ethiliel bych si vážil, ale tebe? Lidé nestojí za to, abych je "
+"zabíjel. Zkus mě pronásledovat, jestli se odvážíš."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:395
@@ -5157,6 +5207,8 @@ msgid ""
 "Ethiliel spoke so highly of you, but you truly have gone mad. Would that we "
 "had listened to Urza Afalas from the beginning!"
 msgstr ""
+"Ethiliel o tobě mluvila v takových superlativech, ale ty ses opravdu pomátl. "
+"Kéž bychom od začátku poslechli Urzu Afalase!"
 
 #. [message]: speaker=Mebrin
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:478
@@ -5165,6 +5217,9 @@ msgid ""
 "have already been subjected. Even if taking vengeance on your race requires "
 "me to destroy myself, it will be worth the sacrifice!"
 msgstr ""
+"Nebojím se zapomnění. Neexistují horší hrůzy než ty, kterým jsem již byl "
+"vystaven. I kdyby pomsta na vašem rodu vyžadovala mé vlastní zničení, bude "
+"to stát za tu oběť!"
 
 #. [message]: speaker=Mebrin
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:482
@@ -5182,7 +5237,7 @@ msgstr ""
 #. [message]: speaker=Mebrin
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:514
 msgid "Ah ha, ha ha ha ha. I am no stranger to pain, Deoran of the humans."
-msgstr ""
+msgstr "Ha ha, ha ha ha ha. Bolest mi není cizí, Deorane z rodu lidí."
 
 #. [message]: speaker=Mebrin
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:518
@@ -5190,12 +5245,14 @@ msgid ""
 "You think yourself wise, to have followed me down into these dark depths? "
 "You have only sown the seeds of your own destruction!"
 msgstr ""
+"Myslíš si, že jsi projevil moudrost, když jsi mě následoval dolů do těchto "
+"temných hlubin? Jen jsi zasel semena své vlastní zkázy!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:528
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:589
 msgid "What the— it’s a cave-in!"
-msgstr ""
+msgstr "Co to sakra... to je zával!"
 
 #. [message]: speaker=Mebrin
 #: data/campaigns/The_South_Guard/scenarios/05c_Into_the_Depths.cfg:532
@@ -5547,44 +5604,34 @@ msgstr ""
 #. [option]
 #: data/campaigns/The_South_Guard/scenarios/06a_Vengeance.cfg:665
 msgid "Assume command of Westin’s defense"
-msgstr ""
+msgstr "Převzít velení nad obranou Westinu"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/06a_Vengeance.cfg:681
-#, fuzzy
-#| msgid ""
-#| "I shall assume command, my friend. Now hold fast, men of the South Guard! "
-#| "No matter how daunting the armies that oppose us, we must weather this "
-#| "shadow and defend our homes!"
 msgid ""
 "I shall assume command. Now hold fast, men of the South Guard! No matter how "
 "daunting the armies that oppose us, we must weather this shadow and defend "
 "our homes!"
 msgstr ""
-"Převezmu velení, příteli. Nyní stůjte pevně, muži Jižní hlídky! Bez ohledu "
-"na to, jak hrozivé armády stojí proti nám, musíme přečkat tento stín "
-"a bránit své domovy!"
+"Převezmu velení. Nyní stůjte pevně, muži Jižní hlídky! Bez ohledu na to, jak "
+"hrozivé armády stojí proti nám, musíme přečkat tento stín a bránit své "
+"domovy!"
 
 #. [option]
 #: data/campaigns/The_South_Guard/scenarios/06a_Vengeance.cfg:686
 msgid "Leave Westin’s defenders under AI control"
-msgstr ""
+msgstr "Nechat obránce Westinu pod kontrolou umělé inteligence"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/06a_Vengeance.cfg:690
-#, fuzzy
-#| msgid ""
-#| "Command of Westin remains yours, my friend. Hold fast, men of the South "
-#| "Guard! No matter how daunting the armies that oppose us, we must weather "
-#| "this shadow and defend our homes!"
 msgid ""
 "Command of Westin remains yours. Hold fast, men of the South Guard! No "
 "matter how daunting the armies that oppose us, we must weather this shadow "
 "and defend our homes!"
 msgstr ""
-"Velení Westinu zůstává na tobě, příteli. Držte se, muži Jižní hlídky! Bez "
-"ohledu na to, jak hrozivé armády stojí proti nám, musíme přečkat tento stín "
-"a bránit své domovy!"
+"Velení Westinu zůstává na tobě. Držte se, muži Jižní hlídky! Bez ohledu na "
+"to, jak hrozivé armády stojí proti nám, musíme přečkat tento stín a bránit "
+"své domovy!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/06a_Vengeance.cfg:730
@@ -5592,6 +5639,8 @@ msgid ""
 "You mayflies should never have interfered in our affairs. Now all your kind "
 "shall pay the price."
 msgstr ""
+"Vy jepice jste se nikdy neměly vměšovat do našich záležitostí. Teď za to "
+"zaplatí všichni z vašeho druhu."
 
 #. [then]
 #. [else]
@@ -6104,8 +6153,8 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Tides_of_War.cfg:498
 msgid ""
 "You survived $pebbles_defense_length turns last scenario! Deoran starts\n"
-"   with $soldiers.length extra soldiers and "
-"$( ($pebbles_defense_length-36)*3 ) extra gold!"
+"   with $soldiers.length extra soldiers and $"
+"( ($pebbles_defense_length-36)*3 ) extra gold!"
 msgstr ""
 
 #. [else]
@@ -6473,6 +6522,14 @@ msgid ""
 "In full view of the line of infantry, man and elf shook hands. Ethiliel made "
 "a full, lengthy, teary apology."
 msgstr ""
+"Mlha se rozplynula a odhalila Ethiliel a Deorana, jak stojí bok po boku před "
+"zdí z kopí. Jejich tváře byly ošlehané, skrývaly zármutek a vyčerpání. "
+"Přesto byl Deoranův hlas, když promluvil k mužům z Wesnothu, překvapivě "
+"jasný: „Zadržte! Dnes už bylo prolito dost krve, lidské i elfí. Aethenský "
+"lesní lid už nebojuje.“\n"
+"\n"
+"Před zraky celé řady pěchoty si muž a elfka potřásli rukama. Ethiliel se "
+"důkladně, dlouho a se slzami v očích omlouvala."
 
 #. [part]
 #. Epilogue text

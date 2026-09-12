@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-08-18 15:19 UTC\n"
-"PO-Revision-Date: 2026-08-06 21:55+0200\n"
+"PO-Revision-Date: 2026-09-11 21:39+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -577,6 +577,10 @@ msgid ""
 "combat, so explore at your leisure. To leave the overworld and preview or "
 "play a battle scenario, move Konrad to one of the marked hexes."
 msgstr ""
+"<b>Toto je nadhled (overworld).</b> Pohyb tu nic nestojí a nejsou tu ani "
+"žádné boje, takže ho můžeš prozkoumávat podle libosti. Chceš-li nadhled "
+"opustit a ukázat nebo spustit bojový scénář, přesuň Konráda na jedno "
+"z označených políček."
 
 #. [lua]: wesnoth.wml_actions.display_overworld_tutorial
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:335
@@ -596,6 +600,8 @@ msgid ""
 "overworld_help^Each scenario provides unique rewards, as shown in its "
 "preview, and most will open new areas of the map to explore."
 msgstr ""
+"Každý scénář nabízí jedinečné odměny, jak je uvedeno v jeho náhledu, "
+"a většina z nich odemkne nové oblasti mapy, které můžeš prozkoumat."
 
 #. [lua]: wesnoth.wml_actions.display_overworld_tutorial
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:354
@@ -604,6 +610,9 @@ msgid ""
 "before the finale. And Delfador and his elementals will only be around to "
 "help during your first battle, so choose wisely!"
 msgstr ""
+"Konrád má před finále čas pouze na omezený počet bitev. A Delfador se svými "
+"elementály ti budou k dispozici pouze během tvé první bitvy, takže si dobře "
+"rozmysli, kterou si vybereš!"
 
 #. [lua]: wesnoth.wml_actions.display_overworld_tutorial
 #. [lua]: wesnoth.wml_actions.display_lisar_tutorial
@@ -632,39 +641,50 @@ msgid ""
 "Either way, Li’sar will have normal gold carryover\n"
 "and a normal early finish bonus."
 msgstr ""
+"Lisar a její vojsko byly značně oslabeny\n"
+"následkem svých útrap v podzemí, nicméně\n"
+"stále představují na bojišti významnou sílu.\n"
+"\n"
+"Vojsko princezny je ve výchozím nastavení řízeno\n"
+"umělou inteligencí a má příjem navíc.\n"
+"<b>Na začátku každého scénáře budeš mít možnost\n"
+"převzít přímou kontrolu nad jejími jednotkami.</b>\n"
+"\n"
+"V každém případě bude mít Lisar obvyklý přenos zlata\n"
+"a také zvláštní odměnu za předčasné dokončení."
 
 #. [lua]: wesnoth.wml_actions.select_lintanir_boon
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:476
 msgid "Select an item to learn more..."
-msgstr ""
+msgstr "Zvol si předmět a dozvíš se víc..."
 
 #. [lua]: wesnoth.wml_actions.select_lintanir_boon
 #. [event]: id=boon_wose_lore
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:499
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:800
 msgid "Wose Lore"
-msgstr ""
+msgstr "Moudra lesa"
 
 #. [lua]: wesnoth.wml_actions.select_lintanir_boon
 #. [event]: id=boon_flaming_sword # used in smalltalk.cfg, type=fire
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:503
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:846
 msgid "Flaming Sword"
-msgstr ""
+msgstr "Planoucí meč"
 
 #. [lua]: wesnoth.wml_actions.select_lintanir_boon
 #. [event]: id=boon_void_armor
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:507
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:871
 msgid "Void Armor"
-msgstr ""
+msgstr "Zbroj nicoty"
 
 #. [lua]: wesnoth.wml_actions.select_lintanir_boon
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:517
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:518
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:519
 msgid "Take"
-msgstr ""
+msgstr "Vzít"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/overworld/00a_western_wesnoth.cfg:14
@@ -699,7 +719,7 @@ msgstr ""
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00a_western_wesnoth.cfg:42
 msgid "Hey, look! There’s a loose board in the fence here."
-msgstr "Hej, podívej! Tady v plotě je uvolněné prkno."
+msgstr "Hele, to se podívejme! Tady v plotě je uvolněné prkno."
 
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/overworld/00a_western_wesnoth.cfg:86
@@ -1624,6 +1644,8 @@ msgid ""
 "Delfador, I’ve come to Elensefar to help! Together we can fight off the "
 "besieging armies!"
 msgstr ""
+"Delfadore, přišel jsem do Elensefaru, abych ti pomohl! Společně můžeme "
+"odrazit obléhající vojska!"
 
 #. [message]: speaker=Delfador {DELFADOR_VARIATION mad}
 #: data/campaigns/Heir_To_The_Throne/overworld/00a_western_wesnoth.cfg:1666
@@ -1631,6 +1653,8 @@ msgid ""
 "Don’t be daft, Konrad. You must be kept safe! This battle is too dangerous "
 "for you — keep your distance and do your good elsewhere."
 msgstr ""
+"Nebuď hloupý, Konráde. Musíš se chránit! Tahle bitva je pro tebe příliš "
+"nebezpečná – drž se stranou a buď užitečný jinde."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/overworld/00a_western_wesnoth.cfg:1672
@@ -1638,6 +1662,8 @@ msgid ""
 "Fighting here is a poor decision, Master Konrad. But if you insist on "
 "joining the battle, Maddock and I can certainly use your help."
 msgstr ""
+"Bojovat tady není moudré rozhodnutí, mistře Konráde. Pokud však trváš na "
+"tom, že se zapojíš do bitvy, Maddokovi i mně se tvá pomoc určitě bude hodit."
 
 #. [scenario]
 #: data/campaigns/Heir_To_The_Throne/overworld/00a_western_wesnoth.cfg:1709
@@ -1650,6 +1676,8 @@ msgid ""
 "Item for Konrad: <span color='#EFBF04'><b>full movement and 40% defense on "
 "water, swamp, & snow</b></span>"
 msgstr ""
+"Předmět pro Konráda: <span color='#EFBF04'><b>plný pohyb a 40 % obrany ve "
+"vodě, v bažinách a na sněhu</b></span>"
 
 #. [message]: role=elensefar_orc_leader2
 #: data/campaigns/Heir_To_The_Throne/overworld/00a_western_wesnoth.cfg:1770
@@ -1969,12 +1997,14 @@ msgid ""
 "I’ve heard stories about the fabled Gryphon Mountain! I would much like a "
 "chance to gaze upon the majestic creatures."
 msgstr ""
+"O bájné Hoře gryfů jsem slyšel příběhů! Moc rád bych měl příležitost spatřit "
+"tato majestátní stvoření."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/overworld/00b_central_wesnoth.cfg:361
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:169
 msgid "Burlin"
-msgstr ""
+msgstr "Burlin"
 
 #. [message]: speaker=Burlin
 #: data/campaigns/Heir_To_The_Throne/overworld/00b_central_wesnoth.cfg:364
@@ -1982,6 +2012,8 @@ msgid ""
 "Ah’m glad we could work together on this, kid. You collected the eggs, an’ "
 "now I’ll collect my profits!"
 msgstr ""
+"Jsem rád, že jsme na tom mohli spolupracovat, kluku. Ty jsi nasbíral vejce "
+"a teď já shrábnu svůj zisk!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00b_central_wesnoth.cfg:369
@@ -1991,6 +2023,9 @@ msgid ""
 "nobles, the army, the orcs... and it’s why peasants starve to death, their "
 "harvest all taken for taxes."
 msgstr ""
+"Ašvířino zlato zaslepilo tolik lidí. Právě jím ovládá šlechtu, vojsko, "
+"skřety... a právě proto rolníci umírají hlady, protože jim celou úrodu "
+"zabavili jako daň."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00b_central_wesnoth.cfg:373
@@ -1998,6 +2033,8 @@ msgid ""
 "That’s why we have to fight her. Not for my sake, but for the sake of all "
 "the peoples suffering under the dark queen’s lash."
 msgstr ""
+"A to je důvod, proč s ní musíme bojovat. Ne kvůli mně, ale v zájmu všech "
+"národů, které trpí pod knutou temné královny."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00b_central_wesnoth.cfg:385
@@ -2005,6 +2042,8 @@ msgid ""
 "Gryphon Mountain is at peace once again. I’m glad to see that the matriarch "
 "survived, and that her flock is recovering from the fighting..."
 msgstr ""
+"Na Hoře gryfů opět zavládl mír. Jsem rád, že hlava rodu přežila a že se její "
+"hejno zotavuje z bojů..."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00b_central_wesnoth.cfg:390
@@ -2012,11 +2051,13 @@ msgid ""
 "Gryphon Mountain is at peace once again. If only our fighting hadn’t killed "
 "the matriarch and driven away her flock..."
 msgstr ""
+"Na Hoře gryfů opět zavládl mír. Kéž by naše boje nezabily hlavu rodu "
+"a nerozehnaly její hejno..."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00b_central_wesnoth.cfg:399
 msgid "Gryphon Mountain stands silent and empty. We got what we needed."
-msgstr ""
+msgstr "Hora gryfů tu stojí tichá a prázdná. Máme, co jsme potřebovali."
 
 #: data/campaigns/Heir_To_The_Throne/overworld/00b_central_wesnoth.cfg:416
 msgid "Valley of Death"
@@ -2028,6 +2069,10 @@ msgid ""
 "value doubles\n"
 "(2, 4, 8, etc) for each other magic item that Konrad wields.</b></span>"
 msgstr ""
+"Předmět pro Konráda: <span color='#EFBF04'><b>Každé kolo regeneruje 1 bod "
+"zdraví.\n"
+"Tato hodnota se zdvojnásobí (2, 4, 8 atd.) za každý další kouzelný předmět, "
+"který Konrád používá.</b></span>"
 
 #. [side]: type=Shock Trooper, id=Kaelor
 #: data/campaigns/Heir_To_The_Throne/overworld/00b_central_wesnoth.cfg:427
@@ -2442,6 +2487,8 @@ msgid ""
 "Delfador says that there was once a tunnel connecting Tath and Dan’Tonk. "
 "During the war it was used to great effect against the city defenders."
 msgstr ""
+"Delfador říká, že kdysi existoval tunel spojující Tath a Dan’Tonk. Během "
+"války byl s velkým úspěchem využit proti obráncům města."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00b_central_wesnoth.cfg:1005
@@ -2449,6 +2496,8 @@ msgid ""
 "But even if the tunnel still exists, and has not been deliberately collapsed "
 "by Asheviere, it is surely too well-guarded for us to attempt to use it."
 msgstr ""
+"Ale i kdyby tam ten tunel stále byl a Ašvíra ho nedala zavalit, je jistě "
+"příliš dobře střežený na to, abychom se pokusili jím projít."
 
 #. [message]: speaker=Konrad
 #. referencing the "discipline" scenario of Asheviere's Dogs
@@ -2458,6 +2507,9 @@ msgid ""
 "fighting over. It never fully recovered from the damage it took during "
 "Asheviere’s rise to power."
 msgstr ""
+"Tath je pěkné město, ale strategicky není natolik významné, aby se o něj "
+"vyplatilo bojovat. Nikdy se úplně nevzpamatovalo ze škod, které utrpělo "
+"během Ašvířina nástupu k moci."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/overworld/00b_central_wesnoth.cfg:1065
@@ -2523,6 +2575,8 @@ msgid ""
 "A fog has rolled in and several weapon shipments are approaching Dan’Tonk. "
 "Everyone, are we ready?"
 msgstr ""
+"Padla mlha a k Dan’Tonku se blíží několik zásilek se zbraněmi. Tak co, "
+"všichni, jsme připraveni?"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION glad}
 #: data/campaigns/Heir_To_The_Throne/overworld/00b_central_wesnoth.cfg:1136
@@ -2532,10 +2586,14 @@ msgid ""
 "collection of sabers, spears, and bows — everything we need to outfit new "
 "Fencers, Spearmen, and Bowmen!"
 msgstr ""
+"Odvážili jsme se do samého srdce Wesnothu, uloupili královniny zbraně "
+"a přežili, abychom o tom mohli vyprávět! Z vozů jsme nasbírali velkou sbírku "
+"šavlí, kopí a luků – vše, co potřebujeme k vybavení nových šermířů, kopiníků "
+"a lučištníků!"
 
 #: data/campaigns/Heir_To_The_Throne/overworld/00b_central_wesnoth.cfg:1138
 msgid "Konrad can now recruit Fencers, Spearmen, and Bowmen!"
-msgstr ""
+msgstr "Konrád nyní může verbovat šermíře, kopiníky a lučištníky!"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION glad}
 #: data/campaigns/Heir_To_The_Throne/overworld/00b_central_wesnoth.cfg:1144
@@ -2545,10 +2603,14 @@ msgid ""
 "promote Bowmen, we’ve pillaged a large collection of sabers and spears for "
 "our Fencers and Spearmen!"
 msgstr ""
+"Odvážili jsme se do samého srdce Wesnothu a podařilo se nám odtud uniknout – "
+"a to s větším množstvím zbraní, než jsme měli předtím! I když nám chybí "
+"zásoby na vybavení a povýšení lukostřelců, uloupili jsme pro naše šermíře "
+"a kopiníky velkou sbírku šavlí a kopí!"
 
 #: data/campaigns/Heir_To_The_Throne/overworld/00b_central_wesnoth.cfg:1146
 msgid "Konrad can now recruit Spearmen and Fencers!"
-msgstr ""
+msgstr "Konrád nyní může verbovat kopiníky a šermíře!"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION glad}
 #: data/campaigns/Heir_To_The_Throne/overworld/00b_central_wesnoth.cfg:1152
@@ -2558,10 +2620,14 @@ msgid ""
 "but we’ve at least obtained a large collection of sabers — perfect for "
 "training Fencers."
 msgstr ""
+"Odvážili jsme se do samého srdce Wesnothu a podařilo se nám odtud uniknout – "
+"a navíc s větším množstvím zbraní, než jsme měli předtím! Škoda, že se nám "
+"nepodařilo vyrabovat více karavan, ale alespoň jsme získali velkou sbírku "
+"šavlí – jako stvořených pro výcvik šermířů."
 
 #: data/campaigns/Heir_To_The_Throne/overworld/00b_central_wesnoth.cfg:1154
 msgid "Konrad can now recruit Fencers!"
-msgstr ""
+msgstr "Konrád nyní může verbovat šermíře!"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION concerned}
 #: data/campaigns/Heir_To_The_Throne/overworld/00b_central_wesnoth.cfg:1160
@@ -2570,6 +2636,9 @@ msgid ""
 "pillage to train even a single new soldier type! We shall have to make-do "
 "with the weapons and fighters we already have."
 msgstr ""
+"Odvážili jsme se do samého srdce Wesnothu a podařilo se nám uniknout – ale "
+"nenaloupili jsme dost, takže nemůžeme vycvičit ani jediný nový typ vojáka! "
+"Budeme si muset vystačit se zbraněmi a bojovníky, které už máme."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00b_central_wesnoth.cfg:1168
@@ -2577,6 +2646,8 @@ msgid ""
 "No point going back — the city surroundings are better-fortified now than "
 "ever, and we can’t expect the same trick to work twice."
 msgstr ""
+"Nemá smysl se vracet – okolí města je teď opevněné lépe než kdykoli předtím "
+"a nemůžeme očekávat, že ten samý trik vyjde dvakrát."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/overworld/00b_central_wesnoth.cfg:1177
@@ -3204,6 +3275,7 @@ msgid ""
 "I would like to agree to your offer, but I don’t have enough gold! Perhaps "
 "another time, lizard."
 msgstr ""
+"Rád bych tvou nabídku přijal, ale nemám dost zlata! Snad jindy, ještěrko."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00c_northlands.cfg:700
@@ -3211,11 +3283,13 @@ msgid ""
 "Whew! This has been grueling, but I feel as light on my feet as a fencer. I "
 "am grateful for your tutelage, Tirix."
 msgstr ""
+"Uf! Bylo to vyčerpávající, ale cítím se lehký jako šermíř. Jsem ti vděčný za "
+"tvé vedení, Tirix."
 
 #. [object]: id=saurian_training, description={DESC}
 #: data/campaigns/Heir_To_The_Throne/overworld/00c_northlands.cfg:706
 msgid "Saurian Footwork"
-msgstr ""
+msgstr "Ještěrácká kličkovaná"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/overworld/00c_northlands.cfg:720
@@ -3270,7 +3344,7 @@ msgstr ""
 #. [option]
 #: data/campaigns/Heir_To_The_Throne/overworld/00c_northlands.cfg:778
 msgid "50 gold; physical training: <b>Konrad gains +1MP</b>"
-msgstr ""
+msgstr "50 zlatých – tělesný výcvik: <b>Konrád získá +1 krok</b>"
 
 #. [command]
 #: data/campaigns/Heir_To_The_Throne/overworld/00c_northlands.cfg:781
@@ -3278,11 +3352,13 @@ msgid ""
 "After rigorous physical training with the saurians of the Swamp of Dread, "
 "Konrad has gained <b>+1MP</b>."
 msgstr ""
+"Po náročném tělesném výcviku u ještěráků v Močálech děsu získal Konrád "
+"<b>+1 krok</b>."
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne/overworld/00c_northlands.cfg:787
 msgid "100 gold; magical training: <b>Konrad gains +2MP</b>"
-msgstr ""
+msgstr "100 zlatých – kouzelný výcvik: <b>Konrád získá +2 kroky</b>"
 
 #. [command]
 #: data/campaigns/Heir_To_The_Throne/overworld/00c_northlands.cfg:790
@@ -3290,12 +3366,16 @@ msgid ""
 "After rigorous physical and magical training with the saurians of the Swamp "
 "of Dread, Konrad has gained <b>+2MP</b>."
 msgstr ""
+"Po náročném tělesném a kouzelném výcviku u ještěráků v Močálech děsu získal "
+"Konrád <b>+2 kroky</b>."
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne/overworld/00c_northlands.cfg:797
 msgid ""
 "150 gold; legendary training: <b>Konrad gains +2MP and <i>skirmisher</i></b>"
 msgstr ""
+"150 zlatých – legendární výcvik: <b>Konrád získá +2 kroky a <i>průbojnost</"
+"i></b>"
 
 #. [command]
 #: data/campaigns/Heir_To_The_Throne/overworld/00c_northlands.cfg:800
@@ -3304,6 +3384,8 @@ msgid ""
 "of Dread, Konrad has gained <b>+2MP</b> and the <b><i>skirmisher</i></b> "
 "ability."
 msgstr ""
+"Po náročném tělesném a kouzelném výcviku u ještěráků v Močálech děsu získal "
+"Konrád <b>+2 kroky</b> a <b><i>průbojnost</i></b>."
 
 #. [message]: speaker=Tirix
 #: data/campaigns/Heir_To_The_Throne/overworld/00c_northlands.cfg:823
@@ -3311,6 +3393,8 @@ msgid ""
 "Good, good, much better. Not so ssslow any more! I have no time or "
 "interessst in more training."
 msgstr ""
+"Dobrá, dobrá, to je mnohem lepššší. Už to není tak pomalé! Nemám časss ani "
+"chuť na dalššší výcvik."
 
 #. [message]: speaker={KONRAD_OR_NOBODY}
 #: data/campaigns/Heir_To_The_Throne/overworld/00c_northlands.cfg:840
@@ -4049,12 +4133,12 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:235
 msgid ""
 "I have not located the Sceptre yet, but I am making progress. I shall send a "
-"messenger once we are ready to retrieve it — perhaps in "
-"$( $bm_milestone_scepter - $bm_turns ) battles’ time."
+"messenger once we are ready to retrieve it — perhaps in $"
+"( $bm_milestone_scepter - $bm_turns ) battles’ time."
 msgstr ""
 "Žezlo jsem zatím nenašel, ale postupuji vpřed. Jakmile budeme připraveni ho "
-"získat, pošlu posla – možná to bude trvat ještě několik bitev, asi "
-"$( $bm_milestone_scepter - $bm_turns )."
+"získat, pošlu posla – možná to bude trvat ještě několik bitev, asi $"
+"( $bm_milestone_scepter - $bm_turns )."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:240
@@ -4226,6 +4310,8 @@ msgid ""
 "Finally! Our journey under the mountains has been long and difficult, but at "
 "last we return to the open continent — and with a powerful new ally!"
 msgstr ""
+"Konečně! Naše cesta pod horami byla dlouhá a náročná, ale nakonec se vracíme "
+"na otevřený kontinent – a navíc s novým mocným spojencem!"
 
 #. [message]: speaker=Lisar
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:518
@@ -4233,6 +4319,8 @@ msgid ""
 "If you’re serious about overthrowing my mother, just my support won’t be "
 "enough. And she’s certainly not about to give up the throne just for my sake."
 msgstr ""
+"Pokud to se sesazením mé matky myslíš vážně, moje podpora sama o sobě nebude "
+"stačit. A ona se rozhodně nechystá vzdát trůnu jen kvůli mně."
 
 #. [message]: speaker=Lisar
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:522
@@ -4241,6 +4329,9 @@ msgid ""
 "the orcish tribes — all these bolster Weldyn’s armies. The more we can "
 "defeat, the weaker Asheviere will become."
 msgstr ""
+"Ne, nejprve musíme oslabit její spojence. Dan’Tonk, klany jezdců, skřetí "
+"kmeny – to vše posiluje vojska Weldynu. Čím více jich porazíme, tím bude "
+"Ašvíra slabší."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:526
@@ -4249,6 +4340,9 @@ msgid ""
 "among the elves of the Lintanir — I have spent time there before. There are "
 "woses in the east as well, and drakes; who knows what else may await us!"
 msgstr ""
+"Nebo si musíme najít další spojence! Možná najdeme přátele mezi elfy "
+"z Lintaniru – už jsem tam kdysi pobýval. Na východě jsou také stromoví lidé "
+"a drakonidé. Kdo ví, co dalšího nás ještě čeká!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:539
@@ -4256,6 +4350,8 @@ msgid ""
 "This was a difficult battle, but without it we would never have become "
 "allied with Li’sar. We should count ourselves lucky to have fought it."
 msgstr ""
+"Byla to těžká bitva, ale bez ní bychom se nikdy nespojili s Lisar. Měli "
+"bychom být rádi, že jsme si tím prošli."
 
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:13
 msgid "Snow Plains"
@@ -4266,17 +4362,17 @@ msgstr "Sněžné pláně"
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1106
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1213
 msgid "Defeated Faction:"
-msgstr ""
+msgstr "Poražená frakce:"
 
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:27
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:75
 msgid "Urag Fell-Handed"
-msgstr ""
+msgstr "Urag Tvrdá ruka"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:47
 msgid "Look there, in the cage! Is that who she seems to be?"
-msgstr ""
+msgstr "Podívejte se tam, do té klece! Je to opravdu ta, na kterou to vypadá?"
 
 #. [message]: speaker=Mirya
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:52
@@ -4284,6 +4380,8 @@ msgid ""
 "Then it’s agreed? You’ll release and repatriate me to my queen’s service, in "
 "return for a to-be-negotiated ransom from the royal treasury?"
 msgstr ""
+"Takže je to domluveno? Propustíte mě a pošlete zpět do služeb mé královny "
+"výměnou za výkupné z královské pokladny, jehož výši ještě vyjednáme?"
 
 #. [message]: speaker=urag_tifer
 #. "witch" is a derogatory term here. Mirya (a Silver Mage) would probably prefer to be called a mage, or maybe a wizard.
@@ -4293,6 +4391,9 @@ msgid ""
 "other chiefs feed like pigs in Wesnoth. Ha! Lucky for me that we happened to "
 "run into each other, witch."
 msgstr ""
+"Ár... domluveno. Už žádné blbnutí v těch mrazivých horách, zatímco ostatní "
+"náčelníci se ve Wesnothu cpou jako prasata. Ha! Mám štěstí, že jsme na sebe "
+"narazili, čarodějnice."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:63
@@ -4300,6 +4401,8 @@ msgid ""
 "The fates must have a sense of humor — here is imprisoned the very mage who "
 "tried to burn us alive back in the volcano."
 msgstr ""
+"Osud musí mít smysl pro humor – je tu uvězněna právě ta čarodějka, která se "
+"nás tam u sopky pokusila upálit zaživa."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:67
@@ -4307,11 +4410,13 @@ msgid ""
 "It sounds as though she stands on the verge of freedom. But if we strike "
 "now, we can prevent her from ever rejoining Asheviere."
 msgstr ""
+"Zní to, jako by stála na prahu svobody. Ale pokud udeříme teď, můžeme jí "
+"zabránit v tom, aby se kdy vrátila k Ašvíře."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:84
 msgid "An ignominious end for a mage who’s caused us so much trouble."
-msgstr ""
+msgstr "Ostudný konec pro čarodějku, která nám způsobila tolik potíží."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:86
@@ -4320,16 +4425,19 @@ msgid ""
 "the past. It is good that we stopped her before she could bring this one "
 "into their fold too."
 msgstr ""
+"Podle toho, co mi řekla Lisar, Mirya v minulosti pro Ašvíru verbovala skřetí "
+"klany. Je dobře, že jsme ji zastavili, než stačila přivést i tento klan do "
+"jejich řad."
 
 #. [message]: speaker=urag_tifer
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:92
 msgid "Get out of here, humans. You already got what you came for!"
-msgstr ""
+msgstr "Vypadněte odsud, lidi. To, pro co jste přišli, už máte!"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:102
 msgid "Whitefang Mountains"
-msgstr ""
+msgstr "Bílé špičáky"
 
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:110
 msgid "A Crisis of Leadership"
@@ -4341,7 +4449,7 @@ msgstr "Krize vedení"
 #: data/campaigns/Heir_To_The_Throne/scenarios/42_A_Crisis_of_Leadership.cfg:270
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1927
 msgid "Fagh-mok the Flattered"
-msgstr ""
+msgstr "Fagh-mok Namyšlený"
 
 #. [message]: speaker=Delfador {DELFADOR_VARIATION mentoring}
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:158
@@ -4350,6 +4458,8 @@ msgid ""
 "orcish clan of the same name. They are allies of Asheviere’s, and powerful "
 "enemies of ours."
 msgstr ""
+"Buď opatrný, Konráde. Blížíme se k Bílým špičákům, kde sídlí obrovský skřetí "
+"klan stejného jména. Jsou to spojenci Ašvíry a naši mocní nepřátelé."
 
 #. [message]: speaker=Delfador {DELFADOR_VARIATION mentoring}
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:162
@@ -4357,6 +4467,9 @@ msgid ""
 "Even the great armies of yesteryear lacked the strength to defeat them in "
 "their home. We should do our best to slip quietly past."
 msgstr ""
+"Ani veliká vojska minulých časů neměla dost síly na to, aby je porazila na "
+"jejich vlastním území. Měli bychom se snažit proklouznout kolem nich "
+"nepozorovaně."
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION mad}
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:166
@@ -4364,6 +4477,8 @@ msgid ""
 "Your warning comes too late, Delfador. One of their leaders has already "
 "spotted us!"
 msgstr ""
+"Tvé varování přichází příliš pozdě, Delfadore. Jeden z jejich velitelů nás "
+"už zahlédl!"
 
 #. [message]: speaker=Faghmok
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:172
@@ -4371,6 +4486,8 @@ msgid ""
 "Peace, pinkski— humans! Hah, don’t you look scared to see me. You must be "
 "the great Prince Konrad!"
 msgstr ""
+"Mír, bledé ků... lidi! Ha, vypadáš, že se mě vůbec nebojíš. Ty musíš být ten "
+"slavný princ Konrád!"
 
 #. [message]: speaker=Faghmok
 #. his real name is Fagh-mok the Flattered, but he's lying to make himself sound better.
@@ -4380,6 +4497,9 @@ msgid ""
 "queen Asheviere told us all sorts of things about you, prince. But I’m sure "
 "it’s all lies."
 msgstr ""
+"Jsem Fagh-mok Ctihodný, čestný válečník z náčelníkovy stráže. Ta odporná "
+"královna Ašvíra nám o tobě vyprávěla nejrůznější věci, princi. Ale jsem si "
+"jistý, že jsou to samé lži."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:181
@@ -4387,6 +4507,8 @@ msgid ""
 "You are no friend of the dark queen, then? Yet your clan fights alongside "
 "her as an ally."
 msgstr ""
+"Takže nejsi přítelem temné královny? Přitom tvůj klan bojuje po jejím boku "
+"jako spojenec."
 
 #. [message]: speaker=Faghmok
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:185
@@ -4394,6 +4516,8 @@ msgid ""
 "They have been misled! Our foolish chief dares to oppose you, oh mighty "
 "Konrad! But if there were to be a new chief... myself, for example..."
 msgstr ""
+"Byli oklamáni! Náš pošetilý náčelník se odváží postavit se ti na odpor, ó "
+"mocný Konráde! Kdyby tu však byl nový náčelník... třeba já, například..."
 
 #. [message]: speaker=Faghmok
 #. [message]: role=weldyn3
@@ -4423,17 +4547,17 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:120
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:207
 msgid "..."
-msgstr ""
+msgstr "..."
 
 #. [message]: speaker=Faghmok
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:193
 msgid "If you’re interested, come meet me just outside our camp."
-msgstr ""
+msgstr "Pokud máš zájem, přijď za mnou. Budu u našeho tábora."
 
 #. [message]: speaker=Faghmok
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:203
 msgid "Ha ha ha, I knew you’d come find me. Very good."
-msgstr ""
+msgstr "Ha ha ha, věděl jsem, že mě vyhledáš. Výborně."
 
 #. [message]: speaker=Faghmok
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:207
@@ -4442,6 +4566,9 @@ msgid ""
 "our camp. Once you’re there, it’ll be up to you to kill the old chief — and "
 "then I can take over!"
 msgstr ""
+"Jsem připraven propašovat tebe a tři tvé nejlepší vojáky do samého středu "
+"našeho tábora. Až se tam ocitnete, bude na vás, abyste zabili starého "
+"náčelníka – a pak to můžu převzít já!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:211
@@ -4449,6 +4576,8 @@ msgid ""
 "Or, once we’re separated from our army you will capture us and turn us over "
 "to Asheviere. Why should I take such a great risk on the word of a stranger?"
 msgstr ""
+"Nebo, jakmile se oddělíme od našeho vojska, zajmeš nás a vydáš Ašvíře. Proč "
+"bych měl podstupovat tak velké riziko jen na základě slibu nějakého cizince?"
 
 #. [message]: speaker=Faghmok
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:215
@@ -4457,6 +4586,9 @@ msgid ""
 "have some guarantee... fine, I’ll stay prisoner with your army until you "
 "safely return. Now what do you say?"
 msgstr ""
+"Pah, náčelníkem se stanu jen tehdy, když zabijete toho starého! Ale jestli "
+"potřebuješ nutně nějakou záruku... dobře, zůstanu jako rukojmí u tvého "
+"vojska, dokud se bezpečně nevrátíte. Tak co na to říkáš?"
 
 #. [message]: speaker=Faghmok
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:220
@@ -4464,6 +4596,9 @@ msgid ""
 "When you’re ready, I can sneak you and three of your best soldiers into the "
 "center of our camp. And then you can kill the chief! What do you say?"
 msgstr ""
+"Až budeš připravený, můžu tě spolu se třemi tvými nejlepšími vojáky "
+"propašovat do samého středu našeho tábora. A pak můžete zabít náčelníka! Co "
+"ty na to?"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:225
@@ -4472,6 +4607,9 @@ msgid ""
 "accuracy and power to quickly defeat enemies even within their own "
 "fortifications. Are we prepared?"
 msgstr ""
+"Hmm... Pokud jde o samotnou vraždu, budeme potřebovat ostřílené bojovníky "
+"s dostatečnou přesností a silou, aby dokázali rychle porazit nepřátele "
+"i uvnitř jejich vlastních opevnění. Jsme na to připraveni?"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:269
@@ -4479,6 +4617,9 @@ msgid ""
 "With the Whitefangs embroiled in civil war, Asheviere is more vulnerable "
 "than ever! I wonder who the eventual victor will be..."
 msgstr ""
+"Vzhledem k tomu, že se Bílé špičáky zapletly do občanské války, je Ašvíra "
+"zranitelnější než kdy jindy! Zajímalo by mě, kdo z toho nakonec vyjde jako "
+"vítěz..."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:275
@@ -4486,11 +4627,13 @@ msgid ""
 "With the Whitefangs embroiled in civil war, Asheviere is more vulnerable "
 "than ever."
 msgstr ""
+"Vzhledem k tomu, že se Bílé špičáky zapletly do občanské války, je Ašvíra "
+"zranitelnější než kdy jindy."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:285
 msgid "Arkan-Thoria"
-msgstr ""
+msgstr "Arkan-Thoria"
 
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:293
 msgid "Cliffs of Thoria"
@@ -4498,13 +4641,15 @@ msgstr "Srázy Thorie"
 
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:296
 msgid "New Companion for Li’sar:"
-msgstr ""
+msgstr "Nový společník pro Lisar:"
 
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:299
 msgid ""
 "Reinforcements: <span color='#EFBF04'><b>Li’sar will start future scenarios "
 "with double income and +50 gold.</b></span>"
 msgstr ""
+"Posily: <span color='#EFBF04'><b>Lisar bude v budoucích scénářích začínat "
+"s dvojnásobným příjmem a 50 zlatými navíc.</b></span>"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:315
@@ -4512,6 +4657,8 @@ msgid ""
 "Look — winged shapes swooping on the horizon. And I hear the shouts and "
 "screams of men! A battle is being fought on the river!"
 msgstr ""
+"Podívejte – na obzoru se snášejí okřídlené stíny. A slyším výkřiky a řev "
+"mužů! Na řece zuří bitva!"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:322
@@ -4521,6 +4668,10 @@ msgid ""
 "evil creatures lurk along its banks, its waters are not fit to drink, and it "
 "runs over the Cliffs of Thoria."
 msgstr ""
+"To je řeka, kterou lidé znají pod jménem Longlier, avšak v prastarém jazyce "
+"mého lidu se jí říká Arkan-Thoria. Její jméno znamená „Řeka kostí“. Podél "
+"jejích břehů číhají obrovská a zlá stvoření, její voda není pitná a teče "
+"přes Srázy Thorie."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:326
@@ -4528,6 +4679,8 @@ msgid ""
 "It has been many centuries since any man or elf has passed over the Cliffs "
 "and survived. Be cautious, prince."
 msgstr ""
+"Je to již mnoho století, co naposledy nějaký člověk či elf překročil Srázy "
+"a přežil. Buď opatrný, princi."
 
 #. [message]: speaker=Warven
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:347
@@ -4535,6 +4688,8 @@ msgid ""
 "I can’t thank you enough for saving me, Your Highness. I would have been "
 "dead a dozen times over."
 msgstr ""
+"Nemohu vám dostatečně poděkovat za to, že jste mě zachránil, Vaše Výsosti. "
+"Už bych byl mrtvý nejméně tucetkrát."
 
 #. [message]: speaker=Warven
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:351
@@ -4543,16 +4698,21 @@ msgid ""
 "bad state right now, but give me a few animals and some supplies to go "
 "relieve them, and we’ll be ready to reinforce you for your next battles."
 msgstr ""
+"Zbytek přeživších je vzdálený týden pochodu proti proudu řeky. Právě teď "
+"jsou na tom dost špatně, ale dejte mi pár zvířat a nějaké zásoby, abych jim "
+"mohl jít pomoci, a budeme připraveni posílit vaše řady v dalších bitvách."
 
 #. [object]
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:358
 msgid "Reinforcements"
-msgstr ""
+msgstr "Posily"
 
 #. [object]
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:359
 msgid "Li’sar will start future scenarios with double income and +50 gold."
 msgstr ""
+"Lisar bude v budoucích scénářích začínat s dvojnásobným příjmem a 50 zlatými "
+"navíc."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:365
@@ -4560,6 +4720,8 @@ msgid ""
 "There are still some drakes here, but there’s no longer any reason to fight. "
 "We did a good thing by rescuing Warven and his allies."
 msgstr ""
+"Je tu sice ještě pár drakonidů, ale už není důvod bojovat. Udělali jsme "
+"správnou věc, když jsme zachránili Warvena a jeho spojence."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:387
@@ -4569,6 +4731,10 @@ msgid ""
 "the woses are, I expect the elves of Lintanir will have much to speak with "
 "us about."
 msgstr ""
+"Blížíme se k okraji Lintanirského lesa. Delfador mi kdysi vyprávěl o zdejším "
+"háji, v němž žijí stromoví lidé, ale dnes jsou stromy tiché. Ať už jsou "
+"stromoví kdekoli, předpokládám, že elfové z Lintaniru nám k tomu budou mít "
+"co říct."
 
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:402
 msgid "Underground Channels"
@@ -4576,7 +4742,7 @@ msgstr "Podzemní kanály"
 
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:406
 msgid "New Recruit for Delfador:"
-msgstr ""
+msgstr "Nový rekrut pro Delfadora:"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:427
@@ -4584,6 +4750,8 @@ msgid ""
 "The river travels underground here, and there is an awful stench of rot and "
 "decay. Has some undead creature taken up residence inside?"
 msgstr ""
+"Řeka zde teče pod zemí a ve vzduchu visí příšerný zápach hniloby a rozkladu. "
+"Usídlila se tam snad nějaká nemrtvá bytost?"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:431
@@ -4591,6 +4759,8 @@ msgid ""
 "I am not sure what benefit we could gain from fighting in such a place, but "
 "it is always our duty to destroy evil."
 msgstr ""
+"Nejsem si jistý, jaký prospěch bychom mohli mít z boje na takovém místě, ale "
+"vždy je naší povinností zničit zlo."
 
 #. [side]: id=Haralamdum, type=Ancient Wose
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:439
@@ -4615,17 +4785,17 @@ msgstr ""
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:463
 msgid "Lintanir Forest"
-msgstr ""
+msgstr "Lintanirský les"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:471
 msgid "Eloreis"
-msgstr ""
+msgstr "Eloreis"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:472
 msgid "Parandra"
-msgstr ""
+msgstr "Parandra"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:509
@@ -4634,6 +4804,9 @@ msgid ""
 "North Elves. I was born not far east of here... more years ago than I care "
 "to remember."
 msgstr ""
+"Konečně! Přátelé, nakonec jsme dorazili do Lintanirského lesa, domova "
+"severních elfů. Narodil jsem se nedaleko odtud na východ... před tolika "
+"lety, že si to ani nechci připomínat."
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION glad}
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:513
@@ -4642,6 +4815,9 @@ msgid ""
 "Aethenwood. Lord Kalenz has told me much about his home in the Lintanir. I "
 "am honored to meet you."
 msgstr ""
+"Zdravím vás, elfové! Jmenuji se Konrád, jsem dědic wesnothského trůnu a syn "
+"Aethenského lesa. Lord Kalenz mi vyprávěl mnoho o svém domově v Lintaniru. "
+"Je mi ctí se s vámi setkat."
 
 #. [message]: speaker=Eloreis
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:517
@@ -4649,6 +4825,8 @@ msgid ""
 "Greetings, Konrad. I have heard much about you as well. Welcome to the "
 "Lintanir Forest."
 msgstr ""
+"Zdravím, Konráde. Také jsem o tobě už hodně slyšel. Vítej v Lintanirském "
+"lese."
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION glad}
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:526
@@ -4656,6 +4834,8 @@ msgid ""
 "Hail, elves! I am Konrad, heir to the throne of Wesnoth, son of the "
 "Aethenwood and friend of Lord Kalenz."
 msgstr ""
+"Zdravím vás, elfové! Jmenuji se Konrád, jsem dědic wesnothského trůnu, syn "
+"Aethenského lesa a přítel lorda Kalenze."
 
 #. [message]: speaker=Eloreis
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:530
@@ -4663,6 +4843,8 @@ msgid ""
 "Greetings, Konrad. I have heard much about you. Welcome to the Lintanir "
 "Forest, home of the North Elves."
 msgstr ""
+"Zdravím, Konráde. Hodně jsem o tobě slyšel. Vítej v Lintanirském lese, "
+"domově severních elfů."
 
 #. [message]: speaker=Parandra
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:542
@@ -4671,11 +4853,16 @@ msgid ""
 "since I last laid eyes on you, Konrad, yet you are now a grown man. A proven "
 "warrior stands before me!"
 msgstr ""
+"Jak rychle lidé dospívají! Uplynulo teprve sedmnáct zim od chvíle, kdy jsem "
+"tě naposledy viděla, Konráde, a přesto jsi už dospělý muž. Mám před sebou "
+"ostříleného válečníka!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:546
 msgid "Forgive me, Elf, but I’m afraid I do not recall meeting you before. "
 msgstr ""
+"Promiň, elfko, ale obávám se, že si nevzpomínám, že bych tě někdy dříve "
+"potkal. "
 
 #. [message]: speaker=Delfador {DELFADOR_VARIATION mentoring}
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:550
@@ -4684,11 +4871,15 @@ msgid ""
 "rampaging across Wesnoth, Parandra helped me rescue you from the royal "
 "palace."
 msgstr ""
+"Konráde, to je Parandra. Když se Ašvíra poprvé chopila moci a její skřeti "
+"začali pustošit Wesnoth, Parandra mi pomohla zachránit tě z královského "
+"paláce."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:554
 msgid "I had no idea! Thank you, my lady. It is a pleasure to meet you again."
 msgstr ""
+"To jsem netušil! Děkuji ti, má paní. Je mi potěšením se s tebou opět setkat."
 
 #. [message]: speaker=Lisar
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:558
@@ -4696,6 +4887,8 @@ msgid ""
 "Rescued him from my mother? Seventeen years ago Konrad would’ve been an "
 "infant. What is this you’re talking about?"
 msgstr ""
+"Zachráněn před mou matkou? Před sedmnácti lety by byl Konrad ještě nemluvně. "
+"O čem to vlastně mluvíte?"
 
 #. [message]: id=Kalenz,Eloreis
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:562
@@ -4704,6 +4897,9 @@ msgid ""
 "unjustly. When Konrad was an infant, she ordered all the princes put to "
 "death, so she could seize control."
 msgstr ""
+"Tvá matka má na rukou spoustu krve, dítě. Nechala nespravedlivě zabít mnoho "
+"lidí. Když byl Konrád ještě nemluvně, nařídila popravit všechny prince, aby "
+"se mohla chopit moci."
 
 #. [message]: speaker=Lisar
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:566
@@ -4712,6 +4908,9 @@ msgid ""
 "have shown me many things of which I didn’t wish to believe regarding my "
 "mother. I trust that you speak the truth."
 msgstr ""
+"Ještě nedávno bych takovou zjevnou lež ostře odsoudila. Ale Konrád "
+"a Delfador mi ukázali mnoho věcí týkajících se mé matky, kterým jsem "
+"nechtěla uvěřit. Mám za to, že mluvíš pravdu."
 
 #. [message]: speaker=Lisar
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:576
@@ -4719,6 +4918,8 @@ msgid ""
 "But now I hold the Sceptre — our symbol of rulership — and my mother’s time "
 "as queen draws short. I have a chance to do better!"
 msgstr ""
+"Teď však držím žezlo – náš symbol vlády – a čas mé matky jako královny se "
+"chýlí ke konci. Mám šanci zvládnout to lépe!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:580
@@ -4726,6 +4927,8 @@ msgid ""
 "Though you have the Sceptre, my lady, it is not your place to rule. Your "
 "line was tainted when Asheviere orchestrated her husband’s downfall."
 msgstr ""
+"Ačkoli držíš žezlo, má paní, není tvým úkolem vládnout. Tvůj rod byl "
+"poskvrněn, když Ašvíra zosnovala pád svého manžela."
 
 #. [message]: speaker=Lisar
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:585
@@ -4734,6 +4937,9 @@ msgid ""
 "of rulership. My mother’s time as queen draws short. With the Sceptre, as "
 "queen, I have a chance to do better."
 msgstr ""
+"Právě proto ti však musím to žezlo vzít, Konráde – je to náš symbol vlády. "
+"Čas mé matky jako královny se chýlí ke konci. S tím žezlem mám jako královna "
+"šanci zvládnout to lépe."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:589
@@ -4741,6 +4947,8 @@ msgid ""
 "My lady, there is some good in you, but the throne is not yours to claim. "
 "Your line was tainted when Asheviere orchestrated her husband’s downfall."
 msgstr ""
+"Má paní, je v tobě i něco dobrého, ale na trůn nemáš nárok. Tvůj rod byl "
+"poskvrněn v okamžiku, kdy Ašvíra zosnovala pád svého manžela."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:594
@@ -4749,11 +4957,14 @@ msgid ""
 "raised him as my own, as penance for my part in Garard’s fall. Konrad shall "
 "be king."
 msgstr ""
+"Konrád je právoplatným dědicem. Je to syn Aranda a synovec Gararda. Vychoval "
+"jsem ho jako vlastního syna, jako pokání za svou roli v Garardově pádu. "
+"Konrád se stane králem."
 
 #. [message]: speaker=Parandra
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:604
 msgid "(gestures to Delfador)"
-msgstr ""
+msgstr "(dělá posunky na Delfadora)"
 
 #. [message]: speaker=Parandra
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:610
@@ -4762,6 +4973,9 @@ msgid ""
 "just. A warrior who has respect, and appreciates peace. Yet the throne is "
 "not the place for him. You know of what I speak, Delfador."
 msgstr ""
+"Delfadore, vychoval jsi Konráda tak, aby byl zručný a moudrý, čestný "
+"a spravedlivý. Je to válečník, který si zaslouží úctu a váží si míru. Přesto "
+"pro něj trůn není tím pravým místem. Víš, o čem mluvím, Delfadore."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:614
@@ -4770,6 +4984,9 @@ msgid ""
 "speak to no-one of what we know, I see no reason why Konrad would not best "
 "have the throne."
 msgstr ""
+"Parandro, to, co říkáš, se někomu může zdát správné, ale dokud ty a já "
+"nikomu neřekneme, co víme, nevidím žádný důvod, proč by Konrád neměl být tím "
+"nejvhodnějším uchazečem o trůn."
 
 #. [message]: speaker=Parandra
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:618
@@ -4778,16 +4995,19 @@ msgid ""
 "the world of men. But in this, you are mistaken. Li’sar is the heir. She "
 "should take the throne. Now that I have met her for myself, I am sure of it."
 msgstr ""
+"V mnoha věcech máš pravdu, Delfadore, a tvá moudrost nemá ve světě lidí "
+"obdoby. Ale v tomto se mýlíš. Lisar je dědičkou. To ona by měla usednout na "
+"trůn. Teď, když jsem ji osobně poznala, jsem si tím jistá."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:622
 msgid "Hmph. Perhaps you are right, perhaps not. We shall see."
-msgstr ""
+msgstr "Hm. Možná máš pravdu, možná ne. Uvidíme."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:632
 msgid "*Ahem*"
-msgstr ""
+msgstr "*Ehm*"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:640
@@ -4796,6 +5016,9 @@ msgid ""
 "Now we have. The Lintanir has magic to offer you and your companions; aid on "
 "your quest against the dark queen."
 msgstr ""
+"... Konráde, kdysi jsem ti slíbil pomoc z mého domova, pokud se tam někdy "
+"dostaneme. A teď jsme tu. Lintanir tobě a tvým společníkům nabízí něco "
+"kouzelného. Pomoc při vašem tažení proti temné královně."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:645
@@ -4804,6 +5027,9 @@ msgid ""
 "the elves. The Lintanir has magic to offer you and your companions; aid on "
 "your quest against the dark queen."
 msgstr ""
+"... Konráde, osvědčil ses jako nepřítel Ašvíry a přítel elfů. Lintanir tobě "
+"a tvým společníkům nabízí něco kouzelného. Pomoc při vašem tažení proti "
+"temné královně."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:650
@@ -4812,6 +5038,8 @@ msgid ""
 "chestplate of black steel, and a great sword of fire. Choose one, and it "
 "shall be yours."
 msgstr ""
+"Máme ve svém držení tři pověstné předměty: svazek vědění stromových, hrudní "
+"pancíř z černé oceli a velký ohnivý meč. Vyber si jeden z nich a bude tvůj."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:654
@@ -4819,6 +5047,8 @@ msgid ""
 "You are as generous as you are wise, Lord Kalenz. Please, tell us more about "
 "these artifacts you offer."
 msgstr ""
+"Jsi stejně velkorysý, jako moudrý, lorde Kalenzi. Prosím, pověz nám více "
+"o těch artefaktech, které nám nabízíte."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:659
@@ -4827,6 +5057,9 @@ msgid ""
 "go forth. Fortune has smiled upon us so far, despite great dangers. Perhaps "
 "she will continue to do so."
 msgstr ""
+"Teď ti přeji hodně štěstí, Konráde, a tobě také, Lisar. Odpočiňme si a pak "
+"se znovu vydejme na cestu. Štěstěna se na nás zatím usmívala, navzdory "
+"velkým nebezpečím. Možná nám bude přát i nadále."
 
 #. [message]: speaker=Eloreis
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:668
@@ -4834,6 +5067,8 @@ msgid ""
 "But enough introductions. Konrad, is the Lord Kalenz with you? There is much "
 "that the three of us ought to speak about."
 msgstr ""
+"Ale dost těch úvodních zdvořilostí. Konráde, je s tebou lord Kalenz? Je toho "
+"hodně, o čem bychom si my tři měli promluvit."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:672
@@ -4842,6 +5077,9 @@ msgid ""
 "towards Lintanir Forest. He has not arrived safely? That is ill news, for he "
 "seemed a wise elf and a staunch ally."
 msgstr ""
+"Ten dobrý pán byl před nějakou dobou zraněn v bitvě a ustoupil na východ "
+"směrem k Lintanirskému lesu. Nedostal se v pořádku sem? To je špatná zpráva, "
+"neboť působil jako moudrý elf a věrný spojenec."
 
 #. [message]: speaker=Eloreis
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:676
@@ -4850,6 +5088,9 @@ msgid ""
 "represents the best of us, and has survived many trials in times past. But I "
 "fear he has been waylaid by some mischief."
 msgstr ""
+"To opravdu nevěstí nic dobrého. Nevěřím, že by zahynul, neboť Kalenz "
+"představuje to nejlepší z nás a v minulosti již překonal mnoho zkoušek. "
+"Obávám se však, že se stal obětí nějakého nekalého činu."
 
 #. [message]: speaker=Eloreis
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:680
@@ -4858,6 +5099,9 @@ msgid ""
 "forth. Fortune has smiled upon you so far, despite great dangers. Perhaps "
 "she will continue to do so."
 msgstr ""
+"Nemohu dělat nic jiného, než ti popřát hodně štěstí, Konráde, a tobě také, "
+"Lisar. Odpočiňte si a pak vyrazte na cestu. Štěstěna se na vás dosud "
+"usmívala, navzdory velkým nebezpečím. Možná vám bude přát i nadále."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:703
@@ -4865,6 +5109,8 @@ msgid ""
 "I know little of woses, but I know they are not warriors. What secret lore "
 "might they have that could be of use on the battlefield?"
 msgstr ""
+"O stromových lidech toho moc nevím, ale jedno ano, že to nejsou válečníci. "
+"Jaké tajné znalosti by mohli mít, které by se mohly hodit na bojišti?"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:707
@@ -4873,6 +5119,9 @@ msgid ""
 "It is a magical tome; a record of the life-sap of Elilmaldur-Rithrandil, "
 "eldest of the Green Isle."
 msgstr ""
+"Způsoby lesa. Umění pohybovat se rychle a nepozorovaně mezi stromy. Je to "
+"kouzelná kniha. Záznam o životní síle Elilmaldura-Rithrandila, nejstaršího "
+"ze Zeleného ostrova."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:711
@@ -4882,6 +5131,10 @@ msgid ""
 "I believe you will gain great affinity with the forest, its nature and ways, "
 "and all the creatures within it."
 msgstr ""
+"Mnohým by se tato kniha mohla jevit jako sbírka nesmyslných příběhů "
+"o větvičkách a listech. Ale ty jsi vyrostl v lese, Konráde. Pokud se "
+"rozhodneš ji vzít, věřím, že navážeš hluboké pouto s lesem, s jeho podstatou "
+"a zvyky i se všemi tvory, kteří v něm žijí."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:718
@@ -4890,6 +5143,8 @@ msgid ""
 "ability — invisibility in forest — as well as improved forest movement and "
 "70% forest defense."
 msgstr ""
+"Přijmutím knihy Moudra lesa získá <b>Konrád</b> schopnost <i>přepadení</i> – "
+"neviditelnosti v lese – a také lepší pohyb přes les a 70% obranu v něm."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:732
@@ -4897,6 +5152,8 @@ msgid ""
 "You called this a sword of fire, Kalenz, but it looks little different from "
 "my own. Is there a command word, perhaps?"
 msgstr ""
+"Říkal jsi ohnivý meč, Kalenzi, ale vypadá skoro stejně jako ten můj. Je "
+"k němu snad nějaké kouzelné slovo?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:738
@@ -4904,6 +5161,8 @@ msgid ""
 "This is a wizard’s sword, Konrad; I sense its power. With such an enchanted "
 "weapon, even one as old as me would make a capable swordsman."
 msgstr ""
+"Tohle je čarodějův meč, Konráde. Cítím jeho sílu. S takovou kouzelnou zbraní "
+"by se i někdo tak starý jako já stal zdatným šermířem."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:742
@@ -4912,6 +5171,8 @@ msgid ""
 "as a boon to her by your elvish friends in the south, but it brought her "
 "only disaster."
 msgstr ""
+"Ano, kdysi patřil Ila’alion, mocné čarodějce. Tvoji elfí přátelé z jihu ho "
+"pro ni očarovali jako dar, ale přineslo jí to jen neštěstí."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:744
@@ -4921,6 +5182,10 @@ msgid ""
 "They resented her arrogance as the bearer of the sword, and indignation is a "
 "powerful force amongst my people at times."
 msgstr ""
+"Její sestry čarodějky... no, dalo by se říci, že přišly Ila’alion na pomoc "
+"až s velkým zpožděním, když bránila právě tento les před nájezdem skřetů. "
+"Nesnášely její namyšlenost, když držela meč, a rozhořčení je mezi mým lidem "
+"někdy velmi mocnou silou."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:751
@@ -4928,6 +5193,8 @@ msgid ""
 "Taking the Flaming Sword will grant <b>Delfador</b> a new melee attack, "
 "hitting for 7-4 fire damage."
 msgstr ""
+"Přijmutím Planoucího meče získá <b>Delfador</b> nový útok zblízka, který "
+"způsobí poškození ohněm 7-4."
 
 #. [message]: speaker=Lisar
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:765
@@ -4936,6 +5203,9 @@ msgid ""
 "made. Not even among the best smiths of Weldyn have I seen its like. How did "
 "the Lintanir come by it?"
 msgstr ""
+"To je opravdu úchvatný kus brnění, Kalenzi, a nemyslím si, že by ho vyrobili "
+"elfové. Ani mezi těmi nejlepšími kováři ve Weldynu jsem nic podobného "
+"neviděla. Jak se k němu Lintanir dostal?"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:769
@@ -4944,6 +5214,9 @@ msgid ""
 "clove our steel blades as if they were saplings, and its enchanted armor "
 "deflected our strongest magics and hottest fires."
 msgstr ""
+"Před mnoha lety nám dělal potíže nemrtvý pán s obrovskou mocí. Jeho sekera "
+"štípala naše ocelové čepele, jako by to byly mladé stromky, a jeho očarovaná "
+"zbroj odrážela i naše nejmocnější kouzla a nejžhavější střely."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:773
@@ -4952,6 +5225,9 @@ msgid ""
 "lord of the undead and taking its armor as spoil. If you choose to wear it, "
 "Li’sar, do so humbly — it was paid for in blood."
 msgstr ""
+"Teprve po dlouhém boji a za velkou cenu jsme zvítězili, zničili pána "
+"nemrtvých a jeho brnění si vzali jako kořist. Pokud se rozhodneš ji nosit, "
+"Lisar, dělej to s pokorou – byla zaplacena krví."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:780
@@ -4959,11 +5235,13 @@ msgid ""
 "Taking the Void Armor will grant <b>Li’sar</b> immunity to slows, poison, "
 "fire damage, cold damage, and arcane damage."
 msgstr ""
+"Přijmutím Zbroje nicoty získá <b>Lisar</b> odolnost vůči zpomalení, jedu, "
+"ohni, chladu a nezemskému poškození."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:795
 msgid "As you wish. The wose lore is yours."
-msgstr ""
+msgstr "Jak si přeješ. Moudra lesa jsou tvá."
 
 #. [event]: id=boon_wose_lore
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:801
@@ -4972,21 +5250,24 @@ msgid ""
 "gains the <i>ambush</i> ability, improved forest movement, and 70% forest "
 "defense."
 msgstr ""
+"Tato obsáhlá kniha je plná moudrosti a pověstí stromového lidu. Konrád "
+"získává schopnost <i>přepadení</i>, vylepšený pohyb a 70% obranu v lese."
 
 #. [dummy]: id=wose_lore
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:806
 msgid "wose lore"
-msgstr ""
+msgstr "moudra lesa"
 
 #. [dummy]: id=wose_lore
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:807
 msgid "This unit has 70% defense, full movement, and invisibility in forest."
 msgstr ""
+"Tato jednotka má 70 % obrany, plnou pohyblivost a neviditelnost v lese."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:841
 msgid "As you wish. The flaming sword is yours."
-msgstr ""
+msgstr "Jak si přeješ. Planoucí meč je tvůj."
 
 #. [event]: id=boon_flaming_sword # used in smalltalk.cfg, type=fire
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:847
@@ -4995,16 +5276,19 @@ msgid ""
 "forgemasters, who imbued the bluish steel with an inner magical fire. "
 "Delfador gains a new melee attack, dealing 7-4 fire damage."
 msgstr ""
+"Tento mohutný meč vyrobili před staletími dávno zapomenutí elfí kováři, "
+"kteří modravé oceli vtiskli vnitřní kouzelný oheň. Delfador získává nový "
+"útok zblízka, který způsobuje poškození ohněm 7-4."
 
 #. [event]: id=boon_flaming_sword # used in smalltalk.cfg, type=fire
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:851
 msgid "flaming sword"
-msgstr ""
+msgstr "planoucí meč"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:866
 msgid "As you wish. The void armor is yours."
-msgstr ""
+msgstr "Jak si přeješ. Zbroj nicoty je tvá."
 
 #. [event]: id=boon_void_armor
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:872
@@ -5012,11 +5296,13 @@ msgid ""
 "This beautiful chest plate is crafted from shimmering black steel. Li’sar "
 "gains immunity to slows, poison, fire damage, cold damage, and arcane damage."
 msgstr ""
+"Tento nádherný hrudní pancíř je vyroben z pableskující černé oceli. Lisar "
+"získává odolnost vůči zpomalení, jedu, ohni, chladu a nezemskému poškození."
 
 #. [dummy]: id=void_armor
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:877
 msgid "void armor"
-msgstr ""
+msgstr "zbroj nicoty"
 
 #. [dummy]: id=void_armor
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:878
@@ -5024,16 +5310,18 @@ msgid ""
 "This unit has immunity to slows, poison, fire damage, cold damage, and "
 "arcane damage."
 msgstr ""
+"Tato jednotka je odolná vůči zpomalení, otravě, ohni, chladu a nezemskému "
+"poškození."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:903
 msgid "Fort Garard"
-msgstr ""
+msgstr "pevnost Garard"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:918
 msgid "The ruins of Fort Garard. This is where my father died."
-msgstr ""
+msgstr "Zříceniny pevnosti Garard. Právě tady zemřel můj otec."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:922
@@ -5042,31 +5330,34 @@ msgid ""
 "my haste and my arrogance. Had I been but a breath wiser that night, all "
 "might have been different..."
 msgstr ""
+"Ano. Ten příběh znáš. Nejtemnější hodina mého nejtemnějšího dne. Zločin, "
+"který vzešel z mé ukvapenosti a namyšlenosti. Kdybych byl té noci jen "
+"o trochu rozumnější, všechno mohlo být jinak..."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:934
 msgid "Estmark Hills"
-msgstr ""
+msgstr "Východní vrchy"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:937
 msgid "N. Outpost"
-msgstr ""
+msgstr "Severní výspa"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:939
 msgid "S. Outpost"
-msgstr ""
+msgstr "Jižní výspa"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:950
 msgid "Parthyn"
-msgstr ""
+msgstr "Parthyn"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:951
 msgid "Soradoc"
-msgstr ""
+msgstr "Soradok"
 
 #. [message]: role=soradoc_guard
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:986
@@ -5074,6 +5365,8 @@ msgid ""
 "Halt! Your Highness Li’sar, by order of Her Majesty The Queen you are "
 "branded a traitor and an enemy of the state. Prepare to be apprehended."
 msgstr ""
+"Stůjte! Vaše Výsosti Lisar, na rozkaz Jejího Veličenstva královny jste "
+"označena za zrádkyni a nepřítelkyni státu. Připravte se na zatčení."
 
 #. [message]: speaker=Lisar # no variation; use her default portrait (which now includes the Sceptre)
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:998
@@ -5081,6 +5374,8 @@ msgid ""
 "A traitor? This is the Sceptre of Fire, symbol of the kings of Wesnoth, and "
 "I return after claiming it at great cost from the caverns of the north."
 msgstr ""
+"Zrádkyně? Toto je Ohnivé žezlo, symbol králů Wesnothu, a já se vracím poté, "
+"co jsem ho za velkou cenu získala z jeskyní na severu."
 
 #. [message]: speaker=Lisar
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1002
@@ -5089,6 +5384,9 @@ msgid ""
 "just general. And now I hold the Sceptre, not my mother. Stand aside or die, "
 "soldier."
 msgstr ""
+"Víš, že se Ašvíra ukázala jako špatná vládkyně. Víš, že jsem byla "
+"spravedlivou vojevůdkyní. A nyní já držím žezlo, ne moje matka. Ustup "
+"stranou, nebo zemřeš, vojáku."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1012
@@ -5096,6 +5394,7 @@ msgid ""
 "Leave my cousin out of this. You know who I am. And now you see I hold the "
 "Sceptre."
 msgstr ""
+"Netahej do toho mou sestřenku. Víš, kdo jsem. A teď vidíš, že držím žezlo."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1016
@@ -5104,6 +5403,9 @@ msgid ""
 "land is suffering. I know it, you know it, even Li’sar knows it; Asheviere’s "
 "own daughter driven to revolt."
 msgstr ""
+"Od Ašvíry jste slyšeli lži o mé válce – teď si poslechněte pravdu. Tato země "
+"trpí. Já to vím, vy to víte, dokonce i Lisar to ví. Ašvířinu vlastní dceru "
+"to dohnalo k tomu, aby se vzepřela."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1026
@@ -5113,22 +5415,27 @@ msgid ""
 "mine, it shall save you and I both from the terror that is Asheviere. You "
 "will let us pass."
 msgstr ""
+"S princeznou jsme společně získali Ohnivé žezlo, hůl králů. V Haldrikových "
+"rukou nám bylo spásou před lordy lichy. V mých rukou zachrání nás oba před "
+"hrůzou jménem Ašvíra. Necháš nás projít."
 
 #. [message]: role=soradoc_guard
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1036
 msgid "(whispering back and forth)"
-msgstr ""
+msgstr "(vzájemné šuškání)"
 
 #. [message]: role=soradoc_guard
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1043
 msgid "Go. You were never here."
-msgstr ""
+msgstr "Jděte. Nikdy jste tu nebyli."
 
 #. [message]: role=soradoc_guard
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1048
 msgid ""
 "... and if you do win against Asheviere, please remember our actions today."
 msgstr ""
+"... a pokud nad Ašvírou skutečně zvítězíte, nezapomeňte prosím na to, co "
+"jsme dnes udělali."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1068
@@ -5171,7 +5478,7 @@ msgstr "Zkouška klanů"
 #. [message]: speaker=Alric
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1120
 msgid "So! The young prince has found his way to the lands of the Horse Lords."
-msgstr ""
+msgstr "Tak tedy! Mladý princ si našel cestu do zemí Pánů koní."
 
 #. [message]: speaker=Daryn
 #. "old stick" refers to the sceptre of fire
@@ -5180,6 +5487,8 @@ msgid ""
 "Do not expect us, too, to bend the knee just because the princess holds an "
 "old stick."
 msgstr ""
+"Neočekávejte, že i my poklekneme jen proto, že princezna drží nějakou starou "
+"hůl."
 
 #. [message]: speaker=Daryn
 #. "old stick" refers to the sceptre of fire
@@ -5187,6 +5496,7 @@ msgstr ""
 msgid ""
 "Do not expect us, too, to bend the knee just because you hold an old stick."
 msgstr ""
+"Neočekávejte, že i my poklekneme jen proto, že držíš nějakou starou hůl."
 
 #. [message]: speaker=Ruga
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1141
@@ -5194,6 +5504,8 @@ msgid ""
 "You are two children and an old man. What right have you to challenge the "
 "throne?"
 msgstr ""
+"Jste dvě děti a jeden stařec. Jaké právo máte na to, abyste se ucházeli "
+"o trůn?"
 
 #. [message]: speaker=Haldiel
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1156
@@ -5201,6 +5513,9 @@ msgid ""
 "We have come to the Horse Plains, Konrad — the lands of my birth and the "
 "home of my kin. Perhaps I can persuade them where you could not."
 msgstr ""
+"Dorazili jsme do Nížiny koní, Konráde — do země, kde jsem se narodil a kde "
+"žije můj rod. Možná se mi podaří přesvědčit je tam, kde se to tobě "
+"nepodařilo."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1168
@@ -5208,6 +5523,8 @@ msgid ""
 "The Horse Clans are powerful and proud. If we cannot prove ourselves to them "
 "now, we shall surely have to battle them later, when we attack Weldyn."
 msgstr ""
+"Klany jezdců jsou mocné a hrdé. Pokud před nimi nyní neobstojíme, budeme "
+"s nimi později jistě muset bojovat, až zaútočíme na Weldyn."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1190
@@ -5258,6 +5575,9 @@ msgid ""
 "Dan’Tonk’s footmen to flank us. If we strike now, we can do enough damage to "
 "prevent them from marching against us later."
 msgstr ""
+"Až jednoho dne oblehneme Weldyn, Ašvíra jistě povolá pěšáky z Dan’Tonku, aby "
+"nás obklíčili na křídlech. Pokud zaútočíme hned teď, můžeme jim způsobit "
+"natolik velké škody, že později nebudou moci proti nám vytáhnout."
 
 #. [message]: role=dantonk_contain_guard
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1324
@@ -5265,6 +5585,8 @@ msgid ""
 "We’re all set up, my lady, and we’ve blocked the roads with rubble. They "
 "won’t get through easily."
 msgstr ""
+"Všichni jsme připraveni, má paní, a silnice jsme zahradili sutinami. Tak "
+"snadno neprojdou."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1328
@@ -5272,6 +5594,8 @@ msgid ""
 "Well done, everyone — our flank is secure. Asheviere’s position in Weldyn "
 "grows weaker each day."
 msgstr ""
+"Skvělá práce, to platí pro každého – naše křídlo je zajištěno. Ašvířino "
+"postavení ve Weldynu každým dnem slábne."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1334
@@ -5281,11 +5605,14 @@ msgid ""
 "blocked the road and have left behind enough guards to make any sortie "
 "difficult."
 msgstr ""
+"Ačkoli Dan’Tonk zůstává v rukou nepřítele, jeho síla je značně omezena. "
+"Nemáme ani čas, ani zásoby na zdlouhavé obléhání, a tak jsme zahradili "
+"silnici a nechali tam dostatek stráží, aby byl jakýkoli výpad ztížen."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1375
 msgid "Stockpiles"
-msgstr ""
+msgstr "zásoby"
 
 #. [message]: speaker=Lisar
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1401
@@ -5294,6 +5621,9 @@ msgid ""
 "farms suffer under Mother’s exorbitant taxes, those surrounding Weldyn — the "
 "core of her power base — have grown rich and fat."
 msgstr ""
+"Konráde, teď jsme hluboko v srdci Wesnothu. Zatímco farmy na západě trpí pod "
+"tíhou matčiných přemrštěných daní, ty v okolí Weldynu – jádro její mocenské "
+"základny – zbohatly a vzkvétají."
 
 #. [message]: speaker=Lisar
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1405
@@ -5301,6 +5631,8 @@ msgid ""
 "It’s an unsavory proposal, but I believe our best strategy is to burn the "
 "locals’ farms to deprive my mother of their resources."
 msgstr ""
+"Je to odporný návrh, ale domnívám se, že nejlepší strategií je vypálit farmy "
+"místních obyvatel, abychom mou matku připravili o její zdroje."
 
 #. [message]: speaker=Lisar
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1407
@@ -5309,6 +5641,9 @@ msgid ""
 "wealthy farmer can survive losing a few herds or a single year’s harvest. We "
 "won’t, if Asheviere defeats us in the end."
 msgstr ""
+"Nechci tím říct, že bychom měli někoho odvést k vojsku nebo zabíjet – jsou "
+"to nevinní lidé. Ale bohatý farmář dokáže přežít ztrátu několika stád nebo "
+"úrody z jednoho roku. My to ale nezvládneme, pokud nás Ašvíra nakonec porazí."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1418
@@ -5317,21 +5652,25 @@ msgid ""
 "strategy, but I am not enthused about the prospect. Of course, Weldyn will "
 "surely pose a frighteningly difficult challenge if we do not..."
 msgstr ""
+"To je skutečně odporná představa. Zničení farem v této oblasti by sice mohlo "
+"být rozumnou vojenskou strategií, ale z té vyhlídky nejsem nijak nadšený. "
+"Samozřejmě, pokud to neuděláme, bude Weldyn jistě představovat děsivě "
+"náročnou výzvu..."
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1420
 msgid "Burn the farms (default difficulty)"
-msgstr ""
+msgstr "Vypálit farmy (výchozí obtížnost)"
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1438
 msgid "Don’t (extra difficulty)"
-msgstr ""
+msgstr "Nedělat to (zvýšená obtížnost)"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1451
 msgid "★Weldyn"
-msgstr ""
+msgstr "Weldyn★"
 
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1459
 msgid "The Battle for Wesnoth"
@@ -5340,7 +5679,7 @@ msgstr "Bitva o Wesnoth"
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1503
 msgid "No turning back now."
-msgstr ""
+msgstr "Teď už není cesty zpět."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1531
@@ -5349,6 +5688,9 @@ msgid ""
 "we choose, but it may be wiser to first fight elsewhere and cut off her "
 "allies."
 msgstr ""
+"Hlavní město Wesnothu leží přímo před námi. Pokud chceme, můžeme Ašvíru "
+"vyzvat už teď, ale možná by bylo moudřejší nejprve bojovat jinde a odříznout "
+"její spojence."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1535
@@ -5356,6 +5698,8 @@ msgid ""
 "I suspect that no matter what we do, we will be forced into a final "
 "confrontation eventually."
 msgstr ""
+"Mám podezření, že ať už uděláme cokoli, nakonec budeme donuceni "
+"k závěrečnému střetu."
 
 #. [scenario]
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:4
@@ -5420,8 +5764,8 @@ msgid ""
 "Prepare to fight Asheviere ($( $bm_milestone_finale - $bm_turns ) battles "
 "remaining)"
 msgstr ""
-"Připrav se na boj s Ašvírou (počet zbývajících bitev: "
-"$( $bm_milestone_finale - $bm_turns ))"
+"Připrav se na boj s Ašvírou (počet zbývajících bitev: $"
+"( $bm_milestone_finale - $bm_turns ))"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:572
@@ -5670,7 +6014,7 @@ msgid ""
 "reaches. If Elensefar should fall, we would lose a great ally in our quest "
 "against Asheviere. I must depart at once to aid in the defense!"
 msgstr ""
-"Lord Maddock možná není nejspolehlivějším spojencem, ale on a jeho jmění se "
+"Lord Maddok možná není nejspolehlivějším partnerem, ale on a jeho jmění se "
 "zasloužili o zachování poměrně svobodných západních končin. Pokud by "
 "Elensefar padl, ztratili bychom velkého spojence v našem tažení proti "
 "Ašvíře. Musím okamžitě odjet, abych pomohl s obranou!"
@@ -5811,8 +6155,8 @@ msgid ""
 "succeed where I failed; my trust that you shall yet restore the throne of "
 "Wesnoth! I know that you will make me proud."
 msgstr ""
-"Nyní nadešel čas, abych ti svěřil svou důvěru. Věřím, že uspěješ tam, kde "
-"jsem já selhal. Věřím, že ještě obnovíš trůn Wesnothu! Vím, že na tebe budu "
+"Nyní nadešel čas, abych ti svěřil svou důvěru já. Věřím, že uspěješ tam, kde "
+"jsem selhal. Věřím, že ještě obnovíš trůn Wesnothu! Vím, že na tebe budu "
 "hrdý."
 
 #. [message]: speaker=Delfador
@@ -6335,7 +6679,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1617
 msgid "Crier"
-msgstr ""
+msgstr "Posel"
 
 #. [message]: speaker=crier
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1621
@@ -6343,6 +6687,8 @@ msgid ""
 "Hear ye, hear ye! I bring tidings to the Lord Konrad from Her Majesty the "
 "Queen!"
 msgstr ""
+"Slyšte, slyšte! Přináším zprávu pro lorda Konráda od Jejího Veličenstva "
+"královny!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1627
@@ -6350,46 +6696,48 @@ msgid ""
 "A message from Asheviere? I wonder what new trickery this is. Speak what you "
 "have come to say, courier."
 msgstr ""
+"Zpráva od Ašvíry? Zajímalo by mě, o jakou novou lest se tentokrát jedná. "
+"Řekni, co jsi přijel sdělit, posle."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1648
 msgid "Kalenz, Lord of the Lintanir."
-msgstr ""
+msgstr "Kalenz, pán Lintaniru."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1649
 msgid "Ethiliel, Lady of the Aethenwood."
-msgstr ""
+msgstr "Ethiliel, paní Aethenského lesa."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1650
 msgid "Kaylan, Lord of Blackwater."
-msgstr ""
+msgstr "Kaylan, pán Temné Vody."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1651
 msgid "Maddock, Lord of Elensefar."
-msgstr ""
+msgstr "Maddok, pán z Elensefaru."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1652
 msgid "Galdrad, Champion of the Aethenwood."
-msgstr ""
+msgstr "Galdrad, rytíř z Aethenského lesa."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1653
 msgid "Delurin, Three Sisters outlaw."
-msgstr ""
+msgstr "Delurin, zbojník ze „Tří sester“."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1654
 msgid "Reglok, Elensefar thieves’ guildmaster."
-msgstr ""
+msgstr "Reglok, představený cechu zlodějů v Elensefaru."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1655
 msgid "Harper, Three Sisters outlaw."
-msgstr ""
+msgstr "Harper, uprchlice ze „Tří sester“."
 
 #. [message]: speaker=crier
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1661
@@ -6399,6 +6747,10 @@ msgid ""
 "righteous execution of the following condemned criminals and rebel "
 "sympathizers:"
 msgstr ""
+"Poslyšte! Lordu Konrádovi a jeho stoupencům se na vědomí dává, že se ve "
+"Weldynu po uplynutí tří týdnů přikročí k výkonu spravedlnosti, totiž že "
+"budou zaslouženě popraveni následující odsouzení zločinci a přivrženci "
+"rebelů:"
 
 #. [message]: speaker=crier
 #. $message is a list of names and titles, generated depending on Konrad's actions. For example: "Maddock, Lord of Elensefar. Ethiliel, Lady of the Aethenwood. Delurin, Three Sisters outlaw. "
@@ -6407,6 +6759,8 @@ msgid ""
 "$message|And one thousand twenty-eight other rebel partisans from the "
 "western and northern reaches."
 msgstr ""
+"$message|A dalších tisíc dvacet osm přívrženců rebelů ze západních "
+"a severních končin."
 
 #. [message]: speaker=crier
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1670
@@ -6416,6 +6770,10 @@ msgid ""
 "righteous execution of one thousand twenty-eight condemned partisans and "
 "rebel sympathizers from the western and northern reaches."
 msgstr ""
+"Poslyšte! Lordu Konrádovi a jeho stoupencům se na vědomí dává, že se ve "
+"Weldynu po uplynutí tří týdnů přikročí k výkonu spravedlnosti, totiž že bude "
+"zaslouženě popraveno tisíc dvacet osm přívrženců rebelů ze západních "
+"a severních končin."
 
 #. [message]: speaker=crier
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1676
@@ -6423,6 +6781,9 @@ msgid ""
 "The Queen laments such a loss of life as regrettable, but necessary in Her "
 "Judgement to ensure the continued safety and stability of Her Kingdom."
 msgstr ""
+"Královna želí takové politováníhodné ztráty na životech, avšak ta je podle "
+"jejího úsudku nezbytná k zajištění trvalé bezpečnosti a stability jejího "
+"království."
 
 #. [message]: speaker=crier
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1678
@@ -6430,11 +6791,13 @@ msgid ""
 "The Lord Konrad is warned to discontinue his campaign of terror and keep "
 "well away from Weldyn, lest the same tragic fate befall him as well."
 msgstr ""
+"Lord Konrád je varován, aby ukončil své hrůzné tažení a držel se co nejdál "
+"od Weldynu, jinak ho potká stejně tragický osud."
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION concerned}
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1689
 msgid "A mass execution!? Sweet Haldric, all those people. We have to act!"
-msgstr ""
+msgstr "Hromadná poprava!? Dobrý Haldriku, tolik lidí. Musíme něco udělat!"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION concerned}
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1693
@@ -6442,11 +6805,13 @@ msgid ""
 "... but what did Asheviere hope to gain by telling us? Could she mean to "
 "catch us in some trap?"
 msgstr ""
+"... ale co doufala Ašvíra získat tím, že nám to řekla? Chtěla nás snad "
+"nalákat do nějaké pasti?"
 
 #. [message]: speaker=Lisar {LISAR_VARIATION mad}
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1697
 msgid "How naïve can you be? Of course it's a trap!"
-msgstr ""
+msgstr "Jak můžeš být tak bláhový? Samozřejmě, že je to past!"
 
 #. [message]: speaker=Lisar {LISAR_VARIATION mad}
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1701
@@ -6455,6 +6820,9 @@ msgid ""
 "where she and all her allies will be ready to catch us and crush us. We "
 "don’t even know if these people really have been captured."
 msgstr ""
+"Moje matka ví, jak uvažuješ. Očekává, že se pohrneš rovnou do Weldynu, kde "
+"budou ona a všichni její spojenci připraveni nás chytit a zničit. Ani "
+"nevíme, jestli byli ti lidé opravdu zajati."
 
 #. [message]: speaker=Lisar {LISAR_VARIATION mad}
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1705
@@ -6463,6 +6831,9 @@ msgid ""
 "she says and stay well away, while we continue whittling down her base of "
 "power."
 msgstr ""
+"Měli bychom její provokaci ignorovat. Nejrozumnější by bylo udělat to, co "
+"říká, a držet se od ní co nejdál, zatímco budeme dál oslabovat její "
+"mocenskou základnu."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1709
@@ -6471,6 +6842,9 @@ msgid ""
 "oppose the dark queen. Even ignoring our morals, what message would such an "
 "act send? Who would still support us after such a display?"
 msgstr ""
+"Odsouzení jsou moji přátelé a spojenci. Povstalci, kteří riskovali vše, aby "
+"se postavili temné královně. I kdybychom pominuli naše morální zásady, jaký "
+"signál by takový skutek vyslal? Kdo by nás po takovém činu ještě podporoval?"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1713
@@ -6478,6 +6852,8 @@ msgid ""
 "If we are to rule Wesnoth, we must prove ourselves better than Asheviere, "
 "not equal. We must defeat her before she can carry out her executions."
 msgstr ""
+"Máme-li vládnout Wesnothu, musíme dokázat, že jsme lepší než Ašvíra, a ne "
+"jen rovnocenní. Musíme ji porazit, než stihne provést své popravy."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1717
@@ -6485,11 +6861,13 @@ msgid ""
 "Konrad speaks wisdom. Risky though it may be, we should march at once to "
 "Weldyn. There is no time to spare."
 msgstr ""
+"Konrád mluví moudře. Ať už je to jakkoli riskantní, měli bychom se ihned "
+"vydat do Weldynu. Není času nazbyt."
 
 #. [message]: speaker=Lisar
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1721
 msgid "Very well. This is it, then."
-msgstr ""
+msgstr "Výborně. Tak a je to tady."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1745
@@ -6701,7 +7079,7 @@ msgid ""
 "under my bedsheets?"
 msgstr ""
 "Jsem vzhůru, nespím. Co je to dnes za „útok“, Delfadore? Skřeti za dveřmi? "
-"Mágové pod mým povlečením?"
+"Mágové pod mou postelí?"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:253
@@ -8563,6 +8941,8 @@ msgid ""
 "You’ll recall that I was a troublemaker once. How many atrocities will "
 "happen because good men like you stay silent?"
 msgstr ""
+"Určitě si vzpomeneš, že jsem byl kdysi také potížista. Kolik zvěrstev se "
+"stane jen proto, že dobří lidé jako ty mlčí?"
 
 #. [message]: speaker=leader2lieutenant
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:357
@@ -9299,7 +9679,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:264
 msgid "Konrad can now recruit Thugs and Footpads!"
-msgstr "Konrád může nyní verbovat lupiče a lapky!"
+msgstr "Konrád nyní může verbovat lupiče a lapky!"
 
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:292
@@ -11820,26 +12200,26 @@ msgstr ""
 #. [scenario]
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:14
 msgid "scenario name^Crossroads"
-msgstr ""
+msgstr "Křižovatka"
 
 #. [side]: type=Knight, id=knight
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:58
 msgid "Raery"
-msgstr ""
+msgstr "Raery"
 
 #. [message]: speaker=Lisar
 #. Lisar has prisoners, and is trying to lure Konrad into an ambush. The player has just decided to play this scenario.
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:206
 msgid ""
 "He’s taken the bait. Quick, get down into the mines and alert the others."
-msgstr ""
+msgstr "Skočil na to. Rychle, sestup do dolů a varuj ostatní."
 
 #. [message]: speaker=knight
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:215
 msgid ""
 "What about the prisoners, m’lady? Shall we execute them before the imposter "
 "arrives?"
-msgstr ""
+msgstr "A co vězňové, má paní? Máme je popravit, než ten podvodník dorazí?"
 
 #. [message]: speaker=Ulfdain
 #. Ulfdain throws lots of hard-to-understand old-fashioned insults at Li'sar. This is his usual way of speaking.
@@ -11849,6 +12229,9 @@ msgid ""
 "Jus’ gimme the chance an’ I’ll rip that head right off yer ninnyhammerin’ "
 "neck, ye white-livered gasser!"
 msgstr ""
+"Pocem a zkus to, ty roztřesená, šmatlavá trubko převlečená za princeznu! Jen "
+"mi dej šanci a já ti tu hlavu utrhnu rovnou z toho tvýho telecího krku, ty "
+"ustrašená slečinko!"
 
 #. [message]: speaker=Lisar
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:224
@@ -11857,11 +12240,15 @@ msgid ""
 "cold blood. But we do need to get the dwarves out of here — both for their "
 "own safety and to keep them out of the rebels’ hands."
 msgstr ""
+"Ať už je ta myšlenka jakkoli lákavá, Raery, nemám v úmyslu chladnokrevně "
+"zabíjet nevinné lidi. Musíme ale ty trpaslíky odtud dostat – jednak pro "
+"jejich vlastní bezpečnost, a jednak proto, aby se nedostali do rukou rebelů."
 
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:234
 msgid "Too late, Konrad has come! Forget the prisoners and prepare for battle."
 msgstr ""
+"Už je pozdě, Konrád dorazil! Zapomeňte na vězně a připravte se na bitvu."
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION mad}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:260
@@ -11869,6 +12256,8 @@ msgid ""
 "I’ve come to face you, princess! Only a true villain would threaten "
 "innocents to force someone into a fight."
 msgstr ""
+"Přišel jsem se ti postavit, princezno! Jen opravdová potvora by vyhrožovala "
+"nevinným lidem, aby někoho donutila k boji."
 
 #. [message]: speaker=Lisar {LISAR_VARIATION mad}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:264
@@ -11877,6 +12266,9 @@ msgid ""
 "“prince” — I will not allow you to sow any more discord and chaos among my "
 "people. Your rebellion ends here."
 msgstr ""
+"Ale prosím tě, trpaslíci nikdy nebyli v žádném nebezpečí. Ty však, „princi“ "
+"– nedovolím ti, abys mezi mým lidem dál šířil svár a zmatek. Tvá vzpoura zde "
+"končí."
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:272
@@ -11889,13 +12281,13 @@ msgstr "Poraz Lisar"
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:279
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:469
 msgid "Defeat Yrogin"
-msgstr ""
+msgstr "Poraz Yrogina"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:287
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:477
 msgid "Rescue Ulfdain"
-msgstr ""
+msgstr "Vysvoboď Ulfdaina"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:312
@@ -11936,7 +12328,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:436
 msgid "For Her Highness! Kill the imposter!"
-msgstr ""
+msgstr "Za Její Výsost! Zabijte toho podvodníka!"
 
 #. [companion_message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:439
@@ -11944,6 +12336,9 @@ msgid ""
 "Caution, Konrad! These hills are full of old mineshafts, their entrances "
 "overgrown with grass and weeds. Li’sar must be using them to ambush us."
 msgstr ""
+"Pozor, Konráde! Tyhle kopce jsou plné starých důlních šachet, jejichž vchody "
+"jsou zarostlé trávou a plevelem. Lisar je určitě využívá k tomu, aby nás "
+"mohla přepadnou ze zálohy."
 
 #. [companion_message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:440
@@ -11951,6 +12346,8 @@ msgid ""
 "Look out, Your Highness! Your cousin has stationed ambushers across the "
 "hills, lurking in old mineshafts."
 msgstr ""
+"Pozor, Vaše Výsosti! Tvoje sestřenice rozmístila po kopcích zálohy, které "
+"číhají ve starých důlních šachtách."
 
 #. [companion_message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:441
@@ -11959,6 +12356,8 @@ msgid ""
 "Where did you come from?! Careful, Konrad, I think there are ambushers "
 "hiding in old mineshafts all across these hills."
 msgstr ""
+"Odkud jste se tu vzali?! Dávej si pozor, Konráde, myslím, že se v těch "
+"starých šachtách po celých kopcích skrývají útočníci, aby nás přepadávali."
 
 #. [companion_message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:443
@@ -11966,6 +12365,8 @@ msgid ""
 "Lo! The forces of evil ambush us at every turn — even the very ground itself "
 "succors our foes within its old mines."
 msgstr ""
+"Hle! Síly zla na nás číhají na každém kroku — dokonce i samotná země pomáhá "
+"ukrývat naše nepřátele ve svých starých dolech."
 
 #. [companion_message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:446
@@ -11973,47 +12374,53 @@ msgid ""
 "Those ambushers burst right out of the ground! There must be old mineshafts "
 "everywhere in these hills, overgrown with grass and weeds."
 msgstr ""
+"Ti útočníci se vynořili přímo ze země! V těchto kopcích musí být všude staré "
+"důlní šachty, zarostlé trávou a plevelem."
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION concerned}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:450
 msgid "Wait, stop! I’m not an imposter, I’m the real Konrad!"
-msgstr ""
+msgstr "Počkat, přestaňte! Já nejsem podvodník, já jsem skutečný Konrád!"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION concerned}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:454
 msgid "... there’s nothing I can say to save these woodsmen, is there?"
-msgstr ""
+msgstr "... asi nemůžu nic říct, abych ty dřevorubce zachránil, nebo ano?"
 
 #. [note]
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:490
 msgid "Invisible ambushers hide throughout the hills."
-msgstr ""
+msgstr "Po celých kopcích se skrývají neviditelní útočníci."
 
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:513
 msgid ""
 "He’s slain nearly the last of our ambushers, Your Highness! What do we do?"
 msgstr ""
+"Zabil téměř všechny zbývající útočníky číhající v záloze, Vaše Výsosti! Co "
+"teď uděláme?"
 
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:518
 msgid "He’s slain nearly the last of our ambushers, lieutenant! What do we do?"
 msgstr ""
+"Zabil téměř všechny zbývající útočníky číhající v záloze, poručíku! Co teď "
+"uděláme?"
 
 #. [message]: speaker=Lisar,Yrogin
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:523
 msgid "This isn’t over. Keep up the fight!"
-msgstr ""
+msgstr "Ještě není konec. Bojujte dál!"
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:539
 msgid "Free the prisoners"
-msgstr ""
+msgstr "Vysvobodit vězně"
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:545
 msgid "Wait"
-msgstr ""
+msgstr "Počkat"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:555
@@ -12021,6 +12428,8 @@ msgid ""
 "Here are the prisoners! We can set them free, but if they join our side they "
 "will certainly come under attack."
 msgstr ""
+"Tady jsou ti vězni! Můžeme je vysvobodit, ale pokud se přidají na naši "
+"stranu, určitě se stanou terčem útoku."
 
 #. [message]: speaker=Ulfdain
 #. Ulfdain is still locked up, and challenges Konrad's unit who's come nearby
@@ -12029,11 +12438,13 @@ msgid ""
 "Come an’ git some, ye nigmenog bolting-hutch of beastliness! Ah dare ye to "
 "square up an’ fight me, dwarf-to-dwarf!"
 msgstr ""
+"Pojď a zkus to, ty hloupá bečko sádla! Vyzývám tě, abys ses postavil čelem "
+"a bojoval se mnou, trpaslík proti trpaslíkovi!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:564
 msgid "Wait a minute! I don’t want to fight you. I’m here to rescue you!"
-msgstr ""
+msgstr "Počkej chvilku! Nechci se s tebou prát. Přišel jsem tě zachránit!"
 
 #. [message]: speaker=Ulfdain
 #. Ulfdain asks Konrad to let him and his dwarf miner allies out of their cages so they can help fight Li'sar
@@ -12042,11 +12453,14 @@ msgid ""
 "Oh, what’s that? Seems ah misjudged ye, son. Hurry up then, ye spoony cub, "
 "lemme an’ my boys out o’ these here cages so we can get to th’ fight!"
 msgstr ""
+"Ach, cože? Zdá se, že jsem tě špatně odhadl, chlapče. Tak si pospěš, ty "
+"nedomrlé mládě, pusť mě a moje kluky z těchhle klecí, ať se můžeme dostat "
+"k boji!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:580
 msgid "You’re free now! How did you come to be imprisoned?"
-msgstr ""
+msgstr "Teď jsi na svobodě! Za co tě vlastně zavřeli?"
 
 #. [message]: speaker=Ulfdain
 #. Much better, thank you for freeing us. That's the last time I dig a mine for your human queen, let me tell you.
@@ -12056,6 +12470,9 @@ msgid ""
 "yer human queen, lemme tell you. “Clean up the old crossroads mines”, she "
 "says. “The princess needs ’em for somethin’!”"
 msgstr ""
+"To je mnohem lepší, díky, že jste nás vysvobodili! To je naposledy, co jsem "
+"pro vaši lidskou královnu kopal v dolech, to vám povím. „Vyčistěte ty staré "
+"doly u křižovatky,“ řekla. „Princezna je k něčemu potřebuje!“"
 
 #. [message]: speaker=Ulfdain
 #. All we do is insult the queen a few times, in a friendly manner, and she gibbeted us. You humans just don't appreciate a good insult.
@@ -12065,6 +12482,8 @@ msgid ""
 "it was straight to the gibbet! You beanpoles jus’ dinnae appreciate a good "
 "insult!"
 msgstr ""
+"Stačilo jen párkrát urazit královnu, tak nějak v žertu, a vedlo to rovnou na "
+"šibenici! Vy čahouni prostě nedokážete ocenit dobrou urážku!"
 
 #. [message]: speaker=Ulfdain
 #. And now my job is gone; guess I have nothing left for me now but revenge. So if you're out to beat the queen, me and my boys are with you. (after this line, the player gains dwarvish miners as a recruit
@@ -12073,17 +12492,19 @@ msgid ""
 "An’ now tha’s my job gone; guess I got naught left fer me now but revenge. "
 "So if yer out to beat the queen, me an’ my boys are with ye!"
 msgstr ""
+"A teď, když jsem přišel o práci, už mi asi nezbývá nic jinýho než pomsta. "
+"Takže esli se chystáš porazit královnu, já a moji kluci jsme s tebou!"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:597
 msgid "Konrad can now recruit Dwarvish Miners!"
-msgstr ""
+msgstr "Konrád nyní může verbovat trpasličí horníky!"
 
 #. [message]: speaker=Ulfdain
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:606
 msgid ""
 "... hey, what the— that axe! That axe you’re holdin’, that’s my father’s!"
-msgstr ""
+msgstr "... hej, co to... ta sekera! Ta sekera, co držíš, patří mýmu otci!"
 
 #. [message]: speaker=Ulfdain
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:610
@@ -12091,6 +12512,8 @@ msgid ""
 "Give it back, ye obscene trunk of tallow-keech! You milksop, you coward, "
 "give it back or I’ll cut it from yer steamin’ corpse!"
 msgstr ""
+"Vrať mi ji, ty nechutnej špekoune! Ty padavko, ty babo, vrať mi ji, nebo ji "
+"odseknu z tvý ještě teplý mrtvoly!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:614
@@ -12098,6 +12521,8 @@ msgid ""
 "Calm down, calm down! I found this axe in the ruins of west Knalga. If it "
 "truly is your father’s, of course you’re entitled to it. Here."
 msgstr ""
+"Uklidni se, uklidni se! Tuhle sekeru jsem našel v troskách západní Knalgy. "
+"Jestli opravdu patří tvému otci, máš na ni samozřejmě nárok. Tady je."
 
 #. [message]: speaker=Ulfdain
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:636
@@ -19168,17 +19593,19 @@ msgid ""
 "overflowing with stockpiled supplies. We’ll make better use of it than they "
 "would."
 msgstr ""
+"Tyto klany jsou bohaté a mocné, a to i za vlády mé matky, a jejich zem "
+"překypuje nashromážděnými zásobami. Využijeme je lépe, než by to udělali oni."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/47_Test_of_the_Clans.cfg:258
 msgid "Hail, men of the plains! I greet you with a proposal."
-msgstr ""
+msgstr "Buďte zdrávi, muži z plání! Přicházím k vám s návrhem."
 
 #. [message]: speaker=Daryn
 #: data/campaigns/Heir_To_The_Throne/scenarios/47_Test_of_the_Clans.cfg:262
 msgid ""
 "What do these intruders want? We did not invite them here, that is certain."
-msgstr ""
+msgstr "Co ti vetřelci chtějí? My jsme je sem rozhodně nepozvali, to je jisté."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/47_Test_of_the_Clans.cfg:266
@@ -19188,6 +19615,10 @@ msgid ""
 "What prestige do you plainsmen hold under Asheviere, queen of the cities and "
 "employer of orcs?"
 msgstr ""
+"Víte, že můj zesnulý strýc, král Garard II., byl přítelem klanů. Vaši rytíři "
+"tvořili výkvět jeho armády a byli za své služby ctěni. Jak významné "
+"postavení máte vy, obyvatelé plání, pod vládou Ašvíry, královny měst "
+"a zaměstnavatelky skřetů?"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/47_Test_of_the_Clans.cfg:270
@@ -19196,6 +19627,9 @@ msgid ""
 "prominence within the courts of Weldyn. Oppose us, and I will strip you of "
 "your power once the throne is rightfully reclaimed."
 msgstr ""
+"Připojte se k nám, abychom svrhli zlou královnu, a já se postarám, aby klany "
+"znovu získaly u dvora ve Weldynu význačnost. Postavíte-li se proti nám, "
+"zbavím vás moci, jakmile bude trůn právoplatně navrácen."
 
 #. [message]: speaker=Alric
 #: data/campaigns/Heir_To_The_Throne/scenarios/47_Test_of_the_Clans.cfg:276
@@ -19203,6 +19637,8 @@ msgid ""
 "Hah! You think you can seize the throne? You who are led by these youths and "
 "this old man?"
 msgstr ""
+"Ha! Myslíte si, že se zmocníte trůnu? Vy, kteří se necháváte vést tou "
+"mládeží a tím starým mužem?"
 
 #. [message]: speaker=Bayar
 #: data/campaigns/Heir_To_The_Throne/scenarios/47_Test_of_the_Clans.cfg:280
@@ -19210,6 +19646,8 @@ msgid ""
 "He will confront Asheviere, as he claims. Then he will die. And if we have "
 "lent our support it will be all the worse for us."
 msgstr ""
+"Jak sám tvrdí, postaví se proti Ašvíře. Potom zemře. A pokud jsme mu "
+"poskytli podporu, bude to pro nás o to horší."
 
 #. [message]: speaker=Lisar {LISAR_VARIATION mad}
 #: data/campaigns/Heir_To_The_Throne/scenarios/47_Test_of_the_Clans.cfg:284
@@ -19217,6 +19655,8 @@ msgid ""
 "“These youths”, you dare call us? Don’t think me so weak that I cannot prove "
 "my worth in pitched battle."
 msgstr ""
+"Ty si troufáš nazývat nás „tou mládeží“? Nemysli si, že jsem tak slabá, že "
+"nedokážu prokázat svou hodnotu v otevřeném boji."
 
 #. [message]: speaker=Bayar
 #: data/campaigns/Heir_To_The_Throne/scenarios/47_Test_of_the_Clans.cfg:288
@@ -19224,6 +19664,8 @@ msgid ""
 "Hah! You would challenge us? I accept. Rout our clansmen and we will "
 "repudiate the queen. Or otherwise leave now and never return!"
 msgstr ""
+"Ha! Chceš nás vyzvat? Přijímám. Porazte na hlavu naše příslušníky klanů a my "
+"se zřekneme královny. Jinak odejděte hned a už se nikdy nevracejte!"
 
 #. [message]: speaker=Delfador {DELFADOR_VARIATION mad}
 #: data/campaigns/Heir_To_The_Throne/scenarios/47_Test_of_the_Clans.cfg:292
@@ -19231,16 +19673,17 @@ msgid ""
 "If you will not listen to reason, then so be it. Ready your lances, men of "
 "the plains!"
 msgstr ""
+"Pokud nechcete naslouchat rozumu, tak ať. Připravte svá kopí, muži z plání!"
 
 #. [message]: speaker=Ruga
 #: data/campaigns/Heir_To_The_Throne/scenarios/47_Test_of_the_Clans.cfg:298
 msgid "Fools! We will run you down like dogs!"
-msgstr ""
+msgstr "Blázni! Rozdrtíme vás jako psy!"
 
 #. [message]: speaker=Daryn
 #: data/campaigns/Heir_To_The_Throne/scenarios/47_Test_of_the_Clans.cfg:302
 msgid "There is no turning back for you now. You will not break us!"
-msgstr ""
+msgstr "Teď už pro vás není cesty zpět. Nás nezlomíte!"
 
 #. [objective]: description={ON_DIFFICULTY4, condition=win
 #. $clansmen_remaining will be between 1 and 60
@@ -19317,22 +19760,24 @@ msgid ""
 "This is sheer madness. We cannot afford to wage war against these clansmen "
 "when we should be marching against the Queen..."
 msgstr ""
+"To je naprosté šílenství. Nemůžeme si dovolit vést válku proti těmto klanům, "
+"když máme táhnout proti královně..."
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION mad}
 #: data/campaigns/Heir_To_The_Throne/scenarios/47_Test_of_the_Clans.cfg:412
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2049
 msgid "Lord Bayar, halt this folly! I challenge you to a personal combat."
-msgstr ""
+msgstr "Lorde Bayare, přestaňte s tou pošetilostí! Vyzývám vás na souboj."
 
 #. [message]: speaker=Bayar
 #: data/campaigns/Heir_To_The_Throne/scenarios/47_Test_of_the_Clans.cfg:416
 msgid "Ho! You have amused me, young heir. Ho, ho, challenge indeed."
-msgstr ""
+msgstr "Ho! To mě pobavilo, mladý dědici. Ho, ho, to je tedy výzva."
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION mad}
 #: data/campaigns/Heir_To_The_Throne/scenarios/47_Test_of_the_Clans.cfg:420
 msgid "Young heir? Then you assent to my claim?"
-msgstr ""
+msgstr "Mladý dědic? To znamená, že schvaluješ můj nárok?"
 
 #. [message]: speaker=Bayar
 #: data/campaigns/Heir_To_The_Throne/scenarios/47_Test_of_the_Clans.cfg:424
@@ -19340,6 +19785,8 @@ msgid ""
 "Impudence. Bah! Do you see orcs on our plains? Did we not grant you a test "
 "of your strength?"
 msgstr ""
+"Taková opovážlivost. Pah! Vidíš snad na našich pláních nějaké skřety? Copak "
+"jsme ti nedali příležitost vyzkoušet svou sílu?"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/47_Test_of_the_Clans.cfg:428
@@ -19347,11 +19794,13 @@ msgid ""
 "This is hardly a test. Our battle serves only to spill needless blood and "
 "weaken us both."
 msgstr ""
+"Tohle se dá stěží nazvat zkouškou. Náš boj vede jen ke zbytečnému prolévání "
+"krve a oslabuje nás oba."
 
 #. [message]: speaker=Bayar
 #: data/campaigns/Heir_To_The_Throne/scenarios/47_Test_of_the_Clans.cfg:432
 msgid "No, whelp. You may be weakened, but the horse clans are eternal."
-msgstr ""
+msgstr "Ne, štěně. Ty jsi možná oslabený, ale klany jezdců jsou věčné."
 
 #. [message]: speaker=Bayar
 #: data/campaigns/Heir_To_The_Throne/scenarios/47_Test_of_the_Clans.cfg:434
@@ -19359,6 +19808,8 @@ msgid ""
 "I will promise you this, however. If your forces can defeat me personally, I "
 "myself will join your cause."
 msgstr ""
+"Jedno ti však slibuji. Pokud se tvým jednotkám podaří porazit mě osobně, "
+"připojím se k vaší věci."
 
 #. [message]: speaker=Ruga
 #. [message]: speaker=Daryn
@@ -19367,7 +19818,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/47_Test_of_the_Clans.cfg:444
 #: data/campaigns/Heir_To_The_Throne/scenarios/47_Test_of_the_Clans.cfg:450
 msgid "Aye."
-msgstr ""
+msgstr "I já."
 
 #. [message]: id=Haldiel,Simyr
 #: data/campaigns/Heir_To_The_Throne/scenarios/47_Test_of_the_Clans.cfg:480
@@ -19535,7 +19986,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/47_Test_of_the_Clans.cfg:715
 msgid ""
 "Bah, the Sceptre is but a magic staff. Steel is the true test of a ruler."
-msgstr ""
+msgstr "Pah, žezlo je jen kouzelná hůl. Ocel je tou pravou zkouškou vládce."
 
 #. [scenario]
 #: data/campaigns/Heir_To_The_Throne/scenarios/48_Dan_Tonk.cfg:10
@@ -19549,6 +20000,9 @@ msgid ""
 "congratulations. We were comrades, once. I’m sorry we now find ourselves on "
 "opposing sides."
 msgstr ""
+"Ahoj, Isoldo. Vidím, že tě má matka jmenovala správkyní v Dan’Tonku – "
+"blahopřeji. Kdysi jsme byly spolubojovnice. Je mi líto, že nyní stojíme "
+"proti sobě."
 
 #. [message]: speaker=Isolde
 #: data/campaigns/Heir_To_The_Throne/scenarios/48_Dan_Tonk.cfg:293
@@ -19556,6 +20010,8 @@ msgid ""
 "Hello, Li’sar. I’m sorry too. I never saw you as one to turn against your "
 "sovereign; your own kin. ...I suppose it runs in the family."
 msgstr ""
+"Ahoj, Lisar. Mně je to také líto. Nikdy bych neřekla, že se obrátíš proti "
+"své panovnici, své vlastní příbuzné. ... Asi to máte v rodině."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/48_Dan_Tonk.cfg:297
@@ -19563,6 +20019,8 @@ msgid ""
 "You are bold to march out from behind your walls and meet us on the open "
 "plain. Are you not worried we will defeat you?"
 msgstr ""
+"Je od vás odvážné, že jste vyrazili ze svých hradeb a přišli se s námi utkat "
+"na otevřené pláni. Nebojíte se snad, že vás porazíme?"
 
 #. [message]: speaker=Isolde
 #: data/campaigns/Heir_To_The_Throne/scenarios/48_Dan_Tonk.cfg:301
@@ -19571,6 +20029,9 @@ msgid ""
 "someone causing problems. First it was Garard, then the baron. Outlaws on "
 "the isles, elves in the Aethenwood. Always one more thing."
 msgstr ""
+"Chm. Celý život jsem toužila po klidném životě. Ale vždycky se najde někdo, "
+"kdo dělá potíže. Nejdřív to byl Garard, pak ten baron. Psanci na ostrovech, "
+"elfové v Aethenském lese. Vždycky se objeví něco dalšího."
 
 #. [message]: speaker=Isolde
 #: data/campaigns/Heir_To_The_Throne/scenarios/48_Dan_Tonk.cfg:305
@@ -19579,11 +20040,13 @@ msgid ""
 "your queen’s city — in person. I can vanquish you and your armies all at "
 "once."
 msgstr ""
+"A teď jste to vy tři. Alespoň jste měli tu slušnost přijít do mého města – "
+"města vaší královny – osobně. Mohu vás i vaše armády porazit najednou."
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/48_Dan_Tonk.cfg:335
 msgid "Defeat Isolde"
-msgstr ""
+msgstr "Poraz Isoldu"
 
 #. [note]
 #: data/campaigns/Heir_To_The_Throne/scenarios/48_Dan_Tonk.cfg:349
@@ -19592,21 +20055,24 @@ msgid ""
 "aren’t your allies, but will prefer to attack Isolde’s soldiers when given "
 "the choice."
 msgstr ""
+"V severozápadním rohu mapy se budou pravidelně objevovat gryfové. Nejsou to "
+"tví spojenci, ale pokud budou mít na výběr, raději zaútočí na Isoldiny "
+"vojáky."
 
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/48_Dan_Tonk.cfg:368
 msgid "Kraww!!"
-msgstr ""
+msgstr "Krááu!!"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION glad}
 #: data/campaigns/Heir_To_The_Throne/scenarios/48_Dan_Tonk.cfg:372
 msgid "Look, gryphons are attacking soldiers inside the city walls!"
-msgstr ""
+msgstr "Podívejte, gryfové útočí na vojáky uvnitř městských hradeb!"
 
 #. [message]: speaker=Isolde
 #: data/campaigns/Heir_To_The_Throne/scenarios/48_Dan_Tonk.cfg:376
 msgid "These vermin again. What did that dwarf do to rile them up so badly?!"
-msgstr ""
+msgstr "Zase ta havěť. Co ten trpaslík udělal, že je tak rozzuřil?!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/48_Dan_Tonk.cfg:380
@@ -19615,6 +20081,8 @@ msgid ""
 "but we should still do our best to stay out of their way — they remain wild "
 "animals."
 msgstr ""
+"Mám podezření, že chovají zvláštní zášť vůči vojákům z Dan’Tonku, ale i tak "
+"bychom se měli snažit jim co nejvíc vyhýbat – pořád to jsou divoká zvířata."
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION concerned}
 #: data/campaigns/Heir_To_The_Throne/scenarios/48_Dan_Tonk.cfg:420
@@ -19623,6 +20091,9 @@ msgid ""
 "defenses. Do you have any insight into its weaknesses? Is there anything we "
 "can use against the general?"
 msgstr ""
+"Lisar, jako generálka Wesnothu ses jistě dobře obeznámila s obranou "
+"Dan’Tonku. Víš něco o jejích slabých místech? Je tu něco, co bychom mohli "
+"proti této generálce využít?"
 
 #. [message]: speaker=Lisar
 #. reference to Asheviere's Dogs
@@ -19631,11 +20102,12 @@ msgid ""
 "There was a hidden tunnel, once, but I had it collapsed some years ago. "
 "Sorry."
 msgstr ""
+"Kdysi tu byl skrytý tunel, ale před pár lety jsem ho nechala zavalit. Promiň."
 
 #. [message]: speaker=Isolde
 #: data/campaigns/Heir_To_The_Throne/scenarios/48_Dan_Tonk.cfg:453
 msgid "Argh! This is going terribly. Retreat! Retreat!"
-msgstr ""
+msgstr "Do háje! Tohle jde strašně špatně. Ústup! Ústup!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/48_Dan_Tonk.cfg:478
@@ -19644,6 +20116,9 @@ msgid ""
 "walls. Her army is defeated, but not broken. We lack the supplies or time to "
 "besiege the city proper."
 msgstr ""
+"Vítězství je naše. Jak jsme očekávali, Isolda se uchýlila za městské hradby. "
+"Její vojsko je poraženo, ale není rozdrceno. Nemáme dostatek zásob ani času "
+"na to, abychom obléhali samotné město."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/48_Dan_Tonk.cfg:482
@@ -19653,6 +20128,10 @@ msgid ""
 "queen is not so unbeatable as she once seemed. I do not think Isolde will be "
 "able to leave Dan’Tonk again without risking its revolt."
 msgstr ""
+"Možná to ani není nutné, Delfadore. Moc je křehká věc a my jsme celému "
+"tomuto městu – městu, které kdysi bojovalo proti Ašvíře – ukázali, že "
+"královna není tak neporazitelná, jak se kdysi zdálo. Nemyslím si, že by "
+"Isolda mohla znovu opustit Dan’Tonk, aniž by riskovala jeho vzpouru."
 
 #. [message]: speaker=Lisar {LISAR_VARIATION mad}
 #: data/campaigns/Heir_To_The_Throne/scenarios/48_Dan_Tonk.cfg:486
@@ -19660,6 +20139,8 @@ msgid ""
 "That, and also I’ll leave a few of my men behind to destroy the roads and "
 "harass any sorties. Dan’Tonk won’t pose any problem when we attack Weldyn."
 msgstr ""
+"Kromě toho tu nechám pár svých mužů, aby zničili silnice a ztěžovali "
+"případné výpady. Dan’Tonk nám při útoku na Weldyn nebude dělat žádné potíže."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/48_Dan_Tonk.cfg:502
@@ -19667,6 +20148,8 @@ msgid ""
 "We’re doing well. If we can keep up the fight for a little longer, I suspect "
 "Isolde will be forced to give up the fight."
 msgstr ""
+"Vedeme si dobře. Pokud vydržíme bojovat ještě chvíli, domnívám se, že Isolda "
+"bude nucena boj vzdát."
 
 #. [message]: speaker=Isolde
 #: data/campaigns/Heir_To_The_Throne/scenarios/48_Dan_Tonk.cfg:509
@@ -19674,6 +20157,8 @@ msgid ""
 "You are a more skilled fighter than you look, Konrad. I don’t believe I can "
 "defeat you today. It’s time to cut our losses and retreat."
 msgstr ""
+"Jsi mnohem zdatnější bojovník, než by se na první pohled zdálo, Konráde. "
+"Nemyslím si, že tě dnes dokážu porazit. Je na čase omezit ztráty a ustoupit."
 
 #. [scenario]
 #: data/campaigns/Heir_To_The_Throne/scenarios/48_Dan_Tonk.cfg:514
@@ -19681,6 +20166,8 @@ msgid ""
 "That’s a poor choice, soldiers. I hope you weren’t planning on ever seeing "
 "retirement."
 msgstr ""
+"Špatná volba, vojáci. Doufám, že jste nepočítali s tím, že se někdy dožijete "
+"výslužby."
 
 #. [scenario]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:11
@@ -19690,57 +20177,57 @@ msgstr "Bitva o Wesnoth"
 #. [side]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:144
 msgid "Orcish Auxiliaries"
-msgstr ""
+msgstr "Skřetí pomocníci"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:149
 msgid "Shnog"
-msgstr ""
+msgstr "Šnog"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:150
 msgid "Agnarz"
-msgstr ""
+msgstr "Agnarz"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:151
 msgid "Arob"
-msgstr ""
+msgstr "Arob"
 
 #. [side]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:212
 msgid "Royal Guard"
-msgstr ""
+msgstr "Královská stráž"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:217
 msgid "Asheviere"
-msgstr ""
+msgstr "Ašvíra"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:218
 msgid "Sir Aeollet"
-msgstr ""
+msgstr "Sir Aeollet"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:219
 msgid "Sir Gunter"
-msgstr ""
+msgstr "Sir Gunter"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:220
 msgid "Sir Aebaud"
-msgstr ""
+msgstr "Sir Aebaud"
 
 #. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:234
 msgid "Beastmaster Burlin"
-msgstr ""
+msgstr "Burlin, pán zvířat"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:427
 msgid "Raag!"
-msgstr ""
+msgstr "Rág!"
 
 #. [message]: speaker=Lisar
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:434
@@ -19749,6 +20236,9 @@ msgid ""
 "city, Konrad. I’ll move forward and recruit from there once it’s clear. "
 "You’re welcome to share, of course."
 msgstr ""
+"Ta skřetí pevnost bude dokonalým výchozím bodem pro náš útok na město, "
+"Konráde. Jakmile bude vyčištěná, přesunu se tam a budu verbovat nové "
+"bojovníky. Samozřejmě se můžeš přidat."
 
 #. [event]: id=sapper_ability_object
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1164
@@ -19758,12 +20248,12 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1168
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1169
 msgid "Bridge Guard"
-msgstr ""
+msgstr "Stráž mostu"
 
 #. [dummy]: id=sapper
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1247
 msgid "sapper"
-msgstr ""
+msgstr "ženista"
 
 #. [dummy]: id=sapper
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1248
@@ -19771,6 +20261,8 @@ msgid ""
 "This unit is carrying explosives. When defeated, it will destroy whatever "
 "terrain it is standing on."
 msgstr ""
+"Tato jednotka přenáší výbušniny. Když je poražena, zničí jakýkoli terén, na "
+"kterém stojí."
 
 #. [dummy]: id=sapper
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1250
@@ -19778,11 +20270,14 @@ msgid ""
 "This unit will not detonate if overkilled by 25 hitpoints or more, as long "
 "as the vanquishing damage type is not fire."
 msgstr ""
+"Tato jednotka nevybuchne, pokud je zabita úderem silnějším, než je třeba, "
+"o 25 bodů nebo více, za předpokladu, že typ poškození, které ji zničí, není "
+"oheň."
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1305
 msgid "Ack!"
-msgstr ""
+msgstr "Ááá!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1311
@@ -19790,6 +20285,8 @@ msgid ""
 "That guard was carrying some kind of strange device! Whatever it was, we "
 "slew him with such a mighty blow that he had not the chance to use it."
 msgstr ""
+"Ta stráž měla u sebe nějaké podivné zařízení! Ať už to bylo cokoli, zabili "
+"jsme ji tak mocným úderem, že neměla šanci ho použít."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1316
@@ -19797,36 +20294,40 @@ msgid ""
 "Well done! We slew this guard with such a mighty blow that he had not a "
 "chance to destroy his bridge."
 msgstr ""
+"Skvělá práce! Zabili jsme tu stráž tak mocným úderem, že neměla šanci zničit "
+"svůj most."
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1335
 msgid "The fire is getting to the explosive powder! Your Majesty—"
-msgstr ""
+msgstr "Oheň se šíří k výbušnému prachu! Vaše Veličenstvo —"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1344
 msgid "Argh! Your Majesty... it doesn’t even need to walk..."
-msgstr ""
+msgstr "Argh! Vaše Veličenstvo... ono to nemusí ani chodit..."
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1349
 msgid "Argh! Your Majesty... the plan..."
-msgstr ""
+msgstr "Argh! Vaše Veličenstvo... ten plán..."
 
 #. [message]: speaker=Asheviere
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1354
 msgid "Carry out your orders. Do not disappoint me."
-msgstr ""
+msgstr "Splň své rozkazy. Nezklam mě."
 
 #. [message]: speaker=Asheviere
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1435
 msgid "So. After burning half my fields, these rebels come at last to face me."
 msgstr ""
+"Takže. Poté, co mi tihle povstalci vypálili polovinu polí, se mi konečně "
+"odvážili postavit."
 
 #. [message]: speaker=Asheviere
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1440
 msgid "So, these rebels come at last to face me."
-msgstr ""
+msgstr "Tak se tedy tito povstalci konečně odhodlali postavit se mně."
 
 #. [message]: speaker=Lisar {LISAR_VARIATION mad}
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1445
@@ -19834,6 +20335,8 @@ msgid ""
 "Surrender, Mother. The land’s blood is spent. I have come to take my "
 "rightful place."
 msgstr ""
+"Vzdej se, matko. Krev této země je vyčerpána. Přišla jsem, abych zaujala "
+"místo, které mi právem náleží."
 
 #. [message]: speaker=Asheviere
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1449
@@ -19841,6 +20344,8 @@ msgid ""
 "Ahh. My own daughter, a turncoat. Such treason my reign must endure! But "
 "endure it will."
 msgstr ""
+"Ach. Moje vlastní dcera, přeběhlice. Jakou zradu musí moje panování snášet! "
+"Ale přestojí to."
 
 #. [message]: speaker=Asheviere
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1453
@@ -19848,6 +20353,8 @@ msgid ""
 "The walls of Weldyn are strong. And her allies are many. They will arrive in "
 "days — and then you will die."
 msgstr ""
+"Hradby Weldynu jsou pevné. A má mnoho spojenců. Dorazí už za pár dní – a pak "
+"zemřeš."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1473
@@ -19856,6 +20363,9 @@ msgid ""
 "the north now swollen even further with your mage Mirya’s new recruits. We "
 "know, and we are prepared."
 msgstr ""
+"Rytíři z klanů jezdců, pěšáci z Dan’Tonku a hordy skřetů ze severu, jejichž "
+"řady se nyní ještě více rozrostly o nové rekruty vaší čarodějky Miryi. Víme "
+"o tom a jsme připraveni."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1475
@@ -19863,6 +20373,8 @@ msgid ""
 "Knights from the Horse Clans, footmen from Dan’Tonk, and orcish hordes from "
 "the north. We know, and we are prepared."
 msgstr ""
+"Rytíři z klanů jezdců, pěšáci z Dan’Tonku a hordy skřetů ze severu. Víme "
+"o tom a jsme připraveni."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1476
@@ -19870,6 +20382,8 @@ msgid ""
 "Knights from the Horse Clans, footmen from Dan’Tonk, and your mage Mirya "
 "with her newly-recruited grunts. We know, and we are prepared."
 msgstr ""
+"Rytíři z koňských klanů, pěšáci z Dan’Tonk a vaše čarodějka Mirya se svými "
+"nově naverbovanými skřetími vojáky. Víme o tom a jsme připraveni."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1477
@@ -19877,6 +20391,8 @@ msgid ""
 "Footmen from Dan’Tonk, orcish hordes from the north, and your mage Mirya "
 "with her newly-recruited grunts. We know, and we are prepared."
 msgstr ""
+"Pěšáci z Dan’Tonku, hordy skřetů ze severu a vaše čarodějka Mirya se svými "
+"čerstvě naverbovanými skřetími vojáky. Víme o tom a jsme připraveni."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1478
@@ -19885,6 +20401,9 @@ msgid ""
 "even further with your mage Mirya’s new recruits. We know, and we are "
 "prepared."
 msgstr ""
+"Rytíři z klanů jezdců a hordy skřetů ze severu, které se nyní ještě více "
+"rozrostly díky novým rekrutům vaší čarodějky Miryi. Víme o tom a jsme "
+"připraveni."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1480
@@ -19892,6 +20411,7 @@ msgid ""
 "Knights from the Horse Clans and footmen from Dan’Tonk. We know, and we are "
 "prepared."
 msgstr ""
+"Rytíři z klanů jezdců a pěšáci z Dan’Tonku. Víme o tom a jsme připraveni."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1481
@@ -19899,6 +20419,7 @@ msgid ""
 "Footmen from Dan’Tonk and orcish hordes from the north. We know, and we are "
 "prepared."
 msgstr ""
+"Pěšáci z Dan’Tonku a hordy skřetů ze severu. Víme o tom a jsme připraveni."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1482
@@ -19906,6 +20427,7 @@ msgid ""
 "Knights from Horse Clans and orcish hordes from the north. We know, and we "
 "are prepared."
 msgstr ""
+"Rytíři z klanů jezdců a hordy skřetů ze severu. Víme o tom a jsme připraveni."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1483
@@ -19913,6 +20435,8 @@ msgid ""
 "Footmen from Dan’Tonk and your mage Mirya with her newly-recruited orcs. We "
 "know, and we are prepared."
 msgstr ""
+"Pěšáci z Dan’Tonku a vaše čarodějka Mirya se svými nově naverbovanými "
+"skřety. Víme o tom a jsme připraveni."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1484
@@ -19920,6 +20444,8 @@ msgid ""
 "Knights from the Horse Clans and your mage Mirya with her newly-recruited "
 "orcs. We know, and we are prepared."
 msgstr ""
+"Rytíři z klanů jezdců a vaše čarodějka Mirya se svými nově naverbovanými "
+"skřety. Víme o tom a jsme připraveni."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1485
@@ -19927,6 +20453,8 @@ msgid ""
 "Orcish hordes from the north, now swollen even further with your mage "
 "Mirya’s new recruits. We know, and we are prepared."
 msgstr ""
+"Hordy skřetů ze severu, jejichž řady se nyní ještě více rozrostly o nové "
+"rekruty vaší čarodějky Miryi. Víme o tom a jsme připraveni."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1487
@@ -19935,6 +20463,9 @@ msgid ""
 "and her newly-recruited orcs are still ready to aid you. We did not come "
 "here unprepared."
 msgstr ""
+"Méně, než by mohlo být. Ze všech vašich spojenců jsou vám stále ochotni "
+"pomoci už jen vaše čarodějka Mirya a její nově naverbovaní skřeti. Nepřišli "
+"jsme sem nepřipraveni."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1488
@@ -19942,6 +20473,8 @@ msgid ""
 "Fewer than there might have been. Of all your allies, only the orcish hordes "
 "of the north still stand ready to aid you. We did not come here unprepared."
 msgstr ""
+"Méně, než by mohlo být. Ze všech vašich spojenců jsou ochotni vám pomoci už "
+"jen hordy skřetů ze severu. Nepřišli jsme sem nepřipraveni."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1489
@@ -19949,6 +20482,8 @@ msgid ""
 "Fewer than there might have been. Of all your allies, only the Horse Clans "
 "still stand ready to aid you. We did not come here unprepared."
 msgstr ""
+"Méně, než by mohlo být. Ze všech vašich spojenců jsou ochotni vám pomoci už "
+"jen klany jezdců. Nepřišli jsme sem nepřipraveni."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1490
@@ -19956,6 +20491,8 @@ msgid ""
 "Fewer than there might have been. Of all your allies, only the footmen of "
 "Dan’Tonk still stand ready to aid you. We did not come here unprepared."
 msgstr ""
+"Méně, než by mohlo být. Ze všech vašich spojenců jsou ochotni vám pomoci už "
+"jen pěšáci z Dan’Tonku. Nepřišli jsme sem nepřipraveni."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1492
@@ -19964,6 +20501,10 @@ msgid ""
 "is barricaded; the orcish clans are embroiled in civil war. Even your mage "
 "Mirya is gone. You have nothing more than the forces arrayed before us here."
 msgstr ""
+"Jaké spojence, Vaše Milosti? Klany jezdců se k nám obrátily zády; Dan’Tonk "
+"je zabarikádován; skřetí klany se zapletly do občanské války. Dokonce i vaše "
+"čarodějka Mirya je pryč. Nemáte nic jiného než ty síly, které tu před námi "
+"stojí."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1499
@@ -19971,6 +20512,8 @@ msgid ""
 "How long must the people endure your rule, woman? Give the throne to your "
 "daughter. She is the rightful heir. We even hold the Sceptre to prove it!"
 msgstr ""
+"Jak dlouho ještě musí lid snášet tvou vládu, ženo? Předej trůn své dceři. "
+"Ona je právoplatnou dědičkou. Máme dokonce i žezlo, které to dokazuje!"
 
 #. [message]: speaker=Asheviere
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1503
@@ -19978,11 +20521,13 @@ msgid ""
 "Delfador! My old tormentor! Treason! Men! Seize them! Kill them! Kill them "
 "all!"
 msgstr ""
+"Delfador! Můj dávný trýznitel! Zrada! Muži! Chyťte je! Zabijte je! Zabijte "
+"je všechny!"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1511
 msgid "Defeat Asheviere"
-msgstr ""
+msgstr "Poraz Ašvíru"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1530
@@ -19990,11 +20535,13 @@ msgid ""
 "It’s you! The dwarf from Gryphon Mountain! I thought you were merely "
 "delivering eggs to Asheviere, not fighting for her."
 msgstr ""
+"To jsi ty! Ten trpaslík z Hory gryfů! Myslel jsem, že Ašvíře jen dodáváš "
+"vejce, ne že za ni bojuješ."
 
 #. [message]: speaker=Burlin
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1534
 msgid "Well, you know what they say: money talks. It’s nothing personal."
-msgstr ""
+msgstr "No, víš, jak se říká: kdo maže, ten jede. Není to nic osobního."
 
 #. [message]: speaker=Delfador {DELFADOR_VARIATION mentoring}
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1569
@@ -20002,6 +20549,8 @@ msgid ""
 "Their initial attack will be especially powerful, but they will continue "
 "reinforcing Asheviere every day or two until she is defeated — or we are."
 msgstr ""
+"Jejich úvodní útok bude obzvláště silný, ale budou Ašvíru posilovat každý "
+"den či dva, dokud nebude poražena – nebo dokud nebudeme poraženi my."
 
 #. [message]: speaker=Delfador {DELFADOR_VARIATION mentoring}
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1573
@@ -20010,6 +20559,9 @@ msgid ""
 "arrive, so we should be careful not to leave our soldiers exposed near the "
 "attackers’ entry points."
 msgstr ""
+"Každá vlna útočníků bude připravena k přesunu a boji hned jak dorazí, proto "
+"bychom měli dbát na to, abychom nenechávali naše vojáky nechráněné "
+"v blízkosti přístupových bodů útočníků."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1581
@@ -20018,6 +20570,9 @@ msgid ""
 "not especially powerful, but I suspect that each subsequent follow-up will "
 "be more deadly than the last."
 msgstr ""
+"Konráde, Ašvířini spojenci připravili další útok! Tahle vlna sice není nijak "
+"zvlášť silná, ale mám podezření, že každá další bude smrtelnější než ta "
+"předchozí."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1731
@@ -20026,11 +20581,14 @@ msgid ""
 "suspect we will soon encounter that teleporting mage of Asheviere’s, along "
 "with her orcish allies and mage followers."
 msgstr ""
+"Konráde, cítím, jak se po severní cestě blíží proud magie. Mám podezření, že "
+"se brzy střetneme s tou Ašvířinou teleportující se čarodějkou spolu s jejími "
+"skřetími spojenci a čarodějnickými stoupenci."
 
 #. [message]: speaker=Mirya
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1748
 msgid "Ah, we’ve arrived at the perfect time."
-msgstr ""
+msgstr "Ach, dorazili jsme v ten nejvhodnější okamžik."
 
 #. [message]: speaker=Mirya
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1775
@@ -20038,11 +20596,13 @@ msgid ""
 "Congratulations on your entry into the queen’s service, orcs. To earn your "
 "first payment, bring me the heads of the rebel leaders."
 msgstr ""
+"Blahopřeji vám, skřeti, k nástupu do služeb královny. Abyste si zasloužili "
+"svou první odměnu, přineste mi hlavy vůdců povstalců."
 
 #. [message]: speaker=Lisar
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1784
 msgid "You’re a good mage, Mirya. It’s a shame you’re a bad person."
-msgstr ""
+msgstr "Jsi dobrá čarodějka, Miryo. Škoda, že jsi špatný člověk."
 
 #. [message]: speaker=Mirya
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1792
@@ -20050,17 +20610,19 @@ msgid ""
 "Ow! I think it’s time to take my leave. No point dying for the cause when I "
 "could live for it instead."
 msgstr ""
+"Au! Myslím, že je čas, abych se rozloučila. Nemá smysl umírat za věc, když "
+"místo toho můžu pro ni žít."
 
 #. [message]: speaker=Delfador {DELFADOR_VARIATION mad}
 #. "Morium libre vintis" doesn't mean anything. It's just some gibberish that sounds like a magic spell.
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1798
 msgid "You will not leave. Morium libre vintis!"
-msgstr ""
+msgstr "Neodejdeš. Morium libre vintis!"
 
 #. [message]: speaker=Mirya
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1806
 msgid "My spell is broken!"
-msgstr ""
+msgstr "Kouzlo pominulo!"
 
 #. [message]: speaker=Lisar
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1833
@@ -20068,6 +20630,7 @@ msgid ""
 "Look, to the west! There is a great plume of dust visible just over the "
 "horizon."
 msgstr ""
+"Podívejte se na západ! Těsně nad obzorem je vidět obrovský oblak prachu."
 
 #. [message]: speaker=Lisar
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1838
@@ -20075,6 +20638,8 @@ msgid ""
 "That road leads to Dan’Tonk — there must be a column of soldiers marching to "
 "my mother’s aid. They’ll be here any moment."
 msgstr ""
+"Ta silnice vede do Dan’Tonku – určitě tam pochoduje zástup vojáků, kteří "
+"spěchají na pomoc mé matce. Budou tu každou chvíli."
 
 #. [message]: speaker=Isolde
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1852
@@ -20082,21 +20647,23 @@ msgid ""
 "Your Majesty! So Konrad has come, just as you said he would. My army will "
 "make short work of him."
 msgstr ""
+"Vaše Veličenstvo! Tak Konrád přišel, přesně jak jste předpovídala. Moje "
+"vojsko si s ním rychle poradí."
 
 #. [message]: speaker=Lisar
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1885
 msgid "I’m sorry it had to come to this, Isolde. I respected you."
-msgstr ""
+msgstr "Je mi líto, že to muselo dojít až sem, Isoldo. Vážila jsem si tě."
 
 #. [message]: speaker=Isolde
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1889
 msgid "You picked the wrong side, princess. I’ll try to capture you alive."
-msgstr ""
+msgstr "Vybrala sis špatnou stranu, princezno. Pokusím se tě zajmout živou."
 
 #. [message]: speaker=Isolde
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1897
 msgid "Don’t surrender, my queen! Do not let my death be in vain!"
-msgstr ""
+msgstr "Nevzdávejte se, má královno! Ať moje smrt není zbytečná!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1916
@@ -20105,6 +20672,8 @@ msgid ""
 "approaching from the northeast, behind us! They must have come a long way to "
 "make war."
 msgstr ""
+"Slyším rytmické údery válečných bubnů. Ze severovýchodu, přímo za námi, se "
+"blíží obrovské skřetí vojsko! Museli urazit dlouhou cestu, aby si zaválčili."
 
 #. [message]: speaker=Faghmok
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1932
@@ -20112,6 +20681,8 @@ msgid ""
 "Should’ve taken me up on my offer when you had the chance, Konrad. If I "
 "can’t kill the chief, maybe I can still win his favor by killing you!"
 msgstr ""
+"Měl jsi přijmout mou nabídku, když byla příležitost, Konráde. Jestli nemůžu "
+"zabít náčelníka, možná si jeho přízeň získám tím, že zabiju tebe!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1962
@@ -20119,23 +20690,25 @@ msgid ""
 "Coming here was a poor decision, orc. The dark queen’s reign is at an end. "
 "You lash yourself to a sinking ship."
 msgstr ""
+"To, že jsi sem přišel, bylo špatné rozhodnutí, skřete. Vláda temné královny "
+"se chýlí ke konci. Připoutáváš se k potápějící se lodi."
 
 #. [message]: speaker=Faghmok
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1966
 msgid "Yeah yeah. Let’s get on with the fighting!"
-msgstr ""
+msgstr "Jo, jo. Tak se pusťme do boje!"
 
 #. [message]: speaker=Faghmok
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1974
 msgid "Arrrgh! What a waste..."
-msgstr ""
+msgstr "Arrrgh! To je ale škoda..."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1993
 msgid ""
 "There is a thunder of approaching hooves in the south! The Horse Clans have "
 "come."
-msgstr ""
+msgstr "Z jihu se ozývá dunění blížících se kopyt! Přijely klany jezdců."
 
 #. [message]: speaker=Bayar
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2011
@@ -20143,6 +20716,8 @@ msgid ""
 "Hail, good Asheviere! We have taken the long road and come around by the "
 "south to surprise the rebels!"
 msgstr ""
+"Buď zdráva, dobrá Ašvíro! Vybrali jsme si dlouhou cestu a objeli to z jihu, "
+"abychom povstalce překvapili!"
 
 #. [message]: speaker=Asheviere
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2015
@@ -20150,26 +20725,29 @@ msgid ""
 "More likely you took the long road hoping to miss the worst of the fighting. "
 "I expected better, Bayar. We will discuss this after the battle."
 msgstr ""
+"Spíš jste si zvolili delší cestu v naději, že se vyhnete nejhorším bojům. "
+"Čekala jsem víc, Bayare. Probereme to po bitvě."
 
 #. [message]: speaker=Asheviere
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2053
 msgid "Ignore him. Run them down like dogs."
-msgstr ""
+msgstr "Nevšímej si ho. Rozneste je na kopytech jako psy."
 
 #. [message]: speaker=Bayar
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2061
 msgid "No! I am beaten! Perhaps the dark queen truly can be bested..."
-msgstr ""
+msgstr "Ne! Jsem poražen! Možná se na temnou královnu skutečně dá vyzrát..."
 
 #. [message]: speaker=Lisar
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2100
 msgid "Mother, I swore to end your reign of evil, and now I shall."
-msgstr ""
+msgstr "Matko, přísahala jsem, že ukončím tvou vládu zla, a teď to udělám."
 
 #. [message]: speaker=Asheviere {ASHEVIERE_VARIATION defeated}
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2104
 msgid "Daughter, I built this kingdom for you. It has all been for you!"
 msgstr ""
+"Dcero, toto království jsem vybudovala pro tebe. Vše bylo jen pro tebe!"
 
 #. [message]: speaker=Lisar {LISAR_VARIATION mad}
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2108
@@ -20178,6 +20756,9 @@ msgid ""
 "You are a monster! A murderess! It pains me to kill you, Mother, but you "
 "have chosen your own fate. For Wesnoth!"
 msgstr ""
+"Copak ani teď nedokážeš říct pravdu? Tvá chamtivost ti zkazila duši. Jsi "
+"netvor! Vražedkyně! Bolí mě, že tě musím zabít, matko, ale svůj osud sis "
+"zvolila sama. Za Wesnoth!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2126
@@ -20185,6 +20766,8 @@ msgid ""
 "You have hunted me across the countryside, indeed across the years. Here I "
 "am, Dark Queen."
 msgstr ""
+"Pronásledovala jsi mě po celé zemi, ba dokonce po celá ta léta. Tady jsem, "
+"temná královno."
 
 #. [message]: speaker=Asheviere {ASHEVIERE_VARIATION defeated}
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2130
@@ -20192,6 +20775,8 @@ msgid ""
 "I was sure I had killed you, yet you haunt me still. Be gone, demon! I "
 "banish you, ghost!"
 msgstr ""
+"Byla jsem si jistá, že jsem tě zabila, a přesto mě stále pronásleduješ. "
+"Ztrať se, démone! Vyháním tě, duchu!"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION mad}
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2134
@@ -20200,11 +20785,14 @@ msgid ""
 "ambition. You will now be held to account for your misdeeds. For the young "
 "Prince Konrad! For WESNOTH!"
 msgstr ""
+"Ach, ubohá paní, já jsem velmi skutečný. Tato země trpěla kvůli tvé "
+"chamtivosti a ctižádosti. Nyní budeš muset nést odpovědnost za své zločiny. "
+"Za mladého prince Konráda! Za WESNOTH!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2152
 msgid "As I destroyed your son, I now destroy you."
-msgstr ""
+msgstr "Stejně jako jsem zničil tvého syna, tak nyní zničím i tebe."
 
 #. [message]: speaker=Asheviere {ASHEVIERE_VARIATION defeated}
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2156
@@ -20212,12 +20800,14 @@ msgid ""
 "You were always defiant, wizard, and no one has thwarted my plans as "
 "determinedly as you."
 msgstr ""
+"Vždy jsi byl vzpurný, čaroději, a nikdo mi nemařil plány tak vytrvale jako "
+"ty."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2160
 msgid ""
 "I have always been a humble servant of the Crown, and remain such even now."
-msgstr ""
+msgstr "Vždy jsem byl pokorným služebníkem koruny a zůstávám jím i nyní."
 
 #. [message]: speaker=Asheviere {ASHEVIERE_VARIATION defeated}
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2164
@@ -20225,17 +20815,19 @@ msgid ""
 "Delfador! You utterly disgust me, you sniveling worm. How dare you confront "
 "me, your queen?"
 msgstr ""
+"Delfadore! Jsi mi naprosto odporný, ty ufňukaný červe. Jak se opovažuješ "
+"postavit se mi, své královně?"
 
 #. [message]: speaker=Delfador {DELFADOR_VARIATION mad}
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2168
 msgid "How dare I? I, High Provost of the Council of Archmagi..."
-msgstr ""
+msgstr "Jak se opovažuji? Já, vrchní představený Rady arcimágů..."
 
 #. [message]: speaker=Delfador {DELFADOR_VARIATION mad}
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2170
 msgid ""
 "... bearer of the staff of An-Usrukhar, guardian of the book of Crelanu ..."
-msgstr ""
+msgstr "... nositel An-Ušrukarovy hole, strážce Krelanovy knihy..."
 
 #. [message]: speaker=Delfador {DELFADOR_VARIATION mad}
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2172
@@ -20243,6 +20835,7 @@ msgid ""
 "... Mage Protector of The Kingdom Of The Peoples Of The West-North, Chief "
 "Advisor to the Crown..."
 msgstr ""
+"... čaroděj ochránce království národů severozápadu, hlavní poradce koruny..."
 
 #. [message]: speaker=Delfador {DELFADOR_VARIATION mad}
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2174
@@ -20250,28 +20843,30 @@ msgid ""
 "... and personal counselor to my King and my friend, Garard the Second, whom "
 "you most foully betrayed..."
 msgstr ""
+"... a osobní rádce mého krále a mého přítele, Gararda Druhého, kterého jsi "
+"tak hanebně zradila..."
 
 #. [message]: speaker=Delfador {DELFADOR_VARIATION mad}
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2176
 msgid "I am Delfador the Great and TODAY YOU MEET YOUR ATONEMENT!"
-msgstr ""
+msgstr "Jsem Delfador Veliký a DNES PŘICHÁZÍ TVÉ POKÁNÍ!"
 
 #. [message]: speaker=Asheviere {ASHEVIERE_VARIATION defeated}
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2207
 msgid "Treason! The evil ones have slain me!"
-msgstr ""
+msgstr "Zrada! Ti zlí mě zabili!"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2212
 msgid ""
 "For too long has your darkness troubled the world, Asheviere. Your time has "
 "come!"
-msgstr ""
+msgstr "Tvá temnota už příliš dlouho sužuje svět, Ašvíro. Tvá hodina nadešla!"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2213
 msgid "Vengeance for the fallen! Vengeance for Deoran!"
-msgstr ""
+msgstr "Pomsta za padlé! Pomsta za Deorana!"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2214
@@ -20280,6 +20875,8 @@ msgid ""
 "The hand of the Clans strikes you down, witch! Vengeance for my king! "
 "Vengeance for Garard!"
 msgstr ""
+"Ruka klanů tě sráží k zemi, čarodějnice! Pomsta za mého krále! Pomsta za "
+"Gararda!"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2216
@@ -20287,11 +20884,12 @@ msgid ""
 "Dark queen, your evil ends this day. In the name of the Light, I purge you "
 "from this world!"
 msgstr ""
+"Temná královno, dnes končí tvé zlo. Ve jménu Světla tě vyženu z tohoto světa!"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2217
 msgid "Here’s for Baldras! Here’s for Delwyn and Dallben!"
-msgstr ""
+msgstr "Tumáš za Baldra! Tumáš za Delwyn a za Dalben!"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2218
@@ -20299,43 +20897,45 @@ msgid ""
 "Dinnae recognize me, do ye? You sent me to the gibbet, ye milksop, ye "
 "coward! Ah’ll cut that lubberworting head right off yer steamin’ corpse!"
 msgstr ""
+"Ty mě nepoznáváš, co? To ty jsi mě poslala na šibenici, ty vycmrndlino, ty "
+"pápěro! Uříznu ti tu tvou nablblou hlavu přímo z tvý ještě teplý mrtvoly!"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2219
 msgid "Sorry about this! Oh, how did I get caught up in all this?"
-msgstr ""
+msgstr "Tohle mě mrzí! Ach jo, jak jsem se do toho všeho vůbec zapletla?"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2220
 msgid "For Alduin! For my friends, my apprentices, and my home! Now burn!"
-msgstr ""
+msgstr "Za Alduin! Za mé přátele, mé učedníky a můj domov! Teď shoř!"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2221
 msgid "For Alduin! For my friends, my family, and my home! Now burn!"
-msgstr ""
+msgstr "Za Alduin! Za mé přátele, mou rodinu a můj domov! Teď shoř!"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2222
 msgid "Dis not personal, queen. But Dosh gonna squash you like frog."
-msgstr ""
+msgstr "Neber to osobně, královno. Ale Doš tě rozmáčkne jako žábu."
 
 #. [message]: speaker=Asheviere {ASHEVIERE_VARIATION defeated}
 #. "struck by some lowborn grunt" hints to the player that there's messages if Konrad/Lisar/Delfador get the kill
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2227
 msgid ""
 "Oh, such indignity to have the final blow struck by some lowborn grunt..."
-msgstr ""
+msgstr "Ach, jaká potupa – dostat poslední ránu od nějakého prostého pěšáka..."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2235
 msgid "And so passes Asheviere, queen of Wesnoth."
-msgstr ""
+msgstr "A tak odchází Ašvíra, královna Wesnothu."
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION glad}
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2239
 msgid "We have won at last! Li’sar! You will be queen!"
-msgstr ""
+msgstr "Konečně jsme zvítězili! Lisar! Budeš královnou!"
 
 #. [message]: speaker=Lisar {LISAR_VARIATION glad}
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2243
@@ -20343,11 +20943,13 @@ msgid ""
 "Yes, but I won’t ever forget what you have done for me, Konrad. And you, "
 "Delfador."
 msgstr ""
+"Ano, ale nikdy nezapomenu, co jsi pro mě udělal, Konráde. A ty také, "
+"Delfadore."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2248
 msgid "So much blood. So much death. For what? A title?"
-msgstr ""
+msgstr "Tolik krve. Tolik smrti. A kvůli čemu? Kvůli titulu?"
 
 #. [message]: speaker=Lisar
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2252
@@ -20356,6 +20958,10 @@ msgid ""
 "But, I implore you to let the dead have their rest. We have taken victory. "
 "Tomorrow is a new day, friends... let us build this kingdom anew."
 msgstr ""
+"Pro spravedlnost, pane elfů. Bojujeme, protože kdybychom to neudělali, "
+"zvítězilo by zlo. Ale snažně tě prosím, nech mrtvé odpočívat v pokoji. "
+"Dosáhli jsme vítězství. Zítra je nový den, přátelé... pojďme toto království "
+"vybudovat znovu."
 
 #. [message]: speaker=Lisar
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2257
@@ -20363,11 +20969,13 @@ msgid ""
 "We have taken victory. Tomorrow is a new day, friends... let us build this "
 "kingdom anew."
 msgstr ""
+"Zvítězili jsme. Zítra je nový den, přátelé... pojďme toto království "
+"vybudovat znovu."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2351
 msgid "And so the Dark Queen’s reign was ended."
-msgstr ""
+msgstr "A tak skončila vláda temné královny."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2355
@@ -20377,6 +20985,9 @@ msgid ""
 "successors. Her reign was long, and she undid much of the evil deeds of her "
 "mother."
 msgstr ""
+"Lisar, dcera Gararda II. a dědička wesnothského trůnu, byla korunována "
+"královnou a nositelkou Ohnivého žezla, které měla předat všem svým "
+"nástupcům. Její panování bylo dlouhé a napravila mnoho zlých činů své matky."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2357
@@ -20385,6 +20996,9 @@ msgid ""
 "matters of state. He lived until a ripe old age and was granted a royal "
 "funeral, after which he was buried in the Royal Crypt in Weldyn."
 msgstr ""
+"Delfador se stal Lisařiným vrchním rádcem a radil jí v nejdůležitějších "
+"státních záležitostech. Dožil se vysokého věku a byl mu vypraven královský "
+"pohřeb, po kterém byl uložen v královské kryptě ve Weldynu."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2362
@@ -20393,6 +21007,9 @@ msgid ""
 "grandfather Kalenz among many other prisoners. Together they returned to "
 "their home in the north and never again came to the lands of men."
 msgstr ""
+"Chantal se vydala do palácových žalářů, kde mezi mnoha dalšími vězni našla "
+"svého pradědečka Kalenze. Společně odešli do svého domova na severu a už "
+"nikdy se do zemí lidí nevrátili."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2363
@@ -20400,6 +21017,8 @@ msgid ""
 "Kalenz and Chantal returned to their homes in the north, and never again "
 "came to the lands of men."
 msgstr ""
+"Kalenz a Chantal odešli do svých domovů na severu a už nikdy se do zemí lidí "
+"nevrátili."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2364
@@ -20407,6 +21026,7 @@ msgid ""
 "Kalenz returned to his home in the north and never again came to the lands "
 "of men."
 msgstr ""
+"Kalenz odešel do svého domova na severu a už nikdy se do zemí lidí nevrátil."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2365
@@ -20415,6 +21035,9 @@ msgid ""
 "and her supporters among the the Horse Lords disgraced, the returnees gained "
 "much clout within the Horse Clans, and enacted reform."
 msgstr ""
+"Haldiel – a Kaylan – se vrátili do Nížiny koní. Poté, co byla královna "
+"poražena a její stoupenci z řad pánů koní upadli v nemilost, získali "
+"navrátilci v klanech jezdců značný vliv a prosadili reformy."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2366
@@ -20423,6 +21046,9 @@ msgid ""
 "embarrassed by her defeat, but Kaylan’s death left Konrad’s allies with no "
 "one to rally behind. Change would be slow."
 msgstr ""
+"Haldiel se vrátil do Nížiny koní. Porážka královny způsobila jejím "
+"stoupencům nesnáze, avšak Kaylanova smrt znamenala, že Konrádovi spojenci "
+"neměli nikoho, za kým by mohli stát. Změna bude pomalá."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2367
@@ -20431,6 +21057,9 @@ msgid ""
 "and hope wherever he went. When at last he fell, he was buried with honors "
 "and laid to rest among the other heroes of his order."
 msgstr ""
+"Moremirmu prožil zbytek svého života jako potulný válečník a kamkoli přišel, "
+"přinášel světlo a naději. Když nakonec padl, byl s poctami pohřben "
+"a spočinul mezi ostatními hrdiny svého řádu."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2368
@@ -20439,6 +21068,9 @@ msgid ""
 "mainland, to reclaim their ruined hometowns. Delwyn and Dallben were "
 "rebuilt, and prospered."
 msgstr ""
+"Harper se vrátila na Tři sestry, odkud vedla svůj lid zpět na pevninu, aby "
+"znovu získali svá zničená rodná města. Delwyn a Dalben byly znovu vybudovány "
+"a vzkvétaly."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2369
@@ -20446,6 +21078,8 @@ msgid ""
 "With Konrad’s blessing, Ulfdain rallied a company of soldiers — dwarves and "
 "men both — and set out to fight for Knalga. They were never heard from again."
 msgstr ""
+"S Konrádovým požehnáním shromáždil Ulfdain oddíl vojáků – trpaslíků i lidí – "
+"a vydal se bojovat za Knalgu. Od té doby o nich už nikdo neslyšel."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2370
@@ -20454,6 +21088,9 @@ msgid ""
 "she was awarded a professorship, and would go on to contribute greatly to "
 "the advancement of alchemy and the training of young minds."
 msgstr ""
+"Jeniver potlačila svou hrdost a vydala se na Alduin. Na naléhání Delfadora "
+"jí bylo uděleno profesorské místo a ona se následně významně zasloužila "
+"o pokrok v alchymii a o vzdělávání mladých lidí."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2371
@@ -20462,11 +21099,14 @@ msgid ""
 "reviled by a few). He presided over the academy for many years, where he was "
 "often visited by his friend Delfador."
 msgstr ""
+"Seimus se vrátil na Alduin, kde ho mnozí oslavovali jako hrdinu (a někteří "
+"ho naopak hanili). Po mnoho let stál v čele akademie, kde ho často "
+"navštěvoval jeho přítel Delfador."
 
 #. [then]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2375
 msgid "His grandparents’ loan was repaid in full, plus interest."
-msgstr ""
+msgstr "Půjčka jeho prarodičů byla splacena v plné výši včetně úroků."
 
 #. [then]
 #. [else]
@@ -20477,6 +21117,9 @@ msgid ""
 "instead devoted himself to the study of strategy. In time, he would become "
 "one of the Crown’s top generals."
 msgstr ""
+"Povzbuzen Konrádovým vůdčím uměním se Elrian vzdal studia magie a místo toho "
+"se věnoval studiu strategie. Časem se z něj stal jeden z nejlepších generálů "
+"koruny."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2381
@@ -20486,6 +21129,10 @@ msgid ""
 "time he accrued enough followers to start his own clan, which he ruled "
 "wisely as chief."
 msgstr ""
+"Doš se vrátil na sever, kde se díky pověstem o jeho válečných činech "
+"a výjimečné inteligenci (na trolla) stal poměrně známou osobností. Časem si "
+"získal dostatek stoupenců, aby mohl založit vlastní klan, jemuž jako "
+"náčelník moudře vládl."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2382
@@ -20493,6 +21140,9 @@ msgid ""
 "Konrad kept his promise to Merle, channeling gold and attention towards the "
 "Dulatus hills. That place became known as a home of great craftsmen."
 msgstr ""
+"Konrád dodržel slib, který dal Merlovi, a nasměroval do Dulatských vrchů "
+"zlato i pozornost. Toto místo se proslavilo jako domov vynikajících "
+"řemeslníků."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2383
@@ -20502,6 +21152,10 @@ msgid ""
 "prosperous settlement; a rare jewel of civilization in the northern "
 "wildlands."
 msgstr ""
+"Jota se nakonec vrátil do svého domova na severu, tentokrát spolu s mnoha "
+"dalšími mořskými lidmi. Jotův záliv (jak se mu začalo říkat) se postupně "
+"proměnil v prosperující osadu – vzácný klenot civilizace uprostřed severní "
+"divočiny."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2384
@@ -20510,6 +21164,9 @@ msgid ""
 "many years. He would one day be crippled in battle, and would retire to "
 "teach at Weldyn’s military academy."
 msgstr ""
+"Warven, který byl mezitím povýšen na velkého maršála, nadále po mnoho let "
+"věrně sloužil Lisar. Jednoho dne byl v bitvě zmrzačen a odešel do výslužby, "
+"aby učil na weldynské vojenské akademii."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2385
@@ -20518,6 +21175,9 @@ msgid ""
 "Asheviere’s demise. He was laid to rest at the Royal Library, in a glass "
 "ossuary ornamented with all manner of trinkets and baubles."
 msgstr ""
+"Krkavec Černák, který byl již v pokročilém věku, zemřel krátce po Ašvířině "
+"skonu. Byl uložen k odpočinku v královské knihovně, ve skleněné schránce "
+"zdobené nejrůznějšími drobnostmi a cetkami."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2398
@@ -20526,6 +21186,9 @@ msgid ""
 "for their ordeal. Most returned to their homes, singing the new Queen’s "
 "praises."
 msgstr ""
+"Vězni, kterým Ašvíra vyhrožovala, byli nalezeni a osvobozeni a z celého toho "
+"utrpení vyvázli bez úhony. Většina z nich se vrátila domů a opěvovala novou "
+"královnu."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2404
@@ -20534,6 +21197,8 @@ msgid ""
 "buried in the Royal Crypt in Weldyn, which our Konrad visited to pay homage "
 "every week."
 msgstr ""
+"Kosti malého prince Konráda byly získány zpět od elfů a pohřbeny v královské "
+"kryptě ve Weldynu, kam náš Konrád každý týden chodil vzdávat hold."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2406
@@ -20541,6 +21206,8 @@ msgid ""
 "And as for our Konrad himself... the foundling prince became a noble in "
 "Li’sar’s court."
 msgstr ""
+"A co se týče samotného Konráda... nalezený princ se stal šlechticem na "
+"Lisařině dvoře."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2413
@@ -20549,6 +21216,8 @@ msgid ""
 "eventually something more. They were married, and together they had two sons "
 "and a daughter."
 msgstr ""
+"Vzájemná úcta mezi princem a královnou přerostla v přátelství, důvěru "
+"a nakonec i v něco víc. Vzali se a měli spolu dva syny a jednu dceru."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2417
@@ -20557,11 +21226,14 @@ msgid ""
 "surrounding Weldyn would never entirely recover from their razing. The "
 "people there grew hard and bitter; that land spawned many outlaws."
 msgstr ""
+"Vládli moudře, ale některé rány se hojí pomalu. Orná půda v okolí Weldynu se "
+"z toho zničení nikdy úplně nevzpamatovala. Lidé tam ztvrdli a zahořkli. Ta "
+"země zplodila mnoho psanců."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2421
 msgid "But such was the cost of victory, wasn’t it?"
-msgstr ""
+msgstr "Ale taková byla cena vítězství, že ano?"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2429
@@ -20570,11 +21242,14 @@ msgid ""
 "eventually something more. They were married, and together they had two sons "
 "and a daughter. The kingdom once more prospered under their rule."
 msgstr ""
+"Vzájemná úcta mezi princem a královnou přerostla v přátelství, důvěru "
+"a nakonec i v něco víc. Vzali se a měli spolu dva syny a jednu dceru. Pod "
+"jejich vládou království opět vzkvétalo."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2433
 msgid "All was well."
-msgstr ""
+msgstr "Všechno bylo v pořádku."
 
 #. [scenario]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:2442
@@ -20582,11 +21257,13 @@ msgid ""
 "How unfortunate, for both you and your loved ones. I shall have to make an "
 "example of you."
 msgstr ""
+"To je velká škoda, jak pro tebe, tak pro tvé blízké. Budu z tebe muset "
+"udělat odstrašující příklad."
 
 #. [scenario]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:5
 msgid "Overlook"
-msgstr ""
+msgstr "Výhled"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:19
@@ -20595,6 +21272,9 @@ msgid ""
 "prince strode among the ranks, visiting and encouraging soldiers: both his "
 "and Li’sar’s."
 msgstr ""
+"Konrádova kdysi ošuntělá skupina uprchlíků se rozrostla v mohutné vojsko. "
+"Mladý princ kráčel mezi řadami, navštěvoval vojáky a dodával jim odvahu – "
+"jak svým, tak Lisařiným."
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:22
@@ -20603,6 +21283,9 @@ msgid ""
 "war. The weight of that thought bore on him. Much had changed since the "
 "flight from the Aethenwood."
 msgstr ""
+"Mnozí opustili bezpečí a klid svých domovů, aby šli bojovat – do jeho války. "
+"Tíha této myšlenky na něj doléhala. Od útěku z Aethenského lesa se toho "
+"hodně změnilo."
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:26
@@ -20612,6 +21295,10 @@ msgid ""
 "remained. Li’sar held the Sceptre, but Konrad’s claim was strong. The matter "
 "could not lie unresolved; not so near to the throne."
 msgstr ""
+"Ačkoli byli princ a princezna kdysi smrtelnými nepřáteli, uzavřeli mezi "
+"sebou křehké spojenectví; možná dokonce i přátelství. Avšak pořád tu byla "
+"otázka nástupnictví. Lisar držela žezlo, ale Konrádův nárok byl silný. Tato "
+"záležitost nemohla zůstat nevyřešena. Ne tak blízko trůnu."
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:30
@@ -20621,6 +21308,10 @@ msgid ""
 "remained. Konrad held the Sceptre, but Li’sar’s claim was strong. The matter "
 "could not lie unresolved; not so near to the throne."
 msgstr ""
+"Ačkoli byli princ a princezna kdysi smrtelnými nepřáteli, uzavřeli mezi "
+"sebou křehké spojenectví; možná dokonce i přátelství. Avšak pořád tu byla "
+"otázka nástupnictví. Konrád držel žezlo, ale Lisařin nárok byl silný. Tato "
+"záležitost nemohla zůstat nevyřešena. Ne tak blízko trůnu."
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:34
@@ -20629,6 +21320,8 @@ msgid ""
 "and paused there. To look at the city. To make plans for the battle, and to "
 "talk."
 msgstr ""
+"Nakonec se povstalecké vojsko dostalo k severnímu břehu řeky Weldyn a tam se "
+"zastavilo. Pohlédnout na město. Naplánovat bitvu a poradit se."
 
 #. [message]: speaker=Lisar
 #. this is a lead-in to the main conversation, but also explains to the player why we start the battle next to the river, even though we approached from a different direction on the overworld.
@@ -20638,6 +21331,9 @@ msgid ""
 "the river, to make use of our merfolk and to cover our flank. She’ll cut off "
 "our supply chain if we give her the chance."
 msgstr ""
+"... a předměstí je vzdálené sotva jeden den pochodu. Měli bychom se "
+"přiblížit podél řeky, abychom mohli využít naše mořské lidi a zajistit si "
+"krytí křídla. Pokud jí dáme příležitost, přeruší nám zásobovací trasu."
 
 #. [message]: speaker=Lisar
 #. this is a lead-in to the main conversation, but also explains to the player why we start the battle next to the river, even though we approached from a different direction on the overworld.
@@ -20648,6 +21344,9 @@ msgid ""
 "the northeast, using the river to cover our flank. She’ll cut off our supply "
 "chain if we give her the chance."
 msgstr ""
+"... a předměstí je vzdálené sotva jeden den pochodu. Měli bychom se ní "
+"přiblížit ze severovýchodu a využít řeku, abychom si kryli křídlo. Pokud jí "
+"dáme příležitost, přeruší nám zásobovací trasu."
 
 #. [message]: speaker=Lisar
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:100
@@ -20656,11 +21355,14 @@ msgid ""
 "surrender. But I don’t think it will come to that. She knows we’re not so "
 "foolish as to give in."
 msgstr ""
+"Vězni by mohli představovat problém, pokud by jim vyhrožovala, aby nás "
+"donutila kapitulovat. Ale nemyslím si, že k tomu dojde. Ví, že nejsme tak "
+"hloupí, abychom se vzdali."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:112
 msgid "Delfador, what do you think? You’ve been very quiet recently."
-msgstr ""
+msgstr "Delfadore, co si o tom myslíš? Poslední dobou jsi nějak moc potichu."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:116
@@ -20668,6 +21370,7 @@ msgid ""
 "Weldyn. The great city. The ancient city. The city of evil. The city of "
 "good. The city of men."
 msgstr ""
+"Weldyn. Velké město. Starobylé město. Město zla. Město dobra. Město lidí."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:124
@@ -20676,6 +21379,9 @@ msgid ""
 "years ago, when I should have been at the height of my power. But my "
 "strength failed me. I failed, and I cannot atone for it."
 msgstr ""
+"To město jsem neviděl už sedmnáct let, Konráde. Před sedmnácti lety, kdy "
+"jsem měl být na vrcholu své moci. Ale síly mi došly. Selhal jsem a nemohu to "
+"odčinit."
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION concerned}
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:129
@@ -20683,11 +21389,13 @@ msgid ""
 "You could not defeat Asheviere, I know. But you rescued me. That was no "
 "failure."
 msgstr ""
+"Vím, že jsi Ašvíru nedokázal porazit. Ale zachránil jsi mě. To nebylo "
+"selhání."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:133
 msgid "You do not understand."
-msgstr ""
+msgstr "Nerozumíš tomu."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:145
@@ -20696,6 +21404,8 @@ msgid ""
 "but I knew that Asheviere’s wrath would be great. That many innocents would "
 "be slain."
 msgstr ""
+"Bitva byla dlouhá a tvrdá. Byli jsme poraženi. Eldred padl, ale já jsem "
+"věděl, že Ašvířin hněv bude obrovský. Že bude zabito mnoho nevinných lidí."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:147
@@ -20704,6 +21414,9 @@ msgid ""
 "Weldyn, before the guards of Asheviere could get there, to carry out their "
 "evil orders."
 msgstr ""
+"Musel jsem zachránit monarchii. Musel jsem zachránit prince. Spěchal jsem do "
+"Weldynu, abych tam byl dřív než Ašvířiny stráže, které přišly provést své "
+"zlé rozkazy."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:151
@@ -20711,6 +21424,8 @@ msgid ""
 "But I failed. I was too late. I entered the chambers of the youngest prince, "
 "Prince Konrad, just as one of the evil ones ran him through."
 msgstr ""
+"Ale selhal jsem a dorazil příliš pozdě. Vstoupil jsem do komnat nejmladšího "
+"prince, prince Konráda, právě ve chvíli, kdy ho jeden z těch zlých probodl."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:153
@@ -20718,11 +21433,13 @@ msgid ""
 "All was lost. The heirs were slain. Only Asheviere and her daughter had any "
 "claim to the throne."
 msgstr ""
+"Všechno bylo ztraceno. Dědicové byli zavražděni. Pouze Ašvíra a její dcera "
+"měly nárok na trůn."
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION concerned}
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:157
 msgid "I am not dead, Delfador. What is this you’re saying!?"
-msgstr ""
+msgstr "Nejsem mrtvý, Delfadore. O čem to mluvíš!?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:161
@@ -20732,6 +21449,9 @@ msgid ""
 "little prince’s broken body, and away I rode. Far away, to the land of the "
 "elves."
 msgstr ""
+"Samozřejmě tě to překvapuje, ale je to pravda. Ve spěchu jsem porazil ty "
+"zlé, kteří spáchali ten ohavný čin. Pak jsem vzal probodené tělo malého "
+"prince a odjel pryč. Daleko pryč, do země elfů."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:165
@@ -20740,6 +21460,9 @@ msgid ""
 "human child. She knew not where he had come from, only that the orcs would "
 "have eaten him if it weren’t for her intervention."
 msgstr ""
+"Zvláštní a záhadnou náhodou narazila elfí paní Parandra na lidské dítě. "
+"Nevěděla, odkud se vzalo, věděla jen to, že kdyby nezasáhla, sežrali by ho "
+"skřeti."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:167
@@ -20747,6 +21470,8 @@ msgid ""
 "The elves felt that great fortune smiled upon this nameless child. Perhaps "
 "that is why this most truthful of peoples agreed to my plan."
 msgstr ""
+"Elfové měli pocit, že se na toto bezejmenné dítě usmálo velké štěstí. Možná "
+"právě proto tento nejupřímnější ze všech národů souhlasil s mým plánem."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:171
@@ -20755,6 +21480,9 @@ msgid ""
 "Instead, this orphan child we would call Konrad, and he would be brought up "
 "to be king."
 msgstr ""
+"Po pohřbení malého prince jsme se dohodli, že o něm už nikdy nebudeme "
+"mluvit. Místo toho jsme tomuto sirotkovi dali jméno Konrád a vychovali ho, "
+"aby se stal králem."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:173
@@ -20763,6 +21491,9 @@ msgid ""
 "evil deed, instead of after. No one would ever have to know. And no one did "
 "know for certain, until now."
 msgstr ""
+"Řekl bych, že jsem ty stráže zabil ještě předtím, než stihli spáchat svůj "
+"zlý čin, a ne až poté. Nikdo by se o tom nikdy nemusel dozvědět. A nikdo to "
+"s jistotou nevěděl – až dosud."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:183
@@ -20771,6 +21502,9 @@ msgid ""
 "that fate has made a different choice. That despite all of Asheviere’s evil, "
 "this Li’sar is fit for the throne."
 msgstr ""
+"Myslel jsem si, že tě jednoho dne budeme moci korunovat za krále, Konráde. "
+"Teď však vidím, že osud rozhodl jinak. Že navzdory veškeré Ašvířině "
+"zlovolnosti je právě tato Lisar hodna trůnu."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:188
@@ -20778,6 +21512,8 @@ msgid ""
 "Parandra was right. Li’sar... Li’sar is the rightful queen. From a long line "
 "of kings, stretching all the way back to the seafarers of old from the west."
 msgstr ""
+"Parandra měla pravdu. Lisar... Lisar je právoplatná královna. Pochází "
+"z dlouhé řady králů, jejíž kořeny sahají až k dávným mořeplavcům ze západu."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:193
@@ -20785,11 +21521,13 @@ msgid ""
 "Li’sar... Li’sar is the rightful queen. From a long line of kings, "
 "stretching all the way back to the seafarers of old from the west."
 msgstr ""
+"Lisar... Lisar je právoplatná královna. Pochází z dlouhé řady králů, jejíž "
+"kořeny sahají až k dávným mořeplavcům ze západu."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:199
 msgid "Li’sar... The rightful queen..."
-msgstr ""
+msgstr "Lisar... Právoplatná královna..."
 
 #. [message]: speaker=Lisar
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:203
@@ -20798,6 +21536,9 @@ msgid ""
 "revelation as are you. In truth, you’d nearly had me convinced we were of "
 "one blood. I can’t call you my cousin any more, now."
 msgstr ""
+"Delfadore, je mi ctí. A Konráde... Jsem tím odhalením stejně překvapená jako "
+"ty. Popravdě řečeno, málem jsi mě přesvědčil, že jsme pokrevní příbuzní. Teď "
+"už tě nemůžu nazývat svým bratrancem."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:211
@@ -20805,11 +21546,14 @@ msgid ""
 "Then call me a friend. I was ready to be king. But in our time together I "
 "have come to agree with Delfador — you will make a good queen."
 msgstr ""
+"Tak mě tedy považuj za přítele. Byl jsem připravený stát se králem. Ale "
+"během společně stráveného času jsem dospěl k závěru, že Delfador má pravdu – "
+"budeš dobrou královnou."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:215
 msgid "It is decided."
-msgstr ""
+msgstr "Je rozhodnuto."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/50x_Overlook.cfg:220
@@ -20817,6 +21561,7 @@ msgid ""
 "Now, let us not tarry here any longer! The dawn breaks! The time has come "
 "for the heir to the throne to claim it!"
 msgstr ""
+"Tak už tady déle nemeškejme! Svítá! Nastal čas, aby dědic získal svůj trůn!"
 
 #. [terrain_type]: id=impassable_fence
 #: data/campaigns/Heir_To_The_Throne/terrain.cfg:7
@@ -20826,7 +21571,7 @@ msgstr ""
 #. [terrain_type]: id=web
 #: data/campaigns/Heir_To_The_Throne/terrain.cfg:16
 msgid "Spiderweb"
-msgstr "pavučina"
+msgstr "Pavučina"
 
 #. [terrain_type]: id=dummy_obstacle
 #: data/campaigns/Heir_To_The_Throne/terrain.cfg:27
@@ -20877,7 +21622,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Civilian, race=elf, gender=male,female
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Civilian.cfg:4
 msgid "Elvish Civilian"
-msgstr ""
+msgstr "Elfí civilista"
 
 #. [unit_type]: id=Elvish Civilian, race=elf, gender=male,female
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Civilian.cfg:19
@@ -20886,6 +21631,9 @@ msgid ""
 "even untrained they have talent for swords and bows. However, if you are "
 "hurling civilians at your foes, you’re clearly out of superior forces."
 msgstr ""
+"Ačkoli elfové nejsou od přírody bojechtiví, díky své přirozené ladnosti mají "
+"i bez výcviku vlohy pro zacházení s mečem a lukem. Pokud však na své "
+"nepřátele vrháš civilisty, zjevně ti docházejí silnější jednotky."
 
 #. [attack]: type=blade
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Civilian.cfg:22
@@ -20897,22 +21645,22 @@ msgstr "meč"
 #. [attack]: type=pierce
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Civilian.cfg:31
 msgid "bow"
-msgstr ""
+msgstr "luk"
 
 #. [male]: gender=male
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Civilian.cfg:42
 msgid "male^Elvish Civilian"
-msgstr ""
+msgstr "Elfí civilista"
 
 #. [female]: gender=female
 #: data/campaigns/Heir_To_The_Throne/units/Elvish_Civilian.cfg:90
 msgid "female^Elvish Civilian"
-msgstr ""
+msgstr "Elfí civilistka"
 
 #. [unit_type]: id=Dark Queen, gender=female, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Human_Dark_Queen.cfg:4
 msgid "female^Dark Queen"
-msgstr ""
+msgstr "Temná královna"
 
 #. [unit_type]: id=Dark Queen, gender=female, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Human_Dark_Queen.cfg:27
@@ -20921,26 +21669,29 @@ msgid ""
 "knowledge of magic makes her a worthy foe in combat, although her power is "
 "mostly derived from those she commands."
 msgstr ""
+"Zlá královna Ašvíra už mnoho let udržuje Wesnoth ve strachu. Díky svým "
+"znalostem magie je v boji obávaným protivníkem, ačkoli její síla pramení "
+"především z těch, kterým velí."
 
 #. [attack]: type=impact
 #: data/campaigns/Heir_To_The_Throne/units/Human_Dark_Queen.cfg:32
 msgid "scepter"
-msgstr ""
+msgstr "žezlo"
 
 #. [attack]: type=blade
 #: data/campaigns/Heir_To_The_Throne/units/Human_Dark_Queen.cfg:43
 msgid "stiletto"
-msgstr ""
+msgstr "stilet"
 
 #. [attack]: type=cold
 #: data/campaigns/Heir_To_The_Throne/units/Human_Dark_Queen.cfg:58
 msgid "raging blizzard"
-msgstr ""
+msgstr "zuřivá vánice"
 
 #. [variation]
 #: data/campaigns/Heir_To_The_Throne/units/Human_Dark_Queen.cfg:141
 msgid "defeated"
-msgstr ""
+msgstr "poražená"
 
 #. [unit_type]: id=Delfador, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Human_Delfador_Elder_Mage.cfg:8
@@ -21186,7 +21937,7 @@ msgstr ""
 
 #: data/campaigns/Heir_To_The_Throne/units/Human_Konrad_L4.cfg:4
 msgid "Warrior Prince"
-msgstr ""
+msgstr "Princ válečník"
 
 #: data/campaigns/Heir_To_The_Throne/units/Human_Konrad_L4.cfg:22
 msgid ""
@@ -21196,13 +21947,18 @@ msgid ""
 "commanders have survived many trials by fire, proving both their tactical "
 "wit and their considerable mettle at personal combat."
 msgstr ""
+"Princové nesou jeden z nejváženějších titulů v lidské společnosti. Princ, "
+"který i v časech míru prochází náročným výcvikem v bojových uměních, "
+"představuje v době války na bojišti úctyhodný pohled. Tito královští "
+"velitelé prošli mnoha zkouškami ohněm, při nichž prokázali jak svou "
+"taktickou prozíravost, tak i značnou statečnost v přímém boji."
 
 #. [variation]: race=human
 #. [unit_type]: id=Princess, gender=female, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Human_Lisar_Princess.cfg:4
 #: data/campaigns/Heir_To_The_Throne/units/Human_Lisar_Princess.cfg:64
 msgid "female^Princess"
-msgstr "princezna"
+msgstr "Princezna"
 
 #. [variation]: race=human
 #. [unit_type]: id=Princess, gender=female, race=human
@@ -21222,7 +21978,7 @@ msgstr ""
 #. [unit_type]: id=Bound Princess, gender=female, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Human_Lisar_Princess_Bound.cfg:4
 msgid "female^Bound Princess"
-msgstr "spoutaná princezna"
+msgstr "Spoutaná princezna"
 
 #. [unit_type]: id=Bound Princess, gender=female, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Human_Lisar_Princess_Bound.cfg:30
@@ -21238,7 +21994,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/units/Human_Lisar_Warrior_Princess.cfg:4
 #: data/campaigns/Heir_To_The_Throne/units/Human_Lisar_Warrior_Princess.cfg:103
 msgid "female^Warrior Princess"
-msgstr "princezna válečnice"
+msgstr "Princezna válečnice"
 
 #. [variation]: race=human
 #. [unit_type]: id=Warrior Princess, gender=female, race=human
@@ -21282,7 +22038,7 @@ msgstr "Spoutaná mágyně"
 #. [unit_type]: id=Warrior of Light, race=human, gender=male
 #: data/campaigns/Heir_To_The_Throne/units/Human_Moremirmu_Warrior_of_Light.cfg:4
 msgid "Warrior of Light"
-msgstr ""
+msgstr "Válečník světla"
 
 #. [unit_type]: id=Warrior of Light, race=human, gender=male
 #: data/campaigns/Heir_To_The_Throne/units/Human_Moremirmu_Warrior_of_Light.cfg:21
@@ -21291,6 +22047,9 @@ msgid ""
 "spiritual powers. By strict devotion to the path of the light, they can call "
 "upon its aid to chase away the shadows of the night."
 msgstr ""
+"Po letech zkušeností si ti nejoddanější válečníci osvojí obrovské duchovní "
+"síly. Díky přísné věrnosti cestě světla mohou požádat o jeho pomoc, aby "
+"zahnali stíny noci."
 
 #. [unit_type]: id=Warrior of Light, race=human, gender=male
 #: data/campaigns/Heir_To_The_Throne/units/Human_Moremirmu_Warrior_of_Light.cfg:23
@@ -21299,6 +22058,9 @@ msgid ""
 "find these champions of light working tirelessly to cleanse evil from the "
 "troubled world in which they live."
 msgstr ""
+"Ať už je ta propast, z níž se plazí temnota, jakkoli odporná, i tam najdeš "
+"tyto zastánce světla, jak neúnavně pracují na tom, aby tento nepokojný svět, "
+"v němž žijí, zbavili zla."
 
 #. [attack]: type=arcane
 #: data/campaigns/Heir_To_The_Throne/units/Human_Moremirmu_Warrior_of_Light.cfg:44
@@ -21729,7 +22491,7 @@ msgstr ""
 #. [message]: id=Haldiel,Simyr
 #: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:317
 msgid "Sir Kaylan sends his regards, Lords of the Clans."
-msgstr ""
+msgstr "Pozdravuje vás sir Kaylan, páni klanů."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:321
@@ -21737,6 +22499,8 @@ msgid ""
 "We do not send ours. Kaylan defies the will of the Horse Clans by supporting "
 "the upstart prince. What of his duty to his kin?"
 msgstr ""
+"My jeho ne. Kaylan se vzpírá vůli klanů jezdců tím, že podporuje toho "
+"povýšeneckého prince. A co jeho povinnost vůči svým příbuzným?"
 
 #. [message]: id=Haldiel,Simyr
 #: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:325
@@ -21744,11 +22508,13 @@ msgid ""
 "What of justice for Garard? What of our honor? Once, the Clans stood for "
 "those ideals. How far you have fallen."
 msgstr ""
+"A co spravedlnost pro Gararda? A co naše čest? Kdysi klany tyto ideály "
+"hájily. Jak hluboko jste klesli."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:329
 msgid "Bah! Impudence! We have nothing more to speak about."
-msgstr ""
+msgstr "Pah! To je ale drzost! Už nemáme o čem mluvit."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:349
@@ -21837,6 +22603,8 @@ msgid ""
 "Moremirmu, I’ve met White Mages before, but never someone quite like you. "
 "Where do you hail from?"
 msgstr ""
+"Moremirmu, už jsem potkal bílé mágy, ale nikoho takového jako ty. Odkud "
+"pocházíš?"
 
 #. [message]: speaker=Moremirmu
 #. this is a hint that there's a special event for bringing Moremirmu to the monastery in the Gryphon Mountains
@@ -21846,6 +22614,9 @@ msgid ""
 "Light that I was rescued and raised there, high in the Gryphon Mountains. We "
 "ought to visit there someday."
 msgstr ""
+"Z velkého kláštera pečeti, dobrý Konráde! Díky milosti Světla jsem byl "
+"zachráněn a vychován právě tam, vysoko v Horách gryfů. Měli bychom se tam "
+"někdy podívat."
 
 #. [message]: speaker=Moremirmu
 #: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:443
@@ -21854,6 +22625,9 @@ msgid ""
 "smite. And lo! You and I united, and lo! Now we quest together against the "
 "evils of Asheviere."
 msgstr ""
+"Nyní jsem vzal do ruky meč a vydal se na cestu, abych vyhledal zlo a porazil "
+"ho. A hle! Spojili jsme se, ty a já, a hle! Nyní společně bojujeme proti "
+"Ašvířiným zlům."
 
 #. [message]: speaker=Moremirmu
 #: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:456
@@ -21861,6 +22635,8 @@ msgid ""
 "What strange magic you wield, Kalenz. It is light, yet it is not of the "
 "Light! What manner of unhallowed spells do you weave?"
 msgstr ""
+"Jakou podivnou magií vládneš, Kalenzi. Je to světlo, a přece nepochází ze "
+"Světla! Jaká nesvatá kouzla tu vlastně spřádáš?"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:460
@@ -21869,6 +22645,9 @@ msgid ""
 "it is natural to the elves. Few are the male elves permitted to learn it. "
 "And no outsiders, for it is an art inherited only by my kind."
 msgstr ""
+"To je magie víl. V některých ohledech se podobá vašemu Světlu, ale pro elfy "
+"je přirozená. Jen málokterým mužským elfům je dovoleno se ji naučit. "
+"A žádným cizincům, neboť jde o umění, které se dědí pouze v mém rodu."
 
 #. [message]: speaker=Kalenz
 #. this is a reference to the events of LoW, where Kalenz gained his magic after drinking an invisibility potion brewed by Crelanu
@@ -21877,6 +22656,8 @@ msgid ""
 "Although I gained my magic in a different manner than do most of my kind, it "
 "is now as much a part of me as is my blood."
 msgstr ""
+"Ačkoli jsem svou magii získal jiným způsobem než většina mých soukmenovců, "
+"je nyní mou součástí stejně jako moje krev."
 
 #. [message]: speaker=Moremirmu
 #: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:478
@@ -22635,17 +23416,20 @@ msgid ""
 "learn to work together. If you believe we’ll fight better by your taking "
 "direct command of my army, I’m willing to allow it."
 msgstr ""
+"Teď jsme spojenci, bratranče, a i když se mi to nelíbí, musíme se naučit "
+"spolupracovat. Pokud si myslíš, že budeme bojovat lépe, když převezmeš přímé "
+"velení nad mým vojskem, jsem ochotna to dovolit."
 
 #. [option]
 #. $stored_side.base_income  will be between 4 and 32
 #: data/campaigns/Heir_To_The_Throne/utils/unified_characters.cfg:312
 msgid "Leave Li’sar under AI control ($stored_side.base_income bonus income)"
-msgstr ""
+msgstr "Nechat Lisar pod kontrolou UI (příjem navíc: $stored_side.base_income)"
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne/utils/unified_characters.cfg:323
 msgid "Take manual control of Li’sar’s army (no bonus income)"
-msgstr ""
+msgstr "Ovládat Lisařino vojsko (bez zvláštních příjmů)"
 
 #. [trait]: id=loyal_dummy
 #: data/campaigns/Heir_To_The_Throne/utils/unified_characters.cfg:501
@@ -22743,7 +23527,7 @@ msgstr "Jsme poraženi, protože jsem byl přemožen!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/unified_characters.cfg:846
 msgid "This is the end! Without me, who will guide the prince?"
-msgstr ""
+msgstr "To je konec! Kdo beze mne povede prince?"
 
 #: data/campaigns/Heir_To_The_Throne/utils/unified_characters.cfg:847
 #: data/campaigns/Heir_To_The_Throne/utils/unified_characters.cfg:848
@@ -22810,7 +23594,7 @@ msgstr "Au!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/unified_characters.cfg:861
 msgid "Jotha regrets nothing..."
-msgstr ""
+msgstr "Jota ničeho nelituje..."
 
 #: data/campaigns/Heir_To_The_Throne/utils/unified_characters.cfg:862
 msgid "Bury me back home in the Dulatus..."
