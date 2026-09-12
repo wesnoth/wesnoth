@@ -53,6 +53,7 @@ user_info::user_info(const config& c)
 	, forum_id(c["forum_id"].to_int())
 	, game_id(c["game_id"].to_int())
 	, registered(c["registered"].to_bool())
+	, ranked_enabled(c["ranked_enabled"].to_bool(false))
 	, observing(c["status"] == "observing")
 	, moderator(c["moderator"].to_bool(false))
 {
