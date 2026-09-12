@@ -26,6 +26,7 @@
 #include "serialization/unicode.hpp"
 #include "utils/charconv.hpp"
 #include "utils/general.hpp"
+#include <algorithm>
 #include <array>
 #include <limits>
 #include "utils/optional_fwd.hpp"
@@ -413,17 +414,31 @@ std::vector<std::string> parenthetical_split(std::string_view val,
 // Modify a number by string representing integer difference, or optionally %
 int apply_modifier( const int number, const std::string &amount, const int minimum ) {
 	// wassert( amount.empty() == false );
-	int value = 0;
+	// Everything below is done in a wider type than int, and only narrowed (with
+	// saturation) at the very end, so that a huge WML-supplied amount/percentage
+	// or a unit value near INT_MAX/INT_MIN won't silently wrap around to a bogus
+	// (and possibly negative) result.
+	long long value = 0;
 	try {
-		value = std::stoi(amount);
-	} catch(const std::invalid_argument&) {}
+		value = std::stoll(amount);
+	} catch(const std::invalid_argument&) {
+	} catch(const std::out_of_range&) {
+		value = (!amount.empty() && amount.front() == '-')
+			? std::numeric_limits<long long>::min()
+			: std::numeric_limits<long long>::max();
+	}
 	if(amount[amount.size()-1] == '%') {
-		value = div100rounded(number * value);
+		// Clamp first so the multiplication below can't overflow a long long either.
+		constexpr long long pct_limit = 1'000'000'000LL;
+		value = std::clamp(value, -pct_limit, pct_limit);
+		const long long product = static_cast<long long>(number) * value;
+		value = (product < 0) ? -((-product + 50) / 100) : (product + 50) / 100;
 	}
 	value += number;
 	if (( minimum > 0 ) && ( value < minimum ))
 	    value = minimum;
-	return value;
+	value = std::clamp<long long>(value, std::numeric_limits<int>::min(), std::numeric_limits<int>::max());
+	return static_cast<int>(value);
 }
 
 std::string escape(std::string_view str, const char *special_chars)
