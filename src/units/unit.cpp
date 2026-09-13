@@ -524,8 +524,12 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	}
 
 	if(resources::game_events && resources::lua_kernel) {
-		resources::game_events->add_events(events_.child_range("event"), *resources::lua_kernel);
-		resources::game_events->add_events(ability_and_special_events.child_range("event"), *resources::lua_kernel);
+		resources::game_events->add_events(events_.child_range("event"), *resources::lua_kernel, "", "[unit]");
+		// Not type-gated: these can include instance-specific abilities/specials granted by
+		// [effect]/[object]/traits/AMLA, which differ per unit even within the same type.
+		// Uniqueness relies solely on add_event_handler's ID-based check.
+		resources::game_events->add_events(ability_and_special_events.child_range("event"), *resources::lua_kernel, "",
+			"[unit][abilities] or [attack][specials]");
 	}
 
 	random_traits_ = cfg["random_traits"].to_bool(true);
@@ -1150,7 +1154,7 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 				}
 			}
 		}
-		resources::game_events->add_events(events.child_range("event"), *resources::lua_kernel, new_type.id());
+		resources::game_events->add_events(events.child_range("event"), *resources::lua_kernel, new_type.id(), "[unit_type]");
 	}
 	bool bool_small_profile = get_attr_changed(UA_SMALL_PROFILE);
 	bool bool_profile = get_attr_changed(UA_PROFILE);
@@ -2484,7 +2488,7 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 
 	// In case the effect carries EventWML, apply it now
 	if(resources::game_events && resources::lua_kernel) {
-		resources::game_events->add_events(events.child_range("event"), *resources::lua_kernel);
+		resources::game_events->add_events(events.child_range("event"), *resources::lua_kernel, "", "[effect]");
 	}
 
 	// verify what unit own ability with [affect_adjacent] before edit has_ability_distant_ and has_ability_distant_image_.

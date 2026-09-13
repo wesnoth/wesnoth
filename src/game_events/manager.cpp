@@ -152,7 +152,7 @@ manager::~manager()
 {
 }
 
-void manager::add_events(const config::const_child_itors& cfgs, game_lua_kernel& lk, const std::string& type)
+void manager::add_events(const config::const_child_itors& cfgs, game_lua_kernel& lk, const std::string& type, const std::string& origin)
 {
 	if(!type.empty()) {
 		if(utils::contains(unit_wml_ids_, type)) {
@@ -164,7 +164,7 @@ void manager::add_events(const config::const_child_itors& cfgs, game_lua_kernel&
 
 	for(const config& new_ev : cfgs) {
 		if(type.empty() && new_ev["id"].empty()) {
-			WRN_NG << "attempt to add an [event] with empty id= from [unit], ignoring ";
+			WRN_NG << "attempt to add an [event] with empty id= from " << origin << ", ignoring ";
 			continue;
 		}
 

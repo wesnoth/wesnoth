@@ -69,7 +69,21 @@ public:
 	/** Gets an event handler by ID */
 	const handler_ptr get_event_handler_by_id(const std::string& id);
 
-	void add_events(const config::const_child_itors& cfgs, game_lua_kernel& lk, const std::string& type = std::string());
+	/**
+	 * Registers a batch of [event] tags found elsewhere in WML (as opposed to a stand-alone
+	 * top-level [event]).
+	 *
+	 * @param cfgs   The [event] tag to register.
+	 * @param lk     The Lua kernel used to compile and store each event's acion body.
+	 * @param type   If non-empty, a key used to only process this batch once per session (and
+	 *               across saves): callers pass something that identifies where cfgs came from
+	 *               (eg a unit type ID) when that source is invariant for all callers sharing
+	 *               the same key, so repeats can be skipped entirely instead of relying on the
+	 *               per-event ID check below.
+	 * @param origin A human-readable description of where cfgs came from, used only for the
+	 *               warning logged when type is empty and an [event] here has no id=.
+	 */
+	void add_events(const config::const_child_itors& cfgs, game_lua_kernel& lk, const std::string& type, const std::string& origin);
 
 	// Normally non-serializable events are skipped when serializing (with a warning).
 	// If include_nonserializable is true, the game attempts to serialize them anyway.
