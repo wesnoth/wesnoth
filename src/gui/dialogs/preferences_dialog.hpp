@@ -54,7 +54,17 @@ namespace dialogs
 class preferences_dialog : public modal_dialog
 {
 public:
-	preferences_dialog(const pref_constants::PREFERENCE_VIEW initial_view = pref_constants::VIEW_DEFAULT);
+	/**
+	 * @param initial_view               Which page/tab to show initially.
+	 * @param allow_gui2_theme_change    Whether the GUI2 theme selector should be interactive.
+	 *                                   Switching the GUI2 theme only takes effect for windows
+	 *                                   built after the switch, so it's only useful (and only
+	 *                                   enabled) when Preferences is opened from the title screen,
+	 *                                   which rebuilds itself afterwards. Elsewhere the control is
+	 *                                   shown but greyed out.
+	 */
+	preferences_dialog(const pref_constants::PREFERENCE_VIEW initial_view = pref_constants::VIEW_DEFAULT,
+		bool allow_gui2_theme_change = false);
 
 	/** The display function -- see @ref modal_dialog for more information. */
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(preferences_dialog)
@@ -114,6 +124,7 @@ private:
 	int last_selected_item_;
 	unsigned current_gui_theme_;
 	bool is_reload_needed_;
+	bool allow_gui2_theme_change_;
 
 	std::vector<double> accl_speeds_;
 
