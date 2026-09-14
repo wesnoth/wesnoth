@@ -85,7 +85,7 @@ void disable_widget_on_toggle_inverted(window& window, widget& w, const std::str
 
 REGISTER_DIALOG(preferences_dialog)
 
-preferences_dialog::preferences_dialog(const pref_constants::PREFERENCE_VIEW initial_view)
+preferences_dialog::preferences_dialog(const pref_constants::PREFERENCE_VIEW initial_view, bool allow_gui2_theme_change)
 	: modal_dialog(window_id())
 	, resolutions_() // should be populated by set_resolution_list before use
 	, themes_() // populated by set_theme_list
@@ -93,6 +93,7 @@ preferences_dialog::preferences_dialog(const pref_constants::PREFERENCE_VIEW ini
 	, last_selected_item_(0)
 	, current_gui_theme_(0)
 	, is_reload_needed_(false)
+	, allow_gui2_theme_change_(allow_gui2_theme_change)
 	, accl_speeds_({0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 3, 4, 8, 16})
 	, visible_hotkeys_()
 	, visible_categories_()
@@ -593,6 +594,14 @@ void preferences_dialog::initialize_callbacks()
 	apply_btn.set_active(false);
 	connect_signal_mouse_left_click(apply_btn,
 		[this](auto&&...) { handle_gui2_theme_select(); });
+
+	if(!allow_gui2_theme_change_) {
+		// Switching the GUI2 theme only affects windows built afterwards, so it's only
+		// useful from the title screen, which rebuilds itself on RELOAD_UI. Elsewhere,
+		// leave the control visible but non-interactive rather than have it silently
+		// do nothing until the next restart.
+		gui2_theme_list.set_active(false);
+	}
 
 	//
 	// SOUND PANEL

@@ -495,7 +495,7 @@ void title_screen::hotkey_callback_select_tests()
 
 void title_screen::show_preferences()
 {
-	gui2::dialogs::preferences_dialog pref_dlg;
+	gui2::dialogs::preferences_dialog pref_dlg(pref_constants::VIEW_DEFAULT, true);
 	pref_dlg.show();
 	if (pref_dlg.get_retval() == RELOAD_UI) {
 		set_retval(RELOAD_UI);
