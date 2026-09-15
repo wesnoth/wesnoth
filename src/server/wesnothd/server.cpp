@@ -2141,11 +2141,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		}
 
 		g.level().root().apply_diff(*scenario_diff);
-		const simple_wml::node* cfg_change = scenario_diff->child("change_child");
-
-		if(cfg_change) {
-			g.update_side_data();
-		}
+		g.update_side_data();
 
 		g.describe_slots();
 		update_game_in_lobby(g);
