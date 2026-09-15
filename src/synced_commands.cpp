@@ -15,6 +15,7 @@
 
 #include "synced_commands.hpp"
 #include <cassert>
+#include <stdexcept>
 
 #include "log.hpp"
 #include "map/location.hpp"
@@ -262,12 +263,22 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child, spectator)
 	} catch (const std::invalid_argument&) {
 		WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child.debug();
 		return false;
+	} catch (const std::out_of_range&) {
+		WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child.debug();
+		return false;
 	}
 
 	if(steps.empty())
 	{
 		WRN_REPLAY << "Warning: Missing path data found in [move]";
 		return false;
+	}
+
+	for(const map_location& step : steps) {
+		if(!resources::gameboard->map().on_board(step)) {
+			WRN_REPLAY << "Warning: Movement path contained an off-map location";
+			return false;
+		}
 	}
 
 	const map_location& src = steps.front();
