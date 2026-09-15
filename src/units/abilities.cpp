@@ -34,6 +34,7 @@
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
+#include "preferences/preferences.hpp" // for prefs::get_show_deprecation
 #include "resources.hpp"
 #include "serialization/markup.hpp"
 #include "serialization/string_utils.hpp"
@@ -55,6 +56,7 @@ static lg::log_domain log_engine("engine");
 
 static lg::log_domain log_wml("wml");
 #define ERR_WML LOG_STREAM(err, log_wml)
+#define DEBUG_WML LOG_STREAM(debug, log_wml)
 
 namespace
 {
@@ -184,6 +186,17 @@ unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
 
 void unit_ability_t::do_compat_fixes(config& cfg, const std::string& tag, bool inside_attack)
 {
+	// Some things changed without deprecation because they were completely broken, these
+	// combinations made filters that could never match anything.
+	// The warnings about changed behavior are similar to deprecation warnings, so show
+	// them in the chat log if and only if the player has enable deprecation messages.
+	auto note_bugfix = [](const std::string& message) {
+		DEBUG_WML << message;
+		if(prefs::get().get_show_deprecation(game_config::wesnoth_version.is_dev_version())) {
+			lg::log_to_chat() << message << '\n';
+		}
+	};
+
 	// replace deprecated backstab with formula
 	if (!cfg["backstab"].blank()) {
 		deprecated_message("backstab= in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use [filter_opponent] with a formula instead; the code can be found in data/core/macros/ in the WEAPON_SPECIAL_BACKSTAB macro.");
@@ -200,36 +213,51 @@ void unit_ability_t::do_compat_fixes(config& cfg, const std::string& tag, bool i
 	std::string filter_teacher = inside_attack ? "filter_self" : "filter";
 	if (cfg.has_child("filter_adjacent")) {
 		if (inside_attack) {
-			deprecated_message("[filter_adjacent] in weapon specials in [specials] tags", DEP_LEVEL::INDEFINITE, "", "Use [filter_self][filter_adjacent] instead.");
+			deprecated_message("[filter_adjacent] in weapon specials in [specials] tags", DEP_LEVEL::FOR_REMOVAL, version_info("1.23"), "Use [filter_self][filter_adjacent] instead.");
 		}
 		else {
-			deprecated_message("[filter_adjacent] in abilities", DEP_LEVEL::INDEFINITE, "", "Use [filter][filter_adjacent] instead or other unit filter.");
+			deprecated_message("[filter_adjacent] in abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.23"), "Use [filter][filter_adjacent] instead or other unit filter.");
 		}
 	}
 	if (cfg.has_child("filter_adjacent_location")) {
 		if (inside_attack) {
-			deprecated_message("[filter_adjacent_location] in weapon specials in [specials] tags", DEP_LEVEL::INDEFINITE, "", "Use [filter_self][filter_location][filter_adjacent_location] instead.");
+			deprecated_message("[filter_adjacent_location] in weapon specials in [specials] tags", DEP_LEVEL::FOR_REMOVAL, version_info("1.23"), "Use [filter_self][filter_location][filter_adjacent_location] instead.");
 		}
 		else {
-			deprecated_message("[filter_adjacent_location] in abilities", DEP_LEVEL::INDEFINITE, "", "Use [filter][filter_location][filter_adjacent_location] instead.");
+			deprecated_message("[filter_adjacent_location] in abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.23"), "Use [filter][filter_location][filter_adjacent_location] instead.");
 		}
 	}
 
 	//These tags are were never supported inside [specials] according to the wiki.
 	for (config& filter_adjacent : cfg.child_range("filter_adjacent")) {
+		const auto directions = map_location::parse_directions(filter_adjacent["adjacent"]);
+		if (directions.empty()) {
+			note_bugfix("omitting adjacent= in [filter_adjacent] in abilities meant the filter never matched. The behavior has changed in 1.19.26.");
+		}
 		if (filter_adjacent["count"].empty()) {
-			//Previously count= behaved differenty in abilities.cpp and in filter.cpp according to the wiki
-			deprecated_message("omitting count= in [filter_adjacent] in abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.21"), "specify count explicitly");
-			filter_adjacent["count"] = map_location::parse_directions(filter_adjacent["adjacent"]).size();
+			note_bugfix("omitting count= in [filter_adjacent] in abilities meant the filter never matched since 1.13.2. The behavior has changed in 1.19.26.");
+		}
+		// In 1.18, all directions had to match, for example count=1 with adjacent=n,s would never match
+		if (!directions.empty() && !filter_adjacent["count"].empty() && !in_ranges<int>(directions.size(), utils::parse_ranges_unsigned(filter_adjacent["count"].str()))) {
+			note_bugfix("this combination of adjacent= and count= in [filter_adjacent] in abilities would never have matched in 1.18. The behavior has changed in 1.19.26.");
 		}
 		cfg.child_or_add(filter_teacher).add_child("filter_adjacent", filter_adjacent);
 	}
 	cfg.remove_children("filter_adjacent");
 	for (config& filter_adjacent : cfg.child_range("filter_adjacent_location")) {
-		if (filter_adjacent["count"].empty()) {
-			//Previously count= bahves differenty in abilities.cpp and in filter.cpp according to the wiki
-			deprecated_message("omitting count= in [filter_adjacent_location] in abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.21"), "specify count explicitly");
-			filter_adjacent["count"] = map_location::parse_directions(filter_adjacent["adjacent"]).size();
+		// For SLF, omitting adjacent or count triggers defaults, but creating an empty attribute, prevents that behavior.
+		// Therefore we can't use config::operator[] without first checking that the attribute already exists.
+		const auto has_count = filter_adjacent.has_attribute("count");
+		const auto has_dirs = filter_adjacent.has_attribute("adjacent");
+		if (!has_dirs) {
+			note_bugfix("omitting adjacent= in [filter_adjacent_location] in abilities meant the filter never matched. Since 1.19.26 it means all six directions.");
+		}
+		if (!has_count) {
+			note_bugfix("omitting count= in [filter_adjacent_location] in abilities meant the filter never matched since 1.13.2. Since 1.19.26 it means 1-6.");
+		}
+		// In 1.18, all directions had to match, for example count=1 with adjacent=n,s would never match
+		if (has_dirs && has_count && !in_ranges<int>(map_location::parse_directions(filter_adjacent["adjacent"]).size(), utils::parse_ranges_unsigned(filter_adjacent["count"].str()))) {
+			note_bugfix("this combination of adjacent= and count= in [filter_adjacent_location] in abilities would never have matched in 1.18. The behavior has changed in 1.19.26.");
 		}
 		cfg.child_or_add(filter_teacher).add_child("filter_location").add_child("filter_adjacent_location", filter_adjacent);
 	}
