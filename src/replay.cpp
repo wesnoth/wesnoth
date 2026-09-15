@@ -24,6 +24,7 @@
 
 #include "display_chat_manager.hpp"
 #include "game_display.hpp"
+#include "game_config.hpp"
 #include "game_data.hpp"
 #include "gettext.hpp"
 #include "lexical_cast.hpp"
@@ -882,6 +883,14 @@ REPLAY_RETURN do_replay_handle(bool one_move)
 			else
 			{
 				LOG_REPLAY << "found commandname " << commandname << "in replay";
+
+				if(!game_config::debug && commandname.compare(0, 6, "debug_") == 0) {
+					WRN_REPLAY << "ignoring debug command without debug mode: " << commandname;
+					display::get_singleton()->announce(
+						_("Ignoring debug command because debug mode is disabled."),
+						font::BAD_COLOR);
+					continue;
+				}
 
 				if((*cfg)["from_side"].to_int(0) != resources::controller->current_side()) {
 					ERR_REPLAY << "received a synced [command] from side " << (*cfg)["from_side"].to_int(0) << ". Expacted was a [command] from side " << resources::controller->current_side();
