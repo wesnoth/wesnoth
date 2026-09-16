@@ -882,6 +882,10 @@ namespace { // Private helpers for move_unit()
 			if ( zoc_stop_ != map_location::null_location() ) {
 				break;
 			}
+			if(!map.on_board(*end)) {
+				wml_move_aborted_ = true;
+				break;
+			}
 			remaining_moves -= move_it_->movement_cost(map[*end]);
 			if ( remaining_moves < 0 ) {
 					break;
