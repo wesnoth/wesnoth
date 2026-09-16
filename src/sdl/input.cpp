@@ -35,7 +35,7 @@ uint32_t get_mouse_state(float* x, float* y)
 
 #ifdef __ANDROID__
 	// On Android the input area and the canvas size are identical
-	// so the standard calculation does nothing 
+	// so the standard calculation does nothing
 	// and the coordinates come out wrong at any pixel scale other than 1.
 	// Let SDL convert them instead.
 	SDL_RenderCoordinatesFromWindow(video::get_renderer(), *x, *y, x, y);
