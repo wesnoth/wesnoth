@@ -341,7 +341,7 @@ t_string_base t_string_base::from_serialized(const std::string& string)
 {
 	t_string_base orig(string);
 
-	if(!string.empty() && (string[0] == TRANSLATABLE_PART || string[0] == UNTRANSLATABLE_PART)) {
+	if(!string.empty() && is_translatable_mark(string[0])) {
 		orig.translatable_ = true;
 	} else {
 		orig.translatable_ = false;
@@ -360,6 +360,10 @@ t_string_base t_string_base::from_serialized(const std::string& string)
 	}
 
 	return res;
+}
+
+bool t_string_base::is_translatable_mark(char c) {
+	return c == TRANSLATABLE_PART || c == UNTRANSLATABLE_PART;
 }
 
 std::string t_string_base::base_str() const
