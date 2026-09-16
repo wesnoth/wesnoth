@@ -20,6 +20,7 @@
 
 #include <SDL3/SDL_mouse.h>
 #include <SDL3/SDL_keyboard.h>
+#include <SDL3/SDL_render.h>
 
 namespace sdl
 {
@@ -32,6 +33,13 @@ uint32_t get_mouse_state(float* x, float* y)
 		return buttons;
 	}
 
+#ifdef __ANDROID__
+	// On Android the input area and the canvas size are identical
+	// so the standard calculation does nothing 
+	// and the coordinates come out wrong at any pixel scale other than 1.
+	// Let SDL convert them instead.
+	SDL_RenderCoordinatesFromWindow(video::get_renderer(), *x, *y, x, y);
+#else
 	// The game canvas may be offset inside the window,
 	// as well as potentially having a different size.
 	rect input_area = video::input_area();
@@ -42,6 +50,7 @@ uint32_t get_mouse_state(float* x, float* y)
 	point canvas_size = video::game_canvas_size();
 	*x = (*x * canvas_size.x) / input_area.w;
 	*y = (*y * canvas_size.y) / input_area.h;
+#endif
 
 	return buttons;
 }
