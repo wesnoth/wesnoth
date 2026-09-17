@@ -932,15 +932,6 @@ class WmlscopeTab(Frame):
                                   sticky=W,
                                   padx=10)
 
-        self.progress_variable = BooleanVar()
-        self.progress_check = Checkbutton(self.normal_options,
-                                          text=_("Show progress"),
-                                          variable=self.progress_variable)
-        self.progress_check.grid(row=7,
-                                 column=0,
-                                 sticky=W,
-                                 padx=10)
-
         self.separator = Separator(self.options_frame,
                                    orient=VERTICAL)
         self.separator.grid(row=0,
@@ -1505,8 +1496,6 @@ The tool will be run only on the Wesnoth core directory."""), icon=WARNING)
             wmlscope_command_string.append("--extracthelp")
         if self.wmlscope_tab.unchecked_variable.get():
             wmlscope_command_string.append("--unchecked")
-        if self.wmlscope_tab.progress_variable.get():
-            wmlscope_command_string.append("--progress")
         if self.wmlscope_tab.exclude_variable.get():
             wmlscope_command_string.append("--exclude")
             wmlscope_command_string.append(self.wmlscope_tab.exclude_regexp.get())
