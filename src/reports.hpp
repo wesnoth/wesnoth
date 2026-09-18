@@ -18,11 +18,12 @@
 #include "display_context.hpp"
 
 #include "config.hpp"
-#include <vector>
+#include "mouse_events.hpp"
+#include "utils/optional_reference.hpp"
+
 #include <map>
 #include <set>
-
-#include "utils/optional_reference.hpp"
+#include <vector>
 
 //this module is responsible for outputting textual reports of
 //various game and unit statistics
@@ -36,10 +37,6 @@ class display;
 
 namespace wb {
 	class manager;
-}
-
-namespace events {
-	class mouse_handler;
 }
 
 class reports

@@ -16,11 +16,12 @@
 
 #include "gui/widgets/container_base.hpp"
 
-#include <string>
+#include "units/types.hpp"
 #include "utils/optional_reference.hpp"
 
+#include <string>
+
 class unit;
-class unit_type;
 
 namespace gui2
 {
