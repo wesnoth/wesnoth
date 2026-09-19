@@ -254,6 +254,8 @@ void unit_ability_t::do_compat_fixes(config& cfg, const std::string& tag, bool i
 			// of directions in adjacent=, so it required every direction to match.
 			ss << "Filter [" << tag << "][filter_adjacent] changed behavior in 1.19.26. Previously this would never match because count= is omitted.";
 			note_bugfix(ss.str());
+			// Implement the 1.19.26 behavior. No need to check for has_dirs, as this will handle empty or unset attributes too.
+			filter_adjacent["count"] = map_location::parse_directions(filter_adjacent["adjacent"]).size();
 		}
 		// In 1.18, all directions had to match, for example count=1 with adjacent=n,s would never match
 		if (has_dirs && has_count && !in_ranges<int>(map_location::parse_directions(filter_adjacent["adjacent"]).size(), utils::parse_ranges_unsigned(filter_adjacent["count"].str()))) {
