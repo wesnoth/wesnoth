@@ -1,23 +1,23 @@
 # #-#-#-#-#  wesnoth-help  #-#-#-#-#
 # Bengali translation of Wesnoth.
 # Copyright (C) 2024 Wesnoth development team
-# Subhraman Sarkar <suvrax@gmail.com>, 2024-2025.
+# Subhraman Sarkar <sbmskmm@protonmail.com>, 2024-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-08-02 22:45-0500\n"
-"PO-Revision-Date: 2025-06-20 20:39+0530\n"
-"Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
-"Language-Team: Bengali < >\n"
+"PO-Revision-Date: 2026-09-17 15:37+0530\n"
+"Last-Translator: Subhraman Sarkar <sbmskmm@protonmail.com>\n"
+"Language-Team: Bangla <>\n"
 "Language: bn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "#-#-#-#-#  wesnoth-help  #-#-#-#-#\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"X-Generator: Gtranslator 42.0\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
@@ -138,6 +138,10 @@ msgid ""
 "This ability will not cure an affected unit of poison, however, only delay "
 "its effect."
 msgstr ""
+"ইউনিটটিকে দানের শুরুতে মিত্র ইউনিটগুলিকে চিকিৎসা করার সামর্থ দেয়। এই চিকিৎসকের "
+"সাহায্যপ্রাপ্ত একটি ইউনিট দানের শুরুতে 4 জীবন সংখ্যা ফিরে পাবে, বা তার ওপর সেই "
+"দানের জন্য বিষের প্রভাব হবে না। তবে এই দক্ষতা কোনো ইউনিটকে বিষের প্রভাবমুক্ত করতে "
+"পারে না, শুধু সেই প্রভাবকে পিছিয়ে দিতে পারে।"
 
 #. [heals]: id=healing
 #. [heals]
@@ -173,6 +177,11 @@ msgid ""
 "This ability will not cure an affected unit of poison, however, only delay "
 "its effect."
 msgstr ""
+"এই ইউনিটটি ভেষজ চিকিৎসার সঙ্গে জাদু প্রয়োগ করে যুদ্ধক্ষেত্রে যতটা স্বাভাবিক তার থেকে "
+"দ্রুত ইউনিটদের সুস্থ করতে পারে।এই চিকিৎসকের সাহায্যপ্রাপ্ত একটি ইউনিট দানের শুরুতে 8 "
+"জীবন সংখ্যা ফিরে পাবে, বা তার ওপর সেই দানের জন্য বিষের প্রভাব হবে না। তবে এই "
+"দক্ষতা কোনো ইউনিটকে বিষের প্রভাবমুক্ত করতে পারে না, শুধু সেই প্রভাবকে পিছিয়ে দিতে "
+"পারে।"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:781
@@ -196,6 +205,11 @@ msgid ""
 "This ability will not cure an affected unit of poison, however, only delay "
 "its effect."
 msgstr ""
+"এই ইউনিটটি ভেষজ চিকিৎসার সঙ্গে জাদু প্রয়োগ করে যুদ্ধক্ষেত্রে যতটা স্বাভাবিক তার থেকে "
+"দ্রুত ইউনিটদের সুস্থ করতে পারে।এই চিকিৎসকের সাহায্যপ্রাপ্ত একটি ইউনিট দানের শুরুতে 12 "
+"জীবন সংখ্যা ফিরে পাবে, বা তার ওপর সেই দানের জন্য বিষের প্রভাব হবে না। তবে এই "
+"দক্ষতা কোনো ইউনিটকে বিষের প্রভাবমুক্ত করতে পারে না, শুধু সেই প্রভাবকে পিছিয়ে দিতে "
+"পারে।"
 
 #. [heals]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:809
@@ -208,45 +222,33 @@ msgstr ""
 
 #. [lua]: set_status
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2133
-#, fuzzy
-#| msgid "female^stunned"
 msgid "female^poisoned"
-msgstr "হতচকিত"
+msgstr "বিষগ্রস্ত"
 
 #. [lua]: set_status
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2133
-#, fuzzy
-#| msgid "poison"
 msgid "poisoned"
-msgstr "বিষ"
+msgstr "বিষগ্রস্ত"
 
 #. [lua]: set_status
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2135
-#, fuzzy
-#| msgid "female^slow"
 msgid "female^slowed"
 msgstr "ধীর"
 
 #. [lua]: set_status
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2135
-#, fuzzy
-#| msgid "slow"
 msgid "slowed"
 msgstr "ধীর"
 
 #. [lua]: set_status
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2136
-#, fuzzy
-#| msgid "female^resilient"
 msgid "female^petrified"
-msgstr "দৃঢ়"
+msgstr "প্রস্তরীকৃত"
 
 #. [lua]: set_status
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2136
-#, fuzzy
-#| msgid "petrifies"
 msgid "petrified"
-msgstr "প্রস্তরীকরণ"
+msgstr "প্রস্তরীকৃত"
 
 #. [artifact]
 #. [chance]
@@ -421,6 +423,13 @@ msgid ""
 "<header>Brush Sizes</header>\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
+"ভূমি টাইল ম্যাপে আঁকুন।পেইন্ট টুলটি ব্রাশের আকার এবং ভূমি প্যালেট ব্যবহার করে।"
+"<header>কীবোর্ড মডিফায়ার</header>• শিফট+মাউস ক্লিক: যদি একটি বেস ভূমি নির্বাচিত "
+"থাকে, তাহলে ওভারলে পরিবর্তন না করে বেস পরিবর্তন করুন। যদি একটি ওভারলে নির্বাচিত "
+"থাকে, তাহলে বেস পরিবর্তন না করে ওভারলে পরিবর্তন করুন।• কন্ট্রোল+মাউস ক্লিক: মাউস "
+"কার্সারের নিচে থাকা ভূমি নির্বাচন করুন, ঠিক যেন এটিকে টেরেন প্যালেটে নির্বাচিত করা "
+"হয়েছিল (বেস এবং ওভারলে উভয়ই তুলে নেয়)।<header>ব্রাশের আকার</header>নির্বাচিত "
+"ব্রাশ টুলের আকার পরিবর্তন করে:"
 
 #. [topic]: id=editor_tool_paint
 #: data/core/editor/help.cfg:39
@@ -460,6 +469,12 @@ msgid ""
 "• Control+mouse click: Select the terrain under the mouse cursor, as if it "
 "had been selected on the terrain palette (picks up both base and overlay)."
 msgstr ""
+"সংলগ্ন ভূমিঅঞ্চলগুলো ভিন্ন একটি ভূমি টাইল দিয়ে পূরণ করুন।ফিল টুলটি ভূমি প্যালেট ব্যবহার "
+"করে।<header>কীবোর্ড মডিফায়ার</header>• শিফট+মাউস ক্লিক: যদি একটি বেস ভূমি "
+"নির্বাচিত থাকে, তাহলে ওভারলে পরিবর্তন না করে বেস পরিবর্তন করুন। যদি একটি ওভারলে "
+"নির্বাচিত থাকে, তাহলে বেস পরিবর্তন না করে ওভারলে পরিবর্তন করুন।• কন্ট্রোল+মাউস "
+"ক্লিক: মাউস কার্সারের নিচে থাকা ভূমি নির্বাচন করুন, , ঠিক যেন এটিকে টেরেন প্যালেটে "
+"নির্বাচিত করা হয়েছিল (বেস এবং ওভারলে উভয়ই তুলে নেয়)।"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:64
@@ -480,6 +495,11 @@ msgid ""
 "<b>Brush Sizes</b>\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
+"ষড়ভূজে ফিল্ডের একটি অঞ্চল নির্বাচন করুন, যা মেনু বারের নিচে থাকা কাট, কপি এবং ফিল-"
+"সিলেকশন বাটনগুলোর সাথে ব্যবহার করা যাবে।<header>কীবোর্ড মডিফায়ার</header>• "
+"শিফট+মাউস ক্লিক: ‘ম্যাজিক ওয়ান্ড’ মোড, মাউস কার্সারের নিচে থাকা ষড়ভূজ এবং একই ভূমি "
+"প্রকারের সংলগ্ন ষড়ভূজগুলি নির্বাচন করে।• কন্ট্রোল+মাউস ক্লিক: ষড়ভূজগুলির নির্বাচন বাতিল "
+"করুন।<b>ব্রাশের আকার</b>নির্বাচিত ব্রাশ টুলের আকার পরিবর্তন করে:"
 
 #. [topic]: id=editor_tool_select
 #: data/core/editor/help.cfg:74
@@ -520,6 +540,12 @@ msgid ""
 "\n"
 "The paste tool also has some clipboard-manipulation functions:"
 msgstr ""
+"ক্লিপবোর্ডে থাকা ভূমি ঘুরান, উল্টান এবং পেস্ট করুন<ref "
+"dst='editor_tool_select'>সিলেক্ট টুল</ref> ব্যবহার করে ষড়ভূজগুলো কাট বা কপি করে "
+"ক্লিপবোর্ডে রাখা যায়।পেস্ট টুলটি ক্লিপবোর্ডের একটি রূপরেখা দেখায়, যা মাউস-ক্লিকের "
+"মাধ্যমে পেস্ট করা যায়। শুধুমাত্র রূপরেখাই দেখানো হয়, তবে ভুলগুলো আনডু ফাংশন দিয়ে "
+"সংশোধন করা যায়, যা কন্ট্রোল+জেড এবং গেমের ভেতরে থাকা আনডু ফাংশনের মতো একই কী-তে "
+"যুক্ত করা আছে।পেস্ট টুলে ক্লিপবোর্ড-পরিচালনার কিছু ফাংশনও রয়েছে:"
 
 #. [topic]: id=editor_tool_paste
 #: data/core/editor/help.cfg:94
@@ -578,11 +604,28 @@ msgid ""
 "location for placing with a subsequent mouse click, as if it was selected in "
 "the editor palette."
 msgstr ""
+"দলনেতার শুরুর অবস্থান নির্ধারণ করে।  এই টুলটি সাইড লিডারদের ডিফল্ট শুরুর অবস্থান এবং "
+"নামযুক্ত বিশেষ অবস্থানগুলো সেট করে। উভয় ধরনের অবস্থানই <ref "
+"dst='..editor_mode_terrain'>ভূমি পরিমার্জক</ref> এবং <ref "
+"dst='..editor_mode_scenario'>ঘটনাক্রম পরিমার্জক</ref>—দুই মোডেই সক্রিয় থাকে। "
+"অবস্থানের নামগুলো এডিটর প্যালেটের তালিকায় দেখানো হয়; মানচিত্রে ক্লিক করলে ওই "
+"নামটি একটি ষড়ভূজে বসবে। প্রতিটি অবস্থান কেবল একটি ষড়ভূজেই বসানো যায়, এবং এডিটর "
+"প্রতি ষড়ভূজে একটিই অবস্থান অনুমোদন করবে।  নামযুক্ত বিশেষ অবস্থান যোগ করতে, এডিটর "
+"প্যালেটের নিচে “যোগ” এ ক্লিক করুন এবং নাম লিখুন। এই নামগুলোর শুরু একটি অক্ষর দিয়ে "
+"হতে হবে এবং এতে সংখ্যা ও আন্ডারস্কোর থাকতে পারে। নয়টির বেশি দল মানচিত্রে যোগ করা "
+"যায় “যোগ” এ ক্লিক করে একটি সংখ্যা লিখে; যেমন “10”। ইউআই স্বয়ংক্রিয়ভাবে এটিকে "
+"“খেলোয়াড় 10” হিসেবে দেখাবে।  নামযুক্ত অবস্থানগুলো ডব্লুএমএল থেকে Standard Location "
+"Filter-এর <i>location_id=</i> ব্যবহার করে পাওয়া যায়। খেলোয়াড়দের শুরু অবস্থানও "
+"ডব্লুএমএল থেকে <i>location_id=1</i>, <i>location_id=2</i> ইত্যাদি দিয়ে পাওয়া "
+"যায় — শুধু সংখ্যা ব্যবহার করুন, সামনে “খেলোয়াড় ” যোগ করবেন না। <b>Keyboard "
+"Modifiers</b>  • যে ষড়ভূজে ইতিমধ্যে একটি অবস্থান আছে, সেখানে কন্টোল + মাউস ক্লিক "
+"করলে: এডিটর প্যালেটে নির্বাচিত অবস্থানের মতো, পরবর্তী মাউস ক্লিক-এর জন্য সেই "
+"অবস্থানটি নির্বাচন করা হবে।"
 
 #. [topic]: id=editor_terrain_overlays
 #: data/core/editor/help.cfg:125
 msgid "Editor Terrain-Overlay Graphics"
-msgstr ""
+msgstr "পরিমার্জক ভূমি-ওভারলে গ্রাফিক্স"
 
 #. [topic]: id=editor_terrain_overlays
 #: data/core/editor/help.cfg:126
@@ -592,6 +635,9 @@ msgid ""
 "editor; all the overlays described here are found in the terrain palette’s "
 "“special” group."
 msgstr ""
+"মানচিত্রগুলো সাধারণত খেলায় যেমন দেখায়, তেমনই এডিটরেও দেখায়। কয়েকটি ব্যতিক্রম "
+"আছে, যেখানে এডিটরে ভিন্ন গ্রাফিক্স ব্যবহার করা হয়; এখানে বর্ণিত সব ওভারলে ভূমি "
+"প্যালেটের-এর “বিশেষ” বিভাগ-এ পাওয়া যায়।"
 
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
@@ -609,6 +655,12 @@ msgid ""
 "mixed terrain with the movement costs set to “impassable” or “unwalkable” "
 "respectively."
 msgstr ""
+"<header>স্থানান্তর অভিলেপন</header><img src='terrain/grass/"
+"green.png~BLIT(terrain/impassable-editor.png~O(0.5))'/><img src='terrain/"
+"grass/green.png~BLIT(terrain/unwalkable-editor.png~O(0.5))'/><b>অনতিক্রম্য এবং "
+"হাঁটার অযোগ্য</b>এগুলো পরিমার্জকে-এ সহজেই চোখে পড়ে, কিন্তু খেলায় অদৃশ্য, তাই এগুলোর "
+"মাধ্যমে তৈরি মিশ্র ভূমি মূল ভূমির মতোই দেখায়। এগুলো মিশ্র ভূমি তৈরি করে, যেখানে "
+"স্থানান্তরের মূল্য যথাক্রমে “অনতিক্রম্য” বা “হাঁটার অযোগ্য” হিসেবে সেট থাকে।"
 
 #. [topic]: id=editor_terrain_overlays
 #. The images here have text, while they could be translated I assume editor-only images won’t be.
@@ -628,6 +680,15 @@ msgid ""
 "this requires the connecting hexes to be occupied or blocked to prevent "
 "units being recruited onto them."
 msgstr ""
+"<header>প্রাসাদ অভিলেপন</header><img src='terrain/grass/"
+"green.png~BLIT(terrain/castle/castle-overlay-editor.png~O(0.5))'/><img "
+"src='terrain/grass/green.png~BLIT(terrain/castle/keep-overlay-"
+"editor.png~O(0.5))'/>এই দুই ওভারলের যেকোনোটি কোনো হাঁটার যোগ্য ষড়ভূজে-এ যোগ করলে "
+"ইউনিটগুলোকে ওই ষড়ভূজ-এ নিয়োগ করা যায়। দূর্গটি নেতাকে সেখান থেকে নিয়োগ করতেও দেয়।"
+"এগুলো অনতিক্রম্য ষড়ভূজেও যোগ করা যায়, যাতে অনতিক্রম্য দেওয়ালের মাধ্যমে একটি "
+"প্রাসাদকে দৃষ্টিগতভাবে পৃথক দূর্গের সঙ্গে যুক্ত করা যায়। এমন একটি প্রাসাদও তৈরি করা "
+"সম্ভব, যেখানে দূর্গ এবং মিনারগুলোর মাঝে তৃণভূমি আছে বলে মনে হয়; তবে এর জন্য সংযুক্ত "
+"ষড়ভূজগুলো দখলে বা বন্ধ থাকতে হবে, যাতে সেখানে ইউনিট নিয়োগ করা না যায়।"
 
 #. [topic]: id=editor_terrain_overlays
 #. The image here has text, while it could be translated I assume editor-only images won’t be.
@@ -639,6 +700,10 @@ msgid ""
 "editor.png~O(0.5))'/>\n"
 "This turns any base terrain into a village, providing income and healing."
 msgstr ""
+"<header>গ্রাম অভিলেপন</header>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/village/village-overlay-"
+"editor.png~O(0.5))'/>\n"
+"যেক‌োনো মূল ভূমিকে গ্রামে পরিণত করে, যেখান থেকে আয় এবং চিকিৎসা পাওয়া যাবে।"
 
 #. [topic]: id=editor_terrain_overlays
 #. The image is an “S” on a solid black background.
@@ -649,6 +714,9 @@ msgid ""
 "Fake Shroud looks like an unexplored area, even in scenarios that have "
 "shroud disabled and even when the player’s units can see the hex."
 msgstr ""
+"<header>নকল ছায়া</header><img src=terrain/void/shroud-editor.png align=left/"
+">নকল ছায়া একটি অনাবিষ্কৃত এলাকার মতো দেখায়, এমনকি সেই সব ঘটনাক্রমেও যেখানে ছায়া "
+"বন্ধ আছে, এবং এমনকি যখন খেলোয়াড়ের ইউনিটগুলো ওই ষড়ভূজ দেখতে পারে তখনও।"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:163
@@ -662,18 +730,19 @@ msgid ""
 "in the game due to visual aids in the editor; all the overlays described "
 "here are found in the terrain palette’s “elevation” group."
 msgstr ""
+"এটি একটি দৃষ্টিনন্দন উচ্চতা এফেক্ট, যা পরিমার্জক-এ খেলার-এর তুলনায় একটু ভিন্ন দেখায়, "
+"কারণ পরিমার্জকে-এ বোঝার সুবিধা হয় এমন চিহ্ন ব্যবহার করা হয়; এখানে বর্ণিত সব "
+"অভিলেপন ভূমি প্যালেটের-এর “উচ্চতা” বিভাগ-এ পাওয়া যাবে।"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:166
-#, fuzzy
-#| msgid "editor^<header>Direct Overlays</header>"
 msgid "editor^Direct Overlays"
 msgstr "প্রত্যক্ষ অভিলেপনগুলি"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:170
 msgid "Bluffs and Gulch"
-msgstr ""
+msgstr "উচ্চভূমি ও খাত"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:172
@@ -683,11 +752,13 @@ msgid ""
 "map, where you will want to allow the use of other overlay terrains, you "
 "will want to combine these with the “markers” described in the next section."
 msgstr ""
+"উচ্চভূমি, খাত, এবং অনুরূপ ভ্যারিয়েশনগুলো সাধারণ ভূমি অভিলেপনগুলির মতোই, এবং সেভাবেই "
+"ব্যবহার করা যায়। তবে মানচিত্রের বড় এলাকায়, যেখানে আপনি অন্য অভিলেপন ভূমি "
+"ব্যবহারের সুযোগ রাখতে চান, সেখানে এগুলোকে পরের অংশে বর্ণিত “নির্দেশক”-এর সঙ্গে "
+"মিলিয়ে ব্যবহার করতে হবে।"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:174
-#, fuzzy
-#| msgid "editor^<header>Elevation Floodfill</header>"
 msgid "editor^Elevation Floodfill"
 msgstr "উচ্চতা ফ্লাডফিল"
 
@@ -711,6 +782,11 @@ msgid ""
 "will have a border ledge, making it look higher or lower than the adjacent "
 "tiles."
 msgstr ""
+"কোনো ভূমির অংশকে বেশি উঁচু বা নিচু দেখাতে, এবং একই সঙ্গে গাছের মতো অন্য অভিলেপন "
+"ভূমিও ব্যবহার করতে চাইলে, এই নির্দেশক ব্যবহার করতে হবে। মানচিত্রে এদের একটি তীর "
+"বসালে পুরো মানচিত্রে রঙীন আভা ছড়িয়ে যাবে; না সেই আভা, না তীরটি খেলা-তে দেখা "
+"যাবে। আভা-ঢাকা অংশটির চারপাশে কিনারায় ধাপ থাকবে, ফলে এটি পাশের টালিগুলোর "
+"তুলনায় বেশি উঁচু বা নিচু দেখাবে।"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:182
@@ -719,11 +795,14 @@ msgid ""
 "terraces of up to five levels (lowest, lower, normal, higher, highest). "
 "Placing a high region next to a low region does not result in larger cliffs."
 msgstr ""
+"দুটি উচ্চ নির্দেশক এবং দুটি নিম্ন নির্দেশক আছে, তাই সর্বোচ্চ পাঁচ স্তরের ভূমি বানানো "
+"সম্ভব (সবচেয়ে নিচু, নিচু, স্বাভাবিক, উঁচু, সবচেয়ে উঁচু)। উচ্চ এলাকার পাশে নিচু এলাকা "
+"বসালে আরও বড় খাড়াই তৈরি হয় না।"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:184
 msgid "editor^How to Use"
-msgstr ""
+msgstr "কীভাবে ব্যবহার করবেন"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:186
@@ -731,6 +810,8 @@ msgid ""
 "The marker arrows are not very useful by themselves, but the bluffs/gulch-"
 "type terrains can be used to contain the floodfilled area."
 msgstr ""
+"নির্দেশক তীর একা খুব বেশি কাজে লাগে না, কিন্তু উচ্চভূমি/খাত ধরনের ভূমি ভর্তি করা "
+"এলাকাকে ঘিরে রাখতে ব্যবহার করা যায়।"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:188
@@ -1316,6 +1397,13 @@ msgid ""
 "After the fall of Wesnoth many switched to using AF (After the Fall) and BF "
 "(Before the Fall)."
 msgstr ""
+"ওয়েসনথীয় ক্যালেন্ডারের প্রতিটি বছর ১২টি মাস নিয়ে গঠিত। এগুলো হলো, "
+"ক্রমানুসারে:হোয়াইটফায়ারব্লিডিং মুনস্ক্যাটারসিডডিপরুটস্ক্রায়ারস ব্লুমথর্নট্রেসসামিট "
+"স্টারকিন্ডলফায়ারস্টিলসিডরিপার্স মুনভার্গলাস ব্লুমব্ল্যাকফায়ারওয়েসনথিয়ান ক্যালেন্ডার শুরু "
+"হয় ওয়েসনথ প্রতিষ্ঠার বছর, অর্থাৎ ১ YW (Year of Wesnoth) থেকে। এর আগের বছরগুলো "
+"ওয়েসনথ প্রতিষ্ঠার কত বছর আগে তার ভিত্তিতে BW (Before Wesnoth) ব্যবহার করে গণনা "
+"করা হয়।ওয়েসনথের পতনের পর অনেকে AF (After the Fall) এবং BF (Before the Fall) "
+"ব্যবহার করতে শুরু করেন।"
 
 #. [section]: id=geography
 #. [topic]: id=..geography
@@ -1362,6 +1450,8 @@ msgid ""
 "The Ford of Abez is a crossing between Wesnoth and the Northlands, and is "
 "the westernmost point where the Great River can be crossed without ships."
 msgstr ""
+"অ্যাবেজের ফোর্ড হলো ওয়েসনথ এবং উত্তরে ভূমির মধ্যবর্তী একটি পারাপার স্থল, এবং এটি "
+"বিরাট নদীর পশ্চিমতম বিন্দু যেখানে জাহাজ ছাড়াই নদী পার হওয়া যায়।"
 
 #. [topic]: id=great_ocean
 #: data/core/encyclopedia/geography.cfg:33
@@ -1387,6 +1477,9 @@ msgid ""
 "in every direction from Morogor until eventually flowing into the abyss as "
 "an immense waterfall at the edge of the world."
 msgstr ""
+"ড্রেকরা এক সময় এই মহাসাগরকে বিশ্বমহাসাগর বলে ডাকত। তারা বিশ্বাস করত যে এটি "
+"মোরোগর থেকে প্রতিটি দিকে বিস্তৃত হয়ে অবশেষে পৃথিবীর প্রান্তে এক বিশাল জলপ্রপাত "
+"হিসেবে গভীর অতলে গিয়ে মিশেছে।"
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:43
@@ -1402,6 +1495,11 @@ msgid ""
 "It is mostly inhabited by <ref dst='..race_drake'>drakes</ref>.\n"
 "The central island of the archipelago is also called ‘Morogor’."
 msgstr ""
+"দ্বীপপুঞ্জ, <ref dst='great_ocean'>বিরাট সাগরের</ref>-এর কোথাও অবস্থিত, যা <ref "
+"dst='green_isle'>সবুজ দ্বীপের</ref>-এর পূর্বে এবং <ref "
+"dst='great_continent'>বিরাট মহাদেশের</ref>-এর পশ্চিমে।এটি মূলত <ref "
+"dst='..race_drake'>ড্রেক</ref>দের দ্বারা অধ্যুষিত।আর্কিপেলাগোর কেন্দ্রীয় দ্বীপটিকেও "
+"‘মোরোগোর’ বলা হয়।"
 
 #. [topic]: id=morogor
 #. Geography of Morogor
@@ -1416,6 +1514,12 @@ msgid ""
 "    • Isle of Omarath: A major drakish island northwest of the main Isle of "
 "Morogor. It is the northernmost island of the Morogor Archipelago."
 msgstr ""
+"<header>উল্লেখযোগ্য ভূমি বৈশিষ্ট্য:</header>    • মাউন্ট মোরোগর: মোরোগরের কেন্দ্রীয় "
+"দ্বীপের সর্বোচ্চ সক্রিয় আগ্নেয়গিরি পর্বত।    • গাল দ্বীপ: কেন্দ্রীয় মোরোগর দ্বীপের "
+"সামান্য উত্তরে অবস্থিত একটি বিপজ্জনক দ্বীপ, যা মূলত ড্রেকদের শিকারভূমি হিসেবে ব্যবহৃত "
+"হয়, যারা এই দ্বীপে মাত্র দুটি ছোট গ্রামে বসবাস করে।    • ওমারাথ দ্বীপ: প্রধান "
+"মোরোগর দ্বীপের উত্তর-পশ্চিমে অবস্থিত একটি প্রধান ড্রেক দ্বীপ। এটি মরোগর দ্বীপপুঞ্জের "
+"সবচেয়ে উত্তরের দ্বীপ।"
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:58
@@ -1470,6 +1574,13 @@ msgid ""
 "once home to Wesfolk-imitating cultists. The swamp was defiled in wars "
 "between Wesfolk and Islefolk long ago."
 msgstr ""
+"<header>উল্লেখযোগ্য ভূমি বৈশিষ্ট্য:</header>    • ভগ্ন পর্বত: একটি বিশাল পর্বতমালা "
+"যা সবুজ দ্বীপের মধ্য দিয়ে বিস্তৃত।    • মধ্যভূমি: এস্টেন জলাভূমির দক্ষিণে অবস্থিত একটি "
+"পাহাড়ি এবং বিরলবনাঞ্চল, যা এক সময় সমৃদ্ধ দ্বীপবাসী রাজ্যগুলোর আবাসস্থল ছিল।    • "
+"ওল্ডউড: প্রাচীন কিছু বৃক্ষাত্মার বসবাসস্থল একটি রহস্যময় বন। বনের কেন্দ্রস্থলে একটি "
+"মন্দিরের নিচে অন্ধকার প্রাচীন সমাধিস্থল অবস্থিত।    • এস্টেন জলাভূমি: ভগ্ন পর্বতের "
+"পূর্বে অবস্থিত একটি ছোট জলাভূমি, যা এক সময় ওয়েসফোক-অনুকরণকারী সম্প্রদায়ের আবাসস্থল "
+"ছিল। বহু বছর আগে ওয়েসফোক এবং দ্বীপবাসীদের মধ্যকার যুদ্ধে জলাভূমিটি কলুষিত হয়েছিল।"
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:81
@@ -1483,6 +1594,9 @@ msgid ""
 "dst='green_isle'>Green Isle</ref> across the <ref dst='great_ocean'>Great "
 "Ocean</ref>. It is the original homeland of both humans and orcs."
 msgstr ""
+"<ref dst='morogor'>মোরোগোর</ref> এবং <ref dst='green_isle'>সবুজ দ্বীপ</ref>-এর "
+"পশ্চিমে <ref dst='great_ocean'>বিরাট সমুদ্রের</ref>-এর ওপারে অবস্থিত। এটি মানুষ "
+"এবং ওর্ক উভয়েরই আদি জন্মভূমি।"
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:87
@@ -1496,6 +1610,8 @@ msgid ""
 "ref> lies. Its west coast is surrounded by the <ref dst='great_ocean'>Great "
 "Ocean</ref>."
 msgstr ""
+"সেই মহাদেশ যেখানে <ref dst='kingdom_wesnoth'>ওয়েসনথ রাজ্য</ref> অবস্থির. এটির "
+"পশ্চিম উপকূল <ref dst='great_ocean'>বিরাট সমুদ্র</ref> দ্বারা আবৃত।"
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:93
@@ -1510,6 +1626,9 @@ msgid ""
 "however, only rarely used in the era depicted by the main map. People "
 "normally just say “the world” or, poetically, “the wide green world”."
 msgstr ""
+"‘ইরডিয়া’ হলো সেই জগতের নাম যেখানে <ref dst='kingdom_wesnoth'>ওয়েসনথ</ref> "
+"রাজ্যটি অবস্থিত। তবে মূল মানচিত্রে চিত্রিত যুগে এই শব্দটি খুব কমই ব্যবহৃত হয়। মানুষ "
+"সাধারণত শুধু “পৃথিবী” বলে, অথবা কাব্যিকভাবে, “বিস্তৃত সবুজ পৃথিবী” বলে।"
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:99
@@ -1825,6 +1944,8 @@ msgid ""
 "A vast region south of Kerlath home to many mysterious races, including jinn "
 "and wyverns. Very little is known for certain about what lies here."
 msgstr ""
+"কেরলাথের দক্ষিণে বিস্তৃত এক অঞ্চল, যেখানে জিন ও ওয়াইভার্নসহ অনেক রহস্যময় জাতির "
+"বাস। এখানে কী আছে, খুব কমই সুনিশ্চিতভাবে জানা যায়।"
 
 #. [topic]: id=far_south
 #. Geography of the Far South
@@ -1931,6 +2052,10 @@ msgid ""
 "new aspects of the game. For more detailed information on special situations "
 "and exceptions, follow the included links."
 msgstr ""
+"নিচের পৃষ্ঠাগুলোতে ওয়েসনথ খেলার জন্য আপনার যা জানা দরকার, সবই বর্ণনা করা আছে। "
+"আপনি খেলতে খেলতে, খেলার নতুন নতুন দিকের সঙ্গে পরিচিত হলে, বিভিন্ন বিভাগে নতুন তথ্য "
+"যোগ হতে থাকবে। বিশেষ পরিস্থিতি ও ব্যতিক্রম সম্পর্কে আরও বিস্তারিত জানতে, দেওয়া "
+"লিঙ্কগুলো অনুসরণ করুন।"
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:105
@@ -1969,6 +2094,12 @@ msgid ""
 "its statistics, attacks, resistances, and movement and defense values.\n"
 "\n"
 msgstr ""
+"আপনি ওয়েসনথের বিশ্ব ঘুরে দেখার সময় যে সব ইউনিট আবিষ্কার করবেন, এই বিভাগে সেগুলোর "
+"তালিকা থাকবে। কোনো অভিযান বা মাল্টিপ্লেয়ার ঘটনাক্রমে নতুন কোনো ইউনিট দেখলে, সেটি "
+"তার জাতির উপবিভাগে যোগ হবে; এরপর আপনি চাইলে যেকোনো সময় তার পৃষ্ঠা দেখতে "
+"পারবেন। কোনো ইউনিটের পৃষ্ঠায় থাকবে তার সাধারণ বিবরণ, পরিসংখ্যান, আক্রমণ, "
+"প্রতিরোধক্ষমতা, আর চলাচল ও প্রতিরক্ষা মান।\n"
+"\n"
 
 #. [topic]: id=..eras_section
 #: data/core/help.cfg:127
@@ -2016,18 +2147,10 @@ msgstr "অজানা ইউনিট"
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:158
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "This unit is unknown for the moment. You must discover it in the game to "
-#| "be allowed to see its description."
 msgid ""
 "This unit is unknown for the moment. You must discover it in the game to be "
 "allowed to see its description."
 msgstr ""
-"\n"
-"\n"
 "এই ইউনিটটি এই মুহূর্তে অজানা । এটির বর্ণনা দেখার জন্য আগে আগে আপনাকে এটিকে খেলার "
 "মধ্যে দেখতে পেতে হবে ।"
 
@@ -2081,12 +2204,12 @@ msgstr ""
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:177
 msgid "Fundamentals of Gameplay"
-msgstr ""
+msgstr "খেলার মূল নিয়মগুলি"
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:187
 msgid "Victory and Defeat"
-msgstr ""
+msgstr "জয় এবং পরাজয়"
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:188
@@ -2112,7 +2235,7 @@ msgstr ""
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:197
 msgid "Recruiting and Recalling"
-msgstr ""
+msgstr "নিয়োগ এবং পুনরায় ডাকা"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:198
@@ -2154,27 +2277,18 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:206
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Units not only cost gold to Recruit or Recall, they also require money to "
-#| "support. See <ref dst='income_and_upkeep'>income and upkeep</ref> for "
-#| "more information."
 msgid ""
 "Units not only cost gold to Recruit or Recall, they also require money to "
 "support. See <ref dst='income_and_upkeep'>income and upkeep</ref> for more "
 "information."
 msgstr ""
-"\n"
-"\n"
 "শুধু নিয়োগ বা পুনরায় ডাকার জন্য নয়, ইউনিটদের ভারবহন করার জন্যও টাকার প্রয়োজন হয় । "
 "আরও তথ্যের জন্য <ref dst='income_and_upkeep'>আয় ও খরচ</ref> দেখুন ।"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:213
 msgid "Income and Upkeep"
-msgstr ""
+msgstr "আয় এবং ব্যয়"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:214
@@ -2237,7 +2351,7 @@ msgstr ""
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:233
 msgid "Hitpoints and Experience"
-msgstr ""
+msgstr "জীবনসংখ্যা ও অভিজ্ঞতা"
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:234
@@ -2268,7 +2382,7 @@ msgstr ""
 #. [topic]: id=advancement
 #: data/core/help.cfg:247
 msgid "Advancement"
-msgstr ""
+msgstr "উন্নয়ণ"
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:248
@@ -2281,22 +2395,12 @@ msgstr ""
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:250
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Units have a certain amount of experience required to advance (this is "
-#| "20% less for units with the Intelligent trait). Once they achieve this "
-#| "amount, they immediately advance to the next level, healing fully in the "
-#| "process. In some cases, you will be given a choice of advancement options."
 msgid ""
 "Units have a certain amount of experience required to advance (this is 20% "
 "less for units with the Intelligent trait). Once they achieve this amount, "
 "they immediately advance to the next level, healing fully in the process. In "
 "some cases, you will be given a choice of advancement options."
 msgstr ""
-"\n"
-"\n"
 "উন্নয়ণের জন্য ইউনিটদের সাধারণত কিছু পরিমাণ অভিজ্ঞতার প্রয়োজন হয় (বুদ্ধিমান দক্ষতাযুক্ত "
 "ইউনিটদের জন্য 20% কম) । একবার এই পরিমাণ অভিজ্ঞতা অর্জন করলেই তারা তৎক্ষণাৎ "
 "পরবর্তী পর্যায়ে উন্নীত হয় । কিছু ক্ষেত্রে, আপনাকে উন্নয়ণের জন্য একাধিক বিকল্প দেওয়া "
@@ -2320,7 +2424,7 @@ msgstr ""
 #. [topic]: id=movement
 #: data/core/help.cfg:259
 msgid "Movement"
-msgstr ""
+msgstr "স্থানান্তর"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:260
@@ -2366,30 +2470,19 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:266
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "To see where the enemy can move to during their next turn, press Ctrl-v "
-#| "or Cmd-v. Ctrl-b or Cmd-b shows where the enemy could move, if your units "
-#| "were not on the map to block their progress."
 msgid ""
 "To see where the enemy can move to during their next turn, press Ctrl-v or "
 "Cmd-v. Ctrl-b or Cmd-b shows where the enemy could move, if your units were "
 "not on the map to block their progress."
 msgstr ""
-"\n"
-"\n"
 "শত্রুপক্ষ পরবর্তী দানে কোথায় যেতে পারবে তা দেখাবার জন্য, Ctrl-v বা Cmd-v টিপুন । "
 "Ctrl-b বা Cmd-b দেখায় আপনার ইউনিটগুলি মানচিত্রে তাদের পথরোধ না করলে তারা কোথায় "
 "যেতে পারত ।"
 
 #. [topic]: id=vision
 #: data/core/help.cfg:273
-#, fuzzy
-#| msgid "Vision:"
 msgid "Vision"
-msgstr "দৃষ্টি:"
+msgstr "দৃষ্টি"
 
 #. [topic]: id=vision
 #: data/core/help.cfg:274
@@ -2646,7 +2739,7 @@ msgstr ""
 #. [topic]: id=combat
 #: data/core/help.cfg:350
 msgid "Combat"
-msgstr ""
+msgstr "লড়াই"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:351
@@ -2683,7 +2776,7 @@ msgstr ""
 #. [topic]: id=combat
 #: data/core/help.cfg:357
 msgid "Chance to Hit"
-msgstr ""
+msgstr "আঘাতের সম্ভাবনা"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:359
@@ -2710,7 +2803,7 @@ msgstr ""
 #. [topic]: id=combat
 #: data/core/help.cfg:363
 msgid "Damage"
-msgstr ""
+msgstr "ক্ষতি"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:365
@@ -2816,7 +2909,7 @@ msgstr ""
 #. [topic]: id=orbs
 #: data/core/help.cfg:410
 msgid "<header>Ellipses</header>"
-msgstr ""
+msgstr "<header>উপবৃত্ত</header>"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:413
@@ -2842,7 +2935,7 @@ msgstr ""
 #. [topic]: id=crowns
 #: data/core/help.cfg:434
 msgid "Crowns and loyal markers"
-msgstr "মুকুট এবং বিশ্বস্তরা নির্দেশকগুলি"
+msgstr "মুকুট এবং বিশ্বস্ততার নির্দেশকগুলি"
 
 #. [topic]: id=crowns
 #: data/core/help.cfg:435
@@ -2885,6 +2978,8 @@ msgstr "দিনের সময়"
 #: data/core/help.cfg:467
 msgid "The time of day affects the damage of certain units as follows:"
 msgstr ""
+"দিনের সময় নিম্নলিখিতভাবে কিছু ইউনিটদের করা ক্ষতির পরিমাণ নিম্নলিখিতভাবে পরিবর্তন "
+"করে:"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:469
@@ -2892,6 +2987,8 @@ msgid ""
 "• <span weight='heavy' size='15'>LAWFUL</span> units get +25% damage in "
 "daytime, and −25% damage at night."
 msgstr ""
+"• <span weight='heavy' size='15'>নৈতিক</span> ইউনিটেরা দিনে +25% ক্ষতি , এবং "
+"রাত্রে −25% ক্ষতি করে।"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:470
@@ -2899,6 +2996,8 @@ msgid ""
 "• <span weight='heavy' size='15'>CHAOTIC</span> units get +25% damage at "
 "night, and −25% in daytime."
 msgstr ""
+"• <span weight='heavy' size='15'>বিশৃঙ্খল</span> ইউনিটেরা রাত্রে +25% ক্ষতি , "
+"এবং দিনে −25% ক্ষতি করে।"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:471
@@ -2906,6 +3005,8 @@ msgid ""
 "• <span weight='heavy' size='15'>NEUTRAL</span> units are unaffected by the "
 "time of day."
 msgstr ""
+"• <span weight='heavy' size='15'>নিরপেক্ষ</span> ইউনিটেরা দিনের সময়ের দ্বারা "
+"প্রভাবিত হয় না।"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:472
@@ -2913,6 +3014,8 @@ msgid ""
 "• <span weight='heavy' size='15'>LIMINAL</span> units get +25% damage during "
 "twilight."
 msgstr ""
+"• <span weight='heavy' size='15'>মধ্যবর্তী</span> ইউনিটরা গোধুলির সময় +25% ক্ষতি "
+"করে।"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:474
@@ -2921,6 +3024,9 @@ msgid ""
 "pane. For the usual day/night cycle, morning and afternoon count as day, "
 "first and second watch count as night:"
 msgstr ""
+"স্ট্যাটাস প্যানের মিনিম্যাপে দিনের বর্তমান সময় দেখা যেতে পারে। স্বাভাবিক দিন/রাতের "
+"চক্রের ক্ষেত্রে, ভোর এবং বিকেল দিন, এবং রাত্রির প্রথম ও দ্বিতীয়ার্ধ রাত হিসেবে "
+"বিবেচিত হয়।"
 
 #. [topic]: id=time_of_day
 #. [time]: id=dawn
@@ -2967,7 +3073,7 @@ msgstr "রাত্রির দ্বিতীয়ার্ধ"
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
-msgstr ""
+msgstr "মনে রাখবেন কিছু ঘটনাক্রম ভুঅভ্যন্তরে ঘটে থাকে, যেখানে সবসময়েই রাত্রি!"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:497
@@ -2975,6 +3081,7 @@ msgid ""
 "Some underground locations are illuminated. They are perpetually "
 "intermediate between day and night."
 msgstr ""
+"কিছু ভুগর্ভস্থ অবস্থান আলোকিত। সেগুলি সর্বদাই দিন এবং রাত্রের মাঝামাঝি অবস্থায় থাকে।"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:499
@@ -2982,6 +3089,8 @@ msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate."
 msgstr ""
+"কিছু রোল-প্লেয়িং ঘটনাক্রম বাড়ির ভেতরে ঘটে থাকে — এইগুলিও একইরকমভাবে মাঝামাঝি "
+"আলোকিত।"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:501
@@ -2990,6 +3099,9 @@ msgid ""
 "ability and terrain features such as <ref dst='terrain_lava'>lava</ref> "
 "change the time of day bonus around them."
 msgstr ""
+"সবশেষে, <ref dst='ability_illumination'>আলোকিত করে</ref> দক্ষতাবিশিষ্ট "
+"ইউনিটগুলি এবং <ref dst='terrain_lava'>লাভার</ref> মতো ভূমিরূপ তাদের চারপাশে "
+"দিনের সময়ের জন্য অতিরিক্ত ক্ষতির পরিমাণ পাল্টে দিতে পারে।"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:508
@@ -3059,11 +3171,12 @@ msgid ""
 "regeneration, healing and curing cannot combine with each other: the best "
 "option will be used. Finally, units heal fully between scenarios."
 msgstr ""
+"বিশ্রাম অন্য ধরনের আরোগ্যের সঙ্গে একসাথে কাজ করতে পারে, কিন্তু গ্রাম, পুনরুদ্ধার, "
+"চিকিৎসা এবং বিষক্ষয়, এগুলো একে অন্যের সঙ্গে মিলিত হয় না: সবচেয়ে ভালো বিকল্পটিই "
+"ব্যবহৃত হবে। আর শেষে, ইউনিটগুলো দৃশ্যপটগুলোর মাঝে সম্পূর্ণভাবে সেরে ওঠে।"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:520
-#, fuzzy
-#| msgid "Advances to: "
 msgid "Advanced"
 msgstr "উন্নীত হবে: "
 
@@ -3076,6 +3189,11 @@ msgid ""
 "from one healer per turn, a unit surrounded by healers from several allied "
 "sides will be healed once on each of said allied sides’ turns."
 msgstr ""
+"অন্যান্য ধরনের আরোগ্যের বিপরীতে, চিকিৎসা করার দক্ষতাটি আরোগ্যপ্রাপ্ত ইউনিটের নিজের "
+"দানে কার্যকর হবে না, বরং যে ইউনিট চিকিৎসা করছে তার দানে হবে। এর মানে হলো, একই "
+"পক্ষের একাধিক আরোগ্যকারক-এর মাঝে ঘেরা কোনো ইউনিট প্রতি দানে শুধু একজন আরোগ্যকারকের-"
+"এর কাছ থেকেই চিকিৎসা পাবে; কিন্তু একাধিক মিত্র পক্ষের আরোগ্যকারক-দের মাঝে থাকলে, "
+"সেই মিত্র পক্ষগুলোর প্রত্যেকের দানে একবার করে চিকিৎসা পাবে।"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:528
@@ -3105,6 +3223,9 @@ msgid ""
 "usually randomly assigned to a unit when it is recruited. The traits "
 "available to a unit are largely determined by its <i>race</i>."
 msgstr ""
+"যুদ্ধে আপনার ইউনিটগুলি অবশ্যই ক্ষতিগ্রস্ত হবে। ইউনিটগুলিকে সুস্থ করার কয়েকটি উপায় আছে। "
+"তবে বিশ্রাম ছাড়া অন্য সব ক্ষেত্রে এগুলো একসাথে কাজ করে না; প্রতি দানে মাত্র একটি "
+"পদ্ধতি কার্যকর হতে পারে।"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:547
@@ -3148,9 +3269,6 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:563 data/core/help.cfg:596
-#, fuzzy
-#| msgid "Basic terrain type: $types"
-#| msgid_plural "Basic terrain types: $types"
 msgid "Basic Terrain Types"
 msgstr "মূল ভূমিরূপ: $types"
 
