@@ -20,6 +20,7 @@
 
 #include <SDL3/SDL_mouse.h>
 #include <SDL3/SDL_keyboard.h>
+#include <SDL3/SDL_render.h>
 
 namespace sdl
 {
@@ -34,14 +35,8 @@ uint32_t get_mouse_state(float* x, float* y)
 
 	// The game canvas may be offset inside the window,
 	// as well as potentially having a different size.
-	rect input_area = video::input_area();
-	*x -= input_area.x;
-	*y -= input_area.y;
-
-	// Translate to game-native coordinates
-	point canvas_size = video::game_canvas_size();
-	*x = (*x * canvas_size.x) / input_area.w;
-	*y = (*y * canvas_size.y) / input_area.h;
+	// Translate to game-native coordinates using SDL
+	SDL_RenderCoordinatesFromWindow(video::get_renderer(), *x, *y, x, y);
 
 	return buttons;
 }
