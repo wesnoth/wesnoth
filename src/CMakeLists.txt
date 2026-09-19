@@ -291,6 +291,21 @@ if(ENABLE_TESTS)
 		target_link_options(boost_unit_tests PRIVATE /WX /WHOLEARCHIVE:wesnoth-widgets)
 	endif()
 
+	set(BOOST_LIBS
+		Boost::iostreams
+		Boost::program_options
+		Boost::regex
+		Boost::random
+		Boost::coroutine
+		Boost::locale
+		Boost::filesystem
+		Boost::unit_test_framework
+	)
+
+	if(boost_system_DIR)
+		list(APPEND BOOST_LIBS Boost::system)
+	endif()
+
 	target_link_libraries(boost_unit_tests
 		wesnoth-common
 		${WIDGETS_LIB}
@@ -299,15 +314,7 @@ if(ENABLE_TESTS)
 		${game-external-libs}
 		OpenSSL::Crypto
 		OpenSSL::SSL
-		Boost::iostreams
-		Boost::program_options
-		Boost::regex
-		Boost::system
-		Boost::random
-		Boost::coroutine
-		Boost::locale
-		Boost::filesystem
-		Boost::unit_test_framework
+		${BOOST_LIBS}
 		Fontconfig::Fontconfig
 		SDL2::SDL2
 		SDL2::SDL2main
