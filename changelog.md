@@ -1,6 +1,4 @@
-## Version 1.19.27+dev
-### Add-ons client
-### Add-ons server
+## Version 1.19.28
 ### Campaigns
    * Heir to the Throne
      * S43 Cliffs of Thoria: greatly reduced the influence of randomness on Drake spawns. Drakes now spawn before Lisar's turn, not between Lisar's and Konrad's.
@@ -12,12 +10,8 @@
      * S05 The Deceiver: adjusted allies-vs-enemy balance.
      * S06 Ring of Swords: adjusted balance, expanded map and army sizes.
      * Sir Kaylan now flees to the map edge when he "dies", instead of vanishing.
-### Editor
-### Multiplayer
 ### Lua API
    * Updated to Lua 5.4.9
-### Packaging
-### Terrain
 ### Translations
    * Updated translations: Bengali, British English, Chinese (Simplified), Czech, German, Hungarian, Polish, Spanish
 ### Units
