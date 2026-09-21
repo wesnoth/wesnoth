@@ -2,18 +2,43 @@
 ### Add-ons client
 ### Add-ons server
 ### Campaigns
+   * Heir to the Throne
+     * S43 Cliffs of Thoria: greatly reduced the influence of randomness on Drake spawns. Drakes now spawn before Lisar's turn, not between Lisar's and Konrad's.
+     * S50 The Battle for Wesnoth: AI-controlled Li'sar is less likely to get caught out by the Horse Clans while advancing to her forward keep.
+   * Of Pearls and Pirates
+     * Added experimental "regroup" micro AI.
+   * The Deceiver's Gambit
+     * Added experimental "regroup" micro AI.
+     * S05 The Deceiver: adjusted allies-vs-enemy balance.
+     * S06 Ring of Swords: adjusted balance, expanded map and army sizes.
+     * Sir Kaylan now flees to the map edge when he "dies", instead of vanishing.
 ### Editor
 ### Multiplayer
 ### Lua API
+   * Updated to Lua 5.4.9
 ### Packaging
 ### Terrain
 ### Translations
    * Updated translations: Bengali, British English, Chinese (Simplified), Czech, German, Hungarian, Polish, Spanish
 ### Units
+   * Shadow Mage / Lord
+     * Fixed missing defending miss animation.
 ### User interface
+   * Team-colored text can be a lighter shade than the team color
+   * Unit reachmap effect has been improved
+   * Fixed coloration of unit footprints
 ### WML Engine
+   * Add `[color_range]font_color=`
 ### Miscellaneous and Bug Fixes
+   * Fixed language selection not working for several less used languages
+   * Fixed the turn timer warning sound not playing post-SDL3 migration
+   * Added additional hardening to various usages of lua within the engine
+   * Fixed hotkey changes not saving on a fresh install
+   * Fixed reloading replays causing halos and other images to get duplicated
+   * Upgraded TLS version used when connecting to the multiplayer and add-ons servers
+   * Fixed events from abilities/weapon specials getting duplicated
 ### Android
+   * Fixed mouse coordinates being incorrectly calculated on Android, primarily affecting tablets
 
 ## Version 1.19.27
 ### Campaigns
