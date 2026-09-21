@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-08-02 22:44-0500\n"
+"POT-Creation-Date: 2026-09-20 19:25-0500\n"
 "PO-Revision-Date: 2026-05-24 15:43+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -34,10 +34,10 @@ msgstr ""
 "以指定的语言启动GUI.pyw。请指定语言代码，即POSIX区域设置（locale）名称。请参"
 "考gettext.wesnoth.org获取完整列表。"
 
-#: data/tools/GUI.pyw:110 data/tools/GUI.pyw:124 data/tools/GUI.pyw:1433
-#: data/tools/GUI.pyw:1482 data/tools/GUI.pyw:1525 data/tools/GUI.pyw:1554
-#: data/tools/GUI.pyw:1590 data/tools/GUI.pyw:1614 data/tools/GUI.pyw:1657
-#: data/tools/GUI.pyw:1676 data/tools/GUI.pyw:2002
+#: data/tools/GUI.pyw:110 data/tools/GUI.pyw:124 data/tools/GUI.pyw:1424
+#: data/tools/GUI.pyw:1473 data/tools/GUI.pyw:1514 data/tools/GUI.pyw:1543
+#: data/tools/GUI.pyw:1579 data/tools/GUI.pyw:1603 data/tools/GUI.pyw:1646
+#: data/tools/GUI.pyw:1665 data/tools/GUI.pyw:1991
 msgid "Error"
 msgstr "错误"
 
@@ -103,21 +103,21 @@ msgid "wmllint mode"
 msgstr "wmllint模式"
 
 #. TRANSLATORS: Normal run mode for the WML tool.
-#: data/tools/GUI.pyw:681 data/tools/GUI.pyw:1101
+#: data/tools/GUI.pyw:681 data/tools/GUI.pyw:1092
 msgid "Normal"
 msgstr "普通"
 
 #. TRANSLATORS: Tooltip explanation for normal run mode.
-#: data/tools/GUI.pyw:690 data/tools/GUI.pyw:1110
+#: data/tools/GUI.pyw:690 data/tools/GUI.pyw:1101
 msgid "Perform conversion and save changes to file"
 msgstr "执行转换并保存更改到文件"
 
-#: data/tools/GUI.pyw:693 data/tools/GUI.pyw:1113
+#: data/tools/GUI.pyw:693 data/tools/GUI.pyw:1104
 msgid "Dry run"
 msgstr "试运行"
 
 #. TRANSLATORS: Tooltip explanation for dry run mode.
-#: data/tools/GUI.pyw:702 data/tools/GUI.pyw:1122
+#: data/tools/GUI.pyw:702 data/tools/GUI.pyw:1113
 msgid "Perform conversion without saving changes to file"
 msgstr "执行转换但不保存更改到文件"
 
@@ -148,12 +148,12 @@ msgstr "撤销"
 msgid "Revert conversions using back-up files"
 msgstr "使用备份文件撤销转换"
 
-#: data/tools/GUI.pyw:741 data/tools/GUI.pyw:1125
+#: data/tools/GUI.pyw:741 data/tools/GUI.pyw:1116
 msgid "Verbosity level"
 msgstr "详细级别"
 
 #. TRANSLATORS: Verbosity level.
-#: data/tools/GUI.pyw:749 data/tools/GUI.pyw:1133
+#: data/tools/GUI.pyw:749 data/tools/GUI.pyw:1124
 msgid "Terse"
 msgstr "简洁"
 
@@ -231,146 +231,142 @@ msgstr "从宏定义注释中提取帮助"
 msgid "Report all macros with untyped formals"
 msgstr "报告所有具有无类型形式参数的宏"
 
-#: data/tools/GUI.pyw:937
-msgid "Show progress"
-msgstr "显示进度"
-
-#: data/tools/GUI.pyw:957 data/tools/GUI.pyw:1169
+#: data/tools/GUI.pyw:948 data/tools/GUI.pyw:1160
 msgid "Exclude file names matching regular expression:"
 msgstr "排除与正则表达式匹配的文件名："
 
-#: data/tools/GUI.pyw:975
+#: data/tools/GUI.pyw:966
 msgid "Exclude file names not matching regular expression:"
 msgstr "排除与正则表达式不匹配的文件名："
 
 #. TRANSLATORS: 'n' in this context refers to number, as in 'n number of
 #. files'.
-#: data/tools/GUI.pyw:995
+#: data/tools/GUI.pyw:986
 msgid "Report only on macros referenced in exactly n files:"
 msgstr "仅报告在恰好n个文件中引用的宏："
 
-#: data/tools/GUI.pyw:1015
+#: data/tools/GUI.pyw:1006
 msgid "Report macro definitions and usages in file:"
 msgstr "文件中的宏定义和用法报告："
 
-#: data/tools/GUI.pyw:1033
+#: data/tools/GUI.pyw:1024
 msgid "Allow unused macros with names matching regular expression:"
 msgstr "允许名称与正则表达式匹配的未使用的宏："
 
-#: data/tools/GUI.pyw:1095
+#: data/tools/GUI.pyw:1086
 msgid "wmlindent mode"
 msgstr "wmlindent模式"
 
 #. TRANSLATORS: Verbosity level.
-#: data/tools/GUI.pyw:1143
+#: data/tools/GUI.pyw:1134
 msgid "Verbose"
 msgstr "详细"
 
 #. TRANSLATORS: Verbosity level.
-#: data/tools/GUI.pyw:1153
+#: data/tools/GUI.pyw:1144
 msgid "Report unchanged files"
 msgstr "报告未变更的文件"
 
-#: data/tools/GUI.pyw:1162
+#: data/tools/GUI.pyw:1153
 msgid "wmlindent options"
 msgstr "wmlindent选项"
 
 #. TRANSLATORS: Option to run 'quietly'.
-#: data/tools/GUI.pyw:1189
+#: data/tools/GUI.pyw:1180
 msgid "Quiet mode"
 msgstr "安静模式"
 
 #. TRANSLATORS: Tooltip explanation for quiet option.
-#: data/tools/GUI.pyw:1197
+#: data/tools/GUI.pyw:1188
 msgid "Do not generate output messages"
 msgstr "不要生成输出消息"
 
-#: data/tools/GUI.pyw:1217
+#: data/tools/GUI.pyw:1208
 msgid "Output directory:"
 msgstr "输出目录："
 
-#: data/tools/GUI.pyw:1223
+#: data/tools/GUI.pyw:1214
 msgid "Options"
 msgstr "选项"
 
-#: data/tools/GUI.pyw:1228
+#: data/tools/GUI.pyw:1219
 msgid "Scan subdirectories"
 msgstr "扫描子目录"
 
-#: data/tools/GUI.pyw:1233
+#: data/tools/GUI.pyw:1224
 msgid "Show optional warnings"
 msgstr "显示可选警告"
 
 #. TRANSLATORS: Also called "Needs work".
-#: data/tools/GUI.pyw:1239
+#: data/tools/GUI.pyw:1230
 msgid "Mark all strings as fuzzy"
 msgstr "将所有字符串标记为需要处理"
 
-#: data/tools/GUI.pyw:1243
+#: data/tools/GUI.pyw:1234
 msgid "Advanced options"
 msgstr "高级选项"
 
-#: data/tools/GUI.pyw:1247
+#: data/tools/GUI.pyw:1238
 msgid "Package version"
 msgstr "包版本"
 
-#: data/tools/GUI.pyw:1264
+#: data/tools/GUI.pyw:1255
 msgid "Initial textdomain:"
 msgstr "初始文本域："
 
-#: data/tools/GUI.pyw:1310 data/tools/GUI.pyw:1416
+#: data/tools/GUI.pyw:1301 data/tools/GUI.pyw:1407
 msgid "Run wmllint"
 msgstr "运行wmllint"
 
-#: data/tools/GUI.pyw:1317
+#: data/tools/GUI.pyw:1308
 msgid "Save as text..."
 msgstr "保存为文本……"
 
-#: data/tools/GUI.pyw:1324
+#: data/tools/GUI.pyw:1315
 msgid "Clear output"
 msgstr "清除输出"
 
-#: data/tools/GUI.pyw:1331
+#: data/tools/GUI.pyw:1322
 msgid "About..."
 msgstr "关于……"
 
-#: data/tools/GUI.pyw:1338
+#: data/tools/GUI.pyw:1329
 msgid "Exit"
 msgstr "退出"
 
-#: data/tools/GUI.pyw:1354 data/tools/GUI.pyw:1488
+#: data/tools/GUI.pyw:1345 data/tools/GUI.pyw:1479
 msgid "wmllint"
 msgstr "wmllint"
 
-#: data/tools/GUI.pyw:1358 data/tools/GUI.pyw:1560
+#: data/tools/GUI.pyw:1349 data/tools/GUI.pyw:1549
 msgid "wmlscope"
 msgstr "wmlscope"
 
-#: data/tools/GUI.pyw:1362 data/tools/GUI.pyw:1596
+#: data/tools/GUI.pyw:1353 data/tools/GUI.pyw:1585
 msgid "wmlindent"
 msgstr "wmlindent"
 
-#: data/tools/GUI.pyw:1366 data/tools/GUI.pyw:1646
+#: data/tools/GUI.pyw:1357 data/tools/GUI.pyw:1635
 msgid "wmlxgettext"
 msgstr "wmlxgettext"
 
-#: data/tools/GUI.pyw:1369
+#: data/tools/GUI.pyw:1360
 msgid "Output"
 msgstr "输出"
 
-#: data/tools/GUI.pyw:1419
+#: data/tools/GUI.pyw:1410
 msgid "Run wmlscope"
 msgstr "运行wmlscope"
 
-#: data/tools/GUI.pyw:1422
+#: data/tools/GUI.pyw:1413
 msgid "Run wmlindent"
 msgstr "运行wmlindent"
 
-#: data/tools/GUI.pyw:1425
+#: data/tools/GUI.pyw:1416
 msgid "Run wmlxgettext"
 msgstr "运行wmlxgettext"
 
-#: data/tools/GUI.pyw:1433
+#: data/tools/GUI.pyw:1424
 msgid ""
 "No directory selected.\n"
 "\n"
@@ -380,7 +376,7 @@ msgstr ""
 "\n"
 "请选择一个目录或禁用“跳过核心目录”选项。"
 
-#: data/tools/GUI.pyw:1468 data/tools/GUI.pyw:1540
+#: data/tools/GUI.pyw:1459 data/tools/GUI.pyw:1529
 msgid ""
 "Core directory or one of its subdirectories selected in the add-on selection "
 "box.\n"
@@ -391,13 +387,13 @@ msgstr ""
 "\n"
 "工具只会在韦诺核心目录中运行。"
 
-#: data/tools/GUI.pyw:1468 data/tools/GUI.pyw:1476 data/tools/GUI.pyw:1540
-#: data/tools/GUI.pyw:1548 data/tools/GUI.pyw:1583 data/tools/GUI.pyw:1609
-#: data/tools/GUI.pyw:1628
+#: data/tools/GUI.pyw:1459 data/tools/GUI.pyw:1467 data/tools/GUI.pyw:1529
+#: data/tools/GUI.pyw:1537 data/tools/GUI.pyw:1572 data/tools/GUI.pyw:1598
+#: data/tools/GUI.pyw:1617
 msgid "Warning"
 msgstr "警告"
 
-#: data/tools/GUI.pyw:1476 data/tools/GUI.pyw:1548
+#: data/tools/GUI.pyw:1467 data/tools/GUI.pyw:1537
 msgid ""
 "No directory selected.\n"
 "\n"
@@ -407,16 +403,16 @@ msgstr ""
 "\n"
 "工具只会在韦诺核心目录下运行。"
 
-#: data/tools/GUI.pyw:1482 data/tools/GUI.pyw:1554 data/tools/GUI.pyw:1590
-#: data/tools/GUI.pyw:1614
+#: data/tools/GUI.pyw:1473 data/tools/GUI.pyw:1543 data/tools/GUI.pyw:1579
+#: data/tools/GUI.pyw:1603
 msgid "The selected directory does not exist."
 msgstr "所选目录不存在。"
 
-#: data/tools/GUI.pyw:1525
+#: data/tools/GUI.pyw:1514
 msgid "Invalid value. Value must be an integer in the range 0-999."
 msgstr "无效值。值必须是0到999之间的整数。"
 
-#: data/tools/GUI.pyw:1583
+#: data/tools/GUI.pyw:1572
 msgid ""
 "No directory selected.\n"
 "\n"
@@ -426,7 +422,7 @@ msgstr ""
 "\n"
 "工具将在韦诺核心目录下运行。"
 
-#: data/tools/GUI.pyw:1609
+#: data/tools/GUI.pyw:1598
 msgid ""
 "No directory selected.\n"
 "\n"
@@ -437,12 +433,12 @@ msgstr ""
 "工具将不会运行。"
 
 #. TRANSLATORS: Dialogue box title.
-#: data/tools/GUI.pyw:1621
+#: data/tools/GUI.pyw:1610
 msgid "Overwrite Confirmation"
 msgstr "覆盖确认"
 
 #. TRANSLATORS: {0} is a placeholder for a file name, and not meant to be modified.
-#: data/tools/GUI.pyw:1623
+#: data/tools/GUI.pyw:1612
 #, python-brace-format
 msgid ""
 "File {0} already exists.\n"
@@ -451,7 +447,7 @@ msgstr ""
 "文件 {0} 已存在。\n"
 "您想要覆盖它吗？"
 
-#: data/tools/GUI.pyw:1628
+#: data/tools/GUI.pyw:1617
 msgid ""
 "No output file selected.\n"
 "\n"
@@ -461,7 +457,7 @@ msgstr ""
 "\n"
 "该工具将不会运行。"
 
-#: data/tools/GUI.pyw:1657
+#: data/tools/GUI.pyw:1646
 #, python-brace-format
 msgid ""
 "There was an error while executing {0}.\n"
@@ -472,11 +468,11 @@ msgstr ""
 "\n"
 "错误代码：{1}"
 
-#: data/tools/GUI.pyw:1668
+#: data/tools/GUI.pyw:1657
 msgid "Text file"
 msgstr "文本文件"
 
-#: data/tools/GUI.pyw:1676
+#: data/tools/GUI.pyw:1665
 #, python-brace-format
 msgid ""
 "Error while writing to:\n"
@@ -493,12 +489,12 @@ msgstr ""
 "\n"
 "{2}"
 
-#: data/tools/GUI.pyw:1693
+#: data/tools/GUI.pyw:1682
 msgid "About Maintenance Tools GUI"
 msgstr "关于维护工具图形用户界面"
 
 #. TRANSLATORS: {0} is a placeholder for Wesnoth's current version, and not meant to be modified.
-#: data/tools/GUI.pyw:1695
+#: data/tools/GUI.pyw:1684
 #, python-brace-format
 msgid ""
 "© Elvish_Hunter, 2014-2025\n"
@@ -508,8 +504,8 @@ msgid ""
 "Part of The Battle for Wesnoth project and released under the GNU GPL v2 "
 "license\n"
 "\n"
-"Icons are taken from the Tango Desktop Project (http://"
-"tango.freedesktop.org), and are released in the Public Domain."
+"Icons are taken from the Tango Desktop Project (http://tango.freedesktop."
+"org), and are released in the Public Domain."
 msgstr ""
 "© Elvish_Hunter, 2014-2025\n"
 "\n"
@@ -520,14 +516,17 @@ msgstr ""
 "图标来自Tango桌面项目（http://tango.freedesktop.org），在公共领域下发布。"
 
 #. TRANSLATORS: Dialogue box title.
-#: data/tools/GUI.pyw:1709
+#: data/tools/GUI.pyw:1698
 msgid "Exit Confirmation"
 msgstr "退出确认"
 
-#: data/tools/GUI.pyw:1710
+#: data/tools/GUI.pyw:1699
 msgid "Do you really want to quit?"
 msgstr "你真的要退出吗？"
 
-#: data/tools/GUI.pyw:2002
+#: data/tools/GUI.pyw:1991
 msgid "This application must be placed into the wesnoth/data/tools directory."
 msgstr "此应用必须放置在 wesnoth/data/tools 目录中。"
+
+#~ msgid "Show progress"
+#~ msgstr "显示进度"

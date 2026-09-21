@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.20\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-08-18 15:19 UTC\n"
+"POT-Creation-Date: 2026-09-21 00:25 UTC\n"
 "PO-Revision-Date: 2026-08-23 19:24+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -58,7 +58,7 @@ msgstr "狼牙棒"
 #: data/core/units/humans/Loyalist_Bowman.cfg:23
 #: data/core/units/orcs/Crossbowman.cfg:32 data/core/units/orcs/Slurbow.cfg:32
 #: data/internal/Rogue_Mage/units/Bandit_Rogue_Mage.cfg:26
-#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:44
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:45
 msgid "short sword"
 msgstr "短剑"
 
@@ -92,8 +92,8 @@ msgstr "冰寒波"
 #: data/core/units/undead/Necromancer.cfg:49
 #: data/internal/Rogue_Mage/units/Bandit_Arcane_Enforcer.cfg:59
 #: data/internal/Rogue_Mage/units/Bandit_Rogue_Mage.cfg:35
-#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:65
-#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:62
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:66
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:63
 msgid "shadow wave"
 msgstr "暗影波"
 
@@ -523,7 +523,7 @@ msgstr "弓"
 #: data/core/units/monsters/Jinn.cfg:91
 #: data/core/units/monsters/Raven_Harbinger.cfg:83
 #: data/core/units/monsters/Roc.cfg:55
-#: data/core/units/monsters/Skeletal_Dragon.cfg:40
+#: data/core/units/monsters/Skeletal_Dragon.cfg:44
 #: data/core/units/undead/Corpse_Ghoul.cfg:37
 #: data/core/units/undead/Corpse_Necrophage.cfg:29
 #: data/core/units/undead/Corpse_Soulless.cfg:182
@@ -803,7 +803,7 @@ msgstr "瘟疫法杖"
 #: data/core/units/monsters/Dragonfly.cfg:31
 #: data/core/units/monsters/Dragonfly_Grand.cfg:32
 #: data/core/units/monsters/Dragonfly_Naiad.cfg:62
-#: data/core/units/monsters/Fire_Dragon.cfg:54
+#: data/core/units/monsters/Fire_Dragon.cfg:62
 #: data/core/units/monsters/Frost_Stoat.cfg:92
 #: data/core/units/monsters/Giant_Rat.cfg:30
 #: data/core/units/monsters/Horned_Scarab.cfg:39
@@ -1831,7 +1831,7 @@ msgstr "战爪"
 #: data/core/units/drakes/Hurricane.cfg:61
 #: data/core/units/drakes/Inferno.cfg:40 data/core/units/drakes/Sky.cfg:60
 #: data/core/units/drakes/Warrior.cfg:35
-#: data/core/units/monsters/Fire_Dragon.cfg:72
+#: data/core/units/monsters/Fire_Dragon.cfg:80
 #: data/core/units/monsters/Fire_Guardian.cfg:32
 #: data/core/units/monsters/Fire_Wisp.cfg:53
 #: data/core/units/monsters/Fire_Wraith.cfg:60
@@ -5612,7 +5612,7 @@ msgstr "体型异常高大强壮的人鱼有时用自己的拳头和尾巴比用
 #: data/core/units/merfolk/Brawler.cfg:30
 #: data/core/units/monsters/Cat_Jump.cfg:111
 #: data/core/units/monsters/Cat_Redtail.cfg:101
-#: data/core/units/monsters/Fire_Dragon.cfg:63
+#: data/core/units/monsters/Fire_Dragon.cfg:71
 #: data/core/units/monsters/Icemonax_Greater.cfg:72
 msgid "tail"
 msgstr "尾巴"
@@ -6417,7 +6417,7 @@ msgid "Fire Dragon"
 msgstr "火龙"
 
 #. [unit_type]: id=Fire Dragon, race=monster
-#: data/core/units/monsters/Fire_Dragon.cfg:45
+#: data/core/units/monsters/Fire_Dragon.cfg:53
 msgid ""
 "A dragon is a legendary creature, normally seen only in fantastic tales. "
 "They are very rare, and were it not for the historical events, the "
@@ -7114,7 +7114,7 @@ msgid "Skeletal Dragon"
 msgstr "骸骨龙"
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
-#: data/core/units/monsters/Skeletal_Dragon.cfg:26
+#: data/core/units/monsters/Skeletal_Dragon.cfg:30
 msgid ""
 "Long ago one of the mightiest living creatures, the feared Dragon has become "
 "only bones and dark sinew. Long after its death, it was raised through the "
@@ -7127,7 +7127,7 @@ msgstr ""
 "去不过就是一堆骨头，不过这么想的人几乎都没有活到能改变自己想法的时候。"
 
 #. [attack]: type=blade
-#: data/core/units/monsters/Skeletal_Dragon.cfg:30
+#: data/core/units/monsters/Skeletal_Dragon.cfg:34
 msgid "jaw"
 msgstr "颚"
 
@@ -9188,34 +9188,34 @@ msgstr ""
 "中，以此瓦解敌人的防御。"
 
 #. [attack]: type=blade
-#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:47
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:48
 msgid "astral blade"
 msgstr "星刃"
 
 #. [damage_type]: id=cold_damage
-#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:53
-#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:51
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:54
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:52
 msgid "chill"
 msgstr "寒击"
 
 #. [damage_type]: id=cold_damage
-#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:54
-#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:52
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:55
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:53
 msgid ""
 "This attack can deal either blade or cold damage, depending on which would "
 "be more effective."
 msgstr "此攻击可造成刃器或冰寒伤害，具体取决于哪种更为有效。"
 
 #. [damage_type]: id=cold_damage
-#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:55
-#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:53
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:56
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:54
 msgid ""
 "This unit’s melee attack can deal either blade or cold damage, depending on "
 "which would be more effective."
 msgstr "此单位的近战攻击可造成刃器或冰寒伤害，具体取决于哪种更为有效。"
 
 #. [female]: gender=female
-#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:103
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:104
 msgid "female^Shadow Lord"
 msgstr "暗影领主"
 
@@ -9241,6 +9241,6 @@ msgstr ""
 "——消失并闪避看似致命的打击，然后于片刻后重新现身，发动突然的反击。"
 
 #. [female]: gender=female
-#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:100
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:101
 msgid "female^Shadow Mage"
 msgstr "暗影法师"

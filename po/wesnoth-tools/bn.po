@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bengali\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-08-02 22:44-0500\n"
+"POT-Creation-Date: 2026-09-20 19:25-0500\n"
 "PO-Revision-Date: 2024-07-12 16:42+0530\n"
 "Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
 "Language-Team: Bengali < >\n"
@@ -34,10 +34,10 @@ msgstr ""
 "প্রদত্ত ভাষায় GUI.pyw চালান । ভাষার কোড একটি POSIX লোকালে নাম হতে হবে, সম্পূর্ণ "
 "তালিকার জন্য gettext.wesnoth.org দেখুন ।"
 
-#: data/tools/GUI.pyw:110 data/tools/GUI.pyw:124 data/tools/GUI.pyw:1433
-#: data/tools/GUI.pyw:1482 data/tools/GUI.pyw:1525 data/tools/GUI.pyw:1554
-#: data/tools/GUI.pyw:1590 data/tools/GUI.pyw:1614 data/tools/GUI.pyw:1657
-#: data/tools/GUI.pyw:1676 data/tools/GUI.pyw:2002
+#: data/tools/GUI.pyw:110 data/tools/GUI.pyw:124 data/tools/GUI.pyw:1424
+#: data/tools/GUI.pyw:1473 data/tools/GUI.pyw:1514 data/tools/GUI.pyw:1543
+#: data/tools/GUI.pyw:1579 data/tools/GUI.pyw:1603 data/tools/GUI.pyw:1646
+#: data/tools/GUI.pyw:1665 data/tools/GUI.pyw:1991
 msgid "Error"
 msgstr "ত্রুটি"
 
@@ -105,21 +105,21 @@ msgid "wmllint mode"
 msgstr "wmllint মোড"
 
 #. TRANSLATORS: Normal run mode for the WML tool.
-#: data/tools/GUI.pyw:681 data/tools/GUI.pyw:1101
+#: data/tools/GUI.pyw:681 data/tools/GUI.pyw:1092
 msgid "Normal"
 msgstr "স্বাভাবিক"
 
 #. TRANSLATORS: Tooltip explanation for normal run mode.
-#: data/tools/GUI.pyw:690 data/tools/GUI.pyw:1110
+#: data/tools/GUI.pyw:690 data/tools/GUI.pyw:1101
 msgid "Perform conversion and save changes to file"
 msgstr "পরিবর্তন করুন এবং পরিবর্তনগুলি ফাইলে সঞ্চয় করুন"
 
-#: data/tools/GUI.pyw:693 data/tools/GUI.pyw:1113
+#: data/tools/GUI.pyw:693 data/tools/GUI.pyw:1104
 msgid "Dry run"
 msgstr "ড্রাই রান"
 
 #. TRANSLATORS: Tooltip explanation for dry run mode.
-#: data/tools/GUI.pyw:702 data/tools/GUI.pyw:1122
+#: data/tools/GUI.pyw:702 data/tools/GUI.pyw:1113
 msgid "Perform conversion without saving changes to file"
 msgstr "পরিবর্তন করুন ফাইলে সঞ্চয় না করে"
 
@@ -150,12 +150,12 @@ msgstr "রিভার্ট"
 msgid "Revert conversions using back-up files"
 msgstr "ব্যাক-আপ ফাইল ব্যবহার করে পরিবর্তনগুলি পূর্বাবস্থায় ফেরান"
 
-#: data/tools/GUI.pyw:741 data/tools/GUI.pyw:1125
+#: data/tools/GUI.pyw:741 data/tools/GUI.pyw:1116
 msgid "Verbosity level"
 msgstr "বিবরণের বিস্তার"
 
 #. TRANSLATORS: Verbosity level.
-#: data/tools/GUI.pyw:749 data/tools/GUI.pyw:1133
+#: data/tools/GUI.pyw:749 data/tools/GUI.pyw:1124
 msgid "Terse"
 msgstr "সংক্ষিপ্ত"
 
@@ -235,146 +235,142 @@ msgstr "ম্যাক্রো সংজ্ঞায়ণ কমেন্টগ�
 msgid "Report all macros with untyped formals"
 msgstr "অলিখিত ফর্মালযুক্ত সকল ম্যাক্রো দেখান"
 
-#: data/tools/GUI.pyw:937
-msgid "Show progress"
-msgstr "অগ্রগতি দেখান"
-
-#: data/tools/GUI.pyw:957 data/tools/GUI.pyw:1169
+#: data/tools/GUI.pyw:948 data/tools/GUI.pyw:1160
 msgid "Exclude file names matching regular expression:"
 msgstr "সেই ফাইলগুলি দেখাবেন না যাদের নাম এই রেগুলার এক্সপ্রেশন মানে:"
 
-#: data/tools/GUI.pyw:975
+#: data/tools/GUI.pyw:966
 msgid "Exclude file names not matching regular expression:"
 msgstr "সেই ফাইলগুলি দেখাবেন না যাদের নাম এই রেগুলার এক্সপ্রেশন মানে না:"
 
 #. TRANSLATORS: 'n' in this context refers to number, as in 'n number of
 #. files'.
-#: data/tools/GUI.pyw:995
+#: data/tools/GUI.pyw:986
 msgid "Report only on macros referenced in exactly n files:"
 msgstr "শুধু সেই ম্যাক্রোগুলি দেখান যেগুলি ঠিক n সংখ্যাক ফাইলে ব্যবহৃত হয়েছে:"
 
-#: data/tools/GUI.pyw:1015
+#: data/tools/GUI.pyw:1006
 msgid "Report macro definitions and usages in file:"
 msgstr "ম্যাক্রো সংজ্ঞায়ণ এবং তাদের ফাইলে ব্যবহার দেখান:"
 
-#: data/tools/GUI.pyw:1033
+#: data/tools/GUI.pyw:1024
 msgid "Allow unused macros with names matching regular expression:"
 msgstr "এই রেগুলার এক্সপ্রেশন মেলে এমন অব্যবহৃত মাক্রো রাখা যাবে:"
 
-#: data/tools/GUI.pyw:1095
+#: data/tools/GUI.pyw:1086
 msgid "wmlindent mode"
 msgstr "wmlindent মোড"
 
 #. TRANSLATORS: Verbosity level.
-#: data/tools/GUI.pyw:1143
+#: data/tools/GUI.pyw:1134
 msgid "Verbose"
 msgstr "বিস্তারিত"
 
 #. TRANSLATORS: Verbosity level.
-#: data/tools/GUI.pyw:1153
+#: data/tools/GUI.pyw:1144
 msgid "Report unchanged files"
 msgstr "অপরিবর্তিত ফাইলের সম্পর্কে জানান"
 
-#: data/tools/GUI.pyw:1162
+#: data/tools/GUI.pyw:1153
 msgid "wmlindent options"
 msgstr "wmlindent অপশন"
 
 #. TRANSLATORS: Option to run 'quietly'.
-#: data/tools/GUI.pyw:1189
+#: data/tools/GUI.pyw:1180
 msgid "Quiet mode"
 msgstr "নীরব মোড"
 
 #. TRANSLATORS: Tooltip explanation for quiet option.
-#: data/tools/GUI.pyw:1197
+#: data/tools/GUI.pyw:1188
 msgid "Do not generate output messages"
 msgstr "আউটপুট বার্তা দেখাবেন না"
 
-#: data/tools/GUI.pyw:1217
+#: data/tools/GUI.pyw:1208
 msgid "Output directory:"
 msgstr "আউটপুট ডিরেক্টরি:"
 
-#: data/tools/GUI.pyw:1223
+#: data/tools/GUI.pyw:1214
 msgid "Options"
 msgstr "অপশন"
 
-#: data/tools/GUI.pyw:1228
+#: data/tools/GUI.pyw:1219
 msgid "Scan subdirectories"
 msgstr "সাব-ডিরেক্টরির মধ্যেও খুঁজুন"
 
-#: data/tools/GUI.pyw:1233
+#: data/tools/GUI.pyw:1224
 msgid "Show optional warnings"
 msgstr "জরুরী নয় এমন সতর্কবার্তা দেখান"
 
 #. TRANSLATORS: Also called "Needs work".
-#: data/tools/GUI.pyw:1239
+#: data/tools/GUI.pyw:1230
 msgid "Mark all strings as fuzzy"
 msgstr "সকল স্ট্রিং ফাজ়ি করুন ।"
 
-#: data/tools/GUI.pyw:1243
+#: data/tools/GUI.pyw:1234
 msgid "Advanced options"
 msgstr "বিশেষ অপশন"
 
-#: data/tools/GUI.pyw:1247
+#: data/tools/GUI.pyw:1238
 msgid "Package version"
 msgstr "প্যাকেজ সংস্করণ"
 
-#: data/tools/GUI.pyw:1264
+#: data/tools/GUI.pyw:1255
 msgid "Initial textdomain:"
 msgstr "প্রাথমিক টেক্সটডোমেন:"
 
-#: data/tools/GUI.pyw:1310 data/tools/GUI.pyw:1416
+#: data/tools/GUI.pyw:1301 data/tools/GUI.pyw:1407
 msgid "Run wmllint"
 msgstr "wmllint চালান"
 
-#: data/tools/GUI.pyw:1317
+#: data/tools/GUI.pyw:1308
 msgid "Save as text..."
 msgstr "টেক্সট হিসেবে সঞ্চয় করুন..."
 
-#: data/tools/GUI.pyw:1324
+#: data/tools/GUI.pyw:1315
 msgid "Clear output"
 msgstr "আউটপুট পরিস্কার করুন"
 
-#: data/tools/GUI.pyw:1331
+#: data/tools/GUI.pyw:1322
 msgid "About..."
 msgstr "সম্পর্কে..."
 
-#: data/tools/GUI.pyw:1338
+#: data/tools/GUI.pyw:1329
 msgid "Exit"
 msgstr "বেরিয়ে যান"
 
-#: data/tools/GUI.pyw:1354 data/tools/GUI.pyw:1488
+#: data/tools/GUI.pyw:1345 data/tools/GUI.pyw:1479
 msgid "wmllint"
 msgstr "wmllint"
 
-#: data/tools/GUI.pyw:1358 data/tools/GUI.pyw:1560
+#: data/tools/GUI.pyw:1349 data/tools/GUI.pyw:1549
 msgid "wmlscope"
 msgstr "wmlscope"
 
-#: data/tools/GUI.pyw:1362 data/tools/GUI.pyw:1596
+#: data/tools/GUI.pyw:1353 data/tools/GUI.pyw:1585
 msgid "wmlindent"
 msgstr "wmlindent"
 
-#: data/tools/GUI.pyw:1366 data/tools/GUI.pyw:1646
+#: data/tools/GUI.pyw:1357 data/tools/GUI.pyw:1635
 msgid "wmlxgettext"
 msgstr "wmlxgettext"
 
-#: data/tools/GUI.pyw:1369
+#: data/tools/GUI.pyw:1360
 msgid "Output"
 msgstr "আউটপুট"
 
-#: data/tools/GUI.pyw:1419
+#: data/tools/GUI.pyw:1410
 msgid "Run wmlscope"
 msgstr "wmlscope চালান"
 
-#: data/tools/GUI.pyw:1422
+#: data/tools/GUI.pyw:1413
 msgid "Run wmlindent"
 msgstr "wmlindent চালান"
 
-#: data/tools/GUI.pyw:1425
+#: data/tools/GUI.pyw:1416
 msgid "Run wmlxgettext"
 msgstr "wmlxgettext চালান"
 
-#: data/tools/GUI.pyw:1433
+#: data/tools/GUI.pyw:1424
 msgid ""
 "No directory selected.\n"
 "\n"
@@ -385,7 +381,7 @@ msgstr ""
 "অনুগ্রহ করে একটি ডিরেক্টরি নির্বাচন করুন বা \"কোর ডিরেক্টরি এড়িয়ে যান\" অপশনটি "
 "নিস্ক্রিয় করুন"
 
-#: data/tools/GUI.pyw:1468 data/tools/GUI.pyw:1540
+#: data/tools/GUI.pyw:1459 data/tools/GUI.pyw:1529
 msgid ""
 "Core directory or one of its subdirectories selected in the add-on selection "
 "box.\n"
@@ -397,13 +393,13 @@ msgstr ""
 "\n"
 "টুলটি শুধুমাত্র ওয়েসনথ কোর ডিরেক্টরিতেই চালানো হবে ।"
 
-#: data/tools/GUI.pyw:1468 data/tools/GUI.pyw:1476 data/tools/GUI.pyw:1540
-#: data/tools/GUI.pyw:1548 data/tools/GUI.pyw:1583 data/tools/GUI.pyw:1609
-#: data/tools/GUI.pyw:1628
+#: data/tools/GUI.pyw:1459 data/tools/GUI.pyw:1467 data/tools/GUI.pyw:1529
+#: data/tools/GUI.pyw:1537 data/tools/GUI.pyw:1572 data/tools/GUI.pyw:1598
+#: data/tools/GUI.pyw:1617
 msgid "Warning"
 msgstr "সতর্কবার্তা"
 
-#: data/tools/GUI.pyw:1476 data/tools/GUI.pyw:1548
+#: data/tools/GUI.pyw:1467 data/tools/GUI.pyw:1537
 msgid ""
 "No directory selected.\n"
 "\n"
@@ -413,16 +409,16 @@ msgstr ""
 "\n"
 "টুলটি শুধুমাত্র ওয়েসনথ কোর ডিরেক্টরিতেই চালানো হবে ।"
 
-#: data/tools/GUI.pyw:1482 data/tools/GUI.pyw:1554 data/tools/GUI.pyw:1590
-#: data/tools/GUI.pyw:1614
+#: data/tools/GUI.pyw:1473 data/tools/GUI.pyw:1543 data/tools/GUI.pyw:1579
+#: data/tools/GUI.pyw:1603
 msgid "The selected directory does not exist."
 msgstr "নির্বাচিত ডিরেক্টরির অস্তিত্ব নেই ।"
 
-#: data/tools/GUI.pyw:1525
+#: data/tools/GUI.pyw:1514
 msgid "Invalid value. Value must be an integer in the range 0-999."
 msgstr "অবৈধ মান । মান 0-999-এর মধ্যে পূর্ণসংখ্য হতে হবে ।"
 
-#: data/tools/GUI.pyw:1583
+#: data/tools/GUI.pyw:1572
 msgid ""
 "No directory selected.\n"
 "\n"
@@ -432,7 +428,7 @@ msgstr ""
 "\n"
 "টুলটি ওয়েসনথ কোর ডিরেক্টরিতে চালানো হবে ।"
 
-#: data/tools/GUI.pyw:1609
+#: data/tools/GUI.pyw:1598
 msgid ""
 "No directory selected.\n"
 "\n"
@@ -443,12 +439,12 @@ msgstr ""
 "টুলটি চালানো হবে না ।"
 
 #. TRANSLATORS: Dialogue box title.
-#: data/tools/GUI.pyw:1621
+#: data/tools/GUI.pyw:1610
 msgid "Overwrite Confirmation"
 msgstr "পরিবর্তন নিশ্চিত করুন"
 
 #. TRANSLATORS: {0} is a placeholder for a file name, and not meant to be modified.
-#: data/tools/GUI.pyw:1623
+#: data/tools/GUI.pyw:1612
 #, python-brace-format
 msgid ""
 "File {0} already exists.\n"
@@ -457,7 +453,7 @@ msgstr ""
 "ফাইল {0} আগে থেকেই রয়েছে\n"
 "আপনি কী সেটিকে মুছে তার স্থানে লিখতে চান?"
 
-#: data/tools/GUI.pyw:1628
+#: data/tools/GUI.pyw:1617
 msgid ""
 "No output file selected.\n"
 "\n"
@@ -467,7 +463,7 @@ msgstr ""
 "\n"
 "টুলটি চালানো হবে না ।"
 
-#: data/tools/GUI.pyw:1657
+#: data/tools/GUI.pyw:1646
 #, python-brace-format
 msgid ""
 "There was an error while executing {0}.\n"
@@ -478,11 +474,11 @@ msgstr ""
 "\n"
 "ত্রুটি কোড: {1}"
 
-#: data/tools/GUI.pyw:1668
+#: data/tools/GUI.pyw:1657
 msgid "Text file"
 msgstr "টেক্সট ফাইল"
 
-#: data/tools/GUI.pyw:1676
+#: data/tools/GUI.pyw:1665
 #, python-brace-format
 msgid ""
 "Error while writing to:\n"
@@ -499,12 +495,12 @@ msgstr ""
 "\n"
 "{2}"
 
-#: data/tools/GUI.pyw:1693
+#: data/tools/GUI.pyw:1682
 msgid "About Maintenance Tools GUI"
 msgstr "মেইনটেন্যান্স টুলস্ জিইউআই সম্পর্কে"
 
 #. TRANSLATORS: {0} is a placeholder for Wesnoth's current version, and not meant to be modified.
-#: data/tools/GUI.pyw:1695
+#: data/tools/GUI.pyw:1684
 #, fuzzy, python-brace-format
 #| msgid ""
 #| "© Elvish_Hunter, 2014-2024\n"
@@ -514,8 +510,8 @@ msgstr "মেইনটেন্যান্স টুলস্ জিইউআ�
 #| "Part of The Battle for Wesnoth project and released under the GNU GPL v2 "
 #| "license\n"
 #| "\n"
-#| "Icons are taken from the Tango Desktop Project (http://"
-#| "tango.freedesktop.org), and are released in the Public Domain."
+#| "Icons are taken from the Tango Desktop Project (http://tango.freedesktop."
+#| "org), and are released in the Public Domain."
 msgid ""
 "© Elvish_Hunter, 2014-2025\n"
 "\n"
@@ -524,8 +520,8 @@ msgid ""
 "Part of The Battle for Wesnoth project and released under the GNU GPL v2 "
 "license\n"
 "\n"
-"Icons are taken from the Tango Desktop Project (http://"
-"tango.freedesktop.org), and are released in the Public Domain."
+"Icons are taken from the Tango Desktop Project (http://tango.freedesktop."
+"org), and are released in the Public Domain."
 msgstr ""
 "© Elvish_Hunter, 2014-2024\n"
 "\n"
@@ -538,14 +534,17 @@ msgstr ""
 "পাবলিক ডোমেইনে প্রকাশিত ।"
 
 #. TRANSLATORS: Dialogue box title.
-#: data/tools/GUI.pyw:1709
+#: data/tools/GUI.pyw:1698
 msgid "Exit Confirmation"
 msgstr "বেরিয়ে যাওয়া নিশ্চিত করুন"
 
-#: data/tools/GUI.pyw:1710
+#: data/tools/GUI.pyw:1699
 msgid "Do you really want to quit?"
 msgstr "আপনি কী সত্যিই বেরিয়ে যেতে চান?"
 
-#: data/tools/GUI.pyw:2002
+#: data/tools/GUI.pyw:1991
 msgid "This application must be placed into the wesnoth/data/tools directory."
 msgstr "এই অ্যাপ্লিকেশনটি wesnoth/data/tools ডিরেক্টরিতে অবস্থিত হতেই হবে ।"
+
+#~ msgid "Show progress"
+#~ msgstr "অগ্রগতি দেখান"

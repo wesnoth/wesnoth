@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-08-18 15:19 UTC\n"
+"POT-Creation-Date: 2026-09-21 00:25 UTC\n"
 "PO-Revision-Date: 2022-01-13 16:24+0000\n"
 "Last-Translator: GunChleoc, 2018\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -50,7 +50,7 @@ msgstr "màs"
 #: data/core/units/humans/Loyalist_Bowman.cfg:23
 #: data/core/units/orcs/Crossbowman.cfg:32 data/core/units/orcs/Slurbow.cfg:32
 #: data/internal/Rogue_Mage/units/Bandit_Rogue_Mage.cfg:26
-#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:44
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:45
 msgid "short sword"
 msgstr "claidheamh goirid"
 
@@ -84,8 +84,8 @@ msgstr "tonn fuaraidh"
 #: data/core/units/undead/Necromancer.cfg:49
 #: data/internal/Rogue_Mage/units/Bandit_Arcane_Enforcer.cfg:59
 #: data/internal/Rogue_Mage/units/Bandit_Rogue_Mage.cfg:35
-#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:65
-#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:62
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:66
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:63
 msgid "shadow wave"
 msgstr "tonn sgàile"
 
@@ -504,7 +504,7 @@ msgstr "bogha"
 #: data/core/units/monsters/Jinn.cfg:91
 #: data/core/units/monsters/Raven_Harbinger.cfg:83
 #: data/core/units/monsters/Roc.cfg:55
-#: data/core/units/monsters/Skeletal_Dragon.cfg:40
+#: data/core/units/monsters/Skeletal_Dragon.cfg:44
 #: data/core/units/undead/Corpse_Ghoul.cfg:37
 #: data/core/units/undead/Corpse_Necrophage.cfg:29
 #: data/core/units/undead/Corpse_Soulless.cfg:182
@@ -801,7 +801,7 @@ msgstr "bata plàighe"
 #: data/core/units/monsters/Dragonfly.cfg:31
 #: data/core/units/monsters/Dragonfly_Grand.cfg:32
 #: data/core/units/monsters/Dragonfly_Naiad.cfg:62
-#: data/core/units/monsters/Fire_Dragon.cfg:54
+#: data/core/units/monsters/Fire_Dragon.cfg:62
 #: data/core/units/monsters/Frost_Stoat.cfg:92
 #: data/core/units/monsters/Giant_Rat.cfg:30
 #: data/core/units/monsters/Horned_Scarab.cfg:39
@@ -1752,7 +1752,7 @@ msgstr "spògan-catha"
 #: data/core/units/drakes/Hurricane.cfg:61
 #: data/core/units/drakes/Inferno.cfg:40 data/core/units/drakes/Sky.cfg:60
 #: data/core/units/drakes/Warrior.cfg:35
-#: data/core/units/monsters/Fire_Dragon.cfg:72
+#: data/core/units/monsters/Fire_Dragon.cfg:80
 #: data/core/units/monsters/Fire_Guardian.cfg:32
 #: data/core/units/monsters/Fire_Wisp.cfg:53
 #: data/core/units/monsters/Fire_Wraith.cfg:60
@@ -5078,7 +5078,7 @@ msgstr ""
 #: data/core/units/merfolk/Brawler.cfg:30
 #: data/core/units/monsters/Cat_Jump.cfg:111
 #: data/core/units/monsters/Cat_Redtail.cfg:101
-#: data/core/units/monsters/Fire_Dragon.cfg:63
+#: data/core/units/monsters/Fire_Dragon.cfg:71
 #: data/core/units/monsters/Icemonax_Greater.cfg:72
 msgid "tail"
 msgstr "earball"
@@ -5777,7 +5777,7 @@ msgid "Fire Dragon"
 msgstr "Dràgon teine"
 
 #. [unit_type]: id=Fire Dragon, race=monster
-#: data/core/units/monsters/Fire_Dragon.cfg:45
+#: data/core/units/monsters/Fire_Dragon.cfg:53
 msgid ""
 "A dragon is a legendary creature, normally seen only in fantastic tales. "
 "They are very rare, and were it not for the historical events, the "
@@ -6371,7 +6371,7 @@ msgid "Skeletal Dragon"
 msgstr "Dràgon cnàmhach"
 
 #. [unit_type]: id=Skeletal Dragon, race=undead
-#: data/core/units/monsters/Skeletal_Dragon.cfg:26
+#: data/core/units/monsters/Skeletal_Dragon.cfg:30
 msgid ""
 "Long ago one of the mightiest living creatures, the feared Dragon has become "
 "only bones and dark sinew. Long after its death, it was raised through the "
@@ -6381,7 +6381,7 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=blade
-#: data/core/units/monsters/Skeletal_Dragon.cfg:30
+#: data/core/units/monsters/Skeletal_Dragon.cfg:34
 msgid "jaw"
 msgstr "peirceall"
 
@@ -8197,38 +8197,38 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=blade
-#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:47
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:48
 #, fuzzy
 #| msgid "war blade"
 msgid "astral blade"
 msgstr "lann-chogaidh"
 
 #. [damage_type]: id=cold_damage
-#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:53
-#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:51
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:54
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:52
 #, fuzzy
 #| msgid "chill wave"
 msgid "chill"
 msgstr "tonn fuaraidh"
 
 #. [damage_type]: id=cold_damage
-#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:54
-#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:52
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:55
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:53
 msgid ""
 "This attack can deal either blade or cold damage, depending on which would "
 "be more effective."
 msgstr ""
 
 #. [damage_type]: id=cold_damage
-#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:55
-#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:53
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:56
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:54
 msgid ""
 "This unit’s melee attack can deal either blade or cold damage, depending on "
 "which would be more effective."
 msgstr ""
 
 #. [female]: gender=female
-#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:103
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:104
 #, fuzzy
 #| msgid "female^Dark Horse"
 msgid "female^Shadow Lord"
@@ -8254,7 +8254,7 @@ msgid ""
 msgstr ""
 
 #. [female]: gender=female
-#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:100
+#: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:101
 #, fuzzy
 #| msgid "female^Red Mage"
 msgid "female^Shadow Mage"

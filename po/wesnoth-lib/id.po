@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-08-18 10:18-0500\n"
+"POT-Creation-Date: 2026-09-20 19:25-0500\n"
 "PO-Revision-Date: 2012-12-29 23:17+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -2259,7 +2259,7 @@ msgstr ""
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:227
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:459
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:298
-#: data/gui/themes/default/dialogs/reachmap_options.cfg:160
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:176
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:170
 #, fuzzy
 #| msgid "Default"
@@ -2625,7 +2625,7 @@ msgstr "Simpan kata sandi ke pilihan (singkirkan teks)"
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:356
 #: data/gui/themes/default/dialogs/mp_report.cfg:235
 #: data/gui/themes/default/dialogs/prompt.cfg:86
-#: data/gui/themes/default/dialogs/reachmap_options.cfg:171
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:187
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:181
 #: data/gui/themes/default/dialogs/simple_item_selector.cfg:145
 #: data/gui/themes/default/dialogs/sp_options_configure.cfg:105
@@ -2647,7 +2647,7 @@ msgstr "OK"
 #: data/gui/themes/default/dialogs/addon_connect.cfg:206
 #: data/gui/themes/default/dialogs/addon_license_prompt.cfg:113
 #: data/gui/themes/default/dialogs/addon_uninstall_list.cfg:170
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:626
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:627
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:234
 #: data/gui/themes/default/dialogs/core_dialog.cfg:241
 #: data/gui/themes/default/dialogs/custom_tod.cfg:534
@@ -2685,7 +2685,7 @@ msgstr "OK"
 #: data/gui/themes/default/dialogs/mp_report.cfg:249
 #: data/gui/themes/default/dialogs/mp_staging.cfg:450
 #: data/gui/themes/default/dialogs/network_transmission.cfg:111
-#: data/gui/themes/default/dialogs/reachmap_options.cfg:182
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:198
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:192
 #: data/gui/themes/default/dialogs/simple_item_selector.cfg:158
 #: data/gui/themes/default/dialogs/sp_options_configure.cfg:117
@@ -2795,7 +2795,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/themes/default/dialogs/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:718
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:730
 msgid "No description available."
 msgstr "Tidak ada keterangan yang tersedia."
 
@@ -3076,12 +3076,12 @@ msgstr "Jenis kelamin :"
 #. [label]
 #. The campaign_landing^ strings are shown in the right-hand panel when the campaign menu is opened.
 #. This one is the page title, shown in bold.
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:207
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:208
 msgid "campaign_landing^Welcome to Wesnoth v1.20"
 msgstr ""
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:209
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:210
 msgid ""
 "campaign_landing^<b>If you’re new to Wesnoth</b>, the opening story arc "
 "starts with <span color='#e1e119' style='italic'>The South Guard</span> and "
@@ -3092,14 +3092,14 @@ msgid ""
 msgstr ""
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:211
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:212
 msgid ""
 "campaign_landing^<b>If you’re a returning player</b>, you’ll notice a number "
 "of changes since v1.18:"
 msgstr ""
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:213
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:214
 msgid ""
 "campaign_landing^<span color='#e1e119' style='italic'>Heir to the Throne</"
 "span> now features an open world with 33 branching scenarios, each awarding "
@@ -3108,7 +3108,7 @@ msgid ""
 msgstr ""
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:215
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:216
 msgid ""
 "campaign_landing^<span color='#e1e119' style='italic'>The Deceiver’s Gambit</"
 "span> replaces <i>Delfador’s Memoirs</i>. Follow a young mage from the "
@@ -3118,7 +3118,7 @@ msgid ""
 msgstr ""
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:217
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:218
 msgid ""
 "campaign_landing^<span color='#e1e119' style='italic'>Dusk of Dawn</span> is "
 "our first troll campaign. Lead the Golden Flame Tribe out from the bowels of "
@@ -3126,7 +3126,7 @@ msgid ""
 msgstr ""
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:219
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:220
 msgid ""
 "campaign_landing^<span color='#e1e119' style='italic'>Of Pearls and Pirates</"
 "span> is a new beginner-oriented campaign set in a sleepy fishing town on "
@@ -3135,7 +3135,7 @@ msgid ""
 msgstr ""
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:221
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:222
 msgid ""
 "campaign_landing^<span color='#e1e119' style='italic'>The South Guard</span> "
 "has been significantly revised, and now replaces the classic <i>Battle "
@@ -3145,7 +3145,7 @@ msgid ""
 msgstr ""
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:223
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:224
 msgid ""
 "campaign_landing^<span color='#e1e119' style='italic'>The Hammer of "
 "Thursagan</span> has been enhanced with story adjustments, improved enemy "
@@ -3154,7 +3154,7 @@ msgid ""
 msgstr ""
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:225
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:226
 msgid ""
 "campaign_landing^<span color='#e1e119' style='italic'>Winds of Fate</span> "
 "has been rebalanced with much lower recall costs, redesigned wildlife "
@@ -3164,14 +3164,14 @@ msgid ""
 msgstr ""
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:227
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:228
 msgid ""
 "campaign_landing^For a full list of changes, consult our official changelog "
 "at https://www.wesnoth.org/start/1.20/"
 msgstr ""
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:248
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:249
 msgid ""
 "In addition to the mainline campaigns, Wesnoth also has an ever-growing list "
 "of add-on content created by other players available via the Add-ons server, "
@@ -3183,7 +3183,7 @@ msgstr ""
 #. [label]
 #. "more than 15" gives a little leeway to add or remove one without changing the translatable text.
 #. It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:265
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:266
 msgid ""
 "Wesnoth normally includes more than 15 mainline campaigns, even before "
 "installing any from the add-ons server. If you’ve installed the game via a "
@@ -3196,7 +3196,7 @@ msgstr ""
 #. [label]: id=name
 #. [label]
 #. [toggle_button]: id=unit_name
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:305
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:306
 #: data/gui/themes/default/dialogs/game_load.cfg:170
 #: data/gui/themes/default/dialogs/mp_connect.cfg:159
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:33
@@ -3207,83 +3207,83 @@ msgid "Name"
 msgstr "Nama"
 
 #. [toggle_button]: id=sort_name
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:306
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:307
 msgid "Sort by full campaign name in alphabetical order"
 msgstr ""
 
 #. [toggle_button]: id=sort_time
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:317
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:318
 #, fuzzy
 #| msgid "Time limit"
 msgid "Timeline"
 msgstr "Batas waktu"
 
 #. [toggle_button]: id=sort_time
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:318
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:319
 msgid "Sort in approximate chronological order of story events"
 msgstr ""
 
 #. [multimenu_button]: id=filter_completion
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:328
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:329
 msgid "Filter by campaign completion status"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:331
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:332
 msgid "Not Completed"
 msgstr ""
 
 #. [option]
 #. campaigns which the player hasn't beaten, rather than campaigns which the author hasn't finished writing
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:333
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:334
 msgid "Show campaigns not completed by player"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:337
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:338
 msgid "Completed: Bronze"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:338
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:339
 msgid "Show campaigns completed at easiest difficulty"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:342
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:343
 #, fuzzy
 #| msgid "Choose Player"
 msgid "Completed: Silver"
 msgstr "Pilih Pemain"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:343
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:344
 msgid "Show campaigns completed at intermediate difficulties"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:347
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:348
 msgid "Completed: Gold"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:348
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:349
 msgid "Show campaigns completed at hardest difficulty"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:352
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:353
 msgid "Completed: All"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:353
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:354
 msgid "Show completed campaigns"
 msgstr ""
 
 #. [label]
 #. [label]: id=mods_header
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:404
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:405
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:209
 #, fuzzy
 #| msgid "Choose Resolution"
@@ -3291,19 +3291,19 @@ msgid "Modifications:"
 msgstr "Pilih resolusi"
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:429
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:430
 msgid "Combat:"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:444
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:445
 #, fuzzy
 #| msgid "Default"
 msgid "Default RNG"
 msgstr "Default"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:445
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:446
 msgid ""
 "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
 "\n"
@@ -3312,12 +3312,12 @@ msgid ""
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:450
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:451
 msgid "Predictable RNG"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:451
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:452
 msgid ""
 "Identical to Default RNG, except loading a saved game will not change the "
 "outcome of an attack.\n"
@@ -3327,12 +3327,12 @@ msgid ""
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:456
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:457
 msgid "Reduced RNG"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:457
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:458
 msgid ""
 "Hits and misses are much more consistent. This tends to make small-scale "
 "engagements easier to plan.\n"
@@ -3342,40 +3342,39 @@ msgid ""
 msgstr ""
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:474
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:475
 #, fuzzy
 #| msgid "Difficulty: "
 msgid "Difficulty:"
 msgstr "Kesulitan: "
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:488
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:489
 msgid "Easy"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:491
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:492
 #, fuzzy
 #| msgid "Save Replay"
 msgid "Normal"
 msgstr "Simpan Replay"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:494
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:495
 msgid "Hard"
 msgstr ""
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:551
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:552
 #, fuzzy
 #| msgid "Play a campaign"
 msgid "Play a Campaign"
 msgstr "Mainkan Kampanye"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [button]: id=proceed
 #. [button]: id=ok
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:615
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:616
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:221
 #: src/gui/dialogs/campaign_selection.cpp:85
 #, fuzzy
@@ -3461,7 +3460,7 @@ msgstr "Load Permainan"
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
 #: src/gui/dialogs/editor/edit_unit.cpp:296
-#: src/preferences/preferences.cpp:1291
+#: src/preferences/preferences.cpp:1311
 msgid "Select"
 msgstr "Pilih"
 
@@ -3537,7 +3536,7 @@ msgstr ""
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:120
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:86
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:183
-#: src/gui/dialogs/units_dialog.cpp:245
+#: src/gui/dialogs/units_dialog.cpp:248
 msgid "Name:"
 msgstr "Nama:"
 
@@ -3997,7 +3996,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:452
+#: src/gui/dialogs/multiplayer/lobby.cpp:454
 #, fuzzy
 #| msgid "Experience modifier"
 msgid "Experience modifier:"
@@ -4083,7 +4082,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:303
-#: src/gui/dialogs/multiplayer/lobby.cpp:453
+#: src/gui/dialogs/multiplayer/lobby.cpp:455
 #, fuzzy
 #| msgid "Gold per village"
 msgid "Gold per village:"
@@ -4374,7 +4373,7 @@ msgstr "Generator Peta"
 #. [button]: id=random_map_settings
 #: data/gui/themes/default/dialogs/editor_generate_map.cfg:128
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:908
-#: src/gui/dialogs/multiplayer/lobby.cpp:451
+#: src/gui/dialogs/multiplayer/lobby.cpp:453
 msgid "Settings"
 msgstr "Setting"
 
@@ -4412,7 +4411,7 @@ msgstr "Tinggi:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/editor_new_map.cfg:116
-#: src/gui/dialogs/units_dialog.cpp:473
+#: src/gui/dialogs/units_dialog.cpp:477
 #, fuzzy
 #| msgid "Create Game"
 msgid "Create"
@@ -4827,7 +4826,7 @@ msgstr "Setting Redaktur"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/game_stats.cfg:832
-#: src/gui/dialogs/units_dialog.cpp:562
+#: src/gui/dialogs/units_dialog.cpp:566
 #, fuzzy
 #| msgid "Scroll speed:"
 msgid "Scroll To"
@@ -5304,14 +5303,14 @@ msgstr "Buat Permainan"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:561
-#: src/gui/dialogs/multiplayer/lobby.cpp:992
+#: src/gui/dialogs/multiplayer/lobby.cpp:1018
 msgid "Join"
 msgstr "Ikut"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:573
-#: src/gui/dialogs/multiplayer/lobby.cpp:962
+#: src/gui/dialogs/multiplayer/lobby.cpp:988
 msgid "Observe"
 msgstr "Mengamati"
 
@@ -6037,7 +6036,7 @@ msgstr ""
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:176
 #: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:181
 #: data/gui/themes/default/dialogs/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:454
+#: src/gui/dialogs/multiplayer/lobby.cpp:456
 #, fuzzy
 #| msgid "Map size: "
 msgid "Map size:"
@@ -6116,7 +6115,7 @@ msgstr "Aksi"
 #. [label]: id=status_label
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:364
 #: data/gui/themes/default/dialogs/mp_staging.cfg:671
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:514
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:515
 msgid "Waiting for players to join..."
 msgstr ""
 
@@ -6169,7 +6168,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:401
-#: src/gui/dialogs/multiplayer/lobby.cpp:430
+#: src/gui/dialogs/multiplayer/lobby.cpp:432
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "Modifications"
@@ -6528,7 +6527,7 @@ msgstr "Hotkey"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:130
-#: src/gui/dialogs/preferences_dialog.cpp:881
+#: src/gui/dialogs/preferences_dialog.cpp:896
 msgid "game_hotkeys^G"
 msgstr ""
 
@@ -6541,7 +6540,7 @@ msgstr ""
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:145
-#: src/gui/dialogs/preferences_dialog.cpp:882
+#: src/gui/dialogs/preferences_dialog.cpp:897
 msgid "editor_hotkeys^E"
 msgstr ""
 
@@ -6554,7 +6553,7 @@ msgstr ""
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:160
-#: src/gui/dialogs/preferences_dialog.cpp:883
+#: src/gui/dialogs/preferences_dialog.cpp:898
 msgid "mainmenu_hotkeys^M"
 msgstr ""
 
@@ -6765,8 +6764,35 @@ msgstr "Frekuensi:"
 msgid "Set the frequency of unit idle animations"
 msgstr "Pasang frequensi animasi unit bermalasan"
 
+#. [label]
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:409
+msgid "Accessibility:"
+msgstr ""
+
+#. [button]: id=custom_orb_color
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:423
+msgid "Customize orb colors"
+msgstr ""
+
+#. [button]: id=custom_orb_color
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:425
+msgid "Change the appearance of the unit movement status indicators"
+msgstr ""
+
+#. [button]: id=custom_reach_map
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:438
+#, fuzzy
+#| msgid "Actions"
+msgid "Customize reach map"
+msgstr "Aksi"
+
+#. [button]: id=custom_reach_map
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:439
+msgid "Change the appearance of the unit movement UI overlay"
+msgstr ""
+
 #. [tab]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:454
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:498
 #, fuzzy
 #| msgid "Refresh Display"
 msgid "Display"
@@ -7000,6 +7026,16 @@ msgstr ""
 #. [grid]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:144
 msgid "Tint Opacity:"
+msgstr ""
+
+#. [grid]
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:148
+msgid "Darken Opacity:"
+msgstr ""
+
+#. [toggle_button]: id=reachmap_darken_tex
+#: data/gui/themes/default/dialogs/reachmap_options.cfg:157
+msgid "Textured darken"
 msgstr ""
 
 #. [button]: id=open
@@ -7354,7 +7390,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/wml_error.cfg:40
-#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:249
+#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:250
 #: src/gui/dialogs/transient_message.cpp:77
 msgid "Error"
 msgstr "Error"
@@ -7362,8 +7398,8 @@ msgstr "Error"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
 #: data/gui/themes/default/dialogs/wml_error.cfg:112
-#: src/gui/dialogs/multiplayer/lobby.cpp:178
-#: src/gui/dialogs/multiplayer/lobby.cpp:194 src/gui/dialogs/wml_error.cpp:156
+#: src/gui/dialogs/multiplayer/lobby.cpp:180
+#: src/gui/dialogs/multiplayer/lobby.cpp:196 src/gui/dialogs/wml_error.cpp:156
 msgid "Details:"
 msgstr ""
 
@@ -7959,20 +7995,20 @@ msgstr ""
 msgid "game^Get Add-ons"
 msgstr "Add-on"
 
-#: src/gui/dialogs/campaign_selection.cpp:412
+#: src/gui/dialogs/campaign_selection.cpp:409
 #, fuzzy
 #| msgid "Campaign"
 msgid "More campaigns..."
 msgstr "Kampanye"
 
-#: src/gui/dialogs/campaign_selection.cpp:427
+#: src/gui/dialogs/campaign_selection.cpp:424
 #, fuzzy
 #| msgid "Campaign"
 msgid "Missing Campaigns"
 msgstr "Kampanye"
 
-#: src/gui/dialogs/campaign_selection.cpp:461
-#: src/gui/dialogs/multiplayer/lobby.cpp:435
+#: src/gui/dialogs/campaign_selection.cpp:458
+#: src/gui/dialogs/multiplayer/lobby.cpp:437
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "active_modifications^None"
@@ -8061,7 +8097,7 @@ msgid "Faction"
 msgstr "Aksi"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:185
-#: src/gui/dialogs/multiplayer/lobby.cpp:423
+#: src/gui/dialogs/multiplayer/lobby.cpp:425
 #, fuzzy
 #| msgid "Era:"
 msgid "Era"
@@ -8382,12 +8418,12 @@ msgid "Unknown"
 msgstr "Jaman yang tidak diketahui"
 
 #: src/gui/dialogs/game_stats.cpp:188 src/gui/dialogs/game_stats.cpp:191
-#: src/gui/dialogs/multiplayer/lobby.cpp:449
+#: src/gui/dialogs/multiplayer/lobby.cpp:451
 msgid "no"
 msgstr "tidak"
 
 #: src/gui/dialogs/game_stats.cpp:188 src/gui/dialogs/game_stats.cpp:191
-#: src/gui/dialogs/multiplayer/lobby.cpp:449
+#: src/gui/dialogs/multiplayer/lobby.cpp:451
 msgid "yes"
 msgstr "ya"
 
@@ -8533,108 +8569,108 @@ msgid ""
 msgstr ""
 
 #: src/gui/dialogs/multiplayer/faction_select.cpp:200
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:498
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:499
 msgid "Random"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:65
+#: src/gui/dialogs/multiplayer/lobby.cpp:66
 #, fuzzy
 #| msgid "Do you really want to quit?"
 msgid "Do you really want to log out?"
 msgstr "Apakah anda benar-benar mau keluar?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:174
+#: src/gui/dialogs/multiplayer/lobby.cpp:176
 msgid "Incompatible User-made Content"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:175
+#: src/gui/dialogs/multiplayer/lobby.cpp:177
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host’s "
 "add-ons be updated."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:190
+#: src/gui/dialogs/multiplayer/lobby.cpp:192
 msgid "Missing User-made Content"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:191
+#: src/gui/dialogs/multiplayer/lobby.cpp:193
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
 "Do you want to try to install them?"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:368
+#: src/gui/dialogs/multiplayer/lobby.cpp:370
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Permainan: menunjukkan $num_shown out of $num_total"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:390
+#: src/gui/dialogs/multiplayer/lobby.cpp:392
 msgid "$game_name (Era: $era_name)"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:420
+#: src/gui/dialogs/multiplayer/lobby.cpp:422
 msgid "era_or_mod^not installed"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:455
+#: src/gui/dialogs/multiplayer/lobby.cpp:457
 #, fuzzy
 #| msgid "Reloaded game"
 msgid "Reloaded:"
 msgstr "Buka kembali permainan sebelumnya"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#: src/gui/dialogs/multiplayer/lobby.cpp:458
 msgid "Shared vision:"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:457
+#: src/gui/dialogs/multiplayer/lobby.cpp:459
 msgid "Shuffle sides:"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:458
+#: src/gui/dialogs/multiplayer/lobby.cpp:460
 #, fuzzy
 #| msgid "Time limit"
 msgid "Time limit:"
 msgstr "Batas waktu"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:459
+#: src/gui/dialogs/multiplayer/lobby.cpp:461
 #, fuzzy
 #| msgid "Use map settings"
 msgid "Use map settings:"
 msgstr "Gunakan setting peta"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:467
+#: src/gui/dialogs/multiplayer/lobby.cpp:469
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:492
+#: src/gui/dialogs/multiplayer/lobby.cpp:494
 msgid "Observers allowed"
 msgstr "Para Pengamat diijinkan"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:495
+#: src/gui/dialogs/multiplayer/lobby.cpp:497
 msgid "Observers not allowed"
 msgstr "Para Pengamat tidak diijinkan"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:641
+#: src/gui/dialogs/multiplayer/lobby.cpp:643
 #, fuzzy
 #| msgid "Lobby"
 msgid "lobby"
 msgstr "Lobi"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:962
+#: src/gui/dialogs/multiplayer/lobby.cpp:988
 msgid ""
 "This game doesn’t allow observers. Observe using moderator rights anyway?"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:973
+#: src/gui/dialogs/multiplayer/lobby.cpp:999
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:992
+#: src/gui/dialogs/multiplayer/lobby.cpp:1018
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
 
@@ -8690,41 +8726,53 @@ msgstr "Menguji skenario"
 msgid "Random Maps"
 msgstr "Buat Peta Acak"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:282
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:283
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:167
+#, fuzzy
+#| msgid "Scenario start"
+msgid "Scenario not found: "
+msgstr "Permulaan Skenario"
+
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:237
+#, fuzzy
+#| msgid "Choose Resolution"
+msgid "Modification(s) not found: "
+msgstr "Pilih resolusi"
+
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:294
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:295
 msgid "No games found."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:344
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:356
 msgid "No eras found."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:345
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:357
 msgid "No eras found"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:622
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:634
 msgid "No eras available for this game."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:874
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:886
 msgid "number of players^$min to $max"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1027
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1039
 msgid "The selected game has no sides!"
 msgstr ""
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1034
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1046
 msgid "The selected game cannot be created."
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1107
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1119
 msgid "Choose Starting Scenario"
 msgstr ""
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1107
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1119
 msgid "Select at which point to begin this campaign."
 msgstr ""
 
@@ -8783,7 +8831,7 @@ msgstr "Setting Hotkey"
 msgid "Invalid Color"
 msgstr "#(Tidak Berlaku)"
 
-#: src/gui/dialogs/multiplayer/mp_staging.cpp:515
+#: src/gui/dialogs/multiplayer/mp_staging.cpp:516
 msgid "Waiting for players to choose factions..."
 msgstr ""
 
@@ -8791,51 +8839,51 @@ msgstr ""
 msgid "The End"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:176
+#: src/gui/dialogs/preferences_dialog.cpp:177
 msgid "friend"
 msgstr "teman"
 
-#: src/gui/dialogs/preferences_dialog.cpp:181
+#: src/gui/dialogs/preferences_dialog.cpp:182
 msgid "ignored"
 msgstr "diabaikan"
 
-#: src/gui/dialogs/preferences_dialog.cpp:234
-#: src/gui/dialogs/preferences_dialog.cpp:291
+#: src/gui/dialogs/preferences_dialog.cpp:235
+#: src/gui/dialogs/preferences_dialog.cpp:292
 msgid "No username specified"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:249
+#: src/gui/dialogs/preferences_dialog.cpp:250
 msgid "Invalid username"
 msgstr "Nama pengguna tidak berlaku"
 
-#: src/gui/dialogs/preferences_dialog.cpp:296
+#: src/gui/dialogs/preferences_dialog.cpp:297
 #, fuzzy
 #| msgid "View and edit your friends and ignores list"
 msgid "Not on friends or ignore lists"
 msgstr "Lihat dan edit daftar teman dan diabaikan anda"
 
-#: src/gui/dialogs/preferences_dialog.cpp:927
-#: src/gui/dialogs/preferences_dialog.cpp:993
+#: src/gui/dialogs/preferences_dialog.cpp:942
+#: src/gui/dialogs/preferences_dialog.cpp:1008
 msgid "No hotkey selected"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:955
+#: src/gui/dialogs/preferences_dialog.cpp:970
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:961
+#: src/gui/dialogs/preferences_dialog.cpp:976
 #, fuzzy
 #| msgid "Clear Hotkey"
 msgid "Reassign Hotkey"
 msgstr "Singkir Hotkey"
 
-#: src/gui/dialogs/preferences_dialog.cpp:978
+#: src/gui/dialogs/preferences_dialog.cpp:993
 msgid "All hotkeys have been reset to their default values."
 msgstr ""
 
-#: src/gui/dialogs/preferences_dialog.cpp:978
+#: src/gui/dialogs/preferences_dialog.cpp:993
 #, fuzzy
 #| msgid "Hotkeys"
 msgid "Hotkeys Reset"
@@ -8937,81 +8985,81 @@ msgstr "Versi"
 msgid "Choose Test Scenario"
 msgstr "Menguji skenario"
 
-#: src/gui/dialogs/units_dialog.cpp:245 src/hotkey/hotkey_command.cpp:103
+#: src/gui/dialogs/units_dialog.cpp:248 src/hotkey/hotkey_command.cpp:103
 msgid "Rename Unit"
 msgstr "Beri Nama Baru untuk Unit"
 
-#: src/gui/dialogs/units_dialog.cpp:278
+#: src/gui/dialogs/units_dialog.cpp:281
 msgid "This unit requires no upkeep."
 msgstr ""
 
-#: src/gui/dialogs/units_dialog.cpp:279 src/gui/dialogs/units_dialog.cpp:284
-#: src/gui/dialogs/units_dialog.cpp:289
+#: src/gui/dialogs/units_dialog.cpp:282 src/gui/dialogs/units_dialog.cpp:287
+#: src/gui/dialogs/units_dialog.cpp:292
 #, fuzzy
 #| msgid "Do you really want to quit?"
 msgid "Do you really want to dismiss him?"
 msgstr "Apakah anda benar-benar mau keluar?"
 
-#: src/gui/dialogs/units_dialog.cpp:280 src/gui/dialogs/units_dialog.cpp:285
-#: src/gui/dialogs/units_dialog.cpp:290
+#: src/gui/dialogs/units_dialog.cpp:283 src/gui/dialogs/units_dialog.cpp:288
+#: src/gui/dialogs/units_dialog.cpp:293
 #, fuzzy
 #| msgid "Do you really want to quit?"
 msgid "Do you really want to dismiss her?"
 msgstr "Apakah anda benar-benar mau keluar?"
 
-#: src/gui/dialogs/units_dialog.cpp:283
+#: src/gui/dialogs/units_dialog.cpp:286
 msgid "This unit is an experienced one, having advanced levels."
 msgstr ""
 
-#: src/gui/dialogs/units_dialog.cpp:288
+#: src/gui/dialogs/units_dialog.cpp:291
 msgid "This unit is close to advancing a level."
 msgstr ""
 
-#: src/gui/dialogs/units_dialog.cpp:294
+#: src/gui/dialogs/units_dialog.cpp:297
 msgid "Dismiss Unit"
 msgstr ""
 
-#: src/gui/dialogs/units_dialog.cpp:436
+#: src/gui/dialogs/units_dialog.cpp:440
 msgid "unit_variation^Default Variation"
 msgstr ""
 
-#: src/gui/dialogs/units_dialog.cpp:472
+#: src/gui/dialogs/units_dialog.cpp:476
 #, fuzzy
 #| msgid "Delete File"
 msgid "Create Unit"
 msgstr "Hapus File"
 
-#: src/gui/dialogs/units_dialog.cpp:543
+#: src/gui/dialogs/units_dialog.cpp:547
 #, fuzzy
 #| msgid "Recruit"
 msgid "Recruit Unit"
 msgstr "Rekrut"
 
-#: src/gui/dialogs/units_dialog.cpp:544 src/hotkey/hotkey_command.cpp:111
+#: src/gui/dialogs/units_dialog.cpp:548 src/hotkey/hotkey_command.cpp:111
 msgid "Recruit"
 msgstr "Rekrut"
 
-#: src/gui/dialogs/units_dialog.cpp:561 src/hotkey/hotkey_command.cpp:129
+#: src/gui/dialogs/units_dialog.cpp:565 src/hotkey/hotkey_command.cpp:129
 msgid "Unit List"
 msgstr "Daftar Unit"
 
-#: src/gui/dialogs/units_dialog.cpp:705
+#: src/gui/dialogs/units_dialog.cpp:709
 #, fuzzy
 #| msgid "Rename Unit"
 msgid "Recall Unit"
 msgstr "Beri Nama Baru untuk Unit"
 
-#: src/gui/dialogs/units_dialog.cpp:706 src/hotkey/hotkey_command.cpp:113
+#: src/gui/dialogs/units_dialog.cpp:710 src/hotkey/hotkey_command.cpp:113
 msgid "Recall"
 msgstr "Panggil Kembali"
 
-#: src/gui/dialogs/units_dialog.cpp:834
+#: src/gui/dialogs/units_dialog.cpp:838
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
 msgstr ""
 
-#: src/gui/dialogs/units_dialog.cpp:836
+#: src/gui/dialogs/units_dialog.cpp:840
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr ""
 
@@ -10233,28 +10281,28 @@ msgstr ""
 msgid "Unrecognized Command"
 msgstr ""
 
-#: src/preferences/preferences.cpp:1248
+#: src/preferences/preferences.cpp:1268
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Tidak ada tema yang diketahui. Coba ganti dari dalam permainan."
 
-#: src/preferences/preferences.cpp:1285
+#: src/preferences/preferences.cpp:1305
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
 "normally be found in the same folder as the game executable."
 msgstr ""
 
-#: src/preferences/preferences.cpp:1289
+#: src/preferences/preferences.cpp:1309
 msgid "Find Server Application"
 msgstr ""
 
-#: src/preferences/preferences.cpp:1771
+#: src/preferences/preferences.cpp:1791
 #, fuzzy
 #| msgid "%H:%M"
 msgid "[%H:%M]"
 msgstr "%H:%M"
 
-#: src/preferences/preferences.cpp:1773
+#: src/preferences/preferences.cpp:1793
 #, fuzzy
 #| msgid "%I:%M %p"
 msgid "[%I:%M %p]"
