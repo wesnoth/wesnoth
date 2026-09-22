@@ -76,7 +76,7 @@ Keywords=singleplayer;multiplayer;dark age;middle ages;medieval;mediaeval;
 Keywords[de]=Einzelspieler;Mehrspieler;mittelalterlich;Fantasie;
 Keywords[pl]=gra jednoosobowa;gra wieloosobowa;fantasy
 Icon=wesnoth-icon
-Exec=sh -c "wesnoth >/dev/null 2>&1"
+Exec=wesnoth
 Categories=Game;StrategyGame;
 Actions=Editor;
 
@@ -98,4 +98,4 @@ Name[sr@ijekavian]=Уређивач мапа
 Name[sr@ijekavianlatin]=Uređivač mapa
 Name[sr@latin]=Uređivač mapa
 Name[tr]=Harita Düzenleyici
-Exec=sh -c "wesnoth -e  >/dev/null 2>&1"
+Exec=wesnoth -e
