@@ -1,9 +1,10 @@
-#include "gui/gui.hpp"
 #include "gui/core/event/map_dispatcher.hpp"
 #include "gui/core/event/handler.hpp"
+#include "gui/widgets/settings.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
+#include "sdl/input.hpp"
 #include "video.hpp"
 
 namespace gui2
@@ -11,6 +12,11 @@ namespace gui2
 
 namespace event
 {
+
+namespace
+{
+	bool is_touch = false;
+}
 
 map_dispatcher::map_dispatcher(play_controller& controller)
 	: controller_(controller)
@@ -41,6 +47,9 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 	connect_signal<SDL_WHEEL_DOWN>(std::bind(
 		&map_dispatcher::mouse_wheel, this, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6));
 
+	connect_signal<SDL_LONG_TOUCH>(std::bind(
+		&map_dispatcher::long_touch, this, std::placeholders::_3, std::placeholders::_5));
+
 	// Mouse Hotkeys
 	register_hotkey(hotkey::HOTKEY_SELECT_AND_ACTION, [this](auto&&...) {
 		auto& mhandler = controller_.get_mouse_handler_base();
@@ -59,6 +68,27 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 			mhandler.deselect_hex();
 		}
 		return is_selected;
+	});
+
+	// Touch drag
+	connect_signal<SDL_TOUCH_MOTION>(std::bind(
+		&map_dispatcher::touch_motion, this, std::placeholders::_3, std::placeholders::_5));
+
+	// Touch hotkey
+	register_hotkey(hotkey::HOTKEY_TOUCH_HEX, [this](auto&&...) {
+		auto& mhandler = controller_.get_mouse_handler_base();
+		map_location loc = display::get_singleton()->mouseover_hex();
+		if (loc.valid()) {
+			mhandler.touch_action(loc, controller_.is_browsing());
+		}
+
+		// FIXME since touch and mouse events are mixed, and the mouse handler
+		// doesn't have full sdl event details, we need this for now for touch detection
+		is_touch = true;
+
+		// we also want to run the mouse handler, see mouse_left_down below,
+		// otherwise drag does not work.
+		return false;
 	});
 
 	// Keyboard special keys (ESC)
@@ -97,8 +127,17 @@ void map_dispatcher::mouse_motion(
 	const point& p)
 {
 	auto& mhandler = controller_.get_mouse_handler_base();
-	map_location loc = display::get_singleton()->hex_clicked_on(p.x, p.y);
-	mhandler.mouse_update(controller_.is_browsing(), loc);
+	mhandler.mouse_motion(p.x, p.y, controller_.is_browsing());
+
+	handled = true;
+}
+
+void map_dispatcher::touch_motion(
+	bool& handled,
+	const point& p)
+{
+	auto& mhandler = controller_.get_mouse_handler_base();
+	mhandler.touch_motion(p.x, p.y, controller_.is_browsing());
 
 	handled = true;
 }
@@ -121,6 +160,7 @@ void map_dispatcher::mouse_left_up(
 	map_location loc = display::get_singleton()->hex_clicked_on(p.x, p.y);
 	mhandler.mouse_update(controller_.is_browsing(), loc);
 
+	is_touch = false;
 	mhandler.clear_dragging(p.x, p.y, controller_.is_browsing());
 	mhandler.left_mouse_up(p.x, p.y, controller_.is_browsing());
 	mhandler.clear_drag_from_hex();
@@ -136,7 +176,11 @@ void map_dispatcher::mouse_left_down(
 	mhandler.mouse_update(controller_.is_browsing(), loc);
 
 	mhandler.cancel_dragging();
-	mhandler.init_dragging_left();
+	if(is_touch) {
+		mhandler.init_dragging_touch();
+	} else {
+		mhandler.init_dragging_left();
+	}
 	mhandler.left_click(p.x, p.y, controller_.is_browsing());
 	handled = true;
 }
@@ -188,6 +232,38 @@ void map_dispatcher::mouse_wheel(
 	mhandler.mouse_wheel(scroll.x, -scroll.y, controller_.is_browsing());
 
 	handled = true;
+}
+
+static int drag_threshold()
+{
+	// Function uses window resolution as an estimate of users perception of distance
+	// Tune this variable if necessary:
+	const unsigned threshold_1080p = 14; // threshold number of pixels for 1080p
+	double screen_diagonal = std::hypot(settings::screen_width, settings::screen_height);
+	const double scale_factor = threshold_1080p / std::hypot(1080,1920);
+	return static_cast<int>(screen_diagonal * scale_factor);
+}
+
+void map_dispatcher::long_touch(
+	bool& handled,
+	const point& p)
+{
+	auto& mhandler = controller_.get_mouse_handler_base();
+
+	if(!mhandler.dragging_started()) {
+		float x_now;
+	 	float y_now;
+	 	sdl::get_mouse_state(&x_now, &y_now);
+
+		int dx = p.x - x_now;
+		int dy = p.y - y_now;
+		int threshold = drag_threshold();
+		bool yes_actually_dragging = dx * dx + dy * dy >= threshold * threshold;
+
+	 	if(!yes_actually_dragging) {
+			mouse_right_down(handled, p);
+		}
+	}
 }
 
 bool map_dispatcher::show_menu(const theme::menu* menu, const point& loc, bool context_menu)
