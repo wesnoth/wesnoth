@@ -96,16 +96,18 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 		&map_dispatcher::key_down, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_5, std::placeholders::_6));
 }
 
-bool map_dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
+bool map_dispatcher::execute_hotkey(const hotkey::hotkey_command& cmd, const bool down)
 {
 	// Local hotkey
-	if(dispatcher::execute_hotkey(id)) {
+	if(down && dispatcher::execute_hotkey(cmd, down)) {
 		return true;
 	}
 
+	const hotkey::HOTKEY_COMMAND id = cmd.command;
+
 	// these hotkeys have fallback hardcoded mouse handlers, so return false to let the
 	// handler do its work.
-	if(id == hotkey::HOTKEY_SELECT_AND_ACTION || id == hotkey::HOTKEY_DESELECT_HEX) return false;
+	if(id == hotkey::HOTKEY_SELECT_AND_ACTION || id == hotkey::HOTKEY_DESELECT_HEX || id == hotkey::HOTKEY_TOUCH_HEX) return false;
 
 	// If no local hotkey, try controller's hotkey executor
 	hotkey::command_executor* cmd_exec = controller_.get_hotkey_command_executor();
@@ -114,9 +116,11 @@ bool map_dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
 		return false;
 	}
 
-	hotkey::ui_command cmd(hotkey::get_hotkey_command(id));
-	if(cmd_exec->can_execute_command(cmd)) {
-		return cmd_exec->do_execute_command(cmd);
+	hotkey::ui_command ui_cmd(cmd);
+	if(cmd_exec->can_execute_command(ui_cmd)) {
+		// we are assuming when the key is not pressed, it's released
+		// this suffices for the present usecase, ie., scroll by arrow keys
+		return cmd_exec->do_execute_command(ui_cmd, down, !down);
 	} else {
 		return false;
 	}
