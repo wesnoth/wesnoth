@@ -24,6 +24,7 @@
 #include "gui/widgets/helper.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
+#include "gui/widgets/settings.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "video.hpp"
 #include "utils/ranges.hpp"
@@ -374,6 +375,9 @@ private:
 	 */
 	dispatcher* keyboard_focus_;
 	friend void capture_keyboard(dispatcher* dispatcher);
+
+	int long_press_timer_id_;
+	void long_press_callback(const point& position);
 };
 
 sdl_event_handler::sdl_event_handler()
@@ -381,6 +385,7 @@ sdl_event_handler::sdl_event_handler()
 	, mouse_focus(nullptr)
 	, dispatchers_()
 	, keyboard_focus_(nullptr)
+	, long_press_timer_id_(0)
 {
 // The event context is created now we join it.
 #ifdef ENABLE
@@ -411,13 +416,24 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			if (event.motion.state != 0)
 #endif
 			{
-				mouse(SDL_MOUSE_MOTION, {static_cast<int>(event.motion.x), static_cast<int>(event.motion.y)});
+				if (!events::is_touch(event.motion)) {
+					mouse(SDL_MOUSE_MOTION, {static_cast<int>(event.motion.x), static_cast<int>(event.motion.y)});
+				}
 			}
 			break;
 
 		case SDL_EVENT_MOUSE_BUTTON_DOWN:
 			{
 				const point position{static_cast<int>(event.button.x), static_cast<int>(event.button.y)};
+
+				if(events::is_touch(event.button)) {
+
+					if(long_press_timer_id_ == 0) {
+						long_press_timer_id_ = gui2::add_timer(
+							gui2::settings::popup_show_delay,
+							std::bind(&sdl_event_handler::long_press_callback, this, position));
+					}
+				}
 
 				const hotkey::hotkey_ptr hk = hotkey::get_hotkey(event);
 				bool done = false;
@@ -432,6 +448,11 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 
 		case SDL_EVENT_MOUSE_BUTTON_UP:
 			{
+				if(long_press_timer_id_ != 0) {
+					gui2::remove_timer(long_press_timer_id_);
+					long_press_timer_id_ = 0;
+				}
+
 				const point position{static_cast<int>(event.button.x), static_cast<int>(event.button.y)};
 				const hotkey::hotkey_ptr hk = hotkey::get_hotkey(event);
 				bool done = false;
@@ -540,6 +561,8 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			key_up(event);
 			break;
 
+		case SDL_LONG_TOUCH:
+			// handled in long_press_callback
 			break;
 
 		default:
@@ -582,6 +605,11 @@ void sdl_event_handler::disconnect(dispatcher* disp)
 
 	/***** Remove dispatcher. *****/
 	dispatchers_.erase(itor);
+
+	if(long_press_timer_id_ != 0) {
+		gui2::remove_timer(long_press_timer_id_);
+		long_press_timer_id_ = 0;
+	}
 
 	if(disp == mouse_focus) {
 		mouse_focus = nullptr;
@@ -767,6 +795,14 @@ void sdl_event_handler::mouse_wheel(const point& position, const point& scroll)
 	}
 }
 
+void sdl_event_handler::long_press_callback(const point& position)
+{
+	if(long_press_timer_id_ != 0) {
+		// Fire long touch event
+		mouse(SDL_LONG_TOUCH, position);
+	}
+}
+
 dispatcher* sdl_event_handler::keyboard_dispatcher()
 {
 	if(keyboard_focus_) {
@@ -781,6 +817,10 @@ dispatcher* sdl_event_handler::keyboard_dispatcher()
 
 	return nullptr;
 }
+
+// FIXME the three events below fire *all* dispatchers, unlike mouse.
+// without any regard to stacking or is_at, whereas touch really should follow
+// mouse-like semantics.
 
 void sdl_event_handler::touch_motion(const point& position, const point& distance)
 {
@@ -1226,6 +1266,9 @@ std::ostream& operator<<(std::ostream& stream, const ui_event event)
 			break;
 		case SDL_TOUCH_MULTI_GESTURE:
 			stream << "SDL multi-touch gesture";
+			break;
+		case SDL_LONG_TOUCH:
+			stream << "SDL long touch";
 			break;
 		case SDL_RAW_EVENT:
 			stream << "SDL raw event";
