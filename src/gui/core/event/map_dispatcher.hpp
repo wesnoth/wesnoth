@@ -30,6 +30,11 @@ public:
 
 	bool show_menu(const theme::menu* menu, const point& loc, bool context_menu);
 
+	void key_down(const event::ui_event event,
+										 bool& handled,
+										 const SDL_Keycode key,
+										 SDL_Keymod modifier);
+
 	// TODO Necessary evil because this is a widget and not a dispatcher
 	// getting rid of this requires refactor dispatcher & friends to not rely on widget
 	void request_reduce_width(unsigned int) override {};
