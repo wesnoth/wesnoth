@@ -44,11 +44,13 @@ map_dispatcher::map_dispatcher(play_controller& controller)
 	// Mouse Hotkeys
 	register_hotkey(hotkey::HOTKEY_SELECT_AND_ACTION, [this](auto&&...) {
 		auto& mhandler = controller_.get_mouse_handler_base();
-		bool is_selected = mhandler.get_last_hex().valid();
-		if (is_selected) {
+		if (mhandler.get_last_hex().valid()) {
 			mhandler.select_or_action(controller_.is_browsing());
 		}
-		return is_selected;
+
+		// we also want to run the mouse handler, see mouse_left_down below,
+		// otherwise drag does not work.
+		return false;
 	});
 	register_hotkey(hotkey::HOTKEY_DESELECT_HEX, [this](auto&&...) {
 		auto& mhandler = controller_.get_mouse_handler_base();
