@@ -361,12 +361,13 @@ void append_items(std::vector<T>&& newitems, std::vector<T>& out)
 {
 	auto input = std::move(newitems);
 
-	// Make sure list doesn't get too long: keep top two, midpoint and bottom.
-	if(input.size() > 5) {
+	// Make sure list doesn't get too long: keep top two, two midpoint and bottom two.
+	if(input.size() > 6) {
 		out.push_back(std::move(input[0]));
 		out.push_back(std::move(input[1]));
 		out.push_back(std::move(input[input.size() / 3]));
 		out.push_back(std::move(input[input.size() * 2 / 3]));
+		out.push_back(std::move(input[input.size() - 2]));
 		out.push_back(std::move(input.back()));
 		return;
 	}
