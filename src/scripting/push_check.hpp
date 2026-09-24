@@ -23,6 +23,7 @@
 #include "variable.hpp"
 
 #include <cassert>
+#include <limits>
 #include <string_view>
 #include <type_traits>
 
@@ -267,7 +268,25 @@ namespace lua_check_impl
 	std::enable_if_t<std::is_integral_v<T> && !std::is_same_v<T, bool>, T>
 	lua_check(lua_State *L, int n)
 	{
-		return luaL_checkinteger(L, n);
+		lua_Integer res = luaL_checkinteger(L, n);
+		// lua_Integer is 64-bit; narrowing it to a smaller (or differently-signed) T
+		// should saturate rather than silently wrap on out-of-range script input.
+		if constexpr(std::is_signed_v<T>) {
+			if(res > static_cast<lua_Integer>(std::numeric_limits<T>::max())) {
+				return std::numeric_limits<T>::max();
+			}
+			if(res < static_cast<lua_Integer>(std::numeric_limits<T>::min())) {
+				return std::numeric_limits<T>::min();
+			}
+		} else {
+			if(res < 0) {
+				return 0;
+			}
+			if(static_cast<unsigned long long>(res) > static_cast<unsigned long long>(std::numeric_limits<T>::max())) {
+				return std::numeric_limits<T>::max();
+			}
+		}
+		return static_cast<T>(res);
 	}
 	template<typename T>
 	std::enable_if_t<std::is_integral_v<T> && !std::is_same_v<T, bool>, T>
