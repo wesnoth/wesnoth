@@ -25,6 +25,7 @@
 #include "game_initialization/playcampaign.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/loading_screen.hpp"
+#include "gui/dialogs/message.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "hotkey/hotkey_handler_mp.hpp"
 #include "log.hpp"
@@ -55,6 +56,8 @@ playmp_controller::playmp_controller(const config& level, saved_game& state_of_g
 	, blindfold_(*gui_, mp_info && mp_info->skip_replay_blindfolded)
 	, network_reader_([this](config& cfg) { return receive_from_wesnothd(cfg); })
 	, mp_info_(mp_info)
+	, reported_defeated_sides_()
+	, reported_victorious_sides_()
 {
 	// upgrade hotkey handler to the mp (network enabled) version
 	hotkey_handler_.reset(new hotkey_handler(*this, saved_game_));
@@ -68,6 +71,39 @@ playmp_controller::playmp_controller(const config& level, saved_game& state_of_g
 
 playmp_controller::~playmp_controller()
 {
+}
+
+void playmp_controller::save_game()
+{
+	// Saving while an event is running isn't supported because it may lead to
+	// expired event handlers being written to the save.
+	assert(!gamestate().events_manager_->is_event_running());
+
+	scoped_savegame_snapshot snapshot(*this);
+	savegame::ingame_savegame save(saved_game_, prefs::get().save_compression_format());
+	if(save.save_game_interactive("", savegame::savegame::OK_CANCEL)) {
+		notify_competitive_save_created("manual");
+	}
+}
+
+void playmp_controller::save_replay()
+{
+	savegame::replay_savegame save(saved_game_, prefs::get().save_compression_format());
+	if(save.save_game_interactive("", savegame::savegame::OK_CANCEL)) {
+		notify_competitive_save_created("replay");
+	}
+}
+
+void playmp_controller::notify_competitive_save_created(const std::string& kind)
+{
+	if(!saved_game_.mp_settings().is_competitive()) {
+		return;
+	}
+
+	config notification;
+	config& competitive_save = notification.add_child("competitive_save_created");
+	competitive_save["kind"] = kind;
+	send_to_wesnothd(notification);
 }
 
 void playmp_controller::start_network()
@@ -405,6 +441,128 @@ struct ping_response
 
 } // namespace
 
+void playmp_controller::process_server_message(const config& message)
+{
+	// Denial messages carry a stable ID; ordinary messages retain the server's
+	// localized text and normal chat presentation.
+	if(message["message_id"] == "side_assignment_denied") {
+		gui2::show_message(
+			_("Information"),
+			_("That player is not eligible for this ranked or tournament game."),
+			gui2::dialogs::message::ok_button);
+	} else {
+		game_display::get_singleton()->get_chat_manager().add_chat_message(
+			std::chrono::system_clock::now(),
+			message["sender"],
+			message["side"].to_int(),
+			message["message"],
+			events::chat_handler::MESSAGE_PUBLIC,
+			prefs::get().message_bell());
+	}
+}
+
+bool playmp_controller::process_competitive_reload(const config& cfg)
+{
+	auto competitive_reload = cfg.optional_child("competitive_reload");
+	if(!competitive_reload) {
+		return false;
+	}
+
+	// A reload can be competitive only when wesnothd confirms the saved game
+	// and the current players; otherwise remove its metadata locally.
+	saved_game_.mp_settings().competitive.clear();
+	const bool tournament = competitive_reload["mode"] == "tournament";
+	const bool different_players = competitive_reload["different_players"].to_bool(false);
+	std::string description = different_players
+		? _("A competitive game save with different players has been loaded.")
+		: _("A completed competitive game has been loaded.");
+	if(different_players) {
+		description += _(" It will not be considered a new competitive game.");
+	}
+	if(tournament && !competitive_reload["tournament_id"].empty()) {
+		description += VGETTEXT(" This is tournament $tournament", {{"tournament", competitive_reload["tournament_id"].str()}});
+		if(!competitive_reload["tournament_game_id"].empty()) {
+			description += VGETTEXT(", game $game", {{"game", competitive_reload["tournament_game_id"].str()}});
+		}
+		description += ".";
+	}
+	if(!different_players) {
+		description += _(" This game can be used for analysis, but it will not be considered a new competitive game.");
+	}
+	game_display::get_singleton()->get_chat_manager().add_chat_message(
+		std::chrono::system_clock::now(), "server", 0, description,
+		events::chat_handler::MESSAGE_PUBLIC, prefs::get().message_bell());
+	return true;
+}
+
+bool playmp_controller::process_competitive_game(const config& cfg)
+{
+	auto competitive_game = cfg.optional_child("competitive_game");
+	if(!competitive_game) {
+		return false;
+	}
+
+	// These values are copied into the save metadata, but the server remains
+	// authoritative for every later resume decision.
+	saved_game_.mp_settings().competitive.ranked_game_id = competitive_game["id"].str();
+	saved_game_.mp_settings().competitive.ranked_resume_token = competitive_game["resume_token"].str();
+	saved_game_.mp_settings().competitive.ranked_resume_signature = competitive_game["signature"].str();
+	if(competitive_game["reload"].to_bool(false)) {
+		const bool completed = competitive_game["status"] == "completed";
+		const bool tournament = competitive_game["mode"] == "tournament";
+		const std::string game_type = tournament ? _("tournament game") : _("ranked game");
+		std::string description = VGETTEXT(completed ? "A completed $game_type" : "An active $game_type", {{"game_type", game_type}});
+		if(tournament && !competitive_game["tournament_id"].empty()) {
+			description += VGETTEXT(" (tournament $tournament", {{"tournament", competitive_game["tournament_id"].str()}});
+			if(!competitive_game["tournament_game_id"].empty()) {
+				description += VGETTEXT(", game $game", {{"game", competitive_game["tournament_game_id"].str()}});
+			}
+			description += ")";
+		}
+		description += completed ? _(" has been loaded for analysis.") : _(" has been loaded for continuation.");
+		game_display::get_singleton()->get_chat_manager().add_chat_message(
+			std::chrono::system_clock::now(), "server", 0, description,
+			events::chat_handler::MESSAGE_PUBLIC, prefs::get().message_bell());
+	}
+	return true;
+}
+
+bool playmp_controller::process_competitive_save(const config& cfg)
+{
+	auto competitive_save = cfg.optional_child("competitive_save");
+	if(!competitive_save) {
+		return false;
+	}
+
+	// Save notifications are informational; the save itself remains usable as
+	// a normal replay or savegame for later analysis.
+	const std::string player = competitive_save["player"].str();
+	const std::string kind = competitive_save["kind"].str("manual");
+	const std::string artifact = kind == "replay" ? _("replay") : _("manual save");
+	game_display::get_singleton()->get_chat_manager().add_chat_message(
+		std::chrono::system_clock::now(), "server", 0,
+		VGETTEXT("$player created a $artifact of the competitive game.", {{"player", player}, {"artifact", artifact}}),
+		events::chat_handler::MESSAGE_PUBLIC, prefs::get().message_bell());
+	return true;
+}
+
+bool playmp_controller::process_side_defeated(const config& cfg)
+{
+	auto side_defeated = cfg.optional_child("side_defeated");
+	if(!side_defeated) {
+		return false;
+	}
+
+	// The server broadcasts the persisted result so every client sees the same
+	// side status during the remainder of the game.
+	const int side = side_defeated["side"].to_int(0);
+	game_display::get_singleton()->get_chat_manager().add_chat_message(
+		std::chrono::system_clock::now(), "server", side,
+		VGETTEXT("Side $side has been recorded as defeated.", {{"side", std::to_string(side)}}),
+		events::chat_handler::MESSAGE_PUBLIC, prefs::get().message_bell());
+	return true;
+}
+
 playmp_controller::PROCESS_DATA_RESULT playmp_controller::process_network_data_impl(const config& cfg, bool chat_only)
 {
 	// the simple wesnothserver implementation in wesnoth was removed years ago.
@@ -417,13 +575,13 @@ playmp_controller::PROCESS_DATA_RESULT playmp_controller::process_network_data_i
 
 	if (const auto message = cfg.optional_child("message"))
 	{
-		game_display::get_singleton()->get_chat_manager().add_chat_message(
-			std::chrono::system_clock::now(),
-			message.value()["sender"],
-			message.value()["side"].to_int(),
-			message.value()["message"],
-			events::chat_handler::MESSAGE_PUBLIC,
-			prefs::get().message_bell());
+		process_server_message(*message);
+	}
+	else if(process_competitive_reload(cfg)
+		|| process_competitive_game(cfg)
+		|| process_competitive_save(cfg)
+		|| process_side_defeated(cfg)) {
+		// The helpers consume the first matching competitive message.
 	}
 	else if (auto whisper = cfg.optional_child("whisper") /*&& is_observer()*/)
 	{
@@ -703,6 +861,52 @@ void playmp_controller::send_actions()
 	config data = recorder().get_unsent_commands(data_type);
 	if (!data.empty()) {
 		send_to_wesnothd(config{ "turn", data});
+	}
+}
+
+void playmp_controller::notify_sides_defeated(const std::set<unsigned>& not_defeated)
+{
+	if(!is_networked_mp() || is_replay()
+		|| !saved_game_.mp_settings().is_competitive()) {
+		return;
+	}
+
+	const auto side_count = gamestate().board_.teams().size();
+	for(unsigned side = 1; side <= side_count; ++side) {
+		const team& defeated_team = gamestate().board_.get_team(side);
+		// Only the client controlling a side reports its defeat. The server still
+		// validates ownership, but this avoids sending predictable rejected reports.
+		if(not_defeated.count(side) != 0 || !defeated_team.is_local_human() || !reported_defeated_sides_.insert(side).second) {
+			continue;
+		}
+		config notification;
+		config& defeated = notification.add_child("side_defeated");
+		defeated["side"] = side;
+		// The engine has evaluated all active victory rules; the server does not
+		// guess whether an add-on used a leader, unit, or custom defeat rule.
+		defeated["reason"] = "victory_check";
+		send_to_wesnothd(notification);
+	}
+}
+
+void playmp_controller::notify_sides_victorious(const std::set<unsigned>& not_defeated)
+{
+	if(!is_networked_mp() || is_replay()
+		|| !saved_game_.mp_settings().is_competitive()) {
+		return;
+	}
+
+	// Victory is reported separately from defeat because a team can contain
+	// several sides and the game is complete only after the server evaluates it.
+	for(const unsigned side : not_defeated) {
+		const team& winning_team = gamestate().board_.get_team(side);
+		if(!winning_team.is_local_human() || !reported_victorious_sides_.insert(side).second) {
+			continue;
+		}
+		config notification;
+		config& victorious = notification.add_child("side_victorious");
+		victorious["side"] = side;
+		send_to_wesnothd(notification);
 	}
 }
 

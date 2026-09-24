@@ -36,7 +36,18 @@ class mp_create_game : public modal_dialog, private plugin_executor
 	typedef std::pair<level_type::type, std::string> level_type_info;
 
 public:
-	mp_create_game(saved_game& state, bool local_mode);
+	/**
+	 * @param state The saved game state being configured for multiplayer.
+	 * @param local_mode Whether the dialog is configuring a local game rather
+	 *                   than a game hosted through wesnothd.
+	 * @param tournaments Pending tournament-game entries supplied for the
+	 *                    authenticated player in the server's [join_lobby]
+	 *                    response.
+	 * @param ranked_enabled Whether the server permits this player to host a
+	 *                       ranked game. The UI disables the control otherwise;
+	 *                       wesnothd remains the authoritative validation point.
+	 */
+	mp_create_game(saved_game& state, bool local_mode, std::vector<mp_tournament_info> tournaments = {}, bool ranked_enabled = true);
 
 	/** The execute function. See @ref modal_dialog for more information. */
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(mp_create_game);
@@ -97,6 +108,11 @@ private:
 
 	bool local_mode_;
 
+	// Session-scoped competitive-play data. Widget IDs `ranked_mode` and
+	// `tournament` are declared in mp_create_game.cfg's General panel.
+	std::vector<mp_tournament_info> tournaments_;
+	bool ranked_enabled_;
+
 	config previous_settings_;
 
 	template<typename widget>
@@ -107,6 +123,10 @@ private:
 	void on_era_select();
 	void on_mod_toggle(const std::string& id, toggle_button* sender);
 	void on_random_faction_mode_select();
+	/** Make Ranked Mode match the selected Tournament Manager game mode. */
+	void on_tournament_select();
+	/** Return the selected pending tournament game, or nullptr for None. */
+	const mp_tournament_info* selected_tournament();
 
 	std::vector<std::string> get_active_mods();
 	void set_active_mods(const std::vector<std::string>& val);
