@@ -597,6 +597,15 @@ void render_screen()
 	// Clear the render target so we're drawing to the window.
 	clear_render_target();
 
+	// force_render_target() only changes the render target, not the
+	// viewport, and this call bypasses draw::render_target_setter (which
+	// is the only place that saves/restores the viewport). So whatever
+	// viewport a nested widget draw last left active could still be
+	// narrower than the full window here. Reset it, since clearing and
+	// presenting the whole frame should never be constrained to a
+	// leftover partial viewport.
+	SDL_SetRenderViewport(*window, nullptr);
+
 	// Use fully transparent black to clear the window backbuffer
 	SDL_SetRenderDrawColor(*window, 0u, 0u, 0u, 0u);
 
@@ -647,8 +656,21 @@ surface read_pixels(rect* r)
 	// Convert the rect to output coordinates, if necessary.
 	rect o = to_output(r_clipped);
 
+	// SDL_RenderReadPixels reads relative to the current viewport rather
+	// than the full render target. Callers may invoke read_pixels() while
+	// a narrower, widget-local viewport is still active (for example, the
+	// background-blur code reads pixels while its own widget's viewport
+	// is in effect), which would make the output-space rect computed
+	// above fall outside it. Reset to the full target for the read.
+	rect old_viewport;
+	SDL_GetRenderViewport(*window, &old_viewport);
+	SDL_SetRenderViewport(*window, nullptr);
+
 	// Create surface and read pixels
 	surface s = SDL_RenderReadPixels(*window, &o);
+
+	SDL_SetRenderViewport(*window, &old_viewport);
+
 	return s;
 }
 

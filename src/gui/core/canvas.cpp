@@ -765,6 +765,13 @@ bool canvas::update_blur(const rect& screen_region, bool force)
 	rect read_region = screen_region;
 	auto setter = draw::set_render_target({});
 	surface s = video::read_pixels_low_res(&read_region);
+	if (!s) {
+		// Reading pixels can fail for reasons outside our control. The
+		// failure may not be transient, so skip the blur for this frame.
+		ERR_GUI_D << "Failed to read pixels to blur " << screen_region << ", skipping.";
+		deferred_ = false;
+		return true;
+	}
 	blur_surface(s, {0, 0, s->w, s->h}, blur_depth_);
 	blur_texture_ = texture(s);
 	deferred_ = false;

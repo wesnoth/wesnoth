@@ -226,6 +226,15 @@ static bool expose()
 {
 	drawing_ = true;
 
+	// Compositing here blits each TLD's own render buffer on to the shared
+	// primary buffer using screen-absolute rectangles. SDL3 interprets those
+	// rectangles relative to the current viewport, and nothing else resets the
+	// viewport before this point, so it can still reflect whatever a
+	// widget's own draw call last left it as (eg a stale, narrower size
+	// from before a pixel-scale change). Force it to cover the whole
+	// target for the duration of exposure.
+	auto viewport_setter = draw::set_viewport(video::output_area());
+
 	// For now just send all regions to all TLDs in the correct order.
 	bool drawn = false;
 next:
