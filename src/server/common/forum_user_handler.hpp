@@ -121,6 +121,14 @@ public:
 	std::string get_tournaments();
 
 	/**
+	 * Return whether Tournament Manager enables ranked games for a player.
+	 *
+	 * This is a thin facade over the optional Tournament Manager connection in
+	 * dbconn, keeping database details out of wesnothd.
+	 */
+	bool is_ranked_user(const std::string& name);
+
+	/**
 	 * Runs an asynchronous query to fetch the user's game history data.
 	 * The result is then posted back to the main boost::asio thread to be sent to the requesting player.
 	 *
