@@ -286,14 +286,18 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 
 			string_span name(s, end - s);
 			s = end + 1;
-			if(*s == '_') {
-				if(strchr(s, '"') == nullptr) {
+			while (*s == ' ') ++s;
+
+			end = s;
+			if(*end == '_') {
+				while (*end == ' ') ++end;
+				if(*end != '"') {
 					throw error("did not find '\"' after '_'");
 				}
 			}
 
-			if (*s != '"') {
-				end = strchr(s, '\n');
+			if (*end != '"') {
+				end = strchr(end, '\n');
 				if (!end) {
 					ERR_SWML << "ATTR: '" << name << "' (((" << s << ")))";
 					throw error("did not find end of attribute");
@@ -302,7 +306,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 					throw error("found stray quotes in unquoted value");
 				goto read_attribute;
 			}
-			end = s;
+			
 			while(true)
 			{
 				// Read until the first single double quote.
