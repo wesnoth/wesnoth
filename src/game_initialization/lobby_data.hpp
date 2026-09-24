@@ -51,6 +51,8 @@ struct user_info
 	int forum_id;
 	int game_id;
 	bool registered;
+	/** Whether the player has ranked matches enabled in Tournament Manager. */
+	bool ranked_enabled;
 	bool observing;
 	bool moderator;
 };
