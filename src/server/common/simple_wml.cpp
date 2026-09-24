@@ -287,8 +287,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 			string_span name(s, end - s);
 			s = end + 1;
 			if(*s == '_') {
-				s = strchr(s, '"');
-				if(s == nullptr) {
+				if(strchr(s, '"') == nullptr) {
 					throw error("did not find '\"' after '_'");
 				}
 			}
