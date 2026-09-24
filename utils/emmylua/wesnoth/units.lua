@@ -247,6 +247,14 @@ function animator:clear() end
 ---@param params unit_animator_params
 function animator:add(unit, flag, hits, params) end
 
+---Add a unit to the movement animation queue
+---@param unit unit
+---@param to_x integer
+---@param to_y integer
+---@param scroll boolean
+---@overload fun(u:unit, target:location, scroll:boolean)
+function animator:add_movement(unit, to_x, to_y, scroll) end
+
 ---@return unit_animator
 function wesnoth.units.create_animator() end
 
