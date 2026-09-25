@@ -290,6 +290,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 
 			end = s;
 			if(*end == '_') {
+				++end;
 				while (*end == ' ') ++end;
 				if(*end != '"') {
 					ERR_SWML << "ATTR: '" << name <<  "' (((" << s << ")))";
