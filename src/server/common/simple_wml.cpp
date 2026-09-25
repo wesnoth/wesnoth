@@ -292,6 +292,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 			if(*end == '_') {
 				while (*end == ' ') ++end;
 				if(*end != '"') {
+					ERR_SWML << "ATTR: '" << name <<  "' (((" << s << ")))";
 					throw error("did not find '\"' after '_'");
 				}
 			}
