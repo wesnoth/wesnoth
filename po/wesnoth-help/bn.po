@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-08-02 22:45-0500\n"
-"PO-Revision-Date: 2026-09-17 15:37+0530\n"
+"PO-Revision-Date: 2026-09-24 16:47+0530\n"
 "Last-Translator: Subhraman Sarkar <sbmskmm@protonmail.com>\n"
 "Language-Team: Bangla <>\n"
 "Language: bn\n"
@@ -831,6 +831,7 @@ msgid ""
 "The graphics used to represent the ledge borders are determined by the base "
 "terrain."
 msgstr ""
+"কিনারার সীমানাগুলো যে গ্রাফিক্স দ্বারা দেখানো হয় তা মূল ভূমিরূপ দ্বারা নির্ধারিত হয়।"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:194
@@ -839,6 +840,8 @@ msgid ""
 "terrain codes changed, or any other properties affected, so filtering a "
 "location by elevation is not simple."
 msgstr ""
+"UMC লেখকদের জন্য দ্রষ্টব্য: ফ্লাড-ফিল করা টাইলগুলোর ভূমি কোড, বা অন্য কোনো বৈশিষ্ট্য "
+"পরিবর্তিত হয় না, তাই উচ্চতা অনুযায়ী কোনো অবস্থান ফিল্টার করা সহজ নয়।"
 
 #. [topic]: id=editor_deprecated_overlay
 #: data/core/editor/help.cfg:200
@@ -880,6 +883,14 @@ msgid ""
 "This tool is only available in Scenario Mode; the decorations are "
 "implemented in the scenario using WML’s <i>[label]</i> tag."
 msgstr ""
+"মানচিত্রে টেক্সট লেবেল বসান।\n"
+"- বাম-ক্লিক করলে নতুন লেবেল তৈরি করতে বা বিদ্যমান লেবেল সম্পাদনা করতে একটি "
+"ডায়ালগ বক্স খুলবে।\n"
+"- ডান-ক্লিক করলে লেবেল মুছে যাবে।\n"
+"- বাম মাউস বোতাম দিয়ে টেনে এনে ছাড়লে লেবেল সরানো যাবে।\n"
+"\n"
+"এই টুলটি শুধুমাত্র ঘটনাক্রম মোডে পাওয়া যায়; লেবেলগুলো সিনারিওতে WML-এর <i>[label]</"
+"i> ট্যাগ ব্যবহার করে বাস্তবায়িত হয়।"
 
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:232
@@ -902,6 +913,11 @@ msgid ""
 "of the terrain and are implemented in the scenario using WML’s <i>[item]</i> "
 "tag."
 msgstr ""
+"আইটেম টুল windmill, bookcase এবং monolith-এর মতো সজ্জা বসাতে দেয়।একই ষড়ভুজে-এ "
+"একাধিক আইটেম বসানো যায়।• বাম-ক্লিক করলে ক্লিক করা hex-এ একটি সজ্জা বসবে।  • ডান-"
+"ক্লিক করলে সজ্জাটি সরানো যাবে।<b>দ্রষ্টব্য:</b> এই টুলে আনডু সমর্থিত নয়।এই টুল শুধু "
+"ঘটনাক্রম মোড-এ পাওয়া যায়; সজ্জাগুলো ভূ-ভাগের অংশ নয় এবং ঘটনাক্রমে WML-এর [item] "
+"ট্যাগ ব্যবহার করে বাস্তবায়ন করা হয়।"
 
 #. [topic]: id=editor_tool_village
 #: data/core/editor/help.cfg:250
@@ -921,6 +937,15 @@ msgid ""
 "This tool is only available in Scenario Mode; ownership information is "
 "stored by adding WML <i>[village]</i> tags to the appropriate <i>[side]</i>."
 msgstr ""
+"এই টুলটি সিনারিওর শুরুতে গ্রামগুলোর মালিকানা নির্ধারণ করে।\n"
+"গ্রামগুলোকে আগে অবশ্যই <ref dst='editor_tool_paint'>পেইন্ট টুল</ref> দিয়ে ভূখণ্ডের "
+"উপর বসাতে হবে।\n"
+"\n"
+"- বাম-ক্লিক করলে গ্রামটি বর্তমানে নির্বাচিত পক্ষকে দেওয়া হবে।\n"
+"- ডান-ক্লিক করলে গ্রামটি আবার মালিকানাহীন অবস্থায় ফিরে যাবে।\n"
+"\n"
+"এই টুলটি শুধুমাত্র ঘটনাক্রম মোডে পাওয়া যায়; মালিকানার তথ্য যথাযথ <i>[side]</i>-এ "
+"WML <i>[village]</i> ট্যাগ যুক্ত করে সংরক্ষণ করা হয়।"
 
 #. [topic]: id=editor_tool_unit
 #: data/core/editor/help.cfg:266
@@ -939,6 +964,10 @@ msgid ""
 "This tool is only available in Scenario Mode; it adds WML <i>[unit]</i> tags "
 "to the appropriate <i>[side]</i>."
 msgstr ""
+"বর্তমানে নির্বাচিত দল-এ ইউনিট বসান।• বাম-ক্লিক করলে একটি ইউনিট বসবে।  • বাম "
+"বোতাম চেপে ড্র্যাগ ও ড্রপ করলে আগে বসানো ইউনিট সরানো যাবে।  • কোনো ষড়ভূজ-এ ইউনিট "
+"থাকলে ডান ক্লিকের মেনু-তে বিভিন্ন কাজ যোগ হয়।এই টুল শুধু ঘটনাক্রম মোড-এ পাওয়া যায়; "
+"এটি উপযুক্ত [side]-এ WML-এ [unit] ট্যাগ যোগ করে।"
 
 #. [topic]: id=editor_named_area
 #: data/core/editor/help.cfg:281
@@ -969,6 +998,24 @@ msgid ""
 "generic and can be used for other purposes without needing to change the "
 "time-of-day schedule in the area."
 msgstr ""
+"এই টুলটি টাইলের সেট তৈরি করে, যা ফিল্টারের <i>area=</i> অ্যাট্রিবিউটে এলাকার "
+"আইডি ব্যবহার করে WML স্ক্রিপ্টের স্ট্যান্ডার্ড লোকেশন ফিল্টারে (উইকিতে এই বিষয়টি "
+"বিস্তারিতভাবে ব্যাখ্যা করা আছে) ব্যবহার করা যায়। যেমন:\n"
+"\n"
+"- এই ষড়ভূজ-সেটে একটি স্থানীয় সময় অঞ্চল নির্ধারণ করা\n"
+"- যেসব ষড়ভূজে কোনো ইউনিট প্রবেশ করলে ইভেন্ট শুরু হয়, সেগুলোর সেটকে ফিল্টার করা\n"
+"\n"
+"টুলটি ব্যবহার করতে:\n"
+"\n"
+"- <ref dst='editor_tool_select'>নির্বাচন টুল</ref> দিয়ে ষড়ভূজ নির্বাচন করুন\n"
+"- এলাকা মেনু থেকে “নতুন এলাকা যোগ করুন” নির্বাচন করুন\n"
+"- তারপর এলাকা মেনু থেকে “নির্বাচিত অংশ এলাকায় সংরক্ষণ করুন” নির্বাচন করুন\n"
+"- তারপর এলাকা মেনু থেকে “নির্বাচিত এলাকার নাম পরিবর্তন করুন” নির্বাচন করে এলাকার "
+"জন্য একটি নাম দিন\n"
+"\n"
+"এই টুলটি শুধুমাত্র ঘটনাক্রম মোডে পাওয়া যায়; এটি সিনারিওতে WML <i>[time_area]</i> "
+"ট্যাগ যুক্ত করে। যদিও ট্যাগটির নামে সময়ের ইঙ্গিত রয়েছে, বর্তমানে এটি আরও সাধারণ "
+"এবং এলাকার দিন-রাতের সূচি পরিবর্তন না করেই অন্য উদ্দেশ্যে ব্যবহার করা যায়।"
 
 #. [topic]: id=editor_playlist
 #: data/core/editor/help.cfg:303
@@ -983,6 +1030,9 @@ msgid ""
 "This tool is only available in Scenario Mode; it adds WML <i>[music]</i> "
 "tags to the scenario."
 msgstr ""
+"চালু করার জন্য টগল-বক্স সহ এডিটরের জা‌না সঙ্গীত ট্র্যাকগুলোর একটি তালিকা দেখায়।\n"
+"এই টুলটি শুধুমাত্র ঘটনাক্রম মোডে পাওয়া যায়; এটি ঘটনাক্রমে WML <i>[music]</i> ট্যাগ "
+"যুক্ত করে।"
 
 #. [topic]: id=editor_addon_id
 #: data/core/editor/help.cfg:314
@@ -1209,6 +1259,8 @@ msgid ""
 "Masks can be applied to a base map for reuse in several scenarios playing at "
 "the same locations."
 msgstr ""
+"একই অবস্থানে ঘটা একাধিক ঘটনাক্রমে পুনরায় ব্যবহারের জন্য একটি মূল মানচিত্রের উপর "
+"মাস্ক প্রয়োগ করা যায়।"
 
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
@@ -1227,6 +1279,12 @@ msgid ""
 "In scenario mode, the button accesses an editor for individual schedules for "
 "<ref dst='editor_named_area'>time areas</ref>."
 msgstr ""
+"স্ক্রিনের উপরের-ডানদিকের এই বোতামটি দিনের সময়ের প্রিভিউ এবং সময়সূচি পরিমার্জক খুলে "
+"দেয় দেয়।\n"
+"ভূমি মোডে এটি দেখায় দিনের বিভিন্ন সময়ে মানচিত্রটি কীভাবে পুনরায় রঙ করা হবে।\n"
+"\n"
+"ঘটনাক্রম মোডে বোতামটি <ref dst='editor_named_area'>সময় এলাকাগুলোর</ref> জন্য "
+"পৃথক সূচির একটি সম্পাদক ডায়ালগে নিয়ে যায়।"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:453
@@ -1249,6 +1307,16 @@ msgid ""
 "this is the leftmost of the four buttons at the top of the palette, and the "
 "graphic changes depending on what is selected. Examples:"
 msgstr ""
+"এডিটর প্যালেটে বর্তমানে নির্বাচিত টুলের সঙ্গে ব্যবহারযোগ্য আইটেমগুলো থাকে। "
+"উদাহরণস্বরূপ, পেইন্ট টুল সব উপলব্ধ ভূখণ্ডের একটি পূর্ণ তালিকা দেখাবে, আর ইউনিট টুল "
+"উপলব্ধ ইউনিটের একটি তালিকা দেবে। শুরুর অবস্থান টুল ব্যবহার করলে প্যালেটটি বদলে "
+"“খেলোয়াড় ১”, “খেলোয়াড় ২” ইত্যাদির তালিকা হয়ে যায়।\n"
+"\n"
+"<b>ফিল্টার</b>\n"
+"\n"
+"উপলব্ধ আইটেমগুলোর একটি উপসেট দেখানোর জন্য একটি ফিল্টার ফাংশন আছে — এটি প্যালেটের "
+"উপরের চারটি বোতামের সবচেয়ে বাঁদিকেরটি, এবং কী নির্বাচিত আছে তার উপর নির্ভর করে "
+"এর ছবি বদলে যায়। উদাহরণ:"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:461
@@ -1337,6 +1405,14 @@ msgid ""
 "by <ref dst='editor_separate_events_file'>using a separate .cfg file</ref> "
 "for the hand-edited parts."
 msgstr ""
+"<header>ঘটনাক্রম এডিটর দ্বারা তৈরি ফাইল</header>\n"
+"\n"
+"ঘটনাক্রম মোডে সম্পাদক ঘটনাক্রমের তথ্য একটি .cfg ফাইল হিসেবে এবং মানচিত্রের তথ্য "
+"আলাদা একটি .map ফাইল হিসেবে সংরক্ষণ করে। এরপর ঘটনাক্রমটি map_file-এর "
+"মাধ্যমে .map ফাইলটি উল্লেখ করে। একটি .cfg ফাইল লোড করার সময় ঘটনাক্রম সম্পাদক "
+"নিজের তৈরি করা ফাইল বুঝতে পারে, কিন্তু হাতে সম্পাদনা করা ফাইলে সমস্যায় পড়তে পারে; "
+"হাতে সম্পাদনা করা অংশগুলোর জন্য <ref dst='editor_separate_events_file'>আলাদা "
+"একটি .cfg ফাইল ব্যবহার করে</ref> এই সমস্যা এড়ানো যায়।"
 
 #. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
