@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-08-03 03:45 UTC\n"
-"PO-Revision-Date: 2024-01-01 18:42+0100\n"
+"PO-Revision-Date: 2026-09-23 08:58+0200\n"
 "Last-Translator: Stanislav Hoferek <shoferek@gmail.com>\n"
 "Language-Team: none\n"
 "Language: sk_SK\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural= (n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.9\n"
 
 #. [label]
 #: data/campaigns/Heir_To_The_Throne_Classic/gui/character_selection.cfg:19
@@ -68,18 +68,19 @@ msgid ""
 "<i>Heir to the Throne, Classic</i> optionally includes the old <i>Battle "
 "Training</i> tutorial. Play <i>Battle Training</i>?"
 msgstr ""
+"Kampaň <i>„Dedič trónu (klasická verzia)“</i> obsahuje ako voliteľnú súčasť "
+"pôvodný tutoriál <i>„Bojový tréning</i> “. Chcete si zahrať pôvodný "
+"<i>„Bojový tréning</i>“?"
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:113
 msgid "Yes"
-msgstr ""
+msgstr "Áno"
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:118
-#, fuzzy
-#| msgid "Note"
 msgid "No"
-msgstr "Poznámka"
+msgstr "Nie"
 
 #. [objectives]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:149
@@ -286,8 +287,8 @@ msgid ""
 "female^Young lady, you have $student_hp hitpoints and a sword. I’m fairly "
 "sure you’ll win."
 msgstr ""
-"Dieťa, máš $student_hp bodov zdravia (životov) a meč. Som si pomerne istý, "
-"že vyhráš."
+"Mladá slečna, máš $student_hp bodov zdravia (životov) a meč. Som si pomerne "
+"istý, že vyhráš."
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:534
@@ -365,8 +366,8 @@ msgstr "<i>Panák</i> bude ťahať?"
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:616
 msgid ""
 "Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
-"chances. If it hits every time, you’ll drop from $student_hp to "
-"$($student_hp-15) hitpoints. Brace yourself!"
+"chances. If it hits every time, you’ll drop from $student_hp to $"
+"($student_hp-15) hitpoints. Brace yourself!"
 msgstr ""
 "Áno, je to kúzelný panák. Ak ťa zasiahne, spôsobí ti zranenie za tri body a "
 "na ten zásah má päť príležitostí. Keby sa mu podarili všetky zásahy, tvoje "
@@ -1161,7 +1162,7 @@ msgid ""
 "the orcs single-handedly?"
 msgstr ""
 "Počkaj! Musíš zhromaždiť všetky svoje sily. Alebo máš v úmysle bojovať proti "
-"orkom sám?"
+"orkom sama?"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:267
@@ -1479,7 +1480,7 @@ msgstr ""
 "málo dedín a priveľa jednotiek, každým kolom budeš strácať. Jednotky prvého "
 "stupňa platia 1 zlatku, druhého stupňa dve zlatky a tak ďalej. Líder a "
 "jednotky prvého stupňa neplatia vôbec nič, rovnako ako jednotky označené ako "
-"verné. Tie sa však nachádzajú len v kampaniach, nie v bežnej hre."
+"verné. Tie sa však nachádzajú len v kampaniach, nie v bežnej hre!"
 
 #. [else]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:560
@@ -2142,11 +2143,11 @@ msgstr ""
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1317
 msgid ""
-"Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
-"name|."
+"Higher level units are powerful, but not invulnerable. We’ll miss you, "
+"$unit.name|."
 msgstr ""
-"Jednotky na vyšších úrovniach sú silné, ale nie nezraniteľné! Zbohom, $unit."
-"name|."
+"Jednotky na vyšších úrovniach sú silné, ale nie nezraniteľné! Zbohom, "
+"$unit.name|."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1331
@@ -2241,7 +2242,6 @@ msgid ""
 "sword, and I have a special ability: <i>Ambush</i>. I can hide in forests "
 "where enemies can only see me if they are right next to me."
 msgstr ""
-"Povýšenie na vyššiu úroveň ma celkom vyliečilo!\n"
 "Som dobrá s lukom i mečom, ale mám osobitnú schopnosť: <i>prepad</i>. Môžem "
 "sa ukryť v lese a nepriateľ ma uvidí, len keď sa presunie tesne vedľa mňa. "
 "Dám prednosť boju na diaľku, ale ani za boj na blízku sa nemusím hanbiť."
@@ -2255,10 +2255,12 @@ msgid ""
 "level units around me do 25% more damage, so position me carefully!"
 msgstr ""
 "Povýšenie na vyššiu úroveň ma celkom vyliečilo!\n"
-"Som dobrý s lukom i mečom amám osobitnú schopnosť: <i>velenie</i>. Jednotky "
+"Som dobrý s lukom i mečom a mám osobitnú schopnosť: <i>velenie</i>. Jednotky "
 "prvej úrovne vedľa mňa spôsobujú o 25% vyššie zranenie, takže si premysli, "
 "kam ma postavíš. Spôsobujem nižšie poškodenie ako elfský hrdina, ale práve "
-"posilnenie ostatných jednotiek ma robí dôležitou jednotkou na bojisku."
+"posilnenie ostatných jednotiek ma robí dôležitou jednotkou na bojisku. "
+"Najlepšie bude, ak ma postavíš tak, aby využilo moju schopnosť čo najviac "
+"jednotiek prvého stupňa!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1429
@@ -2268,11 +2270,10 @@ msgid ""
 "abilities of the Elvish Captain, my superior fighting skills allow my "
 "attacks to do more damage!"
 msgstr ""
-"Povýšenie na vyššiu úroveň ma celkom vyliečilo!\n"
 "Som mimoriadne dobrý s mečom; štyri úroky po 8 zranení. Som silnejší ako "
 "elfský kapitán, ale neviem posilňovať iné jednotky cez velenie. V boji "
 "dokážem pokryť dôležité miesta a bojovať so silnými jednotkami súpera, alebo "
-"kryť ústup ranených jednotiek."
+"kryť ústup ranených jednotiek!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1442
@@ -2323,7 +2324,7 @@ msgstr "Aaaghh! Kto vás teraz povedie k víťazstvu?"
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1506
 msgid "You have beaten the orcs! Well done."
-msgstr ""
+msgstr "Porazil si orkov! Výborná práca."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1511
@@ -2337,7 +2338,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1521
 msgid "Now, continue onwards to play “Heir to the Throne, Classic”..."
-msgstr ""
+msgstr "Teraz pokračuj v kampani \"Dedič trónu, klasická verzia\"..."
 
 #. [unit_type]: id=Tutorial_Fighter, race=human
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Tutorial_Fighter.cfg:4
@@ -2412,17 +2413,9 @@ msgstr ""
 "tlačidla <b>u</b>."
 
 #: data/campaigns/Heir_To_The_Throne_Classic/utils/tutorial_utils.cfg:128
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<big>Click a mouse button or press the spacebar to continue...</big>"
 msgid "Click a mouse button or press the spacebar to continue..."
 msgstr ""
-"\n"
-"\n"
-"<big>Ak chcete pokračovať, kliknite ľavým tlačidlom myši, alebo stlačte "
-"medzerník.</big>"
+"Ak chcete pokračovať, kliknite ľavým tlačidlom myši, alebo stlačte medzerník."
 
 #, fuzzy
 #~| msgid "Tutorial"
@@ -3105,8 +3098,8 @@ msgstr ""
 #~ "survives its counter-attack! I’d better grab more villages and move "
 #~ "everyone closer for next turn."
 #~ msgstr ""
-#~ "Už žiadne ďalšie jednotky nemôžu orka napadnúť. Dúfam, že $unit."
-#~ "language_name prežije protiútok! Radšej zaberiem ďalšie dediny a "
+#~ "Už žiadne ďalšie jednotky nemôžu orka napadnúť. Dúfam, že "
+#~ "$unit.language_name prežije protiútok! Radšej zaberiem ďalšie dediny a "
 #~ "presuniem svoje sily bližšie."
 
 #~ msgid "Move your Shaman onto the bridge to stand behind your other unit"
