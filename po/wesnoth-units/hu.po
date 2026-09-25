@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: hu-units_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-09-21 00:25 UTC\n"
-"PO-Revision-Date: 2026-07-11 00:42+0200\n"
+"PO-Revision-Date: 2026-09-12 23:54+0200\n"
 "Last-Translator: Berda Jenő <big4billy@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
 "Language: hu\n"
@@ -5763,7 +5763,7 @@ msgstr "Fény mágusnője"
 #. [unit_type]: id=Outlaw, race=human, gender=male,female
 #: data/core/units/humans/Outlaw.cfg:4
 msgid "Outlaw"
-msgstr "Törvényen kívüli"
+msgstr "Zsivány"
 
 #. [unit_type]: id=Outlaw, race=human, gender=male,female
 #: data/core/units/humans/Outlaw.cfg:18
@@ -5779,20 +5779,20 @@ msgstr ""
 "Néhány évnyi szolgálat után a korábbi útonállók rangot szereznek maguknak a "
 "törvényen kívüliek között. Mivel bizonyítottak már a harcban, veszélyesebb "
 "feladatokat kapnak, és nagyobb részesedést a zsákmányból. Habár sok "
-"ellenfelük gúnyolná a fegyvereiket, a törvényen kívüliek tisztában vannak "
-"azok halálos voltával, és azzal is, hogy bárhonnan tudnak muníciót szerezni "
-"hozzájuk. A törvényen kívülieknek nem éppen a legmegfelelőbb nappal "
-"harcolni, jobban szeretik az éj leplét."
+"ellenfelük gúnyolná a fegyvereiket, a zsiványok tisztában vannak azok "
+"halálos voltával és azzal is, hogy bárhonnan tudnak muníciót szerezni "
+"hozzájuk. A zsiványok nem éppen a legmegfelelőbb nappal harcolni, jobban "
+"szeretik az éj leplét."
 
 #. [female]: gender=female
 #: data/core/units/humans/Outlaw.cfg:74
 msgid "female^Outlaw"
-msgstr "Törvényen kívüli"
+msgstr "Zsiványnő"
 
 #. [unit_type]: id=Assassin, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Assassin.cfg:4
 msgid "Assassin"
-msgstr "Orgyilkos"
+msgstr "Bérgyilkos"
 
 #. [unit_type]: id=Assassin, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Assassin.cfg:20
@@ -5807,7 +5807,7 @@ msgstr ""
 "vegyék el áldozatuk holmiját. Ezek a figurák a késsel vívott harc mesterei, "
 "hihetetlenül gyorsak, és bármilyen eszközt megragadnak azért, hogy "
 "áldozatukat kiiktassák, legyen az messziről dobott mérgezett kés, vagy hátba "
-"szúrás egy tőrrel. Éjszaka halálosak, fényes nappal az orgyilkosok kevésbé "
+"szúrás egy tőrrel. Éjszaka halálosak, fényes nappal az bérgyilkosok kevésbé "
 "tudnak küzdeni."
 
 #. [attack]: type=blade
@@ -5821,7 +5821,7 @@ msgstr "dobókés"
 #. [female]: gender=female
 #: data/core/units/humans/Outlaw_Assassin.cfg:95
 msgid "female^Assassin"
-msgstr "Orgyilkosnő"
+msgstr "Bérgyilkosnő"
 
 #. [unit_type]: id=Bandit, race=human
 #: data/core/units/humans/Outlaw_Bandit.cfg:4
@@ -5871,12 +5871,12 @@ msgstr ""
 #. [female]: gender=female
 #: data/core/units/humans/Outlaw_Footpad.cfg:88
 msgid "female^Footpad"
-msgstr "Útonálló"
+msgstr "Útonállónő"
 
 #. [unit_type]: id=Fugitive, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Fugitive.cfg:5
 msgid "Fugitive"
-msgstr "Szökevény"
+msgstr "Betyár"
 
 #. [unit_type]: id=Fugitive, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Fugitive.cfg:21
@@ -5885,19 +5885,19 @@ msgid ""
 "to elude capture. They can be dangerous in their element, though no match "
 "for the sheer numbers that law-abiding soldiery can throw at them."
 msgstr ""
-"A veterán bűnözők a törvényenkívüliség és az állandó szökésben levés "
+"A betyárok a törvényenkívüliség és az állandó szökésben levés "
 "megszállottjai. Nagyon veszélyesek lehetnek, és önmagukban is félelmetesek, "
 "de nem méltó ellenfelei a törvénytisztelő seregeknek."
 
 #. [female]: gender=female
 #: data/core/units/humans/Outlaw_Fugitive.cfg:78
 msgid "female^Fugitive"
-msgstr "Szökevény"
+msgstr "Betyárnő"
 
 #. [unit_type]: id=Highwayman, race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:5
 msgid "Highwayman"
-msgstr "Körözött bandita"
+msgstr "Haramia"
 
 #. [unit_type]: id=Highwayman, race=human
 #: data/core/units/humans/Outlaw_Highwayman.cfg:19
@@ -5908,16 +5908,16 @@ msgid ""
 "attacking on lonely roads or in the dead of night. Their experience with "
 "such encounters makes them deadly foes in hand to hand combat."
 msgstr ""
-"A körözött banditák hírhedtek az erőszakos alvilági tetteik miatt. Készek "
-"bárkinek a szolgálatába szegődni, aki hajlandó eleget fizetni. Kevésbé "
-"ismert haramiák csoportjait vezetik a megbízójuk ellenségei ellen, gyakran "
-"kietlen utakon vagy az éjjeli sötétben támadva. Az efféle ütközetekben "
-"szerezett tapasztalataik halálos ellenfelekké teszi őket a közelharcban."
+"A haramiák hírhedtek az erőszakos alvilági tetteik miatt. Készek bárkinek a "
+"szolgálatába szegődni, aki hajlandó eleget fizetni. Kevésbé ismert haramiák "
+"csoportjait vezetik a megbízójuk ellenségei ellen, gyakran kietlen utakon "
+"vagy az éjjeli sötétben támadva. Az efféle ütközetekben szerezett "
+"tapasztalataik halálos ellenfelekké teszi őket a közelharcban."
 
 #. [unit_type]: id=Rogue, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Rogue.cfg:4
 msgid "Rogue"
-msgstr "Haramia"
+msgstr "Orgyilkos"
 
 #. [unit_type]: id=Rogue, race=human, gender=male,female
 #: data/core/units/humans/Outlaw_Rogue.cfg:19
@@ -5930,7 +5930,7 @@ msgid ""
 "them more comfortable fighting in the dark."
 msgstr ""
 "Bármely tolvajcsoport vezetői képességeik révén vívják ki pozíciójukat. Ezek "
-"a haramiák hosszú és kellemetlen perceket töltöttek már azzal, hogy "
+"az orgyilkosok hosszú és kellemetlen perceket töltöttek már azzal, hogy "
 "átverekedjék magukat egy tömegen, és kicselezzék azokat, akik az életükre "
 "törnek, ez a képesség pedig nagyon hasznos egy harcban. A késelés "
 "mestereiként megbízható pontossággal tudnak kést dobálni és a hosszú "
@@ -5939,7 +5939,7 @@ msgstr ""
 #. [female]: gender=female
 #: data/core/units/humans/Outlaw_Rogue.cfg:74
 msgid "female^Rogue"
-msgstr "Haramia"
+msgstr "Orgyilkosnő"
 
 #. [unit_type]: id=Ruffian, race=human
 #: data/core/units/humans/Outlaw_Ruffian.cfg:4
@@ -5997,7 +5997,7 @@ msgstr "Tolvajnő"
 #. [unit_type]: id=Thug, race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:4
 msgid "Thug"
-msgstr "Gyilkos"
+msgstr "Bűnöző"
 
 #. [unit_type]: id=Thug, race=human
 #: data/core/units/humans/Outlaw_Thug.cfg:17
@@ -6008,11 +6008,11 @@ msgid ""
 "Regardless of their background, they all share a penchant for beating their "
 "victims with large clubs."
 msgstr ""
-"A gyilkosok sokféle helyről származhatnak, de vannak olyanok is, akik ebbe "
+"A bűnözők sokféle helyről származhatnak, de vannak olyanok is, akik ebbe "
 "születtek bele. Legtöbbjüket a hadseregből csapták ki, vagy a megművelt "
-"földjükről űzték el. Hogy továbbra is fenntarthassák magukat, gyilkosnak "
-"állnak. Hátterüktől függetlenül mindannyiuk hordoz egy közös vonást: "
-"ellenfeleiket hatalmas fütyköseikkel terítik le."
+"földjükről űzték el. Hogy továbbra is fenntarthassák magukat, bűnözésre "
+"adták a fejüket. Hátterüktől függetlenül mindannyiuk hordoz egy közös "
+"vonást: ellenfeleiket hatalmas fütyköseikkel terítik le."
 
 #. [unit_type]: id=Peasant, race=human, gender=male
 #: data/core/units/humans/Peasant.cfg:4
@@ -6065,7 +6065,7 @@ msgstr ""
 #. [unit_type]: id=Woodsman, race=human, gender=male
 #: data/core/units/humans/Woodsman.cfg:4
 msgid "Woodsman"
-msgstr "Erdész"
+msgstr "Erdőkerülő"
 
 #. [unit_type]: id=Woodsman, race=human, gender=male
 #: data/core/units/humans/Woodsman.cfg:18
@@ -6074,14 +6074,14 @@ msgid ""
 "a living where the human world verges on the wilderness. Wits and woodcraft "
 "often support them where weapons will not."
 msgstr ""
-"Az erdészek vadászok, fakitermelők, szénégetők és mások, akik az emberek "
+"Az erdőkerülők vadászok, fakitermelők, szénégetők és mások, akik az emberek "
 "világának határán élnek a vadonban. Bölcsességük és erdőismeretük gyakran "
 "segít nekik ott, ahol a fegyverek már haszontalanok."
 
 #. [unit_type]: id=Huntsman, race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:5
 msgid "Huntsman"
-msgstr "Vadász"
+msgstr "Vadorzó"
 
 #. [unit_type]: id=Huntsman, race=human
 #: data/core/units/humans/Woodsman_Huntsman.cfg:20
@@ -6103,18 +6103,18 @@ msgid ""
 msgstr ""
 "A vadászat népszerű sport a nemesség körében, de ez egy megélhetési forma is "
 "az egyszerű embereknek. Mint minden más szakma, ennek is van mestere. A "
-"vadászok ismerik foglalkozásuk minden trükkjét, és tapasztaltak a vadonban "
+"vadorzók ismerik foglalkozásuk minden trükkjét, és tapasztaltak a vadonban "
 "való tájékozódásban, a nyomkövetésben és az íj használatában. Nagyon "
 "ügyesek, ha egy mozgó célpontot kell eltalálni, illetve ha a célpont "
 "bozótban vagy fedezék mögött rejtőzik. Ezt a sokévi vadelejtésben való "
 "gyakorlatnak köszönhetik, ez a képesség sok erődben képzett íjásznál "
 "hiányzik.\n"
 "\n"
-"A vadászmestereket minden csoport felbérli, aki vad vidéken él vagy átutazik "
+"A vadorzókat minden csoport felbérli, aki vad vidéken él vagy átutazik "
 "rajta, legyenek azok a törvény emberei, vagy azok ellen munkálkodók. Még a "
 "természetnek is lehetnek halálos meglepetései, és bármely parancsnok, aki "
 "nem tud ilyen vezetőt szerezni, elveszítheti embereit pusztán a terep miatt. "
-"A jó erdőlakó életeket menthet, megkönnyítheti az utazást, elláthat "
+"A jó vadorzó életeket menthet, megkönnyítheti az utazást, elláthat "
 "élelemmel, és íjász szakértelme jól jön a harcban."
 
 #. [unit_type]: id=Poacher, race=human
@@ -6145,7 +6145,7 @@ msgstr ""
 #. [unit_type]: id=Ranger, race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:5
 msgid "Ranger"
-msgstr "Erdőkerülő"
+msgstr "Erdőmester"
 
 #. [unit_type]: id=Ranger, race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:19
@@ -6163,16 +6163,16 @@ msgid ""
 "even hear of it at all. Rangers can be hired, but they are just as likely to "
 "be in the employ of bandits, as they are to be in the king’s service."
 msgstr ""
-"Az erdőkerülők vad emberek és vándorok, akik számtalan okból úgy döntöttek, "
+"Az erdőmesterek vad emberek és vándorok, akik számtalan okból úgy döntöttek, "
 "hogy elkerülik embertársaik közelségét. Életük nagy részét a buja "
-"természetben töltötték, és ismerik annak számos titkát. Kiváló nyomkövetők "
-"és felderítők, valamint élelmet és menedéket találnak ott, ahol más ember "
-"csak gallyakat és köveket találna.\n"
+"természetben töltötték és ismerik annak számos titkát. Kiváló nyomkövetők és "
+"felderítők, valamint élelmet és menedéket találnak ott, ahol más ember csak "
+"gallyakat és köveket találna.\n"
 "\n"
 "Ezeknek az embereknek a jelenléte a diktatórikus uralkodókat bosszantja, "
 "mivel őket nem tudják irányítani a lovagok és a hadsereg sem. Kétes "
-"indítékaik vannak, és ők az elsők, akik fittyet hánynak bármiféle királyi "
-"rendeletre, hogyha a fülükbe jut egyáltalán ilyesmi. Az erdőkerülőket fel "
+"indítékaik vannak és ők az elsők, akik fittyet hánynak bármiféle királyi "
+"rendeletre, hogyha a fülükbe jut egyáltalán ilyesmi. Az erdőmestereket fel "
 "lehet bérelni, de éppúgy lehetnek a banditák oldalán, mint a király "
 "szolgálatában."
 
@@ -6192,7 +6192,7 @@ msgid ""
 "Their skill at hunting is very useful in combat, and also leaves them "
 "unusually competent at night, and in forests and swamps."
 msgstr ""
-"Az erdész mesterek hasznos szövetségesei minden hadseregnek, és "
+"A prémvadászok hasznos szövetségesei minden hadseregnek, és "
 "nélkülözhetetlenek bármely nagyobb csoportban, akik a vadonban élnek. Mind "
 "ember, mind állat nyomát tudják követni, észrevesznek dolgokat, amin mások "
 "átsiklanának, és gyakran az egyetlenek, akik ételt keríthetnek az asztalra, "
@@ -10091,10 +10091,8 @@ msgstr ""
 #. [unit_type]: id=Arcane Enforcer, race=human, gender=male,female
 #. "enforcer" as in "gang enforcer"
 #: data/internal/Rogue_Mage/units/Bandit_Arcane_Enforcer.cfg:6
-#, fuzzy
-#| msgid "Drake Enforcer"
 msgid "Arcane Enforcer"
-msgstr "Perzsekény hajcsár"
+msgstr "Földöntúli végrehajtó"
 
 #. [unit_type]: id=Arcane Enforcer, race=human, gender=male,female
 #: data/internal/Rogue_Mage/units/Bandit_Arcane_Enforcer.cfg:21
@@ -10107,20 +10105,23 @@ msgid ""
 "ex-magi brawl with surprising competence, especially under the cover of "
 "darkness."
 msgstr ""
+"A törvényen kívüliek zord, erőszakos élete nem túlzottan alkalmas a mágia "
+"tanulmányozására. Az első néhány évüket túlélő csavargó mágusok gyakran "
+"szervezett zsiványbandák segítségével teszik ezt, akik több mint boldogan "
+"nyújtanak védelmet az erőért és a hűségért cserébe. Lopott számszeríjakkal "
+"felfegyverkezve és szedett-vedett páncéljukat halványan derengő "
+"mágiatudással kiegészítve, ezek a volt mágusok meglepő hozzáértéssel "
+"verekednek, különösen a sötétség leple alatt."
 
 #. [female]: gender=female
 #: data/internal/Rogue_Mage/units/Bandit_Arcane_Enforcer.cfg:122
-#, fuzzy
-#| msgid "female^Drake Enforcer"
 msgid "female^Arcane Enforcer"
-msgstr "Perzsekény hajcsár"
+msgstr "Földöntúli végrehajtó"
 
 #. [unit_type]: id=Rogue Mage, race=human, gender=male,female
 #: data/internal/Rogue_Mage/units/Bandit_Rogue_Mage.cfg:5
-#, fuzzy
-#| msgid "Red Mage"
 msgid "Rogue Mage"
-msgstr "Vörös mágus"
+msgstr "Csavargó mágus"
 
 #. [unit_type]: id=Rogue Mage, race=human, gender=male,female
 #: data/internal/Rogue_Mage/units/Bandit_Rogue_Mage.cfg:19
@@ -10138,20 +10139,29 @@ msgid ""
 "their spells can still be quite dangerous, and their banditry has resulted "
 "in moderate skill with the short sword."
 msgstr ""
+"Nem minden tanítvány rendelkezik a mágussá váláshoz szükséges képességekkel "
+"és temperamentummal. A kezdőket gyakran elhagyják mestereik, néha tiltott "
+"művészetek gyakorlása, de gyakrabban hétköznapi kihágások, például lopás "
+"vagy sikkasztás, vagy akár egyszerű finanszírozás-hiány miatt.\n"
+"\n"
+"Míg ezeknek a kudarcot vallott varázslóknak a többsége más utakra tér át, "
+"néhányan banditának állnak, hogy továbbra is finanszírozhassák önálló "
+"tanulmányaikat. A most már teljesen törvényen kívül álló, csavargó mágusok "
+"bármi általuk szükségesnek ítéltet megtesznek, hogy eltartsák magukat és "
+"ennek eredményeként gyakran belekóstolnak a fekete mágia használatába. Bár "
+"ritkán olyan képzettek, mint a formálisabb képzettségű varázslók, "
+"varázslataik továbbra is meglehetősen veszélyesek lehetnek és a banditák "
+"között mérsékelt jártasságot szereztek a rövid kard forgatásában."
 
 #. [female]: gender=female
 #: data/internal/Rogue_Mage/units/Bandit_Rogue_Mage.cfg:80
-#, fuzzy
-#| msgid "female^Red Mage"
 msgid "female^Rogue Mage"
-msgstr "Vörös mágusnő"
+msgstr "Csavargó mágusnő"
 
 #. [unit_type]: id=Shadow Lord, race=human, gender=male,female
 #: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:5
-#, fuzzy
-#| msgid "Shadow"
 msgid "Shadow Lord"
-msgstr "Árny"
+msgstr "Árnyék úr"
 
 #. [unit_type]: id=Shadow Lord, race=human, gender=male,female
 #. I think of regular mages as modern-day professors, or perhaps ancient greek philosophers. In comparison, a Shadow Lord is more like an unemployed, obsessive savant who hasn't showered in three months but somehow discovered the secret to cold fusion while working alone in his dingy apartment.
@@ -10165,21 +10175,24 @@ msgid ""
 "for crude physical weapons, instead channeling their energies into "
 "devastatingly accurate magical attacks that undercut their enemies’ defenses."
 msgstr ""
+"A fény vagy a sötétség ösvényeinek gyümölcsei jól ismertek a mágusok "
+"számára: egy fehér mágus ragyogása vagy egy holtidéző mély komorsága. Sokkal "
+"kevésbé ismert az árnyék urak művészete, azoké a keveseké, akik elsajátítják "
+"a fehér és a fekete mágia egyesítését. Bár évtizedekig tartó buzgó tanulás "
+"és önmaguk elhanyagolása kimerítette erejüket, ezek a tudósok túlléptek a "
+"nyers fizikai fegyverek iránti igényen, ehelyett energiájukat pusztítóan "
+"pontos mágikus támadásokba fektették, amelyek aláássák ellenségeik védelmét."
 
 #. [attack]: type=blade
 #: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:48
-#, fuzzy
-#| msgid "war blade"
 msgid "astral blade"
-msgstr "acélkarom"
+msgstr "asztrálpenge"
 
 #. [damage_type]: id=cold_damage
 #: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:54
 #: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:52
-#, fuzzy
-#| msgid "chill wave"
 msgid "chill"
-msgstr "fagyhullám"
+msgstr "fagy"
 
 #. [damage_type]: id=cold_damage
 #: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:55
@@ -10188,6 +10201,8 @@ msgid ""
 "This attack can deal either blade or cold damage, depending on which would "
 "be more effective."
 msgstr ""
+"Ez a támadás fizikai vagy fagyási sebzést okozhat, attól függően, hogy "
+"melyik lenne hatékonyabb."
 
 #. [damage_type]: id=cold_damage
 #: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:56
@@ -10196,20 +10211,18 @@ msgid ""
 "This unit’s melee attack can deal either blade or cold damage, depending on "
 "which would be more effective."
 msgstr ""
+"Ez az egység közelharci támadása fizikai vagy fagyási sebzést okozhat, attól "
+"függően, hogy melyik lenne hatékonyabb."
 
 #. [female]: gender=female
 #: data/internal/Rogue_Mage/units/Bandit_Shadow_Lord.cfg:104
-#, fuzzy
-#| msgid "female^Dark Horse"
 msgid "female^Shadow Lord"
-msgstr "Sötét ló"
+msgstr "Árnyék úrnő"
 
 #. [unit_type]: id=Shadow Mage, race=human, gender=male,female
 #: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:5
-#, fuzzy
-#| msgid "shadow wave"
 msgid "Shadow Mage"
-msgstr "árnyhullám"
+msgstr "Árnyék mágus"
 
 #. [unit_type]: id=Shadow Mage, race=human, gender=male,female
 #: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:18
@@ -10222,13 +10235,19 @@ msgid ""
 "of their labor is the unnerving power to vanish and evade seemingly-lethal "
 "blows, only to reappear moments later and strike in sudden retaliation."
 msgstr ""
+"Bár számos mágiaiskolában kipróbálták magukat, de egyiket sem sajátították "
+"el teljesen, egy független mágus szegényes, de megszállott tanulása néha "
+"lenyűgöző eredményeket hozhat. A formális tanulás korlátai alól "
+"felszabadulva, az árnyék mágusok megtanulták összekombinálni a varázslatot "
+"és a kardot, egyenlő hévvel ragadva meg a fény és a sötétség titkait. "
+"Munkájuk számos gyümölcsének egyike az a nyugtalanító képesség, hogy "
+"eltűnnek és kitérnek a látszólag halálos csapások elől, hogy aztán "
+"pillanatokkal később újra megjelenjenek és hirtelen megtorlásul lecsapjanak."
 
 #. [female]: gender=female
 #: data/internal/Rogue_Mage/units/Bandit_Shadow_Mage.cfg:101
-#, fuzzy
-#| msgid "female^Red Mage"
 msgid "female^Shadow Mage"
-msgstr "Vörös mágusnő"
+msgstr "Árnyék mágusnő"
 
 #~ msgid ""
 #~ "Small but deadly in large numbers, fire ants possess fierce fangs and an "
