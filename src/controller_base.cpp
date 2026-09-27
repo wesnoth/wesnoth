@@ -374,11 +374,14 @@ void controller_base::play_slice()
 		l->update();
 	}
 
-	const theme::menu* const m = get_display().menu_pressed();
-	if(m != nullptr) {
-		const rect& menu_loc = m->location(video::game_canvas());
-		show_menu(m, { menu_loc.x + 1, menu_loc.y + menu_loc.h + 1 }, false);
-		return;
+	// stop interference with gui2, to be removed once gui2 migration finishes
+	if(!gui2::is_in_dialog()) {
+		const theme::menu* const m = get_display().menu_pressed();
+		if(m != nullptr) {
+			const rect& menu_loc = m->location(video::game_canvas());
+			show_menu(m, { menu_loc.x + 1, menu_loc.y + menu_loc.h + 1 }, false);
+			return;
+		}
 	}
 
 	const theme::action* const a = get_display().action_pressed();

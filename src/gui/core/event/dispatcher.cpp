@@ -30,7 +30,7 @@ dispatcher::dispatcher()
 	, signal_queue_()
 	, signal_mouse_queue_()
 	, signal_keyboard_queue_()
-	, signal_touch_motion_queue_()
+	, signal_touch_wheel_motion_queue_()
 	, signal_touch_gesture_queue_()
 	, signal_notification_queue_()
 	, signal_message_queue_()
@@ -110,8 +110,8 @@ bool dispatcher::fire(const ui_event event,
 
 bool dispatcher::fire(const ui_event event, widget& target, const point& pos, const point& distance)
 {
-	assert(is_in_category(event, event_category::touch_motion));
-	return fire_event<event_category::touch_motion>(event, this, &target, pos, distance);
+	assert(is_in_category(event, event_category::touch_and_wheel_motion));
+	return fire_event<event_category::touch_and_wheel_motion>(event, this, &target, pos, distance);
 }
 
 bool dispatcher::fire(const ui_event event, widget& target, const point& center, float dTheta, float dDist, uint8_t numFingers)
@@ -144,15 +144,15 @@ bool dispatcher::fire(const ui_event event, widget& target, const message& msg)
 	return fire_event<event_category::message>(event, this, &target, msg);
 }
 
-bool dispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
+bool dispatcher::execute_hotkey(const hotkey::hotkey_command& cmd, const bool /*down*/)
 {
-	auto itor = hotkeys_.find(id);
+	auto itor = hotkeys_.find(cmd.command);
 
 	if(itor == hotkeys_.end()) {
 		return false;
 	}
 
-	return itor->second(dynamic_cast<widget&>(*this), id);
+	return itor->second(dynamic_cast<widget&>(*this), cmd.command);
 }
 
 void connect_signal_pre_key_press(dispatcher& dispatcher, const signal_keyboard& signal)

@@ -81,7 +81,13 @@ void mouse_handler_base::mouse_update(const bool browse, map_location loc)
 
 bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
 {
-	tooltips::process(x, y);
+	// FIXME if check and is_gui2_tooltip is to be removed once all interactions
+	// are routed through gui2
+	if (is_gui2_tooltip_) {
+		tooltips::show(point{x, y});
+	} else {
+		tooltips::process(x, y);
+	}
 
 	if(simple_warp_) {
 		return true;
@@ -144,8 +150,7 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
 	return false;
 }
 
-bool mouse_handler_base::mouse_button_event(
-	const SDL_MouseButtonEvent& /*event*/, uint8_t /*button*/, map_location /*loc*/, bool /*click*/)
+bool mouse_handler_base::mouse_button_event(uint8_t /*button*/, map_location /*loc*/, bool /*click*/, bool /*down*/)
 {
 	return false;
 }
@@ -168,8 +173,8 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 		if(event.down == true) {
 			cancel_dragging();
 			touch_timestamp = now;
-			init_dragging(dragging_touch_);
-			if (!mouse_button_event(event, SDL_BUTTON_LEFT, loc, true)) {
+			init_dragging_touch();
+			if (!mouse_button_event(SDL_BUTTON_LEFT, loc, true, event.down)) {
 				left_click(event.x, event.y, browse);
 			}
 		} else if(event.down == false) {
@@ -178,7 +183,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 			if (!dragging_started_ && touch_timestamp != std::chrono::steady_clock::time_point{}) {
 				auto dt = now - touch_timestamp;
 				if (dt > touch_time) {
-					if (!mouse_button_event(event, SDL_BUTTON_RIGHT, loc, true)) {
+					if (!mouse_button_event(SDL_BUTTON_RIGHT, loc, true, event.down)) {
 						// BUG: This function won't do anything in the game, need right_mouse_up()
 						right_click(event.x, event.y, browse); // show_menu_ = true;
 					}
@@ -187,80 +192,53 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 				touch_timestamp = {};
 			}
 
-			clear_dragging(event, browse);
-			mouse_button_event(event, SDL_BUTTON_LEFT, loc);
+			clear_dragging(event.x, event.y, browse);
+			mouse_button_event(SDL_BUTTON_LEFT, loc, false, event.down);
 			left_mouse_up(event.x, event.y, browse);
 			clear_drag_from_hex();
 		}
 	} else if(is_left_click(event)) {
 		if(event.down == true) {
 			cancel_dragging();
-			init_dragging(dragging_left_);
-			if (!mouse_button_event(event, SDL_BUTTON_LEFT, loc, true)) {
+			init_dragging_left();
+			if (!mouse_button_event(SDL_BUTTON_LEFT, loc, true, event.down)) {
 				left_click(event.x, event.y, browse);
 			}
 		} else if(event.down == false) {
 			minimap_scrolling_ = false;
-			clear_dragging(event, browse);
-			mouse_button_event(event, SDL_BUTTON_LEFT, loc);
+			clear_dragging(event.x, event.y, browse);
+			mouse_button_event( SDL_BUTTON_LEFT, loc, false, event.down);
 			left_mouse_up(event.x, event.y, browse);
 			clear_drag_from_hex();
 		}
 	} else if(is_right_click(event)) {
 		if(event.down == true) {
-			mouse_button_event(event, SDL_BUTTON_RIGHT, loc);
+			mouse_button_event(SDL_BUTTON_RIGHT, loc, false, event.down);
 			cancel_dragging();
-			init_dragging(dragging_right_);
+			init_dragging_right();
 			right_click(event.x, event.y, browse);
 		} else if(event.down == false) {
 			minimap_scrolling_ = false;
-			clear_dragging(event, browse);
-			if (!mouse_button_event(event, SDL_BUTTON_RIGHT, loc, true)) {
+			clear_dragging(event.x, event.y, browse);
+			if (!mouse_button_event(SDL_BUTTON_RIGHT, loc, true, event.down)) {
 				right_mouse_up(event.x, event.y, browse);
 			}
 			clear_drag_from_hex();
 		}
 	} else if(is_middle_click(event)) {
 		if(event.down == true) {
-			drag_from_hex_ = loc;
-			set_scroll_start(event.x, event.y);
-			scroll_started_ = true;
-
-			map_location minimap_loc = gui().minimap_location_on(event.x, event.y);
-			minimap_scrolling_ = false;
-			if(minimap_loc.valid()) {
-				simple_warp_ = false;
-				minimap_scrolling_ = true;
-				last_hex_ = minimap_loc;
-				gui().scroll_to_tile(minimap_loc, display::WARP, false);
-			} else if(mouse_button_event(event, SDL_BUTTON_MIDDLE, loc, true)) {
-				scroll_started_ = false;
-				simple_warp_ = false;
-			} else if(simple_warp_) {
-				// middle click not on minimap, check gamemap instead
-				if(loc.valid()) {
-					last_hex_ = loc;
-					gui().scroll_to_tile(loc, display::WARP, false);
-				}
-			} else {
-				// Deselect the current tile as we're scrolling
-				gui().highlight_hex({-1,-1});
-			}
+			middle_mouse_down(event.x, event.y);
 		} else if(!event.down) {
-			minimap_scrolling_ = false;
-			simple_warp_ = false;
-			scroll_started_ = false;
-			mouse_button_event(event, SDL_BUTTON_MIDDLE, loc);
-			clear_drag_from_hex();
+			middle_mouse_up(event.x, event.y);
 		}
 	} else if(event.button == SDL_BUTTON_X1 || event.button == SDL_BUTTON_X2) {
 		if(event.down) {
 			cancel_dragging();
 			// record mouse-down hex in drag_from_hex_
 			drag_from_hex_ = loc;
-			mouse_button_event(event, event.button, loc);
+			mouse_button_event(event.button, loc, false, event.down);
 		} else {
-			mouse_button_event(event, event.button, loc, true);
+			mouse_button_event(event.button, loc, true, event.down);
 			clear_drag_from_hex();
 		}
 	}
@@ -270,6 +248,45 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 	}
 
 	mouse_update(browse, loc);
+}
+
+void mouse_handler_base::middle_mouse_up(int x, int y)
+{
+	map_location loc = gui().hex_clicked_on(x, y);
+	minimap_scrolling_ = false;
+	simple_warp_ = false;
+	scroll_started_ = false;
+	mouse_button_event(SDL_BUTTON_MIDDLE, loc, false, false);
+	clear_drag_from_hex();
+}
+
+void mouse_handler_base::middle_mouse_down(int x, int y)
+{
+	map_location loc = gui().hex_clicked_on(x, y);
+	drag_from_hex_ = loc;
+	set_scroll_start(x, y);
+	scroll_started_ = true;
+
+	map_location minimap_loc = gui().minimap_location_on(x, y);
+	minimap_scrolling_ = false;
+	if(minimap_loc.valid()) {
+		simple_warp_ = false;
+		minimap_scrolling_ = true;
+		last_hex_ = minimap_loc;
+		gui().scroll_to_tile(minimap_loc, display::WARP, false);
+	} else if(mouse_button_event(SDL_BUTTON_MIDDLE, loc, true, true)) {
+		scroll_started_ = false;
+		simple_warp_ = false;
+	} else if(simple_warp_) {
+		// middle click not on minimap, check gamemap instead
+		if(loc.valid()) {
+			last_hex_ = loc;
+			gui().scroll_to_tile(loc, display::WARP, false);
+		}
+	} else {
+		// Deselect the current tile as we're scrolling
+		gui().highlight_hex({-1,-1});
+	}
 }
 
 bool mouse_handler_base::is_left_click(const SDL_MouseButtonEvent& event) const
@@ -398,7 +415,7 @@ void mouse_handler_base::cancel_dragging()
 	cursor::set_dragging(false);
 }
 
-void mouse_handler_base::clear_dragging(const SDL_MouseButtonEvent& event, bool browse)
+void mouse_handler_base::clear_dragging(int x, int y, bool browse)
 {
 	// we reset dragging info before calling functions
 	// because they may take time to return, and we
@@ -411,17 +428,17 @@ void mouse_handler_base::clear_dragging(const SDL_MouseButtonEvent& event, bool 
 		if(dragging_touch_) {
 			dragging_touch_ = false;
 			// Maybe to do: create touch_drag_end(). Do panning and what else there. OTOH, it's fine now.
-			left_drag_end(event.x, event.y, browse);
+			left_drag_end(x, y, browse);
 		}
 
 		if(dragging_left_) {
 			dragging_left_ = false;
-			left_drag_end(event.x, event.y, browse);
+			left_drag_end(x, y, browse);
 		}
 
 		if(dragging_right_) {
 			dragging_right_ = false;
-			right_drag_end(event.x, event.y, browse);
+			right_drag_end(x, y, browse);
 		}
 	} else {
 		dragging_left_ = false;
