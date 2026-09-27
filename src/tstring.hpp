@@ -118,6 +118,8 @@ public:
 	std::string base_str() const;
 
 	std::size_t hash_value() const;
+	
+	static bool is_translatable_mark(char c);
 
 private:
 	std::string value_;
