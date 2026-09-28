@@ -104,8 +104,8 @@ end
 
 function return_table:execution(cfg,data)
 --     wesnoth.interface.add_chat_message('----Regroup Micro AI side '..wesnoth.current.side..' running on turn '..wesnoth.current.turn);
-    cfg.retreat_tod           = cfg.retreat_tod==nil and 'none' or cfg.retreat_tod;
-    if (cfg.retreat_tod~='none' and cfg.retreat_tod~='daytime' and cfg.retreat_tod~='nighttime') then error('regroup: invalid retreat_tod parameter "'.. (cfg.retreat_tod or 'nil') ..'"', 2) end
+    cfg.retreat_tod = cfg.retreat_tod==nil and 'none' or cfg.retreat_tod;
+    if (cfg.retreat_tod~='never' and cfg.retreat_tod~='none' and cfg.retreat_tod~='daytime' and cfg.retreat_tod~='nighttime') then error('regroup: invalid retreat_tod parameter "'.. (cfg.retreat_tod or 'nil') ..'"', 2) end
 
     cfg.filter_retreat_target = wml.get_child(cfg, 'filter_retreat_target') or { side=wesnoth.current.side, canrecruit=true };
     cfg.filter_guards         = wml.get_child(cfg, 'filter_guards'        ) or nil;
@@ -142,7 +142,6 @@ function return_table:execution(cfg,data)
         local this_turn_lawful_bonus = wesnoth.schedule.get_time_of_day(nil, wesnoth.current.turn).lawful_bonus;
 
         local is_good_tod = (
-            (cfg.retreat_tod=='none') or -- if retreat_tod=none, assume it's always a good ToD
             (cfg.retreat_tod=='nighttime' and this_turn_lawful_bonus>=0) or
             (cfg.retreat_tod=='daytime'   and this_turn_lawful_bonus<=0)
         );
@@ -155,6 +154,9 @@ function return_table:execution(cfg,data)
             (cfg.retreat_tod=='daytime'   and next_turn_lawful_bonus<=0)
         );
         enemy_adjustment = enemy_adjustment or 0;
+
+        if cfg.retreat_tod=='never' then return true end
+        if cfg.retreat_tod=='none'  then return       (hex.allies > (hex.enemies-enemy_adjustment)*0.5) end
         return
             (is_good_tod and not is_almost_bad_tod and hex.allies > (hex.enemies-enemy_adjustment)*0.3) or
             (is_good_tod and     is_almost_bad_tod and hex.allies > (hex.enemies-enemy_adjustment)*0.5) or
@@ -232,6 +234,18 @@ function return_table:execution(cfg,data)
     local threatmap = location_set.create();
     local wholemap  = location_set.of_pairs(wesnoth.current.map.find{ include_borders=false });
     for x,y in wholemap:iter() do threatmap[{x,y}] = { allies=0, enemies=0 } end
+    -- decide which sides count as allies. Our own side always counts,
+    -- but we want to only include other sides if they're BOTH allied with us AND hostile to at least one of our enemies (who has units on the map)
+    -- otherwise we'll count "neutral" sides as allies; e.g. some decorative horses, or prisoner units in cages who never move
+    local counts_as_ally = { [wesnoth.current.side]=true };
+    for _,allies in ipairs(wesnoth.sides.find{ T.allied_with{ side=wesnoth.current.side } }) do
+        for _,enemy in ipairs(wesnoth.sides.find{ T.enemy_of{ side=wesnoth.current.side }, T.has_unit{} }) do
+            if wesnoth.sides.is_enemy(allies.side, enemy.side) then
+                counts_as_ally[allies.side] = true;
+                break;
+            end
+        end
+    end
     for i,unit in pairs(wesnoth.units.find_on_map({ T.filter_vision{ visible=true, side=wesnoth.current.side } })) do
         local strength = get_unit_strength(unit);
         if wesnoth.sides.is_enemy(wesnoth.current.side, unit.side) then
@@ -245,7 +259,7 @@ function return_table:execution(cfg,data)
                 -- distance/100 provides a very small distance gradient. This helps us break ties and know which direction the threat is coming from
                 threatmap[{x,y}].enemies = threatmap[{x,y}].enemies + strength - distance/100;
             end
-        else
+        elseif counts_as_ally[unit.side] then
             -- for our units or allies who haven't yet taken their turn in the turn order (assuming the player is side 1),
             -- consider two turns of movement. This 1) helps account for our options next turn and 2) helps prevent the first unit in a charge from being too cowardly
             -- but for simplicity, use max_moves*2 instead of actually checking 2 turns (different in the case of rough terrain), and don't check attack range (since locationset_expand doesn't work with return_raw=true)
@@ -474,6 +488,7 @@ function return_table:execution(cfg,data)
         end
 
         if table_contains(kamikaze_units,myunit) then goto dont_retreat end
+        if myunit.status.guardian then goto dont_retreat end
         if myunit.moves==0 then goto dont_retreat end
 
         --###############################
@@ -652,10 +667,10 @@ function return_table:execution(cfg,data)
             -- DEBUG; recolor standoff/retreat units
 --             if standoffish then
 --                 myunit:add_modification('object', { duration='turn', T.effect{apply_to='image_mod',replace='BLEND(0,150,150,0.3)'} });
---                 wesnoth.interface.add_chat_message('standoff: '..myunit.name);
+--                 wesnoth.interface.add_chat_message('standoff: '..myunit.name..' ('..myunit.type..')');
 --             else
 --                 myunit:add_modification('object', { duration='turn', T.effect{apply_to='image_mod',replace='BLEND(0,0,150,0.3)'} });
---                 wesnoth.interface.add_chat_message('retreating: '..myunit.name);
+--                 wesnoth.interface.add_chat_message('retreating: '..myunit.name..' ('..myunit.type..')');
 --             end
             -----------------------------------------------
         end
@@ -793,7 +808,7 @@ function return_table:execution(cfg,data)
     for i,myunit in pairs(fallback_units) do
         local adjacent_to_retreat_area = location_set.create();
         for j,ally in pairs(wesnoth.units.find_on_map({ T.filter_side{T.allied_with{ side=wesnoth.current.side }} })) do
-            if retreatmap[{ally.x,ally.y}] then
+            if counts_as_ally[ally.side] and retreatmap[{ally.x,ally.y}] then
                 for x,y in location_set.of_pairs(wesnoth.current.map.find{ radius=1, T.filter{id=ally.id} }):iter() do
                     adjacent_to_retreat_area[{x,y}] = { value=0 };
                 end
@@ -1041,11 +1056,14 @@ function return_table:execution(cfg,data)
             -- no matter how badly outnumbered we are, don't get frustrated if we start each turn with at least a few allied units nearby (including our leader)
             -- care about # of units instead of strength, because that feels more intuitive for the player
             -- and care about # of enemies so that far-away fast enemies fighting with slow allies can't accidentally enrage us (fast enemy threat extends past slow ally strength)
-            local nearby_allies = wesnoth.units.find_on_map({
+            local nearby_allies = {};
+            for _,u in ipairs(wesnoth.units.find_on_map({
                 T['not']{ id=leader.id },
-                T.filter_side{T.allied_with{ side=wesnoth.current.side }},
                 T.filter_location{ x=leader.x, y=leader.y, radius=cfg.leader_protect_radius },
-            });
+            })) do
+                if counts_as_ally[u.side] then table.insert(nearby_allies, u) end
+            end
+
             local nearby_enemies = wesnoth.units.find_on_map({
                 T.filter_side{T.enemy_of{ side=wesnoth.current.side }},
                 T.filter_location{ x=leader.x, y=leader.y, radius=cfg.leader_protect_radius+2 },
