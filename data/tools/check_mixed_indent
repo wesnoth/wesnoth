@@ -9,7 +9,7 @@ handled with a text editor or a code reformatting tool.
 
 import  argparse, re, sys
 
-def check_indent(file):
+def check_indent(file, options):
     has_tabs = False
     with open(file, encoding="utf8") as lines:
         for line in lines:
@@ -27,7 +27,11 @@ def check_indent(file):
         # Only one type of indent appears at the start of each line, so this only needs to
         # check one way round for mixtures on the same line.
         if has_tabs:
-            mixed_line_re = re.compile("\t+ ")
+            if options.allow_two_spaces:
+                # Tab followed by at least three spaces, or any spaces in the middle of tabs
+                mixed_line_re = re.compile("\t+   |\t+ +\t")
+            else:
+                mixed_line_re = re.compile("\t+ ")
         else:
             mixed_line_re = re.compile(" +\t")
         lines.seek(0)
@@ -41,13 +45,14 @@ def check_indent(file):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(usage=__doc__)
     ap.add_argument("files", metavar="string", nargs="*", help="Read input from these files")
+    ap.add_argument("--allow-two-spaces", action="store_true", help="Allow one or two spaces after a tab")
     options = ap.parse_args()
 
     all_files_ok = True
 
     for file in options.files:
         try:
-            if not check_indent(file):
+            if not check_indent(file, options):
                 all_files_ok = False
         except UnicodeDecodeError:
             all_files_ok = False

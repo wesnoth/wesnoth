@@ -77,6 +77,7 @@ reindent:
 		--exclude=$(DATA)/test/scenarios/wml_tests/TerrainWML \
 		--exclude=$(DATA)/schema \
 		$(DATA)
+	@find $(DATA)/gui -name \*.cfg -print0 | xargs -0 ./check_mixed_indent --allow-two-spaces
 	@find $(DATA)/schema -name \*.cfg -print0 | xargs -0 ./check_mixed_indent
 
 # Extract a table of keybindings
