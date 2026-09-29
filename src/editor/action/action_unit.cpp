@@ -19,7 +19,7 @@
  */
 
 // TODO is a textdomain needed?
-#define GETTEXT_DOMAIN "wesnoth-editor"
+#define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "editor/action/action_unit.hpp"
 
