@@ -20,6 +20,7 @@
 #include "filesystem.hpp"
 #include "game_version.hpp"
 #include "gettext.hpp"
+#include "gui/gui.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/window.hpp"
@@ -40,10 +41,14 @@ REGISTER_DIALOG(migrate_version_selection)
 
 void migrate_version_selection::execute()
 {
-	migrate_version_selection mig = migrate_version_selection();
+	migrate_version_selection mig;
 	if(mig.versions_.size() > 0) {
 		mig.show();
 	} else {
+		// Select initial theme for Wesnoth, fresh install
+		prefs::get().set_initial_gui2_theme();
+		gui2::switch_theme(prefs::get().gui2_theme());
+
 		gui2::show_message(_("No Other Version Found"), _("This would import settings from a previous version of Wesnoth, but no other version was found on this device"), gui2::dialogs::message::button_style::auto_close);
 	}
 }
@@ -140,6 +145,9 @@ void migrate_version_selection::post_show()
 		// TODO: remove after 1.20. (Not used after that. Needs no replacement.)
 		prefs::get().set_campaign_rng_mode_default_for_migration();
 	}
+
+	prefs::get().set_initial_gui2_theme();
+	gui2::switch_theme(prefs::get().gui2_theme());
 }
 
 /**
