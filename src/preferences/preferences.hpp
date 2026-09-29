@@ -210,6 +210,7 @@ public:
 	void load_advanced_prefs(const game_config_view& gc);
 	void migrate_preferences(const std::string& prefs_dir);
 	void set_campaign_rng_mode_default_for_migration(); // TODO: remove after 1.20. (Not used after that. Needs no replacement.)
+	void set_initial_gui2_theme();
 	void reload_preferences();
 	std::set<std::string> all_attributes();
 

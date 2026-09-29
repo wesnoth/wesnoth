@@ -221,6 +221,31 @@ void prefs::set_campaign_rng_mode_default_for_migration()
 	}
 }
 
+void prefs::set_initial_gui2_theme()
+{
+	if(video::headless()) {
+		return;
+	}
+
+	if(!preferences_.has_attribute(prefs_list::gui2_theme)) {
+		const point window_size = video::current_resolution();
+
+		// TODO: theme specific minimum/maximum sizes specified via [gui]
+		const point min_size{
+			pref_constants::min_window_width,
+			pref_constants::min_window_height
+		};
+
+		if(min_size <= window_size) {
+			preferences_[prefs_list::gui2_theme] = "modern";
+		} else {
+			preferences_[prefs_list::gui2_theme] = "default";
+		}
+
+		write_preferences();
+	}
+}
+
 void prefs::reload_preferences()
 {
 	clear_preferences();
