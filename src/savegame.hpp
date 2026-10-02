@@ -69,6 +69,9 @@ struct load_game_metadata
 	/** State of the "change_difficulty" checkbox in the load-game dialog. */
 	bool select_difficulty = false;
 
+	/** State of the "rng_menu" dropdown in the load-game dialog. */
+	utils::optional<std::string> random_mode {};
+
 	/** Summary config of the save selected in the load game dialog. */
 	config summary {};
 
