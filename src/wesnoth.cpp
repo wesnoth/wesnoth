@@ -813,7 +813,36 @@ static int do_gameloop(commandline_options& cmdline_opts)
 
 	if(game_config::check_migration) {
 		game_config::check_migration = false;
+
+		if(prefs::get().gui2_theme().empty()) {
+			const point window_size = video::current_resolution();
+
+			// TODO: theme specific minimum/maximum sizes specified via [gui]
+			const point min_size{
+				pref_constants::min_window_width,
+				pref_constants::min_window_height
+			};
+
+			if(min_size <= window_size) {
+				// New install and empty gui2 theme:
+				// set theme to Celes/modern
+				prefs::get().set_gui2_theme("modern");
+			} else {
+				// Size below Celes minimum requirement:
+				// switch to Parchment/default
+				// set theme to Celes/modern
+				prefs::get().set_gui2_theme("default");
+			}
+			gui2::switch_theme(prefs::get().gui2_theme());
+		}
+
 		migrate_version_selection::execute();
+	} else {
+		if(prefs::get().gui2_theme().empty()) {
+			// Existing install and empty gui2 theme:
+			// set theme to Parchment/default
+			prefs::get().set_gui2_theme("default");
+		}
 	}
 
 	loading_screen::display([&res, &config_manager, &cmdline_opts]() {
