@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-09-20 19:25-0500\n"
-"PO-Revision-Date: 2026-04-13 23:15+0200\n"
+"PO-Revision-Date: 2026-09-27 21:52+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -2615,7 +2615,7 @@ msgstr "Copia"
 #. The heavy checkmark character is available in the DejaVu Sans font, but not in the default Lato font
 #: data/gui/themes/celes/widgets/button_success.cfg:269
 msgid "page^<b><span font_family='DejaVu Sans'>✔</span> Copied</b>"
-msgstr "<span font_family='DejaVu Sans'>✔</span> Copiata"
+msgstr "<b><span font_family='DejaVu Sans'>✔</span> Copiata</b>"
 
 #. [button]: id=click_dismiss
 #. [button]: id=ok
@@ -6612,29 +6612,29 @@ msgstr "Imposta la frequenza delle animazioni delle unità inattive"
 #. [label]
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:409
 msgid "Accessibility:"
-msgstr ""
+msgstr "Accessibilità:"
 
 #. [button]: id=custom_orb_color
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:423
 msgid "Customize orb colors"
-msgstr ""
+msgstr "Personalizza colori sfere"
 
 #. [button]: id=custom_orb_color
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:425
 msgid "Change the appearance of the unit movement status indicators"
-msgstr ""
+msgstr "Modifica l’aspetto degli indicatori di stato del movimento dell’unità"
 
 #. [button]: id=custom_reach_map
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:438
-#, fuzzy
-#| msgid "Custom Maps"
 msgid "Customize reach map"
-msgstr "Mappe personalizzate"
+msgstr "Personalizza Mappa Distanze"
 
 #. [button]: id=custom_reach_map
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:439
 msgid "Change the appearance of the unit movement UI overlay"
 msgstr ""
+"Modifica l’aspetto della sovrapposizione dell’interfaccia utente relativo al "
+"movimento delle unità"
 
 #. [tab]
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:498
@@ -6861,15 +6861,13 @@ msgstr "Opacità Tinta:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:148
-#, fuzzy
-#| msgid "Border Opacity:"
 msgid "Darken Opacity:"
-msgstr "Opacità bordo:"
+msgstr "Riduci l’opacità:"
 
 #. [toggle_button]: id=reachmap_darken_tex
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:157
 msgid "Textured darken"
-msgstr ""
+msgstr "Inscurimento texturizzato"
 
 #. [button]: id=open
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:49
@@ -8474,16 +8472,12 @@ msgid "Random Maps"
 msgstr "Mappe casuali"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:167
-#, fuzzy
-#| msgid "Scenario Editor"
 msgid "Scenario not found: "
-msgstr "Editor Scenario"
+msgstr "Scenario non trovato: "
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:237
-#, fuzzy
-#| msgid "Modifications: "
 msgid "Modification(s) not found: "
-msgstr "Modifiche: "
+msgstr "Modifiche non trovate: "
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:294
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:295

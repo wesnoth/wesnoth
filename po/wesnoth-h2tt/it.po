@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-09-21 00:25 UTC\n"
-"PO-Revision-Date: 2026-07-03 16:12+0200\n"
+"PO-Revision-Date: 2026-09-06 22:21+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -594,23 +594,24 @@ msgid ""
 "combat, so explore at your leisure. To leave the overworld and preview or "
 "play a battle scenario, move Konrad to one of the marked hexes."
 msgstr ""
+"<b>Questo è una vista d’insieme del mondo di gioco.</b> Qui non ci sono "
+"costi di movimento né combattimenti, quindi esplora pure a tuo piacimento. "
+"Per uscire dalla vista d’insieme del mondo di gioco e visualizzare in "
+"anteprima o giocare uno scenario di battaglia, sposta Konrad su uno degli "
+"esagoni contrassegnati."
 
 #. [lua]: wesnoth.wml_actions.display_overworld_tutorial
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:335
-#, fuzzy
-#| msgid ""
-#| "Tip: The season of the year changes every time you finish a battle. "
-#| "Winter battles will have longer nights and shorter days, often with more "
-#| "snow and ice. Summer battles are the opposite."
 msgid ""
 "overworld_help^After completing any scenario, the season of the year will "
 "change. Winter battles will have longer nights and shorter days, often with "
 "more snow and ice, while summer battles are the opposite. It’s currently "
 "autumn."
 msgstr ""
-"Suggerimento: la stagione dell’anno cambia ogni volta che finisci una "
-"battaglia. Le battaglie invernali avranno notti più lunghe e giorni più "
-"corti, spesso con più neve e ghiaccio. Le battaglie estive l’opposto."
+"La stagione dell’anno cambierà ogni volta che completi uno scenario. Le "
+"battaglie invernali avranno notti più lunghe e giorni più corti, spesso con "
+"più neve e ghiaccio. Le battaglie estive l’opposto. Attualmente siamo in "
+"autunno."
 
 #. [lua]: wesnoth.wml_actions.display_overworld_tutorial
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:335
@@ -618,6 +619,8 @@ msgid ""
 "overworld_help^Each scenario provides unique rewards, as shown in its "
 "preview, and most will open new areas of the map to explore."
 msgstr ""
+"Ogni scenario offre ricompense uniche, come mostrato nell’anteprima, e la "
+"maggior parte di essi sbloccherà nuove aree della mappa da esplorare."
 
 #. [lua]: wesnoth.wml_actions.display_overworld_tutorial
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:354
@@ -626,6 +629,9 @@ msgid ""
 "before the finale. And Delfador and his elementals will only be around to "
 "help during your first battle, so choose wisely!"
 msgstr ""
+"Konrad ha a disposizione abbastanza tempo per completare un numero limitato "
+"di battaglie prima del finale. E Delfador e i suoi elementali saranno di "
+"supporto soltanto nella prima battaglia, quindi scegli saggiamente!"
 
 #. [lua]: wesnoth.wml_actions.display_overworld_tutorial
 #. [lua]: wesnoth.wml_actions.display_lisar_tutorial
@@ -932,10 +938,10 @@ msgid ""
 "of Garard’s Royal Cavalry stands at your service. May they serve you well, "
 "as you ride to claim your rightful place on the throne!"
 msgstr ""
-"Ti siamo grati per il tuo aiuto, giovane erede! Il nostro porto ora è aperto,"
-"e quello che ne rimane della Cavalleria Reale di Garard è al tuo servizio. "
-"Che ti siano di grande aiuto mentre cavalchi per reclamare il tuo legittimo "
-"posto sul trono!"
+"Ti siamo grati per il tuo aiuto, giovane erede! Il nostro porto ora è "
+"aperto,e quello che ne rimane della Cavalleria Reale di Garard è al tuo "
+"servizio. Che ti siano di grande aiuto mentre cavalchi per reclamare il tuo "
+"legittimo posto sul trono!"
 
 #. [message]: speaker=Kaylan
 #: data/campaigns/Heir_To_The_Throne/overworld/00a_western_wesnoth.cfg:469
@@ -2682,7 +2688,7 @@ msgid ""
 msgstr ""
 "Ci siamo avventurati nel cuore di Wesnoth, ne siamo fuggiti vivi e ci "
 "ritroviamo con più armi di quante ne avessimo prima! Sebbene manchi "
-"l’equipaggimento necessario per armare degli Arceri, abbiamo raccolto "
+"l’equipaggimento necessario per armare degli Arcieri, abbiamo raccolto "
 "un’ampia collezione di sciabole e lance per i nostri Schermidori e Lancieri!"
 
 #: data/campaigns/Heir_To_The_Throne/overworld/00b_central_wesnoth.cfg:1146
@@ -4342,12 +4348,12 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:235
 msgid ""
 "I have not located the Sceptre yet, but I am making progress. I shall send a "
-"messenger once we are ready to retrieve it — perhaps in "
-"$( $bm_milestone_scepter - $bm_turns ) battles’ time."
+"messenger once we are ready to retrieve it — perhaps in $"
+"( $bm_milestone_scepter - $bm_turns ) battles’ time."
 msgstr ""
 "Non ho ancora trovato lo Scettro, ma sto facendo progressi. Manderò un "
-"messaggero quando saremo pronti a recuperarlo — forse tra "
-"$( $bm_milestone_scepter - $bm_turns ) battaglie."
+"messaggero quando saremo pronti a recuperarlo — forse tra $"
+"( $bm_milestone_scepter - $bm_turns ) battaglie."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:240
@@ -10859,7 +10865,7 @@ msgstr ""
 #. $gold will be between 10 and 40.
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Elensefar_Before.cfg:889
 msgid "$gold gold"
-msgstr ""
+msgstr "$gold mo"
 
 #. [message]: role=lisar_skiff
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Elensefar_Before.cfg:935
@@ -22167,8 +22173,8 @@ msgid ""
 "sovereign; your own kin. ...I suppose it runs in the family."
 msgstr ""
 "Ciao, Li’sar. Mi dispiace anche a me. Non avrei mai pensato che fossi il "
-"tipo da rivoltarti contro il tuo sovrano, contro i tuoi stessi simili. ..."
-"Immagino sia una cosa di famiglia."
+"tipo da rivoltarti contro il tuo sovrano, contro i tuoi stessi "
+"simili. ...Immagino sia una cosa di famiglia."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/48_Dan_Tonk.cfg:297
