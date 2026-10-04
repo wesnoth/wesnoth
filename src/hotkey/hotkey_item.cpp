@@ -369,14 +369,10 @@ bool hotkey_keyboard::bindings_equal_helper(hotkey_ptr other) const
 void add_hotkey(hotkey_ptr item)
 {
 	if(item) {
-		auto iter = std::find_if(hotkeys_.begin(), hotkeys_.end(),
-			[&item](const hotkey::hotkey_ptr& hk) { return hk->bindings_equal(item); });
-
-		if(iter != hotkeys_.end()) {
-			iter->swap(item);
-		} else {
-			hotkeys_.push_back(std::move(item));
-		}
+		// More than one existing hot-key can match, since bindings_equal only checks for overlapping scopes.
+		// For example, a game+editor command bound to 's' matches both a game-only and an editor-only 's'.
+		utils::erase_if(hotkeys_, [&item](const hotkey::hotkey_ptr& hk) { return hk->bindings_equal(item); });
+		hotkeys_.push_back(std::move(item));
 	}
 }
 
