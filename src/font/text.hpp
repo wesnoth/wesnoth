@@ -360,6 +360,14 @@ public:
 
 private:
 
+	/*
+	 * Const member functions don't change the text or any of its settings,
+	 * but they may lay out the text again if it's out of date. The layout is
+	 * changed through its pointer, and the mutable members are only values
+	 * cached from it, plus the pixel scale, which is read from the video
+	 * settings.
+	 */
+
 	/***** ***** ***** *****  Pango variables ***** ***** ***** *****/
 	std::unique_ptr<PangoContext, std::function<void(void*)>> context_;
 	std::unique_ptr<PangoLayout, std::function<void(void*)>> layout_;
@@ -386,8 +394,8 @@ private:
 	/** The font family class used. */
 	font::family_class font_class_;
 
-	/** The font size to draw. */
-	mutable unsigned font_size_;
+	/** The font size to draw, in draw-space (before pixel scaling). */
+	unsigned font_size_;
 
 	/** The style of the font, this is an orred mask of the font flags. */
 	FONT_STYLE font_style_;
@@ -404,9 +412,11 @@ private:
 	 * Values less or equal to 0 mean no maximum and are internally stored as
 	 * -1, since that's the value pango uses for it.
 	 *
+	 * This is in draw-space (before pixel scaling).
+	 *
 	 * See @ref characters_per_line_.
 	 */
-	mutable int maximum_width_;
+	int maximum_width_;
 
 	/**
 	 * The number of characters per line.
@@ -431,8 +441,13 @@ private:
 	 *
 	 * Values less or equal to 0 mean no maximum and are internally stored as
 	 * -1, since that's the value pango uses for it.
+	 *
+	 * This is in draw-space (before pixel scaling).
 	 */
-	mutable int maximum_height_;
+	int maximum_height_;
+
+	/** Whether the maximum height is also passed to the layout. */
+	bool multiline_;
 
 	/** The way too long text is shown depends on this mode. */
 	PangoEllipsizeMode ellipse_mode_;
@@ -453,7 +468,7 @@ private:
 	mutable bool calculation_dirty_;
 
 	/** Length of the text. */
-	mutable std::size_t length_;
+	std::size_t length_;
 
 	/** The pixel scale, used to render high-DPI text. */
 	mutable int pixel_scale_;
