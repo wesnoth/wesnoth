@@ -911,13 +911,6 @@ bool pango_text::validate_markup(std::string_view text, char** raw_text, std::st
 	return true;
 }
 
-void pango_text::copy_layout_properties(PangoLayout& src, PangoLayout& dst)
-{
-	pango_layout_set_alignment(&dst, pango_layout_get_alignment(&src));
-	pango_layout_set_height(&dst, pango_layout_get_height(&src));
-	pango_layout_set_ellipsize(&dst, pango_layout_get_ellipsize(&src));
-}
-
 std::vector<std::string> pango_text::get_lines() const
 {
 	recalculate();
