@@ -387,7 +387,7 @@ private:
 	font::family_class font_class_;
 
 	/** The font size to draw. */
-	unsigned font_size_;
+	mutable unsigned font_size_;
 
 	/** The style of the font, this is an orred mask of the font flags. */
 	FONT_STYLE font_style_;
@@ -406,7 +406,7 @@ private:
 	 *
 	 * See @ref characters_per_line_.
 	 */
-	int maximum_width_;
+	mutable int maximum_width_;
 
 	/**
 	 * The number of characters per line.
@@ -432,7 +432,7 @@ private:
 	 * Values less or equal to 0 mean no maximum and are internally stored as
 	 * -1, since that's the value pango uses for it.
 	 */
-	int maximum_height_;
+	mutable int maximum_height_;
 
 	/** The way too long text is shown depends on this mode. */
 	PangoEllipsizeMode ellipse_mode_;
@@ -456,7 +456,7 @@ private:
 	mutable std::size_t length_;
 
 	/** The pixel scale, used to render high-DPI text. */
-	int pixel_scale_;
+	mutable int pixel_scale_;
 
 	/** Recalculates the text layout. */
 	void recalculate() const;
@@ -540,7 +540,7 @@ private:
 	point to_draw_scale(const point& p) const;
 
 	/** Update pixel scale, if necessary. */
-	void update_pixel_scale();
+	void update_pixel_scale() const;
 };
 
 /**
