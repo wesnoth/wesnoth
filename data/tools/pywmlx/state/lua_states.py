@@ -74,9 +74,11 @@ class LuaCommentState:
 # This matches translations enclosed in round brackets, such as a normal _("a") or
 # the plural _("a", "aa", x), and passes them to the plural-string handling
 # functions, even if it later turns out that it's not a plural.
+# The '_' may be preceded by any non-identifier character, such as '=' in
+# "x =_(", but not by one that would make it part of a longer name "foo_(".
 class LuaStr00:
     def __init__(self):
-        self.regex = re.compile(r'((?:_)|(?:.*?\(_)|(?:.*?\s+_))\s*\(')
+        self.regex = re.compile(r'(?:.*?\W)?_\s*\(')
         self.iffail = 'lua_str01'
 
     def run(self, xline, lineno, match):
