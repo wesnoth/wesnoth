@@ -36,7 +36,7 @@ class string_span
 public:
 	string_span() : str_(nullptr), size_(0)
 	{}
-	string_span(const char* str, int size) : str_(str), size_(size)
+	string_span(const char* str, size_t size) : str_(str), size_(size)
 	{}
 	string_span(const char* str) : str_(str), size_(strlen(str))
 	{}
@@ -77,8 +77,8 @@ public:
 		return !operator==(o);
 	}
 	bool operator<(const string_span& o) const {
-		const int len = size_ < o.size_ ? size_ : o.size_;
-		for(int n = 0; n < len; ++n) {
+		const size_t len = size_ < o.size_ ? size_ : o.size_;
+		for(size_t n = 0; n < len; ++n) {
 			if(str_[n] != o.str_[n]) {
 				if(str_[n] < o.str_[n]) {
 					return true;
@@ -94,7 +94,7 @@ public:
 	const char* begin() const { return str_; }
 	const char* end() const { return str_ + size_; }
 
-	int size() const { return size_; }
+	size_t size() const { return size_; }
 	bool empty() const { return size_ == 0; }
 	bool is_null() const { return str_ == nullptr; }
 
@@ -107,7 +107,7 @@ public:
 
 private:
 	const char* str_;
-	unsigned int size_;
+	size_t size_;
 };
 
 std::ostream& operator<<(std::ostream& o, const string_span& s);
