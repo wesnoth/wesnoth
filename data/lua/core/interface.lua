@@ -10,11 +10,11 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	---@param filter WML
 	---@param to_x integer
 	---@param to_y integer
-	function wesnoth.interface.move_unit_fake(filter, to_x, to_y)
+	function wesnoth.interface.move_unit_fake(filter, to_x, to_y, respect_fog)
 		local moving_unit = wesnoth.units.find_on_map(filter)[1]
 		local from_x, from_y = moving_unit.x, moving_unit.y
 
-		wesnoth.interface.scroll_to_hex(from_x, from_y)
+		wesnoth.interface.scroll_to_hex(from_x, from_y, respect_fog)
 		to_x, to_y = wesnoth.paths.find_vacant_hex(to_x, to_y, moving_unit)
 
 		if to_x < from_x then
