@@ -186,6 +186,30 @@ std::string string_span::to_string() const
 	return std::string(begin(), end());
 }
 
+t_string string_span::to_tstring() const
+{
+	return t_string::from_serialized(to_string());
+}
+
+bool string_span::is_bool() const
+{
+	return operator==("no") || operator==("yes") || operator==("off") || operator==("on") || operator==("false") || operator==("true") || operator==("0") || operator==("0.0") || operator==("0.0") || operator==("1.0");
+}
+
+bool string_span::is_int() const
+{
+	for(auto it = begin(); it < end(); ++it) {
+		if(!std::isdigit(*it)) return false;
+	}
+	return true;
+}
+
+bool string_span::is_tstring() const
+{
+	if(is_null() || empty()) return false;
+	return t_string_base::is_translatable_mark(*begin());
+}
+
 char* string_span::duplicate() const
 {
 	char* buf = new char[size() + 1];
@@ -444,6 +468,12 @@ node& node::set_attr_esc(const char* key, string_span value)
 node& node::set_attr_int(const char* key, int value)
 {
 	std::string temp = std::to_string(value);
+	return set_attr_dup(key, temp.c_str());
+}
+
+node& node::set_attr_tstring(const char* key, const t_string& value)
+{
+	std::string temp = value.to_serialized();
 	return set_attr_dup(key, temp.c_str());
 }
 
