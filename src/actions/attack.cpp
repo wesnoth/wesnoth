@@ -73,6 +73,31 @@ static lg::log_domain log_config("config");
 // BATTLE CONTEXT UNIT STATS
 // ==================================================================================
 
+namespace biased_rng
+{
+bool enabled()
+{
+	return resources::classification->random_mode == "biased" && !randomness::generator->is_networked();
+}
+
+int roll_credit(randomness::rng& rng)
+{
+	return rng.get_random_int(0, 99);
+}
+
+bool roll_hit(randomness::rng& rng, int strikes_left, int chance_to_hit, int& credit)
+{
+	if(chance_to_hit == 0 || chance_to_hit == 100) {
+		return chance_to_hit == 100;
+	}
+
+	const int expected_hits = (chance_to_hit * strikes_left + credit) / 100;
+	const bool does_hit = rng.get_random_int(0, strikes_left - 1) < expected_hits;
+	credit += chance_to_hit - (does_hit ? 100 : 0);
+	return does_hit;
+}
+} // namespace biased_rng
+
 battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 		const map_location& u_loc,
 		int u_attack_num,
@@ -242,11 +267,13 @@ battle_context::battle_context(
 		int a_wep_index,
 		nonempty_unit_const_ptr defender,
 		const map_location& d_loc,
-		int d_wep_index)
+		int d_wep_index,
+		bool use_biased_rng)
 	: attacker_stats_()
 	, defender_stats_()
 	, attacker_combatant_()
 	, defender_combatant_()
+	, use_biased_rng_(use_biased_rng)
 {
 	std::size_t a_wep_uindex = static_cast<std::size_t>(a_wep_index);
 	std::size_t d_wep_uindex = static_cast<std::size_t>(d_wep_index);
@@ -266,7 +293,7 @@ void battle_context::simulate(const combatant* prev_def)
 	if(!attacker_combatant_) {
 		attacker_combatant_.reset(new combatant(*attacker_stats_));
 		defender_combatant_.reset(new combatant(*defender_stats_, prev_def));
-		attacker_combatant_->fight(*defender_combatant_);
+		attacker_combatant_->fight(*defender_combatant_, true, use_biased_rng_);
 	}
 }
 
@@ -279,7 +306,8 @@ battle_context::battle_context(const unit_map& units,
 		double aggression,
 		const combatant* prev_def,
 		unit_const_ptr attacker,
-		unit_const_ptr defender)
+		unit_const_ptr defender,
+		bool use_biased_rng)
 	: attacker_stats_(nullptr)
 	, defender_stats_(nullptr)
 	, attacker_combatant_(nullptr)
@@ -299,16 +327,17 @@ battle_context::battle_context(const unit_map& units,
 
 	if(attacker_weapon == -1) {
 		*this = choose_attacker_weapon(
-			n_attacker, n_defender, attacker_loc, defender_loc, harm_weight, prev_def
+			n_attacker, n_defender, attacker_loc, defender_loc, harm_weight, prev_def, use_biased_rng
 		);
 	}
 	else if(defender_weapon == -1) {
 		*this = choose_defender_weapon(
-			n_attacker, n_defender, attacker_weapon, attacker_loc, defender_loc, prev_def
+			n_attacker, n_defender, attacker_weapon, attacker_loc, defender_loc, prev_def, use_biased_rng
 		);
 	}
 	else {
-		*this = battle_context(n_attacker, attacker_loc, attacker_weapon, n_defender, defender_loc, defender_weapon);
+		*this = battle_context(
+			n_attacker, attacker_loc, attacker_weapon, n_defender, defender_loc, defender_weapon, use_biased_rng);
 	}
 
 	assert(attacker_stats_);
@@ -417,7 +446,8 @@ battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr at
 		const map_location& attacker_loc,
 		const map_location& defender_loc,
 		double harm_weight,
-		const combatant* prev_def)
+		const combatant* prev_def,
+		bool use_biased_rng)
 {
 	log_scope2(log_attack, "choose_attacker_weapon");
 	std::vector<battle_context> choices;
@@ -430,7 +460,7 @@ battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr at
 		if(att.attack_weight() <= 0) {
 			continue;
 		}
-		battle_context bc = choose_defender_weapon(attacker, defender, i, attacker_loc, defender_loc, prev_def);
+		battle_context bc = choose_defender_weapon(attacker, defender, i, attacker_loc, defender_loc, prev_def, use_biased_rng);
 		//choose_defender_weapon will always choose the weapon that disabels the attackers weapon if possible.
 		if(bc.attacker_stats_->disable) {
 			continue;
@@ -439,7 +469,7 @@ battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr at
 	}
 
 	if(choices.empty()) {
-		return battle_context(attacker, attacker_loc, -1, defender, defender_loc, -1);
+		return battle_context(attacker, attacker_loc, -1, defender, defender_loc, -1, use_biased_rng);
 	}
 
 	if(choices.size() == 1) {
@@ -461,7 +491,7 @@ battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr at
 		return std::move(*best_choice);
 	}
 	else {
-		return battle_context(attacker, attacker_loc, -1, defender, defender_loc, -1);
+		return battle_context(attacker, attacker_loc, -1, defender, defender_loc, -1, use_biased_rng);
 	}
 }
 
@@ -471,14 +501,15 @@ battle_context battle_context::choose_defender_weapon(nonempty_unit_const_ptr at
 		unsigned attacker_weapon,
 		const map_location& attacker_loc,
 		const map_location& defender_loc,
-		const combatant* prev_def)
+		const combatant* prev_def,
+		bool use_biased_rng)
 {
 	log_scope2(log_attack, "choose_defender_weapon");
 	const auto attackers_attacks = attacker->attacks();
 	VALIDATE(attacker_weapon < attackers_attacks.size(), _("An invalid attacker weapon got selected."));
 
 	const attack_type& att = attackers_attacks[attacker_weapon];
-	auto no_weapon = [&]() { return battle_context(attacker, attacker_loc, attacker_weapon, defender, defender_loc, -1); };
+	auto no_weapon = [&]() { return battle_context(attacker, attacker_loc, attacker_weapon, defender, defender_loc, -1, use_biased_rng); };
 	std::vector<battle_context> choices;
 
 	// What options does defender have?
@@ -489,7 +520,7 @@ battle_context battle_context::choose_defender_weapon(nonempty_unit_const_ptr at
 			//no need to calculate the battle_context here.
 			continue;
 		}
-		battle_context bc(attacker, attacker_loc, attacker_weapon, defender, defender_loc, i);
+		battle_context bc(attacker, attacker_loc, attacker_weapon, defender, defender_loc, i, use_biased_rng);
 
 		if(bc.defender_stats_->disable) {
 			continue;
@@ -741,7 +772,7 @@ attack::attack(const map_location& attacker,
 	, OOS_error_(false)
 
 	//new experimental prng mode.
-	, use_prng_(resources::classification->random_mode == "biased" && randomness::generator->is_networked() == false)
+	, use_prng_(biased_rng::enabled())
 {
 	if(use_prng_) {
 		LOG_NG << "Using experimental PRNG for combat";
@@ -876,13 +907,11 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 		} else {
 			auto& bias = attacker_turn ? bias_attacker_ : bias_defender_;
 			if(bias.prev_cth != attacker.cth_) {
-				bias.credit = randomness::generator->get_random_int(0,  99);
+				bias.credit = biased_rng::roll_credit(*randomness::generator);
 				bias.prev_cth = attacker.cth_;
 			}
 			// attacker.n_attacks_ is the number of strikes left.
-			int expected_hits = (attacker.cth_ * attacker.n_attacks_ + bias.credit) / 100;
-			bool does_hit = randomness::generator->get_random_int(0,  attacker.n_attacks_ - 1) < expected_hits;
-			bias.credit += (attacker.cth_ - 100 * int(does_hit));
+			const bool does_hit = biased_rng::roll_hit(*randomness::generator, attacker.n_attacks_, attacker.cth_, bias.credit);
 			ran_num = does_hit ? 0 : 99;
 		}
 	} else {
