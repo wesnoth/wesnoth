@@ -1,3 +1,9 @@
+function append_array_to_wml(wt, key, array)
+	for i = 1, #array do
+		table.insert(wt, wml.tag[key](array[i]))
+	end
+	return wt
+end
 
 function wesnoth.wml_actions.set_variables(cfg, variables)
 	local name = cfg.name or wml.error "trying to set a variable with an empty name"
@@ -54,91 +60,50 @@ function wesnoth.wml_actions.set_variables(cfg, variables)
 	end
 	local mode = cfg.mode or "replace"
 	local realvar, idx = name:match('^(.*)%[(%d+)%]$')
-	local explicit_idx = true
 	if not realvar or not idx then
 		realvar = name
-		idx = 0
-		explicit_idx = false
+		idx = nil
 	end
-	if mode == "merge" or mode == "replace" then
-		local merge_with = wml.array_access.get(realvar, variables)
-		-- Convert the arrays to WML tables
-		for i = 1, #merge_with do
-			merge_with[i] = wml.tag.value(merge_with[i])
-		end
-		for i = 1, #data do
-			data[i] = wml.tag.value(data[i])
-		end
-		-- If specific index was specified, we start the operation at that index.
-		-- Thus, split the array into two parts such as that index is the first element of the second part
-		local head = {}
-		local tail = {}
-		if explicit_idx then
-			-- Note: idx is a WML index, so it starts at 0, not 1
-			idx = idx + 1
-			-- merge: add head, merge new element(s) with current element, add tail
-			-- replace: add head, add new element(s), add tail
-			for i = 1, #merge_with do
-				if i < idx then
-					head[i] = merge_with[i]
-				end
-				if i > idx then
-					table.insert(tail, merge_with[i])
-				end
-			end
-
-			if mode == "merge" then
-				-- For merge mode, all [value] and [literal] tags are joined together before being merged into the specific element
-				local data_merged = {}
-				for i = 1, #data do
-					data_merged = wml.merge(data_merged, data[i].contents, "append")
-				end
-				local merge_contents = merge_with[idx] and merge_with[idx].contents or {}
-				data_merged = wml.merge(merge_contents, data_merged, mode)
-				data = {wml.tag.value(data_merged)}
-			end
-
-			-- empty containers should be created when idx is past end of original data
-			local padding_needed = idx - #merge_with - 1
-			while padding_needed > 0 do
-				table.insert(data, 1, wml.tag.value{})
-				padding_needed = padding_needed - 1
-			end
-
-			-- If we started at a specific index, add back everything that came before and after
-			local merged = {}
-			for i = 1, #head do
-				table.insert(merged, head[i])
-			end
+	local var_array = wml.array_access.get(realvar, variables)
+	if mode == "append" then
+        -- append just means "insert at end"
+        idx = #var_array
+        mode = "insert"
+    end
+	if mode == "merge" then
+		-- replace data with the result of the merge, then use "replace" logic to change var_array
+		if idx then
+			local data_merged = {}
 			for i = 1, #data do
-				table.insert(merged, data[i])
+				data_merged = wml.merge(data_merged, data[i], "append")
 			end
-			for i = 1, #tail do
-				table.insert(merged, tail[i])
-			end
-			wml.array_access.set(realvar, wml.child_array(merged, 'value'), variables)
+			data = { wml.merge(var_array[idx + 1] or {}, data_merged, "merge") }
 		else
-			if mode == "merge" then
-				data = wml.merge(merge_with, data, mode)
-			end
-			wml.array_access.set(realvar, wml.child_array(data, 'value'), variables)
+			local var_wml = append_array_to_wml({}, "value", var_array)
+			local data_wml = append_array_to_wml({}, "value", data)
+			data = wml.child_array(wml.merge(var_wml, data_wml), "value")
 		end
-	elseif mode == "append" then
-		local insert_into = wml.array_access.get(realvar, variables)
-		for i = 1, #data do
-			table.insert(insert_into, data[i])
+		mode = "replace"
+    end
+    if mode == "replace" then
+        -- implement replace as "delete then insert"
+		if idx then
+			table.remove(var_array, math.min(#var_array + 1, idx + 1))
+		else
+			var_array = {}
 		end
-		wml.array_access.set(realvar, insert_into, variables);
-	elseif mode == "insert" then
-		local insert_into = wml.array_access.get(realvar, variables)
-		while #insert_into < 0 + idx do
-			table.insert(insert_into, {})
-		end
-		for i = 1, #data do
-			table.insert(insert_into, idx + i, data[i])
-		end
-		wml.array_access.set(realvar, insert_into, variables);
-	else
-		wml.error("unknown mode for [set_variables]: " .. cfg.mode)
-	end
+        mode = "insert"
+    end
+    if mode == "insert" then
+        idx = idx or 0
+        while #var_array < idx + 0 do
+            var_array[#var_array + 1] = {}
+        end
+        for i = 1, #data do
+            table.insert(var_array, idx + i, data[i])
+        end
+    else
+        wml.error("unknown mode for [set_variables]: " .. cfg.mode)
+    end
+	wml.array_access.set(realvar, var_array, variables)
 end
