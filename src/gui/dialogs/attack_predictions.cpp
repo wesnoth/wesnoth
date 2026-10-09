@@ -24,6 +24,7 @@
 #include "formatter.hpp"
 #include "formula/variant.hpp"
 #include "game_board.hpp"
+#include "game_classification.hpp"
 #include "game_config.hpp"
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/label.hpp"
@@ -55,8 +56,44 @@ attack_predictions::attack_predictions(
 
 void attack_predictions::pre_show()
 {
+	label& title = find_widget<label>("title");
+	title.set_label(_("Damage Calculations") + " (" + rng_mode_name() + ")");
+	title.set_tooltip(rng_mode_tooltip());
+
 	set_data(attacker_data_, defender_data_);
 	set_data(defender_data_, attacker_data_);
+}
+
+std::string attack_predictions::rng_mode_name()
+{
+	const std::string mode = resources::classification ? resources::classification->random_mode : "";
+
+	if(mode == "biased") {
+		return _("Reduced RNG");
+	}
+
+	if(mode == "deterministic") {
+		return _("Predictable RNG");
+	}
+
+	return _("Default RNG");
+}
+
+std::string attack_predictions::rng_mode_tooltip()
+{
+	const std::string mode = resources::classification ? resources::classification->random_mode : "";
+
+	// These are the same strings as the options in the campaign selection dialog.
+	std::string description;
+	if(mode == "biased") {
+		description = _("Hits and misses are much more consistent. This tends to make small-scale engagements easier to plan.\n\nExample: if you strike three times with 50% accuracy, you will always hit at least once and miss at least once.");
+	} else if(mode == "deterministic") {
+		description = _("Identical to Default RNG, except loading a saved game will not change the outcome of an attack.\n\nExample: you strike twice and get lucky, hitting both strikes. You then load an earlier save and make the same attack again. Both strikes will still hit.");
+	} else {
+		description = _("Pure, unbiased randomness; the way Wesnoth is intended to be played.\n\nExample: if you strike twice with 50% accuracy, you’re most likely to hit once and miss once, but might also hit twice or miss twice.");
+	}
+
+	return rng_mode_name() + ": " + description;
 }
 
 static std::string get_probability_string(const double prob)

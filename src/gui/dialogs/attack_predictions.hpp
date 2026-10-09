@@ -19,6 +19,8 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "units/ptr.hpp"
 
+#include <string>
+
 class battle_context;
 
 struct battle_context_unit_stats;
@@ -38,6 +40,10 @@ public:
 	attack_predictions(battle_context& bc, unit_const_ptr attacker, unit_const_ptr defender);
 
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(attack_predictions)
+
+	static std::string rng_mode_name();
+
+	static std::string rng_mode_tooltip();
 
 private:
 	virtual const std::string& window_id() const override;
