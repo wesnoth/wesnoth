@@ -20,6 +20,7 @@
 #include "filesystem.hpp"
 #include "game_version.hpp"
 #include "gettext.hpp"
+#include "gui/gui.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/window.hpp"
@@ -140,6 +141,10 @@ void migrate_version_selection::post_show()
 		// TODO: remove after 1.20. (Not used after that. Needs no replacement.)
 		prefs::get().set_campaign_rng_mode_default_for_migration();
 	}
+
+	// Select initial theme for Wesnoth
+	prefs::get().set_initial_gui2_theme();
+	gui2::switch_theme(prefs::get().gui2_theme());
 }
 
 /**
