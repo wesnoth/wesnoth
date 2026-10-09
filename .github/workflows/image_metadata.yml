@@ -13,7 +13,7 @@ permissions:
 jobs:
   build:
     name: Image Metadata
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     env:
       BASE_SHA: ${{ github.event_name == 'push' && github.event.before || 'HEAD^' }}
       HEAD_SHA: ${{ github.event_name == 'push' && github.event.after  || 'HEAD' }}
