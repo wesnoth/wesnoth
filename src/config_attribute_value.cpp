@@ -27,6 +27,7 @@
 #include "utils/charconv.hpp"
 
 #include <array>
+#include <limits>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -266,9 +267,39 @@ public:
 
 	T operator()(const utils::monostate&) const { return def_; }
 	T operator()(bool)                 const { return def_; }
-	T operator()(int i)                const { return static_cast<T>(i); }
-	T operator()(unsigned long long u) const { return static_cast<T>(u); }
-	T operator()(double d)             const { return static_cast<T>(d); }
+	T operator()(int i) const { return static_cast<T>(i); }
+
+	// Saturate rather than silently wrapping or triggering undefined behaviour when narrowing.
+	T operator()(unsigned long long u) const
+	{
+		if constexpr(std::is_floating_point_v<T>) {
+			return static_cast<T>(u);
+		} else {
+			if(u > static_cast<unsigned long long>(std::numeric_limits<T>::max())) {
+				return std::numeric_limits<T>::max();
+			}
+			return static_cast<T>(u);
+		}
+	}
+
+	T operator()(double d) const
+	{
+		if constexpr(std::is_floating_point_v<T>) {
+			return static_cast<T>(d);
+		} else {
+			// Use >= / <= rather than > / < since a T::max() near 2^63 can't
+			// be exactly represented as a double, so the cast below could still
+			// be out-of-range (UB) at the boundary if only excluding values
+			// strictly beyond it.
+			if(d >= static_cast<double>(std::numeric_limits<T>::max())) {
+				return std::numeric_limits<T>::max();
+			}
+			if(d <= static_cast<double>(std::numeric_limits<T>::min())) {
+				return std::numeric_limits<T>::min();
+			}
+			return static_cast<T>(d);
+		}
+	}
 	T operator()(const std::string& s) const { return lexical_cast_default<T>(s, def_); }
 	T operator()(const t_string&)     const { return def_; }
 
