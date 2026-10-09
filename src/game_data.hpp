@@ -122,9 +122,6 @@ public:
 		cannot_end_turn_reason_ = reason;
 	}
 
-	/** the last location where a select event fired. Used by wml menu items with needs_select=yes*/
-	map_location last_selected;
-
 	void write_snapshot(config& cfg) const;
 
 	const std::string& next_scenario() const { return next_scenario_; }
