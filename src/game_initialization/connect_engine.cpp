@@ -74,6 +74,7 @@ connect_engine::connect_engine(saved_game& state, const bool first_scenario, mp_
 	, side_engines_()
 	, era_factions_()
 	, team_data_()
+	, user_access_()
 	, era_info_(level_.mandatory_child("era"))
 {
 	const config& era_config = level_.mandatory_child("era");
@@ -200,6 +201,42 @@ void connect_engine::import_user(const std::string& name, const bool observer, i
 	config user_data;
 	user_data["name"] = name;
 	import_user(user_data, observer, side_taken);
+}
+
+void connect_engine::update_user_access(const config::const_child_itors& users)
+{
+	// The server sends the complete game-user list. Rebuild the authorization
+	// snapshot and discard departed users so stale observers cannot remain in a
+	// controller menu after a disconnect.
+	std::set<std::string> current_users;
+	for(const config& user : users) {
+		const std::string name = user["name"].str();
+		current_users.insert(name);
+		user_access_[name] = user["eligible_for_side"].to_bool(true);
+	}
+	for(auto it = user_access_.begin(); it != user_access_.end();) {
+		if(current_users.find(it->first) == current_users.end()) {
+			it = user_access_.erase(it);
+		} else {
+			++it;
+		}
+	}
+	for(auto it = connected_users_rw().begin(); it != connected_users_rw().end();) {
+		if(current_users.find(*it) == current_users.end()) {
+			it = connected_users_rw().erase(it);
+		} else {
+			++it;
+		}
+	}
+	update_side_controller_options();
+}
+
+bool connect_engine::user_can_play(const std::string& name) const
+{
+	const auto it = user_access_.find(name);
+	// Unknown users are temporarily allowed for compatibility until the server
+	// sends a complete staging user list; the server remains authoritative.
+	return it == user_access_.end() || it->second;
 }
 
 void connect_engine::import_user(const config& data, const bool observer, int side_taken)
@@ -1127,7 +1164,12 @@ void side_engine::update_controller_options()
 	}
 
 	// Connected users.
+	// Observers stay visible but must not be assignable to a side unless the
+	// server explicitly marked them eligible for this Ranked/Tournament game.
 	for(const std::string& user : parent_.connected_users()) {
+		if(!parent_.user_can_play(user)) {
+			continue;
+		}
 		add_controller_option(parent_.default_controller_, user, side_controller::human);
 	}
 
