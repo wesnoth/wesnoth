@@ -72,6 +72,10 @@
 #include <limits.h>
 #endif
 
+#ifdef __OpenBSD__
+#include <sys/param.h>
+#endif
+
 #include <algorithm>
 #include <cstdlib>
 #include <set>
@@ -1017,6 +1021,14 @@ std::string get_exe_path()
 		ERR_FS << "Path to wesnoth executable is too long";
 		return get_cwd() + "/The Battle for Wesnoth";
 	}
+#elif defined(__OpenBSD__) && OpenBSD >= 202610
+        std::vector<char> buffer(PATH_MAX);
+        if (getexecpath(buffer.data(), buffer.size()) == 0) {
+                return std::string(buffer.data());
+        } else {
+                ERR_FS << "Path to wesnoth executable is too long";
+                return get_cwd() + "/wesnoth";
+        }
 #else
 	// first check /proc
 	if(bfs::exists("/proc/")) {
