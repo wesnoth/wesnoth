@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-09-20 19:25-0500\n"
-"PO-Revision-Date: 2026-05-23 19:45-0300\n"
+"PO-Revision-Date: 2026-10-09 21:08-0300\n"
 "Last-Translator: Sebastián Lecchini<sebas38760@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -6626,29 +6626,30 @@ msgstr "Establecer la frecuencia de las animaciones de las unidades inactivas"
 #. [label]
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:409
 msgid "Accessibility:"
-msgstr ""
+msgstr "Accesibilidad:"
 
 #. [button]: id=custom_orb_color
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:423
 msgid "Customize orb colors"
-msgstr ""
+msgstr "Personalizar colores de orbes"
 
 #. [button]: id=custom_orb_color
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:425
 msgid "Change the appearance of the unit movement status indicators"
 msgstr ""
+"Cambiar la apariencia de los indicadores de estado de movimiento de unidades"
 
 #. [button]: id=custom_reach_map
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:438
-#, fuzzy
-#| msgid "Custom Maps"
 msgid "Customize reach map"
-msgstr "Mapas personalizados"
+msgstr "Personalizar mapa de alcance"
 
 #. [button]: id=custom_reach_map
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:439
 msgid "Change the appearance of the unit movement UI overlay"
 msgstr ""
+"Cambiar la apariencia de la superposición de la interfaz de movimiento de "
+"unidades"
 
 #. [tab]
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:498
@@ -6878,15 +6879,13 @@ msgstr "Opacidad del tinte:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:148
-#, fuzzy
-#| msgid "Border Opacity:"
 msgid "Darken Opacity:"
-msgstr "Opacidad del borde:"
+msgstr "Opacidad de oscurecimiento:"
 
 #. [toggle_button]: id=reachmap_darken_tex
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:157
 msgid "Textured darken"
-msgstr ""
+msgstr "Oscurecimiento texturizado"
 
 #. [button]: id=open
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:49
@@ -8319,8 +8318,8 @@ msgstr "Descargando datos de la sala"
 #: src/gui/dialogs/lua_interpreter.cpp:628
 msgid "The lua console can only be used in debug mode! (Run ‘:debug’ first)"
 msgstr ""
-"¡La consola de lua solo puede usarse en modo depuración! (Ejecute primero ':"
-"debug')"
+"¡La consola de lua solo puede usarse en modo depuración! (Ejecute primero "
+"':debug')"
 
 #: src/gui/dialogs/lua_interpreter.cpp:629
 msgid "lua console"
@@ -8490,22 +8489,12 @@ msgid "Random Maps"
 msgstr "Mapas aleatorios"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:167
-#, fuzzy
-#| msgid "Scenario Editor"
 msgid "Scenario not found: "
-msgstr "Editor de escenario"
+msgstr "Escenario no encontrado: "
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:237
-#, fuzzy
-#| msgid ""
-#| "Modifications:\n"
-#| "\n"
-#| "None found."
 msgid "Modification(s) not found: "
-msgstr ""
-"Modificaciones:\n"
-"\n"
-"Ninguna encontrada."
+msgstr "Modificación(es) no encontrada(s): "
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:294
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:295
@@ -10621,8 +10610,8 @@ msgstr "En la sección «[$section|]», falta el subtipo obligatorio «[$tag|]»
 #~ "necesita dar una contraseña si desea utilizar un nombre de usuario "
 #~ "registrado.\n"
 #~ "\n"
-#~ "El foro de «La batalla por Wesnoth» se encuentra en https://forums."
-#~ "wesnoth.org/ (sólo en inglés)."
+#~ "El foro de «La batalla por Wesnoth» se encuentra en https://"
+#~ "forums.wesnoth.org/ (sólo en inglés)."
 
 #~ msgid "Available at titlescreen"
 #~ msgstr "Disponible en la pantalla de título"
