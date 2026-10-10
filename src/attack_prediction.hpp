@@ -34,7 +34,7 @@ struct combatant
 	combatant& operator=(const combatant &) = delete;
 
 	/** Simulate a fight!  Can be called multiple times for cumulative calculations. */
-	void fight(combatant &opponent, bool levelup_considered=true);
+	void fight(combatant &opponent, bool levelup_considered=true, bool use_biased_rng=false);
 
 	/** Resulting probability distribution (might be not as large as max_hp) */
 	std::vector<double> hp_dist;

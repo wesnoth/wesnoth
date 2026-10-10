@@ -38,7 +38,25 @@ class unit_type;
 class unit;
 class unit_map;
 class gamemap;
+
+namespace randomness
+{
+class rng;
+}
 class specials_context_t;
+
+namespace biased_rng
+{
+/** Returns true if the current game uses the biased random mode with a local RNG. */
+bool enabled();
+
+/** Rolls the credit a combatant starts a fight with. */
+int roll_credit(randomness::rng& rng);
+
+/** Rolls one strike. @a strikes_left includes this strike. */
+bool roll_hit(randomness::rng& rng, int strikes_left, int chance_to_hit, int& credit);
+} // namespace biased_rng
+
 /** Calculates the number of blows resulting from swarm. */
 inline unsigned swarm_blows(unsigned min_blows, unsigned max_blows, unsigned hp, unsigned max_hp)
 {
@@ -169,6 +187,7 @@ public:
 	 * based on harm_weight (1.0 means 1 hp lost counters 1 hp damage,
 	 * 0.0 means we ignore harm weight).
 	 * prev_def is for predicting multiple attacks against a defender.
+	 * use_biased_rng determines whether or not to simulate fights in Reduced RNG mode.
 	 */
 	battle_context(const unit_map& units,
 			const map_location& attacker_loc,
@@ -178,7 +197,8 @@ public:
 			double aggression = 0.0,
 			const combatant* prev_def = nullptr,
 			unit_const_ptr attacker_ptr = unit_const_ptr(),
-			unit_const_ptr defender_ptr = unit_const_ptr());
+			unit_const_ptr defender_ptr = unit_const_ptr(),
+			bool use_biased_rng = false);
 
 	/** Used by the AI which caches battle_context_unit_stats */
 	battle_context(const battle_context_unit_stats& att, const battle_context_unit_stats& def);
@@ -222,21 +242,24 @@ private:
 			int attacker_weapon,
 			nonempty_unit_const_ptr defender,
 			const map_location& defender_loc,
-			int defender_weapon);
+			int defender_weapon,
+			bool use_biased_rng = false);
 
 	static battle_context choose_attacker_weapon(nonempty_unit_const_ptr attacker,
 			const nonempty_unit_const_ptr& defender,
 			const map_location& attacker_loc,
 			const map_location& defender_loc,
 			double harm_weight,
-			const combatant* prev_def);
+			const combatant* prev_def,
+			bool use_biased_rng);
 
 	static battle_context choose_defender_weapon(nonempty_unit_const_ptr attacker,
 			nonempty_unit_const_ptr defender,
 			unsigned attacker_weapon,
 			const map_location& attacker_loc,
 			const map_location& defender_loc,
-			const combatant* prev_def);
+			const combatant* prev_def,
+			bool use_biased_rng);
 
 	/** Statistics of the units. */
 	std::unique_ptr<battle_context_unit_stats> attacker_stats_;
@@ -245,6 +268,8 @@ private:
 	/** Outcome of simulated fight. */
 	std::unique_ptr<combatant> attacker_combatant_;
 	std::unique_ptr<combatant> defender_combatant_;
+
+	bool use_biased_rng_ = false;
 };
 
 /** Performs an attack. */
