@@ -9,7 +9,7 @@ on:
 
 jobs:
   checks: # checks that don't need a wesnoth binary
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     container:
       image: wesnoth/wesnoth:2404-sdl3
       options: --tty # docker create options
@@ -65,7 +65,7 @@ jobs:
           - { cfg: debug,   tool: scons, cc: gcc,   cxx: g++,     std: 17, lto: false, sys_lua: false }
           - { cfg: release, tool: cmake, cc: gcc,   cxx: g++,     std: 20, lto: true,  sys_lua: false }
           - { cfg: release, tool: cmake, cc: clang, cxx: clang++, std: 17, lto: true,  sys_lua: true  }
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     container:
       image: wesnoth/wesnoth:2404-sdl3
       options: --tty # docker create options
@@ -167,7 +167,7 @@ jobs:
         run: ./run_boost_tests
 
   steam-runtime:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
 
     steps:
       - { uses: actions/checkout@v6, with: { submodules: "recursive" } }
@@ -185,7 +185,7 @@ jobs:
           path: utils/dockerbuilds/steambuild-*.tar
 
   mingw:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
 
     steps:
       - { uses: actions/checkout@v6, with: { submodules: "recursive" } }
@@ -214,7 +214,7 @@ jobs:
           path: utils/dockerbuilds/wesnoth-*-win64.exe
 
   flatpak:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     container:
       image: wesnoth/wesnoth:flatpak-sdl3
       options: --tty --cap-add=ALL --privileged # docker create options
@@ -244,7 +244,7 @@ jobs:
           path: wesnoth.flatpak
 
   translations:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     container:
       image: wesnoth/wesnoth:2404-sdl3
       env:

@@ -18,7 +18,7 @@ jobs:
     # Consider using larger runners for possible analysis time improvements.
     # `runs-on` accepts runner labels, not Docker image names. Run every CodeQL step
     # in the SDL3 container so initialization, compilation, and analysis share an environment.
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     container:
       image: wesnoth/wesnoth:2404-sdl3
       env:
