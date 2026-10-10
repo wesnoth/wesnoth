@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-09-20 19:25-0500\n"
-"PO-Revision-Date: 2026-05-24 08:34+0200\n"
+"PO-Revision-Date: 2026-09-22 18:33+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -300,8 +300,8 @@ msgid ""
 "identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgstr ""
 "<italic>text='Pouště'</italic> mají poněkud odlišné složení než malé jámy "
-"s pískem nebo pláže, hru ale ovlivňují obdobně. Podívej se na <ref>dst='.."
-"terrain_sand' text='písek'</ref>."
+"s pískem nebo pláže, hru ale ovlivňují obdobně. Podívej se na "
+"<ref>dst='..terrain_sand' text='písek'</ref>."
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -3193,8 +3193,8 @@ msgid ""
 "campaign_landing^For a full list of changes, consult our official changelog "
 "at https://www.wesnoth.org/start/1.20/"
 msgstr ""
-"Úplný seznam změn najdeš v oficiálním záznamu na adrese https://www.wesnoth."
-"org/start/1.20/."
+"Úplný seznam změn najdeš v oficiálním záznamu na adrese https://"
+"www.wesnoth.org/start/1.20/."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:249
@@ -6547,29 +6547,27 @@ msgstr "Frekvence náhodných animací jednotek"
 #. [label]
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:409
 msgid "Accessibility:"
-msgstr ""
+msgstr "Přístupnost:"
 
 #. [button]: id=custom_orb_color
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:423
 msgid "Customize orb colors"
-msgstr ""
+msgstr "Přizpůsobit barvy koulí"
 
 #. [button]: id=custom_orb_color
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:425
 msgid "Change the appearance of the unit movement status indicators"
-msgstr ""
+msgstr "Změnit vzhled ukazatelů stavu pohybu jednotek"
 
 #. [button]: id=custom_reach_map
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:438
-#, fuzzy
-#| msgid "Custom Maps"
 msgid "Customize reach map"
-msgstr "Vlastní mapy"
+msgstr "Přizpůsobit mapu dosahu"
 
 #. [button]: id=custom_reach_map
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:439
 msgid "Change the appearance of the unit movement UI overlay"
-msgstr ""
+msgstr "Změnit vzhled překryvné vrstvy pro pohyb jednotek"
 
 #. [tab]
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:498
@@ -6792,15 +6790,13 @@ msgstr "Neprůhlednost odstínu:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:148
-#, fuzzy
-#| msgid "Border Opacity:"
 msgid "Darken Opacity:"
-msgstr "Neprůhlednost okraje:"
+msgstr "Neprůhlednost ztmavení:"
 
 #. [toggle_button]: id=reachmap_darken_tex
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:157
 msgid "Textured darken"
-msgstr ""
+msgstr "Texturované ztmavení"
 
 #. [button]: id=open
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:49
@@ -8334,8 +8330,8 @@ msgid ""
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
 "S databází pro ověření verze rozšíření, která je potřebná pro čekárnu hry "
-"více hráčů, není něco v pořádku. Prosím nahlas to na https://bugs.wesnoth."
-"org."
+"více hráčů, není něco v pořádku. Prosím nahlas to na https://"
+"bugs.wesnoth.org."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:1018
 msgid "This game is password protected. Join using moderator rights anyway?"
@@ -8382,16 +8378,12 @@ msgid "Random Maps"
 msgstr "Náhodné mapy"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:167
-#, fuzzy
-#| msgid "Scenario Editor"
 msgid "Scenario not found: "
-msgstr "Editor scénáře"
+msgstr "Scénář nebyl nalezen: "
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:237
-#, fuzzy
-#| msgid "Modifications: "
 msgid "Modification(s) not found: "
-msgstr "Rozšíření: "
+msgstr "Modifikace nebyly nalezeny: "
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:294
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:295
