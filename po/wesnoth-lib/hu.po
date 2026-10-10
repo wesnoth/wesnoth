@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-09-20 19:25-0500\n"
-"PO-Revision-Date: 2026-08-07 01:44+0200\n"
+"PO-Revision-Date: 2026-10-08 13:04+0200\n"
 "Last-Translator: Berda Jenő <big4billy@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
 "Language: hu\n"
@@ -148,7 +148,7 @@ msgstr "Szürke zátony"
 #. [terrain_type]: id=medium_reef
 #: data/core/terrain.cfg:113
 msgid "Medium Coastal Reef"
-msgstr "Átmeneti zátony"
+msgstr "Közepes zátony"
 
 #. [terrain_type]: id=tropical_reef
 #: data/core/terrain.cfg:124
@@ -6595,29 +6595,29 @@ msgstr ""
 #. [label]
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:409
 msgid "Accessibility:"
-msgstr ""
+msgstr "Megközelíthetőség:"
 
 #. [button]: id=custom_orb_color
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:423
 msgid "Customize orb colors"
-msgstr ""
+msgstr "Jelzőgömb színeinek testreszabása"
 
 #. [button]: id=custom_orb_color
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:425
 msgid "Change the appearance of the unit movement status indicators"
 msgstr ""
+"Az egység mozgási lehetőségeit jelző gömböcskék megjelenésének "
+"megváltoztatása"
 
 #. [button]: id=custom_reach_map
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:438
-#, fuzzy
-#| msgid "Custom Maps"
 msgid "Customize reach map"
-msgstr "Egyedi pálya"
+msgstr "Mozgástérkép testreszabása"
 
 #. [button]: id=custom_reach_map
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:439
 msgid "Change the appearance of the unit movement UI overlay"
-msgstr ""
+msgstr "Az egységek mozgása megjelenítésének megváltoztatása"
 
 #. [tab]
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:498
@@ -6823,7 +6823,7 @@ msgstr "Nem jelöltél barátnak, illetve nem blokkolsz egyetlen játékost sem.
 #. [label]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:101
 msgid "Reach Map Options"
-msgstr "Térkép beállítások elérése"
+msgstr "Mozgástérkép beállítások"
 
 #. [label]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:112
@@ -6847,15 +6847,13 @@ msgstr "Szín áttetszősége:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:148
-#, fuzzy
-#| msgid "Border Opacity:"
 msgid "Darken Opacity:"
-msgstr "Szegély áttetszősége:"
+msgstr "Sötétítés áttetszősége:"
 
 #. [toggle_button]: id=reachmap_darken_tex
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:157
 msgid "Textured darken"
-msgstr ""
+msgstr "Textúrázott sötétítés"
 
 #. [button]: id=open
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:49
@@ -8452,16 +8450,12 @@ msgid "Random Maps"
 msgstr "Véletlenszerű pálya"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:167
-#, fuzzy
-#| msgid "Scenario Editor"
 msgid "Scenario not found: "
-msgstr "Küldetés-szerkesztő"
+msgstr "A küldetés nem található: "
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:237
-#, fuzzy
-#| msgid "Modifications: "
 msgid "Modification(s) not found: "
-msgstr "Módosítók: "
+msgstr "A módosító(k) nem találhatók: "
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:294
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:295
