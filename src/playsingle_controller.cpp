@@ -336,7 +336,14 @@ void playsingle_controller::play_scenario_main_loop()
 				resources::gameboard->teams()[i].set_local(local_players[i]);
 			}
 
-			// TODO: we currently don't set the music to the initial playlist, should we?
+			// Restore the play-list saved with the level, as play_scenario() does on load.
+			// The end-of-level music empties it, so without this the music stops once the
+			// victory/defeat track finishes - GitHub #10968
+			for(const config& m : ex.level->child_range("music")) {
+				sound::play_music_config(m, true);
+			}
+
+			sound::commit_music_changes();
 
 			play_scenario_init(*ex.level);
 
