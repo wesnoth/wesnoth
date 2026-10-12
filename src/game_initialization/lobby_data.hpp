@@ -15,6 +15,8 @@
 
 #pragma once
 
+#include "mp_game_settings.hpp"
+
 #include <vector>
 #include <string>
 
@@ -51,6 +53,8 @@ struct user_info
 	int forum_id;
 	int game_id;
 	bool registered;
+	// Sent by wesnothd for the compact ranked indicator in the player list.
+	bool ranked_enabled;
 	bool observing;
 	bool moderator;
 };
@@ -75,6 +79,9 @@ struct game_info
 	std::string map_info;
 	std::string map_size_info;
 	std::string era;
+	// Server-provided competitive metadata used for presentation only. The
+	// resume fields remain empty for lobby entries; wesnothd is authoritative.
+	competitive_game_settings competitive;
 
 	/** List of modification names and whether they're installed or not. */
 	std::vector<std::pair<std::string, bool>> mod_info;
