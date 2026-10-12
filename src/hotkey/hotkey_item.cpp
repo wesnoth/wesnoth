@@ -133,7 +133,7 @@ hotkey_ptr create_hotkey(const std::string& id, const SDL_Event& event)
 		if(mods & SDL_KMOD_CTRL || mods & SDL_KMOD_ALT || mods & SDL_KMOD_GUI || CKey::is_uncomposable(event.key)
 			|| command.toggle) {
 			auto keyboard = std::make_shared<hotkey_keyboard>();
-			base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
+			base = keyboard;
 			SDL_Keycode code;
 			code = event.key.key;
 			keyboard->set_keycode(code);
@@ -146,7 +146,7 @@ hotkey_ptr create_hotkey(const std::string& id, const SDL_Event& event)
 			return nullptr;
 		}
 		auto keyboard = std::make_shared<hotkey_keyboard>();
-		base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
+		base = keyboard;
 		std::string text = std::string(event.text.text);
 		keyboard->set_text(text);
 		if(text == ":" || text == "`") {
@@ -156,7 +156,7 @@ hotkey_ptr create_hotkey(const std::string& id, const SDL_Event& event)
 
 	case SDL_EVENT_MOUSE_BUTTON_UP: {
 		auto mouse = std::make_shared<hotkey_mouse>();
-		base = std::dynamic_pointer_cast<hotkey_base>(mouse);
+		base = mouse;
 		mouse->set_button(event.button.button);
 		mouse->set_clicks(event.button.clicks);
 		break;
@@ -181,7 +181,7 @@ hotkey_ptr load_from_config(const config& cfg)
 	const config::attribute_value& mouse_cfg = cfg["mouse"];
 	if(!mouse_cfg.empty()) {
 		auto mouse = std::make_shared<hotkey_mouse>();
-		base = std::dynamic_pointer_cast<hotkey_base>(mouse);
+		base = mouse;
 
 		if(mouse_cfg.to_int() == TOUCH_MOUSE_INDEX) {
 			mouse->set_button(TOUCH_MOUSE_INDEX);
@@ -197,7 +197,7 @@ hotkey_ptr load_from_config(const config& cfg)
 	const std::string& key_cfg = cfg["key"];
 	if(!key_cfg.empty()) {
 		auto keyboard = std::make_shared<hotkey_keyboard>();
-		base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
+		base = keyboard;
 
 		SDL_Keycode keycode = SDL_GetKeyFromName(key_cfg.c_str());
 		if(keycode == SDLK_UNKNOWN) {
