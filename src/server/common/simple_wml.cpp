@@ -286,24 +286,31 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 
 			string_span name(s, end - s);
 			s = end + 1;
-			if(*s == '_') {
-				s = strchr(s, '"');
-				if(s == nullptr) {
+			while (*s == ' ') ++s;
+
+			end = s;
+			if(*end == '_') {
+				++end;
+				while (*end == ' ') ++end;
+				if(*end != '"') {
+					ERR_SWML << "ATTR: '" << name <<  "' (((" << s << ")))";
 					throw error("did not find '\"' after '_'");
 				}
 			}
 
-			if (*s != '"') {
-				end = strchr(s, '\n');
+			if (*end != '"') {
+				end = strchr(end, '\n');
 				if (!end) {
 					ERR_SWML << "ATTR: '" << name << "' (((" << s << ")))";
 					throw error("did not find end of attribute");
 				}
-				if (memchr(s, '"', end - s))
+				if (memchr(s, '"', end - s)) {
+					ERR_SWML << "ATTR: '" << name << "' (((" << s << ")))";
 					throw error("found stray quotes in unquoted value");
+				}
 				goto read_attribute;
 			}
-			end = s;
+			
 			while(true)
 			{
 				// Read until the first single double quote.
@@ -322,24 +329,32 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 				if (*endline == '\n') break;
 
 				// Read concatenation marker.
-				if (*(endline++) != '+')
+				if (*(endline++) != '+') {
+					ERR_SWML << "ATTR: '" << name << "' (((" << end << ")))";
 					throw error("did not find newline after end of attribute");
-				if (*(endline++) != '\n')
+				}
+				if (*(endline++) != '\n') {
+					ERR_SWML << "ATTR: '" << name << "' (((" << end << ")))";
 					throw error("did not find newline after '+'");
+				}
 
 				// Read textdomain marker.
 				if (*endline == '#') {
 					endline = strchr(endline + 1, '\n');
-					if (!endline)
+					if (!endline) {
+						ERR_SWML << "ATTR: '" << name << "' (((" << end << ")))";
 						throw error("did not find newline after '#'");
+					}
 					++endline;
 				}
 
 				// Read indentation and start of string.
 				while (*endline == '\t') ++endline;
 				if (*endline == '_') ++endline;
-				if (*endline != '"')
+				if (*endline != '"') {
+					ERR_SWML << "ATTR: '" << name << "' (((" << end << ")))";
 					throw error("did not find quotes after '+'");
+				}
 				end = endline;
 			}
 
