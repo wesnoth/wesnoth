@@ -508,7 +508,8 @@ void mp_join_game::network_handler()
 	}
 
 	// Update chat
-	find_widget<chatbox>("chat").process_network_data(data);
+	chatbox& chat = find_widget<chatbox>("chat");
+	chat.process_network_data(data);
 
 	if(!data["message"].empty()) {
 		gui2::show_transient_message(_("Response") , data["message"]);
@@ -557,6 +558,14 @@ void mp_join_game::network_handler()
 	// Update player list
 	if(data.has_child("user")) {
 		player_list_->update_list(data.child_range("user"));
+
+		// This screen doesn't receive the main lobby's user list updates, so keep
+		// the chat's auto-completion roster synchronised with who is actually connected.
+		std::set<std::string> names;
+		for(const config& user : data.child_range("user")) {
+			names.insert(user["name"]);
+		}
+		chat.set_available_users(names);
 	}
 }
 
