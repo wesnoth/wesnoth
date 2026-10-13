@@ -94,8 +94,8 @@ bool wmi_manager::fire_item(
 	scoped_xy_unit highlighted_unit("unit", hex, units);
 
 	// Can this item be shown?
-	if(wmi->can_show(hex, gamedata, fc)) {
-		wmi->fire_event(hex, gamedata);
+	if(wmi->can_show(hex, fc)) {
+		wmi->fire_event(hex);
 	}
 	gamedata.get_variable("x1") = x1;
 	gamedata.get_variable("y1") = y1;
@@ -134,7 +134,7 @@ void wmi_manager::get_items(const map_location& hex,
 		bool synched_allowed = !item->is_synced() || resources::controller->can_use_synced_wml_menu();
 
 		// Can this item be shown?
-		if(!item->use_wml_menu() || !synched_allowed || !item->can_show(hex, gamedata, fc)) {
+		if(!item->use_wml_menu() || !synched_allowed || !item->can_show(hex, fc)) {
 			continue;
 		}
 

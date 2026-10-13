@@ -45,7 +45,7 @@ public:
 	/*
 
 	*/
-	static config get_event(const std::string& name, const map_location& loc, const map_location*  last_select_loc);
+	static config get_event(const std::string& name, const map_location& loc);
 
 	static config get_lua_ai(const std::string& lua_code);
 
