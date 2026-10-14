@@ -114,7 +114,10 @@ void controller_base::handle_event(const SDL_Event& event)
 		break;
 
 	case SDL_TEXTEDITING:
-		if(have_keyboard_focus()) {
+		// Ignore empty editing events: on Wayland, restarting text input makes the
+		// compositor send an empty preedit, which would otherwise trigger an endless
+		// stop/start loop until the connection breaks.
+		if(have_keyboard_focus() && *event.edit.text) {
 			SDL_Event evt = event;
 			evt.type = SDL_TEXTINPUT;
 			hotkey::key_event(evt, get_hotkey_command_executor());
