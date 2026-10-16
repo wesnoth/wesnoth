@@ -410,7 +410,7 @@ void addon_manager::pre_show()
 
 	type_filter.set_values(type_filter_entries);
 	if (addon_type_ != ADDON_UNKNOWN) {
-		for (int i = 0; i < type_filter_entries.size(); ++i) {
+		for (std::size_t i = 0; i < type_filter_entries.size(); ++i) {
 			if (type_filter_types_[i].first == addon_type_) {
 				type_filter.select_option(i, true);
 				break;
