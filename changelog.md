@@ -6,6 +6,7 @@
 ### Multiplayer
 ### Lua API
 ### Packaging
+   * macOS minimum version bumped to 12 due to Apple enforcing this requirement with Xcode 27.
 ### Terrain
 ### Translations
    * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Finnish, Hungarian, Italian, Polish, Romanian, Slovak, Spanish
