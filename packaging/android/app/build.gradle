@@ -8,11 +8,11 @@ android {
     ndkVersion '26.3.11579264'
 
     defaultConfig {
-        applicationId "org.wesnoth.Wesnoth"
+        applicationId "org.wesnoth.Wesnoth.stable"
         minSdk 23
         targetSdk 35
-        versionCode 1192900 // version 1.xx.yy, patch zz
-        versionName "1.19.29+dev"
+        versionCode 120000 // version 1.xx.yy, patch z
+        versionName "1.20.00"
     }
 
     buildFeatures {
