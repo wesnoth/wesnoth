@@ -218,10 +218,6 @@ void wml_event_pump::process_event(handler_ptr& handler_p, const queued_event& e
 	handler_p->handle_event(ev, *resources::lua_kernel);
 	// NOTE: handler_p may be null at this point!
 
-	if(ev.name == "select") {
-		resources::gamedata->last_selected = ev.loc1;
-	}
-
 	if(game_display::get_singleton() != nullptr) {
 		game_display::get_singleton()->maybe_rebuild();
 	}
