@@ -18,6 +18,7 @@
 #include "serialization/markup.hpp"
 #include "game_initialization/lobby_data.hpp"
 #include "gettext.hpp"
+#include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/toggle_panel.hpp"
 #include "gui/widgets/tree_view.hpp"
@@ -147,6 +148,12 @@ void lobby_player_list_helper::update(const std::vector<mp::user_info>& user_inf
 
 			// Note the user_info associated with this node
 			info_map.try_emplace(node, info);
+
+			// This icon describes the player's ranked capability, not the game
+			// currently being played. The server remains authoritative for access.
+			auto& ranked_icon = node->find_widget<image>("ranked_enabled");
+			ranked_icon.set_visible(info->ranked_enabled ? widget::visibility::visible : widget::visibility::invisible);
+			ranked_icon.set_tooltip(_("Ranked matches enabled"));
 
 			connect_signal_mouse_left_double_click(
 				node->find_widget<toggle_panel>("tree_view_node_label"),
