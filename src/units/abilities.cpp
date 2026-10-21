@@ -307,7 +307,7 @@ void unit_ability_t::do_compat_fixes(config& cfg, const std::string& tag, bool i
 	}
 
 	if (tag == "drains" && cfg["value"].empty()) {
-		deprecated_message("the default value of 50 of [drains]value= is deprecated", DEP_LEVEL::FOR_REMOVAL, version_info("1.21"), "Specify value=50 directly.");
+		deprecated_message("the default value of 50 of [drains]value=", DEP_LEVEL::FOR_REMOVAL, version_info("1.21"), "Specify value=50 directly.");
 		cfg["value"] = 50;
 	}
 
