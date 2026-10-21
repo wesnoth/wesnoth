@@ -23,6 +23,7 @@
 #include "picture.hpp"
 #include "preferences/preferences.hpp"
 #include "sdl/utils.hpp"
+#include "video.hpp"
 
 #include <boost/logic/tribool.hpp>
 
@@ -44,6 +45,7 @@ struct cursor_data
 	int hot_y{0};
 
 	boost::tribool is_color{boost::indeterminate};
+	int scale{0};
 
 	using cursor_ptr = std::unique_ptr<SDL_Cursor, void(*)(SDL_Cursor*)>;
 	cursor_ptr cursor{nullptr, SDL_DestroyCursor};
@@ -117,21 +119,29 @@ SDL_Cursor* create_cursor(const surface& surf)
 SDL_Cursor* get_cursor(cursor::CURSOR_TYPE type)
 {
 	const bool use_color = use_color_cursors();
+	const int scale = video::get_pixel_scale();
 	cursor_data& data = available_cursors[type];
 
-	if(data.cursor == nullptr || boost::indeterminate(data.is_color) || data.is_color != use_color) {
+	if(data.cursor == nullptr || boost::indeterminate(data.is_color) || data.is_color != use_color || data.scale != scale) {
 		static const std::string color_prefix = "cursors/";
 		static const std::string bw_prefix = "cursors-bw/";
 
 		if(use_color) {
 			surface surf = image::get_surface(color_prefix + data.image_color);
-			data.cursor.reset(SDL_CreateColorCursor(surf, data.hot_x, data.hot_y));
+			if(surf != nullptr && scale > 1) {
+				surf = scale_surface_sharp(surf, surf->w * scale, surf->h * scale);
+			}
+			data.cursor.reset(SDL_CreateColorCursor(surf, data.hot_x * scale, data.hot_y * scale));
 		} else {
 			surface surf = image::get_surface(bw_prefix + data.image_bw);
+			if(surf != nullptr && scale > 1) {
+				surf = scale_surface_sharp(surf, surf->w * scale, surf->h * scale);
+			}
 			data.cursor.reset(create_cursor(surf));
 		}
 
 		data.is_color = use_color;
+		data.scale = scale;
 	}
 
 	return data.cursor.get();
