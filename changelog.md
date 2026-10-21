@@ -1,24 +1,14 @@
-## Version 1.19.28+dev
-### Add-ons client
-### Add-ons server
+## Version 1.19.29
 ### Campaigns
    * Heir to the Throne
      * S07 Muff Malal's Peninsula: fix Moremirmu making smalltalk with Kalenz before Moremirmu joins you.
      * Add "regroup" micro AI to several scenarios.
-### Editor
-### Multiplayer
-### Lua API
 ### Packaging
    * macOS minimum version bumped to 12 due to Apple enforcing this requirement with Xcode 27.
-### Terrain
 ### Translations
    * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Finnish, Hungarian, Italian, Polish, Romanian, Slovak, Spanish
-### Units
 ### User interface
    * Celes is now the initial theme for new installation if resolution is greater than 1280x720. Old installations with a `gui2_theme` set are not affected.
-### WML Engine
-### Miscellaneous and Bug Fixes
-### Android
 
 ## Version 1.19.28
 ### Campaigns
