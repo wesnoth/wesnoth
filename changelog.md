@@ -1,3 +1,19 @@
+## Version 1.21.0-dev
+### Add-ons client
+### Add-ons server
+### Campaigns
+### Editor
+### Multiplayer
+### Lua API
+### Packaging
+### Terrain
+### Translations
+### Units
+### User interface
+### WML Engine
+### Miscellaneous and Bug Fixes
+### Android
+
 ## Version 1.19.29
 ### Campaigns
    * Heir to the Throne
