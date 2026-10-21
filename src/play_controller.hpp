@@ -77,9 +77,17 @@ public:
 
 	void load_game();
 
-	void save_game();
+	/**
+   * Virtual so networked multiplayer controllers can notify wesnothd
+   * when a competitive save or replay is created.
+   */
+	virtual void save_game();
 	void save_game_auto(const std::string& filename);
-	void save_replay();
+	/**
+   * Virtual so networked multiplayer controllers can notify wesnothd
+   * when a competitive replay is created.
+   */
+	virtual void save_replay();
 	void save_replay_auto(const std::string& filename);
 	void save_map();
 	replay& get_replay();
@@ -309,6 +317,10 @@ public:
 	statistics_t& statistics() { return *statistics_context_; }
 	bool is_during_turn() const;
 	bool is_linger_mode() const;
+	/** Hook for networked controllers to report newly detected defeated sides. */
+	virtual void notify_sides_defeated(const std::set<unsigned>&) {}
+	/** Hook for networked controllers to report the sides that won the game. */
+	virtual void notify_sides_victorious(const std::set<unsigned>&) {}
 
 protected:
 	friend struct scoped_savegame_snapshot;
