@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.20\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-09-20 19:25-0500\n"
+"POT-Creation-Date: 2026-10-20 21:43-0500\n"
 "PO-Revision-Date: 2026-09-21 20:28+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -2316,7 +2316,7 @@ msgstr "每日提示"
 #. [button]: id=toggle_tip_panel
 #. [toggle_button]: id=show_tips
 #: data/gui/themes/celes/dialogs/title_screen.cfg:216
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:223
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:95
 msgid "Show tip of the day"
 msgstr "显示每日提示"
 
@@ -2998,8 +2998,10 @@ msgstr "毫发无伤率"
 msgid "Expected Battle Result (HP)"
 msgstr "期望战斗结果（HP）"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/attack_predictions.cfg:251
+#: src/gui/dialogs/attack_predictions.cpp:60
 msgid "Damage Calculations"
 msgstr "伤害计算"
 
@@ -3261,13 +3263,23 @@ msgstr "模组："
 msgid "Combat:"
 msgstr "战斗："
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:445
+#: src/gui/dialogs/attack_predictions.cpp:79
 msgid "Default RNG"
 msgstr "默认的随机数生成器"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:446
+#: src/gui/dialogs/attack_predictions.cpp:93
+#, fuzzy, c-format
+#| msgid ""
+#| "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
+#| "\n"
+#| "Example: if you strike twice with 50% accuracy, you’re most likely to hit "
+#| "once and miss once, but might also hit twice or miss twice."
 msgid ""
 "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
 "\n"
@@ -3279,13 +3291,17 @@ msgstr ""
 "例如：如果你以50%的命中率进行两次攻击，那么你很可能会一次命中、一次未命中，但"
 "也有可能两次都命中或两次都未命中。"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:451
+#: src/gui/dialogs/attack_predictions.cpp:76
 msgid "Predictable RNG"
 msgstr "可预测的随机数生成器"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:452
+#: src/gui/dialogs/attack_predictions.cpp:91
 msgid ""
 "Identical to Default RNG, except loading a saved game will not change the "
 "outcome of an attack.\n"
@@ -3298,13 +3314,24 @@ msgstr ""
 "例如：你连续发动两次攻击，并且运气很好，两次都命中了目标。之后你加载了一个之"
 "前的保存文件，再次进行同样的攻击，结果两次仍然都会命中目标。"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:457
+#: src/gui/dialogs/attack_predictions.cpp:72
 msgid "Reduced RNG"
 msgstr "随机性降低的随机数生成器"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:458
+#: src/gui/dialogs/attack_predictions.cpp:89
+#, fuzzy, c-format
+#| msgid ""
+#| "Hits and misses are much more consistent. This tends to make small-scale "
+#| "engagements easier to plan.\n"
+#| "\n"
+#| "Example: if you strike three times with 50% accuracy, you will always hit "
+#| "at least once and miss at least once."
 msgid ""
 "Hits and misses are much more consistent. This tends to make small-scale "
 "engagements easier to plan.\n"
@@ -3418,7 +3445,7 @@ msgstr "读取核心"
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
 #: src/gui/dialogs/editor/edit_unit.cpp:296
-#: src/preferences/preferences.cpp:1311
+#: src/preferences/preferences.cpp:1336
 msgid "Select"
 msgstr "选择"
 
@@ -6243,204 +6270,199 @@ msgid "Clear Hotkey"
 msgstr "清除快捷键"
 
 #. [label]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:15
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:23
 msgid "Window size:"
 msgstr "窗口大小："
 
-#. [label]: id=help_text
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:39
-msgid "Pixel scale multiplier:"
-msgstr "像素缩放系数："
-
 #. [menu_button]: id=resolution_set
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:73
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:40
 msgid "Change the game window size"
 msgstr "改变游戏窗口大小"
 
-#. [slider]: id=pixel_scale_slider
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:87
-msgid ""
-"Set the global pixel scale multiplier. A pixel scale multiplier of 2 will "
-"make everything look twice as large."
-msgstr "设置全局像素缩放系数。例如缩放系数为2，那么所有东西看上去都是两倍大。"
-
 #. [toggle_button]: id=fullscreen
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:102
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:55
 msgid "Full screen"
 msgstr "全屏"
 
 #. [toggle_button]: id=fullscreen
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:103
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:56
 msgid "Toggle between fullscreen and window mode"
 msgstr "在全屏和窗口模式之间切换"
 
-#. [toggle_button]: id=auto_pixel_scale
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:114
-msgid "pixel_scale_multiplier^Automatic scale"
-msgstr "自动缩放"
-
-#. [toggle_button]: id=auto_pixel_scale
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:115
-msgid "Choose pixel scale multiplier automatically based on current resolution"
-msgstr "根据当前分辨率，自动选择像素缩放系数"
-
 #. [toggle_button]: id=vsync
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:129
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:69
 msgid "VSync"
 msgstr "垂直同步"
 
 #. [toggle_button]: id=vsync
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:130
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:70
 msgid ""
 "Reduces tearing by synchronizing rendering with the screen refresh rate "
 "(requires restart to take effect)"
 msgstr "通过将渲染与屏幕刷新率同步来减少画面撕裂（需要重启才能生效）"
 
-#. [label]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:152
-msgid "In-game theme:"
-msgstr "游戏内主题："
-
-#. [menu_button]: id=choose_theme
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:165
-msgid ""
-"Change the in-game interface theme. Additional themes may be provided by "
-"community-made add-ons"
-msgstr "更改游戏内界面主题。更多主题可由社区制作的附加组件提供"
-
-#. [label]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:176
-msgid "UI theme:"
-msgstr "界面主题："
-
-#. [menu_button]: id=choose_gui2_theme
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:192
-msgid ""
-"Change the UI (GUI2) theme. Additional themes may be provided by community-"
-"made add-ons"
-msgstr "变更界面（GUI2）主题。更多主题由社区制作的附加组件提供"
-
-#. [button]: id=apply
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:201
-msgid "Apply"
-msgstr "应用"
-
 #. [toggle_button]: id=show_tips
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:224
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:96
 msgid "Show gameplay tips on the main menu"
 msgstr "在主菜单处显示玩法提示"
 
 #. [toggle_button]: id=show_floating_labels
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:236
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:109
 msgid "Combat damage indicators"
 msgstr "战斗伤害标识"
 
 #. [toggle_button]: id=show_floating_labels
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:237
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:110
 msgid "Show amount of damage inflicted or healed as fading labels above units"
 msgstr "用会淡出的标签，在单位上方显示伤害和治疗量"
 
 #. [toggle_button]: id=show_ellipses
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:250
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:123
 msgid "Team color indicators"
 msgstr "团队颜色标识"
 
 #. [toggle_button]: id=show_ellipses
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:251
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:124
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr "在单位脚底周围显示彩色圆环以显示其所属阵营"
 
 #. [toggle_button]: id=show_grid
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:264
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:137
 msgid "Grid overlay"
 msgstr "网格覆盖层"
 
 #. [toggle_button]: id=show_grid
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:265
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:138
 msgid "Overlay a grid over the map"
 msgstr "在地图上覆盖六角网格"
 
 #. [toggle_button]: id=animate_terrains
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:300
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:163
 msgid "Animate map"
 msgstr "显示地图动画"
 
 #. [toggle_button]: id=animate_terrains
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:301
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:164
 msgid "Display animated terrain graphics"
 msgstr "显示地形动画效果"
 
 #. [toggle_button]: id=animate_water
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:314
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:177
 msgid "Animate water"
 msgstr "显示水面动画"
 
 #. [toggle_button]: id=animate_water
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:315
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:178
 msgid "Display animated water graphics (can be slow)"
 msgstr "显示水面动画效果（可能会很慢）"
 
-#. [toggle_button]: id=animate_units_standing
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:330
-msgid "Unit standing animations"
-msgstr "单位站立动画"
+#. [label]: id=help_text
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:225
+msgid "Pixel scale multiplier:"
+msgstr "像素缩放系数："
 
-#. [toggle_button]: id=animate_units_standing
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:331
-msgid "Continuously animate standing units on the battlefield"
-msgstr "让战场上站立的单位持续地做小动作"
+#. [slider]: id=pixel_scale_slider
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:256
+msgid ""
+"Set the global pixel scale multiplier. A pixel scale multiplier of 2 will "
+"make everything look twice as large."
+msgstr "设置全局像素缩放系数。例如缩放系数为2，那么所有东西看上去都是两倍大。"
 
-#. [toggle_button]: id=animate_units_idle
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:349
-msgid "Unit idle animations"
-msgstr "单位空闲动画"
+#. [toggle_button]: id=auto_pixel_scale
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:269
+msgid "pixel_scale_multiplier^Automatic scale"
+msgstr "自动缩放"
 
-#. [toggle_button]: id=animate_units_idle
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:350
-msgid "Play short random animations for idle units"
-msgstr "显示空闲单位的随机短小的空闲动画"
-
-#. [label]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:373
-msgid "Frequency:"
-msgstr "频率："
-
-#. [slider]: id=idle_anim_frequency
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:389
-msgid "Set the frequency of unit idle animations"
-msgstr "设置单位空闲动画显示频率"
+#. [toggle_button]: id=auto_pixel_scale
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:270
+msgid "Choose pixel scale multiplier automatically based on current resolution"
+msgstr "根据当前分辨率，自动选择像素缩放系数"
 
 #. [label]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:409
-msgid "Accessibility:"
-msgstr ""
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:294
+msgid "In-game theme:"
+msgstr "游戏内主题："
+
+#. [menu_button]: id=choose_theme
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:308
+msgid ""
+"Change the in-game interface theme. Additional themes may be provided by "
+"community-made add-ons"
+msgstr "更改游戏内界面主题。更多主题可由社区制作的附加组件提供"
+
+#. [label]
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:320
+msgid "UI theme:"
+msgstr "界面主题："
+
+#. [menu_button]: id=choose_gui2_theme
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:337
+msgid ""
+"Change the UI (GUI2) theme. Additional themes may be provided by community-"
+"made add-ons"
+msgstr "变更界面（GUI2）主题。更多主题由社区制作的附加组件提供"
+
+#. [button]: id=apply
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:346
+msgid "Apply"
+msgstr "应用"
 
 #. [button]: id=custom_orb_color
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:423
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:375
 msgid "Customize orb colors"
 msgstr ""
 
 #. [button]: id=custom_orb_color
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:425
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:377
 msgid "Change the appearance of the unit movement status indicators"
 msgstr ""
 
 #. [button]: id=custom_reach_map
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:438
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:391
 #, fuzzy
 #| msgid "Custom Maps"
 msgid "Customize reach map"
 msgstr "自定义地图"
 
 #. [button]: id=custom_reach_map
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:439
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:392
 msgid "Change the appearance of the unit movement UI overlay"
 msgstr ""
 
+#. [toggle_button]: id=animate_units_standing
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:410
+msgid "Unit standing animations"
+msgstr "单位站立动画"
+
+#. [toggle_button]: id=animate_units_standing
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:411
+msgid "Continuously animate standing units on the battlefield"
+msgstr "让战场上站立的单位持续地做小动作"
+
+#. [toggle_button]: id=animate_units_idle
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:429
+msgid "Unit idle animations"
+msgstr "单位空闲动画"
+
+#. [toggle_button]: id=animate_units_idle
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:430
+msgid "Play short random animations for idle units"
+msgstr "显示空闲单位的随机短小的空闲动画"
+
+#. [label]
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:453
+msgid "Frequency:"
+msgstr "频率："
+
+#. [slider]: id=idle_anim_frequency
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:469
+msgid "Set the frequency of unit idle animations"
+msgstr "设置单位空闲动画显示频率"
+
 #. [tab]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:498
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:549
 msgid "Display"
 msgstr "显示"
 
@@ -6703,8 +6725,8 @@ msgid ""
 "If a unit can move but can’t attack, show a two-color orb with the colors "
 "for partially and fully moved."
 msgstr ""
-"若单位能够移动但不能攻击，则显示双色状态球，其中颜色为分别代表“已部分移动”和"
-"“已完全移动”的颜色。"
+"若单位能够移动但不能攻击，则显示双色状态球，其中颜色为分别代表“已部分移"
+"动”和“已完全移动”的颜色。"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:148
@@ -7553,23 +7575,23 @@ msgstr "%B %d %Y, %H:%M"
 msgid "url^None"
 msgstr "无"
 
-#: src/gui/dialogs/attack_predictions.cpp:120
+#: src/gui/dialogs/attack_predictions.cpp:157
 msgid "No usable weapon"
 msgstr "没有可用的武器"
 
-#: src/gui/dialogs/attack_predictions.cpp:196
+#: src/gui/dialogs/attack_predictions.cpp:233
 msgid "Defender resistance vs"
 msgstr "防守方抗性 vs"
 
-#: src/gui/dialogs/attack_predictions.cpp:198
+#: src/gui/dialogs/attack_predictions.cpp:235
 msgid "Defender vulnerability vs"
 msgstr "防守方弱点 vs"
 
-#: src/gui/dialogs/attack_predictions.cpp:202
+#: src/gui/dialogs/attack_predictions.cpp:239
 msgid "Attacker resistance vs"
 msgstr "进攻方抗性 vs"
 
-#: src/gui/dialogs/attack_predictions.cpp:204
+#: src/gui/dialogs/attack_predictions.cpp:241
 msgid "Attacker vulnerability vs"
 msgstr "进攻方弱点 vs"
 
@@ -8066,11 +8088,11 @@ msgstr "Lua控制台只能用于调试模式中！（请先运行“:debug”）
 msgid "lua console"
 msgstr "Lua控制台"
 
-#: src/gui/dialogs/migrate_version_selection.cpp:47
+#: src/gui/dialogs/migrate_version_selection.cpp:52
 msgid "No Other Version Found"
 msgstr "未找到其他版本"
 
-#: src/gui/dialogs/migrate_version_selection.cpp:47
+#: src/gui/dialogs/migrate_version_selection.cpp:52
 msgid ""
 "This would import settings from a previous version of Wesnoth, but no other "
 "version was found on this device"
@@ -8173,8 +8195,8 @@ msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
-"用于支持多人游戏大厅的附加组件版本检查数据库出现了问题。请在http://"
-"bugs.wesnoth.org报告此问题。"
+"用于支持多人游戏大厅的附加组件版本检查数据库出现了问题。请在http://bugs."
+"wesnoth.org报告此问题。"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:1018
 msgid "This game is password protected. Join using moderator rights anyway?"
@@ -9571,11 +9593,11 @@ msgstr "显示Lua控制台"
 msgid "Unrecognized Command"
 msgstr "未识别的命令"
 
-#: src/preferences/preferences.cpp:1268
+#: src/preferences/preferences.cpp:1293
 msgid "No known themes. Try changing from within an existing game."
 msgstr "无已知主题。请尝试在游戏中切换主题。"
 
-#: src/preferences/preferences.cpp:1305
+#: src/preferences/preferences.cpp:1330
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
@@ -9584,15 +9606,15 @@ msgstr ""
 "<b>$filename</b>服务器应用提供了多人游戏服务器机能，在主建本地联机游戏时是必"
 "须的。通常可以在游戏可执行文件的同一个目录下找到它。"
 
-#: src/preferences/preferences.cpp:1309
+#: src/preferences/preferences.cpp:1334
 msgid "Find Server Application"
 msgstr "查找服务器应用"
 
-#: src/preferences/preferences.cpp:1791
+#: src/preferences/preferences.cpp:1816
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/preferences.cpp:1793
+#: src/preferences/preferences.cpp:1818
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 

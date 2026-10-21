@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.19\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-09-21 00:25 UTC\n"
+"POT-Creation-Date: 2026-10-21 02:43 UTC\n"
 "PO-Revision-Date: 2026-10-14 22:22+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -550,6 +550,13 @@ msgid "<b>-OR-</b> (choose one reward)"
 msgstr "<b>-或-</b>（选择一项奖励）"
 
 #. [lua]: wesnoth.wml_actions.display_scenario_preview
+#: data/campaigns/Heir_To_The_Throne/lua/popups.lua:105
+msgid "(expires after playing any other scenario)"
+msgid_plural "(expires after playing $seasons_remaining other scenarios)"
+msgstr[0] ""
+msgstr[1] ""
+
+#. [lua]: wesnoth.wml_actions.display_scenario_preview
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:212
 msgid "Continue"
 msgstr "继续"
@@ -904,7 +911,7 @@ msgstr "珍珠湾"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/overworld/00a_western_wesnoth.cfg:496
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:435
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:411
 msgid "Nepba"
 msgstr "内普巴"
 
@@ -1019,7 +1026,7 @@ msgstr "或许这正是继承人的意义所在——希望，以及能让众人
 #. [event]
 #. [side]: type=Arch Mage, id=Seimus
 #: data/campaigns/Heir_To_The_Throne/overworld/00a_western_wesnoth.cfg:630
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:104
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:72
 msgid "Isle of Alduin"
 msgstr "奥渡因岛"
 
@@ -1029,7 +1036,7 @@ msgstr "奥渡因岛"
 
 #. [unit]: id=Elrian, type=Mage
 #: data/campaigns/Heir_To_The_Throne/overworld/00a_western_wesnoth.cfg:649
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:176
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:144
 msgid "Elrian"
 msgstr "艾尔利安"
 
@@ -1063,7 +1070,7 @@ msgstr ""
 
 #. [side]: type=Arch Mage, id=Seimus
 #: data/campaigns/Heir_To_The_Throne/overworld/00a_western_wesnoth.cfg:682
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:97
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:65
 msgid "Seimus"
 msgstr "西穆斯"
 
@@ -1308,7 +1315,7 @@ msgstr "既然我们被困在这里，不如四处探索一下。"
 
 #. [unit]: type=Outlaw, id=Delurin, gender=male
 #: data/campaigns/Heir_To_The_Throne/overworld/00a_western_wesnoth.cfg:1144
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:172
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:158
 msgid "Delurin"
 msgstr "德鲁林"
 
@@ -1905,7 +1912,7 @@ msgstr "我听过关于传说中狮鹫山的种种故事！我真想有机会亲
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/overworld/00b_central_wesnoth.cfg:361
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:169
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:157
 msgid "Burlin"
 msgstr "巴尔林"
 
@@ -1918,7 +1925,7 @@ msgstr "俺很高兴咱们能在这事上搭伙，小子。你把蛋收齐了，
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00b_central_wesnoth.cfg:369
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:494
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:482
 msgid ""
 "Asheviere’s gold has blinded so many people. It’s how she controls the "
 "nobles, the army, the orcs... and it’s why peasants starve to death, their "
@@ -1999,13 +2006,13 @@ msgstr "亡魂谷 II"
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/overworld/00b_central_wesnoth.cfg:491
 #: data/campaigns/Heir_To_The_Throne/overworld/00b_central_wesnoth.cfg:552
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:128
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:126
 msgid "Sister Myrilell"
 msgstr "米瑞莱尔修女"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/overworld/00b_central_wesnoth.cfg:492
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:133
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:131
 msgid "Gwatharry"
 msgstr "格瓦萨里"
 
@@ -3954,11 +3961,11 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:235
 msgid ""
 "I have not located the Sceptre yet, but I am making progress. I shall send a "
-"messenger once we are ready to retrieve it — perhaps in $"
-"( $bm_milestone_scepter - $bm_turns ) battles’ time."
+"messenger once we are ready to retrieve it — perhaps in "
+"$( $bm_milestone_scepter - $bm_turns ) battles’ time."
 msgstr ""
-"我尚未找到权杖，但已有进展。待我们准备好取回它时，我会派一名信使——或许再过 $"
-"( $bm_milestone_scepter - $bm_turns ) 场战斗。"
+"我尚未找到权杖，但已有进展。待我们准备好取回它时，我会派一名信使——或许再过 "
+"$( $bm_milestone_scepter - $bm_turns ) 场战斗。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:240
@@ -4338,8 +4345,8 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:189
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:1499
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1202
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:207
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:401
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:193
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:399
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:345
 #: data/campaigns/Heir_To_The_Throne/scenarios/26_The_Dwarven_Doors.cfg:445
 #: data/campaigns/Heir_To_The_Throne/scenarios/32_The_Swamp_of_Dread.cfg:549
@@ -4462,9 +4469,9 @@ msgid ""
 "evil creatures lurk along its banks, its waters are not fit to drink, and it "
 "runs over the Cliffs of Thoria."
 msgstr ""
-"这条河，人类称之为“绵长之河”，而在我们族人的古语中称为“阿坎-索丽亚”。其名意为"
-"‘白骨之河’。强大而邪恶的生灵潜伏在两岸，河水不宜饮用，它从索丽亚之崖上倾泻而"
-"下。"
+"这条河，人类称之为“绵长之河”，而在我们族人的古语中称为“阿坎-索丽亚”。其名意"
+"为‘白骨之河’。强大而邪恶的生灵潜伏在两岸，河水不宜饮用，它从索丽亚之崖上倾泻"
+"而下。"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:326
@@ -6869,10 +6876,10 @@ msgstr "艾森丛林精灵"
 #. [event]: id=konrad_silver_crown_object
 #. [scenario]: id=08b_Isle_of_the_Damned_part2
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:889
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:108
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:114
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:120
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:126
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:112
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:118
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:124
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:130
 msgid "60 gold"
 msgstr "60金币"
 
@@ -7535,9 +7542,9 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_Blackwater_Port.cfg:333
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:290
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:283
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Elensefar_Before.cfg:638
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:352
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:350
 #: data/campaigns/Heir_To_The_Throne/scenarios/48_Dan_Tonk.cfg:340
 msgid "Survive until turns run out"
 msgstr "坚持到回合数耗尽"
@@ -7552,11 +7559,11 @@ msgstr "保护凯兰爵士：征募骑兵和骑师"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_Blackwater_Port.cfg:361
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:306
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:287
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:274
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:273
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_Elensefar_After.cfg:340
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:307
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:245
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:268
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:238
 msgid "Defeat all enemy leaders"
 msgstr "击败所有的敌方首领"
 
@@ -7901,112 +7908,112 @@ msgid "Managa’Gwin"
 msgstr "马纳加·戈温"
 
 #. [side]
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:388
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:364
 msgid "Merfolk"
 msgstr "人鱼"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:416
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:392
 msgid "Bugg"
 msgstr "巴戈"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:417
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:393
 msgid "Drasha"
 msgstr "德拉莎"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:434
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:410
 msgid "Gwaba"
 msgstr "格瓦巴"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:436
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:412
 msgid "Triram"
 msgstr "特里拉姆"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:437
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:413
 msgid "Mriram"
 msgstr "米里拉姆"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:438
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:414
 msgid "Aigaion"
 msgstr "艾该温"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:439
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:415
 msgid "Nethuns"
 msgstr "内桑斯"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:440
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:416
 msgid "Earooa"
 msgstr "伊洛阿"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:441
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:417
 msgid "Mabooa"
 msgstr "玛博阿"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:442
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:418
 msgid "Elcmar"
 msgstr "艾尔克玛"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:443
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:419
 msgid "Gwarloa"
 msgstr "格瓦洛阿"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:444
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:420
 msgid "Gwimli"
 msgstr "格威姆利"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:445
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:421
 msgid "Kwaboo"
 msgstr "卡瓦布"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:446
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:422
 msgid "Kaba"
 msgstr "卡巴"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:447
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:423
 msgid "Apalala"
 msgstr "阿帕拉拉"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:448
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:424
 msgid "Heldaga"
 msgstr "黑尔达伽"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:449
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:425
 msgid "Jarla"
 msgstr "伽拉"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:450
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:426
 msgid "Tini"
 msgstr "提尼"
 
 #. [message]: speaker=Dverag-Kukai
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:489
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:465
 msgid "Are all the fishmen in cages yet?"
 msgstr "鱼人都关进笼子了吗？"
 
 #. [message]: speaker=Managa'Gwin
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:493
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:469
 msgid "Almost."
 msgstr "差不多了。"
 
 #. [message]: speaker=Managa'Gwin
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:495
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:471
 msgid ""
 "UP, SEA LICE! Drag your slimy hides from the deep! Drop the pearls, then "
 "scuttle back to your cages!"
@@ -8015,37 +8022,37 @@ msgstr ""
 "爬回你们的笼子里去！"
 
 #. [floating_text]
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:515
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:491
 msgid "+120 gold"
 msgstr "+120金币"
 
 #. [floating_text]
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:515
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:491
 msgid "+160 gold"
 msgstr "+160金币"
 
 #. [floating_text]
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:515
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:491
 msgid "+40 gold"
 msgstr "+40金币"
 
 #. [floating_text]
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:515
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:491
 msgid "+80 gold"
 msgstr "+80金币"
 
 #. [message]: speaker=Gwaba
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:532
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:508
 msgid "Nepba, it’s noon. The orcs are groggy and sleepy. This is our moment!"
 msgstr "内普巴，现在是正午。兽人昏昏沉沉、睡意朦胧。这就是我们的机会！"
 
 #. [message]: speaker=Nepba
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:536
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:512
 msgid "Let’s just take a look around for now. We must not act rashly."
 msgstr "咱们还是先四处看看吧。切勿鲁莽行事。"
 
 #. [message]: speaker=Gwaba
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:540
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:516
 msgid ""
 "I looked this morning and the door to the cave with the Trident of Storms is "
 "open! When the others see that we’ve reclaimed it, they’ll rise up and we’ll "
@@ -8055,45 +8062,45 @@ msgstr ""
 "来，他们就会奋起反抗，我们终将能把兽人赶出去！"
 
 #. [message]: speaker=Nepba
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:544
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:520
 msgid ""
 "I don’t like our odds. Someone could shoot us from the castle while we swim "
 "to the entrance."
 msgstr "我觉得我们胜算不大。我们游向洞口时，可能有人会从城堡里放箭射我们。"
 
 #. [message]: speaker=Gwaba
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:548
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:524
 msgid ""
 "Let’s try swimming around the cave. There are cliffs and kelp that are easy "
 "to hide in."
 msgstr "我们试着绕洞穴游过去吧。那里有悬崖和海藻，容易藏身。"
 
 #. [message]: speaker=Nepba
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:554
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:530
 msgid "Gwaba, wait!"
 msgstr "格瓦巴，等等！"
 
 #. [message]: speaker=Bugg
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:577
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:553
 msgid ""
 "Chief, I went to throw some trash in the sea and shot a fishman creeping up "
 "on the Trident!"
 msgstr "酋长，我去海里扔垃圾，结果一箭射死了一个偷偷摸向三叉戟的鱼人！"
 
 #. [message]: speaker=Dverag-Kukai
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:581
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:557
 msgid ""
 "They’re planning an uprising! Drasha, have you managed to harness the power "
 "of the Trident yet?"
 msgstr "他们想造反！德拉莎，你成功驾驭三叉戟的力量了吗？"
 
 #. [message]: speaker=Drasha
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:585
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:561
 msgid "Not yet, no."
 msgstr "还没有，没有。"
 
 #. [message]: speaker=Dverag-Kukai
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:589
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:565
 msgid ""
 "Lock yourself in the cave until you can get the Trident to send a storm that "
 "destroys their villages. They need to be punished."
@@ -8102,7 +8109,7 @@ msgstr ""
 "罚。"
 
 #. [message]: speaker=Nepba
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:649
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:625
 msgid ""
 "Your Highness! Thank you for answering our plea for help. I am Nepba. We are "
 "all grateful you have come, but you must hurry!"
@@ -8110,7 +8117,7 @@ msgstr ""
 "殿下！感谢您回应我们的求援。我是内普巴。我们都很感激您能前来，但您必须赶快！"
 
 #. [message]: speaker=Nepba
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:653
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:629
 msgid ""
 "The orcs have stolen our Trident of Storms and are now trying to harness its "
 "power to destroy our villages. They already killed my cousin Gwaba!"
@@ -8119,12 +8126,12 @@ msgstr ""
 "杀了我的表亲格瓦巴！"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:658
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:634
 msgid "Delfador, can you do anything to stop them?"
 msgstr "德法多，您能做点什么阻止他们吗？"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:662
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:638
 msgid ""
 "I feel the magic of the Trident... it is old, and powerful. Perhaps my "
 "spells could break it, but the power unleashed would do immeasurable damage "
@@ -8134,7 +8141,7 @@ msgstr ""
 "量会对此地造成无法估量的破坏。"
 
 #. [message]: speaker=Nepba
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:667
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:643
 msgid ""
 "We can take the Trident back from the orcs, but it is locked away in a cave. "
 "They keep the key on land, where my kind cannot easily go."
@@ -8143,22 +8150,22 @@ msgstr ""
 "的族人很难到那里去。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:674
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:650
 msgid "We’ll help you, Nepba. Let’s get the key and reclaim your Trident."
 msgstr "我们会帮你的，内普巴。我们去拿钥匙，夺回你们的三叉戟。"
 
 #. [objective]: condition=win
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:683
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:659
 msgid "Get the key on 32,28; then attack the Orcish Shaman"
 msgstr "取得 32,28 处的钥匙；然后攻击兽人萨满"
 
 #. [objective]: condition=win
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:690
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:666
 msgid "Attack the Orcish Shaman"
 msgstr "攻击兽人萨满"
 
 #. [message]: speaker=Nepba
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:715
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:691
 msgid ""
 "Konrad, we merfolk are eager to fight for our freedom. My people will join "
 "you when you liberate our villages."
@@ -8166,80 +8173,80 @@ msgstr ""
 "科纳德，我们人鱼渴望为自由而战。你解放我们的村落时，我的族人就会加入你。"
 
 #. [message]: speaker=Bugg
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:733
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:709
 msgid "But chief, why are we only using bats and nagas?"
 msgstr "不过老大，为什么我们只用蝙蝠和娜迦？"
 
 #. [message]: speaker=Dverag-Kukai
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:737
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:713
 msgid ""
 "Because we need to control the seas and the merfolk, and nagas and bats are "
 "best for doing that!"
 msgstr "因为我们得控制海洋，而人鱼、娜迦和蝙蝠在这方面最在行了！"
 
 #. [message]: speaker=Bugg
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:741
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:717
 msgid "But orcs are the most powerful race in all of..."
 msgstr "可我们兽人天下最强……"
 
 #. [message]: speaker=Dverag-Kukai
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:745
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:721
 msgid "Shut up, worm! I’m the boss!"
 msgstr "住口，蠢货！我才是老大！"
 
 #. [message]: speaker=Bugg
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:755
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:731
 msgid "Look at me!"
 msgstr "看我！"
 
 #. [message]: speaker=Bugg
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:765
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:741
 msgid "Ha ha ha! Now orcs will rule over land and sea!"
 msgstr "哈哈哈！以后兽人将会统治陆地和海洋！"
 
 #. [message]: speaker=Dverag-Kukai
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:772
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:748
 msgid "(Sigh) Will someone kill this fool for me, please?"
 msgstr "（叹）谁能帮我杀了这个白痴？"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:781
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:757
 msgid "But... but... how can this be happening to me?"
 msgstr "但……但……这怎么会在我身上发生？"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:791
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:767
 msgid "That’s for Gwaba!"
 msgstr "那是为了格瓦巴！"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:805
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:781
 msgid "Who was that fool?"
 msgstr "那白痴是谁？"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:822
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:798
 msgid ""
 "We have the key to the cave now! Let’s stop the shaman before it’s too late."
 msgstr "我们现在拿到洞穴的钥匙了！趁还来得及，快去阻止那个萨满！"
 
 #. [message]: speaker=Drasha
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:849
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:825
 msgid "Arrgh! No! They broke my concentration — the Trident is out of control!"
 msgstr "呃啊！不！他们打断了我的专注——三叉戟失控了！"
 
 #. [message]: race=merman
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:855
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:831
 msgid "It was never rightfully yours."
 msgstr "它从来就不该属于你。"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:861
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:837
 msgid "I am sure the Trident will yield to <i>me</i> much more readily."
 msgstr "我确信，三叉戟会更乐意向<b>我</b>臣服。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:896
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:872
 msgid ""
 "We’re running out of time. If we cannot reclaim the Trident of Storms soon, "
 "the orcs will use it to wreak great destruction upon the merfolk!"
@@ -8248,29 +8255,29 @@ msgstr ""
 "难！"
 
 #. [message]: speaker=Drasha
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:912
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:888
 msgid "Finally!"
 msgstr "终于！"
 
 #. [message]: speaker=Drasha
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:914
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:890
 msgid "The trident has yielded to my power!"
 msgstr "三叉戟终于屈服于我的力量了！"
 
 #. [message]: speaker=Nepba
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:920
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:896
 msgid "No!"
 msgstr "不！"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:936
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:912
 msgid ""
 "We were too slow, and the merfolk’s villages have been destroyed! How could "
 "I let this happen?"
 msgstr "我们太慢了，人鱼的村庄已经被摧毁了！我怎么能让这种事发生？"
 
 #. [message]: race=merman
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:978
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:954
 msgid ""
 "Your Royal Highness, Prince Konrad, protector of the oppressed! Thank you "
 "for saving us from our enemies and helping us to reclaim our sacred Trident!"
@@ -8279,23 +8286,23 @@ msgstr ""
 "们夺回神圣的三叉戟！"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION glad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:982
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:958
 msgid "From now on, your pearls belong to you and you alone."
 msgstr "从今往后，你们的珍珠只属于你们自己。"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:984
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:960
 msgid ""
 "Konrad can now recruit Merman Fighters, Hunters, Brawlers, and Initiates!"
 msgstr "科纳德现在可以征募人鱼战士、人鱼猎手、人鱼斗士和人鱼魔法学徒了！"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:987
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:963
 msgid "Can we take the Trident with us? It seems like it could be very useful."
 msgstr "我们能带上三叉戟吗？它看起来会非常有用。"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:992
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:968
 msgid ""
 "No, Konrad. It is set firmly in the rock. And for good reason, too! The "
 "Trident of Storms helps maintain the delicate balance of the Bay of Pearls "
@@ -8305,7 +8312,7 @@ msgstr ""
 "微妙的平衡，保护人鱼免受海洋狂暴力量的侵袭。"
 
 #. [message]: race=merman
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:998
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:974
 msgid ""
 "If it were that easy, the orcs would have looted it long ago. But no hand "
 "can pry it from the rock in which it is embedded. It is just as well, for "
@@ -8315,7 +8322,7 @@ msgstr ""
 "也好，因为它的力量保护我的族人免受海洋那时常可怕的力量侵袭。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:1003
+#: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:979
 msgid "(sigh) I knew it wouldn’t be that easy."
 msgstr "（叹气）我就知道不会那么容易。"
 
@@ -8330,13 +8337,13 @@ msgid "Yaerby"
 msgstr "耶尔比"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:191
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:159
 msgid "Alyra"
 msgstr "艾莉拉"
 
 #. [message]: speaker=leader2lieutenant
 #. ship can't be from Weldyn, because Elensefar might still be held by Maddock right now.
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:215
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:183
 msgid ""
 "They’re all locked up? Good. The ship from Fort Tahn will be here any day "
 "now, and then we can finally get these troublemakers off the Isle."
@@ -8345,7 +8352,7 @@ msgstr ""
 "出奥渡因岛了。"
 
 #. [message]: speaker=Seimus
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:219
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:187
 msgid ""
 "Is all this really necessary? I mean— back in my day... Just a few drunken "
 "words... Hardly worth being press-ganged, I don’t think..."
@@ -8354,7 +8361,7 @@ msgstr ""
 "强征入伍吧……"
 
 #. [message]: speaker=leader2lieutenant
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:223
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:191
 msgid ""
 "If we let a few apprentices speak ill of the queen, how long until they all "
 "do? Don’t forget whose royal endorsement secured you your position, Seimus."
@@ -8363,7 +8370,7 @@ msgstr ""
 "是谁的王室恩准让你坐稳了现在的位置，西穆斯。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:242
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:210
 msgid ""
 "Hail, scholars of Alduin! I’ve heard much about your home! I’ve even heard "
 "that there are some of you brave enough to stand up to the dark queen."
@@ -8372,7 +8379,7 @@ msgstr ""
 "抗黑暗女王。"
 
 #. [message]: speaker=Elrian
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:246
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:214
 msgid ""
 "Who’re you to ask, stranger? That kind of talk can be dangerous. Did you see "
 "what happened to our locked-up friends?"
@@ -8381,7 +8388,7 @@ msgstr ""
 "来的朋友落得什么下场吗？"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION mad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:250
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:218
 msgid ""
 "Who am I? I am Konrad, son of Prince Arand and heir to the throne of "
 "Wesnoth! I am Asheviere’s sworn enemy, and would welcome to my cause all who "
@@ -8391,20 +8398,20 @@ msgstr ""
 "有反对她的人加入我的事业！"
 
 #. [message]: speaker=Alyra
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:254
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:222
 msgid ""
 "Konrad? The one they call “the false prince”! I— I wasn’t even sure you "
 "existed!"
 msgstr "科纳德？就是他们说的那个“假王子”！我——我甚至都不确定你是不是真的存在！"
 
 #. [message]: speaker=Elrian
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:258
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:226
 msgid ""
 "Do you really think you can beat the queen? Is your whole rebel army here?!"
 msgstr "你真觉得自己能打败女王？你的整支反抗军都在这儿吗？！"
 
 #. [message]: speaker=Seimus
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:262
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:230
 msgid ""
 "Now now, everybody just calm down. We don’t want any trouble. If you really "
 "are Konrad then you’d best leave right now, before the queen’s soldiers "
@@ -8414,7 +8421,7 @@ msgstr ""
 "走，免得被女王的士兵抓住。"
 
 #. [message]: speaker=Elrian
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:266
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:234
 msgid ""
 "Don’t listen to him, Konrad. Soldiers from Wesnoth have locked up our "
 "friends. They dared to criticize the throne, and now they’ve been both "
@@ -8424,7 +8431,7 @@ msgstr ""
 "被开除，又被关进了监狱。"
 
 #. [message]: speaker=Elrian
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:270
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:238
 msgid ""
 "You have to help us rescue them! Many of the older apprentices here think "
 "like Seimus, but my friends and I will fight with you!"
@@ -8433,42 +8440,42 @@ msgstr ""
 "友们会与你并肩作战！"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:274
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:242
 msgid "You can now advance Mages to Red Mages!"
 msgstr "你现在可以让法师升级为红袍法师了！"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:275
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:243
 msgid "Konrad can now recruit Mages, and advance them to (only) Red Mages!"
 msgstr "科纳德现在可以征募法师，并（只能）将他们升级为红袍法师了！"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION mad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:279
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:247
 msgid "Of course I will help. To battle!"
 msgstr "我当然会帮忙。准备战斗！"
 
 #. [objective]: condition=win
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:287
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:255
 msgid "Reach the prisoner mages, then move one near Konrad’s keep."
 msgstr "抵达被囚禁的法师们身边，然后将其中一名移动到科纳德的主楼附近。"
 
 #. [objective]: condition=win
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:296
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:264
 msgid "Move any prisoner mage to one of the marked hexes."
 msgstr "移动任意一名被囚禁的法师到任一被标记的六角格。"
 
 #. [objective]: condition=win
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:306
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:274
 msgid "(gain a loyal Arch Mage)"
 msgstr "（获得一位忠诚的大法师）"
 
 #. [objective]: condition=lose
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:314
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:282
 msgid "Death of all prisoner mages"
 msgstr "所有被囚禁的法师死亡"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:341
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:309
 msgid ""
 "Seimus! My old colleague, what has come over you? There are soldiers "
 "occupying the Isle and you do nothing?"
@@ -8476,7 +8483,7 @@ msgstr ""
 "西穆斯！我的老同事，你这是怎么了？士兵们占领着奥渡因岛，你却什么也不做？"
 
 #. [message]: speaker=Seimus
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:345
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:313
 msgid ""
 "Delfador!? You’re here too? ...well, surely you know that Alduin is in no "
 "position to oppose the crown. I mean, we’re not all cut out to be rebels "
@@ -8486,7 +8493,7 @@ msgstr ""
 "说，不是所有人都像你一样天生就是当反抗军的料。"
 
 #. [message]: speaker=Seimus
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:349
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:317
 msgid ""
 "And those chained up apprentices really are troublemakers. Really! It’s not "
 "that I wouldn’t like to help. I would! But Alduin has a future to think "
@@ -8496,7 +8503,7 @@ msgstr ""
 "奥渡因也得为自己的将来着想啊！"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:353
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:321
 msgid ""
 "You’ll recall that I was a troublemaker once. How many atrocities will "
 "happen because good men like you stay silent?"
@@ -8505,24 +8512,24 @@ msgstr ""
 "暴行？"
 
 #. [message]: speaker=leader2lieutenant
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:357
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:325
 msgid "Ignore him, Seimus. Attack, or I will have you charged with treason!"
 msgstr "别理他，西穆斯。进攻，否则我就以叛国罪控告你！"
 
 #. [message]: speaker=Delfador {DELFADOR_VARIATION mad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:361
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:329
 msgid ""
 "The Seimus I knew would never stoop so low! What good is a master who "
 "abandons his apprentices!"
 msgstr "我认识的西穆斯绝不会堕落到这般地步！抛弃自己学徒的导师，还有什么用！"
 
 #. [message]: speaker=Seimus
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:365
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:333
 msgid "Oh... well..."
 msgstr "哦……这个……"
 
 #. [message]: speaker=Seimus
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:375
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:343
 msgid ""
 "Alright. Okay! Lieutenant, I will not assist you against our own students. "
 "If I am to be branded a rebel, so be it."
@@ -8531,12 +8538,12 @@ msgstr ""
 "就随它去吧。"
 
 #. [message]: speaker=leader2lieutenant
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:379
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:347
 msgid "Traitor!"
 msgstr "叛徒！"
 
 #. [message]: speaker=Seimus
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:383
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:351
 msgid ""
 "Delfador, I cannot fight alongside you now, but neither will I fight against "
 "you. I must assemble the faculty and make clear Alduin’s new allegiance."
@@ -8545,7 +8552,7 @@ msgstr ""
 "渡因的新效忠对象。"
 
 #. [message]: speaker=Seimus
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:387
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:355
 msgid ""
 "And, if you can clear Asheviere’s soldiers off the Isle entirely, I promise "
 "to personally join your army!"
@@ -8553,7 +8560,7 @@ msgstr ""
 "而且，如果你能把艾什薇尔的士兵彻底赶出奥渡因岛，我保证亲自加入你的军队！"
 
 #. [message]: speaker=leader2lieutenant
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:405
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:373
 msgid ""
 "Seimus, don’t just stand there. There are rebels on the Isle! Put that magic "
 "training to good use and throw some fireballs!"
@@ -8561,7 +8568,7 @@ msgstr ""
 "西穆斯，别光站在那儿。岛上有叛军！把你那点魔法训练派上用场，扔几个火球出去！"
 
 #. [message]: speaker=Seimus
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:409
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:377
 msgid ""
 "Rebels? Well... I mean... the worst of the trouble is more or less "
 "apprentices, isn’t it? You can hardly expect faculty to fight students!"
@@ -8570,7 +8577,7 @@ msgstr ""
 "去跟学生打吧！"
 
 #. [message]: speaker=leader2lieutenant
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:413
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:381
 msgid ""
 "That’s precisely what I expect, provost. There are no students in Konrad’s "
 "army — only rebels. Prove your loyalty to the queen."
@@ -8579,7 +8586,7 @@ msgstr ""
 "诚。"
 
 #. [message]: id=Elrian,Alyra
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:426
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:394
 msgid ""
 "Academy housing is down this way, Konrad. There’re many other students "
 "there, but I think most of them are trying to keep their heads down."
@@ -8588,12 +8595,12 @@ msgstr ""
 "头。"
 
 #. [message]: type=Shackled Mage, gender=male
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:441
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:409
 msgid "I hear sounds of fighting outside! Should we do something?"
 msgstr "我听见外面有打斗声！我们该做点什么吗？"
 
 #. [message]: type=Shackled Mage, gender=female
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:446
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:414
 msgid "I would if I could get out of these manacles..."
 msgstr "要是能挣脱这些镣铐，我倒是想啊……"
 
@@ -8602,8 +8609,8 @@ msgstr "要是能挣脱这些镣铐，我倒是想啊……"
 #. [message]: speaker=leader4
 #. [message]: speaker=Warven
 #. [message]: speaker=Mirya
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:458
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:268
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:426
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:243
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Glamdrol.cfg:759
 #: data/campaigns/Heir_To_The_Throne/scenarios/43_Cliffs_of_Thoria.cfg:808
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1867
@@ -8611,13 +8618,13 @@ msgid "Urgh..."
 msgstr "呃啊……"
 
 #. [message]: type=Shackled Mage
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:481
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:498
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:449
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:466
 msgid "Who are you! What’s going on?"
 msgstr "你是谁！出什么事了？"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:485
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:453
 msgid ""
 "I’m a friend. We have to go — there’s no time to cut loose your shackles. "
 "Are you willing to help us fight Asheviere?"
@@ -8626,13 +8633,13 @@ msgstr ""
 "尔吗？"
 
 #. [message]: type=Shackled Mage
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:489
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:506
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:457
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:474
 msgid "Better than rotting in here. Come on, everyone, we’re leaving!"
 msgstr "总比在这儿烂掉强。来吧，各位，我们走！"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:502
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:470
 msgid ""
 "I’m a friend. Come — let us cut loose your shackles. Are you willing to help "
 "us fight Asheviere?"
@@ -8640,7 +8647,7 @@ msgstr ""
 "我是你们的朋友。来吧，我们这就解开你的镣铐。你愿意帮我们对抗艾什薇尔吗？"
 
 #. [message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:541
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:509
 msgid "We need more gold! Send in the reserves."
 msgstr "我们需要更多金币！把预备队派上去！"
 
@@ -8648,22 +8655,22 @@ msgstr "我们需要更多金币！把预备队派上去！"
 #. the speaker is a level 1 "Shackled Mage", who's just received an AMLA
 #. Shackled Mages are very weak, but when this scenario ends he/she will transform into a regular Mage, keeping the AMLA (including the downside: +20% XP cost)
 #. this mechanic is a little silly, but not at all important to winning/losing this scenario, so we lampshade it with this line of dialogue
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:562
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:530
 msgid "I’m going to be so strong if I ever get out of these shackles..."
 msgstr "要是能挣脱这身镣铐，我一定会变得非常强……"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:563
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:531
 msgid "female^I’m going to be so strong if I ever get out of these shackles..."
 msgstr "要是能挣脱这身镣铐，我一定会变得非常强……"
 
 #. [message]: speaker=Seimus
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:592
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:560
 msgid "Wait! Stop! Please don’t kill me!"
 msgstr "等等！住手！求求你别杀我！"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION mad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:596
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:564
 msgid ""
 "I’m not going to kill you, provost. But I can see that you’re a coward. Run. "
 "And as long as you live, never forget what would’ve happened to your "
@@ -8673,12 +8680,12 @@ msgstr ""
 "了——要不是我在这里出手相助，你的学徒们会落得什么下场。"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION glad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:626
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:594
 msgid "Asheviere’s armies are defeated! We’ve won!"
 msgstr "艾什薇尔的军队被打败了！我们赢了！"
 
 #. [message]: speaker=Seimus
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:634
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:602
 msgid ""
 "You... you really did it! Incredible! Alduin is in your debt, Delfador. And "
 "Konrad. And you apprentices too!"
@@ -8687,7 +8694,7 @@ msgstr ""
 "你们这些学徒！"
 
 #. [message]: speaker=Seimus
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:638
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:606
 msgid ""
 "And, well, I made a promise to join you if you wiped those soldiers out. And "
 "I intend to keep it. I place myself at your service, young master."
@@ -8696,7 +8703,7 @@ msgstr ""
 "守承诺。我愿为您效劳，年轻的少主。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:657
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:625
 msgid ""
 "We’ve done well to defeat Asheviere’s leaders on the isle, but we still need "
 "to rescue the prisoners and escape before reinforcements arrive."
@@ -8704,7 +8711,7 @@ msgstr ""
 "我们已经成功击败了岛上的艾什薇尔将领，但还得救出囚徒，并在援军赶到前撤离。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:673
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:641
 msgid ""
 "We set out to save lives, but we lost many more than we helped. I’m sorry we "
 "couldn’t do better, but at least we’ve shown the people here that Asheviere "
@@ -8714,19 +8721,19 @@ msgstr ""
 "至少我们让这里的人们看到，艾什薇尔是可以被打败的。"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION glad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:679
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:647
 msgid "We’ve saved everyone we could! Now it’s time for us to save ourselves."
 msgstr "能救的人我们都救了！现在该轮到我们救自己了。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:686
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:654
 msgid ""
 "Live not in fear, Alduin! Once I’m king I will return here to set things "
 "right."
 msgstr "不要活在恐惧之中，奥渡因！等我成为国王，我会回到这里，匡正一切。"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION glad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:692
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:660
 msgid ""
 "Live not in fear, Alduin, for today proves that Asheviere can be beaten! "
 "Once I’m king I will return here to set things right."
@@ -8735,14 +8742,14 @@ msgstr ""
 "国王，我会回到这里，匡正一切。"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION concerned}
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:713
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:681
 msgid ""
 "All of the prisoners we set out to rescue are dead! This has been a "
 "disaster..."
 msgstr "我们出发要救的囚徒全都死了！这真是一场灾难……"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:727
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:695
 msgid ""
 "Asheviere’s soldiers spoke of a royal ship coming to take the imprisoned "
 "mages away. If we take too long to finish our work here, that ship will "
@@ -8752,7 +8759,7 @@ msgstr ""
 "得太久，那艘船肯定会带着援军赶到，击败我们。"
 
 #. [message]: role=ship
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:736
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:704
 msgid ""
 "Hail, Alduin! We’re here on schedule with a fresh rotation of guards for the "
 "garrison. It looks like you need them!"
@@ -8761,7 +8768,7 @@ msgstr ""
 "需要他们！"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION mad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:740
+#: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Isle_of_Alduin.cfg:708
 msgid ""
 "Oh no! Asheviere’s soldiers have been reinforced! We cannot flee while their "
 "ship controls the waters, and we cannot afford the time to stop and fight..."
@@ -8775,12 +8782,12 @@ msgid "scenario name^Muff Malal’s Peninsula"
 msgstr "玛夫·玛拉尔的半岛"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION mad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:236
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:229
 msgid "What’s going on here? Stop attacking that helpless man!"
 msgstr "这里发生了什么事？住手，别攻击那个无助的人！"
 
 #. [message]: speaker=Muff Malal
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:240
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:233
 msgid ""
 "I warned you not to interrupt! I’m BUSY! And for the record, HE attacked ME, "
 "while I was peacefully minding my own business killing innocent townsfolk."
@@ -8790,7 +8797,7 @@ msgstr ""
 
 #. [message]: speaker=Moremirmu
 #. vague reference to the events of UtBS
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:245
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:238
 msgid ""
 "For at the end of days, the texts prophesy a great destruction, yea, the sun "
 "itself shall rain down from the heavens as sulfur and fire!"
@@ -8799,19 +8806,19 @@ msgstr ""
 "降！"
 
 #. [message]: speaker=Moremirmu
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:249
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:242
 msgid ""
 "And lo! The unclean dead shall be smitten down, and lo! There shall be peace "
 "eternal for all men. So readeth the texts."
 msgstr "看哪！不洁的死者必被击倒；看哪！所有人将享有永恒的和平。经书如此记载。"
 
 #. [message]: speaker=Moremirmu
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:253
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:246
 msgid "Yet until then, it falls to those such as me to do the smiting!"
 msgstr "然而在那之前，施行这击杀之事，就落在像我这样的人身上！"
 
 #. [message]: speaker=Muff Malal
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:258
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:251
 msgid ""
 "Such an annoyance. Just stay out of my way until I’ve dealt with these "
 "newcomers, will you? I’ll have plenty of time to finish you off later!"
@@ -8820,9 +8827,9 @@ msgstr ""
 "决你！"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:264
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:265
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:269
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:257
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:258
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:262
 msgid ""
 "We must make haste if we wish to save that warrior, Konrad! I sense magical "
 "power in him, but one man alone will not prevail against the hordes of "
@@ -8832,7 +8839,7 @@ msgstr ""
 "人，绝无法抵挡在这半岛上游荡的亡灵大军。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:266
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:259
 msgid ""
 "20 against 1 is pretty long odds, Konrad. If we’re goin’ to help that "
 "warrior before he’s overwhelmed, we’d better hurry things up."
@@ -8841,7 +8848,7 @@ msgstr ""
 "点。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:267
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:260
 msgid ""
 "We must ride swiftly if we wish to save that warrior, Konrad! He looks to be "
 "a skilled fighter, but one man alone will not prevail against the hordes of "
@@ -8851,7 +8858,7 @@ msgstr ""
 "凭一人，绝无法抵挡在这半岛上游荡的亡灵大军。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:268
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:261
 msgid ""
 "We should hurry if we’re hoping to save that warrior, Konrad! I sense "
 "magical power in him, but one man alone will not prevail against the hordes "
@@ -8861,7 +8868,7 @@ msgstr ""
 "人，绝无法抵挡在这半岛上游荡的亡灵大军。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:270
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:263
 msgid ""
 "20-’gainst-1 fer that warrior, now them’s long odds e’en if he were a dwarf! "
 "Tha’ long-staff sixpenny sorcerer’ll be having a change o’ heart — "
@@ -8871,7 +8878,7 @@ msgstr ""
 "的六便士法师，他准得“变心”——字面意义上的！"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:271
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:264
 msgid ""
 "Oh, oh my. That magical warrior looks rather, err, powerful, doesn’t he? But "
 "that’s also a lot, really quite many undead surrounding him. We’d better "
@@ -8881,7 +8888,7 @@ msgstr ""
 "真的非常多。要是想救他，我们最好快点。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:272
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:265
 msgid ""
 "Dat holy man be lookin’ mighty strong, but Dosh is thinking there’s too many "
 "o’ dem undead e’en for him. We’d better be helpin’ him out, Konrad."
@@ -8890,7 +8897,7 @@ msgstr ""
 "好去帮帮他，科纳德。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:273
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:266
 msgid ""
 "We’d better move quickly and help fight! That warrior looks powerful, but "
 "the necromancer has the advantage of numbers."
@@ -8898,22 +8905,22 @@ msgstr ""
 "我们最好快点行动，加入战斗！那位战士看起来很强，但死灵法师占了数量优势。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:277
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:270
 msgid "Get ready for battle, everyone!"
 msgstr "大家准备好战斗！"
 
 #. [objective]: condition=win
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:285
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:278
 msgid "Defeat Muff Malal"
 msgstr "击败玛夫·玛拉尔"
 
 #. [note]
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:299
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:292
 msgid "Moremirmu will join you if you move any unit adjacent to him."
 msgstr "若将任意单位移动到莫密尔姆相邻的位置，他就会加入你。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:314
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:307
 msgid ""
 "I read about this place in Delfador’s books. The peninsula of pearls was "
 "once home to several small towns, thriving off of the pearl trade. Farmers, "
@@ -8924,9 +8931,9 @@ msgstr ""
 "兴盛。农民、山民……玛夫·玛拉尔肯定把他们全杀了，而女王的军队却袖手旁观。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:317
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:318
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:319
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:310
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:311
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:312
 msgid ""
 "More of her politicking, I fear. By allowing necromancy to flourish in the "
 "kingdom’s western regions, Asheviere forces us to devote time and resources "
@@ -8937,7 +8944,7 @@ msgstr ""
 "源投入保护镇民——而我们就没法花这些时间直接对抗她了。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:320
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:313
 msgid ""
 "At Alduin I’ve seen students expelled just for speaking the word "
 "“necromancy”. And here Asheviere won’t even act when an entire town is "
@@ -8947,7 +8954,7 @@ msgstr ""
 "毁，艾什薇尔却连行动都不肯。只要她觉得谁有用，就会和谁合作。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:321
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:314
 msgid ""
 "Hmmph. At Alduin we’ve expelled students just for speaking the word "
 "“necromancy”. And here Asheviere won’t even act when an entire town is "
@@ -8957,7 +8964,7 @@ msgstr ""
 "座城镇被毁，艾什薇尔却连管都不管。只要她觉得谁有用，就会和谁合作。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:322
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:315
 msgid ""
 "Aye, tha’ human-queen ’o yers is a filthy, white-livered, chicken-hearted "
 "skinflint o’ a poltroon, she is! Dinnae you worry son, when we git our hands "
@@ -8967,7 +8974,7 @@ msgstr ""
 "小子，等俺们逮住她，非把她那身女王皮肉撕成碎条不可！"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:323
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:316
 msgid ""
 "She’s a real piece of work, isn’t she? I’ll bet she let this happen on "
 "purpose, to keep all us rebels busy while she be livin’ luxury up in Weldyn. "
@@ -8978,7 +8985,7 @@ msgstr ""
 "个……"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:324
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:317
 msgid ""
 "I’ve visited this place before, to buy supplies from the fishermen... It’s "
 "rather terrible to see what’s become of it now."
@@ -8986,7 +8993,7 @@ msgstr ""
 "我以前来过这里，向渔夫们购买补给……如今看到它变成这副模样，实在令人痛心。"
 
 #. [message]: speaker=Moremirmu
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:344
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:337
 msgid ""
 "Lo and behold! I stood in need of aid, and so aid has come! What brings you "
 "to Muff Malal’s peninsula, pilgrims?"
@@ -8995,7 +9002,7 @@ msgstr ""
 "岛来的？"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:348
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:341
 msgid ""
 "I am Konrad, heir to the throne of Wesnoth, and seeking to reclaim my seat "
 "from the evil queen Asheviere! Who are you?"
@@ -9004,7 +9011,7 @@ msgstr ""
 "是什么人？"
 
 #. [message]: speaker=Moremirmu
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:352
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:345
 msgid ""
 "Brother Moremirmu, wandering warrior, at your service. Rejoice, for it seems "
 "the strands of fate have brought us here together, that we may unite in arms "
@@ -9014,7 +9021,7 @@ msgstr ""
 "我等得以并肩携手，共除邪恶！"
 
 #. [message]: speaker=Moremirmu
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:357
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:350
 msgid ""
 "Aid me in my quest against this foul necromancer, and I shall ever-more be "
 "your loyal companion in the eternal war against the darkness!"
@@ -9023,53 +9030,53 @@ msgstr ""
 "之战！"
 
 #. [message]: speaker=Moremirmu
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:373
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:366
 msgid ""
 "The Light rebukes you, foul creature of the night! In a blaze of brilliance "
 "shall you be purged!"
 msgstr "光明斥责你，暗夜邪物！你将在璀璨烈焰中被涤净！"
 
 #. [message]: speaker=Muff Malal
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:388
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:381
 msgid "Curse you all! The queen promised I would be left in peace here..."
 msgstr "你们都该死！女王答应过，让我在这里安享太平……"
 
 #. [message]: speaker=Muff Malal
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:404
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:397
 msgid ""
 "Ugh, forget this! I’m not wasting any more time here with you — time for my "
 "dashing escape!"
 msgstr "呃，不管了！我可不想再和你们在这儿浪费时间——该我潇洒开溜了！"
 
 #. [message]: speaker=Muff Malal
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:422
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:415
 msgid ""
 "Gah, where did all these piranhas come from? There’s too much rotting meat "
 "in the water!"
 msgstr "啊，这些食人鱼都是从哪儿冒出来的？水里烂肉也太多了！"
 
 #. [message]: speaker=Muff Malal
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:429
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:422
 msgid "(Gurgle gurgle gurgle...)"
 msgstr "（咕噜咕噜咕噜……）"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:444
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:452
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:437
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:445
 msgid ""
 "The necromancer is defeated, and the countryside is safe once more! Good "
 "work, everybody."
 msgstr "死灵法师已被击败，乡野重归安宁！大家干得好！"
 
 #. [message]: speaker=Moremirmu
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:456
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:449
 msgid ""
 "The Light shall always find the Light, and so have I found you! Let us quest "
 "on together in opposition to the dark queen!"
 msgstr "光明终将寻见光明，因此我也寻见了你！让我们继续同行，共同对抗黑暗女王！"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:461
+#: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:454
 msgid ""
 "The necromancer is defeated, and the countryside is safe once more! I am "
 "sorry that Moremirmu has perished, but at least he did not die in vain. Now "
@@ -9094,12 +9101,12 @@ msgstr "被诅咒者之岛"
 #. [side]: type={ON_DIFFICULTY4 Necrophage Necrophage Ghast Ghast}, id=leader2
 #. [side]: id=leader2, type=Death Knight
 #: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:51
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:70
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:74
 #: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:55
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:73
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:74
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:92
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:109
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:80
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:68
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:86
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:103
 #: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:59
 #: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:46
 #: data/campaigns/Heir_To_The_Throne/scenarios/32_The_Swamp_of_Dread.cfg:50
@@ -9109,38 +9116,38 @@ msgid "Undead"
 msgstr "亡灵"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:143
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:129
 msgid "Hello? Is anybody here?"
 msgstr "哈罗？有人吗？"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:153
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:139
 msgid ""
 "I’m nearly blind in this fog, but I think I see a hovel off in the distance."
 msgstr "这雾里我几乎什么都看不清，不过我觉得远处好像有间破茅屋。"
 
 #. [message]: speaker=Delurin
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:181
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:167
 msgid "Freeze! Drop the sword, or we won’t hesitate to run ye through."
 msgstr "不许动！把剑扔了，不然我们立马把你捅个对穿。"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION concerned}
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:185
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:171
 msgid "(This keeps getting worse...)"
 msgstr "（情况越来越糟了……）"
 
 #. [message]: speaker=Delurin
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:189
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:175
 msgid "How many of ye are there? How did she find out about us! Speak, vermin!"
 msgstr "你们到底有多少人？她是怎么发现我们的！说，鼠辈！"
 
 #. [message]: speaker=Delurin
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:191
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:177
 msgid "This is the worst timing... an’ us fighting without Harper too..."
 msgstr "这来得可真不是时候……偏偏还少了哈珀，咱们还得打仗……"
 
 #. [message]: type=Thug
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:195
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:181
 msgid ""
 "I dunno, Delurin. They’re a mean lot, but they don’t much look like "
 "Asheviere’s. It’s been a long time since we ’ad to put down any of her goons."
@@ -9149,7 +9156,7 @@ msgstr ""
 "过她的狗腿子了。"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION concerned}
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:199
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:185
 msgid ""
 "Peace, friends! I mean you no harm, and I’m no servant of Asheviere’s! My "
 "name is Konrad. I’m a prince, nephew of Garard, son of Arand and rightful "
@@ -9159,18 +9166,18 @@ msgstr ""
 "子，伽拉德的侄子，阿兰德之子，韦诺王座的正统继承人！"
 
 #. [message]: speaker=Delurin
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:203
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:189
 msgid ""
 "Konrad? I’ve heard of Prince Konrad... You might be he, or you mightn’t."
 msgstr "科纳德？我听说过科纳德王子……你兴许就是他，兴许不是。"
 
 #. [message]: speaker=Delurin
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:211
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:197
 msgid "You say you’re a friend, an’ that’s worth something at least."
 msgstr "你说你是朋友，至少这话还有点分量。"
 
 #. [message]: speaker=Delurin
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:215
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:201
 msgid ""
 "I’ll give you a chance to prove yerself, boy. We’ve been havin’ trouble with "
 "some bestial undead on the isle. Our leader is missing, and without ’er "
@@ -9180,7 +9187,7 @@ msgstr ""
 "咱们头儿不见了，没她，咱们连还手都难。"
 
 #. [message]: speaker=Delurin
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:219
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:205
 msgid ""
 "But the real Konrad’d be a great general; he’d have no trouble beating down "
 "the dead. Lead us against the corpses, prince, and we’ll see just how "
@@ -9190,48 +9197,48 @@ msgstr ""
 "尸体吧，王子，让咱们看看你到底是不是货真价实。我会盯着你。"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:264
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:250
 msgid "Konrad can now recruit Thugs and Footpads!"
 msgstr "科纳德现在可以征募暴徒和走卒了！"
 
 #. [objective]: condition=lose
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:292
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:278
 msgid "Death of Delurin"
 msgstr "德鲁林死亡"
 
 #. [message]: speaker=Delurin
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:319
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:305
 msgid ""
 "Undead in th’ heart o’ town! I’m glad Baldras didn’t live to see this..."
 msgstr "亡灵都到镇中心了！我真庆幸巴尔德拉斯没活到看见这一幕……"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:335
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:321
 msgid ""
 "This crypt was once grand, but now all has gone to rot. There’s nothing of "
 "value here."
 msgstr "这座墓穴曾经宏伟气派，如今却已腐朽不堪。这里没有任何有价值的东西。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:347
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:333
 msgid "This crypt is shallow and dry, and there’s 20 gold inside!"
 msgstr "这座墓穴又浅又干燥，里面有 20 金币！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:364
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:350
 msgid ""
 "This crypt is deep, and a foul stench wafts up from below. There’s something "
 "near the entrance."
 msgstr "这座墓穴很深，一股恶臭从下方飘上来。入口附近有什么东西。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:372
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:358
 msgid "Gah, undead!"
 msgstr "呃啊，亡灵！"
 
 #. [message]: speaker=Delurin
 #. hint to the player that one crypt contains gold, but another contains undead
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:425
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:411
 msgid ""
 "Watch out around those crypts, Konrad. This whole undead problem only "
 "started after our leader went down into one of them looking for treasure."
@@ -9240,7 +9247,7 @@ msgstr ""
 "才闹出来的。"
 
 #. [message]: speaker=Delurin
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:429
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:415
 msgid ""
 "She’s still down in there, somewhere. But we can’t do much to help now, not "
 "till we deal with them that’s up here an’ fightings us."
@@ -9249,14 +9256,14 @@ msgstr ""
 "家伙。"
 
 #. [message]: speaker=Delurin
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:448
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:434
 msgid ""
 "Not bad, prince. Maybe you is who you says you is after all. But there’s "
 "still more of ’em out there to fight."
 msgstr "不赖，王子。说不准你到底还真是你自称的那个人。但外头还有更多要打。"
 
 #. [message]: speaker=Delurin
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:462
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:448
 msgid ""
 "That’s the last of ’em! The Three Sisters is safe. You done well, kid — I’m "
 "sorry we threatened you."
@@ -9265,7 +9272,7 @@ msgstr ""
 "你。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:466
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:452
 msgid ""
 "Your threats would have been your end, had you tried to carry them out. But "
 "I understand: you’ve been out here so long that you’ve forgotten what a "
@@ -9275,7 +9282,7 @@ msgstr ""
 "忘了友善的面孔是什么样子。"
 
 #. [message]: speaker=Delurin
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:470
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:456
 msgid ""
 "Ain’t that the truth. Been nigh on 20 years since we fled our homes, since "
 "that stinker Asheviere warned us to swear fealty or die. We ain’t no friends "
@@ -9286,12 +9293,12 @@ msgstr ""
 "程，我们将不胜荣幸。"
 
 #. [message]: speaker=Delurin
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:488
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:474
 msgid "Some leader you are. I’m glad Baldras didn’t live to see this..."
 msgstr "你算什么首领。我真庆幸巴尔德拉斯没活到看见这一幕……"
 
 #. [message]: speaker=Delurin
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:502
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:488
 msgid ""
 "Hurry it up, “Prince Konrad”! There’s friends of mine in trouble, and we "
 "can’t do naught about it until these undead are finished!"
@@ -9300,7 +9307,7 @@ msgstr ""
 "不了！"
 
 #. [message]: speaker=Delurin
-#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:509
+#: data/campaigns/Heir_To_The_Throne/scenarios/08a_Isle_of_the_Damned_part1.cfg:495
 msgid ""
 "This is taking too long. ’s what I get for trusting a “prince”; we should’ve "
 "dealt with these dead by ourselves from the beginning."
@@ -9309,21 +9316,21 @@ msgstr ""
 "人。"
 
 #. [side]
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:98
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:102
 #: data/campaigns/Heir_To_The_Throne/scenarios/29_Digging_for_Dwarves.cfg:33
 msgid "Beasts"
 msgstr "野兽"
 
 #. [scenario]: id=08b_Isle_of_the_Damned_part2
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:151
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:167
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:183
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:199
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:155
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:171
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:187
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:203
 msgid "Midnight Queen"
 msgstr "午夜女王"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:282
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:286
 msgid ""
 "Here we are: the entrance to the island catacombs. The source of the undead "
 "must be down here somewhere... and the outlaw leaders, if they’re still "
@@ -9333,7 +9340,7 @@ msgstr ""
 "领，如果他们还活着的话。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:286
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:290
 msgid ""
 "If Delurin’s guess is correct, this place goes on for miles. We may have to "
 "split up if we want to search the whole thing in decent time."
@@ -9342,13 +9349,13 @@ msgstr ""
 "得分开行动。"
 
 #. [objective]: condition=win
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:294
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:298
 msgid "Find and destroy the source of the undead"
 msgstr "找到并摧毁亡灵的源头"
 
 #. [message]: speaker=Konrad
 #. saying "500 years" is important, as the vampire lady says it takes her 500 years to regenerate after being destroyed. 500 years ago is when Haldric arrived and destroyed her the first time
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:314
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:318
 msgid ""
 "I wonder who built this place, and for what purpose? The handiwork doesn’t "
 "look dwarvish, but it’s far too old to have been tunneled by men. Their— "
@@ -9358,7 +9365,7 @@ msgstr ""
 "太古老了，不可能是人类挖出来的。他们——呃，我们人类来到泰陆才不过500年！"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:317
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:321
 msgid ""
 "Aye, ain’t no dwarf-tunnels, that’s for sure. Jus’ look at them ugly, lumpy "
 "walls! Whoever made this place weren’t no troll, neither."
@@ -9367,7 +9374,7 @@ msgstr ""
 "造这地方的主儿也绝不是巨魔。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:318
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:322
 msgid ""
 "I have heard stories of this place; the isle of Lilanas. Elves once lived "
 "here. But that was long ago, before even my time."
@@ -9376,8 +9383,8 @@ msgstr ""
 "我的时代。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:319
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:320
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:323
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:324
 msgid ""
 "I detect powerful magic down in these tunnels, Konrad, very old magic. But I "
 "can’t speak as to its origin."
@@ -9386,7 +9393,7 @@ msgstr ""
 "来源。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:321
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:325
 msgid ""
 "There is a dark presence here, Konrad, foul; something that has rejected the "
 "Light and hides deep within this place. Beyond that I cannot say."
@@ -9395,7 +9402,7 @@ msgstr ""
 "此之外，我无可奉告。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:322
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:326
 msgid ""
 "Well, err — the architecture is... ah, old. Mermish? Elvish, perhaps? But "
 "these caves are certainly natural. Someone found the caves and took up, err, "
@@ -9405,7 +9412,7 @@ msgstr ""
 "然形成的。有人发现了这些洞穴，然后，呃，住了下来？"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:323
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:327
 msgid ""
 "Dis not a troll hole, Konrad. But not a dwarf hole neither. An’ Dosh dunno "
 "who else be livin’ in caves."
@@ -9413,7 +9420,7 @@ msgstr ""
 "这不是巨魔洞，科纳德。也不是矮人洞。俺多什也不知道还有啥东西会住在洞里。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:343
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:347
 msgid ""
 "I smell clean fresh air, and spray laced with salt! Nearby lies the ocean; "
 "we will find no undead this way."
@@ -9423,7 +9430,7 @@ msgstr ""
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION concerned}
 #. tell the player that they don't need to fight the giant spiders to win
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:358
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:362
 msgid ""
 "A nest of giant spiders! I’ve heard terrible stories about the awful danger "
 "of these creatures. There’s certainly no undead anywhere inside their lair; "
@@ -9433,7 +9440,7 @@ msgstr ""
 "灵；也许我们保持距离，它们就不会来招惹我们。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:370
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:374
 msgid ""
 "A revenant! That thing is a capable fighter, but such a mindless creature "
 "could not have cast the spells needed to raise his fellows. There must be a "
@@ -9443,21 +9450,21 @@ msgstr ""
 "穴里的别处一定还有死灵法师或巫妖。"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION glad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:378
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:382
 msgid ""
 "Well done, everyone! We’ve beaten one group of undead, but the source behind "
 "this dark magic is still at large."
 msgstr "干得好，各位！我们击败了一群亡灵，但这场黑暗魔法背后的源头仍未被消灭。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:391
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:395
 msgid ""
 "That’s the last of the spider! A difficult fight, but we’ve gained valuable "
 "experience."
 msgstr "那是最后一只蜘蛛了！一场苦战，但我们获得了宝贵的经验。"
 
 #. [message]: speaker=Vampire
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:410
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:414
 msgid ""
 "Welcome, strangers, to the boudoir of the midnight queen. It’s been so many "
 "years since I’ve had such handsome visitors."
@@ -9466,24 +9473,24 @@ msgstr ""
 
 #. [message]: speaker=Vampire
 #. exactly what she says to Haldric in TRoW
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:417
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:421
 msgid "You will be made to serve... Come admire me. Feel my love."
 msgstr "你会来为我服务……来爱慕我。感受我的爱。"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION concerned}
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:422
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:426
 msgid "She’s... She’s beautiful..."
 msgstr "她……她真漂亮……"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:427
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:431
 msgid ""
 "Knock it off, lady! Don’t any of you listen to her, she’s nothing but an "
 "illusion!"
 msgstr "少来这一套，女士！你们谁都别听她的，她不过是个幻象！"
 
 #. [message]: speaker=Vampire
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:443
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:447
 msgid ""
 "Insolent man-lings! I was immortal queen of this isle since before your kind "
 "had learned to walk! You will learn to show proper respect!"
@@ -9492,12 +9499,12 @@ msgstr ""
 "们会学会何为应有的敬畏！"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:459
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:463
 msgid "Hey. I’m Harper. Aren’t you a sight for sore eyes."
 msgstr "嘿，我是哈珀。可算见到你们了，真是让我眼前一亮。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:463
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:467
 msgid ""
 "You’re the leader of the outlaws? Err, we came to rescue you, and to put an "
 "end to the undead threat on the isle. What happened in this place?!"
@@ -9506,7 +9513,7 @@ msgstr ""
 "到底发生了什么？！"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:467
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:471
 msgid ""
 "Well... some weeks ago I led some hunters down here lookin’ fer magic, "
 "treasure, anythin’ that could help really make a difference ’gainst that "
@@ -9516,7 +9523,7 @@ msgstr ""
 "账艾什薇尔女王的东西。我还真以为自己找到了什么宝贝呢。"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:471
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:475
 msgid ""
 "’stead all my hard work just got people killed. I awoke that “Midnight "
 "Queen”, an’ now I’m the last one of us who came down here what’s left "
@@ -9526,7 +9533,7 @@ msgstr ""
 "现在就剩我一个还活着……"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:475
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:479
 msgid ""
 "But there be no time for talk. C’mon, we gots to finish her off afore she "
 "gets her glamour put back on!"
@@ -9534,7 +9541,7 @@ msgstr "可没工夫闲聊了。快点儿，咱得趁她还没重新施放魅惑
 
 #. [message]: speaker=Vampire
 #. This is an elven druid from long, long ago, now turned to a lich. "Lilanas" is her name for "The Three Sisters"
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:492
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:496
 msgid ""
 "Fools! You mayflies cannot kill me! I am the greatest of the druids of "
 "Lilanas; my spirit is the isle’s wind, my bones its earth, my blood its "
@@ -9545,7 +9552,7 @@ msgstr ""
 
 #. [message]: speaker=Vampire
 #. it's been a little over 500 years since Haldric arrived, fought, and killed her. Now she's back - and killed again for another 500 years
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:497
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:501
 msgid ""
 "You may destroy me now, but in 500 years I shall return! So long as the isle "
 "stands... I shall always return..."
@@ -9554,17 +9561,17 @@ msgstr ""
 "来……"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION mad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:505
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:509
 msgid "Death to tyrants, now and forevermore!"
 msgstr "暴君必亡，从今直到永远！"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:509
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:513
 msgid "... do you think she meant what she said about returning in 500 years?"
 msgstr "……你们觉得，她说的500年后归来，是真的吗？"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:512
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:516
 msgid ""
 "Sure, aye, when trolls fly! Ah ain’t never heard such a lot o’ "
 "ninnyhammerin’ tripe since th’ last time my pa’ got too deep in ’is drink. "
@@ -9574,8 +9581,8 @@ msgstr ""
 "边的屁话。咱没啥可担心的。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:513
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:514
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:517
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:518
 msgid ""
 "Whatever powers she had in life or undeath, there’s no magic that can revive "
 "the dead. I don’t think we have anything to worry about."
@@ -9584,7 +9591,7 @@ msgstr ""
 "么可担心的。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:515
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:519
 msgid ""
 "An accursed curse by an accursed creature, Konrad! Even in death, she still "
 "aims to beguile us with her foul lies."
@@ -9593,7 +9600,7 @@ msgstr ""
 "言蛊惑我们。"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:519
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:523
 msgid ""
 "C’mon, let’s be gettin’ back to the village. And on the way, you boys better "
 "be tellin’ me just who exactly you all are."
@@ -9601,7 +9608,7 @@ msgstr ""
 "快走吧，咱回村去。路上你们这些小子最好老老实实告诉我，你们到底都是什么人。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:536
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:540
 msgid ""
 "We musn’t take too long down here. The air is foul and growing fouler by the "
 "minute; if we cannot defeat the leader of the undead, we shall soon be "
@@ -9611,7 +9618,7 @@ msgstr ""
 "首领，我们很快便不得不返回地表。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:543
+#: data/campaigns/Heir_To_The_Throne/scenarios/08b_Isle_of_the_Damned_part2.cfg:547
 msgid ""
 "I can barely continue to breathe in air so foul, much less fight. I am sorry "
 "to flee, but if we stay here any longer we shall surely suffocate."
@@ -10585,19 +10592,19 @@ msgid "Fort Tahn Garrison"
 msgstr "塔恩要塞驻军"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION mad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:160
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:135
 msgid ""
 "Villains! You have pillaged a great treasure from the halls of my home. "
 "Return it at once, and your lives may yet be spared!"
 msgstr "恶徒！你们从我的家园厅堂中劫走了重宝。立刻交还，或许还能饶你们一命！"
 
 #. [message]: speaker=leader3
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:164
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:139
 msgid "You— you’re Konrad! The false prince himself, here?!"
 msgstr "你——你是科纳德！那个伪王子本人，竟然在这儿？！"
 
 #. [message]: speaker=leader2
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:168
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:143
 msgid ""
 "I’m not about to surrender myself nor my property to a rebel! To arms, "
 "loyalists, and make ready to repel the invaders!"
@@ -10606,19 +10613,19 @@ msgstr ""
 "者！"
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:172
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:147
 msgid ""
 "It is war, then. Such an insult against my Aethenwood kin shall not go "
 "unpunished."
 msgstr "既如此，那便是战争了。这般对我艾森丛林亲族的侮辱，绝不可不罚。"
 
 #. [objective]: condition=win
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:180
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:155
 msgid "Defeat the Master Bowman"
 msgstr "击败大师弓手"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:214
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:189
 msgid ""
 "Seeing all this stolen gold and broken treasures kindles a great coldness in "
 "my heart. Asheviere has much to pay for..."
@@ -10627,7 +10634,7 @@ msgstr ""
 "多了……"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION mad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:239
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:214
 msgid ""
 "You dare use that bow against us? The Moonbows belong to the elves; you know "
 "nothing about them and have no right to lay a hand on one!"
@@ -10636,7 +10643,7 @@ msgstr ""
 "把！"
 
 #. [message]: speaker=leader2
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:243
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:218
 msgid ""
 "I know enough: I’ve trained in archery my entire life and never seen a bow "
 "to rival this one. Fighting with it is my best chance at beating you!"
@@ -10645,12 +10652,12 @@ msgstr ""
 "战，是我击败你的最好机会！"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:274
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:249
 msgid "One leader has been defeated, but he is not the one who holds the bow."
 msgstr "一名首领已被击败，但他并非持弓之人。"
 
 #. [message]: speaker=leader2
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:294
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:269
 msgid ""
 "The rebels are too powerful! Mercy, Konrad! I’m just doing my duty to defend "
 "my country, as ordered by my sovereign, the queen!"
@@ -10659,7 +10666,7 @@ msgstr ""
 "事！"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION mad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:298
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:273
 msgid ""
 "Surrender your elven weapon, and swear an oath to never again take up arms "
 "against me or my allies. I am the true sovereign in Wesnoth, and will give "
@@ -10669,7 +10676,7 @@ msgstr ""
 "主，我只会给你一次赎罪的机会。"
 
 #. [message]: speaker=leader2
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:302
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:277
 msgid ""
 "But Asheviere will kill me! ...I suppose you will too. If you really are the "
 "heir, and an elf-lover besides, then I suppose our pillage does most "
@@ -10679,13 +10686,13 @@ msgstr ""
 "抢来的东西多半理应归你。喏，拿去吧，留我们其余人一条命！"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:328
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:501
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:303
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:494
 msgid "You have gained 300 gold!"
 msgstr "你获得了300金币！"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:351
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:326
 msgid ""
 "As for the rest of you — begone! Return to your homes in Westin and never "
 "again trouble my people, lest the wrath of the elves fall upon you!"
@@ -10694,7 +10701,7 @@ msgstr ""
 "灵之怒将降临到你们头上！"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:352
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:327
 msgid ""
 "Your master has fled — now begone, servants of the false queen! Return to "
 "your homes in Westin, and trouble the true heir no more."
@@ -10703,28 +10710,28 @@ msgstr ""
 "打扰真正的继承人。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:353
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:328
 msgid ""
 "Hah! Yeah, you’d better run! And that goes for the rest of you, too, now "
 "that your leader has fled!"
 msgstr "哈！没错，你们最好快跑！你们其余人也一样，既然你们的首领已经逃了！"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:354
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:329
 msgid ""
 "An’ that goes for th’ rest o’ you too! Get out o’ here, an’ tell Westin we "
 "sent you!"
 msgstr "你们剩下的也一样！滚出这儿，回去告诉韦斯廷，是俺们把你们撵走的！"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:355
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:330
 msgid ""
 "And the rest of you — begone! For lo! The Light stands with Konrad, and only "
 "those of darkness dare to oppose him."
 msgstr "你们其余人——退去！看哪！光明与科纳德同在，唯有黑暗之辈才敢与他为敌。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:356
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:331
 msgid ""
 "An’ that goes for th’ rest o’ you too, ye horse-faced sons o’ elves! Run "
 "back to Westin afore I boil yer kneecaps inside yer skulls!"
@@ -10733,7 +10740,7 @@ msgstr ""
 "紧滚回韦斯廷去！"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:358
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:333
 msgid ""
 "Da rest of you better be leavin’ now too. Konrad good troll-friend. You don’ "
 "wanna see what troll do to you if you keep fightin’ Konrad."
@@ -10742,7 +10749,7 @@ msgstr ""
 "看巨魔会咋收拾你们。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:359
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:334
 msgid ""
 "And that goes for the rest of you too! Return to your homes in Westin, and "
 "trouble the Aethenwood no more."
@@ -10750,7 +10757,7 @@ msgstr "你们其余人也一样！回你们韦斯廷的家去，再也不要侵
 
 #. [message]: speaker=Konrad
 #. Konrad is level 1, and does not have a bow attack. Once he reaches level 2 and gains a bow attack, the Moonbow will strengthen it.
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:371
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:346
 msgid ""
 "With that, Fort Tahn is ours, the Aethenwood’s gold reclaimed, and this "
 "Moonbow recaptured! Once my archery improves I shall take it for my own, and "
@@ -10762,7 +10769,7 @@ msgstr ""
 "的银辉永不黯淡。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:376
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:351
 msgid ""
 "With that, Fort Tahn is ours, the Aethenwood’s gold reclaimed, and this "
 "Moonbow recaptured! Once peace is restored this weapon belongs back in the "
@@ -10774,12 +10781,12 @@ msgstr ""
 "王。愿它的银辉永不黯淡。"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:385
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:360
 msgid "Elvish Moonbow"
 msgstr "精灵月弓"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:386
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:361
 msgid ""
 "This magical weapon adds 3 strikes, the <i>slows</i> special, and the "
 "<i>arcane</i> special to Konrad’s bow attacks."
@@ -10787,7 +10794,7 @@ msgstr ""
 "这件魔法武器为科纳德的弓攻击增加3次攻击次数，<b>减速</b>和<b>奥术</b>特攻。"
 
 #. [message]: speaker=leader2
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:401
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:376
 msgid ""
 "The false prince is proving a more difficult foe that I had expected. Some "
 "soldiers left for Westin not long ago — I’d better send a messenger and call "
@@ -10797,14 +10804,14 @@ msgstr ""
 "召回来助战。"
 
 #. [message]: role=reinforcement
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:416
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:391
 msgid ""
 "You called for aid, Castellan? We’ve come to fight, and the Westin militia "
 "is not far behind!"
 msgstr "您求援了吗，堡主？我们前来参战，韦斯廷民兵随后就到！"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION concerned}
-#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:420
+#: data/campaigns/Heir_To_The_Throne/scenarios/13_Fort_Tahn.cfg:395
 msgid ""
 "We’ve taken too long to sack the fort, and now more soldiers have arrived! "
 "Even if we defeat them all, we’ll suffer greatly from the delay..."
@@ -10823,19 +10830,19 @@ msgid "Burlin’s Crew"
 msgstr "巴尔林的队伍"
 
 #. [side]: type=Gryphon, id=Mother Gryphon
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:65
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:54
 msgid "Mother Gryphon"
 msgstr "狮鹫之母"
 
 #. [side]: type=Gryphon, id=Mother Gryphon
 #. [side]
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:72
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:109
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:61
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:97
 msgid "Gryphons"
 msgstr "狮鹫"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION glad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:167
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:155
 msgid ""
 "The fabled Gryphon Mountain! It’s not the tallest mountain in Wesnoth, nor "
 "the widest, but is held in renown by poets and scholars alike for the "
@@ -10846,24 +10853,24 @@ msgstr ""
 "人和学者都津津乐道。能从连番战斗中抽身，体验一下大自然，真是太好了。"
 
 #. [message]: speaker=Burlin
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:172
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:160
 msgid "Hey! Hey, kid!"
 msgstr "嘿！嘿，小子！"
 
 #. [message]: speaker=Burlin
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:177
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:165
 msgid ""
 "You look like a strapping young lad! What do you say about doin’ a bit o’ "
 "work for old uncle Burlin?"
 msgstr "你瞅着倒是个结实的小伙子！给老巴尔林大叔干点活儿，咋样？"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:181
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:169
 msgid "I might be interested. What kind of work?"
 msgstr "我也许有兴趣。什么活儿？"
 
 #. [message]: speaker=Burlin
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:185
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:173
 msgid ""
 "The <b><i>best</i></b> kind o’ work: well-paying! I’s got a contract to "
 "collect fifty gryphon eggs, see? But I ain’t excited to risk my crew’s lives "
@@ -10873,7 +10880,7 @@ msgstr ""
 "可俺不太乐意拿手下兄弟的命去冒这个险。"
 
 #. [message]: speaker=Burlin
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:189
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:177
 msgid ""
 "So, I say you an’ I make a deal. You kill off the gryphons for me, an’ when "
 "I make my sale t’ the queen I’ll split the profit with ye’, 70-30."
@@ -10882,14 +10889,14 @@ msgstr ""
 "七三开。"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION mad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:193
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:181
 msgid ""
 "The queen? You’re working for Asheviere?! I’d never ally myself with such a "
 "villain!"
 msgstr "女王？你竟为艾什薇尔做事？！我绝不会与这种恶徒为伍！"
 
 #. [message]: speaker=Burlin
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:197
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:185
 msgid ""
 "... well aye, o’ course I’m workin’ for her! Ain’t this the middle o’ "
 "Wesnoth? Who else would be in charge, that good-for-nothin’ rebel Konrad? Hey"
@@ -10899,7 +10906,7 @@ msgstr ""
 "的叛贼科纳德吗？嘿——俺刚说七三开？俺的意思是五五开！"
 
 #. [message]: speaker=Ulfdain
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:202
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:190
 msgid ""
 "Tha’s a ripe load o’ tripe if ah’ve e’er heard one! What kind o’ dwarf-"
 "traitor slackjaw gives up ’is own kind? An’ this IS Prince Konrad, you "
@@ -10909,7 +10916,7 @@ msgstr ""
 "卖自个儿的族人？这位就是科纳德王子，你个榆木脑袋！给俺放尊重点！"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION mad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:207
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:195
 msgid ""
 "I <b><i>am</i></b> Konrad, heir to the throne of Wesnoth and a sworn enemy "
 "of Asheviere’s! No amount of money will turn my blade. Raise your axe and "
@@ -10919,7 +10926,7 @@ msgstr ""
 "收买不了我的剑。举起你的斧头，准备战斗吧，恶徒！"
 
 #. [message]: speaker=Burlin
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:212
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:200
 msgid ""
 "Err... look, Your Highness, this is just business. I’ve got nothin’ ’gainst "
 "neither you nor Asheviere, but I do want to keep my word an’ do my job."
@@ -10928,7 +10935,7 @@ msgstr ""
 "活儿干完。"
 
 #. [message]: speaker=Burlin
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:216
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:204
 msgid ""
 "Work together with me now, an’ once I’ve cleaned out the nests I’ll let you "
 "have your pick of the eggs. Gryphons’re worth somethin’ fierce in a scrap, "
@@ -10938,28 +10945,28 @@ msgstr ""
 "好手，你晓得吧？"
 
 #. [message]: speaker=Burlin
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:218
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:206
 msgid ""
 "I’ll even send some o’ my crew with you, to help you train your gryphons "
 "once they hatch!"
 msgstr "俺还会派几个手下跟你走，等它们孵出来，帮你训练狮鹫！"
 
 #. [message]: speaker=Burlin
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:222
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:210
 msgid ""
 "You get yer rebel army, an’ I get my big sack o’ gold from the queen. "
 "Everyone wins, an’ nobody has to die."
 msgstr "你得到你的军，俺从女王那儿拿到一大袋金币。皆大欢喜，谁也不用送命。"
 
 #. [option]
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:228
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:216
 msgid ""
 "Agree to Burlin’s deal: Konrad learns to recruit Gryphon Riders and Dwarvish "
 "Scouts"
 msgstr "同意巴尔林的交易：科纳德学会征募狮鹫骑手和矮人侦察兵"
 
 #. [option]
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:235
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:223
 msgid ""
 "Fight Burlin: Asheviere loses $s50_burlin_income_penalty income and cannot "
 "recruit Gryphon Riders in the final scenario"
@@ -10968,12 +10975,12 @@ msgstr ""
 "中征募狮鹫骑手"
 
 #. [message]: type=Young Ogre
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:263
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:251
 msgid "Uhh... who you? You squishy! Me squish you!"
 msgstr "呃……你谁？你软皮！俺捏扁你！"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:298
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:286
 msgid ""
 "Very well. I don’t like aligning myself in any way with the dark queen, but "
 "you make a valid point. I’ll need gryphons and dwarves if I want my army to "
@@ -10983,7 +10990,7 @@ msgstr ""
 "要狮鹫和矮人。"
 
 #. [message]: speaker=Burlin
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:302
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:290
 msgid ""
 "Great! I knew ye’d come round. Tha’ big gryphon in the middle is the "
 "matriarch — kill her off an’ we’ll have no trouble gettin’ the eggs we need."
@@ -10992,39 +10999,39 @@ msgstr ""
 "就不成问题。"
 
 #. [objective]: condition=win
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:314
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:302
 msgid "Defeat the gryphon leader"
 msgstr "击败狮鹫首领"
 
 #. [objective]: condition=lose
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:320
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:308
 msgid "Death of Burlin"
 msgstr "巴尔林死亡"
 
 #. [message]: speaker=Mother Gryphon
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:337
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:325
 msgid "Krawww! Krawww..."
 msgstr "嘎啊啊！嘎啊啊……"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:348
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:336
 msgid ""
 "With the matriarch dead, the rest of them have fled! The mountain is silent "
 "once again."
 msgstr "母首领已死，其余的都逃走了！大山重归寂静。"
 
 #. [message]: speaker=Burlin
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:353
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:341
 msgid "Twenty..."
 msgstr "二十个……"
 
 #. [message]: speaker=Burlin
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:358
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:346
 msgid "Forty..."
 msgstr "四十个……"
 
 #. [message]: speaker=Burlin
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:363
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:351
 msgid ""
 "Fifty! That’s all I need. As promised, the rest of the eggs are yours. And "
 "here’s some o’ my crew to help you ride ’em once they hatch. Great work, kid."
@@ -11033,73 +11040,73 @@ msgstr ""
 "来，帮你骑乘。干得好，小子。"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:365
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:353
 msgid "Konrad can now recruit Gryphon Riders and Dwarvish Scouts!"
 msgstr "科纳德现在可以征募狮鹫骑手和矮人侦察兵了！"
 
 #. [message]: speaker=Burlin
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:381
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:369
 msgid "Ack! So much fer my gold..."
 msgstr "呃啊！俺的金子算是泡汤了……"
 
 #. [message]: speaker=Burlin
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:395
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:383
 msgid ""
 "Oy, can ye hurry it up? Time is money, an’ I ain’t makin’ any standin’ "
 "around!"
 msgstr "喂，你们能不能快点儿？时间就是金钱，俺站在这儿可赚不着一个子儿！"
 
 #. [message]: speaker=Burlin
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:402
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:390
 msgid ""
 "Ah, forget it, yer takin’ too long. I’ll deal with this meself — an’ keep "
 "all the reward for meself too!"
 msgstr "唉，算了，你们拖得太久了。俺自己来搞定——赏金也全归俺自己！"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:425
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:413
 msgid ""
 "I said raise your axe, villain! Any friend of Asheviere’s is a foe of mine!"
 msgstr "我说了，举起你的斧头，恶棍！凡是艾什薇尔的朋友，就是我的敌人！"
 
 #. [message]: speaker=Burlin
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:429
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:417
 msgid "Well, I tried. It’s yer funeral, kid."
 msgstr "好吧，俺尽力了。这是你自找的，小子。"
 
 #. [message]: speaker=Burlin
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:436
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:424
 msgid ""
 "Hey boys, wake up an’ set up camp! Looks like we’re gonna need to fight fer "
 "it after all!"
 msgstr "嘿，弟兄们，醒醒，把营地扎起来！看来咱们到头来还得为它打上一场！"
 
 #. [objective]: condition=win
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:451
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:439
 msgid "Defeat Burlin"
 msgstr "击败巴尔林"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:471
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:459
 msgid ""
 "You’d think these gryphons would show a little more gratitude, instead of "
 "trying to kill us..."
 msgstr "你本以为这些狮鹫多少会有点感恩之心，而不是想杀了我们……"
 
 #. [message]: speaker=Burlin
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:483
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:471
 msgid ""
 "Ah, humbug. Now the queen’ll ne’er get her gryphons... an’ I’ll ne’er get my "
 "gold..."
 msgstr "唉，真晦气。现在女王再也拿不到她的狮鹫了……俺也再也拿不到俺的金子了……"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:490
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:478
 msgid "Even on his deathbed, money is all he cares about."
 msgstr "就算快死了，他满脑子还是钱。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:498
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:486
 msgid ""
 "That’s why we have to fight her. Not for my sake, but for all the people "
 "suffering under Asheviere’s lash."
@@ -11108,14 +11115,14 @@ msgstr ""
 "的人民。"
 
 #. [message]: speaker=Burlin
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:517
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:505
 msgid ""
 "Argh, this is takin’ too long. I’d better send a messenger to Dan’Tonk an’ "
 "call for help."
 msgstr "呃啊，这拖得也太久了。俺得派个信使去丹·冬克求援。"
 
 #. [message]: role=messenger
-#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:533
+#: data/campaigns/Heir_To_The_Throne/scenarios/14_Gryphon_Mountain.cfg:521
 msgid ""
 "Ah’m back, Burlin! An’ I’ve brought a whole army with me — th’ queen’s "
 "pretty excited to finally capture the rebel prince!"
@@ -11131,12 +11138,12 @@ msgstr "亡魂谷"
 #. [side]: type=Shock Trooper, id=Kaelor
 #. [side]
 #: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:37
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:100
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:98
 msgid "Warrior Monks"
 msgstr "武僧"
 
 #. [message]: speaker=Kaelor
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:233
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:194
 msgid ""
 "Hail, strangers! The seals are failing, and the sister senior sent us to "
 "find aid. You must return with us to help our home, else all may soon be "
@@ -11146,7 +11153,7 @@ msgstr ""
 "回去帮助我们的家园，否则一切可能很快就会失去！"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION glad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:237
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:198
 msgid ""
 "Don’t worry, warrior, we’ve already been to your home and fought to restore "
 "the seals! Your people are safe."
@@ -11154,7 +11161,7 @@ msgstr ""
 "别担心，战士，我们已经去过你的家园，并为修复封印而战！你的同胞们安全了。"
 
 #. [message]: speaker=Kaelor
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:241
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:202
 msgid ""
 "Can it be true? Joyous news! You have my deepest gratitude, young one. Aid "
 "us in battle against these undead stragglers, and my warriors and I shall be "
@@ -11164,14 +11171,14 @@ msgstr ""
 "的战士们将乐于加入你们。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:247
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:281
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:208
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:242
 msgid "Hail, strangers! How have these undead come to trouble you?"
 msgstr "向你们致意，陌生人！这些亡灵怎么会来侵扰你们？"
 
 #. [message]: speaker=Moremirmu
 #. "brother" is not literal, instead referring to fellow warrior monks (heavy infantry) of Moremirmu's order
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:252
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:213
 msgid ""
 "Strangers? No, Konrad, these are my brethren! Kaelor, it is good to once "
 "again lay eyes upon a fellow brother of the faith. But what are undead doing "
@@ -11182,7 +11189,7 @@ msgstr ""
 
 #. [message]: speaker=Kaelor
 #. "brother" is not literal, instead referring to fellow warrior monks (heavy infantry) of Kaleor's order
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:257
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:218
 msgid ""
 "Grim tidings, brother Moremirmu! The seals are failing, and the sister "
 "senior sent us to cut through these restless dead and find aid for our home!"
@@ -11192,7 +11199,7 @@ msgstr ""
 
 #. [message]: speaker=Moremirmu
 #. "brother" is not literal, instead referring to fellow warrior monks (heavy infantry) of Moremirmu's order
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:262
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:223
 msgid ""
 "The seals? By the Light! I have been away from home for far too long, "
 "brother. Yet now have I returned — and with me comes a lost prince and his "
@@ -11202,12 +11209,12 @@ msgstr ""
 "失落的王子和他最为正义的战士们，他们已准备好援助你们！"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:267
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:228
 msgid "I don’t understand. Moremirmu, what’s going on?"
 msgstr "我不明白。莫密尔姆，这是怎么回事？"
 
 #. [message]: speaker=Moremirmu
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:271
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:232
 msgid ""
 "These are fellow servants of the light, Konrad. Men from my home — a "
 "monastery, some days travel northwards. There is a powerful magic protecting "
@@ -11219,7 +11226,7 @@ msgstr ""
 "来。"
 
 #. [message]: speaker=Moremirmu
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:275
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:236
 msgid ""
 "We must fight through these undead and go at once to their aid, for without "
 "our help they may soon lose all!"
@@ -11228,7 +11235,7 @@ msgstr ""
 "失去一切！"
 
 #. [message]: speaker=Kaelor
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:285
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:246
 msgid ""
 "Nay, ’tis we who have come to trouble them! The seals are failing, and the "
 "sister senior sent us to cut through these restless dead and find aid for "
@@ -11238,14 +11245,14 @@ msgstr ""
 "者，为我们的家园寻求援助！可你又是谁，南方的陌生人？"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:289
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:250
 msgid ""
 "Well met. I am Konrad. But I don’t understand — you said you’re looking for "
 "help?"
 msgstr "幸会。我是科纳德。但我不明白——你说你们在寻求援助？"
 
 #. [message]: speaker=Kaelor
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:293
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:254
 msgid ""
 "Indeed. I come from a monastery, some days travel northwards. A powerful "
 "magic that once protected my home has weakened, and I was sent to seek aid."
@@ -11254,7 +11261,7 @@ msgstr ""
 "出来寻求援助。"
 
 #. [message]: speaker=Kaelor
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:297
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:258
 msgid ""
 "But if you serve the light and not the darkness, then that aid is you! Fight "
 "alongside me to vanquish these undead now, then return with us north and "
@@ -11266,18 +11273,18 @@ msgstr ""
 #. [objective]: condition=win
 #. [objective]: description=<span strikethrough='true' color='#A9A9A9'>, condition=win
 #. if Kaelor is protected, Konrad will learn to recruit Heavy Infantrymen
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:313
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:321
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:274
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:282
 msgid "Protect Kaelor: recruit Heavy Infantrymen"
 msgstr "保护凯洛尔：征募重装步兵"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:349
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:310
 msgid "Kaelor, who are you people? How did all these undead come to be here?"
 msgstr "凯洛尔，你们究竟是什么人？这些亡灵怎么会出现在这里？"
 
 #. [message]: speaker=Kaelor
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:353
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:314
 msgid ""
 "The hills to the north — now the home of my order — were once a wholly "
 "accursed place, blighted by necromancy and consumed by darkness."
@@ -11286,7 +11293,7 @@ msgstr ""
 "暗吞噬。"
 
 #. [message]: speaker=Kaelor
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:357
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:318
 msgid ""
 "We know not from whence the evil came. Some think the necromancers to be "
 "lich-lords, survivors of their invasion from the west; others believe they "
@@ -11298,7 +11305,7 @@ msgstr ""
 "法将他们封印在地下。"
 
 #. [message]: speaker=$speaker
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:361
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:322
 msgid ""
 "Men and women of our order, servants of the light, have made it our mission "
 "to cleanse this place of evil. We built our monastery here to ensure that "
@@ -11308,7 +11315,7 @@ msgstr ""
 "院，以确保黑暗永不逃脱。"
 
 #. [message]: speaker=Kaelor
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:365
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:326
 msgid ""
 "But it has been decades since the Crown sent to us men or supplies, and the "
 "power of our order has waned. Now the seals are beginning to fail..."
@@ -11317,12 +11324,12 @@ msgstr ""
 "始崩坏……"
 
 #. [message]: speaker=Kaelor
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:380
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:341
 msgid "My light fades..."
 msgstr "我的光芒消逝了……"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION concerned}
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:384
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:345
 msgid ""
 "Those armored warriors would surely have been of great help in our fight for "
 "the crown. If only we could have protected them..."
@@ -11330,7 +11337,7 @@ msgstr ""
 "那些披甲武士本会在我们争夺王位时提供极大助力。要是我们能保护好他们就好了……"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:408
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:369
 msgid ""
 "This ruined skeleton bears a curious amulet. Magical, perhaps? There is an "
 "inscription explaining its function..."
@@ -11339,7 +11346,7 @@ msgstr ""
 "的用途……"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:420
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:381
 msgid ""
 "How odd. In death, this skeleton was a puppet. But in life, he or she must "
 "have been a craftsman of legendary skill. Fortune has smiled upon us today — "
@@ -11349,7 +11356,7 @@ msgstr ""
 "日命运眷顾了我们——这件宝物我就收下了。"
 
 #. [message]: speaker=Kaelor
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:439
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:400
 msgid ""
 "Lo, our victory is won! And with the seal already restored and our home "
 "already rescued, there is nothing to prevent my brothers and I from joining "
@@ -11360,7 +11367,7 @@ msgstr ""
 
 #. [message]: speaker=Kaelor
 #. "brother" is not literal, instead referring to fellow warrior monks (heavy infantry) of Kaleor's order
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:445
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:406
 msgid ""
 "Lo and behold! We have won a bright victory against the forces of darkness, "
 "good warrior. My brothers and I would be honored to continue fighting by "
@@ -11370,7 +11377,7 @@ msgstr ""
 "续在你身旁战斗。"
 
 #. [message]: speaker=Kaelor
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:449
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:410
 msgid ""
 "Yet these few abominations were but a moth, drawn to the dark flame that "
 "stems from what lies to the north! I implore you, brave Konrad, travel north "
@@ -11380,12 +11387,12 @@ msgstr ""
 "科纳德，北上拯救我的家园！"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:454
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:415
 msgid "Konrad can now recruit Heavy Infantrymen!"
 msgstr "科纳德现在可以征募重装步兵了！"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION concerned}
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:461
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:422
 msgid ""
 "The undead have been defeated! Yet with the leader of the warrior monks "
 "slain, we have lost the opportunity to gain a new ally in our fight for the "
@@ -11395,14 +11402,14 @@ msgstr ""
 "会。"
 
 #. [message]: speaker=Kaelor
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:484
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:445
 msgid ""
 "Make haste, Konrad! Should we tarry too long, the seals shall surely break "
 "and our home shall surely be destroyed!"
 msgstr "快，科纳德！若我们耽搁太久，封印必将崩裂，我们的家园必将毁灭！"
 
 #. [message]: speaker=Kaelor
-#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:495
+#: data/campaigns/Heir_To_The_Throne/scenarios/15a_Valley_of_Death_part1.cfg:456
 msgid ""
 "Alas, we have tarried too long. Even should we yet win the battle today, "
 "surely the seals have already broken, destroying our home...."
@@ -11416,32 +11423,32 @@ msgid "scenario name^Valley of Death II"
 msgstr "亡魂谷 II"
 
 #. [scenario]
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:67
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:73
 msgid "Aimucasur"
 msgstr "艾姆卡苏尔"
 
 #. [scenario]
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:77
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:83
 msgid "Selda-Mana"
 msgstr "希尔达-玛纳"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:129
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:127
 msgid "Sister Kenara"
 msgstr "凯娜拉修女"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:131
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:129
 msgid "Brother Vinrar"
 msgstr "文拉尔修士"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:132
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:130
 msgid "Sister Miryan"
 msgstr "米尔扬修女"
 
 #. [message]: speaker=$speaker
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:176
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:174
 msgid ""
 "Lo and behold, Konrad: my home! At last I return... but we are too late! "
 "Undead! The seal has already broken!"
@@ -11449,20 +11456,20 @@ msgstr ""
 "看哪，科纳德：我的家！我终于回来了……可我们来得太迟了！亡灵！封印已经破裂了！"
 
 #. [message]: speaker=Moremirmu
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:182
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:180
 msgid ""
 "Lo and behold, Konrad! Fate has brought us to my home; the monastery of my "
 "order."
 msgstr "看哪，科纳德！命运将我们带到了我的家——我所属教团的修道院。"
 
 #. [message]: speaker=Moremirmu
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:186
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:184
 msgid "... but what calamity is this? Undead! The sacred seal has broken!"
 msgstr "……可这是何等灾祸？亡灵！神圣的封印已经破裂了！"
 
 #. [message]: speaker=Myrilell
 #. "Brother" is not literal. Rather, the speaker and the "brother" are both members of a monastic society
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:205
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:203
 msgid ""
 "Brother, you return to us! And with aid from the outside! Yet your arrival "
 "is but a silver lining, too little too late, for our strength has failed."
@@ -11471,7 +11478,7 @@ msgstr ""
 "水车薪，为时已晚，因为我们的力量已经衰竭。"
 
 #. [message]: speaker=Myrilell
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:210
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:208
 msgid ""
 "Stranger, we welcome you to our home! Long have we awaited aid from the "
 "outside... Yet your arrival is but a silver lining, too little too late, for "
@@ -11481,7 +11488,7 @@ msgstr ""
 "望，杯水车薪，为时已晚，因为我们的力量已经衰竭。"
 
 #. [message]: speaker=Myrilell
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:215
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:213
 msgid ""
 "Dark magic streams forth from the underlevels, granting terrible un-life to "
 "things sprung from the deepest nightmares of humanity. With the spell broken "
@@ -11491,7 +11498,7 @@ msgstr ""
 "曾将它们封印于地下的咒语已经破碎，亡灵涌出，要将我们所有人毁灭！"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:227
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:225
 msgid ""
 "Don’t give up hope! You sent Kaelor to find help, and he found me — Konrad, "
 "heir to the throne of Wesnoth. If there are undead here then it is my duty "
@@ -11501,14 +11508,14 @@ msgstr ""
 "这里有亡灵，那我就有责任帮你们阻止它们。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:231
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:229
 msgid ""
 "You say there was once a spell that sealed these dead underground. Can you "
 "cast it again?"
 msgstr "你说曾有一道咒语将这些亡者封印在地下。你们能再施一次吗？"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:236
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:234
 msgid ""
 "Don’t give up hope! I am Konrad, heir to the throne of Wesnoth, and if there "
 "are undead here then it is my duty to help you stop them."
@@ -11517,7 +11524,7 @@ msgstr ""
 "阻止它们。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:240
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:238
 msgid ""
 "But what is this place? You say there was once a spell that sealed these "
 "dead underground. Can you cast it again?"
@@ -11525,7 +11532,7 @@ msgstr ""
 "但这是什么地方？你说曾有一道咒语将这些亡者封印在地下。你们能再施一次吗？"
 
 #. [message]: speaker=Myrilell
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:245
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:243
 msgid ""
 "Without the ruby? No. There are none alive today, save perhaps the great "
 "Delfador, with the might to again from-naught weave such a seal."
@@ -11534,14 +11541,14 @@ msgstr ""
 "有编织出这样的封印。"
 
 #. [message]: speaker=Myrilell
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:247
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:245
 msgid ""
 "But the pieces of our shattered spell still linger. With time, it could be "
 "repaired."
 msgstr "但我们那破碎咒语的残片仍留存于世。假以时日，它或许能够被修复。"
 
 #. [message]: speaker=Myrilell
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:251
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:249
 msgid ""
 "We have tried before, nearly to our doom. The attempt brought the full "
 "horrors of the undead crashing down upon our humble home, and many perished. "
@@ -11551,19 +11558,19 @@ msgstr ""
 "上，许多人因此丧命。愿光明拯救他们。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:255
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:253
 msgid ""
 "I understand — alone, you could not defend yourself. But now I am here. I "
 "will help you."
 msgstr "我明白——仅凭你们自己，无法守住此地。但现在我在这里。我会帮助你们。"
 
 #. [message]: speaker=Myrilell
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:263
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:261
 msgid "You are a blessing, Konrad. With your help, perhaps it is possible."
 msgstr "你是上天赐福，科纳德。有你的帮助，或许此事仍有可能。"
 
 #. [message]: speaker=Myrilell
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:294
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:292
 msgid ""
 "There are only four of us left who have the power to repair the seal. The "
 "rest of us — the novices — I entrust into your command."
@@ -11572,7 +11579,7 @@ msgstr ""
 "了。"
 
 #. [message]: speaker=Myrilell
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:298
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:296
 msgid ""
 "Defend our monastery while the seniors and I work. In forty-eight hours’ "
 "time our ritual shall complete, and the seal shall be repaired, trapping the "
@@ -11582,27 +11589,27 @@ msgstr ""
 "被修复，把亡灵重新困回地下。"
 
 #. [then]
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:314
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:312
 msgid "You can now advance Mages to White Mages!"
 msgstr "你现在可以将法师升级为白袍法师了！"
 
 #. [else]
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:317
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:315
 msgid "Konrad can now recruit Mages, and advance them to (only) White Mages!"
 msgstr "科纳德现在可以征募法师，并（只能）将他们升级为白袍法师了！"
 
 #. [objective]: condition=lose
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:356
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:354
 msgid "Death of Myrilell or Kenara"
 msgstr "米瑞莱尔或凯娜拉死亡"
 
 #. [note]
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:365
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:363
 msgid "Your allies will not move, but can attack adjacent enemies."
 msgstr "你的盟友不会移动，但可以攻击相邻的敌人。"
 
 #. [message]: speaker=Moremirmu
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:379
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:377
 msgid ""
 "Myrilell, how can our magic have weakened so? Where is Sister Tristia, my "
 "mentor? What of Brother Percy, keeper of the ancient texts? They should have "
@@ -11612,7 +11619,7 @@ msgstr ""
 "护者珀西修士呢？他们本该阻止这一切的。"
 
 #. [message]: speaker=Myrilell
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:383
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:381
 msgid ""
 "Dead, both. Fallen to the swelling tide of undead. You have been sorely "
 "missed, Moremirmu, away on your quest to spread light across the wider world."
@@ -11621,33 +11628,33 @@ msgstr ""
 "明播撒到更广阔的世界，我们实在非常想念你。"
 
 #. [message]: speaker=Moremirmu
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:387
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:385
 msgid "Dead!? So many dead."
 msgstr "死了！？死了这么多人。"
 
 #. [message]: speaker=Moremirmu
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:393
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:391
 msgid ""
 "The seal shattered, my home imperiled, my friends slain. This is the work of "
 "a dozen lifetimes undone."
 msgstr "封印破碎，家园危在旦夕，友人惨遭杀害。这是十几代人的心血毁于一旦。"
 
 #. [message]: speaker=Moremirmu
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:397
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:395
 msgid ""
 "Konrad, I am overcome by grief. I am brought to tears. The very foundation "
 "of my faith is shaken."
 msgstr "科纳德，我悲痛难抑，泪流不止。我信仰的根基也已动摇。"
 
 #. [message]: speaker=Moremirmu
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:405
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:403
 msgid ""
 "I am sorry. I cannot battle today. I must meditate, and ponder on my "
 "emotions."
 msgstr "抱歉，我今日无法作战。我必须静修冥想，审视自己的情感。"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION concerned}
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:409
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:407
 msgid ""
 "Ponder your emotions? Moremirmu, I know it’s a shock to see your home in "
 "crisis, but we’re about to fight a battle!"
@@ -11656,7 +11663,7 @@ msgstr ""
 "打仗了！"
 
 #. [message]: speaker=Moremirmu
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:413
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:411
 msgid ""
 "I am a warrior of the Light, Konrad. My Light cannot shine while there "
 "within me beats a heart touched by the Dark."
@@ -11664,18 +11671,18 @@ msgstr ""
 "我是光之战士，科纳德。若我胸中跳动着一颗被黑暗触碰的心，我的光便无法闪耀。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:424
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:422
 msgid "He’s gone!"
 msgstr "他走了！"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:439
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:437
 msgid ""
 "Myrilell, what is this place we now defend? How did you all come to be here?"
 msgstr "米瑞莱尔，我们现在守卫的是什么地方？你们大家怎么会来到这里？"
 
 #. [message]: speaker=Myrilell
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:443
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:441
 msgid ""
 "These hills — now our home — were once a wholly accursed place, blighted by "
 "necromancy and consumed by darkness."
@@ -11684,7 +11691,7 @@ msgstr ""
 "噬。"
 
 #. [message]: speaker=Myrilell
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:447
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:445
 msgid ""
 "We know not from whence the evil came. Some think the necromancers to be "
 "lich-lords, survivors of their invasion from the west; others believe they "
@@ -11696,7 +11703,7 @@ msgstr ""
 "将他们封印在地下。"
 
 #. [message]: speaker=Myrilell
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:451
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:449
 msgid ""
 "Men and women of our order, servants of the Light, have made it our mission "
 "to cleanse this place of evil. We built our monastery here to ensure that "
@@ -11706,7 +11713,7 @@ msgstr ""
 "院，以确保黑暗永不逃脱。"
 
 #. [message]: speaker=Vinrar
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:455
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:453
 msgid ""
 "But it’s been decades since the Crown last sent to us men or supplies, and "
 "the power of our order has waned. And now even the seal has fallen..."
@@ -11715,12 +11722,12 @@ msgstr ""
 "如今，就连封印也已崩溃……"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:467
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:465
 msgid "Look out! They’re preparing another assault."
 msgstr "小心！他们又在准备进攻了。"
 
 #. [message]: type=Lich
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:471
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:469
 msgid ""
 "For too long have we been trapped by your accursed seal! The undertunnels "
 "shall be thrown open and our followers shall flood across the land! You "
@@ -11730,7 +11737,7 @@ msgstr ""
 "卷大地！你们无法阻止我们带来的永生！"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:475
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:473
 msgid ""
 "Eternal life is no blessing, lich, but a curse. I have tasted from the cup "
 "of which you offer, and we will not allow such poison to spread."
@@ -11739,14 +11746,14 @@ msgstr ""
 "蔓延。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:476
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:474
 msgid ""
 "For too long has the crown neglected this place. Now, the spirit of Garard "
 "comes to put things right."
 msgstr "王室忽视此地已经太久了。如今，伽拉德之灵前来拨乱反正。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:477
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:475
 msgid ""
 "As tempting as the thought may be, I’ve heard more than a few stories of "
 "promising young magi tempted by necromancy. It never ends well."
@@ -11755,7 +11762,7 @@ msgstr ""
 "从来不会有好下场。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:478
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:476
 msgid ""
 "As tempting as the thought may be, I’ve seen more than a few promising young "
 "magi tempted by necromancy. It never ends well."
@@ -11764,7 +11771,7 @@ msgstr ""
 "不会有好下场。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:479
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:477
 msgid ""
 "Fancy talk comin’ from a stick-handed sixpenny skull, ye soused gurnet! Jus’ "
 "wait ’til ah stick my axe through one o’yer wrinklin’ ribs!"
@@ -11773,14 +11780,14 @@ msgstr ""
 "巴的肋骨再说！"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:480
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:478
 msgid ""
 "You’re not the first lich we’ve fought. Want to hear what we did to the last "
 "one?"
 msgstr "你可不是我们打过的第一个巫妖。想听听我们是怎么收拾上一个的吗？"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:482
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:480
 msgid ""
 "Really, eternal life? I’d love to discuss some of my alchemical theories "
 "with you! ...wait, ah, no, you mean undeath, don’t you."
@@ -11789,24 +11796,24 @@ msgstr ""
 "的是亡灵的不死状态，对吧。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:483
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:481
 msgid ""
 "Ya ya ya. Dosh heard dis all before. Always someone be thinkin’ dey know "
 "what’s best for everyone else."
 msgstr "呀呀呀。多什早听过这些啦。总有人觉得，自己晓得啥对别人最好。"
 
 #. [message]: speaker=Vinrar
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:520
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:518
 msgid "At last, I see the light..."
 msgstr "终于，我见到光了…"
 
 #. [message]: speaker=Miryan
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:528
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:526
 msgid "Yield not one inch to the darkness..."
 msgstr "绝不向黑暗退让一寸……"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:540
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:538
 msgid ""
 "This body is merely a puppet! You cannot stop us from enlightening your "
 "world to the bliss of eternal un-life!"
@@ -11814,29 +11821,29 @@ msgstr ""
 "这具躯壳不过是个傀儡！你无法阻止我们让你们的世界领悟永恒不死生命的极乐！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:547
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:545
 msgid ""
 "Your fighting only delays the inevitable! There are more of us than you "
 "could ever imagine!"
 msgstr "你们的抵抗只是拖延必然的结局！我们的人数远比你所能想象的更多！"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION mad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:551
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:549
 msgid "One fewer now."
 msgstr "现在少了一个。"
 
 #. [message]: speaker=Moremirmu
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:570
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:568
 msgid "Lo! My faith has been tested! And lo! It has endured!"
 msgstr "看哪！我的信仰曾受试炼！而看哪！它已然坚立！"
 
 #. [message]: speaker=Moremirmu
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:607
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:605
 msgid "In the crucible of the Light, evil shall be purged!"
 msgstr "在光明的熔炉中，邪恶必被涤净！"
 
 #. [object]
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:626
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:624
 msgid ""
 "Moremirmu has returned! He has gained +2 damage, +20 hitpoints,\n"
 "and the powerful “smite” ability!\n"
@@ -11851,29 +11858,29 @@ msgstr ""
 "对所有相邻敌人造成 30 点奥术伤害。"
 
 #. [message]: speaker=Myrilell
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:651
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:649
 msgid "Nearly done, Konrad! Hold strong and we shall yet be victorious!"
 msgstr "就快完成了，科纳德！坚持住，我们仍会胜利！"
 
 #. [message]: speaker=Myrilell
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:659
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:657
 msgid "Light save us all! It is finished."
 msgstr "愿光明拯救我们所有人！完成了。"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION glad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:689
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:687
 msgid "They’re gone!"
 msgstr "它们消失了！"
 
 #. [message]: speaker=Myrilell
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:695
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:693
 msgid ""
 "With the seal restored, the undead have once more been banished underground. "
 "We are in your debt, Your Highness."
 msgstr "封印已经恢复，亡灵再次被驱逐到地下。我们欠您一份恩情，殿下。"
 
 #. [message]: speaker=Myrilell
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:699
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:697
 msgid ""
 "The seniors and I must remain here, to continue strengthening our magic and "
 "to ensure the undead never again escape. But into your hands I entrust our "
@@ -11885,12 +11892,12 @@ msgstr ""
 "行、夺回王座之时，能为你效力。"
 
 #. [message]: id=Myrilell,Kenara
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:729
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:727
 msgid "No! Without her help, I have no hope of restoring the seal."
 msgstr "不！没有她的帮助，我毫无希望恢复封印。"
 
 #. [message]: id=Myrilell,Kenara
-#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:733
+#: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:731
 msgid ""
 "The undead will continue to pour forth and pour forth, until we are all "
 "overwhelmed..."
@@ -11908,14 +11915,14 @@ msgstr "雷里"
 
 #. [message]: speaker=Lisar
 #. Lisar has prisoners, and is trying to lure Konrad into an ambush. The player has just decided to play this scenario.
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:206
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:172
 msgid ""
 "He’s taken the bait. Quick, get down into the mines and alert the others."
 msgstr "他上钩了。快，下到矿井里去，通知其他人。"
 
 # Translated by openai with model deepseek-flash.
 #. [message]: speaker=knight
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:215
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:181
 msgid ""
 "What about the prisoners, m’lady? Shall we execute them before the imposter "
 "arrives?"
@@ -11923,7 +11930,7 @@ msgstr "那些俘虏怎么办，殿下？要趁冒名顶替者到来之前处决
 
 #. [message]: speaker=Ulfdain
 #. Ulfdain throws lots of hard-to-understand old-fashioned insults at Li'sar. This is his usual way of speaking.
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:220
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:186
 msgid ""
 "C’mere and try it, ye yellow-bellied, cow-handed blunderbuss of a princess! "
 "Jus’ gimme the chance an’ I’ll rip that head right off yer ninnyhammerin’ "
@@ -11933,7 +11940,7 @@ msgstr ""
 "木脑袋从脖子上拧下来，你个白肝儿的吹牛大王！"
 
 #. [message]: speaker=Lisar
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:224
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:190
 msgid ""
 "As tempting as the thought may be, Raery, I’m not about to kill innocents in "
 "cold blood. But we do need to get the dwarves out of here — both for their "
@@ -11943,19 +11950,19 @@ msgstr ""
 "这里——既为了他们的安全，也为了不让他们落入叛军手中。"
 
 #. [message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:234
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:200
 msgid "Too late, Konrad has come! Forget the prisoners and prepare for battle."
 msgstr "太迟了，科纳德来了！别管俘虏了，准备战斗。"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION mad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:260
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:226
 msgid ""
 "I’ve come to face you, princess! Only a true villain would threaten "
 "innocents to force someone into a fight."
 msgstr "我来与你对决，公主！只有真正的恶棍才会威胁无辜者，逼别人开战。"
 
 #. [message]: speaker=Lisar {LISAR_VARIATION mad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:264
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:230
 msgid ""
 "Oh please, the dwarves were never in any danger. You on the other hand, "
 "“prince” — I will not allow you to sow any more discord and chaos among my "
@@ -11965,36 +11972,36 @@ msgstr ""
 "散播不和与混乱。你的叛乱到此为止。"
 
 #. [objective]: condition=win
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:272
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:462
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:238
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:428
 #: data/campaigns/Heir_To_The_Throne/scenarios/30_The_Sceptre_of_Fire.cfg:889
 msgid "Defeat Li’sar"
 msgstr "击败莉莎"
 
 #. [objective]: condition=win
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:279
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:469
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:245
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:435
 msgid "Defeat Yrogin"
 msgstr "击败伊罗金"
 
 #. [objective]: condition=win
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:287
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:477
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:253
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:443
 msgid "Rescue Ulfdain"
 msgstr "救出乌尔夫戴恩"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:312
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:278
 msgid "Look! Someone approaches from the eastern road."
 msgstr "看！有人从东边的大路上过来了。"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:314
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:280
 msgid "Yrogin"
 msgstr "伊罗金"
 
 #. [message]: speaker=Yrogin
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:319
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:285
 msgid ""
 "Message from the queen, Your Highness! The boats are ready, but there is "
 "only a short window in which to act before Elensefar recovers."
@@ -12002,12 +12009,12 @@ msgstr ""
 "女王传来消息，殿下！船只已备好，但趁埃仁撒伐恢复之前行动的时间窗口很短。"
 
 #. [message]: speaker=Lisar
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:323
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:289
 msgid "Poor timing; I’m a little busy at the moment..."
 msgstr "来得真不是时候；我这会儿正忙着呢……"
 
 #. [message]: speaker=Lisar
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:327
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:293
 msgid ""
 "Still, Elensefar is too important a prize to let slip. I cannot risk Maddock "
 "regaining his footing before we have a chance to deal the finishing blow."
@@ -12016,7 +12023,7 @@ msgstr ""
 "发动致命一击之前重新站稳脚跟。"
 
 #. [message]: speaker=Lisar
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:331
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:297
 msgid ""
 "I’ll depart immediately. Yrogin, you assume command here. It shouldn’t take "
 "much to defeat this con-man now that we’ve lured him into battle."
@@ -12025,12 +12032,12 @@ msgstr ""
 "应该费不了多少功夫。"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:436
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:402
 msgid "For Her Highness! Kill the imposter!"
 msgstr "为了公主殿下！杀了冒名顶替者！"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:439
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:405
 msgid ""
 "Caution, Konrad! These hills are full of old mineshafts, their entrances "
 "overgrown with grass and weeds. Li’sar must be using them to ambush us."
@@ -12039,15 +12046,15 @@ msgstr ""
 "伏击我们。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:440
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:406
 msgid ""
 "Look out, Your Highness! Your cousin has stationed ambushers across the "
 "hills, lurking in old mineshafts."
 msgstr "当心，殿下！您的表姐在山丘各处布下了伏兵，他们就潜伏在古老的矿井里。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:441
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:442
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:407
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:408
 msgid ""
 "Where did you come from?! Careful, Konrad, I think there are ambushers "
 "hiding in old mineshafts all across these hills."
@@ -12055,14 +12062,14 @@ msgstr ""
 "你是从哪儿冒出来的？！小心，科纳德，我觉得这一带山丘的旧矿井里都藏着伏兵。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:443
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:409
 msgid ""
 "Lo! The forces of evil ambush us at every turn — even the very ground itself "
 "succors our foes within its old mines."
 msgstr "看哪！邪恶势力处处伏击我们——就连大地本身也在古老矿井中庇护我们的敌人。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:446
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:412
 msgid ""
 "Those ambushers burst right out of the ground! There must be old mineshafts "
 "everywhere in these hills, overgrown with grass and weeds."
@@ -12071,48 +12078,48 @@ msgstr ""
 "了。"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION concerned}
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:450
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:416
 msgid "Wait, stop! I’m not an imposter, I’m the real Konrad!"
 msgstr "等等，住手！我不是冒名顶替者，我是真正的科纳德！"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION concerned}
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:454
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:420
 msgid "... there’s nothing I can say to save these woodsmen, is there?"
 msgstr "……不管我说什么，都救不了这些山民了，是吗？"
 
 #. [note]
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:490
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:456
 msgid "Invisible ambushers hide throughout the hills."
 msgstr "隐形伏兵潜伏在山丘各处。"
 
 #. [message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:513
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:479
 msgid ""
 "He’s slain nearly the last of our ambushers, Your Highness! What do we do?"
 msgstr "他几乎把我们的伏兵杀光了，殿下！我们该怎么办？"
 
 #. [message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:518
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:484
 msgid "He’s slain nearly the last of our ambushers, lieutenant! What do we do?"
 msgstr "他几乎把我们的伏兵杀光了，尉官！我们该怎么办？"
 
 #. [message]: speaker=Lisar,Yrogin
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:523
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:489
 msgid "This isn’t over. Keep up the fight!"
 msgstr "还没结束。继续战斗！"
 
 #. [option]
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:539
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:505
 msgid "Free the prisoners"
 msgstr "释放囚徒"
 
 #. [option]
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:545
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:511
 msgid "Wait"
 msgstr "等等"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:555
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:521
 msgid ""
 "Here are the prisoners! We can set them free, but if they join our side they "
 "will certainly come under attack."
@@ -12120,7 +12127,7 @@ msgstr "囚徒就在这里！我们可以放他们自由，但如果他们加入
 
 #. [message]: speaker=Ulfdain
 #. Ulfdain is still locked up, and challenges Konrad's unit who's come nearby
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:560
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:526
 msgid ""
 "Come an’ git some, ye nigmenog bolting-hutch of beastliness! Ah dare ye to "
 "square up an’ fight me, dwarf-to-dwarf!"
@@ -12129,13 +12136,13 @@ msgstr ""
 "俺矮人对矮人打一场！"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:564
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:530
 msgid "Wait a minute! I don’t want to fight you. I’m here to rescue you!"
 msgstr "等一下！我不想和你打。我是来救你的！"
 
 #. [message]: speaker=Ulfdain
 #. Ulfdain asks Konrad to let him and his dwarf miner allies out of their cages so they can help fight Li'sar
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:569
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:535
 msgid ""
 "Oh, what’s that? Seems ah misjudged ye, son. Hurry up then, ye spoony cub, "
 "lemme an’ my boys out o’ these here cages so we can get to th’ fight!"
@@ -12144,13 +12151,13 @@ msgstr ""
 "子里放出来，好让俺们去干仗！"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:580
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:546
 msgid "You’re free now! How did you come to be imprisoned?"
 msgstr "你们现在自由了！你们怎么会被关起来？"
 
 #. [message]: speaker=Ulfdain
 #. Much better, thank you for freeing us. That's the last time I dig a mine for your human queen, let me tell you.
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:585
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:551
 msgid ""
 "Much better, thank ye for freein’ us! Tha’s the last time I dig a mine for "
 "yer human queen, lemme tell you. “Clean up the old crossroads mines”, she "
@@ -12161,7 +12168,7 @@ msgstr ""
 
 #. [message]: speaker=Ulfdain
 #. All we do is insult the queen a few times, in a friendly manner, and she gibbeted us. You humans just don't appreciate a good insult.
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:590
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:556
 msgid ""
 "All we do is insult th’ queen a few times, all friendly-like and such, an’ "
 "it was straight to the gibbet! You beanpoles jus’ dinnae appreciate a good "
@@ -12172,7 +12179,7 @@ msgstr ""
 
 #. [message]: speaker=Ulfdain
 #. And now my job is gone; guess I have nothing left for me now but revenge. So if you're out to beat the queen, me and my boys are with you. (after this line, the player gains dwarvish miners as a recruit
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:595
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:561
 msgid ""
 "An’ now tha’s my job gone; guess I got naught left fer me now but revenge. "
 "So if yer out to beat the queen, me an’ my boys are with ye!"
@@ -12181,18 +12188,18 @@ msgstr ""
 "俺和俺的弟兄们就跟着你干！"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:597
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:563
 msgid "Konrad can now recruit Dwarvish Miners!"
 msgstr "科纳德现在可以征募矮人矿工了！"
 
 #. [message]: speaker=Ulfdain
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:606
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:572
 msgid ""
 "... hey, what the— that axe! That axe you’re holdin’, that’s my father’s!"
 msgstr "……嘿，搞什么——那把斧子！你手里拿的那把斧子，那是俺爹的！"
 
 #. [message]: speaker=Ulfdain
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:610
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:576
 msgid ""
 "Give it back, ye obscene trunk of tallow-keech! You milksop, you coward, "
 "give it back or I’ll cut it from yer steamin’ corpse!"
@@ -12201,7 +12208,7 @@ msgstr ""
 "俺就从你冒热气的尸首里把它剁出来！"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:614
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:580
 msgid ""
 "Calm down, calm down! I found this axe in the ruins of west Knalga. If it "
 "truly is your father’s, of course you’re entitled to it. Here."
@@ -12210,12 +12217,12 @@ msgstr ""
 "有权拿回去。给你。"
 
 #. [message]: speaker=Ulfdain
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:636
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:602
 msgid "Com’ere you chicken-faced by-blow! Fight me like a dwarf!"
 msgstr "过来，你这鸡脸杂种！像个矮人一样跟俺打！"
 
 #. [message]: speaker=Ulfdain
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:655
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:621
 msgid ""
 "Oy princess! Ah got an axe right ’ere with yer name on it! By Thursagan’s "
 "beard, ah’ll teach you and yer men to lock me up!"
@@ -12224,7 +12231,7 @@ msgstr ""
 "和你的人知道把俺关起来的下场！"
 
 #. [message]: speaker=Lisar {LISAR_VARIATION mad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:669
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:635
 msgid ""
 "Where is Isolde? This battle is not so one-sided as I had hoped, but if "
 "Konrad cannot defeat us soon he shall surely be trapped once my "
@@ -12234,12 +12241,12 @@ msgstr ""
 "我的援军一到，他必定会陷入重围。"
 
 #. [message]: speaker=Isolde
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:681
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:647
 msgid "We're finally here, Your Highness! Apologies for the delay."
 msgstr "我们终于到了，殿下！很抱歉来迟了。"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION concerned}
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:697
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:663
 msgid ""
 "More of them have come from behind! Even if we manage to defeat Li’sar, we "
 "have no hope of escaping this battle alive..."
@@ -12248,29 +12255,29 @@ msgstr ""
 
 #. [message]: speaker=knight
 #. [message]: speaker=leader7
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:713
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:679
 #: data/campaigns/Heir_To_The_Throne/scenarios/30_The_Sceptre_of_Fire.cfg:997
 msgid "Fight on without me, Your Highness!"
 msgstr "殿下，别管我，继续战斗！"
 
 #. [message]: speaker=knight
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:718
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:684
 msgid "Fight on without me, friends!"
 msgstr "朋友们，别管我，继续战斗！"
 
 #. [message]: speaker=Lisar {LISAR_VARIATION mad}
 #. Lisar might not exist here, in which case nothing is said.
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:726
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:692
 msgid "You’ll pay for that, cousin!"
 msgstr "你会为此付出代价的，表弟！"
 
 #. [message]: speaker=Yrogin
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:739
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:705
 msgid "Aaargh! They said you were just a pretender... a puppet..."
 msgstr "啊啊啊！他们说你只是个冒名顶替者……一个傀儡……"
 
 #. [message]: speaker=Ulfdain
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:771
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:737
 msgid ""
 "Not so tough now, are ye princess? Got any las’ words b’fer I bury m’ axe in "
 "tha’ hollow skull, ye grubby wisenheimerin’ blockhead?"
@@ -12279,7 +12286,7 @@ msgstr ""
 "脏兮兮、自作聪明的榆木疙瘩？"
 
 #. [message]: speaker=Lisar {LISAR_VARIATION defeat}
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:775
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:741
 msgid ""
 "Get off me, dwarf! I can’t fall here; there’s too much left to do. I may be "
 "forced to flee the field today, “cousin”, but I will not rest until you face "
@@ -12289,7 +12296,7 @@ msgstr ""
 "场，“表弟”，但我绝不会罢休，直到你为你造成的所有混乱接受正义的审判。"
 
 #. [message]: speaker=Lisar {LISAR_VARIATION defeat}
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:783
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:749
 msgid ""
 "So, Delfador “the Great” draws the blood of his betters once more. Do not "
 "expect me to repeat the mistakes of my brother, old man — I shall flee the "
@@ -12301,7 +12308,7 @@ msgstr ""
 "混乱接受正义的审判。"
 
 #. [message]: speaker=Lisar {LISAR_VARIATION defeat}
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:790
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:756
 msgid ""
 "So “cousin”, it seems you’re more than just a good actor and a pretty face. "
 "No matter — I may be forced to flee the field today, but I will not rest "
@@ -12313,7 +12320,7 @@ msgstr ""
 "判。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:807
+#: data/campaigns/Heir_To_The_Throne/scenarios/17_Crossroads.cfg:773
 msgid ""
 "We carried the field, but the princess escaped! I doubt this is the last "
 "we’ve seen of her..."
@@ -12730,13 +12737,13 @@ msgid "Clan Stoneskin"
 msgstr "石皮氏族"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION mad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:141
+#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:127
 msgid ""
 "Have you reconsidered, troll? Let us pass, and bloodshed may yet be averted."
 msgstr "你考虑好了吗，巨魔？让我们过去，或许还能避免流血。"
 
 #. [message]: speaker=Dosh
-#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:145
+#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:131
 msgid ""
 "Sorry, I done already told you, softskin. You gots to pay if you wants to "
 "cross. Stoneskins fight hard to own ford, kill lotsa other trolls ’n orcs. "
@@ -12746,7 +12753,7 @@ msgstr ""
 "他巨魔和兽人。多什杀你，也没什么大不了的。"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION mad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:149
+#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:135
 msgid ""
 "The Ford of Abez was here long before you, and it will be here long after. "
 "You have no more right to own it than do I, or any of the free peoples of "
@@ -12756,13 +12763,13 @@ msgstr ""
 "民也好，都同样无权占有它。准备战斗！"
 
 #. [objective]: condition=win
-#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:157
+#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:143
 msgid "Defeat Dosh"
 msgstr "击败多什"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:175
-#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:176
+#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:161
+#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:162
 msgid ""
 "This is where the final betrayal took place. Where Eldred killed Garard and "
 "his allies, opening the way for Asheviere’s domination. She has much to "
@@ -12772,38 +12779,38 @@ msgstr ""
 "铺平了道路。她欠下的罪责，实在太多。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:177
+#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:163
 msgid ""
 "Many terrible battles were once fought at this ford, Konrad. May ours prove "
 "itself less deadly."
 msgstr "科纳德，这座渡口曾见证过许多惨烈的战斗。愿我们这一战能少些伤亡。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:178
+#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:164
 msgid ""
 "Delfador told me about the many terrible battles that were fought here. I "
 "hope ours won’t prove itself so deadly."
 msgstr "德法多告诉过我，这里曾发生过许多惨烈战斗。希望我们这一战不会那么惨烈。"
 
 #. [message]: speaker=Dosh
-#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:201
+#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:187
 msgid "Urgh... Dosh don’ feel so good. Maybe fight was mistake..."
 msgstr "呃啊……多什觉得不太妙。也许打仗就是个错误……"
 
 #. [message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:210
+#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:196
 msgid "Run away!"
 msgstr "快逃！"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:228
+#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:214
 msgid ""
 "The leader of the trolls is defeated, and we have secured safe passage "
 "across the ford! Great work, everyone — onwards into the Northlands!"
 msgstr "巨魔首领已被击败，我们已确保安全通过渡口！大家干得好——继续向北陆进发！"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:233
+#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:219
 msgid ""
 "The leader of the trolls is defeated, and we have secured safe passage "
 "across the ford! Great work, everyone — we can now return to Wesnoth!"
@@ -12812,22 +12819,22 @@ msgstr ""
 "了！"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:248
+#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:234
 msgid "Ormok"
 msgstr "奥莫克"
 
 #. [message]: speaker=Ormok
-#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:256
+#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:242
 msgid "Ha ha ha, what’s this? Someone’s trying to dethrone the Stoneskins!"
 msgstr "哈哈哈，这是怎么回事？有人想把石皮部落拉下马！"
 
 #. [message]: speaker=Ormok
-#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:260
+#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:246
 msgid "Hope you don’t mind if we take over! C’mon, boys, let’s kill ’em all!"
 msgstr "希望你们不介意俺们接手！上啊，小子们，把他们全宰了！"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION concerned}
-#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:264
+#: data/campaigns/Heir_To_The_Throne/scenarios/20_The_Ford_of_Abez.cfg:250
 msgid ""
 "We’ve taken too long to secure the ford! Now more orcs have arrived! Even if "
 "we defeat them all, we’ll suffer greatly from the delay..."
@@ -12906,7 +12913,6 @@ msgstr "哦，是吗？那——……等等，你看见那个了吗？"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Glamdrol.cfg:345
-#: data/campaigns/Heir_To_The_Throne/scenarios/22_Glamdrol.cfg:348
 msgid ""
 "Humans! What’s an army of boot-licking humans doing so close to Glamdrol?"
 msgstr "人类！一支舔靴子的人类军队跑到离戈拉姆多这么近的地方想干什么？"
@@ -12919,15 +12925,16 @@ msgstr "精灵！一群跟树乱搞的精灵跑到离戈拉姆多这么近的地
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Glamdrol.cfg:347
-msgid ""
-"Dwarves! What’s an army of dirt-grubbing dwarves doing so close to Glamdrol?"
-msgstr "矮人！一支刨土的矮人军队跑到离戈拉姆多这么近的地方想干什么？"
-
-#. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Glamdrol.cfg:349
 msgid ""
 "Invaders! What’s an army of boot-licking worms doing so close to Glamdrol?"
 msgstr "入侵者！一群舔靴子的蛆虫跑到离戈拉姆多这么近的地方想干什么？"
+
+#. [event]
+#: data/campaigns/Heir_To_The_Throne/scenarios/22_Glamdrol.cfg:348
+msgid ""
+"Dwarves! What’s an army of dirt-grubbing dwarves doing so close to Glamdrol?"
+msgstr "矮人！一支刨土的矮人军队跑到离戈拉姆多这么近的地方想干什么？"
 
 #. [message]: speaker=leader4
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Glamdrol.cfg:353
@@ -14770,14 +14777,14 @@ msgid "Trolls"
 msgstr "巨魔"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:221
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:214
 msgid ""
 "From what Delfador has taught me, I recognize us to be in the ruins of the "
 "great western hall of Knalga."
 msgstr "从德法多教导我的知识来看，我认出我们正位于纳尔迦宏伟西厅的废墟之中。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:225
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:218
 msgid ""
 "It is a sad sight to see, but we may yet find here something of value that "
 "was missed by the conquering orcs. We just have to drive off the local "
@@ -14787,7 +14794,7 @@ msgstr ""
 "地的巨魔即可。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:229
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:222
 msgid ""
 "Caves and crypts are no place for the fair folk, Konrad, and dwarvish "
 "tunnels even less so. I am not eager to proceed, but what must be done must "
@@ -14797,7 +14804,7 @@ msgstr ""
 "做之事，终究须做。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:230
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:223
 msgid ""
 "Cave and crypts are no place for cavalry, Konrad, and dwarvish tunnels even "
 "less so. I am not eager to proceed, but what must be done must be done."
@@ -14806,8 +14813,8 @@ msgstr ""
 "做的事就必须做。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:231
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:232
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:224
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:225
 msgid ""
 "Well, this is a far cry from the sunny shores of Alduin. And it stinks of "
 "troll excrement! Let’s do what needs to be done and get it over with."
@@ -14816,7 +14823,7 @@ msgstr ""
 "把该办的事办完，好离开这鬼地方。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:233
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:226
 msgid ""
 "Aye, an’ <b><i>I</i></b> may find me father’s defiled bones, or me "
 "grandfather’s. Cheery thoughts all around, eh?"
@@ -14825,7 +14832,7 @@ msgstr ""
 "头可真令人愉快，是吧？"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:234
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:227
 msgid ""
 "Away in the deep darkness, we are cut off from the light. But hark! Not from "
 "the Light, nor ever from the Light, for the Light shall always guide the "
@@ -14835,7 +14842,7 @@ msgstr ""
 "明隔绝，因为光明将永远指引虔信者。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:235
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:228
 msgid ""
 "Well, don’ this place be bringin’ back some bad memories. Jus’ hope we don’ "
 "find no Midnight Queen down these caves this time."
@@ -14844,7 +14851,7 @@ msgstr ""
 "王。"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:236
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:229
 msgid ""
 "You know, I’ve always wanted to meet a wild troll! Well, at least I think "
 "I’ve always wanted to. Do you think they know how their regeneration works, "
@@ -14854,7 +14861,7 @@ msgstr ""
 "自己是怎么再生的吗，还是只凭本能就发生了？"
 
 #. [companion_message]
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:237
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:230
 msgid ""
 "Don’t be lookin’ at me, Konrad. Jus’ cuz Dosh is a troll don’t mean Dosh "
 "knows all the trolls on da continent. An’ don’t get Dosh mixed up with one "
@@ -14865,8 +14872,8 @@ msgstr ""
 
 #. [message]: race=dwarf,gryphon {NOT id=Ulfdain}
 #. [message]: speaker=Ulfdain
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:302
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:307
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:295
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:300
 msgid ""
 "I remember that passageway. Me uncle’s whole family drowned here after th’ "
 "orcs flooded th’ halls. I were young, very young..."
@@ -14875,53 +14882,53 @@ msgstr ""
 "小……"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:344
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:337
 msgid "Listen! Do you hear that?"
 msgstr "听！你们听见了吗？"
 
 #. [message]: speaker=Lionel
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:350
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:343
 msgid ""
 "Kill the trolls... kill them all... scour the caverns... search the halls..."
 msgstr "杀掉巨魔……杀光他们……扫荡洞窟……搜遍厅堂……"
 
 #. [message]: speaker=Lionel
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:393
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:386
 msgid ""
 "More orcs at the gates... Send Eller... for reinforcements. The west hall. "
 "Where... are my dragoons?"
 msgstr "门口又有兽人……派埃勒……去搬援兵。西厅。我的龙骑兵……在哪儿？"
 
 #. [message]: speaker=Lionel
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:400
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:393
 msgid "No more recruits. I will lead the sortie... personally."
 msgstr "没有新兵了。我将亲自……率领出击。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:412
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:405
 msgid ""
 "Look at the strange axe that death knight is holding! What an unusual weapon."
 msgstr "看那个死亡骑士拿着的怪斧头！多么不寻常的武器。"
 
 #. [message]: speaker=Ulfdain
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:417
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:410
 msgid "I... that..."
 msgstr "俺……那是……"
 
 #. [message]: speaker=Ulfdain
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:421
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:414
 msgid "<i>THAT’S MY FATHER’S AXE!</i>"
 msgstr "<b>那是俺爹的斧头！</b>"
 
 #. [message]: speaker=Ulfdain
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:425
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:418
 msgid ""
 "Give it back, ye beastly bag o’ bones! I’ll rip out yer ribs and stuff ’em "
 "down yer eye sockets!"
 msgstr "还回来，你这畜生般的骨头袋子！俺要把你的肋骨扯出来，塞进你的眼窝里！"
 
 #. [message]: speaker=Ulfdain
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:429
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:422
 msgid ""
 "I’ll boil yer teeth. I’ll invert your kneecaps. Death is too good for ye. UN-"
 "death is too good fer ye!"
@@ -14930,12 +14937,12 @@ msgstr ""
 "宜你！"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:433
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:426
 msgid "Ulfdain, calm down! What are you talking about?"
 msgstr "乌尔夫戴恩，冷静点！你在说什么？"
 
 #. [message]: speaker=Ulfdain
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:437
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:430
 msgid ""
 "That coward, that yaldson, that spawn of utter darkness is holdin’ my "
 "father’s axe! His bloodaxe, one o’ the last few in the world!"
@@ -14944,21 +14951,21 @@ msgstr ""
 "血斧，世上最后几把之一！"
 
 #. [message]: speaker=Ulfdain
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:441
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:434
 msgid ""
 "By Thursagan’s beard, we’re goin’ to get it back or we’re goin’ to die "
 "tryin’! Charge!"
 msgstr "以瑟萨冈的胡子起誓，咱们非得把它夺回来，否则死不休！冲啊！"
 
 #. [message]: speaker=Lionel
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:456
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:449
 msgid ""
 "Lost? No... do not speak that word. We will... prevail. We will find... the "
 "sceptre..."
 msgstr "失败？不……别说那个词。我们会……取胜。我们会找到……权杖……"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION concerned}
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:460
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:453
 msgid ""
 "The Sceptre? Of Fire?! Who are you, foul creature that we fight? Speak your "
 "name, that I may know the foe I slay!"
@@ -14968,12 +14975,12 @@ msgstr ""
 
 #. [message]: speaker=Lionel
 #. Lionel repeats a line from TDG's S06
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:465
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:458
 msgid "We swore our oaths... now we do our duty..."
 msgstr "我们曾立下誓言……如今便当履行使命……"
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION mad}
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:480
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:473
 msgid ""
 "I am Konrad, nephew of Garard, son of Arand and rightful heir to the throne "
 "of Wesnoth! And in their names, I end your undead suffering."
@@ -14983,12 +14990,12 @@ msgstr ""
 
 #. [message]: speaker=Lionel
 #. Lionel foreshadows the reveal that Konrad is not in fact the heir
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:485
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:478
 msgid "Arand? You look... nothing like Arand..."
 msgstr "阿兰德？你长得……一点也不像阿兰德……"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:496
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:489
 msgid ""
 "So this vile creature was once a man, searching for the Sceptre of Fire. "
 "Neither in life nor un-life could he find the object of his quest — but it "
@@ -14998,7 +15005,7 @@ msgstr ""
 "所求之物——但他似乎还聚敛了许多其他财宝和值钱的东西。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:518
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:511
 msgid ""
 "His gold will be useful to us, but his axe may be even more so. The runes "
 "carved into it look dwarvish, and ancient..."
@@ -15007,7 +15014,7 @@ msgstr ""
 "很古老……"
 
 #. [message]: speaker=Ulfdain
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:533
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:526
 msgid ""
 "Aye... like I said ’twere my father’s, but ’tweren’t he who forged it. Been "
 "with us dwarves since times o’ legend, have th’ bloodaxes. I never thought "
@@ -15017,7 +15024,7 @@ msgstr ""
 "俺从没想过还能再见到这样的景象！自从黑暗岁月开始以来就没有过……"
 
 #. [message]: speaker=Ulfdain
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:541
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:534
 msgid ""
 "Perhaps th’ spirit o’ Knalga ain’t so dead an’ buried after all. Ah’m a "
 "Bloodaxe now, like my father an’ his father an’ his father afore him! Ah’m "
@@ -15027,7 +15034,7 @@ msgstr ""
 "爷，还有俺爷爷的爹一样！俺又欠你一份情，科纳德。你给了俺希望。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:556
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:549
 msgid ""
 "A weapon worthy of a king — or a prince. I shall personally wield this axe "
 "against the dark queen."
@@ -15035,13 +15042,13 @@ msgstr "一件配得上国王——或王子的武器。我将亲自持此斧对
 
 #. [event]
 #. [unit_type]: id=Dwarvish Bloodaxe, race=dwarf
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:561
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:554
 #: data/campaigns/Heir_To_The_Throne/units/Dwarvish_Bloodaxe.cfg:4
 msgid "Dwarvish Bloodaxe"
 msgstr "矮人血斧"
 
 #. [event]
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:562
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:555
 msgid ""
 "This runic axe increases Konrad’s melee damage by 3, and grants him the "
 "<i>drains</i> special on his melee attacks."
@@ -15049,21 +15056,21 @@ msgstr ""
 "这把符文斧使科纳德的近战伤害提高3点，并使他的近战攻击获得<b>吸血</b>特攻。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:594
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:587
 msgid ""
 "I am glad; the halls of your ancestors are at peace once more, Ulfdain. Now "
 "it is time for us to move on."
 msgstr "我很高兴；你祖先的厅堂重归安宁了，乌尔夫戴恩。现在我们该继续前进了。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:599
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:592
 msgid ""
 "More trolls will move in soon, but for now, the caverns are empty. Time for "
 "us to move on."
 msgstr "很快会有更多巨魔迁进来，但眼下洞穴已经空了。我们该继续前进了。"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:626
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:619
 msgid ""
 "These halls are old, and our fighting is damaging the walls and pillars. If "
 "we cannot finish soon, the whole cavern might collapse on us!"
@@ -15072,7 +15079,7 @@ msgstr ""
 "可能塌到我们头上！"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:640
+#: data/campaigns/Heir_To_The_Throne/scenarios/28_The_Lost_General.cfg:633
 msgid ""
 "Our fighting has caused too much damage to these old ruins! The whole "
 "mountain is falling down on us!"
@@ -23261,6 +23268,37 @@ msgid ""
 msgstr ""
 "这件形状奇特的护身符会从附近的魔法物品中汲取能量，每回合为科纳德恢复 1 点生命"
 "值。科纳德每多持有一件魔法物品，此数值便翻倍（2、4、8 等）。"
+
+#. $magic_item_count controls gettext's plural selection. $regen will equal 2^$magic_item_count
+#: data/campaigns/Heir_To_The_Throne/utils/specials_and_abilities.cfg:536
+msgid ""
+"Konrad currently has 1 other magic item, and will heal himself $regen HP per "
+"turn. If poisoned, he will remove the poison instead of healing."
+msgid_plural ""
+"Konrad currently has $magic_item_count other magic items, and will heal "
+"himself $regen HP per turn. If poisoned, he will remove the poison instead "
+"of healing."
+msgstr[0] ""
+msgstr[1] ""
+
+#. [regenerate]: id=amulet_regen
+#: data/campaigns/Heir_To_The_Throne/utils/specials_and_abilities.cfg:558
+msgid "artifice"
+msgstr ""
+
+#. [regenerate]: id=amulet_regen
+#: data/campaigns/Heir_To_The_Throne/utils/specials_and_abilities.cfg:559
+#, fuzzy
+#| msgid ""
+#| "Item for Konrad: <span color='#EFBF04'><b>Regenerate 1 HP each turn. This "
+#| "value doubles\n"
+#| "(2, 4, 8, etc) for each other magic item that Konrad wields.</b></span>"
+msgid ""
+"Regenerate 1 HP each turn. This value doubles (2, 4, 8, etc) for each other "
+"magic item that Konrad wields."
+msgstr ""
+"科纳德的道具：<span color='#EFBF04'><b>每回合恢复1点生命值。\n"
+"科纳德每持有一件其他魔法道具，此数值便翻倍（2、4、8，以此类推）。</b></span>"
 
 #. [menu]: id=menu-main
 #: data/campaigns/Heir_To_The_Throne/utils/themes.cfg:34

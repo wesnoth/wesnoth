@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-09-20 19:25-0500\n"
+"POT-Creation-Date: 2026-10-20 21:43-0500\n"
 "PO-Revision-Date: 2025-03-23 10:23+0100\n"
 "Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: none\n"
@@ -2355,7 +2355,7 @@ msgstr "نصيحة اليوم"
 #. [button]: id=toggle_tip_panel
 #. [toggle_button]: id=show_tips
 #: data/gui/themes/celes/dialogs/title_screen.cfg:216
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:223
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:95
 msgid "Show tip of the day"
 msgstr "عرض نصيحة اليوم"
 
@@ -3041,8 +3041,10 @@ msgstr "فرصة أن لا يلحق بك أذى"
 msgid "Expected Battle Result (HP)"
 msgstr "نتيجة المعركة المتوقعة (نقاط الحياة)"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/attack_predictions.cfg:251
+#: src/gui/dialogs/attack_predictions.cpp:60
 msgid "Damage Calculations"
 msgstr "حسابات الأضرار"
 
@@ -3280,13 +3282,23 @@ msgstr "التعديلات:"
 msgid "Combat:"
 msgstr "القتال:"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:445
+#: src/gui/dialogs/attack_predictions.cpp:79
 msgid "Default RNG"
 msgstr "مولد أرقام عشوائية قياسي"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:446
+#: src/gui/dialogs/attack_predictions.cpp:93
+#, fuzzy, c-format
+#| msgid ""
+#| "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
+#| "\n"
+#| "Example: if you strike twice with 50% accuracy, you’re most likely to hit "
+#| "once and miss once, but might also hit twice or miss twice."
 msgid ""
 "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
 "\n"
@@ -3298,13 +3310,17 @@ msgstr ""
 "مثال: إذا ضربت مرتين بدقة 50%، فمن المرجح أن تصيب مرة واحدة وتخطئ مرة واحدة، "
 "ولكن أيضا قد تصيب مرتين أو تخطئ مرتين."
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:451
+#: src/gui/dialogs/attack_predictions.cpp:76
 msgid "Predictable RNG"
 msgstr "مولد أرقام عشوائية يمكن التنبؤ به"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:452
+#: src/gui/dialogs/attack_predictions.cpp:91
 msgid ""
 "Identical to Default RNG, except loading a saved game will not change the "
 "outcome of an attack.\n"
@@ -3318,13 +3334,24 @@ msgstr ""
 "مثال: تضرب مرتين ويحالفك الحظ، وتصيب كلتا الضربتين. ثم تقوم بتحميل حفظ سابق "
 "وتقوم بنفس الهجوم مرة أخرى. ستظل كلتا الضربتين تصيبان."
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:457
+#: src/gui/dialogs/attack_predictions.cpp:72
 msgid "Reduced RNG"
 msgstr "صانع الأرقام العشوائية RNG المخفض"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:458
+#: src/gui/dialogs/attack_predictions.cpp:89
+#, fuzzy, c-format
+#| msgid ""
+#| "Hits and misses are much more consistent. This tends to make small-scale "
+#| "engagements easier to plan.\n"
+#| "\n"
+#| "Example: if you strike three times with 50% accuracy, you will always hit "
+#| "at least once and miss at least once."
 msgid ""
 "Hits and misses are much more consistent. This tends to make small-scale "
 "engagements easier to plan.\n"
@@ -3439,7 +3466,7 @@ msgstr "تحميل النواة الأساسية"
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
 #: src/gui/dialogs/editor/edit_unit.cpp:296
-#: src/preferences/preferences.cpp:1311
+#: src/preferences/preferences.cpp:1336
 msgid "Select"
 msgstr "اختر"
 
@@ -6303,56 +6330,32 @@ msgid "Clear Hotkey"
 msgstr "مسح مفتاح التشغيل السريع"
 
 #. [label]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:15
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:23
 msgid "Window size:"
 msgstr "حجم النافذة:"
 
-#. [label]: id=help_text
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:39
-msgid "Pixel scale multiplier:"
-msgstr "مضاعف مقياس البكسل:"
-
 #. [menu_button]: id=resolution_set
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:73
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:40
 msgid "Change the game window size"
 msgstr "تغيير حجم نافذة اللعبة"
 
-#. [slider]: id=pixel_scale_slider
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:87
-msgid ""
-"Set the global pixel scale multiplier. A pixel scale multiplier of 2 will "
-"make everything look twice as large."
-msgstr ""
-"قم بتعيين مضاعف مقياس البكسل العالمي. مضاعفة مقياس البكسل 2 مرات سيجعل كل "
-"شيء يبدو أكبر بمرتين."
-
 #. [toggle_button]: id=fullscreen
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:102
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:55
 msgid "Full screen"
 msgstr "الشاشة الكاملة"
 
 #. [toggle_button]: id=fullscreen
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:103
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:56
 msgid "Toggle between fullscreen and window mode"
 msgstr "التبديل بين وضع ملء الشاشة ووضع النافذة"
 
-#. [toggle_button]: id=auto_pixel_scale
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:114
-msgid "pixel_scale_multiplier^Automatic scale"
-msgstr "مقياس تلقائي"
-
-#. [toggle_button]: id=auto_pixel_scale
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:115
-msgid "Choose pixel scale multiplier automatically based on current resolution"
-msgstr "اختيار مضاعف مقياس البكسل تلقائيًا بناءً على الدقة الحالية"
-
 #. [toggle_button]: id=vsync
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:129
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:69
 msgid "VSync"
 msgstr "VSync"
 
 #. [toggle_button]: id=vsync
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:130
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:70
 msgid ""
 "Reduces tearing by synchronizing rendering with the screen refresh rate "
 "(requires restart to take effect)"
@@ -6360,13 +6363,94 @@ msgstr ""
 "التقليل من التمزق عن طريق مزامنة العرض مع معدل تحديث الشاشة (يتطلب إعادة "
 "التشغيل ليصبح ساري المفعول)"
 
+#. [toggle_button]: id=show_tips
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:96
+msgid "Show gameplay tips on the main menu"
+msgstr "إظهار نصائح اللعب في القائمة الرئيسية"
+
+#. [toggle_button]: id=show_floating_labels
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:109
+msgid "Combat damage indicators"
+msgstr "مؤشرات أضرار القتال"
+
+#. [toggle_button]: id=show_floating_labels
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:110
+msgid "Show amount of damage inflicted or healed as fading labels above units"
+msgstr "إظهار مقدار الضرر الذي تم إلحاقه أو شفاءه كلصائق باهتة أعلى الوحدات"
+
+#. [toggle_button]: id=show_ellipses
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:123
+msgid "Team color indicators"
+msgstr "مؤشرات ألوان الفريق"
+
+#. [toggle_button]: id=show_ellipses
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:124
+msgid ""
+"Show a colored circle around the base of each unit to show which side it is "
+"on"
+msgstr "إظهار دوائر ملونة تحت كل وحدة تشير إلى جانبها"
+
+#. [toggle_button]: id=show_grid
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:137
+msgid "Grid overlay"
+msgstr "تراكب الشبكة"
+
+#. [toggle_button]: id=show_grid
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:138
+msgid "Overlay a grid over the map"
+msgstr "تراكب شبكة على الخريطة"
+
+#. [toggle_button]: id=animate_terrains
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:163
+msgid "Animate map"
+msgstr "إحياء (تحريك رسوم) الخريطة"
+
+#. [toggle_button]: id=animate_terrains
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:164
+msgid "Display animated terrain graphics"
+msgstr "عرض رسومات التضاريس المتحركة"
+
+#. [toggle_button]: id=animate_water
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:177
+msgid "Animate water"
+msgstr "تحريك الماء"
+
+#. [toggle_button]: id=animate_water
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:178
+msgid "Display animated water graphics (can be slow)"
+msgstr "عرض رسومات مائية متحركة (يمكن أن تكون بطيئة)"
+
+#. [label]: id=help_text
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:225
+msgid "Pixel scale multiplier:"
+msgstr "مضاعف مقياس البكسل:"
+
+#. [slider]: id=pixel_scale_slider
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:256
+msgid ""
+"Set the global pixel scale multiplier. A pixel scale multiplier of 2 will "
+"make everything look twice as large."
+msgstr ""
+"قم بتعيين مضاعف مقياس البكسل العالمي. مضاعفة مقياس البكسل 2 مرات سيجعل كل "
+"شيء يبدو أكبر بمرتين."
+
+#. [toggle_button]: id=auto_pixel_scale
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:269
+msgid "pixel_scale_multiplier^Automatic scale"
+msgstr "مقياس تلقائي"
+
+#. [toggle_button]: id=auto_pixel_scale
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:270
+msgid "Choose pixel scale multiplier automatically based on current resolution"
+msgstr "اختيار مضاعف مقياس البكسل تلقائيًا بناءً على الدقة الحالية"
+
 #. [label]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:152
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:294
 msgid "In-game theme:"
 msgstr "مشهد اللعبة:"
 
 #. [menu_button]: id=choose_theme
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:165
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:308
 msgid ""
 "Change the in-game interface theme. Additional themes may be provided by "
 "community-made add-ons"
@@ -6375,12 +6459,12 @@ msgstr ""
 "التي أنشأها مجتمع ويسنوث"
 
 #. [label]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:176
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:320
 msgid "UI theme:"
 msgstr "سمة واجهة المستخدم:"
 
 #. [menu_button]: id=choose_gui2_theme
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:192
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:337
 msgid ""
 "Change the UI (GUI2) theme. Additional themes may be provided by community-"
 "made add-ons"
@@ -6389,126 +6473,64 @@ msgstr ""
 "صنع المجتمع"
 
 #. [button]: id=apply
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:201
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:346
 msgid "Apply"
 msgstr "تطبيق"
 
-#. [toggle_button]: id=show_tips
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:224
-msgid "Show gameplay tips on the main menu"
-msgstr "إظهار نصائح اللعب في القائمة الرئيسية"
-
-#. [toggle_button]: id=show_floating_labels
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:236
-msgid "Combat damage indicators"
-msgstr "مؤشرات أضرار القتال"
-
-#. [toggle_button]: id=show_floating_labels
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:237
-msgid "Show amount of damage inflicted or healed as fading labels above units"
-msgstr "إظهار مقدار الضرر الذي تم إلحاقه أو شفاءه كلصائق باهتة أعلى الوحدات"
-
-#. [toggle_button]: id=show_ellipses
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:250
-msgid "Team color indicators"
-msgstr "مؤشرات ألوان الفريق"
-
-#. [toggle_button]: id=show_ellipses
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:251
-msgid ""
-"Show a colored circle around the base of each unit to show which side it is "
-"on"
-msgstr "إظهار دوائر ملونة تحت كل وحدة تشير إلى جانبها"
-
-#. [toggle_button]: id=show_grid
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:264
-msgid "Grid overlay"
-msgstr "تراكب الشبكة"
-
-#. [toggle_button]: id=show_grid
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:265
-msgid "Overlay a grid over the map"
-msgstr "تراكب شبكة على الخريطة"
-
-#. [toggle_button]: id=animate_terrains
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:300
-msgid "Animate map"
-msgstr "إحياء (تحريك رسوم) الخريطة"
-
-#. [toggle_button]: id=animate_terrains
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:301
-msgid "Display animated terrain graphics"
-msgstr "عرض رسومات التضاريس المتحركة"
-
-#. [toggle_button]: id=animate_water
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:314
-msgid "Animate water"
-msgstr "تحريك الماء"
-
-#. [toggle_button]: id=animate_water
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:315
-msgid "Display animated water graphics (can be slow)"
-msgstr "عرض رسومات مائية متحركة (يمكن أن تكون بطيئة)"
-
-#. [toggle_button]: id=animate_units_standing
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:330
-msgid "Unit standing animations"
-msgstr "الرسوم المتحركة للوحدة الواقفة"
-
-#. [toggle_button]: id=animate_units_standing
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:331
-msgid "Continuously animate standing units on the battlefield"
-msgstr "تحريك الوحدات الواقفة بشكل مستمر في ساحة المعركة"
-
-#. [toggle_button]: id=animate_units_idle
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:349
-msgid "Unit idle animations"
-msgstr "رسوم وضع الخمول للوحدة"
-
-#. [toggle_button]: id=animate_units_idle
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:350
-msgid "Play short random animations for idle units"
-msgstr "تشغيل رسوم متحركة عشوائية قصيرة للوحدات الخاملة"
-
-#. [label]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:373
-msgid "Frequency:"
-msgstr "التردد:"
-
-#. [slider]: id=idle_anim_frequency
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:389
-msgid "Set the frequency of unit idle animations"
-msgstr "تحديد تردد تحريكات الوحدات الخاملة"
-
-#. [label]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:409
-msgid "Accessibility:"
-msgstr ""
-
 #. [button]: id=custom_orb_color
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:423
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:375
 msgid "Customize orb colors"
 msgstr ""
 
 #. [button]: id=custom_orb_color
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:425
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:377
 msgid "Change the appearance of the unit movement status indicators"
 msgstr ""
 
 #. [button]: id=custom_reach_map
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:438
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:391
 #, fuzzy
 #| msgid "Custom Maps"
 msgid "Customize reach map"
 msgstr "خرائط مخصصة"
 
 #. [button]: id=custom_reach_map
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:439
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:392
 msgid "Change the appearance of the unit movement UI overlay"
 msgstr ""
 
+#. [toggle_button]: id=animate_units_standing
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:410
+msgid "Unit standing animations"
+msgstr "الرسوم المتحركة للوحدة الواقفة"
+
+#. [toggle_button]: id=animate_units_standing
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:411
+msgid "Continuously animate standing units on the battlefield"
+msgstr "تحريك الوحدات الواقفة بشكل مستمر في ساحة المعركة"
+
+#. [toggle_button]: id=animate_units_idle
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:429
+msgid "Unit idle animations"
+msgstr "رسوم وضع الخمول للوحدة"
+
+#. [toggle_button]: id=animate_units_idle
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:430
+msgid "Play short random animations for idle units"
+msgstr "تشغيل رسوم متحركة عشوائية قصيرة للوحدات الخاملة"
+
+#. [label]
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:453
+msgid "Frequency:"
+msgstr "التردد:"
+
+#. [slider]: id=idle_anim_frequency
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:469
+msgid "Set the frequency of unit idle animations"
+msgstr "تحديد تردد تحريكات الوحدات الخاملة"
+
 #. [tab]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:498
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:549
 msgid "Display"
 msgstr "عرض"
 
@@ -7635,23 +7657,23 @@ msgstr "%B %d %Y, %H:%M"
 msgid "url^None"
 msgstr "لا شيء"
 
-#: src/gui/dialogs/attack_predictions.cpp:120
+#: src/gui/dialogs/attack_predictions.cpp:157
 msgid "No usable weapon"
 msgstr "لا يوجد سلاح صالح للاستخدام"
 
-#: src/gui/dialogs/attack_predictions.cpp:196
+#: src/gui/dialogs/attack_predictions.cpp:233
 msgid "Defender resistance vs"
 msgstr "مقاومة المدافع ضد"
 
-#: src/gui/dialogs/attack_predictions.cpp:198
+#: src/gui/dialogs/attack_predictions.cpp:235
 msgid "Defender vulnerability vs"
 msgstr "ضعف المدافع مقابل"
 
-#: src/gui/dialogs/attack_predictions.cpp:202
+#: src/gui/dialogs/attack_predictions.cpp:239
 msgid "Attacker resistance vs"
 msgstr "مقاومة المهاجم ضد"
 
-#: src/gui/dialogs/attack_predictions.cpp:204
+#: src/gui/dialogs/attack_predictions.cpp:241
 msgid "Attacker vulnerability vs"
 msgstr "ضعف المهاجم مقابل"
 
@@ -8155,11 +8177,11 @@ msgstr ""
 msgid "lua console"
 msgstr "وحدة التحكم في lua"
 
-#: src/gui/dialogs/migrate_version_selection.cpp:47
+#: src/gui/dialogs/migrate_version_selection.cpp:52
 msgid "No Other Version Found"
 msgstr "لم يتم العثور على أي إصدار آخر"
 
-#: src/gui/dialogs/migrate_version_selection.cpp:47
+#: src/gui/dialogs/migrate_version_selection.cpp:52
 msgid ""
 "This would import settings from a previous version of Wesnoth, but no other "
 "version was found on this device"
@@ -9690,11 +9712,11 @@ msgstr "عرض وحدة تحكم Lua"
 msgid "Unrecognized Command"
 msgstr "أمر غير معروف"
 
-#: src/preferences/preferences.cpp:1268
+#: src/preferences/preferences.cpp:1293
 msgid "No known themes. Try changing from within an existing game."
 msgstr "ليست هناك أية نمط عرض معروف. حاول تبديلها انطلاقا من لعبة موجودة."
 
-#: src/preferences/preferences.cpp:1305
+#: src/preferences/preferences.cpp:1330
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
@@ -9704,15 +9726,15 @@ msgstr ""
 "لاستضافة ألعاب الشبكة المحلية. عادةً ما يتم العثور عليه في نفس المجلد الذي "
 "توجد فيه اللعبة القابلة للتنفيذ."
 
-#: src/preferences/preferences.cpp:1309
+#: src/preferences/preferences.cpp:1334
 msgid "Find Server Application"
 msgstr "البحث عن تطبيق الخادم"
 
-#: src/preferences/preferences.cpp:1791
+#: src/preferences/preferences.cpp:1816
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/preferences.cpp:1793
+#: src/preferences/preferences.cpp:1818
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.8+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-09-20 19:25-0500\n"
+"POT-Creation-Date: 2026-10-20 21:43-0500\n"
 "PO-Revision-Date: 2009-01-31 21:25+0100\n"
 "Last-Translator: Robert Millan <rmh@aybabtu.com>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -264,7 +264,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:369
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:941
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:973
 msgid "poisoned"
 msgstr "enverinat"
 
@@ -630,67 +630,67 @@ msgid "Romanian Translation"
 msgstr "Traducció al romanès"
 
 #. [about]
-#: data/core/about_i18n.cfg:1559
+#: data/core/about_i18n.cfg:1564
 msgid "Russian Translation"
 msgstr "Traducció al rus"
 
 #. [about]
-#: data/core/about_i18n.cfg:1666
+#: data/core/about_i18n.cfg:1671
 #, fuzzy
 #| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
 msgstr "Traducció al gallec"
 
 #. [about]
-#: data/core/about_i18n.cfg:1675
+#: data/core/about_i18n.cfg:1680
 msgid "Serbian Translation"
 msgstr "Traducció al serbi"
 
 #. [about]
-#: data/core/about_i18n.cfg:1699
+#: data/core/about_i18n.cfg:1704
 msgid "Slovak Translation"
 msgstr "Traducció a l'eslovac"
 
 #. [about]
-#: data/core/about_i18n.cfg:1734
+#: data/core/about_i18n.cfg:1739
 msgid "Slovenian Translation"
 msgstr "Traducció a l'eslovè"
 
 #. [about]
-#: data/core/about_i18n.cfg:1750
+#: data/core/about_i18n.cfg:1755
 msgid "Spanish Translation"
 msgstr "Traducció al castellà"
 
 #. [about]
-#: data/core/about_i18n.cfg:1844
+#: data/core/about_i18n.cfg:1849
 msgid "Swedish Translation"
 msgstr "Traducció al suec"
 
 #. [about]
-#: data/core/about_i18n.cfg:1889
+#: data/core/about_i18n.cfg:1894
 msgid "Turkish Translation"
 msgstr "Traducció al turc"
 
 #. [about]
-#: data/core/about_i18n.cfg:1914
+#: data/core/about_i18n.cfg:1919
 #, fuzzy
 #| msgid "Romanian Translation"
 msgid "Ukrainian Translation"
 msgstr "Traducció al romanès"
 
 #. [about]
-#: data/core/about_i18n.cfg:1948
+#: data/core/about_i18n.cfg:1953
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Traducció al valencià (català meridional)"
 
 #. [about]
-#: data/core/about_i18n.cfg:1961
+#: data/core/about_i18n.cfg:1966
 #, fuzzy
 msgid "Vietnamese Translation"
 msgstr "Traducció al xinès"
 
 #. [about]
-#: data/core/about_i18n.cfg:1980
+#: data/core/about_i18n.cfg:1985
 #, fuzzy
 #| msgid "Polish Translation"
 msgid "Welsh Translation"
@@ -698,7 +698,7 @@ msgstr "Traducció al polonès"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1989
+#: data/core/about_i18n.cfg:1994
 msgid "RACV’s Translation"
 msgstr "Traducció a l'idioma de la RACV"
 
@@ -4278,32 +4278,32 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:941
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:973
 msgid "female^poisoned"
 msgstr "enverinada"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:948
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:980
 msgid "female^slowed"
 msgstr "alentida"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:948
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:980
 msgid "slowed"
 msgstr "alentit"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:954
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:986
 #, fuzzy
 msgid "female^petrified"
 msgstr "enverinada"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:954
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:986
 msgid "petrified"
 msgstr ""
 
@@ -5425,12 +5425,12 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "Avançaments"
 
-#: src/actions/attack.cpp:478 src/actions/attack.cpp:1266
+#: src/actions/attack.cpp:512 src/actions/attack.cpp:1298
 #, fuzzy
 msgid "An invalid attacker weapon got selected."
 msgstr "L'era seleccionada no és vàlida"
 
-#: src/actions/attack.cpp:961
+#: src/actions/attack.cpp:993
 #, fuzzy
 msgid "attack^miss"
 msgstr "Atacant"
@@ -8028,7 +8028,7 @@ msgstr "Comanda:"
 msgid "prompt^Formula:"
 msgstr "Comanda:"
 
-#: src/mouse_events.cpp:1337
+#: src/mouse_events.cpp:1342
 #, fuzzy
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
@@ -8036,45 +8036,45 @@ msgid ""
 msgstr ""
 "El vostre líder ha d'estar en una torre per reclutar o reincorporar unitats."
 
-#: src/mouse_events.cpp:1440
+#: src/mouse_events.cpp:1448
 #, fuzzy
 #| msgid "Attacker"
 msgid "No Attacks"
 msgstr "Atacant"
 
-#: src/mouse_events.cpp:1440
+#: src/mouse_events.cpp:1448
 #, fuzzy
 #| msgid "No usable weapon"
 msgid "This unit has no usable weapons."
 msgstr "No hi ha cap arma disponible"
 
-#: src/mouse_events.cpp:1516 src/mouse_events.cpp:1532
+#: src/mouse_events.cpp:1524 src/mouse_events.cpp:1540
 #, fuzzy
 #| msgid "Observe Game"
 msgid "Other aspects: "
 msgstr "Observa la partida"
 
-#: src/mouse_events.cpp:1545 src/mouse_events.cpp:1559
+#: src/mouse_events.cpp:1553 src/mouse_events.cpp:1567
 #, fuzzy
 msgid "Weapon: "
 msgstr "rang de l'arma: "
 
-#: src/mouse_events.cpp:1546 src/mouse_events.cpp:1560
+#: src/mouse_events.cpp:1554 src/mouse_events.cpp:1568
 #, fuzzy
 msgid "Type: "
 msgstr "Tipus"
 
-#: src/mouse_events.cpp:1547 src/mouse_events.cpp:1561
+#: src/mouse_events.cpp:1555 src/mouse_events.cpp:1569
 #, fuzzy
 msgid "Damage: "
 msgstr "Mal"
 
-#: src/mouse_events.cpp:1548 src/mouse_events.cpp:1562
+#: src/mouse_events.cpp:1556 src/mouse_events.cpp:1570
 #, fuzzy
 msgid "Attacks: "
 msgstr "Atacant"
 
-#: src/mouse_events.cpp:1549 src/mouse_events.cpp:1563
+#: src/mouse_events.cpp:1557 src/mouse_events.cpp:1571
 #, fuzzy
 #| msgid "Advances to: "
 msgid "Chance to hit: "

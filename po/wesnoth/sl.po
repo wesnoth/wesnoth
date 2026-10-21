@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-09-20 19:25-0500\n"
+"POT-Creation-Date: 2026-10-20 21:43-0500\n"
 "PO-Revision-Date: 2010-10-04 14:32+0100\n"
 "Last-Translator: Klemen Košir <klemen913@gmail.com>\n"
 "Language-Team: Slovenian\n"
@@ -263,7 +263,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:369
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:941
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:973
 msgid "poisoned"
 msgstr "zastrupljen"
 
@@ -640,66 +640,66 @@ msgid "Romanian Translation"
 msgstr "Romunski prevod"
 
 #. [about]
-#: data/core/about_i18n.cfg:1559
+#: data/core/about_i18n.cfg:1564
 msgid "Russian Translation"
 msgstr "Ruski prevod"
 
 #. [about]
-#: data/core/about_i18n.cfg:1666
+#: data/core/about_i18n.cfg:1671
 #, fuzzy
 #| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
 msgstr "Galicijski prevod"
 
 #. [about]
-#: data/core/about_i18n.cfg:1675
+#: data/core/about_i18n.cfg:1680
 msgid "Serbian Translation"
 msgstr "Srbski prevod"
 
 #. [about]
-#: data/core/about_i18n.cfg:1699
+#: data/core/about_i18n.cfg:1704
 msgid "Slovak Translation"
 msgstr "Slovaški prevod"
 
 #. [about]
-#: data/core/about_i18n.cfg:1734
+#: data/core/about_i18n.cfg:1739
 msgid "Slovenian Translation"
 msgstr "Slovenski prevod"
 
 #. [about]
-#: data/core/about_i18n.cfg:1750
+#: data/core/about_i18n.cfg:1755
 msgid "Spanish Translation"
 msgstr "Španski prevod"
 
 #. [about]
-#: data/core/about_i18n.cfg:1844
+#: data/core/about_i18n.cfg:1849
 msgid "Swedish Translation"
 msgstr "Švedski prevod"
 
 #. [about]
-#: data/core/about_i18n.cfg:1889
+#: data/core/about_i18n.cfg:1894
 msgid "Turkish Translation"
 msgstr "Turški prevod"
 
 #. [about]
-#: data/core/about_i18n.cfg:1914
+#: data/core/about_i18n.cfg:1919
 #, fuzzy
 #| msgid "Romanian Translation"
 msgid "Ukrainian Translation"
 msgstr "Romunski prevod"
 
 #. [about]
-#: data/core/about_i18n.cfg:1948
+#: data/core/about_i18n.cfg:1953
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valencijski (južnokatalonski) prevod"
 
 #. [about]
-#: data/core/about_i18n.cfg:1961
+#: data/core/about_i18n.cfg:1966
 msgid "Vietnamese Translation"
 msgstr "Vietnamski prevod"
 
 #. [about]
-#: data/core/about_i18n.cfg:1980
+#: data/core/about_i18n.cfg:1985
 #, fuzzy
 #| msgid "Polish Translation"
 msgid "Welsh Translation"
@@ -707,7 +707,7 @@ msgstr "Poljski prevod"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1989
+#: data/core/about_i18n.cfg:1994
 msgid "RACV’s Translation"
 msgstr "Valencijski (RACV) prevod"
 
@@ -4299,32 +4299,32 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:941
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:973
 msgid "female^poisoned"
 msgstr "zastrupljena"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:948
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:980
 msgid "female^slowed"
 msgstr "upočasnjena"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:948
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:980
 msgid "slowed"
 msgstr "upočasnjen"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:954
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:986
 #, fuzzy
 msgid "female^petrified"
 msgstr "Vagabondka"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:954
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:986
 msgid "petrified"
 msgstr ""
 
@@ -5450,12 +5450,12 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "Napredovanja"
 
-#: src/actions/attack.cpp:478 src/actions/attack.cpp:1266
+#: src/actions/attack.cpp:512 src/actions/attack.cpp:1298
 #, fuzzy
 msgid "An invalid attacker weapon got selected."
 msgstr "Izbrana je bila neveljavna era"
 
-#: src/actions/attack.cpp:961
+#: src/actions/attack.cpp:993
 #, fuzzy
 msgid "attack^miss"
 msgstr "Napadalec"
@@ -8073,7 +8073,7 @@ msgstr "Ukaz:"
 msgid "prompt^Formula:"
 msgstr "Ukaz:"
 
-#: src/mouse_events.cpp:1337
+#: src/mouse_events.cpp:1342
 #, fuzzy
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
@@ -8081,44 +8081,44 @@ msgid ""
 msgstr ""
 "Če hočete vpoklicati ali priklicati enote, mora biti vaš voditelj v trdnjavi."
 
-#: src/mouse_events.cpp:1440
+#: src/mouse_events.cpp:1448
 #, fuzzy
 #| msgid "Attacker"
 msgid "No Attacks"
 msgstr "Napadalec"
 
-#: src/mouse_events.cpp:1440
+#: src/mouse_events.cpp:1448
 #, fuzzy
 msgid "This unit has no usable weapons."
 msgstr "Ni orožja"
 
-#: src/mouse_events.cpp:1516 src/mouse_events.cpp:1532
+#: src/mouse_events.cpp:1524 src/mouse_events.cpp:1540
 #, fuzzy
 #| msgid "Observe Game"
 msgid "Other aspects: "
 msgstr "Opazuj igro"
 
-#: src/mouse_events.cpp:1545 src/mouse_events.cpp:1559
+#: src/mouse_events.cpp:1553 src/mouse_events.cpp:1567
 #, fuzzy
 msgid "Weapon: "
 msgstr "doseg orožja: "
 
-#: src/mouse_events.cpp:1546 src/mouse_events.cpp:1560
+#: src/mouse_events.cpp:1554 src/mouse_events.cpp:1568
 #, fuzzy
 msgid "Type: "
 msgstr "Vrsta"
 
-#: src/mouse_events.cpp:1547 src/mouse_events.cpp:1561
+#: src/mouse_events.cpp:1555 src/mouse_events.cpp:1569
 #, fuzzy
 msgid "Damage: "
 msgstr "Škoda"
 
-#: src/mouse_events.cpp:1548 src/mouse_events.cpp:1562
+#: src/mouse_events.cpp:1556 src/mouse_events.cpp:1570
 #, fuzzy
 msgid "Attacks: "
 msgstr "Napadalec"
 
-#: src/mouse_events.cpp:1549 src/mouse_events.cpp:1563
+#: src/mouse_events.cpp:1557 src/mouse_events.cpp:1571
 #, fuzzy
 #| msgid "Advances to: "
 msgid "Chance to hit: "

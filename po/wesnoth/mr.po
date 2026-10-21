@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.6\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-09-20 19:25-0500\n"
+"POT-Creation-Date: 2026-10-20 21:43-0500\n"
 "PO-Revision-Date: 2009-02-05 00:22+0530\n"
 "Last-Translator: Sujit R Jadhav <sujitrjadhav@gmail.com>\n"
 "Language-Team: Marathi <sujitrjadhav@gmail.com>\n"
@@ -255,7 +255,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:369
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:941
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:973
 msgid "poisoned"
 msgstr "विषबाधित"
 
@@ -622,67 +622,67 @@ msgid "Romanian Translation"
 msgstr "रोमानिअन भाषांतर"
 
 #. [about]
-#: data/core/about_i18n.cfg:1559
+#: data/core/about_i18n.cfg:1564
 msgid "Russian Translation"
 msgstr "रशियन भाषांतर"
 
 #. [about]
-#: data/core/about_i18n.cfg:1666
+#: data/core/about_i18n.cfg:1671
 #, fuzzy
 #| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
 msgstr "गॅलिशिअन भाषांतर"
 
 #. [about]
-#: data/core/about_i18n.cfg:1675
+#: data/core/about_i18n.cfg:1680
 msgid "Serbian Translation"
 msgstr "सर्बिअन भाषांतर"
 
 #. [about]
-#: data/core/about_i18n.cfg:1699
+#: data/core/about_i18n.cfg:1704
 msgid "Slovak Translation"
 msgstr "स्लोव्हाक भाषांतर"
 
 #. [about]
-#: data/core/about_i18n.cfg:1734
+#: data/core/about_i18n.cfg:1739
 msgid "Slovenian Translation"
 msgstr ""
 
 #. [about]
-#: data/core/about_i18n.cfg:1750
+#: data/core/about_i18n.cfg:1755
 msgid "Spanish Translation"
 msgstr "स्पॅनिश भाषांतर"
 
 #. [about]
-#: data/core/about_i18n.cfg:1844
+#: data/core/about_i18n.cfg:1849
 msgid "Swedish Translation"
 msgstr "स्विडिश भाषांतर"
 
 #. [about]
-#: data/core/about_i18n.cfg:1889
+#: data/core/about_i18n.cfg:1894
 msgid "Turkish Translation"
 msgstr "टर्किश भाषांतर"
 
 #. [about]
-#: data/core/about_i18n.cfg:1914
+#: data/core/about_i18n.cfg:1919
 #, fuzzy
 #| msgid "Romanian Translation"
 msgid "Ukrainian Translation"
 msgstr "रोमानिअन भाषांतर"
 
 #. [about]
-#: data/core/about_i18n.cfg:1948
+#: data/core/about_i18n.cfg:1953
 msgid "Valencian (southern Catalan) Translation"
 msgstr ""
 
 #. [about]
-#: data/core/about_i18n.cfg:1961
+#: data/core/about_i18n.cfg:1966
 #, fuzzy
 msgid "Vietnamese Translation"
 msgstr "चिनी भाषांतर"
 
 #. [about]
-#: data/core/about_i18n.cfg:1980
+#: data/core/about_i18n.cfg:1985
 #, fuzzy
 #| msgid "Polish Translation"
 msgid "Welsh Translation"
@@ -690,7 +690,7 @@ msgstr "पोलिश भाषांतर"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1989
+#: data/core/about_i18n.cfg:1994
 msgid "RACV’s Translation"
 msgstr ""
 
@@ -3810,31 +3810,31 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:941
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:973
 msgid "female^poisoned"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:948
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:980
 msgid "female^slowed"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:948
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:980
 msgid "slowed"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:954
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:986
 msgid "female^petrified"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:954
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:986
 msgid "petrified"
 msgstr ""
 
@@ -4812,11 +4812,11 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "चाल"
 
-#: src/actions/attack.cpp:478 src/actions/attack.cpp:1266
+#: src/actions/attack.cpp:512 src/actions/attack.cpp:1298
 msgid "An invalid attacker weapon got selected."
 msgstr ""
 
-#: src/actions/attack.cpp:961
+#: src/actions/attack.cpp:993
 #, fuzzy
 msgid "attack^miss"
 msgstr "आक्रमणकर्ता"
@@ -7245,49 +7245,49 @@ msgstr ""
 msgid "prompt^Formula:"
 msgstr ""
 
-#: src/mouse_events.cpp:1337
+#: src/mouse_events.cpp:1342
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
 msgstr ""
 
-#: src/mouse_events.cpp:1440
+#: src/mouse_events.cpp:1448
 #, fuzzy
 #| msgid "Attacker"
 msgid "No Attacks"
 msgstr "आक्रमणकर्ता"
 
-#: src/mouse_events.cpp:1440
+#: src/mouse_events.cpp:1448
 msgid "This unit has no usable weapons."
 msgstr ""
 
-#: src/mouse_events.cpp:1516 src/mouse_events.cpp:1532
+#: src/mouse_events.cpp:1524 src/mouse_events.cpp:1540
 #, fuzzy
 #| msgid "Observe Game"
 msgid "Other aspects: "
 msgstr "खेळाचे निरिक्षण करा"
 
-#: src/mouse_events.cpp:1545 src/mouse_events.cpp:1559
+#: src/mouse_events.cpp:1553 src/mouse_events.cpp:1567
 #, fuzzy
 msgid "Weapon: "
 msgstr "शस्त्रविषयक विशेष"
 
-#: src/mouse_events.cpp:1546 src/mouse_events.cpp:1560
+#: src/mouse_events.cpp:1554 src/mouse_events.cpp:1568
 #, fuzzy
 msgid "Type: "
 msgstr "प्रकार"
 
-#: src/mouse_events.cpp:1547 src/mouse_events.cpp:1561
+#: src/mouse_events.cpp:1555 src/mouse_events.cpp:1569
 #, fuzzy
 msgid "Damage: "
 msgstr "नुकसान"
 
-#: src/mouse_events.cpp:1548 src/mouse_events.cpp:1562
+#: src/mouse_events.cpp:1556 src/mouse_events.cpp:1570
 #, fuzzy
 msgid "Attacks: "
 msgstr "आक्रमणकर्ता"
 
-#: src/mouse_events.cpp:1549 src/mouse_events.cpp:1563
+#: src/mouse_events.cpp:1557 src/mouse_events.cpp:1571
 msgid "Chance to hit: "
 msgstr ""
 

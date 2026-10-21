@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-09-20 19:25-0500\n"
+"POT-Creation-Date: 2026-10-20 21:43-0500\n"
 "PO-Revision-Date: 2024-03-12 16:50+0100\n"
 "Last-Translator: Merijn de Vet\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
@@ -270,7 +270,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:369
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:941
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:973
 msgid "poisoned"
 msgstr "vergiftigd"
 
@@ -623,68 +623,68 @@ msgid "Romanian Translation"
 msgstr "Roemeense Vertaling"
 
 #. [about]
-#: data/core/about_i18n.cfg:1559
+#: data/core/about_i18n.cfg:1564
 msgid "Russian Translation"
 msgstr "Russische Vertaling"
 
 #. [about]
-#: data/core/about_i18n.cfg:1666
+#: data/core/about_i18n.cfg:1671
 msgid "Scottish Gaelic Translation"
 msgstr "Galicische Vertaling"
 
 #. [about]
-#: data/core/about_i18n.cfg:1675
+#: data/core/about_i18n.cfg:1680
 msgid "Serbian Translation"
 msgstr "Servische Vertaling"
 
 #. [about]
-#: data/core/about_i18n.cfg:1699
+#: data/core/about_i18n.cfg:1704
 msgid "Slovak Translation"
 msgstr "Slovaakse Vertaling"
 
 #. [about]
-#: data/core/about_i18n.cfg:1734
+#: data/core/about_i18n.cfg:1739
 msgid "Slovenian Translation"
 msgstr "Sloveense Vertaling"
 
 #. [about]
-#: data/core/about_i18n.cfg:1750
+#: data/core/about_i18n.cfg:1755
 msgid "Spanish Translation"
 msgstr "Spaanse Vertaling"
 
 #. [about]
-#: data/core/about_i18n.cfg:1844
+#: data/core/about_i18n.cfg:1849
 msgid "Swedish Translation"
 msgstr "Zweedse Vertaling"
 
 #. [about]
-#: data/core/about_i18n.cfg:1889
+#: data/core/about_i18n.cfg:1894
 msgid "Turkish Translation"
 msgstr "Turkse Vertaling"
 
 #. [about]
-#: data/core/about_i18n.cfg:1914
+#: data/core/about_i18n.cfg:1919
 msgid "Ukrainian Translation"
 msgstr "Oekraïnse Vertaling"
 
 #. [about]
-#: data/core/about_i18n.cfg:1948
+#: data/core/about_i18n.cfg:1953
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valenciaanse (zuid-Catalaans) Vertaling"
 
 #. [about]
-#: data/core/about_i18n.cfg:1961
+#: data/core/about_i18n.cfg:1966
 msgid "Vietnamese Translation"
 msgstr "Vietnamese Vertaling"
 
 #. [about]
-#: data/core/about_i18n.cfg:1980
+#: data/core/about_i18n.cfg:1985
 msgid "Welsh Translation"
 msgstr "Welshe Vertaling"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1989
+#: data/core/about_i18n.cfg:1994
 msgid "RACV’s Translation"
 msgstr "RACVse Vertaling"
 
@@ -4685,31 +4685,31 @@ msgstr "Ongeldig onafhankelijk niveau (zou 1-4 moeten zijn)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:941
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:973
 msgid "female^poisoned"
 msgstr "vergiftigd"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:948
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:980
 msgid "female^slowed"
 msgstr "vertraagd"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:948
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:980
 msgid "slowed"
 msgstr "vertraagd"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:954
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:986
 msgid "female^petrified"
 msgstr "versteend"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:954
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:986
 msgid "petrified"
 msgstr "versteend"
 
@@ -5946,11 +5946,11 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "het kiezen van een promotie"
 
-#: src/actions/attack.cpp:478 src/actions/attack.cpp:1266
+#: src/actions/attack.cpp:512 src/actions/attack.cpp:1298
 msgid "An invalid attacker weapon got selected."
 msgstr "Ongeldig aanvalswapen geselecteerd."
 
-#: src/actions/attack.cpp:961
+#: src/actions/attack.cpp:993
 #, fuzzy
 #| msgid "Attacks: "
 msgid "attack^miss"
@@ -8552,7 +8552,7 @@ msgstr "Commando:"
 msgid "prompt^Formula:"
 msgstr "Commando:"
 
-#: src/mouse_events.cpp:1337
+#: src/mouse_events.cpp:1342
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
@@ -8560,35 +8560,35 @@ msgstr ""
 "Je kunt je leider niet van het donjon verwijderen als er rekruterings- of "
 "oproepopdrachten in de wachtrij staan."
 
-#: src/mouse_events.cpp:1440
+#: src/mouse_events.cpp:1448
 msgid "No Attacks"
 msgstr "Geen Aanvallen"
 
-#: src/mouse_events.cpp:1440
+#: src/mouse_events.cpp:1448
 msgid "This unit has no usable weapons."
 msgstr "Deze eenheid heeft geen bruikbare wapens."
 
-#: src/mouse_events.cpp:1516 src/mouse_events.cpp:1532
+#: src/mouse_events.cpp:1524 src/mouse_events.cpp:1540
 msgid "Other aspects: "
 msgstr "Overige aspecten: "
 
-#: src/mouse_events.cpp:1545 src/mouse_events.cpp:1559
+#: src/mouse_events.cpp:1553 src/mouse_events.cpp:1567
 msgid "Weapon: "
 msgstr "Wapen: "
 
-#: src/mouse_events.cpp:1546 src/mouse_events.cpp:1560
+#: src/mouse_events.cpp:1554 src/mouse_events.cpp:1568
 msgid "Type: "
 msgstr "Type: "
 
-#: src/mouse_events.cpp:1547 src/mouse_events.cpp:1561
+#: src/mouse_events.cpp:1555 src/mouse_events.cpp:1569
 msgid "Damage: "
 msgstr "Schade: "
 
-#: src/mouse_events.cpp:1548 src/mouse_events.cpp:1562
+#: src/mouse_events.cpp:1556 src/mouse_events.cpp:1570
 msgid "Attacks: "
 msgstr "Aanvallen: "
 
-#: src/mouse_events.cpp:1549 src/mouse_events.cpp:1563
+#: src/mouse_events.cpp:1557 src/mouse_events.cpp:1571
 msgid "Chance to hit: "
 msgstr "Raakkans: "
 

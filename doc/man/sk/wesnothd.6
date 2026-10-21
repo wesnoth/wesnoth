@@ -101,10 +101,9 @@ nekonečno. (štandardne: \fB5\fP)
 používanom \fBuser_handler\fP. (predvolené: false)
 .TP 
 \fBdisallow_names\fP
-Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
-patterns are supported. See \fBglob\fP(7)  for more details.  Default values
-(used if nothing is specified) are:
-\fB*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player\fP.
+Mená/prezývky, ktoré server neprijíma. Podporujú sa zástupné znaky \fB*\fP and
+\fB?\fP. Pre ďalšie podrobnosti pozri \fBglob\fP(7). Štandardné hodnoty (ak sa nič
+nezadá) sú:\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
 Cesta k soketu (fifo), do ktorého môžete posielať príkazy pre server
@@ -238,8 +237,8 @@ Názov databázovej tabuľky v ktorej bude wesnothd ukladať svoje vlastné dát
 o hráčoch v hre.
 .TP 
 \fBdb_game_content_info_table\fP
-The name of the table in which wesnothd will save its own data about game
-content (scenario/era/modifications) used in a game.
+Názov databázovej tabuľky v ktorej bude wesnothd ukladať svoje vlastné dáta
+o modifikáciách využitých v hre.
 .TP 
 \fBdb_user_group_table\fP
 Názov tabuľky, do ktorej vaše phpbb fórum ukladá údaje o skupinách
@@ -247,8 +246,8 @@ používateľov. S najväčšou pravdepodobnosťou to bude
 <table\-prefix>_user_group (napr. phpbb3_user_group).
 .TP 
 \fBdb_tournament_query\fP
-The SQL query to find tournaments to announce on login. Should return
-tournament \fBtitle\fP, \fBstatus\fP and \fBurl\fP.
+SQL dopyt na vyhľadanie turnajov, ktoré sa majú oznámiť pri prihlásení. Mal
+by vrátiť \fBtitle\fP, \fBstatus\fP a \fBurl\fP turnaja.
 .TP 
 \fBdb_connection_history_table\fP
 Názov databázovej tabuľky na ukladanie časov prihlásení/odhlásení. Tiež sa
@@ -269,12 +268,12 @@ ID skupiny fóra, ktorá sa má považovať za skupinu s moderátorskými
 právomocami.
 .TP 
 \fBforum_admin_group\fP
-The ID of one of the forum groups to be considered as having admin authority
-on the add\-ons server.
+ID skupiny fóra, ktorá sa má považovať za skupinu s moderátorskými
+právomocami.
 .TP 
 \fBsite_admin_group\fP
-The ID of one of the forum groups to be considered as having admin authority
-on the add\-ons server.
+ID skupiny fóra, ktorá sa má považovať za skupinu s moderátorskými
+právomocami.
 .RE
 .
 .SH "NÁVRATOVÝ KÓD"

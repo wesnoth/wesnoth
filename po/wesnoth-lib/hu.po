@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-09-20 19:25-0500\n"
+"POT-Creation-Date: 2026-10-20 21:43-0500\n"
 "PO-Revision-Date: 2026-10-08 13:04+0200\n"
 "Last-Translator: Berda Jenő <big4billy@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
@@ -2389,7 +2389,7 @@ msgstr "Napi tipp"
 #. [button]: id=toggle_tip_panel
 #. [toggle_button]: id=show_tips
 #: data/gui/themes/celes/dialogs/title_screen.cfg:216
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:223
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:95
 msgid "Show tip of the day"
 msgstr "Napi tipp megjelenítése"
 
@@ -3077,8 +3077,10 @@ msgstr "Sértetlenül maradás esélye"
 msgid "Expected Battle Result (HP)"
 msgstr "Az összecsapás várt eredménye (ÉP)"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/attack_predictions.cfg:251
+#: src/gui/dialogs/attack_predictions.cpp:60
 msgid "Damage Calculations"
 msgstr "Sebzés számítások"
 
@@ -3357,13 +3359,23 @@ msgstr "Módosítók:"
 msgid "Combat:"
 msgstr "Csata:"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:445
+#: src/gui/dialogs/attack_predictions.cpp:79
 msgid "Default RNG"
 msgstr "Alapértelmezett véletlenszerűség"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:446
+#: src/gui/dialogs/attack_predictions.cpp:93
+#, fuzzy, c-format
+#| msgid ""
+#| "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
+#| "\n"
+#| "Example: if you strike twice with 50% accuracy, you’re most likely to hit "
+#| "once and miss once, but might also hit twice or miss twice."
 msgid ""
 "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
 "\n"
@@ -3377,13 +3389,17 @@ msgstr ""
 "egyszer találsz és egyszer elvéted, de kétszer is találhatsz és kétszer is "
 "elvétheted."
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:451
+#: src/gui/dialogs/attack_predictions.cpp:76
 msgid "Predictable RNG"
 msgstr "Kiszámítható véletlenszerűség"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:452
+#: src/gui/dialogs/attack_predictions.cpp:91
 msgid ""
 "Identical to Default RNG, except loading a saved game will not change the "
 "outcome of an attack.\n"
@@ -3398,13 +3414,24 @@ msgstr ""
 "Ezután visszatöltesz egy korábbi játékmentést, hogy újra megcsináld ezt a "
 "támadást. Újra mindkét csapás be fog találni."
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:457
+#: src/gui/dialogs/attack_predictions.cpp:72
 msgid "Reduced RNG"
 msgstr "Csökkentett véletlenszerűség"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:458
+#: src/gui/dialogs/attack_predictions.cpp:89
+#, fuzzy, c-format
+#| msgid ""
+#| "Hits and misses are much more consistent. This tends to make small-scale "
+#| "engagements easier to plan.\n"
+#| "\n"
+#| "Example: if you strike three times with 50% accuracy, you will always hit "
+#| "at least once and miss at least once."
 msgid ""
 "Hits and misses are much more consistent. This tends to make small-scale "
 "engagements easier to plan.\n"
@@ -3519,7 +3546,7 @@ msgstr "Játékmag betöltése"
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
 #: src/gui/dialogs/editor/edit_unit.cpp:296
-#: src/preferences/preferences.cpp:1311
+#: src/preferences/preferences.cpp:1336
 msgid "Select"
 msgstr "Kiválasztás"
 
@@ -6406,58 +6433,32 @@ msgid "Clear Hotkey"
 msgstr "Gyorsbillentyű törlése"
 
 #. [label]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:15
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:23
 msgid "Window size:"
 msgstr "Ablak mérete:"
 
-#. [label]: id=help_text
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:39
-msgid "Pixel scale multiplier:"
-msgstr "Képpontméret szorzó:"
-
 #. [menu_button]: id=resolution_set
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:73
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:40
 msgid "Change the game window size"
 msgstr "A játék ablakméretének megváltoztatása"
 
-#. [slider]: id=pixel_scale_slider
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:87
-msgid ""
-"Set the global pixel scale multiplier. A pixel scale multiplier of 2 will "
-"make everything look twice as large."
-msgstr ""
-"Állítsa be a globális képpontméret-szorzót. A 2-es képpontméret-szorzóval "
-"minden kétszer akkorának tűnik."
-
 #. [toggle_button]: id=fullscreen
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:102
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:55
 msgid "Full screen"
 msgstr "Teljes képernyő"
 
 #. [toggle_button]: id=fullscreen
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:103
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:56
 msgid "Toggle between fullscreen and window mode"
 msgstr "Váltás teljes képernyős és ablakos mód között"
 
-#. [toggle_button]: id=auto_pixel_scale
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:114
-msgid "pixel_scale_multiplier^Automatic scale"
-msgstr "Automatikus méretezés"
-
-#. [toggle_button]: id=auto_pixel_scale
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:115
-msgid "Choose pixel scale multiplier automatically based on current resolution"
-msgstr ""
-"Automatikusan kiválasztja a képpontméret-szorzót az aktuális felbontás "
-"alapján"
-
 #. [toggle_button]: id=vsync
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:129
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:69
 msgid "VSync"
 msgstr "VSync"
 
 #. [toggle_button]: id=vsync
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:130
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:70
 msgid ""
 "Reduces tearing by synchronizing rendering with the screen refresh rate "
 "(requires restart to take effect)"
@@ -6466,63 +6467,30 @@ msgstr ""
 "képernyő frissítési gyakoriságával (újraindítás szükséges az érvénybe "
 "lépéshez)"
 
-#. [label]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:152
-msgid "In-game theme:"
-msgstr "Játékon belüli téma:"
-
-#. [menu_button]: id=choose_theme
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:165
-msgid ""
-"Change the in-game interface theme. Additional themes may be provided by "
-"community-made add-ons"
-msgstr ""
-"Módosítsa a játékon belüli felület témáját. A közösség által készített "
-"kiegészítők további témákat biztosíthatnak"
-
-#. [label]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:176
-msgid "UI theme:"
-msgstr "Felhasználó felület téma:"
-
-#. [menu_button]: id=choose_gui2_theme
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:192
-msgid ""
-"Change the UI (GUI2) theme. Additional themes may be provided by community-"
-"made add-ons"
-msgstr ""
-"A felhasználói felület (GUI2) témájának megváltoztatása. További közösség "
-"által készített témák elérhetők"
-
-#. [button]: id=apply
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:201
-msgid "Apply"
-msgstr "Alkalmaz"
-
 #. [toggle_button]: id=show_tips
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:224
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:96
 msgid "Show gameplay tips on the main menu"
 msgstr "Játéktippek megjelenítése a főmenüben"
 
 #. [toggle_button]: id=show_floating_labels
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:236
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:109
 msgid "Combat damage indicators"
 msgstr "Csatában szerzett sérülések kijelzése"
 
 #. [toggle_button]: id=show_floating_labels
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:237
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:110
 msgid "Show amount of damage inflicted or healed as fading labels above units"
 msgstr ""
 "Az okozott vagy meggyógyult sebzés mértékének megjelenítése halványuló "
 "címkeként az egységek felett"
 
 #. [toggle_button]: id=show_ellipses
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:250
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:123
 msgid "Team color indicators"
 msgstr "Csapatszínek kijelzése"
 
 #. [toggle_button]: id=show_ellipses
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:251
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:124
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
@@ -6531,96 +6499,150 @@ msgstr ""
 "csapatban van az adott egység"
 
 #. [toggle_button]: id=show_grid
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:264
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:137
 msgid "Grid overlay"
 msgstr "Rácsozás"
 
 #. [toggle_button]: id=show_grid
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:265
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:138
 msgid "Overlay a grid over the map"
 msgstr "Fektessen egy rácsot a térképre"
 
 #. [toggle_button]: id=animate_terrains
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:300
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:163
 msgid "Animate map"
 msgstr "Térkép animálása"
 
 #. [toggle_button]: id=animate_terrains
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:301
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:164
 msgid "Display animated terrain graphics"
 msgstr "Terepanimációk megjelenítése"
 
 #. [toggle_button]: id=animate_water
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:314
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:177
 msgid "Animate water"
 msgstr "Víz animálása"
 
 #. [toggle_button]: id=animate_water
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:315
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:178
 msgid "Display animated water graphics (can be slow)"
 msgstr "A víz animált grafikájának megjelenítése (lassabb lehet)"
 
-#. [toggle_button]: id=animate_units_standing
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:330
-msgid "Unit standing animations"
-msgstr "Álló egység animációja"
+#. [label]: id=help_text
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:225
+msgid "Pixel scale multiplier:"
+msgstr "Képpontméret szorzó:"
 
-#. [toggle_button]: id=animate_units_standing
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:331
-msgid "Continuously animate standing units on the battlefield"
-msgstr "A csatatéren álló egységek folyamatos animálása"
-
-#. [toggle_button]: id=animate_units_idle
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:349
-msgid "Unit idle animations"
-msgstr "Tétlen egységek animálása"
-
-#. [toggle_button]: id=animate_units_idle
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:350
-msgid "Play short random animations for idle units"
-msgstr "A tétlen egységeknél rövid, véletlenszerű animációk jelenjenek meg"
-
-#. [label]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:373
-msgid "Frequency:"
-msgstr "Gyakoriság:"
-
-#. [slider]: id=idle_anim_frequency
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:389
-msgid "Set the frequency of unit idle animations"
+#. [slider]: id=pixel_scale_slider
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:256
+msgid ""
+"Set the global pixel scale multiplier. A pixel scale multiplier of 2 will "
+"make everything look twice as large."
 msgstr ""
-"Az egység tétlenségekor mutatott animáció megjelenési gyakoriságának "
-"beállítása"
+"Állítsa be a globális képpontméret-szorzót. A 2-es képpontméret-szorzóval "
+"minden kétszer akkorának tűnik."
+
+#. [toggle_button]: id=auto_pixel_scale
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:269
+msgid "pixel_scale_multiplier^Automatic scale"
+msgstr "Automatikus méretezés"
+
+#. [toggle_button]: id=auto_pixel_scale
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:270
+msgid "Choose pixel scale multiplier automatically based on current resolution"
+msgstr ""
+"Automatikusan kiválasztja a képpontméret-szorzót az aktuális felbontás "
+"alapján"
 
 #. [label]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:409
-msgid "Accessibility:"
-msgstr "Megközelíthetőség:"
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:294
+msgid "In-game theme:"
+msgstr "Játékon belüli téma:"
+
+#. [menu_button]: id=choose_theme
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:308
+msgid ""
+"Change the in-game interface theme. Additional themes may be provided by "
+"community-made add-ons"
+msgstr ""
+"Módosítsa a játékon belüli felület témáját. A közösség által készített "
+"kiegészítők további témákat biztosíthatnak"
+
+#. [label]
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:320
+msgid "UI theme:"
+msgstr "Felhasználó felület téma:"
+
+#. [menu_button]: id=choose_gui2_theme
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:337
+msgid ""
+"Change the UI (GUI2) theme. Additional themes may be provided by community-"
+"made add-ons"
+msgstr ""
+"A felhasználói felület (GUI2) témájának megváltoztatása. További közösség "
+"által készített témák elérhetők"
+
+#. [button]: id=apply
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:346
+msgid "Apply"
+msgstr "Alkalmaz"
 
 #. [button]: id=custom_orb_color
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:423
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:375
 msgid "Customize orb colors"
 msgstr "Jelzőgömb színeinek testreszabása"
 
 #. [button]: id=custom_orb_color
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:425
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:377
 msgid "Change the appearance of the unit movement status indicators"
 msgstr ""
 "Az egység mozgási lehetőségeit jelző gömböcskék megjelenésének "
 "megváltoztatása"
 
 #. [button]: id=custom_reach_map
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:438
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:391
 msgid "Customize reach map"
 msgstr "Mozgástérkép testreszabása"
 
 #. [button]: id=custom_reach_map
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:439
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:392
 msgid "Change the appearance of the unit movement UI overlay"
 msgstr "Az egységek mozgása megjelenítésének megváltoztatása"
 
+#. [toggle_button]: id=animate_units_standing
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:410
+msgid "Unit standing animations"
+msgstr "Álló egység animációja"
+
+#. [toggle_button]: id=animate_units_standing
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:411
+msgid "Continuously animate standing units on the battlefield"
+msgstr "A csatatéren álló egységek folyamatos animálása"
+
+#. [toggle_button]: id=animate_units_idle
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:429
+msgid "Unit idle animations"
+msgstr "Tétlen egységek animálása"
+
+#. [toggle_button]: id=animate_units_idle
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:430
+msgid "Play short random animations for idle units"
+msgstr "A tétlen egységeknél rövid, véletlenszerű animációk jelenjenek meg"
+
+#. [label]
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:453
+msgid "Frequency:"
+msgstr "Gyakoriság:"
+
+#. [slider]: id=idle_anim_frequency
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:469
+msgid "Set the frequency of unit idle animations"
+msgstr ""
+"Az egység tétlenségekor mutatott animáció megjelenési gyakoriságának "
+"beállítása"
+
 #. [tab]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:498
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:549
 msgid "Display"
 msgstr "Kijelző"
 
@@ -7763,23 +7785,23 @@ msgstr "%B %d %Y, %H:%M"
 msgid "url^None"
 msgstr "Nincs"
 
-#: src/gui/dialogs/attack_predictions.cpp:120
+#: src/gui/dialogs/attack_predictions.cpp:157
 msgid "No usable weapon"
 msgstr "Nincs használható fegyver"
 
-#: src/gui/dialogs/attack_predictions.cpp:196
+#: src/gui/dialogs/attack_predictions.cpp:233
 msgid "Defender resistance vs"
 msgstr "Védekező ellenállása vs"
 
-#: src/gui/dialogs/attack_predictions.cpp:198
+#: src/gui/dialogs/attack_predictions.cpp:235
 msgid "Defender vulnerability vs"
 msgstr "Védő sebezhetősége vs"
 
-#: src/gui/dialogs/attack_predictions.cpp:202
+#: src/gui/dialogs/attack_predictions.cpp:239
 msgid "Attacker resistance vs"
 msgstr "Támadó ellenállása vs"
 
-#: src/gui/dialogs/attack_predictions.cpp:204
+#: src/gui/dialogs/attack_predictions.cpp:241
 msgid "Attacker vulnerability vs"
 msgstr "Támadó sebezhetősége vs"
 
@@ -8288,11 +8310,11 @@ msgstr ""
 msgid "lua console"
 msgstr "lua konzol"
 
-#: src/gui/dialogs/migrate_version_selection.cpp:47
+#: src/gui/dialogs/migrate_version_selection.cpp:52
 msgid "No Other Version Found"
 msgstr "Nem található más verzió"
 
-#: src/gui/dialogs/migrate_version_selection.cpp:47
+#: src/gui/dialogs/migrate_version_selection.cpp:52
 msgid ""
 "This would import settings from a previous version of Wesnoth, but no other "
 "version was found on this device"
@@ -9820,12 +9842,12 @@ msgstr "Lua konzol megjelenítése"
 msgid "Unrecognized Command"
 msgstr "Ismeretlen parancs"
 
-#: src/preferences/preferences.cpp:1268
+#: src/preferences/preferences.cpp:1293
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""
 "Nincsenek ismert témák. Próbáld meg egy létező játékból megváltoztatni."
 
-#: src/preferences/preferences.cpp:1305
+#: src/preferences/preferences.cpp:1330
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
@@ -9835,15 +9857,15 @@ msgstr ""
 "szükséges a helyi hálózati játékok nyitásához. Általában ugyanabban a "
 "mappában található, mint a játék programfájlja."
 
-#: src/preferences/preferences.cpp:1309
+#: src/preferences/preferences.cpp:1334
 msgid "Find Server Application"
 msgstr "Kiszolgáló alkalmazás keresése"
 
-#: src/preferences/preferences.cpp:1791
+#: src/preferences/preferences.cpp:1816
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/preferences.cpp:1793
+#: src/preferences/preferences.cpp:1818
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 
@@ -9874,6 +9896,9 @@ msgstr "A kötelező ‘$key|’ kulcs nincs beállítva itt: ‘[$section|]’.
 #: src/wml_exception.cpp:104
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 msgstr "A kötelező ‘$tag|’ alcímke nincs beállítva itt: ‘[$section|]’."
+
+#~ msgid "Accessibility:"
+#~ msgstr "Megközelíthetőség:"
 
 #~ msgid "Turn dialog"
 #~ msgstr "Párbeszédablak be"
