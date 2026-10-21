@@ -56,6 +56,9 @@ public:
 	/** Set the position of an existing haloing effect, according to its handle. */
 	void set_location(const handle & h, int x, int y);
 
+	/** Set whether to show the halo to the viewer based on their team. */
+	void set_visible(const handle& h, bool visible);
+
 	/** Remove the halo with the given handle. */
 	void remove(const handle & h);
 
