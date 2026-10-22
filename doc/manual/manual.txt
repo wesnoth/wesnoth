@@ -619,6 +619,12 @@ Mechanical::
   Mechanical units aren't alive and thus are immune to poison, and drain and
   plague don't work on them.
   Mechanical units generally have 'Mechanical' as their only trait.
+Oceangoing::
+  Oceangoing units (most boats and ships) are limited to 20% defense while in
+  ford, bridge, oasis, or water-based village/castle terrain.
+Push-Poles::
+  Push-Poles units (rafts and other pole-driven boats) have 30% defense while in
+  ford, bridge, oasis, or water-based village/castle terrain.
 Slow::
   Large, unwieldy units with the Slow trait have -1 movement and 5% more hitpoints.
 Undead::
@@ -652,6 +658,10 @@ Drain::
   of damage it deals (rounded down).
 Firststrike::
   This unit always strikes first with this attack, even if they are defending.
+Guard::
+  This attack blocks half of the damage from its target's strikes.
+Honed::
+  This attack is 10% more accurate than other attacks.
 Magical::
   This attack always has a 70% chance to hit regardless of the defensive
   ability of the unit being attacked.
@@ -673,11 +683,17 @@ Slow::
 Petrify::
   This attack petrifies the target, turning it to stone. Units that
   have been petrified may not move or attack.
+Stun::
+  This attack hits so hard that the opponent is dazed and can no longer
+  enforce a zone of control. The effect wears off on the opponent's next
+  turn.
 Swarm::
   The number of strikes of this attack decreases when the unit is wounded. The
   number of strikes is proportional to the % of HP/maximum HP the unit has. For
   example a unit with 3/4 of its maximum HP will get 3/4 of the number of
   strikes.
+Unwieldy::
+  This attack can only be used offensively.
 
 Abilities
 ^^^^^^^^^
@@ -691,6 +707,12 @@ Ambush::
   Enemy units cannot see this unit while it is in forest, except if they have
   units next to it. Any enemy unit that first discovers this unit immediately
   loses all its remaining movement.
+Burrow::
+  This unit can hide in forest or sand if it is resting (has not moved for a
+  turn), and remain undetected by its enemies. Enemy units cannot see this
+  unit while it is resting in forest or sand, except if they have units next
+  to it. Any enemy unit that first discovers this unit immediately loses all
+  its remaining movement.
 Concealment::
   This unit can hide in villages (with the exception of water villages), and
   remain undetected by its enemies, except by those standing next to it.
@@ -700,6 +722,10 @@ Concealment::
 Cures::
   A unit which can cure an ally of poison, although the ally will receive no
   additional healing on the turn it is cured of the poison.
+Diversion::
+  If there is an enemy of the target on the opposite side of the target,
+  this unit diverts the target's attention and reduces its chance to hit by
+  20%.
 Feeding::
   This unit gains 1 hitpoint added to its maximum whenever it kills a unit,
   except units that are immune to plague.
@@ -735,7 +761,10 @@ Nightstalk::
   it. Any enemy unit that first discovers this unit immediately loses all its
   remaining movement.
 Regenerates::
-  This unit will heal itself 8HP per turn. If it is poisoned, it will
+  This unit will heal itself 8 HP per turn. If it is poisoned, it will
+  remove the poison instead of healing.
+Regenerates +4::
+  This unit will heal itself 4 HP per turn. If it is poisoned, it will
   remove the poison instead of healing.
 Skirmisher::
   This unit is skilled in moving past enemies quickly, and ignores all enemy
@@ -748,6 +777,11 @@ Submerge::
   Enemy units cannot see this unit while it is in deep water, except if they
   have units next to it. Any enemy unit that first discovers this unit
   immediately loses all its remaining movement.
+Swamp Lurk::
+  This unit can hide in swamp, and remain undetected by its enemies. Enemy
+  units cannot see this unit while it is in swamp, except if they have units
+  next to it. Any enemy unit that first discovers this unit immediately
+  loses all its remaining movement.
 Teleport::
   This unit may teleport between any two friendly villages using one of its
   moves.
