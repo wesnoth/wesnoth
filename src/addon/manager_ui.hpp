@@ -18,6 +18,8 @@
 
 #include "addon/validation.hpp"
 
+#include "utils/optional_fwd.hpp"
+
 #include <string>
 #include <vector>
 
@@ -27,7 +29,7 @@
  * @return @a true when one or more add-ons have been successfully installed or
  *         removed, thus requiring a local WML cache refresh. @a false otherwise.
  */
-bool manage_addons(const ADDON_TYPE initial_type_filter);
+bool manage_addons(const utils::optional<ADDON_TYPE> initial_type_filter = utils::nullopt);
 
 /**
  * Conducts an ad-hoc add-ons server connection to download an add-on with a particular id and all

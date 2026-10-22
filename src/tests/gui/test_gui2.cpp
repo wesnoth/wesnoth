@@ -799,7 +799,7 @@ struct dialog_tester<addon_manager>
 	addon_manager* create()
 	{
 		addons_client client("localhost:15999");
-		return new addon_manager(client, ADDON_UNKNOWN);
+		return new addon_manager(client);
 	}
 };
 

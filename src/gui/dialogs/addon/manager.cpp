@@ -225,7 +225,7 @@ const std::vector<addon_tag> tag_filter_types_{
 };
 };
 
-addon_manager::addon_manager(addons_client& client, const ADDON_TYPE initial_type_filter)
+addon_manager::addon_manager(addons_client& client, const utils::optional<ADDON_TYPE> initial_type_filter)
 	: modal_dialog(window_id())
 	, orders_()
 	, cfg_()
@@ -409,9 +409,9 @@ void addon_manager::pre_show()
 	}
 
 	type_filter.set_values(type_filter_entries);
-	if (initial_type_filter_ != ADDON_UNKNOWN) {
-		for (std::size_t i = 0; i < type_filter_entries.size(); ++i) {
-			if (type_filter_types_[i].first == initial_type_filter_) {
+	if(initial_type_filter_.has_value()) {
+		for(std::size_t i = 0; i < type_filter_types_.size(); ++i) {
+			if(type_filter_types_[i].first == initial_type_filter_.value()) {
 				type_filter.select_option(i, true);
 				break;
 			}
@@ -556,7 +556,7 @@ void addon_manager::pre_show()
 			std::bind(&addon_manager::on_selected_version_change, this));
 	}
 
-	if (initial_type_filter_ != ADDON_UNKNOWN) {
+	if (initial_type_filter_.has_value()) {
 		apply_filters();
 	}
 	on_addon_select();

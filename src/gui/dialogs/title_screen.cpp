@@ -305,7 +305,7 @@ void title_screen::init_callbacks()
 	// Addons
 	//
 	register_button("addons", hotkey::TITLE_SCREEN__ADDONS, [this]() {
-		if(manage_addons(ADDON_UNKNOWN)) {
+		if(manage_addons()) {
 			set_retval(RELOAD_GAME_DATA);
 		}
 	});
