@@ -556,7 +556,7 @@ void addon_manager::pre_show()
 			std::bind(&addon_manager::on_selected_version_change, this));
 	}
 
-	if (initial_type_filter_.has_value()) {
+	if(initial_type_filter_.has_value()) {
 		apply_filters();
 	}
 	on_addon_select();

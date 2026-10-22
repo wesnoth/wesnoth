@@ -26,6 +26,9 @@
 /**
  * Shows the add-ons server connection dialog, for access to the various management front-ends.
  *
+ * @param initial_type_filter Add-on type to select in the filter when opening the manager.
+ *                            utils::nullopt leaves the type filter unset.
+ *
  * @return @a true when one or more add-ons have been successfully installed or
  *         removed, thus requiring a local WML cache refresh. @a false otherwise.
  */
