@@ -41,6 +41,7 @@ if subprocess.run(["cwebp", "-version"], stdout=subprocess.DEVNULL).returncode !
     sys.exit(1)
 
 image_dirs = [
+    os.path.join("data", "campaigns", "An_Orcish_Incursion", "images", "maps"),
     os.path.join("data", "campaigns", "Dead_Water", "images", "maps"),
     os.path.join("data", "campaigns", "Dead_Water", "images", "portraits"),
     os.path.join("data", "campaigns", "Descent_Into_Darkness", "images", "maps"),
