@@ -5,6 +5,7 @@ set_directory_properties(PROPERTIES CLEAN_NO_CUSTOM true)
 set(NORMAL_DOMAINS
 	wesnoth
 	wesnoth-anl
+	wesnoth-aoi
 	wesnoth-did
 	wesnoth-dod
 	wesnoth-dw
