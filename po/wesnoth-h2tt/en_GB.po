@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-10-21 02:43 UTC\n"
-"PO-Revision-Date: 2026-08-19 15:27+1000\n"
+"PO-Revision-Date: 2026-10-21 17:13+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: none\n"
 "Language: en_GB\n"
@@ -557,8 +557,8 @@ msgstr "<b>-OR-</b> (choose one reward)"
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:105
 msgid "(expires after playing any other scenario)"
 msgid_plural "(expires after playing $seasons_remaining other scenarios)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(expires after playing any other scenario)"
+msgstr[1] "(expires after playing $seasons_remaining other scenarios)"
 
 #. [lua]: wesnoth.wml_actions.display_scenario_preview
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:212
@@ -4256,12 +4256,12 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:235
 msgid ""
 "I have not located the Sceptre yet, but I am making progress. I shall send a "
-"messenger once we are ready to retrieve it — perhaps in "
-"$( $bm_milestone_scepter - $bm_turns ) battles’ time."
+"messenger once we are ready to retrieve it — perhaps in $"
+"( $bm_milestone_scepter - $bm_turns ) battles’ time."
 msgstr ""
 "I have not located the Sceptre yet, but I am making progress. I shall send a "
-"messenger once we are ready to retrieve it — perhaps in "
-"$( $bm_milestone_scepter - $bm_turns ) battles’ time."
+"messenger once we are ready to retrieve it — perhaps in $"
+"( $bm_milestone_scepter - $bm_turns ) battles’ time."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:240
@@ -25055,27 +25055,26 @@ msgid_plural ""
 "himself $regen HP per turn. If poisoned, he will remove the poison instead "
 "of healing."
 msgstr[0] ""
+"Konrad currently has 1 other magic item, and will heal himself $regen HP per "
+"turn. If poisoned, he will remove the poison instead of healing."
 msgstr[1] ""
+"Konrad currently has $magic_item_count other magic items, and will heal "
+"himself $regen HP per turn. If poisoned, he will remove the poison instead "
+"of healing."
 
 #. [regenerate]: id=amulet_regen
 #: data/campaigns/Heir_To_The_Throne/utils/specials_and_abilities.cfg:558
 msgid "artifice"
-msgstr ""
+msgstr "artifice"
 
 #. [regenerate]: id=amulet_regen
 #: data/campaigns/Heir_To_The_Throne/utils/specials_and_abilities.cfg:559
-#, fuzzy
-#| msgid ""
-#| "Item for Konrad: <span color='#EFBF04'><b>Regenerate 1 HP each turn. This "
-#| "value doubles\n"
-#| "(2, 4, 8, etc) for each other magic item that Konrad wields.</b></span>"
 msgid ""
 "Regenerate 1 HP each turn. This value doubles (2, 4, 8, etc) for each other "
 "magic item that Konrad wields."
 msgstr ""
-"Item for Konrad: <span color='#EFBF04'><b>Regenerate 1 HP each turn. This "
-"value doubles\n"
-"(2, 4, 8, etc) for each other magic item that Konrad wields.</b></span>"
+"Regenerate 1 HP each turn. This value doubles (2, 4, 8, etc) for each other "
+"magic item that Konrad wields."
 
 #. [menu]: id=menu-main
 #: data/campaigns/Heir_To_The_Throne/utils/themes.cfg:34
