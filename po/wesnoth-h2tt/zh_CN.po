@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.19\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-10-21 02:43 UTC\n"
-"PO-Revision-Date: 2026-10-14 22:22+0800\n"
+"PO-Revision-Date: 2026-10-20 21:14+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Poedit 3.10\n"
 
 #. [editor_group]: id=heir_2_the_throne
 #. [campaign]: id=Heir 2 The Throne
@@ -180,12 +180,10 @@ msgstr "在《奥渡因岛》说服一位大法师加入你的军队。"
 msgid "Turncoat"
 msgstr "变节者"
 
-# Translated by openai with model deepseek-flash.
 #. [achievement_group]
 #: data/campaigns/Heir_To_The_Throne/achievements.cfg:30
-#, fuzzy
 msgid "A Friend in Need..."
-msgstr "患难见真情……"
+msgstr "患难之交……"
 
 #. [achievement_group]
 #: data/campaigns/Heir_To_The_Throne/achievements.cfg:30
@@ -360,7 +358,7 @@ msgstr "仅征募或召回人鱼，完成《失落的将军》。"
 #. [achievement_group]
 #: data/campaigns/Heir_To_The_Throne/achievements.cfg:52
 msgid "Bring the proper equipment to <i>Digging for Dwarves</i>."
-msgstr "带上合适的装备《掘洞寻矮人》。"
+msgstr "带上合适的装备去《掘洞寻矮人》。"
 
 # Minecraft 是个游戏名，同时带有 "mine" 一词提示要带矿工。为保持双关性，此处不做翻译。
 #. [achievement_group]
@@ -443,7 +441,7 @@ msgstr "蜥蜴猎手"
 #. [achievement_group]
 #: data/campaigns/Heir_To_The_Throne/achievements.cfg:64
 msgid "Defeat all enemy leaders in <i>Test of the Clans</i>."
-msgstr "在 《氏族的考验》中击败所有敌方首领。"
+msgstr "在《氏族的考验》中击败所有敌方首领。"
 
 #. [achievement_group]
 #: data/campaigns/Heir_To_The_Throne/achievements.cfg:64
@@ -471,7 +469,7 @@ msgid ""
 "Complete <i>The Battle for Wesnoth</i> with Jotha, a free Elensefar, and an "
 "inspired Doors."
 msgstr ""
-"在拥有礁沙、埃仁撒伐获得自由、矮人之门受到鼓舞的情况下完成《韦诺之战》。"
+"在与礁沙并肩、埃仁撒伐获得自由、矮人之门受到鼓舞的情况下完成《韦诺之战》。"
 
 #. [achievement_group]
 #: data/campaigns/Heir_To_The_Throne/achievements.cfg:71
@@ -3961,11 +3959,11 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:235
 msgid ""
 "I have not located the Sceptre yet, but I am making progress. I shall send a "
-"messenger once we are ready to retrieve it — perhaps in "
-"$( $bm_milestone_scepter - $bm_turns ) battles’ time."
+"messenger once we are ready to retrieve it — perhaps in $"
+"( $bm_milestone_scepter - $bm_turns ) battles’ time."
 msgstr ""
-"我尚未找到权杖，但已有进展。待我们准备好取回它时，我会派一名信使——或许再过 "
-"$( $bm_milestone_scepter - $bm_turns ) 场战斗。"
+"我尚未找到权杖，但已有进展。待我们准备好取回它时，我会派一名信使——或许再过 $"
+"( $bm_milestone_scepter - $bm_turns ) 场战斗。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:240
@@ -4176,12 +4174,10 @@ msgstr "覆雪平原"
 msgid "Defeated Faction:"
 msgstr "已击败阵营："
 
-# Translated by openai with model deepseek-flash.
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:27
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:75
-#, fuzzy
 msgid "Urag Fell-Handed"
-msgstr "乌拉格·凶掌"
+msgstr "乌拉戈·凶掌"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:47
@@ -4197,18 +4193,16 @@ msgstr ""
 "那么，就这么说定了？你会释放我，并把我送回女王麾下效力，作为交换，王室国库会"
 "支付一笔有待商定的赎金？"
 
-# Translated by openai with model deepseek-flash.
 #. [message]: speaker=urag_tifer
 #. "witch" is a derogatory term here. Mirya (a Silver Mage) would probably prefer to be called a mage, or maybe a wizard.
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:57
-#, fuzzy
 msgid ""
 "Rrr... deal. No more mucking around in these freezing mountains while the "
 "other chiefs feed like pigs in Wesnoth. Ha! Lucky for me that we happened to "
 "run into each other, witch."
 msgstr ""
-"呃……成交。不用再在这冻死人的山里瞎折腾了，其他酋长都在韦诺像猪一样大吃大喝。"
-"哈！咱俩能撞上，算我走运，巫婆。"
+"呃……成交。这样一来，其他酋长在韦诺像猪一样胡吃海塞的时候，老子就不用继续在这"
+"冻死人的山里瞎折腾了。哈！能撞上你可真是老子的运气，巫婆。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:63
@@ -4256,15 +4250,13 @@ msgstr "白牙山"
 msgid "A Crisis of Leadership"
 msgstr "领导危机"
 
-# Translated by openai with model deepseek-flash.
 #. [event]
 #. [scenario]
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:145
 #: data/campaigns/Heir_To_The_Throne/scenarios/42_A_Crisis_of_Leadership.cfg:270
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1980
-#, fuzzy
 msgid "Fagh-mok the Flattered"
-msgstr "法格莫克·受奉承者"
+msgstr "法格-莫克·受奉承者"
 
 #. [message]: speaker=Delfador {DELFADOR_VARIATION mentoring}
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:158
@@ -4301,18 +4293,16 @@ msgstr ""
 "别紧张，粉皮——人类！哈，瞧你们见了我吓成那副样子。你一定就是伟大的科纳德王"
 "子！"
 
-# Translated by openai with model deepseek-flash.
 #. [message]: speaker=Faghmok
 #. his real name is Fagh-mok the Flattered, but he's lying to make himself sound better.
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:177
-#, fuzzy
 msgid ""
 "I am Fagh-mok the Honorable, honest warrior of the chief’s guard. The nasty "
 "queen Asheviere told us all sorts of things about you, prince. But I’m sure "
 "it’s all lies."
 msgstr ""
-"我是法格莫克·可敬者，酋长卫队中诚实的战士。那个恶毒的女王艾什薇尔跟我们说了许"
-"多关于你的事，王子。但我确信那全都是谎言。"
+"我是法格-莫克·可敬者，酋长卫队中诚实的战士。那个恶毒的女王艾什薇尔跟我们说了"
+"许多关于你的事，王子。但我确信那全都是谎言。"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:181
@@ -4469,9 +4459,9 @@ msgid ""
 "evil creatures lurk along its banks, its waters are not fit to drink, and it "
 "runs over the Cliffs of Thoria."
 msgstr ""
-"这条河，人类称之为“绵长之河”，而在我们族人的古语中称为“阿坎-索丽亚”。其名意"
-"为‘白骨之河’。强大而邪恶的生灵潜伏在两岸，河水不宜饮用，它从索丽亚之崖上倾泻"
-"而下。"
+"这条河，人类称之为“绵长之河”，而在我们族人的古语中称为“阿坎-索丽亚”。其名意为"
+"‘白骨之河’。强大而邪恶的生灵潜伏在两岸，河水不宜饮用，它从索丽亚之崖上倾泻而"
+"下。"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:326
@@ -7787,14 +7777,8 @@ msgstr ""
 msgid "Konrad can now recruit Cavalrymen and Horsemen!"
 msgstr "科纳德现在可以征募骑兵和骑师了！"
 
-# Translated by openai with model deepseek-flash. Original text: You have
-# risked your life to defend our city. In return, I place one of my city’s
-# finest defenders in your service. Simyr, step forward. I place your lance in
-# the service of young Prince Konrad here. May you help him restore order to
-# the country.
 #. [message]: speaker=Kaylan
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_Blackwater_Port.cfg:634
-#, fuzzy
 msgid ""
 "... and with the invading force so thoroughly defeated, I can afford to give "
 "you more riders than I had originally planned. Haldiel, Simyr, step forward! "
@@ -7802,24 +7786,18 @@ msgid ""
 "restore order to the country."
 msgstr ""
 "……入侵军既已被彻底击溃，我便能拨给你比原计划更多的骑兵。哈尔迪尔、西米尔，出"
-"列！我将你们的骑枪置于殿下麾下。愿你们辅佐他恢复国中秩序。"
+"列！在此我命令你的小队为殿下效力。愿你能帮助他将秩序带回这个国家。"
 
-# Translated by openai with model deepseek-flash. Original text: You have
-# risked your life to defend our city. In return, I place one of my city’s
-# finest defenders in your service. Simyr, step forward. I place your lance in
-# the service of young Prince Konrad here. May you help him restore order to
-# the country.
 #. [message]: speaker=Kaylan
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_Blackwater_Port.cfg:639
-#, fuzzy
 msgid ""
 "... and with the invading force so thoroughly defeated, I can afford to give "
 "you more riders than I had originally planned. Haldiel, step forward! I "
 "place your lance in the service of His Highness here. May you help him "
 "restore order to the country."
 msgstr ""
-"……入侵军既已被彻底击溃，我便能拨给你比原计划更多的骑兵。哈尔迪尔，出列！我将"
-"你的骑枪置于殿下麾下。愿你辅佐他恢复国中秩序。"
+"……入侵军既已被彻底击溃，我便能拨给你比原计划更多的骑兵。哈尔迪尔，出列！在此"
+"我命令你的小队为殿下效力。愿你能帮助他将秩序带回这个国家。"
 
 #. [message]: speaker=Haldiel
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_Blackwater_Port.cfg:652
@@ -14655,7 +14633,7 @@ msgid ""
 "day you shall be free!</i>"
 msgstr ""
 "至少我们尽力帮助了那些在此被奴役的人。对那些仍留下的人，对那些我们未能拯救的"
-"人，我要说：<b>坚守希望，终有一日，你们将重获自由！</b>"
+"人，我要说：<b>坚守希望，终有一日，你们必得自由！</b>"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/26_The_Dwarven_Doors.cfg:565
@@ -15804,114 +15782,83 @@ msgstr "你们的战友横尸埃仁撒伐"
 msgid "Elensefar ruled by thieves"
 msgstr "埃仁撒伐被盗贼统治"
 
-# Translated by openai with model deepseek-flash.
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/30_The_Sceptre_of_Fire.cfg:743
-#, fuzzy
 msgid "supplies pillaged at Fort Tahn"
-msgstr "坦恩堡的补给遭劫掠"
+msgstr "塔恩要塞的补给遭劫掠"
 
-# Translated by openai with model deepseek-flash.
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/30_The_Sceptre_of_Fire.cfg:744
-#, fuzzy
 msgid "convoys aflame outside Dan’Tonk"
 msgstr "丹·冬克城外的车队燃起大火"
 
-# Translated by openai with model deepseek-flash.
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/30_The_Sceptre_of_Fire.cfg:745
-#, fuzzy
 msgid "zombified townsfolk at the peninsula"
 msgstr "半岛镇民化为僵尸"
 
-# Translated by openai with model deepseek-flash. Original text: The Dwarven
-# Doors
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/30_The_Sceptre_of_Fire.cfg:746
-#, fuzzy
 msgid "dead slaves at the Dwarven Doors"
 msgstr "矮人之门的奴隶尸骸"
 
-# Translated by openai with model deepseek-flash.
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/30_The_Sceptre_of_Fire.cfg:747
-#, fuzzy
 msgid "libraries aflame at Alduin"
 msgstr "奥渡因的图书馆陷入火海"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/30_The_Sceptre_of_Fire.cfg:748
 msgid "rebels at Blackwater Port"
-msgstr "黑水港的反抗军"
+msgstr "黑水港的叛军"
 
-# Translated by openai with model deepseek-flash. Original text: The Bay of
-# Pearls
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/30_The_Sceptre_of_Fire.cfg:749
-#, fuzzy
 msgid "riots at the Bay of Pearls"
 msgstr "珍珠湾的暴乱"
 
-# Translated by openai with model deepseek-flash.
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/30_The_Sceptre_of_Fire.cfg:750
-#, fuzzy
 msgid "undead amok in the hills"
 msgstr "山丘中亡灵肆虐"
 
-# Translated by openai with model deepseek-flash.
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/30_The_Sceptre_of_Fire.cfg:751
-#, fuzzy
 msgid "elvish criminals escaping into the south"
 msgstr "精灵罪犯逃往南方"
 
-# Translated by openai with model deepseek-flash.
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/30_The_Sceptre_of_Fire.cfg:752
-#, fuzzy
 msgid "trouble with the orcs at Glamdrol"
 msgstr "戈拉姆多的兽人作乱"
 
-# Translated by openai with model deepseek-flash.
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/30_The_Sceptre_of_Fire.cfg:753
-#, fuzzy
 msgid "corpses clogging up the Ford"
 msgstr "雅碧滩被尸体堵塞"
 
-# Translated by openai with model deepseek-flash. Original text: That is the
-# fabled Gryphon Mountain.
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/30_The_Sceptre_of_Fire.cfg:754
-#, fuzzy
 msgid "blood-stained slopes on Gryphon Mountain"
 msgstr "狮鹫山染血的山坡"
 
-# Translated by openai with model deepseek-flash.
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/30_The_Sceptre_of_Fire.cfg:756
-#, fuzzy
 msgid ": $lisar_speech."
 msgstr "：$lisar_speech。"
 
-# Translated by openai with model deepseek-flash.
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/30_The_Sceptre_of_Fire.cfg:757
-#, fuzzy
 msgid ""
 ". You have heard the lies he tells, misleading those who would otherwise "
 "oppose him"
 msgstr "。你已听过他散布的谎言，那些谎言误导了本会反对他的人"
 
-# Translated by openai with model deepseek-flash.
 #. [message]: speaker=Lisar {LISAR_VARIATION mad}
 #. several of the strings above are joined to create $lisar_speech.
 #. For example, this message might read something like "in his wake: dead slaves at the Dwarven Doors, zombified townsfolk at the peninsula... Today, we put a stop to it."
 #. If translating a dynamic string like this is difficult or impossible in your language, you can replace $lisar_speech with ". You have heard the lies he tells, misleading those who would otherwise oppose him."
 #: data/campaigns/Heir_To_The_Throne/scenarios/30_The_Sceptre_of_Fire.cfg:764
-#, fuzzy
 msgid ""
 "You know the blood and chaos that follow in his wake$lisar_speech|... Today, "
 "we put a stop to it. Is everyone in position?"
@@ -17947,12 +17894,10 @@ msgstr ""
 msgid "scenario name^Snow Plains"
 msgstr "覆雪平原"
 
-# Translated by openai with model deepseek-flash.
 #. [side]: type=Orcish Warlord, id=leader2
 #. [side]
 #: data/campaigns/Heir_To_The_Throne/scenarios/41_Snow_Plains.cfg:43
 #: data/campaigns/Heir_To_The_Throne/scenarios/41_Snow_Plains.cfg:59
-#, fuzzy
 msgid "Clan Fell-Hand"
 msgstr "凶掌氏族"
 
@@ -21565,17 +21510,13 @@ msgstr ""
 msgid "bloodaxe"
 msgstr "血斧"
 
-# Translated by openai with model deepseek-flash.
 #. [dummy]: id=march
 #: data/campaigns/Heir_To_The_Throne/units/Elite_Units.cfg:12
-#, fuzzy
 msgid "march"
 msgstr "行军"
 
-# Translated by openai with model deepseek-flash.
 #. [dummy]: id=march
 #: data/campaigns/Heir_To_The_Throne/units/Elite_Units.cfg:13
-#, fuzzy
 msgid ""
 "This unit has improved movement on forest, cave, hill, mountain, frozen, and "
 "water terrain."
@@ -23159,12 +23100,10 @@ msgstr ""
 "该单位每回合为自身及相邻友方单位提供4点生命值的治疗。不过，此能力无法治愈中"
 "毒，只能延缓其效果。"
 
-# Translated by openai with model deepseek-flash.
 #. [dummy]: id=smite
 #: data/campaigns/Heir_To_The_Throne/utils/specials_and_abilities.cfg:160
-#, fuzzy
 msgid "smite"
-msgstr "天罚"
+msgstr "惩击"
 
 #. [dummy]: id=smite
 #: data/campaigns/Heir_To_The_Throne/utils/specials_and_abilities.cfg:161
