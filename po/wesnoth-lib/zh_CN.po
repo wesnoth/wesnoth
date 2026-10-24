@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.20\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-10-20 21:43-0500\n"
-"PO-Revision-Date: 2026-09-21 20:28+0800\n"
+"PO-Revision-Date: 2026-10-20 21:09+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Poedit 3.10\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -3054,7 +3054,7 @@ msgid ""
 msgstr ""
 "<span color='#e1e119'>《王座继承人》</span>现在拥有一个开放世界，其中包含33个"
 "分支场景，每个分支场景都会为科纳德提供不同的征募选项、同伴或物品。原版战役则"
-"以《王座继承人经典版》的名义继续提供。"
+"以《王座继承人（经典版）》的名义继续提供。"
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:216
@@ -6412,24 +6412,22 @@ msgstr "应用"
 #. [button]: id=custom_orb_color
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:375
 msgid "Customize orb colors"
-msgstr ""
+msgstr "自定义光球颜色"
 
 #. [button]: id=custom_orb_color
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:377
 msgid "Change the appearance of the unit movement status indicators"
-msgstr ""
+msgstr "更改单位移动状态指示器的外观"
 
 #. [button]: id=custom_reach_map
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:391
-#, fuzzy
-#| msgid "Custom Maps"
 msgid "Customize reach map"
-msgstr "自定义地图"
+msgstr "自定义可达范围图"
 
 #. [button]: id=custom_reach_map
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:392
 msgid "Change the appearance of the unit movement UI overlay"
-msgstr ""
+msgstr "更改单位移动 UI 叠加层的外观"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:410
@@ -6679,15 +6677,13 @@ msgstr "色调不透明度："
 
 #. [grid]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:148
-#, fuzzy
-#| msgid "Border Opacity:"
 msgid "Darken Opacity:"
-msgstr "边框不透明度："
+msgstr "变暗不透明度："
 
 #. [toggle_button]: id=reachmap_darken_tex
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:157
 msgid "Textured darken"
-msgstr ""
+msgstr "纹理变暗"
 
 #. [button]: id=open
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:49
@@ -6725,8 +6721,8 @@ msgid ""
 "If a unit can move but can’t attack, show a two-color orb with the colors "
 "for partially and fully moved."
 msgstr ""
-"若单位能够移动但不能攻击，则显示双色状态球，其中颜色为分别代表“已部分移"
-"动”和“已完全移动”的颜色。"
+"若单位能够移动但不能攻击，则显示双色状态球，其中颜色为分别代表“已部分移动”和"
+"“已完全移动”的颜色。"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:148
@@ -8195,8 +8191,8 @@ msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
-"用于支持多人游戏大厅的附加组件版本检查数据库出现了问题。请在http://bugs."
-"wesnoth.org报告此问题。"
+"用于支持多人游戏大厅的附加组件版本检查数据库出现了问题。请在http://"
+"bugs.wesnoth.org报告此问题。"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:1018
 msgid "This game is password protected. Join using moderator rights anyway?"
@@ -8241,16 +8237,12 @@ msgid "Random Maps"
 msgstr "随机地图"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:167
-#, fuzzy
-#| msgid "Scenario Editor"
 msgid "Scenario not found: "
-msgstr "场景编辑器"
+msgstr "未找到场景："
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:237
-#, fuzzy
-#| msgid "Modifications: "
 msgid "Modification(s) not found: "
-msgstr "模组："
+msgstr "未找到模组："
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:294
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:295
@@ -9645,3 +9637,6 @@ msgstr "在‘[$section|]’小节中，必须设定的键‘$key|’没有设�
 #: src/wml_exception.cpp:104
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 msgstr "在‘[$section|]’小节中，必须存在的子标签‘[$tag|]’不存在。"
+
+#~ msgid "Accessibility:"
+#~ msgstr "辅助功能："
