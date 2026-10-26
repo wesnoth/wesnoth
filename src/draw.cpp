@@ -35,7 +35,7 @@ static SDL_Renderer* renderer()
 	return video::get_renderer();
 }
 
-SDL_FRect rect_to_frect(const SDL_Rect& rect)
+static SDL_FRect rect_to_frect(const SDL_Rect& rect)
 {
 	SDL_FRect frect;
 	frect.h = rect.h;
