@@ -229,6 +229,13 @@ std::string fuh::get_tournaments(){
 	return conn_.get_tournaments();
 }
 
+bool fuh::is_ranked_user(const std::string& name)
+{
+	// Keep the server dependent on the user_handler interface rather than on
+	// the concrete database implementation.
+	return conn_.is_ranked_user(name);
+}
+
 void fuh::async_get_and_send_game_history(boost::asio::io_context& io_service, wesnothd::server& s, any_socket_ptr socket, int player_id, int offset, std::string& search_game_name, int search_content_type, std::string& search_content) {
 	boost::asio::post([this, &s, socket, player_id, offset, &io_service, search_game_name, search_content_type, search_content] {
 		boost::asio::post(io_service, [socket, &s, doc = conn_.get_game_history(player_id, offset, search_game_name, search_content_type, search_content)]{
