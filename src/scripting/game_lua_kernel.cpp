@@ -375,6 +375,28 @@ static int impl_add_animation(lua_State* L)
 	return 0;
 }
 
+// Todo: make a C++ impl to replace this method.
+int game_lua_kernel::impl_add_movement(lua_State* L)
+{
+	lua_getglobal(L, "wesnoth");
+	lua_getfield(L, -1, "interface");
+	lua_getfield(L, -1, "move_unit_fake_queue");
+	luaW_pushunit(L, luaW_checkunit_ptr(L, 2, false));
+	{
+		map_location temp = luaW_checklocation(L, 3);
+		lua_pushinteger(L, temp.wml_x());
+		lua_pushinteger(L, temp.wml_y());
+	}
+	lua_pushboolean(L, true);
+	if(lua_isnoneornil(L, 4)) {
+		lua_pushnil(L);
+	} else {
+		lua_pushboolean(L, luaW_toboolean(L, 4));
+	}
+	lua_call(L, 5, 0);
+	return 0;
+}
+
 int game_lua_kernel::impl_run_animation(lua_State* L)
 {
 	if(video::headless() || resources::controller->is_skipping_replay()) {
@@ -383,6 +405,16 @@ int game_lua_kernel::impl_run_animation(lua_State* L)
 	events::command_disabler command_disabler;
 	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey));
 	play_controller_.play_slice();
+	lua_getglobal(L, "wesnoth");
+	lua_getfield(L, -1, "interface");
+	lua_getfield(L, -1, "move_unit_fake_queue");
+	lua_pushnil(L);
+	lua_pushnil(L);
+	lua_pushnil(L);
+	lua_pushboolean(L, false);
+	lua_pushnil(L);
+	lua_call(L, 5, 0);
+
 	anim.start_animations();
 	anim.wait_for_end();
 	anim.set_all_standing();
@@ -411,6 +443,7 @@ int game_lua_kernel::intf_create_animator(lua_State* L)
 			{"__gc", impl_animator_collect},
 			{"__index", impl_animator_get},
 			{"add", impl_add_animation},
+			{"add_movement", &dispatch<&game_lua_kernel::impl_add_movement>},
 			{"run", &dispatch<&game_lua_kernel::impl_run_animation>},
 			{"clear", impl_clear_animation},
 			{nullptr, nullptr},
