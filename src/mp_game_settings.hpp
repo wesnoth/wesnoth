@@ -25,6 +25,69 @@
 
 #include <chrono>
 
+/**
+ * A pending tournament-game entry the authenticated player may select while
+ * creating a game.
+ *
+ * This is session data sent by wesnothd in [join_lobby], rather than part of
+ * persisted game settings. Each entry denotes one pending tournament game, so
+ * the selected tournament game can be recorded with the Wesnoth match.
+ */
+struct mp_tournament_info
+{
+	std::string id;
+	std::string name;
+	std::string game_id;
+	// Server-provided presentation components. Tournament and group names are
+	// organizer-defined and must be displayed as is; only the fixed labels
+	// such as "Round" and "Game" are localized by the client.
+	std::string phase_name;
+	std::string group_name;
+	std::string round_number;
+	std::string game_number;
+	/** Tournament Manager mode: ranked, unranked, or team. */
+	std::string mode;
+};
+
+/**
+ * Client-side metadata for ranked and tournament games.
+ *
+ * The metadata is serialized as flat attributes in [multiplayer] so the
+ * existing WML protocol used by wesnothd remains unchanged.
+ */
+struct competitive_game_settings
+{
+	/** Create empty metadata for a normal, non-competitive game. */
+	competitive_game_settings();
+	/** Read the flat competitive attributes from a [multiplayer] node. */
+	explicit competitive_game_settings(const config& cfg);
+
+	/** Remove ranked, tournament, and resume metadata from these settings. */
+	void clear();
+	/** Write the metadata as flat attributes for the existing WML protocol. */
+	void write(config& cfg) const;
+	/** True when the settings identify a ranked or tournament game. */
+	bool is_competitive() const;
+
+	/** Whether the game participates in ranked matchmaking. */
+	bool ranked_mode;
+	/** Persistent identifier of the ranked game, when one exists. */
+	std::string ranked_game_id;
+	/** Secret supplied by wesnothd to authorize a ranked-game resume. */
+	std::string ranked_resume_token;
+	/** Signature paired with ranked_resume_token for resume validation. */
+	std::string ranked_resume_signature;
+	/** Tournament and pending tournament-game identifiers. */
+	std::string tournament_id;
+	std::string tournament_name;
+	std::string tournament_game_id;
+	/** Organizer-defined tournament location and display metadata. */
+	std::string tournament_phase_name;
+	std::string tournament_group_name;
+	std::string tournament_round_number;
+	std::string tournament_game_number;
+};
+
 struct mp_game_settings
 {
 	mp_game_settings();
@@ -41,7 +104,11 @@ struct mp_game_settings
 	std::string mp_scenario;
 	std::string mp_scenario_name;
 	std::string mp_campaign;
+	competitive_game_settings competitive;
 	std::map<std::string, std::string> side_users;
+
+	/** True when these settings describe either a ranked or tournament game. */
+	bool is_competitive() const;
 
 	int num_turns;
 	int village_gold;
