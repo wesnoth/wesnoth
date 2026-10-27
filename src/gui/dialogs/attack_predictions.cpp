@@ -86,10 +86,12 @@ std::string attack_predictions::rng_mode_tooltip()
 	// These are the same strings as the options in the campaign selection dialog.
 	std::string description;
 	if(mode == "biased") {
+		// xgettext: no-c-format
 		description = _("Hits and misses are much more consistent. This tends to make small-scale engagements easier to plan.\n\nExample: if you strike three times with 50% accuracy, you will always hit at least once and miss at least once.");
 	} else if(mode == "deterministic") {
 		description = _("Identical to Default RNG, except loading a saved game will not change the outcome of an attack.\n\nExample: you strike twice and get lucky, hitting both strikes. You then load an earlier save and make the same attack again. Both strikes will still hit.");
 	} else {
+		// xgettext: no-c-format
 		description = _("Pure, unbiased randomness; the way Wesnoth is intended to be played.\n\nExample: if you strike twice with 50% accuracy, you’re most likely to hit once and miss once, but might also hit twice or miss twice.");
 	}
 
