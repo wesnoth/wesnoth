@@ -253,11 +253,16 @@ mapgen_lua_kernel::mapgen_lua_kernel(const config* vars)
 		// Map methods
 		{ "find",                &intf_mg_get_locations            },
 		{ "find_in_radius",      &intf_mg_get_tiles_radius         },
+		{ "on_board",            &intf_on_board                    },
+		{ "on_border",           &intf_on_border                   },
+		{ "iter",                &intf_terrainmap_iter             },
+		{ "terrain_mask",        &intf_terrain_mask                },
 		// Static functions
 		{ "filter",              &intf_terrainfilter_create        },
 		{ "create",              &intf_terrainmap_create           },
 		{ "generate_height_map", &intf_default_generate_height_map },
 		{ "generate",            &intf_default_generate            },
+		{ "replace_if_failed",   &intf_replace_if_failed           },
 		{ nullptr, nullptr }
 	};
 
@@ -302,9 +307,15 @@ void mapgen_lua_kernel::run_generator(const char * prog, const config & generato
 	protected_call(1, 1, std::bind(&lua_kernel_base::throw_exception, this, std::placeholders::_1, std::placeholders::_2));
 }
 
-void mapgen_lua_kernel::user_config(const char * prog, const config & generator)
+void mapgen_lua_kernel::user_config(const char* prog, config& generator)
 {
 	run_generator(prog, generator);
+	if(!lua_isnoneornil(mState, -1) && !luaW_toconfig(mState, -1, generator)) {
+		std::string msg = "expected a string, found a ";
+		msg += lua_typename(mState, lua_type(mState, -1));
+		lua_pop(mState, 1);
+		throw game::lua_error(msg.c_str(),"bad return value");
+	}
 }
 
 int mapgen_lua_kernel::intf_get_variable(lua_State *L)
