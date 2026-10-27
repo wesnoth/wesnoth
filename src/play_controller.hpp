@@ -18,6 +18,7 @@
 
 #include "controller_base.hpp"
 #include "game_end_exceptions.hpp"
+#include "gui/core/event/map_dispatcher.hpp"
 #include "help/help.hpp"
 #include "hotkey/command_executor.hpp"
 #include "menu_events.hpp"
@@ -360,6 +361,7 @@ protected:
 	events::mouse_handler mouse_handler_;
 	events::menu_handler menu_handler_;
 	std::unique_ptr<hotkey_handler> hotkey_handler_;
+	gui2::event::map_dispatcher map_dispatcher_;
 	std::unique_ptr<soundsource::manager> soundsources_manager_;
 	persist_manager persist_;
 

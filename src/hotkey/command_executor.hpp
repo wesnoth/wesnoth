@@ -182,9 +182,10 @@ public:
 	//  multiple actions with a single menu button, not sure whether it is actually used.
 	void execute_action(const std::vector<std::string>& items_arg);
 
-protected:
 	virtual bool can_execute_command(const hotkey::ui_command& command) const = 0;
 	virtual bool do_execute_command(const hotkey::ui_command& command, bool press = true, bool release = false);
+
+protected:
 
 	// Does the action control a toggle switch? If so, return the state of the action (on or off).
 	virtual action_state get_action_state(const hotkey::ui_command&) const

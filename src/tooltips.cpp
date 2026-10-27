@@ -19,6 +19,7 @@
 #include "floating_label.hpp"
 #include "font/standard_colors.hpp"
 #include "game_display.hpp"
+#include "gui/dialogs/tooltip.hpp"
 #include "help/help.hpp"
 #include "log.hpp"
 #include "sdl/rect.hpp"
@@ -347,9 +348,23 @@ void process(int mousex, int mousey)
 	}
 }
 
+void show(const point& mouse)
+{
+	for(auto& [_, tip] : tips) {
+		if(tip.origin.contains(mouse)) {
+			if (!tip.message.empty()) {
+				gui2::dialogs::tip::show("tooltip", tip.message, mouse, tip.origin);
+			}
+			return;
+		}
+	}
+
+	gui2::dialogs::tip::remove();
+}
+
 bool click(int mousex, int mousey)
 {
-	for(auto& [id, tip] : tips) { (void)id;
+	for(auto& [_, tip] : tips) {
 		if(!tip.action.empty() && tip.origin.contains(mousex, mousey)) {
 			help::show_help(tip.action);
 			return true;
