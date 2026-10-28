@@ -887,8 +887,11 @@ void addon_manager::uninstall_addon(const addon_info& addon)
 {
 	if(have_addon_pbl_info(addon.id) || have_addon_in_vcs_tree(addon.id)) {
 		gui2::show_error_message(
-			_("manager_dialog^The following add-on appears to have publishing or version control information stored locally, and will not be removed:")
-			+ " " +	addon.display_title_full());
+			_n(
+				"The following add-on appears to have publishing or version control information stored locally, and will not be removed:",
+			   	"The following add-ons appear to have publishing or version control information stored locally, and will not be removed:",
+			   	1
+			) + " " +	addon.display_title_full());
 		return;
 	}
 
