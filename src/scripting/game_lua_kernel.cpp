@@ -4516,7 +4516,8 @@ int game_lua_kernel::intf_delay(lua_State *L)
 		return 0;
 	}
 	if(luaW_toboolean(L, 2) && game_display_ && game_display_->turbo_speed() > 0) {
-		delay /= game_display_->turbo_speed();
+		// Divide as double: a speed below 1 would otherwise truncate to 0 and divide by zero.
+		delay = std::chrono::duration_cast<std::chrono::milliseconds>(delay / game_display_->turbo_speed());
 	}
 	const auto end_time = std::chrono::steady_clock::now() + delay;
 	do {
