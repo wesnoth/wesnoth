@@ -1,10 +1,10 @@
 # Sebastián Lecchini <sebas38760@gmail.com>, 2025, 2026.
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-h2tt\n"
+"Project-Id-Version: wesnoth-h2tt-1.20\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-10-21 02:43 UTC\n"
-"PO-Revision-Date: 2026-09-4 14:36-0300\n"
+"PO-Revision-Date: 2026-10-30 10:26-0300\n"
 "Last-Translator: Sebastián Lecchini <sebas38760@gmail.com>\n"
 "Language-Team: es\n"
 "Language: es\n"
@@ -298,7 +298,7 @@ msgstr ""
 #. [achievement_group]
 #: data/campaigns/Heir_To_The_Throne/achievements.cfg:43
 msgid "Grand Theft Wagon"
-msgstr "Gran robo de caravana"
+msgstr "Gran robo de carretas"
 
 #. [achievement_group]
 #: data/campaigns/Heir_To_The_Throne/achievements.cfg:44
@@ -318,7 +318,7 @@ msgstr "Combatir el fuego con fuego"
 #. [achievement_group]
 #: data/campaigns/Heir_To_The_Throne/achievements.cfg:47
 msgid "Recruit a Troll Whelp in <i>Glamdrol</i>."
-msgstr "Recluta un Cachorro de Trol en <i>Glamdrol</i>."
+msgstr "Recluta una Cría de Trol en <i>Glamdrol</i>."
 
 #. [achievement_group]
 #: data/campaigns/Heir_To_The_Throne/achievements.cfg:48
@@ -372,7 +372,7 @@ msgstr "Trae el equipo adecuado a <i>Excavando por Enanos</i>."
 #. [achievement_group]
 #: data/campaigns/Heir_To_The_Throne/achievements.cfg:52
 msgid "Minecraft"
-msgstr "Minero"
+msgstr "Minecraft"
 
 #. [achievement_group]
 #: data/campaigns/Heir_To_The_Throne/achievements.cfg:55
@@ -481,8 +481,8 @@ msgid ""
 "Complete <i>The Battle for Wesnoth</i> with Jotha, a free Elensefar, and an "
 "inspired Doors."
 msgstr ""
-"Completa <i>La Batalla por Wesnoth</i> con Jotha, un Elensefar libre, y unas "
-"Puertas inspiradas."
+"Completa <i>La Batalla por Wesnoth</i> con Jotha, una Elensefar libre, y "
+"unas Puertas inspiradas."
 
 #. [achievement_group]
 #: data/campaigns/Heir_To_The_Throne/achievements.cfg:71
@@ -573,8 +573,8 @@ msgstr "<b>-O-</b> (elige una recompensa)"
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:105
 msgid "(expires after playing any other scenario)"
 msgid_plural "(expires after playing $seasons_remaining other scenarios)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(expira después de jugar cualquier otro escenario)"
+msgstr[1] "(expira después de jugar $seasons_remaining escenarios)"
 
 #. [lua]: wesnoth.wml_actions.display_scenario_preview
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:212
@@ -4300,12 +4300,12 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:235
 msgid ""
 "I have not located the Sceptre yet, but I am making progress. I shall send a "
-"messenger once we are ready to retrieve it — perhaps in "
-"$( $bm_milestone_scepter - $bm_turns ) battles’ time."
+"messenger once we are ready to retrieve it — perhaps in $"
+"( $bm_milestone_scepter - $bm_turns ) battles’ time."
 msgstr ""
 "Aún no he localizado el Cetro, pero estoy progresando. Enviaré un mensajero "
-"una vez que estemos listos para recuperarlo — tal vez en "
-"$( $bm_milestone_scepter - $bm_turns ) batallas."
+"una vez que estemos listos para recuperarlo — tal vez en $"
+"( $bm_milestone_scepter - $bm_turns ) batallas."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:240
@@ -19588,9 +19588,9 @@ msgid ""
 "distance?! ...I’d be elated to see you, if you weren’t so clearly marching "
 "in rapport with the traitor prince. This is a surprise."
 msgstr ""
-"¡Alteza, la Princesa de Wesnoth! ¿Puedes ser tú, allá a lo lejos?! ..."
-"Estaría encantada de verte, si no estuvieras marchando tan claramente en "
-"sintonía con el príncipe traidor. Esto es una sorpresa."
+"¡Alteza, la Princesa de Wesnoth! ¿Puedes ser tú, allá a lo "
+"lejos?! ...Estaría encantada de verte, si no estuvieras marchando tan "
+"claramente en sintonía con el príncipe traidor. Esto es una sorpresa."
 
 #. [message]: speaker=Lisar
 #: data/campaigns/Heir_To_The_Throne/scenarios/41_Snow_Plains.cfg:220
@@ -25402,27 +25402,26 @@ msgid_plural ""
 "himself $regen HP per turn. If poisoned, he will remove the poison instead "
 "of healing."
 msgstr[0] ""
+"Konrad tiene actualmente 1 objeto mágico más, y se sanará a sí mismo $regen "
+"PV por turno. Si está envenenado, eliminará el veneno en lugar de sanarse."
 msgstr[1] ""
+"Konrad tiene actualmente $magic_item_count objetos mágicos más, y se sanará "
+"a sí mismo $regen PV por turno. Si está envenenado, eliminará el veneno en "
+"lugar de sanarse."
 
 #. [regenerate]: id=amulet_regen
 #: data/campaigns/Heir_To_The_Throne/utils/specials_and_abilities.cfg:558
 msgid "artifice"
-msgstr ""
+msgstr "artífice"
 
 #. [regenerate]: id=amulet_regen
 #: data/campaigns/Heir_To_The_Throne/utils/specials_and_abilities.cfg:559
-#, fuzzy
-#| msgid ""
-#| "Item for Konrad: <span color='#EFBF04'><b>Regenerate 1 HP each turn. This "
-#| "value doubles\n"
-#| "(2, 4, 8, etc) for each other magic item that Konrad wields.</b></span>"
 msgid ""
 "Regenerate 1 HP each turn. This value doubles (2, 4, 8, etc) for each other "
 "magic item that Konrad wields."
 msgstr ""
-"Objeto para Konrad: <span color='#EFBF04'><b>Regenera 1 PV cada turno. Este "
-"valor se duplica\n"
-"(2, 4, 8, etc.) por cada otro objeto mágico que Konrad empuñe.</b></span>"
+"Regenera 1 PV cada turno. Este valor se duplica (2, 4, 8, etc.) por cada "
+"otro objeto mágico que Konrad empuñe."
 
 #. [menu]: id=menu-main
 #: data/campaigns/Heir_To_The_Throne/utils/themes.cfg:34
@@ -25781,7 +25780,7 @@ msgstr "Oh... Supongo que me lo merezco..."
 
 #: data/campaigns/Heir_To_The_Throne/utils/unified_characters.cfg:860
 msgid "Ow!"
-msgstr "¡Ay!"
+msgstr "¡Ou!"
 
 #: data/campaigns/Heir_To_The_Throne/utils/unified_characters.cfg:861
 msgid "Jotha regrets nothing..."
@@ -25816,7 +25815,7 @@ msgstr "¡Bah! Díganle a los Clanes que morí luchando..."
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne/utils/unified_characters.cfg:879
 msgid "I have met my match..."
-msgstr "He encontrado mi igual..."
+msgstr "He encontrado a mi igual..."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/utils/unified_characters.cfg:885
@@ -25889,8 +25888,7 @@ msgstr "Muerte de Konrad, Delfador o Li’sar"
 msgid ""
 "Delfador is a leader, and can recruit elementals when standing on a keep."
 msgstr ""
-"Delfador es un líder y puede reclutar elementales cuando está en una "
-"fortaleza."
+"Delfador es un líder y puede reclutar elementales cuando está en un torreón."
 
 #~ msgid "{ON_DIFFICULTY4 15 25 30 40} gold"
 #~ msgstr "{ON_DIFFICULTY4 15 25 30 40} de oro"
