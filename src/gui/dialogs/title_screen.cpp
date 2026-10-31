@@ -530,7 +530,7 @@ void title_screen::button_callback_multiplayer()
 
 		const auto res = dlg.get_choice();
 
-		if(res == decltype(dlg)::choice::HOST && prefs::get().mp_server_warning_disabled() < 2) {
+		if(res == decltype(dlg)::choice::HOST && !gui2::dialogs::mp_host_game_prompt::get_do_not_show_again()) {
 			if(!gui2::dialogs::mp_host_game_prompt::execute()) {
 				continue;
 			}
