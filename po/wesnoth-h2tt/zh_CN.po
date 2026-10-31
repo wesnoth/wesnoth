@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.19\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-10-21 02:43 UTC\n"
-"PO-Revision-Date: 2026-10-20 21:14+0800\n"
+"PO-Revision-Date: 2026-10-27 22:56+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -551,8 +551,8 @@ msgstr "<b>-或-</b>（选择一项奖励）"
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:105
 msgid "(expires after playing any other scenario)"
 msgid_plural "(expires after playing $seasons_remaining other scenarios)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "（在游玩任意其他场景后过期）"
+msgstr[1] "（在游玩$seasons_remaining个其他场景后过期）"
 
 #. [lua]: wesnoth.wml_actions.display_scenario_preview
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:212
@@ -23206,7 +23206,7 @@ msgid ""
 "magic item that Konrad wields."
 msgstr ""
 "这件形状奇特的护身符会从附近的魔法物品中汲取能量，每回合为科纳德恢复 1 点生命"
-"值。科纳德每多持有一件魔法物品，此数值便翻倍（2、4、8 等）。"
+"值。科纳德每多持有一件魔法道具，此数值便翻倍（2、4、8 等）。"
 
 #. $magic_item_count controls gettext's plural selection. $regen will equal 2^$magic_item_count
 #: data/campaigns/Heir_To_The_Throne/utils/specials_and_abilities.cfg:536
@@ -23218,26 +23218,25 @@ msgid_plural ""
 "himself $regen HP per turn. If poisoned, he will remove the poison instead "
 "of healing."
 msgstr[0] ""
+"科纳德目前拥有1件其他的魔法道具，每回合可为他自己提供$regen生命值的治疗。如果"
+"中毒，则会解毒而非治疗。"
 msgstr[1] ""
+"科纳德目前拥有$magic_item_count件其他的魔法道具，每回合可为他自己提供$regen生"
+"命值的治疗。如果中毒，则会解毒而非治疗。"
 
 #. [regenerate]: id=amulet_regen
 #: data/campaigns/Heir_To_The_Throne/utils/specials_and_abilities.cfg:558
 msgid "artifice"
-msgstr ""
+msgstr "机巧"
 
 #. [regenerate]: id=amulet_regen
 #: data/campaigns/Heir_To_The_Throne/utils/specials_and_abilities.cfg:559
-#, fuzzy
-#| msgid ""
-#| "Item for Konrad: <span color='#EFBF04'><b>Regenerate 1 HP each turn. This "
-#| "value doubles\n"
-#| "(2, 4, 8, etc) for each other magic item that Konrad wields.</b></span>"
 msgid ""
 "Regenerate 1 HP each turn. This value doubles (2, 4, 8, etc) for each other "
 "magic item that Konrad wields."
 msgstr ""
-"科纳德的道具：<span color='#EFBF04'><b>每回合恢复1点生命值。\n"
-"科纳德每持有一件其他魔法道具，此数值便翻倍（2、4、8，以此类推）。</b></span>"
+"每回合恢复1点生命值。科纳德每持有一件其他魔法道具，此数值便翻倍（2、4、8，以"
+"此类推）。"
 
 #. [menu]: id=menu-main
 #: data/campaigns/Heir_To_The_Throne/utils/themes.cfg:34

@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.20\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-10-20 21:43-0500\n"
-"PO-Revision-Date: 2026-10-20 21:09+0800\n"
+"PO-Revision-Date: 2026-10-27 23:05+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -3274,19 +3274,14 @@ msgstr "默认的随机数生成器"
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:446
 #: src/gui/dialogs/attack_predictions.cpp:93
-#, fuzzy, c-format
-#| msgid ""
-#| "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
-#| "\n"
-#| "Example: if you strike twice with 50% accuracy, you’re most likely to hit "
-#| "once and miss once, but might also hit twice or miss twice."
+#, c-format
 msgid ""
 "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
 "\n"
 "Example: if you strike twice with 50% accuracy, you’re most likely to hit "
 "once and miss once, but might also hit twice or miss twice."
 msgstr ""
-"纯粹的、无偏见的随机性——这正是我们希望你游玩韦诺的方式。  \n"
+"纯粹的、无偏见的随机性——这正是我们希望你游玩韦诺的方式。\n"
 "\n"
 "例如：如果你以50%的命中率进行两次攻击，那么你很可能会一次命中、一次未命中，但"
 "也有可能两次都命中或两次都未命中。"
@@ -3325,13 +3320,7 @@ msgstr "随机性降低的随机数生成器"
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:458
 #: src/gui/dialogs/attack_predictions.cpp:89
-#, fuzzy, c-format
-#| msgid ""
-#| "Hits and misses are much more consistent. This tends to make small-scale "
-#| "engagements easier to plan.\n"
-#| "\n"
-#| "Example: if you strike three times with 50% accuracy, you will always hit "
-#| "at least once and miss at least once."
+#, c-format
 msgid ""
 "Hits and misses are much more consistent. This tends to make small-scale "
 "engagements easier to plan.\n"
