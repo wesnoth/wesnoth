@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-08-02 22:45-0500\n"
-"PO-Revision-Date: 2026-10-18 17:05+0530\n"
+"PO-Revision-Date: 2026-10-28 20:59+0530\n"
 "Last-Translator: Subhraman Sarkar <sbmskmm@protonmail.com>\n"
 "Language-Team: Bengali < >\n"
 "Language: bn\n"
@@ -2444,23 +2444,33 @@ msgstr ""
 
 #. [topic]: id=..eras_section
 #: data/core/help.cfg:127
+#, fuzzy
 msgid ""
 "A faction is a collection of units and leaders. Factions are assigned to "
 "sides in multiplayer games.\n"
 "\n"
 msgstr ""
+"একটি ফ্যাকশন হলো ইউনিট ও নেতাদের একটি সমষ্টি। মাল্টিপ্লেয়ার খেলায় গোষ্ঠীগুলি "
+"দলগুলির জন্য নির্ধারণ করা হয়। \n"
+"\n"
 
 #. [topic]: id=..eras_section
 #: data/core/help.cfg:129
+#, fuzzy
 msgid ""
 "An era is a collection of factions, intended to be played against one "
 "another. Besides the mainline eras that come with the game, many user-made "
 "factions are available from add-ons.\n"
 "\n"
 msgstr ""
+"একটি ইরা হল ফ্যাকশনগুলির একটি সমষ্টি, যেগুলিকে পরস্পরের বিরুদ্ধে খেলার উদ্দেশ্যে তৈরি "
+"করা হয়েছে। খেলার সঙ্গে আসা মূল ইরাগুলি ছাড়াও ব্যবহারকারীদের তৈরি অনেক ফ্যাকশন "
+"অ্যাড-অন থেকে পাওয়া যায়।\n"
+"\n"
 
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:138
+#, fuzzy
 msgid ""
 "Certain units have abilities that either directly affect other units or have "
 "an impact on how the unit interacts with other units. These abilities will "
@@ -2469,9 +2479,15 @@ msgid ""
 "have it.\n"
 "\n"
 msgstr ""
+"কিছু ইউনিটের এমন দক্ষতা আছে যা হয় সরাসরি অন্য ইউনিটগুলিকে প্রভাবিত করে, কিংবা অন্য "
+"ইউনিটগুলির সঙ্গে তাদের আন্তক্রিয়ার ধরণ বদলে দেয়। এই দক্ষতাগুলি আপনি যত দেখবেন, ততই "
+"এই বিভাগে তালিকাভুক্ত হবে। প্রতিটি পাতায় দক্ষতাটি কী করে এবং (এ পর্যন্ত আবিষ্কৃত) "
+"কোন কোন ইউনিটের তা আছে, তার বিবরণ থাকবে।\n"
+"\n"
 
 #. [topic]: id=..weapon_specials
 #: data/core/help.cfg:147
+#, fuzzy
 msgid ""
 "Some weapons have special features that increase the effectiveness of "
 "attacking with them. When you see a new weapon special during a campaign or "
@@ -2480,6 +2496,12 @@ msgid ""
 "weapon special does and which (currently discovered) units have it.\n"
 "\n"
 msgstr ""
+"কিছু অস্ত্রের এমন বিশেষ বৈশিষ্ট্য আছে যা সেগুলি দিয়ে আক্রমণের কার্যকারিতা বাড়ায়। "
+"কোনো অভিযান বা মাল্টিপ্লেয়ার ঘটনাক্রমে নতুন কোনো অস্ত্রের বিশেষত্ব দেখলে সেটি এই "
+"তালিকায় যোগ হবে; এরপর আপনি যেকোনো সময় তার পাতা দেখতে পারবেন। প্রতিটি পাতায় "
+"অস্ত্রের বিশেষত্বটি কী করে এবং (এ পর্যন্ত আবিষ্কৃত) কোন কোন ইউনিটের তা আছে, তার "
+"বিবরণ থাকবে। \n"
+"\n"
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:156
@@ -2531,6 +2553,30 @@ msgid ""
 "higher difficulties the enemy may have higher incomes, higher-level units, "
 "more castle hexes, and so on."
 msgstr ""
+"ওয়েসনথ একের পর এক যুদ্ধ নিয়ে গঠিত, যাদের বলা হয় <i>ঘটনাক্রম</i>, যেখানে আপনার "
+"সেনাদের এক বা একাধিক প্রতিপক্ষের সেনাদের মুখোমুখি দাঁড় করানো হয়। একটির পর একটি "
+"ঘটনাক্রম পরপর যুক্ত হয়ে একটি গল্প বললে তাকে বলে <i>অভিযান</i>। অভিযানে আপনাকে "
+"প্রায়ই আরও সতর্কভাবে খেলতে হবে, যাতে আপনার সেরা সেনাদের পরবর্তী ঘটনাক্রমে আবার "
+"ব্যবহারের জন্য বাঁচিয়ে রাখা যায়।ইন্টারঅ্যাকটিভ টিউটোরিয়াল অভিযান <b>দক্ষিণ প্রহরী</"
+"b> একটি অভিযানের পরিপ্রেক্ষিতে ওয়েসনথের খেলার ধারা পরিচয় করায়। টিউটোরিয়ালে যা "
+"কিছু আলোচিত হয়েছে তার অধিকাংশই এই পাতাগুলিতে ব্যাখ্যা করা আছে, তাই কিছু ভুলে গেলে "
+"আপনি সবসময় এখানে ফিরে আসতে পারেন।মূল বিষয়গুলি আয়ত্ত করার পর অবশ্যই এরপর নতুনদের "
+"জন্য অন্য একটি অভিযান চেষ্টা করুন! <i>দুই ভাইয়ের একটি গল্প</i>-এ আপনি দুই ভাইকে এক "
+"প্রাণঘাতী বিপদ কাটিয়ে উঠতে সাহায্য করতে পারেন, মহাকাব্যিক <i>সিংহাসনের "
+"উত্তরাধিকারী</i>-তে রাজকুমার কনরাডকে ওয়েসনথের ইতিহাসের এক মোড় ঘোরানো সময় পার "
+"করাতে সাহায্য করতে পারেন, অথবা সমান মহাকাব্যিক <i>প্রতারকের গ্যাম্বিট</i>-এ জাদুকর "
+"ডেলফাডরকে কিংবদন্তি হয়ে ওঠার পথে এগিয়ে নিয়ে যেতে পারেন। ইনস্টল করা সমস্ত "
+"অভিযানের সম্পূর্ণ তালিকা মূল মেনুর <b>অভিযান</b> বিকল্প থেকে পাওয়া যাবে, যেখানে "
+"ওয়েসনথের দীর্ঘ ইতিহাসের সমান আকর্ষণীয় আরও অনেক অভিযান আছে। আমরা সেগুলিকে "
+"তালিকার ক্রমে খেলার পরামর্শ দিই, তবে যেটি আপনার পছন্দ নয় সেটি বাদ দিতে দ্বিধা "
+"করবেন না!অভিযানগুলি <i>স্তর</i> ও <i>কাঠিন্য</i> অনুযায়ী ভাগ করা। যেমন, "
+"<i>সিংহাসনের উত্তরাধিকারী</i> ‘নবীন’ স্তরের, এবং তিনটি কাঠিন্যে খেলা যায়: "
+"‘শিক্ষানবিশ’, ‘সাধারণ’ ও ‘চ্যালেঞ্জিং’। অভিযানের স্তর বোঝায় খেলার কৌশলগুলিতে "
+"(যেমন <ref dst='movement'>নিয়ন্ত্রণের ক্ষেত্র</ref> ও <ref "
+"dst='time_of_day'>দিনের সময়</ref>) কতটা দক্ষতা ধরে নেওয়া হয়েছে। কাঠিন্য বোঝায় "
+"ঘটনাক্রমগুলি কতটা বিপজ্জনক হবে: উচ্চতর কাঠিন্যে জয়ের পথের বাধাগুলি বেশি হবে এবং "
+"সেগুলি কাটিয়ে উঠতে আরও দক্ষভাবে খেলতে হবে। যেমন, উচ্চতর কাঠিন্যে শত্রুর আয় বেশি "
+"থাকতে পারে, উচ্চতর স্তরের ইউনিট থাকতে পারে, দুর্গের ষড়ভুজ বেশি থাকতে পারে, ইত্যাদি।"
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:175
@@ -2541,6 +2587,10 @@ msgid ""
 "encounter new elements, such as <ref dst='..abilities_section'>abilities</"
 "ref>, for the first time."
 msgstr ""
+"খেলার সময় মনে রাখবেন, খেলার অনেক জিনিস, যেমন স্ট্যাটাস প্যানে দেখানো তথ্য ওপর "
+"মাউস নিয়ে গেলে, প্রতিটির একটি সংক্ষিপ্ত বিবরণ দেখা যায়। <ref "
+"dst='..abilities_section'>দক্ষতার</ref> মতো নতুন উপাদানের সঙ্গে প্রথমবার পরিচিত "
+"হওয়ার সময় এটি বিশেষভাবে কাজে লাগে।"
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:177
@@ -2563,6 +2613,11 @@ msgid ""
 "puzzle, or holding out against a siege until a certain number of turns have "
 "elapsed."
 msgstr ""
+"প্রতিটি ঘটনাক্রমের শুরুতে আসা <b>লক্ষ্যসমূহ</b> পপ-আপ বাক্সটি মন দিয়ে পড়ুন। বেশিরভাগ "
+"ঘটনাক্রমে সব শত্রু নেতাকে হত্যা করলে আপনি জয়ী হবেন; একইভাবে আপনার নিজের নেতার "
+"মৃত্যু সাধারণত পরাজয় ডেকে আনে। তবে কিছু ঘটনাক্রমে জয়ের অন্য লক্ষ্যও থাকতে পারে, যেমন "
+"আপনার নেতাকে একটি নির্দিষ্ট স্থানে পৌঁছে দেওয়া, কোনো মিত্রকে উদ্ধার করা, ধাঁধা "
+"সমাধান করা, বা নির্দিষ্ট সংখ্যক দান পার না হওয়া পর্যন্ত অবরোধ বজায় রাখা।"
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:190
@@ -2572,6 +2627,10 @@ msgid ""
 "save options or (if you are in a multiplayer game) chatting with other "
 "players before pressing that button to advance."
 msgstr ""
+"কোনো ঘটনাক্রমে জিতলে মানচিত্র ধূসর হয়ে যায় এবং <b>দান শেষ</b> বোতামটি "
+"<b>ঘটনাক্রম শেষ</b>-এ বদলে যায়। এগিয়ে যাওয়ার জন্য ওই বোতাম চাপার আগে আপনি এখন "
+"সংরক্ষণের বিকল্প বদলানো বা (মাল্টিপ্লেয়ার খেলায় থাকলে) অন্য খেলোয়াড়দের সঙ্গে চ্যাট "
+"করার মতো কাজ করতে পারেন।"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:197
@@ -2591,6 +2650,14 @@ msgid ""
 "for recruitment, along with their gold cost. Click on a unit to see its "
 "statistics, then press the <b>Recruit</b> button to recruit it."
 msgstr ""
+"প্রতিটি দল তার কিপে একজন নেতাকে নিয়ে শুরু করে। যেকোনো যুদ্ধের শুরুতে, এবং মাঝেমধ্যে "
+"তার সময়ও, আপনাকে সেনাবাহিনীতে <ref dst='..units'>ইউনিট</ref> নিয়োগ করতে হবে। "
+"নিয়োগ করতে হলে আপনার নেতাকে (যেমন <i>সিংহাসনের উত্তরাধিকারী</i> অভিযানে "
+"কনরাড) একটি <ref dst='..terrain_castle'>দুর্গের</ref> কিপ ষড়ভুজে থাকতে হবে। "
+"তারপর মেনু থেকে <b>নিয়োগ</b> বেছে নিয়ে, অথবা কোনো ষড়ভুজে ডান-ক্লিক করে "
+"<b>নিয়োগ</b> নির্বাচন করে আপনি নিয়োগ করতে পারেন। এতে নিয়োগ মেনু খুলবে, যেখানে "
+"নিয়োগযোগ্য ইউনিটগুলি তাদের টাকার খরচসহ তালিকাভুক্ত থাকে। কোনো ইউনিটে ক্লিক করে "
+"তার পরিসংখ্যান দেখুন, তারপর তাকে নিয়োগ করতে <b>নিয়োগ</b> বোতাম চাপুন।"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:200
@@ -2881,7 +2948,7 @@ msgstr ""
 #. [topic]: id=saveload
 #: data/core/help.cfg:295
 msgid "Save-loading"
-msgstr ""
+msgstr "সেভ-লোডিং"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:296
@@ -2939,7 +3006,7 @@ msgstr "ভুল থেকে শেখা"
 #. [topic]: id=whylost
 #: data/core/help.cfg:313
 msgid "<i>Why did I lose that scenario?</i>"
-msgstr ""
+msgstr "<i>আমি ওই ঘটনাক্রমটি কেন হারলাম?</i>"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:315
@@ -3014,7 +3081,7 @@ msgstr ""
 #. [topic]: id=whylost
 #: data/core/help.cfg:331
 msgid "Unlikely reasons"
-msgstr ""
+msgstr "অসম্ভাব্য কারণ"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:333
@@ -3746,7 +3813,7 @@ msgstr ""
 #. [topic]: id=using_addons
 #: data/core/help.cfg:617
 msgid "Using Add-ons"
-msgstr ""
+msgstr "অ্যাড-অন ব্যবহার করা"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:618
@@ -3757,10 +3824,8 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:620
-#, fuzzy
-#| msgid "Map and Scenario Editor"
 msgid "Campaigns and Scenarios"
-msgstr "মানচিত্র এবং ঘটনাক্রম পরিমার্জক"
+msgstr "অভিযান এবং ঘটনাক্রম"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:622
@@ -3786,10 +3851,8 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:628
-#, fuzzy
-#| msgid "Multiplayer Commands"
 msgid "Multiplayer Eras and Factions"
-msgstr "বহুখেলোয়াড় কমান্ডসমূহ"
+msgstr "মাল্টিপ্লেয়ার ইরা এবং ফ্যাকশনগুলি"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:630
@@ -3818,7 +3881,7 @@ msgstr ""
 #. [topic]: id=using_addons
 #: data/core/help.cfg:636
 msgid "Modifications"
-msgstr ""
+msgstr "পরিবর্তন"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:638
@@ -3830,10 +3893,8 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:640
-#, fuzzy
-#| msgid "Forest"
 msgid "Cores"
-msgstr "অরণ্য"
+msgstr "কোর"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:642
@@ -3899,7 +3960,7 @@ msgstr ""
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:669
 msgid "Removing Add-ons"
-msgstr ""
+msgstr "অ্যাড-অন মুছে ফেলা"
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:670
@@ -3939,7 +4000,7 @@ msgstr ""
 #. [topic]: id=general_commands
 #: data/core/help.cfg:692
 msgid "Clear chat messages."
-msgstr ""
+msgstr "চ্যাট ম্যাসেজ পরিস্কার করুন।"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:695
@@ -3967,7 +4028,7 @@ msgstr ""
 #. [topic]: id=general_commands
 #: data/core/help.cfg:704
 msgid "Display the controller status of a side."
-msgstr ""
+msgstr "একটি দলের কন্ট্রোলারের অবস্থা দেখান।"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:707
@@ -3979,7 +4040,7 @@ msgstr ""
 #. [topic]: id=general_commands
 #: data/core/help.cfg:710
 msgid "Switch a log domain to a different log level."
-msgstr ""
+msgstr "লগ ডোমেইন অন্য একটি লগ লেভেলে পাল্টান।"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:713
@@ -3989,27 +4050,27 @@ msgstr ""
 #. [topic]: id=general_commands
 #: data/core/help.cfg:716
 msgid "Bring up theme selection menu."
-msgstr ""
+msgstr "থিম পছন্দ করার মেনু খুলুন।"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:719
 msgid "Quit the scenario (without prompting)."
-msgstr ""
+msgstr "ঘটনাক্রম থেকে বেরিয়ে যান (প্রম্পট না করে)।"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:722
 msgid "Save the game (without prompting)."
-msgstr ""
+msgstr "খেলা সঞ্চয় করুন (প্রম্পট না করে)।"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:725
 msgid "Save the game and quit the scenario (without prompting)."
-msgstr ""
+msgstr "খেলা সঞ্চয় করুন ও ঘটনাক্রম থেকে বেরিয়ে যান (প্রম্পট না করে)।"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:732
 msgid "Multiplayer Commands"
-msgstr "বহুখেলোয়াড় কমান্ডসমূহ"
+msgstr "মাল্টিপ্লেয়ার কমান্ডসমূহ"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:736
@@ -4347,8 +4408,6 @@ msgstr ""
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:339
-#, fuzzy
-#| msgid "nightstalk"
 msgid "female^nightstalk"
 msgstr "রাত্রি-অনুসরণ"
 
@@ -4401,14 +4460,12 @@ msgstr ""
 #. [hides]: id=swamp_lurk
 #: data/core/macros/abilities.cfg:398
 msgid "swamp lurk"
-msgstr ""
+msgstr "জলাভূমি লুকোনো"
 
 #. [hides]: id=swamp_lurk
 #: data/core/macros/abilities.cfg:399
-#, fuzzy
-#| msgid "female^weak"
 msgid "female^swamp lurk"
-msgstr "দূর্বল"
+msgstr "জলাভূমি লুকোনো"
 
 #. [hides]: id=swamp_lurk
 #: data/core/macros/abilities.cfg:400
@@ -4864,22 +4921,12 @@ msgstr ""
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:60
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Undead units generally have undead as their only trait. Since undead "
-#| "units are the bodies of the dead, risen to fight again, poison has no "
-#| "effect upon them. This can make them invaluable in dealing with foes who "
-#| "use poison in conjunction with their attacks."
 msgid ""
 "Undead units generally have undead as their only trait. Since undead units "
 "are the bodies of the dead, risen to fight again, poison has no effect upon "
 "them. This can make them invaluable in dealing with foes who use poison in "
 "conjunction with their attacks."
 msgstr ""
-"\n"
-"\n"
 "সাধারণত না-মৃত ইউনিটদের একমাত্র দক্ষতা হল না-মৃত । যেহেতু না-মৃতরা প্রকৃতপক্ষে "
 "লড়াইয়ের জন্য পুনরায় উঠে দাঁড়ানো মৃতদেহ, তাদের ওপর বিষের কোনো প্রভাব নেই । তাই যে "
 "সকল শত্রুরা তাদের আক্রমণে বিষ ব্যবহার করে, তাদের বিরুদ্ধে এরা অত্যন্ত গুরুত্বপূর্ণ হতে "
@@ -5018,11 +5065,9 @@ msgstr "বুদ্ধিমতী"
 
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:192
-#, fuzzy
-#| msgid "Intelligent units require 20% less experience than usual to advance."
 msgid ""
 "<i>Intelligent</i> units require 20% less experience than usual to advance."
-msgstr "বুদ্ধিমান ইউনিটদের উন্নিত হতে স্বাভাবিকের থেকে 20% কম অভিজ্ঞতা লাগে"
+msgstr "বুদ্ধিমান ইউনিটদের উন্নিত হতে স্বাভাবিকের থেকে 20% কম অভিজ্ঞতা লাগে।"
 
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:194
@@ -5136,16 +5181,12 @@ msgstr "দূর্বল"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:306
-#, fuzzy
-#| msgid ""
-#| "Units with the <italic>text='weak'</italic> trait receive a 1 point "
-#| "decrease in hitpoints and melee damage."
 msgid ""
 "Units with the <i>weak</i> trait receive a 1 point decrease in hitpoints and "
 "melee damage."
 msgstr ""
 "<italic>দূর্বল</italic> বৈশিষ্ট্যযুক্ত ইউনিটদের জীবনসংখ্যা এবং নিকট আক্রমণের ক্ষতি "
-"সাধারণের থেকে 1 কম হয় ।"
+"সাধারণের থেকে 1 কম হয়।"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:323
@@ -5182,16 +5223,12 @@ msgstr "অল্পবুদ্ধি"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:345
-#, fuzzy
-#| msgid ""
-#| "Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
-#| "experience required to advance."
 msgid ""
 "Units with trait <i>dim</i> suffer a 20% increase in experience required to "
 "advance."
 msgstr ""
 "<italic>অল্পবুদ্ধি</italic> ইউনিটেদের পরবর্তী পর্যায়ে উন্নীত হতে 20% বেশী অভিজ্ঞতা "
-"লাগে ।"
+"লাগে।"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:347
@@ -5212,21 +5249,17 @@ msgstr "বৃদ্ধ"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:361
-#, fuzzy
-#| msgid ""
-#| "Units with the <italic>text='aged'</italic> trait have 8 hitpoints less "
-#| "and suffer from a 1 point decrease in movement and melee damage."
 msgid ""
 "Units with the <i>aged</i> trait have 8 hitpoints less and suffer from a 1 "
 "point decrease in movement and melee damage."
 msgstr ""
 "<italic>বয়স্ক</italic> বৈশিষ্ট্যযুক্ত ইউনিটগুলির জীবনসংখ্যা 8 কম এবং তাদের স্থানান্তর "
-"সংখ্যা ও নিকট আক্রমণের ক্ষতি 1 কম হয় ।"
+"সংখ্যা ও নিকট আক্রমণের ক্ষতি 1 কম হয়।"
 
 #. [trait]: id=oceangoing
 #: data/core/macros/traits.cfg:386
 msgid "oceangoing"
-msgstr ""
+msgstr "সমুদ্রগামী"
 
 #. [trait]: id=oceangoing
 #. this is a defense reduction - without this ability most oceangoing ships would have 30% defense on these terrains
@@ -5240,7 +5273,7 @@ msgstr ""
 #. https://en.wikipedia.org/wiki/Setting_pole
 #: data/core/macros/traits.cfg:416
 msgid "push-poles"
-msgstr ""
+msgstr "পুশ-পোল"
 
 #. [trait]: id=push_poles
 #: data/core/macros/traits.cfg:417
@@ -5252,7 +5285,7 @@ msgstr ""
 #. [disable]: id=unwieldy
 #: data/core/macros/weapon_specials.cfg:10
 msgid "unwieldy"
-msgstr ""
+msgstr "ভারসাম্যহীন"
 
 #. [disable]: id=unwieldy
 #: data/core/macros/weapon_specials.cfg:11
@@ -5286,10 +5319,8 @@ msgstr ""
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/weapon_specials.cfg:56
-#, fuzzy
-#| msgid "plague"
 msgid "plague ($type)"
-msgstr "প্লেগ"
+msgstr "প্লেগ ($type)"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/weapon_specials.cfg:57
@@ -5346,7 +5377,7 @@ msgstr ""
 #. [chance_to_hit]: id=honed
 #: data/core/macros/weapon_specials.cfg:132
 msgid "honed"
-msgstr ""
+msgstr "নিপুণ"
 
 #. [chance_to_hit]: id=honed
 #: data/core/macros/weapon_specials.cfg:133
@@ -5390,7 +5421,7 @@ msgstr ""
 #. [damage]: id=guard
 #: data/core/macros/weapon_specials.cfg:170
 msgid "guard"
-msgstr ""
+msgstr "প্রহরা"
 
 #. [damage]: id=guard
 #: data/core/macros/weapon_specials.cfg:171
@@ -5511,24 +5542,18 @@ msgstr ""
 
 #. [race]: id=cats
 #: data/core/units.cfg:49
-#, fuzzy
-#| msgid "race^Bat"
 msgid "race^Cat"
-msgstr "বাদুড়"
+msgstr "বিড়াল"
 
 #. [race]: id=cats
 #: data/core/units.cfg:50
-#, fuzzy
-#| msgid "race+female^Bat"
 msgid "race+female^Cat"
-msgstr "বাদুড়"
+msgstr "বিড়াল"
 
 #. [race]: id=cats
 #: data/core/units.cfg:51
-#, fuzzy
-#| msgid "race^Bats"
 msgid "race^Cats"
-msgstr "বাদুড়েরা"
+msgstr "বিড়ালেরা"
 
 #. [race]: id=cats
 #: data/core/units.cfg:52
@@ -5623,17 +5648,17 @@ msgstr ""
 #. [race]: id=dwarf
 #: data/core/units.cfg:82
 msgid "race^Dwarf"
-msgstr ""
+msgstr "বামন"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:83
 msgid "race+female^Dwarf"
-msgstr ""
+msgstr "বামন"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:84
 msgid "race^Dwarves"
-msgstr ""
+msgstr "বামনেরা"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:85
@@ -6122,17 +6147,13 @@ msgstr ""
 
 #. [race]: id=ship
 #: data/core/units.cfg:261
-#, fuzzy
-#| msgid "race^Saurian"
 msgid "race^Ship"
-msgstr "সরিয়ান"
+msgstr "জাহাজ"
 
 #. [race]: id=ship
 #: data/core/units.cfg:262
-#, fuzzy
-#| msgid "race+plural^Mechanical"
 msgid "race+plural^Ships"
-msgstr "যান্ত্রিক"
+msgstr "জাহাজেরা"
 
 #. [race]: id=ship
 #: data/core/units.cfg:263
@@ -6290,7 +6311,7 @@ msgstr ""
 #. [race]: id=orc
 #: data/core/units.cfg:319
 msgid "Society"
-msgstr ""
+msgstr "সমাজ"
 
 #. [race]: id=orc
 #: data/core/units.cfg:320
@@ -6666,10 +6687,8 @@ msgstr ""
 
 #: src/help/help_topic_generators.cpp:245
 #: src/help/help_topic_generators.cpp:653
-#, fuzzy
-#| msgid "Special Notes:"
 msgid "Special Notes"
-msgstr "বিশেষ তথ্য:"
+msgstr "বিশেষ তথ্য"
 
 #. TRANSLATORS: $types is a conjunct list, typical values will be "Castle" or "Flat and Shallow Water".
 #. The terrain names will be hypertext links to the help page of the corresponding terrain type.
@@ -6698,14 +6717,10 @@ msgid "Level"
 msgstr "পর্যায়"
 
 #: src/help/help_topic_generators.cpp:415
-#, fuzzy
-#| msgid "Advances from: "
 msgid "Advances from:"
 msgstr "উন্নীত হয়েছে: "
 
 #: src/help/help_topic_generators.cpp:417
-#, fuzzy
-#| msgid "Advances to: "
 msgid "Advances to:"
 msgstr "উন্নীত হবে: "
 
