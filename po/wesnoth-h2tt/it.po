@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-10-21 02:43 UTC\n"
-"PO-Revision-Date: 2026-09-06 22:21+0200\n"
+"PO-Revision-Date: 2026-10-26 20:26+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -576,8 +576,9 @@ msgstr "<b>-O-</b> (scegli una ricompensa)"
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:105
 msgid "(expires after playing any other scenario)"
 msgid_plural "(expires after playing $seasons_remaining other scenarios)"
-msgstr[0] ""
+msgstr[0] "(si esaurisce dopo aver giocato un qualsiasi altro scenario)"
 msgstr[1] ""
+"(si esaurisce dopo aver giocato $seasons_remaining altri scenari qualsiasi)"
 
 #. [lua]: wesnoth.wml_actions.display_scenario_preview
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:212
@@ -945,10 +946,10 @@ msgid ""
 "of Garard’s Royal Cavalry stands at your service. May they serve you well, "
 "as you ride to claim your rightful place on the throne!"
 msgstr ""
-"Ti siamo grati per il tuo aiuto, giovane erede! Il nostro porto ora è aperto,"
-"e quello che ne rimane della Cavalleria Reale di Garard è al tuo servizio. "
-"Che ti siano di grande aiuto mentre cavalchi per reclamare il tuo legittimo "
-"posto sul trono!"
+"Ti siamo grati per il tuo aiuto, giovane erede! Il nostro porto ora è "
+"aperto,e quello che ne rimane della Cavalleria Reale di Garard è al tuo "
+"servizio. Che ti siano di grande aiuto mentre cavalchi per reclamare il tuo "
+"legittimo posto sul trono!"
 
 #. [message]: speaker=Kaylan
 #: data/campaigns/Heir_To_The_Throne/overworld/00a_western_wesnoth.cfg:469
@@ -4355,12 +4356,12 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:235
 msgid ""
 "I have not located the Sceptre yet, but I am making progress. I shall send a "
-"messenger once we are ready to retrieve it — perhaps in "
-"$( $bm_milestone_scepter - $bm_turns ) battles’ time."
+"messenger once we are ready to retrieve it — perhaps in $"
+"( $bm_milestone_scepter - $bm_turns ) battles’ time."
 msgstr ""
 "Non ho ancora trovato lo Scettro, ma sto facendo progressi. Manderò un "
-"messaggero quando saremo pronti a recuperarlo — forse tra "
-"$( $bm_milestone_scepter - $bm_turns ) battaglie."
+"messaggero quando saremo pronti a recuperarlo — forse tra $"
+"( $bm_milestone_scepter - $bm_turns ) battaglie."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:240
@@ -22180,8 +22181,8 @@ msgid ""
 "sovereign; your own kin. ...I suppose it runs in the family."
 msgstr ""
 "Ciao, Li’sar. Mi dispiace anche a me. Non avrei mai pensato che fossi il "
-"tipo da rivoltarti contro il tuo sovrano, contro i tuoi stessi simili. ..."
-"Immagino sia una cosa di famiglia."
+"tipo da rivoltarti contro il tuo sovrano, contro i tuoi stessi "
+"simili. ...Immagino sia una cosa di famiglia."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/48_Dan_Tonk.cfg:297
@@ -25729,7 +25730,7 @@ msgstr "Coraggio, uomini! Radunatevi e vendicate i caduti!"
 #. [object]: id=amulet
 #: data/campaigns/Heir_To_The_Throne/utils/specials_and_abilities.cfg:489
 msgid "Artificer’s Amulet"
-msgstr "Amuleto dell’Artigiano"
+msgstr "Amuleto Catalizzatore"
 
 #. [object]: id=amulet
 #: data/campaigns/Heir_To_The_Throne/utils/specials_and_abilities.cfg:490
@@ -25752,27 +25753,27 @@ msgid_plural ""
 "himself $regen HP per turn. If poisoned, he will remove the poison instead "
 "of healing."
 msgstr[0] ""
+"Attualmente Konrad possiede solo un altro oggetto magico e quindi potrà auto-"
+"curarsi $regen PF ad ogni turno. Se viene avvelenato, al posto della cura "
+"verrà eliminato il veleno."
 msgstr[1] ""
+"Attualmente Konrad possiede $magic_item_count altri oggetti magici e quindi "
+"potrà auto-curarsi $regen PF ad ogni turno. Se viene avvelenato, al posto "
+"della cura verrà eliminato il veleno."
 
 #. [regenerate]: id=amulet_regen
 #: data/campaigns/Heir_To_The_Throne/utils/specials_and_abilities.cfg:558
 msgid "artifice"
-msgstr ""
+msgstr "catalizzatore"
 
 #. [regenerate]: id=amulet_regen
 #: data/campaigns/Heir_To_The_Throne/utils/specials_and_abilities.cfg:559
-#, fuzzy
-#| msgid ""
-#| "Item for Konrad: <span color='#EFBF04'><b>Regenerate 1 HP each turn. This "
-#| "value doubles\n"
-#| "(2, 4, 8, etc) for each other magic item that Konrad wields.</b></span>"
 msgid ""
 "Regenerate 1 HP each turn. This value doubles (2, 4, 8, etc) for each other "
 "magic item that Konrad wields."
 msgstr ""
-"Oggetto per Konrad: <span color=’#EFBF04’><b>rigenera 1PF ad ogni turno. Il "
-"valore raddoppia\n"
-"(2, 4, 8, etc) per ogni altro oggetto magico che Konrad brandisce.</b></span>"
+"Rigenera 1PF ad ogni turno. Il valore raddoppia (2, 4, 8, etc) per ogni "
+"altro oggetto magico che Konrad brandisce."
 
 #. [menu]: id=menu-main
 #: data/campaigns/Heir_To_The_Throne/utils/themes.cfg:34

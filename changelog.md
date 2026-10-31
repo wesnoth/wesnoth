@@ -8,7 +8,7 @@
 ### Packaging
 ### Terrain
 ### Translations
-   * Updated translations: Bengali, British English, Chinese (Simplified), Spanish
+   * Updated translations: Bengali, British English, Chinese (Simplified), Italian, Spanish
 ### Units
 ### User interface
 ### WML Engine
