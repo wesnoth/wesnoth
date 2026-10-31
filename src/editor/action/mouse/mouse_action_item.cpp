@@ -13,7 +13,7 @@
 	See the COPYING file for more details.
 */
 
-#define GETTEXT_DOMAIN "wesnoth-editor"
+#define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "editor/action/mouse/mouse_action_item.hpp"
 #include "editor/action/action_item.hpp"
