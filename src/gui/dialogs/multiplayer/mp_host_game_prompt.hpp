@@ -29,6 +29,7 @@ public:
 	/** The execute function. See @ref modal_dialog for more information. */
 	DEFINE_SIMPLE_EXECUTE_WRAPPER(mp_host_game_prompt)
 
+	static bool get_do_not_show_again();
 private:
 	virtual const std::string& window_id() const override;
 };
