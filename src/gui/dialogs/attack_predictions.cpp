@@ -99,12 +99,7 @@ std::string attack_predictions::rng_mode_tooltip()
 static std::string get_probability_string(const double prob)
 {
 	std::ostringstream ss;
-
-	if(prob > 0.9995) {
-		ss << "100%";
-	} else {
-		ss << std::fixed << std::setprecision(1) << 100.0 * prob << '%';
-	}
+	ss << std::fixed << std::setprecision(1) << 100.0 * prob << '%';
 
 	return ss.str();
 }
