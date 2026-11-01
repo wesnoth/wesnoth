@@ -194,6 +194,9 @@ public:
 	// Also expose this for the same reason:
 	const terrain_type& get_terrain_info(const t_translation::terrain_code & terrain) const;
 
+	/* Get the underlying terrain_type_data object. */
+	const terrain_type_data* tdata() const { return tdata_; }
+
 	/**
 	 * Loads a map.
 	 *
