@@ -43,7 +43,7 @@ namespace utils {
 				return form.evaluate().string_cast();
 			} catch(const wfl::formula_error& e) {
 				ERR_NG << "Formula in WML string cannot be evaluated due to "
-					<< e.type << "\n\t--> \"";
+					<< e.type << "\n\t--> \"" << formula << "\"";
 				return "";
 			}
 		}
