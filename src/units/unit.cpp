@@ -2299,7 +2299,8 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 			set_attr_changed(UA_ABILITIES);
 			ability_vector to_append;
 			for(const auto [key, cfg] : abilities.all_children_view()) {
-				if(!has_ability_by_id(cfg["id"])) {
+				const std::string& ability_id = cfg["id"].str();
+				if(ability_id.empty() || !has_ability_by_id(ability_id)) {
 					to_append.push_back(unit_ability_t::create(key, cfg, false));
 					for(const config& event : cfg.child_range("event")) {
 						events.add_child("event", event);
