@@ -1536,6 +1536,17 @@ bool unit::has_ability_by_id(const std::string& ability) const
 	return false;
 }
 
+bool unit::has_ability_by_cfg(const config& cfg, const std::string& key) const
+{
+	for(const ability_ptr& ab : abilities_) {
+		if(ab->tag() == key && ab->cfg() == cfg) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
 void unit::remove_ability_by_id(const std::string& ability)
 {
 	set_attr_changed(UA_ABILITIES);
@@ -2299,7 +2310,7 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 			set_attr_changed(UA_ABILITIES);
 			ability_vector to_append;
 			for(const auto [key, cfg] : abilities.all_children_view()) {
-				if(!has_ability_by_id(cfg["id"])) {
+				if(!has_ability_by_id(cfg["id"]) || !has_ability_by_cfg(cfg, key)) {
 					to_append.push_back(unit_ability_t::create(key, cfg, false));
 					for(const config& event : cfg.child_range("event")) {
 						events.add_child("event", event);
