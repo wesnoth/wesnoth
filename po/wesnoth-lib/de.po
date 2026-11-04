@@ -6,7 +6,7 @@
 # Oliver 'Crommy' Lange <oli-lange@web.de>, 2010 - 2012.
 # Aaron Winter <winter.aaron93@gmail.com>, 2018.
 # Mathias Lang <heindal@scherbia.de>, 2021.
-# Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>, 2023.
+# Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>, 2023, 2026.
 # Wuzzy <Wuzzy@disroot.org>, 2024.
 # Johannes Löhnert <loehnert.kde@gmx.de>, 2026
 msgid ""
@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.18 - wesnoth-lib - de\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-10-20 21:43-0500\n"
-"PO-Revision-Date: 2026-04-11 08:45+0200\n"
+"PO-Revision-Date: 2026-11-04 02:52+0100\n"
 "Last-Translator: Johannes Löhnert <loehnert.kde@gmx.de>\n"
 "Language-Team: German <irc://irc.libera.chat/#wesnoth-de>\n"
 "Language: de_DE\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -3379,11 +3379,10 @@ msgstr "Kämpfe:"
 msgid "Default RNG"
 msgstr "Standard-Zufall"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [option]
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:446
 #: src/gui/dialogs/attack_predictions.cpp:93
-#, fuzzy, c-format
+#, c-format
 #| msgid ""
 #| "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
 #| "\n"
@@ -3433,11 +3432,10 @@ msgstr ""
 msgid "Reduced RNG"
 msgstr "Verringerter Zufall"
 
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [option]
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:458
 #: src/gui/dialogs/attack_predictions.cpp:89
-#, fuzzy, c-format
+#, c-format
 #| msgid ""
 #| "Hits and misses are much more consistent. This tends to make small-scale "
 #| "engagements easier to plan.\n"
@@ -8496,16 +8494,14 @@ msgid "Random Maps"
 msgstr "Zufallskarten"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:167
-#, fuzzy
 #| msgid "Scenario Editor"
 msgid "Scenario not found: "
-msgstr "Szenario-Editor"
+msgstr "Szenario fehlt: "
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:237
-#, fuzzy
 #| msgid "Modifications: "
 msgid "Modification(s) not found: "
-msgstr "Modifikationen: "
+msgstr "Modifikationen fehlen: "
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:294
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:295
@@ -9761,7 +9757,7 @@ msgstr "Erweiterungs-ID ändern"
 
 #: src/hotkey/hotkey_command.cpp:279
 msgid "Select active Add-on"
-msgstr "Aktive Erweiterung aufwählen"
+msgstr "Aktive Erweiterung auswählen"
 
 #: src/hotkey/hotkey_command.cpp:280
 msgid "Open Add-on folder"

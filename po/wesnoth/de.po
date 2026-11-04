@@ -7,14 +7,14 @@
 #  Rhonda D'Vine <rhonda@deb.at>, 2005, 2006, 2010.
 #  Elias Pschernig <allefant@allefant.com>, 2012.
 #  Aaron Winter <winter.aaron93@gmail.com>, 2018.
-#  Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>, 2018, 2022, 2023.
+#  Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>, 2018, 2022, 2023, 2026.
 #  Mathias Lang <heindal@scherbia.de>, 2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-10-20 21:43-0500\n"
-"PO-Revision-Date: 2026-05-17 16:23+0200\n"
+"PO-Revision-Date: 2026-11-04 02:41+0100\n"
 "Last-Translator: Wuzzy <Wuzzy@disroot.org>\n"
 "Language-Team: German <irc://irc.libera.chat/#wesnoth-de>\n"
 "Language: de_DE\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -7093,10 +7093,9 @@ msgid "multiplayer^MP"
 msgstr "MP"
 
 #: src/game_initialization/create_engine.cpp:661
-#, fuzzy
 #| msgid "Variable not found"
 msgid "Era not found: "
-msgstr "Variable nicht gefunden"
+msgstr "Epoche fehlt: "
 
 #: src/game_initialization/depcheck.cpp:495
 msgid "Failed to resolve dependencies"
@@ -9031,8 +9030,8 @@ msgstr "Schaden gegen:"
 #: src/reports.cpp:1002
 msgid "uses $num attack"
 msgid_plural "uses $num attacks"
-msgstr[0] "benutzt $number Angriff"
-msgstr[1] "benutzt $number Angriffe"
+msgstr[0] "benutzt $num Angriff"
+msgstr[1] "benutzt $num Angriffe"
 
 #: src/reports.cpp:1010
 msgid "This attack uses $num attack point"
