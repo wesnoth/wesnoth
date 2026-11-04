@@ -1754,6 +1754,14 @@ public:
 	bool has_ability_by_id(const std::string& ability) const;
 
 	/**
+	 * Check if the unit has an ability of a specific ID.
+	 * @param cfg The config of ability to check for.
+	 * @param key The tag name of ability to check for.
+	 * @returns true if the ability is present
+	 */
+	bool has_ability_by_cfg(const config& cfg, const std::string& key) const;
+
+	/**
 	 * Removes a unit's abilities with a specific ID.
 	 * @param ability The type of ability (tag name) to remove.
 	 */
