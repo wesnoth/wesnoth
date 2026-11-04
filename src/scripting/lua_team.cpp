@@ -68,8 +68,9 @@ SIDE_GETTER("gold", int) {
 	return t.gold();
 }
 
-SIDE_SETTER("gold", int) {
-	t.set_gold(value);
+// allow setting gold from calculations without the need for manual conversion to int
+SIDE_SETTER("gold", double) {
+	t.set_gold(static_cast<int>(value));
 }
 
 SIDE_GETTER("objectives", t_string) {
