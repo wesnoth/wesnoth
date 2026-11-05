@@ -59,7 +59,6 @@ campaign_selection::campaign_selection(ng::create_engine& eng)
 	, rng_mode_(RNG_DEFAULT)
 	, mod_states_()
 	, page_ids_()
-	, difficulties_()
 	, current_difficulty_()
 	, current_sorting_(RANK)
 	, currently_sorted_asc_(true)
@@ -101,17 +100,25 @@ void campaign_selection::campaign_selected()
 	background.set_label(engine_.current_level().data()["background"].str());
 
 	// Rebuild difficulty menu
-	difficulties_.clear();
-
 	auto& diff_menu = find_widget<menu_button>("difficulty_menu");
 
-	auto diff_config_range = engine_.current_level().data().child_range("difficulty");
-	const std::size_t difficulty_count = diff_config_range.size();
-
-	if(diff_config_range.empty() || !actual_campaign) {
+	// Attempt to set the difficulty list. If doing so fails (because the campaign has no difficulties), disable the difficulty menu.
+	if(!actual_campaign || !set_difficulty_list(diff_menu, engine_.current_level().data())) {
 		// Cosmetic bug: this leaves the difficulties of a previously-selected campaign visible
 		diff_menu.set_active(false);
 		return;
+	}
+
+	diff_menu.set_active(true);
+}
+
+bool campaign_selection::set_difficulty_list(menu_button& diff_menu, const config& campaign, const std::string& selected)
+{
+	auto diff_config_range = campaign.child_range("difficulty");
+	const std::size_t difficulty_count = diff_config_range.size();
+
+	if(diff_config_range.empty()) {
+		return false;
 	}
 
 	std::vector<config> entry_list;
@@ -124,7 +131,7 @@ void campaign_selection::campaign_selected()
 		entry["label"] = cfg["label"].str() + " (" + cfg["description"].str() + ")";
 		entry["image"] = cfg["image"].str("misc/blank-hex.png");
 
-		if(prefs::get().is_campaign_completed(campaign_id, cfg["define"])) {
+		if(prefs::get().is_campaign_completed(campaign["id"], cfg["define"])) {
 			std::string laurel;
 
 			if(n + 1 >= difficulty_count) {
@@ -153,25 +160,38 @@ void campaign_selection::campaign_selected()
 			entry["details"] = std::move(desc);
 		}
 
+		entry["define"] = cfg["define"].str();
 		entry_list.emplace_back(std::move(entry));
-		difficulties_.emplace_back(cfg["define"].str());
 
-		if(cfg["default"].to_bool(false)) {
+		if(selected.empty() ? cfg["default"].to_bool(false) : cfg["define"].str() == selected) {
 			selection = n;
 		}
 
 		++n;
 	}
 
-	diff_menu.set_active(true);
 	diff_menu.set_values(entry_list);
 	diff_menu.set_selected(selection);
+	return true;
+}
+
+void campaign_selection::select_rng_option(menu_button& rng_menu, const std::string& random_mode)
+{
+	auto rng_it = std::find(rng_mode_prefs.begin(), rng_mode_prefs.end(), random_mode);
+	rng_menu.set_selected(rng_it != rng_mode_prefs.end()
+		? static_cast<unsigned>(std::distance(rng_mode_prefs.begin(), rng_it))
+		: static_cast<unsigned>(RNG_DEFAULT));
+}
+
+std::string campaign_selection::get_selected_rng_option(const menu_button& rng_menu)
+{
+	const unsigned mode = std::clamp<unsigned>(rng_menu.get_value(), RNG_DEFAULT, RNG_BIASED);
+	return mode == RNG_DEFAULT ? "" : rng_mode_prefs[mode];
 }
 
 void campaign_selection::difficulty_selected()
 {
-	const std::size_t selection = find_widget<menu_button>("difficulty_menu").get_value();
-	current_difficulty_ = difficulties_.at(std::min(difficulties_.size() - 1, selection));
+	current_difficulty_ = find_widget<menu_button>("difficulty_menu").get_value_config()["define"].str();
 }
 
 void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order, bool ascending)
@@ -462,11 +482,7 @@ void campaign_selection::pre_show()
 	// Set up RNG mode dropdown
 	//
 	// New installs default to "Reduced RNG"; existing installs restore the last selection.
-	menu_button& rng_menu = find_widget<menu_button>("rng_menu");
-	auto rng_it = std::find(rng_mode_prefs.begin(), rng_mode_prefs.end(), prefs::get().campaign_rng_mode());
-	rng_menu.set_selected(rng_it != rng_mode_prefs.end()
-		? static_cast<unsigned>(std::distance(rng_mode_prefs.begin(), rng_it))
-		: static_cast<unsigned>(RNG_DEFAULT));
+	select_rng_option(find_widget<menu_button>("rng_menu"), prefs::get().campaign_rng_mode());
 
 	//
 	// Set up Difficulty dropdown

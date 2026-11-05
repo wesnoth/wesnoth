@@ -25,7 +25,6 @@
 #include "game_errors.hpp"
 #include "game_version.hpp"
 #include "gettext.hpp"
-#include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/dialogs/game_load.hpp"
 #include "gui/dialogs/game_save.hpp"
 #include "gui/dialogs/message.hpp"
@@ -77,27 +76,6 @@ void clean_saves(const std::string& label)
 
 namespace
 {
-bool show_difficulty_dialog(load_game_metadata& load_data)
-{
-	std::string campaign_id = load_data.summary["campaign"];
-	const game_config_view& game_config = game_config_manager::get()->game_config();
-
-	if(const auto campaign = game_config.find_child("campaign", "id", campaign_id)) {
-		gui2::dialogs::campaign_difficulty difficulty_dlg(*campaign);
-
-		// Return if canceled, since otherwise load_data_.difficulty will be set to 'CANCEL'
-		if(!difficulty_dlg.show()) {
-			return false;
-		}
-
-		load_data.difficulty = difficulty_dlg.selected_difficulty();
-		load_data.load_config["difficulty"] = load_data.difficulty;
-		load_data.select_difficulty = false;
-	}
-
-	return true;
-}
-
 /** Confirms attempts to load saves from previous game versions. */
 bool check_version_compatibility(const version_info& save_version)
 {
@@ -199,10 +177,12 @@ utils::optional<load_game_metadata> load_interactive()
 		return utils::nullopt;
 	}
 
-	if(load_data.select_difficulty) {
-		if(!show_difficulty_dialog(load_data)) {
-			return utils::nullopt;
-		}
+	if(!load_data.difficulty.empty()) {
+		load_data.load_config["difficulty"] = load_data.difficulty;
+	}
+
+	if(load_data.random_mode) {
+		load_data.load_config["random_mode"] = *load_data.random_mode;
 	}
 
 	if(!check_version_compatibility(load_data.load_config)) {
