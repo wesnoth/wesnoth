@@ -19,6 +19,7 @@
 
 #include "game_initialization/create_engine.hpp"
 #include "gui/dialogs/multiplayer/plugin_executor.hpp"
+#include "gui/widgets/menu_button.hpp"
 
 #include <boost/dynamic_bitset.hpp>
 
@@ -64,6 +65,15 @@ public:
 		return current_difficulty_;
 	}
 
+	/** Fills the given difficulty menu with options from the given campaign. Returns false if the campaign has no difficulties. */
+	static bool set_difficulty_list(menu_button& diff_menu, const config& campaign, const std::string& selected = "");
+
+	/** Selects the given RNG menu's option for the given random_mode. */
+	static void select_rng_option(menu_button& rng_menu, const std::string& random_mode);
+
+	/** Returns the random_mode for the given RNG menu's selected option. */
+	static std::string get_selected_rng_option(const menu_button& rng_menu);
+
 private:
 	/** Called when an item in the left-hand pane (the tree view) is selected. */
 	void campaign_selected();
@@ -97,8 +107,6 @@ private:
 	boost::dynamic_bitset<> mod_states_;
 
 	std::vector<std::string> page_ids_;
-
-	std::vector<std::string> difficulties_;
 
 	std::string current_difficulty_;
 

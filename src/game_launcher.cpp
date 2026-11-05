@@ -560,10 +560,10 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 
 #ifdef __cpp_aggregate_paren_init
 	load_data_.emplace(
-		savegame::save_index_class::default_saves_dir(), save.filename(), "", true, true, false);
+		savegame::save_index_class::default_saves_dir(), save.filename(), "", true, true);
 #else
 	load_data_ = savegame::load_game_metadata{
-		savegame::save_index_class::default_saves_dir(), save.filename(), "", true, true, false};
+		savegame::save_index_class::default_saves_dir(), save.filename(), "", true, true};
 #endif
 	load_data_->read_file();
 

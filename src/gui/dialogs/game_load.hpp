@@ -34,6 +34,7 @@ public:
 
 private:
 	virtual void pre_show() override;
+	virtual void post_show() override;
 
 	virtual const std::string& window_id() const override;
 
@@ -63,9 +64,11 @@ private:
 	std::string& filename_;
 	std::shared_ptr<savegame::save_index_class>& save_index_manager_;
 
-	field_bool* change_difficulty_;
 	field_bool* show_replay_;
 	field_bool* cancel_orders_;
+
+	std::string& difficulty_;
+	utils::optional<std::string>& random_mode_;
 
 	config& summary_;
 
