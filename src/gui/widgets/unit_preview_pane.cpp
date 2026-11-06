@@ -225,12 +225,34 @@ void unit_preview_pane::print_attack_details(
 
 	for(const auto& a : attacks) {
 		const std::string range_png = std::string("icons/profiles/") + a.range() + "_attack.png~SCALE_INTO(16,16)";
-		const std::string type_png = std::string("icons/profiles/") + a.type() + ".png~SCALE_INTO(16,16)";
+		std::pair<std::string, std::set<std::string>> all_damage_types = a.damage_types();
+		// if not [damage_type]replacement_type=  then all_damage_types.first = a.type().
+		std::string r_type = all_damage_types.first;
+		std::set<std::string> alt_types = all_damage_types.second;
+		const std::string type_png = std::string("icons/profiles/") + r_type + ".png~SCALE_INTO(16,16)";
+		//define alt_type string and icons if one and no more [damage_type]alternative_type= active in preview.
+		std::string alt_type;
+		std::string alt_type_png;
+		if(alt_types.size() == 1) {
+			alt_type = *alt_types.begin();
+			alt_type_png = std::string("icons/profiles/") + alt_type + ".png~SCALE_INTO(16,16)";
+			alt_type = string_table["type_" + alt_type];
+		}
 		const bool range_png_exists = ::image::exists(range_png);
-		const bool type_png_exists = ::image::exists(type_png);
+		bool type_png_exists = ::image::exists(type_png);
+		//don't check existence of second damage type icon if alt_types empty.
+		if(!alt_types.empty()) {
+			type_png_exists &= ::image::exists(alt_type_png);
+		}
 
 		const t_string& range = string_table["range_" + a.range()];
-		const t_string& type = string_table["type_" + a.type()];
+		r_type = string_table["type_" + r_type];
+		t_string type = r_type;
+		// Because type and other variable used for tooltips used only if range or type(s) don't have icons'
+		// all type can be added here.
+		for(auto alt_t : alt_types){
+			type += ", " + string_table["type_" + alt_t];
+		}
 
 		const std::string dmg_label = markup::span_color(
 			font::unit_type_color, a.damage(), font::weapon_numbers_sep, a.num_attacks(), " ", a.name());
@@ -240,12 +262,14 @@ void unit_preview_pane::print_attack_details(
 			{
 				{ "image_range", { { "label", range_png } } },
 				{ "image_type", { { "label", type_png } } },
+				{ "image_second_type", { { "label", alt_type_png } } },
 				{ "name", { { "label", dmg_label }, { "use_markup", "true" } } },
 			}
 		);
 
 		subsection.find_widget<styled_widget>("image_range", true).set_tooltip(range);
-		subsection.find_widget<styled_widget>("image_type", true).set_tooltip(type);
+		subsection.find_widget<styled_widget>("image_type", true).set_tooltip(r_type);
+		subsection.find_widget<styled_widget>("image_second_type", true).set_tooltip(alt_type);
 
 		if(!range_png_exists || !type_png_exists) {
 			add_name_tree_node(
