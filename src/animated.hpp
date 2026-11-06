@@ -101,7 +101,9 @@ public:
 	// ========================================================================
 
 	/** True once the current tick has reached the current frame's end, meaning
-	 * advance_to_current_frame() has a new frame to move to. */
+	 * advance_to_current_frame() has a new frame to move to. Also true once after
+	 * start_animation() or apply_time_offset(), even for a static animation, so the
+	 * owner redraws the new first frame. */
 	bool need_update() const;
 
 	/** True if playback has run past the last frame, is not yet started, or has no frames.
@@ -115,7 +117,8 @@ public:
 	// Time Queries and Manipulation
 	// ========================================================================
 
-	/** Time since playback began, per get_playback_tick(). 0 if not started.
+	/** Time since playback began, per get_playback_tick(); for a cycling animation, since the
+	 * current cycle began. 0 if not started.
 	 * Capped at the limit set by set_duration_limit(), if any. */
 	std::chrono::milliseconds get_elapsed_time() const;
 
@@ -232,12 +235,13 @@ private:
 	bool started_;              // Whether values are initialized by start_animation()
 	bool paused_;               // True while frozen at pause_tick_; see get_playback_tick()
 	bool finished_;             // Set by advance_to_current_frame() when a non-cycling animation runs out of frames
+	bool needs_first_update_;   // Set on (re)start, cleared by advance_to_current_frame(); see need_update()
 	bool cycles_;               // Whether the animation loops/cycles
 	bool uses_acceleration_;    // Which timeline to follow, normal or accelerated.
 
 	// Timeline synchronization
 	// The animation's position is tracked by relating animation time to real timeline ticks.
-	std::chrono::steady_clock::time_point animation_start_tick_;    // Real tick corresponding to animation time 0 (can be adjusted).
+	std::chrono::steady_clock::time_point animation_start_tick_;    // Real tick corresponding to animation time 0; shifted by resume, apply_time_offset() and each cycle wrap.
 	std::chrono::steady_clock::time_point next_frame_tick_;         // Real tick when next frame should display
 	std::chrono::steady_clock::time_point pause_tick_;              // Real tick when pause_animation() was called
 
