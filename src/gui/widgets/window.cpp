@@ -999,9 +999,15 @@ void window::layout()
 										   w_(variables_, &functions_),
 										   h_(variables_, &functions_));
 
+			const point previous_size = size;
 			size = get_best_size();
 			variables_.add("window_width", wfl::variant(size.x));
 			variables_.add("window_height", wfl::variant(size.y));
+
+			// Don't re-evaluate indefinitely if there was no change in size (GitHub #11683)
+			if(size == previous_size) {
+				break;
+			}
 		}
 
 		variables_.add("size_request_mode", wfl::variant("size"));
