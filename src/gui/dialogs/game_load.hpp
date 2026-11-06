@@ -34,10 +34,14 @@ public:
 
 private:
 	virtual void pre_show() override;
+	virtual void post_show() override;
 
 	virtual const std::string& window_id() const override;
 
 	void set_save_dir_list(menu_button& dir_list);
+
+	/** Populate the difficulty menu with this save's available options. Returns false if no available options. */
+	bool set_difficulty_list(menu_button& difficulty_menu);
 
 	/** Update (both internally and visually) the list of games. */
 	void populate_game_list();
@@ -63,9 +67,11 @@ private:
 	std::string& filename_;
 	std::shared_ptr<savegame::save_index_class>& save_index_manager_;
 
-	field_bool* change_difficulty_;
 	field_bool* show_replay_;
 	field_bool* cancel_orders_;
+
+	std::string& difficulty_;
+	utils::optional<std::string>& random_mode_;
 
 	config& summary_;
 
