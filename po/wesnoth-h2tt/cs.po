@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-10-21 02:43 UTC\n"
-"PO-Revision-Date: 2026-10-09 20:55+0200\n"
+"PO-Revision-Date: 2026-11-06 17:43+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -559,9 +559,9 @@ msgstr "<b>– NEBO –</b> (vybrat si jednu odměnu)"
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:105
 msgid "(expires after playing any other scenario)"
 msgid_plural "(expires after playing $seasons_remaining other scenarios)"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "(vyprší po odehrání jakéhokoli dalšího scénáře)"
+msgstr[1] "(vyprší po odehrání $seasons_remaining dalších scénářů)"
+msgstr[2] "(vyprší po odehrání $seasons_remaining dalších scénářů)"
 
 #. [lua]: wesnoth.wml_actions.display_scenario_preview
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:212
@@ -4241,12 +4241,12 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:235
 msgid ""
 "I have not located the Sceptre yet, but I am making progress. I shall send a "
-"messenger once we are ready to retrieve it — perhaps in "
-"$( $bm_milestone_scepter - $bm_turns ) battles’ time."
+"messenger once we are ready to retrieve it — perhaps in $"
+"( $bm_milestone_scepter - $bm_turns ) battles’ time."
 msgstr ""
 "Žezlo jsem zatím nenašel, ale postupuji vpřed. Jakmile budeme připraveni ho "
-"získat, pošlu posla – možná to bude trvat ještě několik bitev, asi "
-"$( $bm_milestone_scepter - $bm_turns )."
+"získat, pošlu posla – možná to bude trvat ještě několik bitev, asi $"
+"( $bm_milestone_scepter - $bm_turns )."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:240
@@ -5883,8 +5883,8 @@ msgid ""
 "Prepare to fight Asheviere ($( $bm_milestone_finale - $bm_turns ) battles "
 "remaining)"
 msgstr ""
-"Připrav se na boj s Ašvírou (počet zbývajících bitev: "
-"$( $bm_milestone_finale - $bm_turns ))"
+"Připrav se na boj s Ašvírou (počet zbývajících bitev: $"
+"( $bm_milestone_finale - $bm_turns ))"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:572
@@ -6000,7 +6000,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:1322
 #: data/campaigns/Heir_To_The_Throne/scenarios/43_Cliffs_of_Thoria.cfg:230
 msgid "Familiar"
-msgstr "Známý"
+msgstr "Společník"
 
 #. [message]: speaker=familiar
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:749
@@ -6082,7 +6082,7 @@ msgid ""
 "leave with you my familiar — the venerable Blackwing. Care for him well."
 msgstr ""
 "Velmi dobře. Budeš se muset obejít bez mých elementálů, ale mohu ti alespoň "
-"zanechat svého známého – ctihodného Černáka. Dobře se o něj starej."
+"zanechat svého společníka – ctihodného Černáka. Dobře se o něj starej."
 
 #. [message]: speaker=familiar
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:818
@@ -6207,7 +6207,7 @@ msgid ""
 "my familiar — the venerable Blackwing. Care for him well."
 msgstr ""
 "Budeš se muset obejít bez mých elementálů, ale mohu ti alespoň zanechat "
-"svého známého – ctihodného Černáka. Dobře se o něj starej."
+"svého společníka – ctihodného Černáka. Dobře se o něj starej."
 
 #. [message]: speaker=Konrad {KONRAD_VARIATION glad}
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:951
@@ -6244,7 +6244,8 @@ msgid ""
 "well."
 msgstr ""
 "Obávám se, že ano. Budeš se muset obejít bez mých elementálů, ale mohu ti "
-"alespoň zanechat svého známého – ctihodného Černáka. Dobře se o něj starej."
+"alespoň zanechat svého společníka – ctihodného Černáka. Dobře se o něj "
+"starej."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/00_The_Great_Continent.cfg:992
@@ -7049,7 +7050,7 @@ msgid ""
 "grown into a wise ruler. Unfortunately for Garard, his son was also "
 "ambitious... and treacherous."
 msgstr ""
-"Garardův syn, korunní princ Eldred, se připojil k bouřlivý oslavám králova "
+"Garardův syn, korunní princ Eldred, se připojil k bouřlivým oslavám králova "
 "vítězství. Eldred byl bystrý a cílevědomý a jednoho dne z něj mohl vyrůst "
 "moudrý vládce. Naneštěstí pro Gararda byl jeho syn také ctižádostivý... "
 "a zrádný."
@@ -15174,7 +15175,7 @@ msgstr "Deoran se zaměří spíše na Chantal."
 #. [message]: speaker=Deoran
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:211
 msgid "Blackcrests... more, to the north... Rally! Form ranks..."
-msgstr "Černohřebenáci... dál, na sever... Shromážděte se! Seřaďte se..."
+msgstr "Černohřebeňáci... dál, na sever... Shromážděte se! Seřaďte se..."
 
 #. [message]: speaker=Chantal
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_An_Old_Friend.cfg:224
@@ -20141,7 +20142,7 @@ msgid ""
 "among the river islands! I shall send my familiar to investigate."
 msgstr ""
 "A výsledek není žádným tajemstvím – mezi říčními ostrovy leží malé loďstvo "
-"z rozbitých člunů! Pošlu tam svého známého, aby to prošetřil."
+"z rozbitých člunů! Pošlu tam svého společníka, aby to prošetřil."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/43_Cliffs_of_Thoria.cfg:244
@@ -23886,8 +23887,8 @@ msgid ""
 "I am glad to see that you have been taking good care of my familiar, Konrad. "
 "Blackwing and I have been through many trials together."
 msgstr ""
-"Jsem rád, že se o mého známého tak dobře staráš, Konráde. Černák a já jsme "
-"spolu prošli mnoha zkouškami."
+"Jsem rád, že se o mého společníka tak dobře staráš, Konráde. Černák a já "
+"jsme spolu prošli mnoha zkouškami."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:106
@@ -24969,9 +24970,9 @@ msgid ""
 "Konrad for 1 HP each turn. This value doubles (2, 4, 8, etc) for each other "
 "magic item that Konrad wields."
 msgstr ""
-"Tento podivně tvarovaný talisman čerpá energii z okolních magických předmětů "
-"a každé kolo vyléčí Konráda o 1 bod. Tato hodnota se zdvojnásobí (2, 4, "
-"8 atd.) za každý další magický předmět, který Konrád drží."
+"Tento podivně tvarovaný talisman čerpá energii z okolních kouzelných "
+"předmětů a každé kolo vyléčí Konráda o 1 bod. Tato hodnota se zdvojnásobí "
+"(2, 4, 8 atd.) za každý další kouzelný předmět, který Konrád používá."
 
 #. $magic_item_count controls gettext's plural selection. $regen will equal 2^$magic_item_count
 #: data/campaigns/Heir_To_The_Throne/utils/specials_and_abilities.cfg:536
@@ -24983,29 +24984,28 @@ msgid_plural ""
 "himself $regen HP per turn. If poisoned, he will remove the poison instead "
 "of healing."
 msgstr[0] ""
+"Konrád má nyní ještě jeden kouzelný předmět a každé kolo se vyléčí o $regen "
+"body. Pokud je otrávený, místo léčení se zbaví jedu."
 msgstr[1] ""
+"Konrád má nyní ještě $magic_item_count další kouzelné předměty a každé kolo "
+"se vyléčí o $regen body/bodů. Pokud je otrávený, místo léčení se zbaví jedu."
 msgstr[2] ""
+"Konrád má nyní ještě $magic_item_count dalších kouzelných předmětů a každé "
+"kolo se vyléčí o $regen bodů. Pokud je otrávený, místo léčení se zbaví jedu."
 
 #. [regenerate]: id=amulet_regen
 #: data/campaigns/Heir_To_The_Throne/utils/specials_and_abilities.cfg:558
 msgid "artifice"
-msgstr ""
+msgstr "udělátko"
 
 #. [regenerate]: id=amulet_regen
 #: data/campaigns/Heir_To_The_Throne/utils/specials_and_abilities.cfg:559
-#, fuzzy
-#| msgid ""
-#| "Item for Konrad: <span color='#EFBF04'><b>Regenerate 1 HP each turn. This "
-#| "value doubles\n"
-#| "(2, 4, 8, etc) for each other magic item that Konrad wields.</b></span>"
 msgid ""
 "Regenerate 1 HP each turn. This value doubles (2, 4, 8, etc) for each other "
 "magic item that Konrad wields."
 msgstr ""
-"Předmět pro Konráda: <span color='#EFBF04'><b>Každé kolo regeneruje 1 bod "
-"zdraví.\n"
-"Tato hodnota se zdvojnásobí (2, 4, 8 atd.) za každý další kouzelný předmět, "
-"který Konrád používá.</b></span>"
+"Každé kolo regeneruje 1 bod zdraví. Tato hodnota se zdvojnásobí (2, 4, "
+"8 atd.) za každý další kouzelný předmět, který Konrád používá."
 
 #. [menu]: id=menu-main
 #: data/campaigns/Heir_To_The_Throne/utils/themes.cfg:34
