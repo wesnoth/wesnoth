@@ -3,7 +3,7 @@
 # Copyright (C) 2024 Wesnoth development team
 # This file is distributed under the same license as the PACKAGE package.
 # Automatically generated, 2024.
-# Subhraman Sarkar <suvrax@gmail.com>, 2024.
+# Subhraman Sarkar <sbmskmm@protonmail.com>, 2024.
 #
 msgid ""
 msgstr ""
@@ -11,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-06-22 22:15-0500\n"
 "PO-Revision-Date: 2024-06-06 19:04+0530\n"
-"Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
+"Last-Translator: Subhraman Sarkar <sbmskmm@protonmail.com>\n"
 "Language-Team: Bengali < >\n"
 "Language: bn\n"
 "MIME-Version: 1.0\n"
@@ -166,7 +166,7 @@ msgstr "পতনের পরে"
 #. [editor_group]: id=urban_jungle
 #: data/internal/Urban_Jungle/terrain-groups.cfg:5
 msgid "Urban Jungle (Internal)"
-msgstr ""
+msgstr "শহুরে জঙ্গল (আভ্যন্তরীণ)"
 
 #. [theme]: id=editor
 #: data/themes/editor.cfg:11
@@ -307,16 +307,12 @@ msgid "No editor time-of-day found."
 msgstr "পরিমার্জকের জন্য কোনো সময়সূচী পাওয়া যায়নি ।"
 
 #: src/editor/controller/editor_controller.cpp:886
-#, fuzzy
-#| msgid "Add-on"
 msgid "Add-on Files"
-msgstr "অ্যাড-অন"
+msgstr "অ্যাড-অন ফাইলগুলি"
 
 #: src/editor/controller/editor_controller.cpp:899
-#, fuzzy
-#| msgid "Clipboard support not found, contact your packager"
 msgid "Opening files is not supported, contact your packager"
-msgstr "ক্লিপবোর্ড সহায়তা পাওয়া যাচ্ছে না, আপনার প্যাকেজারের সঙ্গে যোগাযোগ করুন"
+msgstr "ফাইল খোলা সম্ভব হচ্ছে না, আপনার প্যাকেজারের সঙ্গে যোগাযোগ করুন"
 
 #: src/editor/controller/editor_controller.cpp:1343
 msgid "Change Unit ID"
@@ -336,17 +332,15 @@ msgstr "নাম:"
 
 #: src/editor/editor_display.cpp:170
 msgid "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
-msgstr ""
+msgstr "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
 
 #: src/editor/editor_display.cpp:172
 msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
-msgstr ""
+msgstr "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 
 #: src/editor/map/context_manager.cpp:217
-#, fuzzy
-#| msgid "Map loaded from scenario"
 msgid "Load Map or Scenario"
-msgstr "ঘটনাক্রম থেকে মানচিত্র খোলা হয়েছে"
+msgstr "ঘটনাক্রম বা মানচিত্র খুলুন"
 
 #: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1141
 msgid "New Map"
@@ -404,10 +398,8 @@ msgid "Error"
 msgstr "ত্রুটি"
 
 #: src/editor/map/context_manager.cpp:705
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to save a map in the scenarios folder?"
-msgstr "আপনি কী সত্যিই বেরিয়ে যেতে চান?"
+msgstr "আপনি কী সত্যিই scenarios ফোল্ডারে একটি মানচিত্র সঞ্চয় করতে চান?"
 
 #: src/editor/map/context_manager.cpp:713
 #: src/editor/map/context_manager.cpp:905
@@ -419,10 +411,8 @@ msgid "Save Scenario As"
 msgstr "ঘটনাক্রম সঞ্চয় করুন এভাবে"
 
 #: src/editor/map/context_manager.cpp:754
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to save a scenario in the maps folder?"
-msgstr "আপনি কী সত্যিই বেরিয়ে যেতে চান?"
+msgstr "আপনি কী সত্যিই maps ফোল্ডারে একটি ঘটনাক্রম সঞ্চয় করতে চান?"
 
 #: src/editor/map/context_manager.cpp:762
 msgid "This scenario is already open."
@@ -450,10 +440,8 @@ msgid "Scenario saved."
 msgstr "ঘটনাক্রম সঞ্চিত হয়েছে ।"
 
 #: src/editor/map/context_manager.cpp:881
-#, fuzzy
-#| msgid "Map saved."
 msgid "Map saved"
-msgstr "মানচিত্র সঞ্চিত হয়েছে ।"
+msgstr "মানচিত্র সঞ্চিত"
 
 #: src/editor/map/context_manager.cpp:956
 msgid "Loaded embedded map data"
@@ -490,53 +478,42 @@ msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "ফাইলটির .map, .cfg, বা .mask এক্সটেনশন নেই"
 
 #: src/editor/map/map_context.cpp:227
-#, fuzzy
-#| msgid "Failed to load the scenario, attempting to load only the map."
 msgid ""
 "Failed to load the scenario: $error\n"
 "\n"
 "Attempting to load only the map."
-msgstr "ঘটনাক্রম খোলা যায়নি, মানচিত্র খোলার চেষ্টা করা হচ্ছে ।"
+msgstr ""
+"ঘটনাক্রম খোলা যায়নি: $error\n"
+"\n"
+"শধু মানচিত্র খোলার চেষ্টা করা হচ্ছে ।"
 
 #: src/editor/map/map_context.cpp:253
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_data value does not point "
-#| "to an existing file"
 msgid ""
 "The file looks like a scenario, but the map_data attribute does not point to "
 "an existing file"
 msgstr ""
-"মানচিত্র ফাইলটিকে দেখে ঘটনাক্রম মনে হচ্ছে, কিন্তু map_data-র মান অস্তিত্ব আছে এমন "
-"কোনো ফাইলের দিকে নির্দেশ করে না"
+"ফাইলটিকে দেখে ঘটনাক্রম মনে হচ্ছে, কিন্তু map_data-র মান অস্তিত্ব আছে এমন কোনো "
+"ফাইলের দিকে নির্দেশ করে না"
 
 #: src/editor/map/map_context.cpp:268
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_file value does not point "
-#| "to an existing file"
 msgid ""
 "The file looks like a scenario, but the map_file attribute does not point to "
 "an existing file"
 msgstr ""
-"মানচিত্র ফাইলটিকে দেখে ঘটনাক্রম মনে হচ্ছে, কিন্তু map_file-র মান অস্তিত্ব আছে এমন "
-"কোনো ফাইলের দিকে নির্দেশ করে না"
+"ফাইলটিকে দেখে ঘটনাক্রম মনে হচ্ছে, কিন্তু map_file-র মান অস্তিত্ব আছে এমন কোনো "
+"ফাইলের দিকে নির্দেশ করে না"
 
 #: src/editor/map/map_context.cpp:448
 msgid "Confirm"
-msgstr ""
+msgstr "নিশ্চিত করুন"
 
 #: src/editor/map/map_context.cpp:835 src/editor/map/map_context.cpp:875
-#, fuzzy
-#| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
-msgstr "ঘটনাক্রম সঞ্চয় করা যাচ্ছে না: $msg"
+msgstr "সময়সূচী সঞ্চয় করা যাচ্ছে না: $msg"
 
 #: src/editor/map/map_context.cpp:869
-#, fuzzy
-#| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
-msgstr "সময়সূচী মেনু"
+msgstr "সময়সূচী সঞ্চিত।"
 
 #: src/editor/map/map_context.cpp:915
 msgid "Could not save the scenario: $msg"
@@ -563,10 +540,8 @@ msgid "Will not work in game without extra care."
 msgstr "অতিরিক্ত সতর্কতা ছাড়া খেলার মধ্যে কাজ করবে না ।"
 
 #: src/editor/palette/item_palette.cpp:33
-#, fuzzy
-#| msgid "Right-click: "
 msgid "Left-click: Place item $item | Right-click to remove"
-msgstr "ডানদিকে ক্লিক:"
+msgstr "বামদিকে ক্লিক: $item বসান | মুছে ফেলার জন্য ডানদিকে টিপুন"
 
 #: src/editor/palette/location_palette.cpp:247
 msgid "Go To"
