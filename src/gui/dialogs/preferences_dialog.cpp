@@ -62,6 +62,7 @@
 #include "serialization/markup.hpp"
 #include "wml_exception.hpp"
 
+#include <algorithm>
 #include <functional>
 #include <numeric>
 
@@ -585,6 +586,36 @@ void preferences_dialog::initialize_callbacks()
 	register_bool("vsync", true,
 		[]() {return prefs::get().vsync();},
 		[](bool v) {prefs::get().set_vsync(v);});
+
+	/* FRAME RATE LIMIT */
+	// A refresh_rate preference <= 0 means "no limit", i.e. use the display's own refresh rate.
+	// The same preference is set by the --max-fps command line option.
+	register_bool("limit_fps", true,
+		[]() {return prefs::get().refresh_rate() > 0;},
+		[](bool v) {
+			if(!v) {
+				prefs::get().set_refresh_rate(-1);
+			}
+		},
+		[&](widget& w) { disable_widget_on_toggle<slider>(*this, w, "max_fps_slider"); }, true);
+
+	register_integer("max_fps_slider", true,
+		[]() {
+			const int preferred = prefs::get().refresh_rate();
+			return preferred > 0 ? preferred : video::native_refresh_rate();
+		},
+		[this](int v) {
+			// Only store the value if the limit is enabled, otherwise the toggle's setter
+			// resets the preference to "no limit".
+			if(find_widget<toggle_button>("limit_fps").get_value_bool()) {
+				prefs::get().set_refresh_rate(v);
+			}
+		});
+
+	// Rates above the screen's refresh rate are clamped by video::current_refresh_rate(),
+	// so there is no point in offering them. Some backends report a bogus rate, so keep at
+	// least 60 available.
+	find_widget<slider>("max_fps_slider").set_value_range(15, std::max(video::native_refresh_rate(), 60));
 
 	/* SELECT THEME */
 	menu_button& theme_list = find_widget<menu_button>("choose_theme");
@@ -1115,6 +1146,7 @@ void preferences_dialog::pre_show()
 	gui2::bind_default_status_label(find_widget<slider>("max_saves_slider"));
 	gui2::bind_default_status_label(find_widget<slider>("turbo_slider"));
 	gui2::bind_default_status_label(find_widget<slider>("pixel_scale_slider"));
+	gui2::bind_default_status_label(find_widget<slider>("max_fps_slider"));
 }
 
 // Special fullscreen callback
