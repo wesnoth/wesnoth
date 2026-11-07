@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-10-21 02:43 UTC\n"
-"PO-Revision-Date: 2026-09-26 12:27+0200\n"
+"PO-Revision-Date: 2026-11-04 10:20+0100\n"
 "Last-Translator: Berda Jenő <big4billy@gmail.com>\n"
 "Language-Team: none\n"
 "Language: hu\n"
@@ -587,8 +587,8 @@ msgstr "<b>-VAGY-</b> (válassz jutalmat)"
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:105
 msgid "(expires after playing any other scenario)"
 msgid_plural "(expires after playing $seasons_remaining other scenarios)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(elmúlik bármely más küldetés lejátszásakor)"
+msgstr[1] "(elmúlik a többi $seasons_remaining küldetés lejátszásakor)"
 
 #. [lua]: wesnoth.wml_actions.display_scenario_preview
 #: data/campaigns/Heir_To_The_Throne/lua/popups.lua:212
@@ -4300,8 +4300,8 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:235
 msgid ""
 "I have not located the Sceptre yet, but I am making progress. I shall send a "
-"messenger once we are ready to retrieve it — perhaps in "
-"$( $bm_milestone_scepter - $bm_turns ) battles’ time."
+"messenger once we are ready to retrieve it — perhaps in $"
+"( $bm_milestone_scepter - $bm_turns ) battles’ time."
 msgstr ""
 "Még nem találtam meg a jogart, de haladok a dolggal. Küldök egy hírvivőt, "
 "amint készen állunk a visszaszerzésére — talán a(z) ( $bm_milestone_scepter "
@@ -12791,8 +12791,9 @@ msgid ""
 "Really, eternal life? I’d love to discuss some of my alchemical theories "
 "with you! ...wait, ah, no, you mean undeath, don’t you."
 msgstr ""
-"Öröklét, tényleg? Szívesen megvitatnám veled néhány alkímiai elméletemet! ..."
-"várj csak, ahh, nem, te az élőholt \"öröklétre\" gondolsz, ugye?"
+"Öröklét, tényleg? Szívesen megvitatnám veled néhány alkímiai "
+"elméletemet! ...várj csak, ahh, nem, te az élőholt \"öröklétre\" gondolsz, "
+"ugye?"
 
 #. [companion_message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/15b_Valley_of_Death_part2.cfg:481
@@ -25323,27 +25324,25 @@ msgid_plural ""
 "himself $regen HP per turn. If poisoned, he will remove the poison instead "
 "of healing."
 msgstr[0] ""
+"Konrádnak jelenleg 1 további varázstárgya van, és körönként $regen ÉP-t "
+"gyógyul. Ha megmérgezik, a mérget távolítja el gyógyulás helyett."
 msgstr[1] ""
+"Konrádnak jelenleg $magic_item_count további varázstárgya van, és körönként "
+"$regen ÉP-t gyógyul. Ha megmérgezik, a mérget távolítja el gyógyulás helyett."
 
 #. [regenerate]: id=amulet_regen
 #: data/campaigns/Heir_To_The_Throne/utils/specials_and_abilities.cfg:558
 msgid "artifice"
-msgstr ""
+msgstr "fortély"
 
 #. [regenerate]: id=amulet_regen
 #: data/campaigns/Heir_To_The_Throne/utils/specials_and_abilities.cfg:559
-#, fuzzy
-#| msgid ""
-#| "Item for Konrad: <span color='#EFBF04'><b>Regenerate 1 HP each turn. This "
-#| "value doubles\n"
-#| "(2, 4, 8, etc) for each other magic item that Konrad wields.</b></span>"
 msgid ""
 "Regenerate 1 HP each turn. This value doubles (2, 4, 8, etc) for each other "
 "magic item that Konrad wields."
 msgstr ""
-"Konrád tárgya: <span color='#EFBF04'><b>1 ÉP-ot regenerál körönként. Ez az "
-"érték megduplázódik (2, 4, 8 stb.) minden egyes Konrád által birtokolt "
-"mágikus tárggyal.</b></span>"
+"1 ÉP-ot regenerál körönként. Ez az érték megduplázódik (2, 4, 8 stb.) minden "
+"egyes Konrád által birtokolt mágikus tárggyal."
 
 #. [menu]: id=menu-main
 #: data/campaigns/Heir_To_The_Throne/utils/themes.cfg:34
