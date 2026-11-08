@@ -237,7 +237,7 @@ def output(path, url, datadir, data):
         outfile.write(line + "\n")
 
     am_dir = os.path.dirname(__file__) + "/"
-    root_dir = datadir + "/" if datadir is not None else am_dir + "../../../"
+    root_dir = datadir + "/" if datadir is not None else os.path.relpath(am_dir + "../../..") + "/"
     images_to_tc = []
 
     # Copy required HTML assets into the destination dir.
@@ -336,7 +336,7 @@ def output(path, url, datadir, data):
                     if src:
                         src = src[0]
                     if not src or not os.path.exists(src):
-                        sys.stderr.write("Cannot find icon " + icon + "\n")
+                        sys.stderr.write("Cannot find icon " + icon + " in image dirs under " + root_dir + "\n")
                         src = root_dir + "images/misc/missing-image.png"
                         imgurl = "icons/missing-image.png"
                 images_to_tc.append((src, path + "/" + imgurl))
