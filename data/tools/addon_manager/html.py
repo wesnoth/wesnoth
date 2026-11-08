@@ -5,6 +5,7 @@ import html
 import glob
 import os
 import re
+import shutil
 import sys
 import time
 import urllib.parse
@@ -241,7 +242,10 @@ def output(path, url, datadir, data):
 
     # Copy required HTML assets into the destination dir.
     for filename in HTML_RESOURCES:
-        Popen(["cp", "-u", am_dir + filename, path])
+        src_file = os.path.join(am_dir, filename)
+        dst_file = os.path.join(path, filename)
+        if not os.path.exists(dst_file) or os.path.getmtime(src_file) > os.path.getmtime(dst_file):
+            shutil.copy2(src_file, dst_file)
 
     server_name = os.path.basename(path)
     if server_name == "1.9":
