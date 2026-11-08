@@ -312,7 +312,7 @@ def output(path, url, datadir, data):
             uri_manifest = re.match('^data:(image/.*?);base64,', icon)
 
             if uri_manifest:
-                if uri_manifest.group(1) not in ('image/png', 'image/jpeg'):
+                if uri_manifest.group(1) not in ('image/png', 'image/jpeg', 'image/webp'):
                     print("Data URI icon using unsupported content type " + uri_manifest.group(1), file=sys.stderr)
                 else:
                     imgurl = icon
