@@ -103,6 +103,8 @@ public:
 		return formula_.has_value();
 	}
 
+	template <typename U>
+	friend std::ostream& operator<<(std::ostream& os, const typed_formula<U>& formula);
 private:
 	/**
 	 * Converts the string to the template type.
@@ -283,6 +285,17 @@ template<class T>
 inline void typed_formula<T>::convert(const std::string& str)
 {
 	value_ = lexical_cast_default<T>(str);
+}
+
+template <typename U>
+std::ostream& operator<<(std::ostream& os, const typed_formula<U>& formula)
+{
+	if(formula.has_formula()) {
+		os << *formula.formula_;
+	} else {
+		os << formula.value_;
+	}
+	return os;
 }
 
 } // namespace gui2
