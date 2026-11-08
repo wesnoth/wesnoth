@@ -119,7 +119,7 @@ SDL_Cursor* create_cursor(const surface& surf)
 SDL_Cursor* get_cursor(cursor::CURSOR_TYPE type)
 {
 	const bool use_color = use_color_cursors();
-	const int scale = video::get_pixel_scale();
+	const int scale = prefs::get().scale_cursors() ? video::get_pixel_scale() : 1;
 	cursor_data& data = available_cursors[type];
 
 	if(data.cursor == nullptr || boost::indeterminate(data.is_color) || data.is_color != use_color || data.scale != scale) {
