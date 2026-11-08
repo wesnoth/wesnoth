@@ -302,6 +302,9 @@ def output(path, url, datadir, data):
 
         if icon:
             icon = icon.strip()
+            tilde = icon.find("~")
+            if tilde >= 0:
+                icon = icon[:tilde]
             uri_manifest = re.match('^data:(image/.*?);base64,', icon)
 
             if uri_manifest:
@@ -310,9 +313,6 @@ def output(path, url, datadir, data):
                 else:
                     imgurl = icon
             else:
-                tilde = icon.find("~")
-                if tilde >= 0:
-                    icon = icon[:tilde]
                 if "\\" in icon:
                     icon = icon.replace("\\", "/")
                 try:
