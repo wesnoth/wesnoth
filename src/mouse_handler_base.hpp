@@ -75,12 +75,19 @@ public:
 		return show_menu_;
 	}
 
+	void set_gui2_tooltip(bool is_gui2_tooltip) {
+		is_gui2_tooltip_ = is_gui2_tooltip;
+	}
+
 	/**
 	 * This handles minimap scrolling and click-drag.
 	 * @returns true when the caller should not process the mouse motion
 	 * further (i.e. should return), false otherwise.
 	 */
 	bool mouse_motion_default(int x, int y, bool update);
+
+	void middle_mouse_up(int x, int y);
+	void middle_mouse_down(int x, int y);
 
 	/**
 	 * Called when a mouse motion event takes place. Derived classes must provide an
@@ -95,7 +102,7 @@ public:
 			= 0;
 
 	virtual void mouse_press(const SDL_MouseButtonEvent& event, const bool browse);
-	virtual bool mouse_button_event(const SDL_MouseButtonEvent& event, uint8_t button, map_location loc, bool click = false);
+	virtual bool mouse_button_event(uint8_t button, map_location loc, bool click = false, bool down = false);
 	bool is_left_click(const SDL_MouseButtonEvent& event) const;
 	bool is_middle_click(const SDL_MouseButtonEvent& event) const;
 	bool is_right_click(const SDL_MouseButtonEvent& event) const;
@@ -212,12 +219,16 @@ public:
 		return scroll_started_;
 	}
 
-protected:
-	void cancel_dragging();
-	void clear_dragging(const SDL_MouseButtonEvent& event, bool browse);
-	void clear_drag_from_hex();
-	void init_dragging(bool& dragging_flag);
+	void init_dragging_touch() { init_dragging(dragging_touch_); };
+	void init_dragging_left()  { init_dragging(dragging_left_); };
+	void init_dragging_right() { init_dragging(dragging_right_); };
 
+	void cancel_dragging();
+	void clear_dragging(int x, int y, bool browse);
+	void clear_drag_from_hex();
+
+protected:
+	void init_dragging(bool& dragging_flag);
 	/** Show context menu flag */
 	bool show_menu_{false};
 
@@ -253,6 +264,12 @@ protected:
 
 	/** last highlighted hex */
 	map_location last_hex_;
+
+	/**
+	 * toggle gui2 tooltips.
+	 * FIXME: to be removed once all event handling is routed via gui2
+	 */
+	bool is_gui2_tooltip_{false};
 };
 
 } // end namespace events

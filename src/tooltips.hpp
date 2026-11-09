@@ -39,6 +39,7 @@ int  add_tooltip(const rect& rect, const std::string& message, const std::string
 bool update_tooltip(int id, const rect& rect, const std::string& message);
 void remove_tooltip(int id);
 void process(int mousex, int mousey);
+void show(const point& mouse);
 
 // Check if we clicked on a tooltip having an action.
 // If it is, then execute the action and return true
