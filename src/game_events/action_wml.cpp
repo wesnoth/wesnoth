@@ -355,6 +355,7 @@ WML_HANDLER_FUNCTION(move_unit_fake,, cfg)
 {
 	set_scontext_unsynced leave_synced_context;
 	events::command_disabler command_disabler;
+	LOG_NG << "Processing [move_unit_fake]";
 	fake_unit_ptr dummy_unit(create_fake_unit(cfg));
 	if(!dummy_unit.get())
 		return;
@@ -370,7 +371,8 @@ WML_HANDLER_FUNCTION(move_unit_fake,, cfg)
 	const std::vector<map_location>& path = fake_unit_path(*dummy_unit, xvals, yvals);
 	if (!path.empty()) {
 		// Always scroll.
-		unit_display::move_unit(path, dummy_unit.get_unit_ptr(), true, map_location::direction::indeterminate, force_scroll);
+		bool animate = !resources::controller->is_skipping_actions() && !resources::controller->pump().context_skip_messages();
+		unit_display::move_unit(path, dummy_unit.get_unit_ptr(), animate, map_location::direction::indeterminate, force_scroll);
 	}
 }
 
@@ -411,7 +413,9 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 
 	LOG_NG << "Units placed, longest path is " << longest_path << " long";
 
-	if(!parallel) {
+	bool animate = !resources::controller->is_skipping_actions() && !resources::controller->pump().context_skip_messages();
+
+	if(!parallel || !animate) {
 		// Serially move each unit step by step, waiting for each to finish before starting the next.
 		std::vector<map_location> path_step(2);
 		path_step.resize(2);
@@ -424,7 +428,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 				DBG_NG << "Moving unit " << un << ", doing step " << step;
 				path_step[0] = paths[un][step - 1];
 				path_step[1] = paths[un][step];
-				unit_display::move_unit(path_step, units[un].get_unit_ptr(), true, map_location::direction::indeterminate, force_scroll);
+				unit_display::move_unit(path_step, units[un].get_unit_ptr(), animate, map_location::direction::indeterminate, force_scroll);
 				units[un]->set_location(path_step[1]);
 				units[un]->anim_comp().set_standing(false);
 			}
