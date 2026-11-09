@@ -10,6 +10,7 @@
 ### Translations
    * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Hungarian, Italian, Spanish
 ### Units
+   * Set a vision_cost for all core units
 ### User interface
 ### WML Engine
 ### Miscellaneous and Bug Fixes
