@@ -193,6 +193,17 @@ std::size_t rich_label::get_split_location(std::string_view text, const point& p
 		return 0;
 	}
 
+	// The last line may be incomplete, since mark-up that follows this text (eg the
+	// italic note after a bullet) is appended to it later. Splitting within that line
+	// would push the rest of it on to a new line, so split before the line instead.
+	const font::pango_text& renderer = font::get_text_renderer();
+	if(renderer.index_to_line_x(offset).first + 1 >= static_cast<int>(renderer.get_lines_count())) {
+		offset = get_offset_from_xy(point(0, pos.y)) - 1;
+		if(offset <= 0) {
+			return 0;
+		}
+	}
+
 	std::size_t len = static_cast<size_t>(offset);
 	if (len >= text.size() - 1) {
 		return text.size() - 1;
@@ -640,7 +651,7 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 
 					const std::string full_text = curr_item->get_text();
 
-					std::size_t len = get_split_location(full_text, point(init_width - float_size.x, float_size.y * video::get_pixel_scale()));
+					std::size_t len = get_split_location(full_text, point(init_width - float_size.x, float_size.y) * video::get_pixel_scale());
 
 					DBG_GUI_RL << "wrap around area: " << float_size;
 
@@ -650,10 +661,12 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 					}
 
 					curr_item->set_wrap_width(init_width - float_size.x);
+					const int float_height = float_size.y;
 					float_size = point(0,0);
 
 					// Height update
-					int ah = get_text_size(*curr_item, init_width - float_size.x).y;
+					// The rest of the text must start below the floating image
+					int ah = std::max(get_text_size(*curr_item, init_width - float_size.x).y, float_height);
 					if(tmp_h > ah) {
 						tmp_h = 0;
 					}
