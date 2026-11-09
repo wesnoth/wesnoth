@@ -25,6 +25,12 @@ function wesnoth.game_events.on_mouse_action(x, y) end
 ---@param y integer
 function wesnoth.game_events.on_mouse_move(x, y) end
 
+---Hook to updating reachmap
+---@param x integer
+---@param y integer
+---@param r table of locations
+function wesnoth.game_events.reachmap_updated(x, y, r) end
+
 ---@class event_filter
 ---@field formula string
 ---@field condition WML|string
