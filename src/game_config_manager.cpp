@@ -555,6 +555,7 @@ void game_config_manager::load_addons_cfg()
 			// Load this addon from the cache to a config.
 			config umc_cfg = cache_.get_config(main_cfg, validator.get());
 
+			umc_cfg.add_child("resource", config{"id", "load_addon_" + addon_id, "require_resource", true});
 			static const std::set<std::string> tags_with_addon_id {
 				"era",
 				"modification",
