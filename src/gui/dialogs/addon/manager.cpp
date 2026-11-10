@@ -410,11 +410,11 @@ void addon_manager::pre_show()
 
 	type_filter.set_values(type_filter_entries);
 	if(initial_type_filter_.has_value()) {
-		for(std::size_t i = 0; i < type_filter_types_.size(); ++i) {
-			if(type_filter_types_[i].first == initial_type_filter_.value()) {
-				type_filter.select_option(i, true);
-				break;
-			}
+		const auto it = utils::ranges::find(type_filter_types_, initial_type_filter_.value(),
+			[](const std::pair<ADDON_TYPE, std::string>& entry) { return entry.first; });
+		if(it != type_filter_types_.end()) {
+			const int index = std::distance(type_filter_types_.begin(), it);
+			type_filter.select_option(index, true);
 		}
 	}
 
