@@ -38,6 +38,11 @@ static preproc_map setup_test_preproc_map()
 	defines_map["APPLE"] = preproc_define();
 #endif
 
+// apparently defined now with the macos-15 github actions CI runner
+#if defined(MOUSE_TOUCH_EMULATION) || defined(TARGET_OS_IPHONE)
+	defines_map["IPHONEOS"] = preproc_define();
+#endif
+
 	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
 
 	return defines_map;
