@@ -132,30 +132,45 @@ std::pair<std::size_t, std::size_t> rich_label::add_text_with_attribute(
 	return { start, end };
 }
 
-void rich_label::add_link(
+std::pair<unsigned, unsigned> rich_label::add_link(
 	text_shape& tshape,
 	const std::string& name,
 	const std::string& dest,
 	const point& origin,
 	int img_width)
 {
+	DBG_GUI_RL << "add_link: " << name << "->" << dest;
+
+	const unsigned start = utf8::size(tshape.get_text());
+	std::string link_text = name.empty() ? dest : name;
+	add_text_with_attribute(tshape, link_text, "color", link_color_.to_hex_string());
+	const unsigned end = utf8::size(tshape.get_text());
+
+	add_link_area(tshape, dest, start, end, origin, img_width);
+	return { start, end };
+}
+
+void rich_label::add_link_area(
+	text_shape& tshape,
+	const std::string& dest,
+	const unsigned start,
+	const unsigned end,
+	const point& origin,
+	int img_width)
+{
 	// TODO algorithm needs to be text_alignment independent
 
-	DBG_GUI_RL << "add_link: " << name << "->" << dest;
+	DBG_GUI_RL << "add_link_area: " << dest << " [" << start << "," << end << ")";
 	DBG_GUI_RL << "origin: " << origin;
 	DBG_GUI_RL << "width: " << img_width;
 
 	point t_start, t_end;
 
 	setup_text_renderer(tshape, init_w_ - origin.x - img_width);
-	t_start = origin + get_xy_from_offset(utf8::size(tshape.get_text()));
+	t_start = origin + get_xy_from_offset(start);
 	DBG_GUI_RL << "link text start:" << t_start;
 
-	std::string link_text = name.empty() ? dest : name;
-	add_text_with_attribute(tshape, link_text, "color", link_color_.to_hex_string());
-
-	setup_text_renderer(tshape, init_w_ - origin.x - img_width);
-	t_end.x = origin.x + get_xy_from_offset(utf8::size(tshape.get_text())).x;
+	t_end.x = origin.x + get_xy_from_offset(end).x;
 	DBG_GUI_RL << "link text end:" << t_end;
 
 	// TODO link after right aligned images
@@ -286,6 +301,16 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 
 	std::vector<shape_ptr> shapes;
 	std::unique_ptr<gui2::text_shape> curr_item = nullptr;
+
+	// Links in curr_item, so their click areas can be moved if its text is split
+	// around a floating image: destination, character range and range in links_.
+	struct item_link
+	{
+		std::string dest;
+		unsigned start, end;
+		std::size_t first_area, last_area;
+	};
+	std::vector<item_link> item_links;
 
 	bool is_text = false;
 	bool is_image = false;
@@ -553,6 +578,7 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 				}
 
 				curr_item = new_text_shape(pos, init_width - pos.x - float_size.x);
+				item_links.clear();
 				new_text_block = false;
 			}
 
@@ -579,7 +605,9 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 
 			} else if(key == "ref") {
 
-				add_link(*curr_item, line, child["dst"], point(x + origin.x, prev_blk_height), float_size.x);
+				const std::size_t first_area = links_.size();
+				const auto [start, end] = add_link(*curr_item, line, child["dst"], point(x + origin.x, prev_blk_height), float_size.x);
+				item_links.push_back({ child["dst"].str(), start, end, first_area, links_.size() });
 
 				DBG_GUI_RL << key << ": dst=" << child["dst"];
 
@@ -671,6 +699,10 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 
 					DBG_GUI_RL << "wrap around area: " << float_size;
 
+					// Where the links in the first part of the text were positioned
+					const point first_origin(x + origin.x, prev_blk_height);
+					const int first_img_width = float_size.x;
+
 					if(len > 0) {
 						// first part of the text
 						curr_item->set_text(full_text.substr(0, len));
@@ -698,7 +730,7 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 
 					if (len > 0) {
 						// layout rest of the text
-						const text_shape& first_item = *curr_item;
+						text_shape& first_item = *curr_item;
 						shapes.emplace_back(std::move(curr_item));
 						curr_item = new_text_shape(pos, init_width - pos.x);
 						tmp_h = get_text_size(*curr_item, init_width).y;
@@ -707,6 +739,37 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 						const std::size_t start = curr_item->add_text(full_text.substr(len+1)).first;
 						// carry over formatting (italic, links etc.) for the rest of the text
 						curr_item->add_attributes_from(first_item, start, len+1);
+
+						// The click areas of links that continue past the split were positioned
+						// for the unsplit text, so replace them. Remove them last to first, so the
+						// ranges in links_ of those not yet removed stay valid.
+						const unsigned first_end = utf8::size(std::string_view(full_text).substr(0, len));
+						const unsigned rest_start = first_end + 1;
+						for(auto link = item_links.rbegin(); link != item_links.rend(); ++link) {
+							if(link->end > first_end) {
+								links_.erase(links_.begin() + link->first_area, links_.begin() + link->last_area);
+							}
+						}
+
+						std::vector<item_link> rest_links;
+						for(const item_link& link : item_links) {
+							if(link.end <= first_end) {
+								continue;
+							}
+
+							if(link.start < first_end) {
+								add_link_area(first_item, link.dest, link.start, first_end, first_origin, first_img_width);
+							}
+
+							if(link.end > rest_start) {
+								const unsigned link_start = std::max(link.start, rest_start) - rest_start;
+								const unsigned link_end = link.end - rest_start;
+								const std::size_t first_area = links_.size();
+								add_link_area(*curr_item, link.dest, link_start, link_end, pos, 0);
+								rest_links.push_back({ link.dest, link_start, link_end, first_area, links_.size() });
+							}
+						}
+						item_links = std::move(rest_links);
 					}
 				} else if((float_size.y > 0) && (text_size.y < float_size.y)) {
 					//TODO padding?
