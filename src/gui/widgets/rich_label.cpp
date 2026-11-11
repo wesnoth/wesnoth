@@ -657,11 +657,12 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 					float_size = point(0,0);
 
 					// Height update
+					// The split can fall within text added by an earlier tag (eg a formatting tag),
+					// so the first part may be shorter than tmp_h. text_height already counts tmp_h,
+					// so it must shrink in that case rather than count the first part again.
+					// GitHub #11715
 					int ah = get_text_size(*curr_item, init_width - float_size.x).y;
-					if(tmp_h > ah) {
-						tmp_h = 0;
-					}
-					text_height += ah - tmp_h;
+					text_height = std::max(0, static_cast<int>(text_height) + ah - tmp_h);
 					prev_blk_height += text_height;
 					pos = point(origin.x, prev_blk_height);
 
