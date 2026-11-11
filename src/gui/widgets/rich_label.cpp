@@ -716,7 +716,7 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 	if(finalize) {
 		for(const auto& entry : links_) {
 			shapes.emplace_back(std::make_unique<rectangle_shape>(
-				entry.first.x, entry.first.y, entry.first.w, entry.first.h,
+				rect{ entry.first.x, entry.first.y, entry.first.w, entry.first.h },
 				color_t(255, 180, 0, 255)));
 		}
 	}
