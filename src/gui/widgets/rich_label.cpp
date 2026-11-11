@@ -666,7 +666,8 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 				if(wrap_mode && line_complete && (float_size.y > 0) && (text_size.y > float_size.y)) {
 					DBG_GUI_RL << "wrap start";
 
-					std::size_t len = get_split_location(full_text, point(init_width - float_size.x, float_size.y * video::get_pixel_scale()));
+					// Pango's layout uses physical pixels, whereas we work in draw units, so scale both co-ordinates
+					std::size_t len = get_split_location(full_text, point(init_width - float_size.x, float_size.y) * video::get_pixel_scale());
 
 					DBG_GUI_RL << "wrap around area: " << float_size;
 
