@@ -155,22 +155,24 @@ void rich_label::add_link(
 	add_text_with_attribute(tshape, link_text, "color", link_color_.to_hex_string());
 
 	setup_text_renderer(tshape, init_w_ - origin.x - img_width);
-	t_end.x = origin.x + get_xy_from_offset(utf8::size(tshape.get_text())).x;
+	t_end = origin + get_xy_from_offset(utf8::size(tshape.get_text()));
 	DBG_GUI_RL << "link text end:" << t_end;
 
 	// TODO link after right aligned images
 
 	// Add link
-	if(t_end.x > t_start.x) {
-		rect link_rect{ t_start, point{t_end.x - t_start.x, font::get_max_height(font_size_) }};
+	// Compare lines rather than x positions: a link starting at the left edge
+	// (eg in a table cell) can wrap and still end to the right of where it started.
+	// GitHub #11718
+	const int text_height = font::get_max_height(font_size_);
+	if(t_end.y - t_start.y < text_height / 2) {
+		rect link_rect{ t_start, point{t_end.x - t_start.x, text_height} };
 		links_.emplace_back(link_rect, dest);
 
 		DBG_GUI_RL << "added link at rect: " << link_rect;
 
 	} else {
 		//link straddles two lines, break into two rects
-		int text_height = font::get_max_height(font_size_);
-
 		point t_size(size_.x - t_start.x - (origin.x == 0 ? img_width : 0), t_end.y - t_start.y);
 		point link_start2(origin.x, t_start.y + font::get_line_spacing_factor() * text_height);
 		point t_size2(t_end.x, t_end.y - t_start.y);
@@ -538,7 +540,7 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 					shapes.emplace_back(std::move(curr_item));
 				}
 
-				curr_item = new_text_shape(pos, init_width - pos.x - float_size.x);
+				curr_item = new_text_shape(pos, init_width - (pos.x - origin.x) - float_size.x);
 				new_text_block = false;
 			}
 
