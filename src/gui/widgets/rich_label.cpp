@@ -675,12 +675,15 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 
 					if (len > 0) {
 						// layout rest of the text
+						const text_shape& first_item = *curr_item;
 						shapes.emplace_back(std::move(curr_item));
 						curr_item = new_text_shape(pos, init_width - pos.x);
 						tmp_h = get_text_size(*curr_item, init_width).y;
 						// get_split_location always splits at word bounds,
 						// so substr(len) will include a space. we skip that.
-						add_text_with_attribute(*curr_item, full_text.substr(len+1));
+						const std::size_t start = curr_item->add_text(full_text.substr(len+1)).first;
+						// carry over formatting (italic, links etc.) for the rest of the text
+						curr_item->add_attributes_from(first_item, start, len+1);
 					}
 				} else if((float_size.y > 0) && (text_size.y < float_size.y)) {
 					//TODO padding?
