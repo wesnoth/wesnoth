@@ -298,7 +298,9 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 
 	DBG_GUI_RL << parsed_text.debug();
 
-	for(const auto [orig_key, child] : parsed_text.all_children_view()) {
+	auto children = parsed_text.all_children_view();
+	for(auto it = children.begin(); it != children.end(); ++it) {
+		const auto [orig_key, child] = *it;
 
 		const std::string key = (orig_key == "img" && !child["float"].to_bool(false)) ? "inline_image" : orig_key;
 
@@ -650,8 +652,16 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 				// Only split once the last line is complete. Mark-up that follows this text
 				// (eg the italic note after a bullet) is appended to that line, so splitting
 				// before then would push the rest of the line on to a new line. GitHub #11717
+				// The line is also complete if no more text will be appended to it, ie this is
+				// the last tag or the next one starts a new block.
 				const std::string full_text = curr_item->get_text();
-				const bool line_complete = !full_text.empty() && full_text.back() == '\n';
+				const auto next = std::next(it);
+				const bool block_ends = next == children.end() || [&next]() {
+					const auto [next_key, next_child] = *next;
+					return next_key == "table" || next_key == "clear"
+						|| (next_key == "img" && next_child["float"].to_bool(false));
+				}();
+				const bool line_complete = block_ends || (!full_text.empty() && full_text.back() == '\n');
 
 				if(wrap_mode && line_complete && (float_size.y > 0) && (text_size.y > float_size.y)) {
 					DBG_GUI_RL << "wrap start";
