@@ -2310,7 +2310,7 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 			set_attr_changed(UA_ABILITIES);
 			for(const auto [key, cfg] : abilities.all_children_view()) {
 				const ability_ptr& ab = unit_ability_t::create(key, cfg, false);
-				if(!has_ability_by_cfg(ab->cfg(), ab->tag())) {
+				if(effect["cumulative"].to_bool(false) || !has_ability_by_cfg(ab->cfg(), ab->tag())) {
 					abilities_.push_back(ab);
 					for(const config& event : (ab->cfg()).child_range("event")) {
 						events.add_child("event", event);
