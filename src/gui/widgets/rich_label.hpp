@@ -251,10 +251,20 @@ private:
 		const std::string& attr_name = "",
 		const std::string& extra_data = "");
 
-	void add_link(
+	/** Adds a link to @a tshape. Returns the character range of the link text. */
+	std::pair<unsigned, unsigned> add_link(
 		text_shape& tshape,
 		const std::string& name,
 		const std::string& dest,
+		const point& origin,
+		int img_width);
+
+	/** Adds the clickable area of a link covering characters [@a start, @a end) of @a tshape's text. */
+	void add_link_area(
+		text_shape& tshape,
+		const std::string& dest,
+		const unsigned start,
+		const unsigned end,
 		const point& origin,
 		int img_width);
 
