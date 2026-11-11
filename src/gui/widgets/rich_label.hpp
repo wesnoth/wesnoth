@@ -270,9 +270,14 @@ private:
 
 	std::function<void(std::string)> link_handler_;
 
-	int get_offset_from_xy(const point& position) const
+	/**
+	 * Returns the byte offset of the character at @a position, and whether the
+	 * position is in its trailing half (see pango_layout_xy_to_index).
+	 */
+	std::pair<int, int> get_offset_from_xy(const point& position) const
 	{
-		return std::get<0>(font::get_text_renderer().xy_to_index(position));
+		const auto [offset, trailing, _] = font::get_text_renderer().xy_to_index(position);
+		return { offset, trailing };
 	}
 
 	point get_xy_from_offset(const unsigned offset) const

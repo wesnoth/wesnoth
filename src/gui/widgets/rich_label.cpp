@@ -188,12 +188,24 @@ void rich_label::add_link(
 
 std::size_t rich_label::get_split_location(std::string_view text, const point& pos)
 {
-	int offset = get_offset_from_xy(pos);
+	const auto [offset, trailing] = get_offset_from_xy(pos);
 	if(offset <= 0) {
 		return 0;
 	}
 
 	std::size_t len = static_cast<size_t>(offset);
+
+	// Past the end of a paragraph's last line, Pango gives the last character with
+	// trailing set, so move after it. Otherwise the word boundary search below would
+	// move that line's last word below the floating image.
+	if(trailing > 0 && len < text.size()) {
+		// Step over the whole UTF-8 character: its continuation bytes have the
+		// form 10xxxxxx, ie (byte & 0xC0) == 0x80.
+		do {
+			len++;
+		} while(len < text.size() && (static_cast<unsigned char>(text[len]) & 0xC0) == 0x80);
+	}
+
 	if (len >= text.size() - 1) {
 		return text.size() - 1;
 	}
