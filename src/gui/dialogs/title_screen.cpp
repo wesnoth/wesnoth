@@ -28,6 +28,7 @@
 #include "gui/dialogs/achievements_dialog.hpp"
 #include "gui/dialogs/core_selection.hpp"
 #include "gui/dialogs/debug_clock.hpp"
+#include "gui/dialogs/end_credits.hpp"
 #include "gui/dialogs/help_browser.hpp"
 #include "gui/dialogs/lua_interpreter.hpp"
 #include "gui/dialogs/message.hpp"
@@ -189,6 +190,9 @@ void title_screen::init_callbacks()
 
 	register_hotkey(hotkey::TITLE_SCREEN__CORES,
 		[this](auto&&...) { button_callback_cores(); return true; });
+
+	register_hotkey(hotkey::TITLE_SCREEN__CREDITS,
+		[](auto&&...) { dialogs::end_credits::display(); return true; });
 
 	register_hotkey(hotkey::LUA_CONSOLE,
 		[](auto&&...) { show_lua_console(); return true; });
