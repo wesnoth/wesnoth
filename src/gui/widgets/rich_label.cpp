@@ -156,30 +156,15 @@ void rich_label::add_link(
 	// TODO link after right aligned images
 
 	// Add a rect for each line of the link text, ending at that line's last character.
-	// Lines are compared rather than x positions, since a link starting at the left edge
-	// (eg in a table cell) can wrap and still end to the right of where it started.
+	// Pango's lines are used rather than comparing x positions, since a link starting at
+	// the left edge (eg in a table cell) can wrap and still end to the right of where it started.
 	// GitHub #11718
 	const int text_height = font::get_max_height(font_size_);
-	point line_start = origin + get_xy_from_offset(start);
-	point line_end = line_start;
-	DBG_GUI_RL << "link text start:" << line_start;
-
-	for(unsigned offset = start + 1; offset <= end; ++offset) {
-		const point cursor = origin + get_xy_from_offset(offset);
-		if(cursor.y - line_start.y >= text_height / 2) {
-			// The character at offset starts a new line. line_end is the cursor before the
-			// previous character, the space where the line breaks, ie after the last word.
-			rect link_rect{ line_start, point{ line_end.x - line_start.x, text_height } };
-			links_.emplace_back(link_rect, dest);
-			DBG_GUI_RL << "added link at rect: " << link_rect;
-			line_start = cursor;
-		}
-		line_end = cursor;
+	for(const auto& [line_start, line_end_x] : font::get_text_renderer().get_line_spans(start, end)) {
+		rect link_rect{ origin + line_start, point{ line_end_x - line_start.x, text_height } };
+		links_.emplace_back(link_rect, dest);
+		DBG_GUI_RL << "added link at rect: " << link_rect;
 	}
-
-	rect link_rect{ line_start, point{ line_end.x - line_start.x, text_height } };
-	links_.emplace_back(link_rect, dest);
-	DBG_GUI_RL << "added link at rect: " << link_rect;
 }
 
 std::size_t rich_label::get_split_location(std::string_view text, const point& pos)
