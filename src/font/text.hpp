@@ -196,6 +196,20 @@ public:
 	point get_cursor_pos_from_index(const unsigned offset) const;
 
 	/**
+	 * Gets where a range of characters lies on each line it spans.
+	 *
+	 * @param start               The character index of the first character.
+	 * @param end                 The character index after the last character.
+	 *
+	 * @returns                   For each line, a pair of the cursor position
+	 *                            before the range's first character on that line
+	 *                            and the x position after its last character,
+	 *                            ignoring whitespace where the line wraps, in
+	 *                            drawing co-ordinates.
+	 */
+	std::vector<std::pair<point, int>> get_line_spans(const unsigned start, const unsigned end) const;
+
+	/**
 	 * Get maximum length.
 	 *
 	 * @returns                   The maximum length of the text. The length of text
