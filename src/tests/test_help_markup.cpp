@@ -595,4 +595,13 @@ BOOST_AUTO_TEST_CASE( test_help_markup_new )
 	BOOST_CHECK_EQUAL(output.mandatory_child("text", 2)["text"], "...four consecutive newlines!");
 }
 
+BOOST_AUTO_TEST_CASE( test_help_markup_errors )
+{
+	// An attribute value missing its closing quote must not run past the end of the text
+	// GitHub #11728
+	BOOST_CHECK_THROW(markup::parse_text("<ref dst='unit_Mage>magi</ref> gain experience"), markup::parse_error);
+	BOOST_CHECK_THROW(markup::parse_text("<ref dst='unit_Mage>magi</ref> d'expérience"), markup::parse_error);
+	BOOST_CHECK_THROW(markup::parse_text("<img src='a.png'"), markup::parse_error);
+}
+
 BOOST_AUTO_TEST_SUITE_END()
