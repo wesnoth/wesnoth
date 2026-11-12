@@ -205,6 +205,10 @@ utils::optional<load_game_metadata> load_interactive()
 		}
 	}
 
+	if(load_data.random_mode) {
+		load_data.load_config["random_mode"] = *load_data.random_mode;
+	}
+
 	if(!check_version_compatibility(load_data.load_config)) {
 		return utils::nullopt;
 	}
