@@ -34,9 +34,12 @@
 #include "preferences/preferences.hpp"
 #include "video.hpp"
 
+#include <algorithm>
 #include <cassert>
+#include <cctype>
 #include <cstring>
 #include <stdexcept>
+#include <string_view>
 
 static lg::log_domain log_font("font");
 #define DBG_FT LOG_STREAM(debug, log_font)
@@ -235,6 +238,52 @@ point pango_text::get_cursor_pos_from_index(const unsigned offset) const
 	pango_layout_get_cursor_pos(layout_.get(), offset, &rect, nullptr);
 
 	return to_draw_scale({PANGO_PIXELS(rect.x), PANGO_PIXELS(rect.y)});
+}
+
+std::vector<std::pair<point, int>> pango_text::get_line_spans(const unsigned start, const unsigned end) const
+{
+	recalculate();
+
+	const int start_index = get_byte_index(start);
+	const int end_index = get_byte_index(end);
+	const std::string_view text = pango_layout_get_text(layout_.get());
+
+	// Byte index of the UTF-8 character before index. Continuation bytes have
+	// the form 10xxxxxx, ie (byte & 0xC0) == 0x80.
+	const auto prev_char = [&text](int index) {
+		do {
+			--index;
+		} while(index > 0 && (static_cast<unsigned char>(text[index]) & 0xC0) == 0x80);
+		return index;
+	};
+
+	std::vector<std::pair<point, int>> res;
+
+	using layout_iterator = std::unique_ptr<PangoLayoutIter, std::function<void(PangoLayoutIter*)>>;
+	layout_iterator i{pango_layout_get_iter(layout_.get()), pango_layout_iter_free};
+
+	do {
+		const PangoLayoutLine* ll = pango_layout_iter_get_line_readonly(i.get());
+		const int span_start = std::max(start_index, ll->start_index);
+		int span_end = std::min(end_index, ll->start_index + ll->length);
+
+		// Leave out the whitespace where the line wraps. Only ASCII whitespace is checked;
+		// the last byte of a multi-byte character is never ASCII.
+		while(span_end > span_start && std::isspace(static_cast<unsigned char>(text[span_end - 1]))) {
+			--span_end;
+		}
+
+		if(span_end > span_start) {
+			// The cursor position after the last character may be on the next line,
+			// so use the trailing edge of that character instead
+			PangoRectangle last_rect;
+			pango_layout_index_to_pos(layout_.get(), prev_char(span_end), &last_rect);
+
+			res.emplace_back(get_cursor_pos_from_index(span_start), to_draw_scale(PANGO_PIXELS(last_rect.x + last_rect.width)));
+		}
+	} while(pango_layout_iter_next_line(i.get()));
+
+	return res;
 }
 
 std::size_t pango_text::get_maximum_length() const
