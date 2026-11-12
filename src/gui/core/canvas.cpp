@@ -687,16 +687,29 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	// Execute the provided actions for this context.
 	wfl::execute_actions(actions_formula_.evaluate(local_variables), wfl::variant(variables.fake_ptr()));
 
-	texture tex = text_renderer.render_and_get_texture();
+	// Only render the part of the text that can actually be seen. Long text,
+	// such as the contents of a scrolled log, can otherwise exceed the maximum
+	// size of a cairo surface or SDL texture (GitHub #10094).
+	rect visible = dst_rect;
+	if(draw::clip_enabled()) {
+		visible.clip(draw::get_clip());
+	}
+
+	if(visible.empty()) {
+		DBG_GUI_D << "Text: no visible area to render, leave.";
+		return;
+	}
+
+	texture tex = text_renderer.render_and_get_texture(visible.shifted_by(-dst_rect.x, -dst_rect.y));
 	if(!tex) {
 		DBG_GUI_D << "Text: Rendering '" << text << "' resulted in an empty canvas, leave.";
 		return;
 	}
 
-	dst_rect.w = std::min(dst_rect.w, tex.w());
-	dst_rect.h = std::min(dst_rect.h, tex.h());
+	visible.w = std::min(visible.w, tex.w());
+	visible.h = std::min(visible.h, tex.h());
 
-	draw::blit(tex, dst_rect);
+	draw::blit(tex, visible);
 }
 
 /***** ***** ***** ***** ***** CANVAS ***** ***** ***** ***** *****/
