@@ -75,7 +75,7 @@ int impl_rng_draw(lua_State* L)
 	return 1;
 }
 
-int impl_rng_tostring(lua_State* L)
+static int impl_rng_tostring(lua_State* L)
 {
 	mt_rng* rng = static_cast<mt_rng*>(luaL_checkudata(L, 1, Rng));
 	luaW_getglobal(L, "string", "format");
@@ -85,7 +85,7 @@ int impl_rng_tostring(lua_State* L)
 	return 1;
 }
 
-int impl_rng_dir(lua_State* L)
+static int impl_rng_dir(lua_State* L)
 {
 	static const std::vector<std::string> fields = {"draw", "seed"};
 	lua_push(L, fields);

@@ -5,6 +5,7 @@ import html
 import glob
 import os
 import re
+import shutil
 import sys
 import time
 import urllib.parse
@@ -236,12 +237,15 @@ def output(path, url, datadir, data):
         outfile.write(line + "\n")
 
     am_dir = os.path.dirname(__file__) + "/"
-    root_dir = datadir + "/" if datadir is not None else am_dir + "../../../"
+    root_dir = datadir + "/" if datadir is not None else os.path.relpath(am_dir + "../../..") + "/"
     images_to_tc = []
 
     # Copy required HTML assets into the destination dir.
     for filename in HTML_RESOURCES:
-        Popen(["cp", "-u", am_dir + filename, path])
+        src_file = os.path.join(am_dir, filename)
+        dst_file = os.path.join(path, filename)
+        if not os.path.exists(dst_file) or os.path.getmtime(src_file) > os.path.getmtime(dst_file):
+            shutil.copy2(src_file, dst_file)
 
     server_name = os.path.basename(path)
     if server_name == "1.9":
@@ -302,17 +306,17 @@ def output(path, url, datadir, data):
 
         if icon:
             icon = icon.strip()
+            tilde = icon.find("~")
+            if tilde >= 0:
+                icon = icon[:tilde]
             uri_manifest = re.match('^data:(image/.*?);base64,', icon)
 
             if uri_manifest:
-                if uri_manifest.group(1) not in ('image/png', 'image/jpeg'):
+                if uri_manifest.group(1) not in ('image/png', 'image/jpeg', 'image/webp'):
                     print("Data URI icon using unsupported content type " + uri_manifest.group(1), file=sys.stderr)
                 else:
                     imgurl = icon
             else:
-                tilde = icon.find("~")
-                if tilde >= 0:
-                    icon = icon[:tilde]
                 if "\\" in icon:
                     icon = icon.replace("\\", "/")
                 try:
@@ -332,7 +336,7 @@ def output(path, url, datadir, data):
                     if src:
                         src = src[0]
                     if not src or not os.path.exists(src):
-                        sys.stderr.write("Cannot find icon " + icon + "\n")
+                        sys.stderr.write("Cannot find icon " + icon + " in image dirs under " + root_dir + "\n")
                         src = root_dir + "images/misc/missing-image.png"
                         imgurl = "icons/missing-image.png"
                 images_to_tc.append((src, path + "/" + imgurl))

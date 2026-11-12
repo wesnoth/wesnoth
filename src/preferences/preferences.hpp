@@ -210,6 +210,7 @@ public:
 	void load_advanced_prefs(const game_config_view& gc);
 	void migrate_preferences(const std::string& prefs_dir);
 	void set_campaign_rng_mode_default_for_migration(); // TODO: remove after 1.20. (Not used after that. Needs no replacement.)
+	void set_initial_gui2_theme();
 	void reload_preferences();
 	std::set<std::string> all_attributes();
 
@@ -518,6 +519,7 @@ public:
 	PREF_GETTER_SETTER(show_disengaged_orb, bool, game_config::show_disengaged_orb)
 	PREF_GETTER_SETTER(core, std::string, std::string("default"))
 	PREF_GETTER_SETTER(scroll_to_action, bool, true)
+	PREF_GETTER_SETTER(scale_cursors, bool, false)
 	PREF_GETTER_SETTER(auto_pixel_scale, bool, true)
 	PREF_GETTER_SETTER(maximized, bool, !fullscreen())
 	PREF_GETTER_SETTER(fullscreen, bool, true)
@@ -828,6 +830,7 @@ private:
 		prefs_list::lobby_auto_open_whisper_windows,
 		prefs_list::middle_click_scrolls,
 		prefs_list::mouse_scrolling,
+		prefs_list::scale_cursors,
 		prefs_list::scroll_to_action,
 		prefs_list::scroll_when_mouse_outside,
 		prefs_list::show_all_units_in_help,

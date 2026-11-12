@@ -276,7 +276,7 @@ bool file_tree_checksum::operator==(const file_tree_checksum &rhs) const
 
 namespace implementation
 {
-std::string get_file_by_type(const std::string& name, const std::string& type)
+static std::string get_file_by_type(const std::string& name, const std::string& type)
 {
 	if(utils::optional map_location = get_wml_location(name)) {
 		return *map_location;

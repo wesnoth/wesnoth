@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-09-20 19:25-0500\n"
+"POT-Creation-Date: 2026-10-20 21:43-0500\n"
 "PO-Revision-Date: 2012-04-01 16:53+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -2320,7 +2320,7 @@ msgstr "Sljedeći savet dana"
 #. [button]: id=toggle_tip_panel
 #. [toggle_button]: id=show_tips
 #: data/gui/themes/celes/dialogs/title_screen.cfg:216
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:223
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:95
 #, fuzzy
 #| msgid "Show next tip of the day"
 msgid "Show tip of the day"
@@ -3056,8 +3056,10 @@ msgstr ""
 msgid "Expected Battle Result (HP)"
 msgstr ""
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/attack_predictions.cfg:251
+#: src/gui/dialogs/attack_predictions.cpp:60
 msgid "Damage Calculations"
 msgstr ""
 
@@ -3299,15 +3301,20 @@ msgstr "Izbor rezolucije"
 msgid "Combat:"
 msgstr ""
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:445
+#: src/gui/dialogs/attack_predictions.cpp:79
 #, fuzzy
 #| msgid "Default"
 msgid "Default RNG"
 msgstr "Podrazumevano"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:446
+#: src/gui/dialogs/attack_predictions.cpp:93
+#, c-format
 msgid ""
 "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
 "\n"
@@ -3315,13 +3322,17 @@ msgid ""
 "once and miss once, but might also hit twice or miss twice."
 msgstr ""
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:451
+#: src/gui/dialogs/attack_predictions.cpp:76
 msgid "Predictable RNG"
 msgstr ""
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:452
+#: src/gui/dialogs/attack_predictions.cpp:91
 msgid ""
 "Identical to Default RNG, except loading a saved game will not change the "
 "outcome of an attack.\n"
@@ -3330,13 +3341,18 @@ msgid ""
 "an earlier save and make the same attack again. Both strikes will still hit."
 msgstr ""
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:457
+#: src/gui/dialogs/attack_predictions.cpp:72
 msgid "Reduced RNG"
 msgstr ""
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:458
+#: src/gui/dialogs/attack_predictions.cpp:89
+#, c-format
 msgid ""
 "Hits and misses are much more consistent. This tends to make small-scale "
 "engagements easier to plan.\n"
@@ -3463,7 +3479,7 @@ msgstr "Učitaj poziciju"
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
 #: src/gui/dialogs/editor/edit_unit.cpp:296
-#: src/preferences/preferences.cpp:1311
+#: src/preferences/preferences.cpp:1336
 msgid "Select"
 msgstr "Izaberi"
 
@@ -6586,128 +6602,75 @@ msgid "Clear Hotkey"
 msgstr "Očisti prečicu"
 
 #. [label]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:15
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:23
 msgid "Window size:"
 msgstr ""
 
-#. [label]: id=help_text
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:39
-msgid "Pixel scale multiplier:"
-msgstr ""
-
 #. [menu_button]: id=resolution_set
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:73
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:40
 #, fuzzy
 #| msgid "Change the buffer size"
 msgid "Change the game window size"
 msgstr "Promijeni veličinu bafera"
 
-#. [slider]: id=pixel_scale_slider
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:87
-msgid ""
-"Set the global pixel scale multiplier. A pixel scale multiplier of 2 will "
-"make everything look twice as large."
-msgstr ""
-
 #. [toggle_button]: id=fullscreen
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:102
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:55
 msgid "Full screen"
 msgstr "Preko cijelog ekrana"
 
 #. [toggle_button]: id=fullscreen
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:103
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:56
 msgid "Toggle between fullscreen and window mode"
 msgstr ""
 
-#. [toggle_button]: id=auto_pixel_scale
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:114
-msgid "pixel_scale_multiplier^Automatic scale"
-msgstr ""
-
-#. [toggle_button]: id=auto_pixel_scale
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:115
-msgid "Choose pixel scale multiplier automatically based on current resolution"
-msgstr ""
-
 #. [toggle_button]: id=vsync
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:129
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:69
 msgid "VSync"
 msgstr ""
 
 #. [toggle_button]: id=vsync
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:130
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:70
 msgid ""
 "Reduces tearing by synchronizing rendering with the screen refresh rate "
 "(requires restart to take effect)"
 msgstr ""
 
-#. [label]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:152
-#, fuzzy
-#| msgid "Change the sample rate"
-msgid "In-game theme:"
-msgstr "Promijeni učestanost uzorkovanja"
-
-#. [menu_button]: id=choose_theme
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:165
-msgid ""
-"Change the in-game interface theme. Additional themes may be provided by "
-"community-made add-ons"
-msgstr ""
-
-#. [label]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:176
-msgid "UI theme:"
-msgstr ""
-
-#. [menu_button]: id=choose_gui2_theme
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:192
-msgid ""
-"Change the UI (GUI2) theme. Additional themes may be provided by community-"
-"made add-ons"
-msgstr ""
-
-#. [button]: id=apply
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:201
-msgid "Apply"
-msgstr "Primijeni"
-
 #. [toggle_button]: id=show_tips
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:224
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:96
 #, fuzzy
 #| msgid "Show next tip of the day"
 msgid "Show gameplay tips on the main menu"
 msgstr "Prikaži sljedeći savet dana"
 
 #. [toggle_button]: id=show_floating_labels
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:236
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:109
 msgid "Combat damage indicators"
 msgstr ""
 
 #. [toggle_button]: id=show_floating_labels
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:237
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:110
 msgid "Show amount of damage inflicted or healed as fading labels above units"
 msgstr ""
 
 #. [toggle_button]: id=show_ellipses
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:250
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:123
 msgid "Team color indicators"
 msgstr ""
 
 #. [toggle_button]: id=show_ellipses
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:251
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:124
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr "Prikaži oko osnove svake jedinice krug u boji strane kojoj pripada"
 
 #. [toggle_button]: id=show_grid
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:264
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:137
 msgid "Grid overlay"
 msgstr ""
 
 #. [toggle_button]: id=show_grid
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:265
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:138
 #, fuzzy
 #| msgid "Overlay a grid onto the map"
 msgid "Overlay a grid over the map"
@@ -6715,40 +6678,115 @@ msgstr "Preklopi mrežu preko mape"
 
 # кућица
 #. [toggle_button]: id=animate_terrains
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:300
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:163
 msgid "Animate map"
 msgstr "Animiraj mapu"
 
 #. [toggle_button]: id=animate_terrains
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:301
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:164
 msgid "Display animated terrain graphics"
 msgstr "Animirana grafika teren"
 
 # кућица
 #. [toggle_button]: id=animate_water
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:314
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:177
 #, fuzzy
 #| msgid "Animate map"
 msgid "Animate water"
 msgstr "Animiraj mapu"
 
 #. [toggle_button]: id=animate_water
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:315
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:178
 #, fuzzy
 #| msgid "Display animated terrain graphics"
 msgid "Display animated water graphics (can be slow)"
 msgstr "Animirana grafika teren"
 
+#. [label]: id=help_text
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:225
+msgid "Pixel scale multiplier:"
+msgstr ""
+
+#. [slider]: id=pixel_scale_slider
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:256
+msgid ""
+"Set the global pixel scale multiplier. A pixel scale multiplier of 2 will "
+"make everything look twice as large."
+msgstr ""
+
+#. [toggle_button]: id=auto_pixel_scale
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:269
+msgid "pixel_scale_multiplier^Automatic scale"
+msgstr ""
+
+#. [toggle_button]: id=auto_pixel_scale
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:270
+msgid "Choose pixel scale multiplier automatically based on current resolution"
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:294
+#, fuzzy
+#| msgid "Change the sample rate"
+msgid "In-game theme:"
+msgstr "Promijeni učestanost uzorkovanja"
+
+#. [menu_button]: id=choose_theme
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:308
+msgid ""
+"Change the in-game interface theme. Additional themes may be provided by "
+"community-made add-ons"
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:320
+msgid "UI theme:"
+msgstr ""
+
+#. [menu_button]: id=choose_gui2_theme
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:337
+msgid ""
+"Change the UI (GUI2) theme. Additional themes may be provided by community-"
+"made add-ons"
+msgstr ""
+
+#. [button]: id=apply
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:346
+msgid "Apply"
+msgstr "Primijeni"
+
+#. [button]: id=custom_orb_color
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:375
+msgid "Customize orb colors"
+msgstr ""
+
+#. [button]: id=custom_orb_color
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:377
+msgid "Change the appearance of the unit movement status indicators"
+msgstr ""
+
+#. [button]: id=custom_reach_map
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:391
+#, fuzzy
+#| msgid "Actions"
+msgid "Customize reach map"
+msgstr "Radnje"
+
+#. [button]: id=custom_reach_map
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:392
+msgid "Change the appearance of the unit movement UI overlay"
+msgstr ""
+
 # кућица
 #. [toggle_button]: id=animate_units_standing
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:330
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:410
 #, fuzzy
 #| msgid "Show unit standing animations"
 msgid "Unit standing animations"
 msgstr "Animacije stajanja jedinica"
 
 #. [toggle_button]: id=animate_units_standing
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:331
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:411
 #, fuzzy
 #| msgid "Continuously animate standing units in the battlefield"
 msgid "Continuously animate standing units on the battlefield"
@@ -6756,56 +6794,29 @@ msgstr "Stalne animacije stajaćih jedinica na bojištu"
 
 # кућица
 #. [toggle_button]: id=animate_units_idle
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:349
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:429
 #, fuzzy
 #| msgid "Show unit idle animations"
 msgid "Unit idle animations"
 msgstr "Animacije mirovanja jedinica"
 
 #. [toggle_button]: id=animate_units_idle
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:350
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:430
 msgid "Play short random animations for idle units"
 msgstr "Nasumične kratke animacije za mirujuće jedinice"
 
 #. [label]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:373
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:453
 msgid "Frequency:"
 msgstr "Učestanost:"
 
 #. [slider]: id=idle_anim_frequency
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:389
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:469
 msgid "Set the frequency of unit idle animations"
 msgstr "Učestanost stajaćih animacija jedinica"
 
-#. [label]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:409
-msgid "Accessibility:"
-msgstr ""
-
-#. [button]: id=custom_orb_color
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:423
-msgid "Customize orb colors"
-msgstr ""
-
-#. [button]: id=custom_orb_color
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:425
-msgid "Change the appearance of the unit movement status indicators"
-msgstr ""
-
-#. [button]: id=custom_reach_map
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:438
-#, fuzzy
-#| msgid "Actions"
-msgid "Customize reach map"
-msgstr "Radnje"
-
-#. [button]: id=custom_reach_map
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:439
-msgid "Change the appearance of the unit movement UI overlay"
-msgstr ""
-
 #. [tab]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:498
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:549
 #, fuzzy
 #| msgid "Refresh Display"
 msgid "Display"
@@ -7990,25 +8001,25 @@ msgid "url^None"
 msgstr ""
 
 # >> @title:window
-#: src/gui/dialogs/attack_predictions.cpp:120
+#: src/gui/dialogs/attack_predictions.cpp:157
 #, fuzzy
 #| msgid "Choose Resolution"
 msgid "No usable weapon"
 msgstr "Izbor rezolucije"
 
-#: src/gui/dialogs/attack_predictions.cpp:196
+#: src/gui/dialogs/attack_predictions.cpp:233
 msgid "Defender resistance vs"
 msgstr ""
 
-#: src/gui/dialogs/attack_predictions.cpp:198
+#: src/gui/dialogs/attack_predictions.cpp:235
 msgid "Defender vulnerability vs"
 msgstr ""
 
-#: src/gui/dialogs/attack_predictions.cpp:202
+#: src/gui/dialogs/attack_predictions.cpp:239
 msgid "Attacker resistance vs"
 msgstr ""
 
-#: src/gui/dialogs/attack_predictions.cpp:204
+#: src/gui/dialogs/attack_predictions.cpp:241
 msgid "Attacker vulnerability vs"
 msgstr ""
 
@@ -8586,13 +8597,13 @@ msgstr ""
 msgid "lua console"
 msgstr "čista siva kaldrma"
 
-#: src/gui/dialogs/migrate_version_selection.cpp:47
+#: src/gui/dialogs/migrate_version_selection.cpp:52
 #, fuzzy
 #| msgid "Map Information"
 msgid "No Other Version Found"
 msgstr "Podaci o mapi"
 
-#: src/gui/dialogs/migrate_version_selection.cpp:47
+#: src/gui/dialogs/migrate_version_selection.cpp:52
 msgid ""
 "This would import settings from a previous version of Wesnoth, but no other "
 "version was found on this device"
@@ -10321,30 +10332,30 @@ msgstr ""
 msgid "Unrecognized Command"
 msgstr ""
 
-#: src/preferences/preferences.cpp:1268
+#: src/preferences/preferences.cpp:1293
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Nema poznatih tema. Pokušajte da promijenite unutar započete partije."
 
-#: src/preferences/preferences.cpp:1305
+#: src/preferences/preferences.cpp:1330
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
 "normally be found in the same folder as the game executable."
 msgstr ""
 
-#: src/preferences/preferences.cpp:1309
+#: src/preferences/preferences.cpp:1334
 msgid "Find Server Application"
 msgstr ""
 
 # >> strftime() format
-#: src/preferences/preferences.cpp:1791
+#: src/preferences/preferences.cpp:1816
 #, fuzzy
 #| msgid "%H:%M"
 msgid "[%H:%M]"
 msgstr "%k.%M"
 
 # >> strftime() format
-#: src/preferences/preferences.cpp:1793
+#: src/preferences/preferences.cpp:1818
 #, fuzzy
 #| msgid "%I:%M %p"
 msgid "[%I:%M %p]"

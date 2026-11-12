@@ -58,7 +58,7 @@ char* uncompress_buffer(const string_span& input, string_span* span)
 		filter.push(stream);
 		state = 3;
 
-		const std::size_t chunk_size = input.size() * 10;
+		const std::size_t chunk_size = std::min(input.size() * 10, document::document_size_limit);
 		nalloc = chunk_size;
 		std::vector<char> buf(chunk_size);
 		state = 4;

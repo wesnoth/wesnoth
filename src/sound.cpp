@@ -210,14 +210,17 @@ utils::optional<std::size_t> get_current_track_index()
 
 	return std::distance(playlist.begin(), iter);
 }
+
 std::shared_ptr<music_track> get_current_track()
 {
 	return current_track;
 }
-void set_current_track(std::shared_ptr<music_track> track)
+
+static void set_current_track(std::shared_ptr<music_track> track)
 {
 	previous_track = std::exchange(current_track, std::move(track));
 }
+
 std::shared_ptr<music_track> get_previous_music_track()
 {
 	return previous_track;

@@ -45,8 +45,8 @@ hráčmi.
 .
 .TP 
 \fB\-\-addon\-info\fP
-Shows a button on the add\-ons manager to query the add\-ons server for
-various information.
+Zobrazí v správcovi doplnkov tlačidlo na vyžiadanie rôznych informácií zo
+servera doplnkov.
 .TP 
 \fB\-\-all\-translations\fP
 Zobraziť všetky preklady vo výberovom zozname jazykov v hre, aj keď sa
@@ -67,15 +67,16 @@ Identifikátor scény vo zvolenej výprave. Predvolená je prvá scéna.
 Preskoč [príbehové] obrazovky a dialógy až do konca \fBstart\fP udalosti.
 .TP 
 \fB\-\-clock\fP
-Adds the option to show a clock for testing the drawing timer. Also adds the
-option for showing the GUI Test Dialog.
+Pridáva možnosť zobraziť hodiny na otestovanie časovača
+vykresľovania. Taktiež pridáva možnosť zobraziť testovacie dialógové okno
+GUI.
 .TP 
 \fB\-\-core\fP\fI\ id\fP
-Overrides the loaded core with the one whose id is specified.
+prepíše načítané jadro jadrom, ktorého id je zadané.
 .TP 
 \fB\-\-data\-dir\fP\fI\ priečinok\fP
-Overrides the data directory with the one specified. The data directory is
-the one that contains subdirectories 'data', 'fonts', 'images' and others.
+Nahradí dátový adresár zadaným adresárom. Dátový adresár je ten, ktorý
+obsahuje podadresáre „data“, „fonts“, „images“ a ďalšie.
 .TP 
 \fB\-\-data\-path\fP
 vypíše cestu k priečinku s dátami.
@@ -90,7 +91,7 @@ umožní využívať niektoré debuggovacie mechanizmy jazyka Lua
 \fB\-\-strict\-lua\fP
 znemožní používať zastarané Lua API volania
 .TP 
-\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+\fB\-D,\-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
 porovnáva dva súbory WML; najprv ich nespracuje (aby ste to urobili, najprv
 ich spustite cez \fB\-p\fP). Vypíše rozdiel ako DiffWML na štandardný výstup
 alebo do súboru označeného \fI\-\-output\fP.
@@ -119,36 +120,35 @@ tohto adresára.
 používa jazyk \fIlang\fP (symbol) v tejto relácii. Príklad: \fB\-\-language ang_GB@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdoména1\fP\fB,\fP\fIdoména2\fP\fB,\fP\fI...\fP
-sets the severity level of the log domains. The wildcard \fB*\fP may be used to
-match a subset of domains, e.g. gui/* or conf* or * (the latter matches all
-domains).  Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default, the \fBwarning\fP level is used for most domains, but
-\fBdeprecation\fP defaults to \fBnone\fP unless combined with the \fB\-d\fP option.
-This option can be specified multiple times.
+nastaví úroveň závažnosti zapisovacích domén. \fBall\fP znamená všetky
+zapisovacie domény. Možné úrovne: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP. Štandardne sa používa úroveň \fBwarning\fP, ale
+\fBdeprecation\fP je predvolene \fBnone\fP, pokiaľ nie je kombinované s možnosťou
+\fB\-d\fP.
 .TP 
 \fB\-\-log\-precise\fP
 zobrazuje časové pečiatky vo výstupe protokolu s väčšou presnosťou.
 .TP 
 \fB\-\-log\-strict\fP\fI\ level\fP
-sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
-this \fIlevel\fP or more severe will cause the unit test to fail regardless of
-the victory result. Only relevant when used with \fB\-u\fP.
+nastavuje prísnu úroveň zapisovača. Všetky správy odoslané do domén tejto
+úrovne alebo závažnejších spôsobia zlyhanie testu jednotky bez ohľadu na
+výsledok víťazstva. Relevantné len pri použití s \fB\-u\fP.
 .TP 
 \fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
 vypíše definované protokolovacie domény domény protokolovania (iba tie ktoré
 obsahujú reťazec \fIfilter\fP) a skončí
 .TP 
 \fB\-\-no\-log\-to\-file\fP
-prevents redirecting logged output to a file. The environment variable
-WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created
-in the logs directory under the userdata folder.
+zabraňuje presmerovaniu zaznamenaného výstupu do súboru. Súbory denníkov sa
+vytvárajú v adresári logs v priečinku userdata.
 .TP 
 \fB\-\-log\-to\-file\fP
-log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
-whether implicit or explicit.
+výstup protokolu sa zapisuje do súboru okrem štandardného
+výstupu/chyby. Zruší efekt \-\-no\-log\-to\-file, či už implicitný alebo
+explicitný.
 .TP 
 \fB\-\-no\-log\-sanitize\fP
-disables the anonymization that's normally applied when logging, for example
-replacing usernames with USER.
+vypína anonymizáciu, ktorá sa bežne uplatňuje pri zaznamenávaní (napríklad
+nahradenie používateľských mien reťazcom USER).
 .TP 
 \fB\-\-wnoconsole\fP
 Pre Windows, keď sa použije s \-\-no\-log\-to\-file, výstup sa zapíše do
@@ -203,9 +203,9 @@ použije \fIpassword\fP pri pripojení na server, bez ohľadu na predvoľby. Nie
 bezpečné.
 .TP 
 \fB\-\-plugin\fP\fI\ skript\fP
-load a \fIscript\fP which defines a Wesnoth plugin. Lua file should return a
-function which will be run as a coroutine and periodically woken up with
-updates.
+Načítajte \fIscript\fP, ktorý definuje doplnok pre Wesnoth. Súbor Lua by mal
+vrátiť funkciu, ktorá sa spustí ako korutina a bude sa pravidelne aktivovať
+na spracovanie aktualizácií.
 .TP 
 \fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
 aplikuje patch DiffWML na súbor WML; nespracúva ani jeden zo
@@ -222,25 +222,23 @@ preprocesore navštívte
 http://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
 \fB\-\-preprocess\-string\fP\fI\ source\-string\fP
-preprocesses a given string and writes the output to stdout.
+predspracuje zadaný reťazec a zapíše výstup na štandardný výstup (stdout).
 .TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
-comma separated list of defines to be used by the \fB\-\-preprocess\fP or
-\fB\-\-preprocess\-string\fP command. If \fBSKIP_CORE\fP is in the define list the
-"data/core" directory won't be preprocessed.
+čiarkou oddelený zoznam definícié pre príkaz \fB\-\-preprocess\fP. Ak je v
+zozname \fBSKIP_CORE\fP potom nebude adresár "data/core" spracovaný
+preprocesorom.
 .TP 
 \fB\-\-preprocess\-input\-macros\fP\fI\ zdrojový súbor\fP
-used only by the \fB\-\-preprocess\fP or \fB\-\-preprocess\-string\fP
-command. Specifies a file that contains \fB[preproc_define]\fPs to be included
-before preprocessing.
+použitý len s príkazom \fB\-\-preprocess\fP. Určuje súbor, ktorý obsahuje
+definície \fB[preproc_define]\fP, ktoré majú byť vložené pred spracovaním
+preprocesorom.
 .TP 
 \fB\-\-preprocess\-output\-macros[\fP\fI=cieľový\-súbor\fP\fB]\fP
-used only by the \fB\-\-preprocess\fP command (But not by the
-\fB\-\-preprocess\-string\fP command). Will output all preprocessed macros in the
-target file. If the file is not specified the output will be file
-\&'_MACROS_.cfg' in the target directory of preprocess's command. The output
-file can be passed to \fB\-\-preprocess\-input\-macros\fP.  This switch should be
-typed before the \fB\-\-preprocess\fP command.
+použitý len s príkazom \fB\-\-preprocess\fP. Vypíše všetky spracované makrá v
+cieľovom súbore. Ak súbor nie je zadaný, súborom bude '_MACROS_.cfg' v
+cieľovom adresári príkazu \fB\-\-preprocess\-input\-macros\fP. Tento prepínač by
+mal byť uvedený pred príkazom \fB\-\-preprocess\fP.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 nastaví rozlíšenie obrazovky. Napríklad: \fB\-r\fP \fB800x600\fP.
@@ -290,7 +288,7 @@ balíky. Nerobte to s nedôveryhodnými skriptami! Táto akcia dáva jazyku lua
 rovnaké oprávnenia ako spustiteľnému súboru wesnoth.
 .TP 
 \fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
-sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
+nastaví schému WML na použitie s \fB\-V,\-\-validate\fP.
 .TP 
 \fB\-\-userdata\-dir\fP\fI\ názov\fP
 nastaví adresár userdata na \fIname\fP pod $HOME alebo "My Documents\eMy Games"

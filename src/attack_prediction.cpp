@@ -1389,12 +1389,13 @@ public:
 			int a_drain_constant,
 			int b_drain_constant,
 			unsigned int rounds,
-			double a_hit_chance,
-			double b_hit_chance,
+			unsigned int a_chance_to_hit,
+			unsigned int b_chance_to_hit,
 			const std::vector<combat_slice>& a_split,
 			const std::vector<combat_slice>& b_split,
 			double a_initially_slowed_chance,
-			double b_initially_slowed_chance);
+			double b_initially_slowed_chance,
+			bool use_biased_rng);
 
 	void simulate();
 
@@ -1416,6 +1417,9 @@ private:
 	unsigned int rounds_;
 	double a_hit_chance_;
 	double b_hit_chance_;
+	unsigned int a_chance_to_hit_;
+	unsigned int b_chance_to_hit_;
+	bool use_biased_rng_;
 	double a_initially_slowed_chance_;
 	double b_initially_slowed_chance_;
 	unsigned int iterations_a_hit_ = 0u;
@@ -1445,12 +1449,13 @@ monte_carlo_combat_matrix::monte_carlo_combat_matrix(unsigned int a_max_hp,
 		int a_drain_constant,
 		int b_drain_constant,
 		unsigned int rounds,
-		double a_hit_chance,
-		double b_hit_chance,
+		unsigned int a_chance_to_hit,
+		unsigned int b_chance_to_hit,
 		const std::vector<combat_slice>& a_split,
 		const std::vector<combat_slice>& b_split,
 		double a_initially_slowed_chance,
-		double b_initially_slowed_chance)
+		double b_initially_slowed_chance,
+		bool use_biased_rng)
 	: combat_matrix(a_max_hp,
 			b_max_hp,
 			a_hp,
@@ -1470,8 +1475,11 @@ monte_carlo_combat_matrix::monte_carlo_combat_matrix(unsigned int a_max_hp,
 	, a_split_(a_split)
 	, b_split_(b_split)
 	, rounds_(rounds)
-	, a_hit_chance_(a_hit_chance)
-	, b_hit_chance_(b_hit_chance)
+	, a_hit_chance_(a_chance_to_hit / 100.0)
+	, b_hit_chance_(b_chance_to_hit / 100.0)
+	, a_chance_to_hit_(a_chance_to_hit)
+	, b_chance_to_hit_(b_chance_to_hit)
+	, use_biased_rng_(use_biased_rng)
 	, a_initially_slowed_chance_(a_initially_slowed_chance)
 	, b_initially_slowed_chance_(b_initially_slowed_chance)
 {
@@ -1501,10 +1509,16 @@ void monte_carlo_combat_matrix::simulate()
 		unsigned int a_strikes = calc_blows_a(a_hp);
 		unsigned int b_strikes = calc_blows_b(b_hp);
 
+		int a_credit = use_biased_rng_ ? biased_rng::roll_credit(rng) : 0;
+		int b_credit = use_biased_rng_ ? biased_rng::roll_credit(rng) : 0;
+
 		for(unsigned int j = 0u; j < rounds_ && a_hp > 0u && b_hp > 0u; ++j) {
 			for(unsigned int k = 0u; k < std::max(a_strikes, b_strikes); ++k) {
 				if(k < a_strikes) {
-					if(rng.get_random_bool(a_hit_chance_)) {
+					const bool a_hits = use_biased_rng_
+						? biased_rng::roll_hit(rng, a_strikes - k, a_chance_to_hit_, a_credit)
+						: rng.get_random_bool(a_hit_chance_);
+					if(a_hits) {
 						// A hits B
 						unsigned int damage = a_slowed ? a_slow_damage_ : a_damage_;
 						damage = std::min(damage, b_hp);
@@ -1524,7 +1538,10 @@ void monte_carlo_combat_matrix::simulate()
 				}
 
 				if(k < b_strikes) {
-					if(rng.get_random_bool(b_hit_chance_)) {
+					const bool b_hits = use_biased_rng_
+						? biased_rng::roll_hit(rng, b_strikes - k, b_chance_to_hit_, b_credit)
+						: rng.get_random_bool(b_hit_chance_);
+					if(b_hits) {
 						// B hits A
 						unsigned int damage = b_slowed ? b_slow_damage_ : b_damage_;
 						damage = std::min(damage, a_hp);
@@ -1706,7 +1723,7 @@ combatant::combatant(const combatant& that, const battle_context_unit_stats& u)
 
 namespace
 {
-enum class attack_prediction_mode { probability_calculation, monte_carlo_simulation };
+enum class attack_prediction_mode { probability_calculation, monte_carlo_simulation, biased_rng_simulation };
 
 void forced_levelup(std::vector<double>& hp_dist)
 {
@@ -2191,12 +2208,13 @@ void complex_fight(attack_prediction_mode mode,
 			stats.drain_constant,
 			opp_stats.drain_constant,
 			rounds,
-			hit_chance,
-			opp_hit_chance,
+			stats.chance_to_hit,
+			opp_stats.chance_to_hit,
 			split,
 			opp_split,
 			initially_slowed_chance,
-			opp_initially_slowed_chance
+			opp_initially_slowed_chance,
+			mode == attack_prediction_mode::biased_rng_simulation
 		);
 
 		mcm->simulate();
@@ -2327,11 +2345,11 @@ void merge_slice_summary(std::vector<double>& dst, const std::vector<double>& sr
 // Of course, one could be a woman.  Or both.
 // And either could be non-human, too.
 // Um, ok, it was a stupid thing to say.
-void combatant::fight(combatant& opponent, bool levelup_considered)
+void combatant::fight(combatant& opponent, bool levelup_considered, bool use_biased_rng)
 {
 	// If defender has firststrike and we don't, reverse.
 	if(opponent.u_.firststrike && !u_.firststrike) {
-		opponent.fight(*this, levelup_considered);
+		opponent.fight(*this, levelup_considered, use_biased_rng);
 		return;
 	}
 
@@ -2367,14 +2385,14 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 	const std::vector<combat_slice> split = split_summary(u_, summary);
 	const std::vector<combat_slice> opp_split = split_summary(opponent.u_, opponent.summary);
 
-	bool use_monte_carlo_simulation =
-		fight_complexity(split.size(), opp_split.size(), u_, opponent.u_) > MONTE_CARLO_SIMULATION_THRESHOLD
-		&& prefs::get().damage_prediction_allow_monte_carlo_simulation();
+	// With the default RNG, optimise by using Monte Carlo when the fight is very complex.
+	// With the biased RNG, always use Monte Carlo because it's the only implementation.
+	bool use_monte_carlo_simulation = use_biased_rng
+		|| (fight_complexity(split.size(), opp_split.size(), u_, opponent.u_) > MONTE_CARLO_SIMULATION_THRESHOLD
+			&& prefs::get().damage_prediction_allow_monte_carlo_simulation());
 
 	if(use_monte_carlo_simulation) {
-		// A very complex fight. Use Monte Carlo simulation instead of exact
-		// probability calculations.
-		complex_fight(attack_prediction_mode::monte_carlo_simulation, u_, opponent.u_, u_.num_blows,
+		complex_fight(use_biased_rng ? attack_prediction_mode::biased_rng_simulation : attack_prediction_mode::monte_carlo_simulation, u_, opponent.u_, u_.num_blows,
 		              opponent.u_.num_blows, summary, opponent.summary, self_not_hit, opp_not_hit, levelup_considered, split,
 		              opp_split, slowed, opponent.slowed);
 	} else if(split.size() == 1 && opp_split.size() == 1) {

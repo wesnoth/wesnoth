@@ -31,18 +31,29 @@
 
 static preproc_map setup_test_preproc_map()
 {
-	preproc_map defines_map;
+	preproc_map target;
 
-#if defined(__APPLE__)
-	defines_map.try_emplace("APPLE");
+#ifdef __APPLE__
+	target.try_emplace("APPLE");
 #endif
 
-	defines_map.try_emplace("WESNOTH_VERSION", game_config::wesnoth_version.str());
-	defines_map.try_emplace("WESNOTH_VERSION_MAJOR", std::to_string(game_config::wesnoth_version.major_version()));
-	defines_map.try_emplace("WESNOTH_VERSION_MINOR", std::to_string(game_config::wesnoth_version.minor_version()));
-	defines_map.try_emplace("WESNOTH_VERSION_REVISION", std::to_string(game_config::wesnoth_version.revision_level()));
-	defines_map.try_emplace("WESNOTH_VERSION_SPECIAL", game_config::wesnoth_version.special_version());
-	return defines_map;
+#ifdef __ANDROID__
+	target.try_emplace("ANDROID");
+#endif
+
+// apparently defined now with the macos-15 github actions CI runner
+#if defined(MOUSE_TOUCH_EMULATION) || defined(TARGET_OS_IPHONE)
+	target.try_emplace("IPHONEOS");
+#endif
+
+	target.try_emplace("WESNOTH_VERSION", game_config::wesnoth_version.str());
+
+	target.try_emplace("WESNOTH_VERSION_MAJOR", std::to_string(game_config::wesnoth_version.major_version()));
+	target.try_emplace("WESNOTH_VERSION_MINOR", std::to_string(game_config::wesnoth_version.minor_version()));
+	target.try_emplace("WESNOTH_VERSION_REVISION", std::to_string(game_config::wesnoth_version.revision_level()));
+	target.try_emplace("WESNOTH_VERSION_SPECIAL", game_config::wesnoth_version.special_version());
+
+	return target;
 }
 
 /**

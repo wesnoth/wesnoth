@@ -2297,17 +2297,11 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 		auto abilities = unit_type_data::add_registry_entries(effect, "abilities", unit_types.abilities());
 		if(!abilities.empty()) {
 			set_attr_changed(UA_ABILITIES);
-			ability_vector to_append;
 			for(const auto [key, cfg] : abilities.all_children_view()) {
-				if(!has_ability_by_id(cfg["id"])) {
-					to_append.push_back(unit_ability_t::create(key, cfg, false));
-					for(const config& event : cfg.child_range("event")) {
-						events.add_child("event", event);
-					}
+				abilities_.push_back(unit_ability_t::create(key, cfg, false));
+				for(const config& event : cfg.child_range("event")) {
+					events.add_child("event", event);
 				}
-			}
-			for (auto& ab : to_append) {
-				abilities_.push_back(std::move(ab));
 			}
 		}
 	} else if(apply_to == "remove_ability") {

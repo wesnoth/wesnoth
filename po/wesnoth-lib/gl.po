@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-09-20 19:25-0500\n"
+"POT-Creation-Date: 2026-10-20 21:43-0500\n"
 "PO-Revision-Date: 2026-06-19 13:15+0200\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -2396,7 +2396,7 @@ msgstr "Consello do día"
 #. [button]: id=toggle_tip_panel
 #. [toggle_button]: id=show_tips
 #: data/gui/themes/celes/dialogs/title_screen.cfg:216
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:223
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:95
 msgid "Show tip of the day"
 msgstr "Mostrar consello do día"
 
@@ -3085,8 +3085,10 @@ msgstr "Probabilidade de saír indemne:"
 msgid "Expected Battle Result (HP)"
 msgstr "Resultado esperado da batalla (PV)"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/attack_predictions.cfg:251
+#: src/gui/dialogs/attack_predictions.cpp:60
 msgid "Damage Calculations"
 msgstr "Cálculos de danos"
 
@@ -3366,13 +3368,23 @@ msgstr "Modificacións:"
 msgid "Combat:"
 msgstr "Combate:"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:445
+#: src/gui/dialogs/attack_predictions.cpp:79
 msgid "Default RNG"
 msgstr "Xerador aleatorio predeterminado (RNG)"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:446
+#: src/gui/dialogs/attack_predictions.cpp:93
+#, fuzzy, c-format
+#| msgid ""
+#| "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
+#| "\n"
+#| "Example: if you strike twice with 50% accuracy, you’re most likely to hit "
+#| "once and miss once, but might also hit twice or miss twice."
 msgid ""
 "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
 "\n"
@@ -3386,13 +3398,17 @@ msgstr ""
 "acertes unha vez e falles unha, pero tamén podes acertar dúas veces ou "
 "fallar dúas veces."
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:451
+#: src/gui/dialogs/attack_predictions.cpp:76
 msgid "Predictable RNG"
 msgstr "RNG previsible"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:452
+#: src/gui/dialogs/attack_predictions.cpp:91
 msgid ""
 "Identical to Default RNG, except loading a saved game will not change the "
 "outcome of an attack.\n"
@@ -3407,13 +3423,24 @@ msgstr ""
 "cargas unha partida gardada anterior e realizas o mesmo ataque de novo. "
 "Ambos golpes seguirán acertando."
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:457
+#: src/gui/dialogs/attack_predictions.cpp:72
 msgid "Reduced RNG"
 msgstr "RNG reducido"
 
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:458
+#: src/gui/dialogs/attack_predictions.cpp:89
+#, fuzzy, c-format
+#| msgid ""
+#| "Hits and misses are much more consistent. This tends to make small-scale "
+#| "engagements easier to plan.\n"
+#| "\n"
+#| "Example: if you strike three times with 50% accuracy, you will always hit "
+#| "at least once and miss at least once."
 msgid ""
 "Hits and misses are much more consistent. This tends to make small-scale "
 "engagements easier to plan.\n"
@@ -3531,7 +3558,7 @@ msgstr "Cargar o núcleo"
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
 #: src/gui/dialogs/editor/edit_unit.cpp:296
-#: src/preferences/preferences.cpp:1311
+#: src/preferences/preferences.cpp:1336
 msgid "Select"
 msgstr "Seleccionar"
 
@@ -6460,58 +6487,32 @@ msgid "Clear Hotkey"
 msgstr "Eliminar o atallo"
 
 #. [label]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:15
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:23
 msgid "Window size:"
 msgstr "Tamaño da xanela:"
 
-#. [label]: id=help_text
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:39
-msgid "Pixel scale multiplier:"
-msgstr "Multiplicador de escala de píxeles:"
-
 #. [menu_button]: id=resolution_set
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:73
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:40
 msgid "Change the game window size"
 msgstr "Cambiar o tamaño da xanela"
 
-#. [slider]: id=pixel_scale_slider
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:87
-msgid ""
-"Set the global pixel scale multiplier. A pixel scale multiplier of 2 will "
-"make everything look twice as large."
-msgstr ""
-"Establece o multiplicador de escala global de píxeles. Un multiplicador de "
-"escala de píxeles de 2 fará que todo pareza o dobre."
-
 #. [toggle_button]: id=fullscreen
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:102
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:55
 msgid "Full screen"
 msgstr "Pantalla completa"
 
 #. [toggle_button]: id=fullscreen
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:103
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:56
 msgid "Toggle between fullscreen and window mode"
 msgstr "Alternar entre pantalla completa e modo de xanela"
 
-#. [toggle_button]: id=auto_pixel_scale
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:114
-msgid "pixel_scale_multiplier^Automatic scale"
-msgstr "pixel_scale_multiplier^Escala automática"
-
-#. [toggle_button]: id=auto_pixel_scale
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:115
-msgid "Choose pixel scale multiplier automatically based on current resolution"
-msgstr ""
-"Escolle o multiplicador de escala de píxeles automaticamente en función da "
-"resolución actual"
-
 #. [toggle_button]: id=vsync
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:129
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:69
 msgid "VSync"
 msgstr "Sincronización Vertical"
 
 #. [toggle_button]: id=vsync
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:130
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:70
 msgid ""
 "Reduces tearing by synchronizing rendering with the screen refresh rate "
 "(requires restart to take effect)"
@@ -6519,13 +6520,103 @@ msgstr ""
 "Reduce o rasgado sincronizando a renderización coa taxa de actualización da "
 "pantalla (require reiniciar para que teña efecto)"
 
+#. [toggle_button]: id=show_tips
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:96
+msgid "Show gameplay tips on the main menu"
+msgstr "Mostrar consellos de xogo no menú principal"
+
+#. [toggle_button]: id=show_floating_labels
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:109
+msgid "Combat damage indicators"
+msgstr "Indicadores de danos de combate"
+
+#. [toggle_button]: id=show_floating_labels
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:110
+msgid "Show amount of damage inflicted or healed as fading labels above units"
+msgstr ""
+"Mostrar as cantidades de dano e sandación como etiquetas que esvaecen sobre "
+"as unidades"
+
+#. [toggle_button]: id=show_ellipses
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:123
+msgid "Team color indicators"
+msgstr "Indicadores de cor do equipo"
+
+#. [toggle_button]: id=show_ellipses
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:124
+msgid ""
+"Show a colored circle around the base of each unit to show which side it is "
+"on"
+msgstr ""
+"Mostrar un círculo ao pé de cada unidade da cor do bando ao que pertence"
+
+#. [toggle_button]: id=show_grid
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:137
+msgid "Grid overlay"
+msgstr "Superposición de cuadrícula"
+
+#. [toggle_button]: id=show_grid
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:138
+msgid "Overlay a grid over the map"
+msgstr "Superpoñer unha grade sobre o mapa"
+
+# Accesible dende:
+# «Configuración → Visualización».
+#. [toggle_button]: id=animate_terrains
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:163
+msgid "Animate map"
+msgstr "Mostrar as animacións do mapa"
+
+#. [toggle_button]: id=animate_terrains
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:164
+msgid "Display animated terrain graphics"
+msgstr "Mostrar imaxes animadas para o terreo"
+
+# Accesible dende:
+# «Configuración → Visualización».
+#. [toggle_button]: id=animate_water
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:177
+msgid "Animate water"
+msgstr "Mostrar as animacións da auga"
+
+#. [toggle_button]: id=animate_water
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:178
+msgid "Display animated water graphics (can be slow)"
+msgstr "Mostrar imaxes animadas para a auga (pode empeorar o rendemento)."
+
+#. [label]: id=help_text
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:225
+msgid "Pixel scale multiplier:"
+msgstr "Multiplicador de escala de píxeles:"
+
+#. [slider]: id=pixel_scale_slider
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:256
+msgid ""
+"Set the global pixel scale multiplier. A pixel scale multiplier of 2 will "
+"make everything look twice as large."
+msgstr ""
+"Establece o multiplicador de escala global de píxeles. Un multiplicador de "
+"escala de píxeles de 2 fará que todo pareza o dobre."
+
+#. [toggle_button]: id=auto_pixel_scale
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:269
+msgid "pixel_scale_multiplier^Automatic scale"
+msgstr "pixel_scale_multiplier^Escala automática"
+
+#. [toggle_button]: id=auto_pixel_scale
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:270
+msgid "Choose pixel scale multiplier automatically based on current resolution"
+msgstr ""
+"Escolle o multiplicador de escala de píxeles automaticamente en función da "
+"resolución actual"
+
 #. [label]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:152
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:294
 msgid "In-game theme:"
 msgstr "Tema do xogo:"
 
 #. [menu_button]: id=choose_theme
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:165
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:308
 msgid ""
 "Change the in-game interface theme. Additional themes may be provided by "
 "community-made add-ons"
@@ -6534,12 +6625,12 @@ msgstr ""
 "poden proporcionar temas adicionais"
 
 #. [label]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:176
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:320
 msgid "UI theme:"
 msgstr "Tema da interface:"
 
 #. [menu_button]: id=choose_gui2_theme
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:192
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:337
 msgid ""
 "Change the UI (GUI2) theme. Additional themes may be provided by community-"
 "made add-ons"
@@ -6548,137 +6639,68 @@ msgstr ""
 "comunidade poden proporcionar temas adicionais"
 
 #. [button]: id=apply
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:201
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:346
 msgid "Apply"
 msgstr "Aplicar"
 
-#. [toggle_button]: id=show_tips
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:224
-msgid "Show gameplay tips on the main menu"
-msgstr "Mostrar consellos de xogo no menú principal"
-
-#. [toggle_button]: id=show_floating_labels
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:236
-msgid "Combat damage indicators"
-msgstr "Indicadores de danos de combate"
-
-#. [toggle_button]: id=show_floating_labels
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:237
-msgid "Show amount of damage inflicted or healed as fading labels above units"
-msgstr ""
-"Mostrar as cantidades de dano e sandación como etiquetas que esvaecen sobre "
-"as unidades"
-
-#. [toggle_button]: id=show_ellipses
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:250
-msgid "Team color indicators"
-msgstr "Indicadores de cor do equipo"
-
-#. [toggle_button]: id=show_ellipses
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:251
-msgid ""
-"Show a colored circle around the base of each unit to show which side it is "
-"on"
-msgstr ""
-"Mostrar un círculo ao pé de cada unidade da cor do bando ao que pertence"
-
-#. [toggle_button]: id=show_grid
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:264
-msgid "Grid overlay"
-msgstr "Superposición de cuadrícula"
-
-#. [toggle_button]: id=show_grid
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:265
-msgid "Overlay a grid over the map"
-msgstr "Superpoñer unha grade sobre o mapa"
-
-# Accesible dende:
-# «Configuración → Visualización».
-#. [toggle_button]: id=animate_terrains
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:300
-msgid "Animate map"
-msgstr "Mostrar as animacións do mapa"
-
-#. [toggle_button]: id=animate_terrains
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:301
-msgid "Display animated terrain graphics"
-msgstr "Mostrar imaxes animadas para o terreo"
-
-# Accesible dende:
-# «Configuración → Visualización».
-#. [toggle_button]: id=animate_water
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:314
-msgid "Animate water"
-msgstr "Mostrar as animacións da auga"
-
-#. [toggle_button]: id=animate_water
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:315
-msgid "Display animated water graphics (can be slow)"
-msgstr "Mostrar imaxes animadas para a auga (pode empeorar o rendemento)."
-
-#. [toggle_button]: id=animate_units_standing
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:330
-msgid "Unit standing animations"
-msgstr "Animacións das unidades quedas"
-
-#. [toggle_button]: id=animate_units_standing
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:331
-msgid "Continuously animate standing units on the battlefield"
-msgstr "Animar continuamente as unidades quedas do campo de batalla"
-
-#. [toggle_button]: id=animate_units_idle
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:349
-msgid "Unit idle animations"
-msgstr "Animacións das unidades que non estean facendo nada"
-
-#. [toggle_button]: id=animate_units_idle
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:350
-msgid "Play short random animations for idle units"
-msgstr ""
-"Mostrar pequenas animacións ao chou nas unidades que non estean a facer nada"
-
-#. [label]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:373
-msgid "Frequency:"
-msgstr "Frecuencia:"
-
-#. [slider]: id=idle_anim_frequency
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:389
-msgid "Set the frequency of unit idle animations"
-msgstr ""
-"Definir a frecuencia das animacións das unidades que non estean a facer nada"
-
-#. [label]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:409
-msgid "Accessibility:"
-msgstr ""
-
 #. [button]: id=custom_orb_color
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:423
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:375
 #, fuzzy
 #| msgid "Adjust orb colors"
 msgid "Customize orb colors"
 msgstr "Axustar as cores das esferas"
 
 #. [button]: id=custom_orb_color
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:425
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:377
 msgid "Change the appearance of the unit movement status indicators"
 msgstr ""
 
 #. [button]: id=custom_reach_map
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:438
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:391
 #, fuzzy
 #| msgid "Custom Maps"
 msgid "Customize reach map"
 msgstr "Mapas personalizados"
 
 #. [button]: id=custom_reach_map
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:439
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:392
 msgid "Change the appearance of the unit movement UI overlay"
 msgstr ""
 
+#. [toggle_button]: id=animate_units_standing
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:410
+msgid "Unit standing animations"
+msgstr "Animacións das unidades quedas"
+
+#. [toggle_button]: id=animate_units_standing
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:411
+msgid "Continuously animate standing units on the battlefield"
+msgstr "Animar continuamente as unidades quedas do campo de batalla"
+
+#. [toggle_button]: id=animate_units_idle
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:429
+msgid "Unit idle animations"
+msgstr "Animacións das unidades que non estean facendo nada"
+
+#. [toggle_button]: id=animate_units_idle
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:430
+msgid "Play short random animations for idle units"
+msgstr ""
+"Mostrar pequenas animacións ao chou nas unidades que non estean a facer nada"
+
+#. [label]
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:453
+msgid "Frequency:"
+msgstr "Frecuencia:"
+
+#. [slider]: id=idle_anim_frequency
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:469
+msgid "Set the frequency of unit idle animations"
+msgstr ""
+"Definir a frecuencia das animacións das unidades que non estean a facer nada"
+
 #. [tab]
-#: data/gui/themes/default/dialogs/preferences/03_display.cfg:498
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:549
 msgid "Display"
 msgstr "Pantalla"
 
@@ -7825,23 +7847,23 @@ msgid "url^None"
 msgstr "Ningún"
 
 # Na pantalla de cálculo de danos de combate, este é o valor que aparece para «dano base» cando o defensor non ten arma coa que defenderse (e.g. o atacante usar un ataque a distancia e o defensor non ten ningún a distancia).
-#: src/gui/dialogs/attack_predictions.cpp:120
+#: src/gui/dialogs/attack_predictions.cpp:157
 msgid "No usable weapon"
 msgstr "Arma non utilizable"
 
-#: src/gui/dialogs/attack_predictions.cpp:196
+#: src/gui/dialogs/attack_predictions.cpp:233
 msgid "Defender resistance vs"
 msgstr "Resistencia do defensor contra"
 
-#: src/gui/dialogs/attack_predictions.cpp:198
+#: src/gui/dialogs/attack_predictions.cpp:235
 msgid "Defender vulnerability vs"
 msgstr "Vulnerabilidade do defensor contra"
 
-#: src/gui/dialogs/attack_predictions.cpp:202
+#: src/gui/dialogs/attack_predictions.cpp:239
 msgid "Attacker resistance vs"
 msgstr "Resistencia do atacante contra"
 
-#: src/gui/dialogs/attack_predictions.cpp:204
+#: src/gui/dialogs/attack_predictions.cpp:241
 msgid "Attacker vulnerability vs"
 msgstr "Vulnerabilidade do atacante contra"
 
@@ -8351,11 +8373,11 @@ msgstr ""
 msgid "lua console"
 msgstr "consola de Lua"
 
-#: src/gui/dialogs/migrate_version_selection.cpp:47
+#: src/gui/dialogs/migrate_version_selection.cpp:52
 msgid "No Other Version Found"
 msgstr "Non se atopou outra versión"
 
-#: src/gui/dialogs/migrate_version_selection.cpp:47
+#: src/gui/dialogs/migrate_version_selection.cpp:52
 msgid ""
 "This would import settings from a previous version of Wesnoth, but no other "
 "version was found on this device"
@@ -9916,11 +9938,11 @@ msgstr "Mostrar a consola de Lua"
 msgid "Unrecognized Command"
 msgstr "Orde descoñecida"
 
-#: src/preferences/preferences.cpp:1268
+#: src/preferences/preferences.cpp:1293
 msgid "No known themes. Try changing from within an existing game."
 msgstr "Non hai temas coñecidos. Proba a cambialos desde unha partida."
 
-#: src/preferences/preferences.cpp:1305
+#: src/preferences/preferences.cpp:1330
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
@@ -9930,15 +9952,15 @@ msgstr ""
 "para varios xogadores e é necesario para aloxar partidas na rede local. "
 "Adoita atoparse no mesmo cartafol que o executábel do xogo."
 
-#: src/preferences/preferences.cpp:1309
+#: src/preferences/preferences.cpp:1334
 msgid "Find Server Application"
 msgstr "Atopar o aplicativo de servidor"
 
-#: src/preferences/preferences.cpp:1791
+#: src/preferences/preferences.cpp:1816
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/preferences.cpp:1793
+#: src/preferences/preferences.cpp:1818
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 

@@ -38,7 +38,7 @@ local skill_set = {
             id          = "skill_panacea",
             label       = label(_"Panacea"),
             image       = "icons/potion_green_small.png",
-            description = header_spell().._"Spend <span color='#00bbe6' style='italic'>8xp</span> to fully heal the lowest-health adjacent human ally, and increase its\n          attacks, strikes, and damage by its level. <span color='#dd0000' weight='bold'>Next turn, it dies.</span>",
+            description = header_spell().._"Spend <span color='#00bbe6' style='italic'>8 XP</span> to fully heal the lowest-health adjacent human ally, and increase its\n          attacks, strikes, and damage by its level. <span color='#dd0000' weight='bold'>Next turn, it dies.</span>",
             xp_cost=8, --XP is also used in spellcasting.cfg
         },
         -------------------------

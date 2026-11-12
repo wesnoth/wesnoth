@@ -520,8 +520,6 @@ private:
 
 	bool validate_markup(std::string_view text, char** raw_text, std::string& semi_escaped) const;
 
-	static void copy_layout_properties(PangoLayout& src, PangoLayout& dst);
-
 	std::string format_links(std::string_view text) const;
 
 	/**

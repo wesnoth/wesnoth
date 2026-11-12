@@ -1399,7 +1399,10 @@ int mouse_handler::fill_weapon_choices(
 	for(unsigned int i = 0; i < attacker->attacks().size(); i++) {
 		// skip weapons with attack_weight=0
 		if(attacker->attacks()[i].attack_weight() > 0) {
-			battle_context bc(pc_.get_units(), attacker->get_location(), defender->get_location(), i);
+			// If Reduced RNG is enabled, we use it for the "Attack Enemy" and "Damage Calculations" windows.
+			// (We don't use it when the AI is evaluating attacks, because the Reduced RNG monte carlo simulation is slow)
+			battle_context bc(pc_.get_units(), attacker->get_location(), defender->get_location(), i, -1, 0.0, nullptr,
+					unit_const_ptr(), unit_const_ptr(), biased_rng::enabled());
 
 			// Don't include if the attacker's weapon has at least one active "disable" special.
 			if(bc.get_attacker_stats().disable) {

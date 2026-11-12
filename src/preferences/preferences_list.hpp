@@ -391,6 +391,8 @@ struct preferences_list_defines
 	ADDPREF(middle_click_scrolls)
 	/** whether moving the mouse to the sides of the window scrolls around the map */
 	ADDPREF(mouse_scrolling)
+	/** whether to scale mouse cursors by the pixel scale multiplier */
+	ADDPREF(scale_cursors)
 	/** whether to scroll to a unit when an action is taken */
 	ADDPREF(scroll_to_action)
 	/** keep scrolling when the mouse moves outside the wesnoth window */
@@ -546,6 +548,7 @@ struct preferences_list_defines
 		lobby_auto_open_whisper_windows,
 		middle_click_scrolls,
 		mouse_scrolling,
+		scale_cursors,
 		scroll_to_action,
 		scroll_when_mouse_outside,
 		show_all_units_in_help,

@@ -594,7 +594,7 @@ variant zip_transform(const variant& v1, const variant& v2, const Func& op_func)
 	return variant(std::move(res));
 }
 
-variant concat_lists(const variant& v1, const variant& v2)
+static variant concat_lists(const variant& v1, const variant& v2)
 {
 	must_both_be(formula_variant::type::list, v1, v2);
 

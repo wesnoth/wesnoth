@@ -256,13 +256,13 @@ auto make_serialized_range(const Range& range, const Func& op)
 }
 
 /** WFL empty list literal */
-std::string serialize_empty(const std::vector<variant>&)
+static std::string serialize_empty(const std::vector<variant>&)
 {
 	return "[]";
 }
 
 /** WFL empty map literal */
-std::string serialize_empty(const std::map<variant, variant>&)
+static std::string serialize_empty(const std::map<variant, variant>&)
 {
 	return "[->]";
 }
