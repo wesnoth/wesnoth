@@ -145,47 +145,41 @@ void rich_label::add_link(
 	DBG_GUI_RL << "origin: " << origin;
 	DBG_GUI_RL << "width: " << img_width;
 
-	point t_start, t_end;
-
-	setup_text_renderer(tshape, init_w_ - origin.x - img_width);
-	t_start = origin + get_xy_from_offset(utf8::size(tshape.get_text()));
-	DBG_GUI_RL << "link text start:" << t_start;
-
+	const unsigned start = utf8::size(tshape.get_text());
 	std::string link_text = name.empty() ? dest : name;
 	add_text_with_attribute(tshape, link_text, "color", link_color_.to_hex_string());
+	const unsigned end = utf8::size(tshape.get_text());
 
+	// Measure with the link text added, so a link that wraps as a whole starts on the next line.
 	setup_text_renderer(tshape, init_w_ - origin.x - img_width);
-	t_end = origin + get_xy_from_offset(utf8::size(tshape.get_text()));
-	DBG_GUI_RL << "link text end:" << t_end;
 
 	// TODO link after right aligned images
 
-	// Add link
-	// Compare lines rather than x positions: a link starting at the left edge
+	// Add a rect for each line of the link text, ending at that line's last character.
+	// Lines are compared rather than x positions, since a link starting at the left edge
 	// (eg in a table cell) can wrap and still end to the right of where it started.
 	// GitHub #11718
 	const int text_height = font::get_max_height(font_size_);
-	if(t_end.y - t_start.y < text_height / 2) {
-		rect link_rect{ t_start, point{t_end.x - t_start.x, text_height} };
-		links_.emplace_back(link_rect, dest);
+	point line_start = origin + get_xy_from_offset(start);
+	point line_end = line_start;
+	DBG_GUI_RL << "link text start:" << line_start;
 
-		DBG_GUI_RL << "added link at rect: " << link_rect;
-
-	} else {
-		//link straddles two lines, break into two rects
-		point t_size(size_.x - t_start.x - (origin.x == 0 ? img_width : 0), t_end.y - t_start.y);
-		point link_start2(origin.x, t_start.y + font::get_line_spacing_factor() * text_height);
-		point t_size2(t_end.x, t_end.y - t_start.y);
-
-		rect link_rect{ t_start, point{ t_size.x, text_height } };
-		rect link_rect2{ link_start2, point{ t_size2.x, text_height } };
-
-		links_.emplace_back(link_rect, dest);
-		links_.emplace_back(link_rect2, dest);
-
-		DBG_GUI_RL << "added link at rect 1: " << link_rect;
-		DBG_GUI_RL << "added link at rect 2: " << link_rect2;
+	for(unsigned offset = start + 1; offset <= end; ++offset) {
+		const point cursor = origin + get_xy_from_offset(offset);
+		if(cursor.y - line_start.y >= text_height / 2) {
+			// The character at offset starts a new line. line_end is the cursor before the
+			// previous character, the space where the line breaks, ie after the last word.
+			rect link_rect{ line_start, point{ line_end.x - line_start.x, text_height } };
+			links_.emplace_back(link_rect, dest);
+			DBG_GUI_RL << "added link at rect: " << link_rect;
+			line_start = cursor;
+		}
+		line_end = cursor;
 	}
+
+	rect link_rect{ line_start, point{ line_end.x - line_start.x, text_height } };
+	links_.emplace_back(link_rect, dest);
+	DBG_GUI_RL << "added link at rect: " << link_rect;
 }
 
 std::size_t rich_label::get_split_location(std::string_view text, const point& pos)
