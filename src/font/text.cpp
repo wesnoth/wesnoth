@@ -763,6 +763,9 @@ void pango_text::render(PangoLayout& layout, const rect& viewport)
 
 		// Stroke path to draw outline.
 		cairo_stroke(cr);
+
+		// Stroking clears the current point, so move back to the top-left.
+		cairo_move_to(cr, -viewport.x, -viewport.y);
 	}
 
 	// Set main text color.
