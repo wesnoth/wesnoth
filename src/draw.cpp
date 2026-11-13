@@ -45,6 +45,75 @@ static SDL_FRect rect_to_frect(const SDL_Rect& rect)
 	return frect;
 }
 
+namespace
+{
+/**
+ * GPUs limit the size and position of the viewport (for example
+ * GL_MAX_VIEWPORT_DIMS), but SDL calculates its projection from the
+ * viewport it was given, so drawing in a viewport beyond those limits comes
+ * out squashed and misplaced. Widgets can be much larger than the screen,
+ * such as a label with a long scrolled text, so force_viewport() only gives
+ * SDL the part of the requested viewport that lies within the render
+ * target. Drawing co-ordinates are then translated by the difference, so
+ * they remain relative to the requested viewport.
+ */
+struct viewport_state
+{
+	/** The render target the viewport was set on. */
+	SDL_Texture* target = nullptr;
+
+	/** The viewport given to SDL. */
+	::rect actual;
+
+	/** The viewport requested by force_viewport(). */
+	::rect requested;
+};
+
+viewport_state current_viewport;
+
+/**
+ * The viewport requested by force_viewport(), if it differs from the SDL
+ * viewport and is still in effect.
+ */
+const ::rect* reduced_viewport()
+{
+	if(!renderer() || current_viewport.actual == current_viewport.requested) {
+		return nullptr;
+	}
+
+	// Ignore it if the render target or viewport was changed by other means.
+	if(SDL_GetRenderTarget(renderer()) != current_viewport.target) {
+		return nullptr;
+	}
+
+	::rect viewport;
+	SDL_GetRenderViewport(renderer(), &viewport);
+	if(viewport != current_viewport.actual) {
+		return nullptr;
+	}
+
+	return &current_viewport.requested;
+}
+
+/** The offset from drawing co-ordinates to SDL viewport co-ordinates. */
+::point viewport_offset()
+{
+	const ::rect* requested = reduced_viewport();
+	return requested ? requested->origin() - current_viewport.actual.origin() : ::point{};
+}
+
+::rect to_sdl(const ::rect& r)
+{
+	return r.shifted_by(viewport_offset());
+}
+
+SDL_FRect to_sdl(const SDL_FRect& r)
+{
+	const ::point offset = viewport_offset();
+	return {r.x + offset.x, r.y + offset.y, r.w, r.h};
+}
+} // namespace
+
 /**************************************/
 /* basic drawing and pixel primatives */
 /**************************************/
@@ -65,7 +134,7 @@ void draw::fill(
 {
 	DBG_D << "fill " << area << ' ' << color_t{r,g,b,a};
 	SDL_SetRenderDrawColor(renderer(), r, g, b, a);
-	SDL_FRect frect = rect_to_frect(area);
+	SDL_FRect frect = rect_to_frect(to_sdl(area));
 	SDL_RenderFillRect(renderer(), &frect);
 }
 
@@ -102,13 +171,14 @@ void draw::fill(const SDL_FRect& rect, const color_t& c)
 {
 	DBG_D << "sub-pixel fill";
 	SDL_SetRenderDrawColor(renderer(), c.r, c.g, c.b, c.a);
-	SDL_RenderFillRect(renderer(), &rect);
+	SDL_FRect frect = to_sdl(rect);
+	SDL_RenderFillRect(renderer(), &frect);
 }
 
 void draw::fill(const ::rect& area)
 {
 	DBG_D << "fill " << area;
-	SDL_FRect frect = rect_to_frect(area);
+	SDL_FRect frect = rect_to_frect(to_sdl(area));
 	SDL_RenderFillRect(renderer(), &frect);
 }
 
@@ -174,7 +244,7 @@ void draw::rect(const ::rect& rect)
 	if (sdl_bad_at_rects()) {
 		return draw_rect_as_lines(rect);
 	}
-	SDL_FRect frect = rect_to_frect(rect);
+	SDL_FRect frect = rect_to_frect(to_sdl(rect));
 	SDL_RenderRect(renderer(), &frect);
 }
 
@@ -186,7 +256,7 @@ void draw::rect(const ::rect& rect,
 	if (sdl_bad_at_rects()) {
 		return draw_rect_as_lines(rect);
 	}
-	SDL_FRect frect = rect_to_frect(rect);
+	SDL_FRect frect = rect_to_frect(to_sdl(rect));
 	SDL_RenderRect(renderer(), &frect);
 }
 
@@ -204,7 +274,8 @@ void draw::line(int from_x, int from_y, int to_x, int to_y)
 {
 	DBG_D << "line from (" << from_x << ',' << from_y
 	      << ") to (" << to_x << ',' << to_y << ')';
-	SDL_RenderLine(renderer(), from_x, from_y, to_x, to_y);
+	const ::point offset = viewport_offset();
+	SDL_RenderLine(renderer(), from_x + offset.x, from_y + offset.y, to_x + offset.x, to_y + offset.y);
 }
 
 void draw::line(int from_x, int from_y, int to_x, int to_y, const color_t& c)
@@ -213,7 +284,8 @@ void draw::line(int from_x, int from_y, int to_x, int to_y, const color_t& c)
 	      << ") to (" << to_x << ',' << to_y
 	      << ") with colour " << c;
 	SDL_SetRenderDrawColor(renderer(), c.r, c.g, c.b, c.a);
-	SDL_RenderLine(renderer(), from_x, from_y, to_x, to_y);
+	const ::point offset = viewport_offset();
+	SDL_RenderLine(renderer(), from_x + offset.x, from_y + offset.y, to_x + offset.x, to_y + offset.y);
 }
 
 void draw::points(const std::vector<SDL_FPoint>& points)
@@ -222,13 +294,25 @@ void draw::points(const std::vector<SDL_FPoint>& points)
 	static_assert(sizeof(::point) == sizeof(SDL_Point));
 
 	DBG_D << points.size() << " points";
-	SDL_RenderPoints(renderer(), points.data(), points.size());
+	const ::point offset = viewport_offset();
+	if(offset == ::point{}) {
+		SDL_RenderPoints(renderer(), points.data(), points.size());
+		return;
+	}
+
+	std::vector<SDL_FPoint> translated = points;
+	for(SDL_FPoint& p : translated) {
+		p.x += offset.x;
+		p.y += offset.y;
+	}
+	SDL_RenderPoints(renderer(), translated.data(), translated.size());
 }
 
 void draw::point(int x, int y)
 {
 	DBG_D << "point (" << x << ',' << y << ')';
-	SDL_RenderPoint(renderer(), x, y);
+	const ::point offset = viewport_offset();
+	SDL_RenderPoint(renderer(), x + offset.x, y + offset.y);
 }
 
 void draw::circle(int cx, int cy, int r, const color_t& c, uint8_t octants)
@@ -416,7 +500,7 @@ void draw::blit(const texture& tex, const ::rect& dst)
 	DBG_D << "blit " << dst;
 
 	const SDL_Rect* rect = tex.src();
-	SDL_FRect fdst = rect_to_frect(dst);
+	SDL_FRect fdst = rect_to_frect(to_sdl(dst));
 	if(rect) {
 		SDL_FRect frect = rect_to_frect(*rect);
 		SDL_RenderTexture(renderer(), tex, &frect, &fdst);
@@ -428,6 +512,10 @@ void draw::blit(const texture& tex, const ::rect& dst)
 void draw::blit(const texture& tex)
 {
 	if (!tex) { DBG_D << "null blit"; return; }
+
+	if(const ::rect* requested = reduced_viewport()) {
+		return draw::blit(tex, ::rect{::point{}, requested->size()});
+	}
 	DBG_D << "blit";
 
 	const SDL_Rect* rect = tex.src();
@@ -465,7 +553,7 @@ void draw::flipped(
 
 	SDL_FlipMode flip = get_flip(flip_h, flip_v);
 	const SDL_Rect* rect = tex.src();
-	SDL_FRect fdst = rect_to_frect(dst);
+	SDL_FRect fdst = rect_to_frect(to_sdl(dst));
 	if(rect) {
 		SDL_FRect frect = rect_to_frect(*rect);
 		SDL_RenderTextureRotated(renderer(), tex, &frect, &fdst, 0.0, nullptr, flip);
@@ -477,6 +565,10 @@ void draw::flipped(
 void draw::flipped(const texture& tex, bool flip_h, bool flip_v)
 {
 	if (!tex) { DBG_D << "null flipped"; return; }
+
+	if(const ::rect* requested = reduced_viewport()) {
+		return draw::flipped(tex, ::rect{::point{}, requested->size()}, flip_h, flip_v);
+	}
 	DBG_D << "flipped (" << flip_h << '|' << flip_v << ')';
 
 	SDL_FlipMode flip = get_flip(flip_h, flip_v);
@@ -543,11 +635,12 @@ void draw::tiled_highres(const texture& tex, const ::rect& dst,
 	for (; t.y < dst.y + dst.h; t.y += t.h, vf = !vf) {
 		bool hf = false;
 		for (t.x = dst.x - xoff; t.x < dst.x + dst.w; t.x += t.w, hf = !hf) {
+			const SDL_FRect sdl_t = to_sdl(t);
 			if (mirrored) {
 				SDL_FlipMode flip = get_flip(hf, vf);
-				SDL_RenderTextureRotated(renderer(), tex, nullptr, &t, 0.0, nullptr, flip);
+				SDL_RenderTextureRotated(renderer(), tex, nullptr, &sdl_t, 0.0, nullptr, flip);
 			} else {
-				SDL_RenderTexture(renderer(), tex, nullptr, &t);
+				SDL_RenderTexture(renderer(), tex, nullptr, &sdl_t);
 			}
 		}
 	}
@@ -563,8 +656,15 @@ void draw::smooth_shaded(const texture& tex,
 			<< " (" << v.tex_coord.x << ',' << v.tex_coord.y
 			<< ")}";
 	}
+	std::array<SDL_Vertex, 4> translated = verts;
+	const ::point offset = viewport_offset();
+	for(SDL_Vertex& v : translated) {
+		v.position.x += offset.x;
+		v.position.y += offset.y;
+	}
+
 	int indices[6] = {0, 1, 2, 2, 1, 3};
-	SDL_RenderGeometry(renderer(), tex, &verts[0], 4, indices, 6);
+	SDL_RenderGeometry(renderer(), tex, &translated[0], 4, indices, 6);
 }
 
 /***************************/
@@ -609,7 +709,8 @@ void draw::force_clip(const ::rect& clip)
 	}
 	DBG_D << "forcing clip to " << clip;
 
-	SDL_SetRenderClipRect(renderer(), &clip);
+	const ::rect sdl_clip = to_sdl(clip);
+	SDL_SetRenderClipRect(renderer(), &sdl_clip);
 }
 
 rect draw::get_clip()
@@ -625,6 +726,7 @@ rect draw::get_clip()
 
 	::rect clip;
 	SDL_GetRenderClipRect(renderer(), &clip);
+	clip.shift(-viewport_offset());
 	return clip;
 }
 
@@ -662,10 +764,13 @@ bool draw::null_clip()
 draw::viewport_setter::viewport_setter(const ::rect& view)
 	: v_(), c_(), clip_enabled_(draw::clip_enabled())
 {
+	// Get the clip first, as it's interpreted relative to the current viewport.
 	v_ = draw::get_viewport();
-	draw::force_viewport(view);
 	if (clip_enabled_) {
 		c_ = draw::get_clip();
+	}
+	draw::force_viewport(view);
+	if (clip_enabled_) {
 		// adjust clip for difference in viewport position
 		::rect c_view = {
 			c_.x + v_.x - view.x,
@@ -699,7 +804,22 @@ void draw::force_viewport(const ::rect& viewport)
 	}
 	DBG_D << "forcing viewport to " << viewport;
 
-	SDL_SetRenderViewport(renderer(), &viewport);
+	// Only give SDL the part within the render target, see viewport_state.
+	::rect actual = viewport;
+	const ::rect bounds = video::draw_area();
+	if(!bounds.empty()) {
+		actual.clip(bounds);
+		if(actual.empty()) {
+			// Nothing can be seen, but SDL still needs a valid viewport.
+			actual = {bounds.origin(), {1, 1}};
+		}
+	}
+
+	SDL_SetRenderViewport(renderer(), &actual);
+
+	// Store what SDL reports, so reduced_viewport() can compare it exactly.
+	SDL_GetRenderViewport(renderer(), &actual);
+	current_viewport = {SDL_GetRenderTarget(renderer()), actual, viewport};
 }
 
 rect draw::get_viewport()
@@ -707,6 +827,10 @@ rect draw::get_viewport()
 	if (!renderer()) {
 		WRN_D << "no renderer available to get viewport";
 		return {};
+	}
+
+	if(const ::rect* requested = reduced_viewport()) {
+		return *requested;
 	}
 
 	::rect viewport;
@@ -721,6 +845,7 @@ rect draw::get_viewport()
 draw::render_target_setter::render_target_setter(const texture& t)
 	: target_()
 	, viewport_()
+	, requested_viewport_()
 	, clip_()
 {
 	// Validate we can render to this texture.
@@ -734,6 +859,9 @@ draw::render_target_setter::render_target_setter(const texture& t)
 	target_ = video::get_render_target();
 	SDL_GetRenderViewport(renderer(), &viewport_);
 	SDL_GetRenderClipRect(renderer(), &clip_);
+
+	const ::rect* requested = reduced_viewport();
+	requested_viewport_ = requested ? *requested : viewport_;
 
 	if (t) {
 		video::force_render_target(t);
@@ -750,6 +878,11 @@ draw::render_target_setter::~render_target_setter()
 	}
 	video::force_render_target(target_);
 	SDL_SetRenderViewport(renderer(), &viewport_);
+
+	::rect actual;
+	SDL_GetRenderViewport(renderer(), &actual);
+	current_viewport = {SDL_GetRenderTarget(renderer()), actual, requested_viewport_};
+
 	if(clip_ == sdl::empty_rect) return;
 	SDL_SetRenderClipRect(renderer(), &clip_);
 }
