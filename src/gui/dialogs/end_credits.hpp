@@ -17,6 +17,8 @@
 #include "gui/dialogs/modal_dialog.hpp"
 
 #include <SDL3/SDL_keycode.h>
+
+#include <string>
 #include <vector>
 
 
@@ -54,23 +56,7 @@ private:
 	// The speed of auto-scrolling, specified as px/s
 	int scroll_speed_;
 
-	uint32_t last_scroll_;
-
-	/**
-	 * sliding_size_ alters how many of the sliding contents are to be run at once
-	 * n-1 = 2 => 3 strings at once concatinated
-	 */
-	static constexpr std::size_t sliding_size_ = 2;
-	/**
-	 * number of lines to put in each chunk of text to display
-	 * the final chunk will of course probably have fewer lines
-	 */
-	static constexpr std::size_t lines_per_chunk_ = 50;
-	std::size_t first_idx_;
-	std::size_t last_idx_;
-	std::string content_;
-	std::string sliding_content_;
-	std::vector<std::vector<std::string>> chunks_;
+	uint64_t last_scroll_;
 };
 
 } // namespace dialogs
