@@ -427,6 +427,10 @@ static std::pair<std::string, config> parse_tag(std::string::const_iterator& beg
 			elem[key] = value;
 		}
 	}
+	if(beg == end) {
+		// eg an attribute value with a missing closing quote consumed the '>'
+		throw parse_error(beg, "Unterminated opening tag " + tag_name);
+	}
 	if(auto_closed) {
 		assert(*beg == '>');
 		++beg;
