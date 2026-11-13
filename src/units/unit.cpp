@@ -1536,6 +1536,17 @@ bool unit::has_ability_by_id(const std::string& ability) const
 	return false;
 }
 
+bool unit::has_ability_by_cfg(const config& cfg, const std::string& key) const
+{
+	for(const ability_ptr& ab : abilities_) {
+		if(ab->tag() == key && ab->cfg() == cfg) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
 void unit::remove_ability_by_id(const std::string& ability)
 {
 	set_attr_changed(UA_ABILITIES);
@@ -2298,9 +2309,12 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 		if(!abilities.empty()) {
 			set_attr_changed(UA_ABILITIES);
 			for(const auto [key, cfg] : abilities.all_children_view()) {
-				abilities_.push_back(unit_ability_t::create(key, cfg, false));
-				for(const config& event : cfg.child_range("event")) {
-					events.add_child("event", event);
+				const ability_ptr& ab = unit_ability_t::create(key, cfg, false);
+				if(effect["cumulative"].to_bool(false) || !has_ability_by_cfg(ab->cfg(), ab->tag())) {
+					abilities_.push_back(ab);
+					for(const config& event : (ab->cfg()).child_range("event")) {
+						events.add_child("event", event);
+					}
 				}
 			}
 		}
