@@ -992,7 +992,15 @@ void window::layout()
 		variables_.add("window_width", wfl::variant(size.x));
 		variables_.add("window_height", wfl::variant(size.y));
 
+		int iterations = 0;
+		const int MAX_LAYOUT_ITERATIONS = 5;
 		while(reevaluate_best_size_(variables_, &functions_)) {
+			if (++iterations > MAX_LAYOUT_ITERATIONS) {
+				WRN_GUI_L << "failed to find stable layout after " << MAX_LAYOUT_ITERATIONS << " iterations for window '" << id()
+						<< "' - window size: " << size << " screen: " << settings::screen_width << "x" << settings::screen_height
+						<< " reevaluate_best_size: " << reevaluate_best_size_ << " width: " << w_ << " height: " << h_;
+				break;
+			}
 			layout_initialize(true);
 
 			window_implementation::layout(*this,
