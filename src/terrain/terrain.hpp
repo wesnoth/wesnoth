@@ -125,17 +125,9 @@ public:
 
 	/**
 	 * True if this object represents some sentinel values.
-	 *
-	 * \todo number_ should never be NONE_TERRAIN
-	 * \todo there's two different VOID_TERRAINS - see the comment attached to
-	 * the definition of VOID_TERRAIN.
-	 *
-	 * \todo unclear what this should mean, so replace it with a clearly-named
-	 * successor.
 	 */
 	bool is_nonnull() const {
-		return (number_ != t_translation::NONE_TERRAIN)
-			&& (number_ != t_translation::VOID_TERRAIN);
+		return (number_ != t_translation::NONE_TERRAIN);
 	}
 
 	/** Returns the light (lawful) bonus for this terrain when the time of day gives a @a base bonus. */
