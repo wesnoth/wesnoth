@@ -684,11 +684,12 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 				// the last tag or the next one starts a new block.
 				const std::string full_text = curr_item->get_text();
 				const auto next = std::next(it);
-				const bool block_ends = next == children.end() || [&next]() {
-					const auto [next_key, next_child] = *next;
-					return next_key == "table" || next_key == "clear"
-						|| (next_key == "img" && next_child["float"].to_bool(false));
-				}();
+				const auto starts_new_block = [](const auto& tag) {
+					const auto [tag_key, tag_child] = tag;
+					return tag_key == "table" || tag_key == "clear"
+						|| (tag_key == "img" && tag_child["float"].to_bool(false));
+				};
+				const bool block_ends = next == children.end() || starts_new_block(*next);
 				const bool line_complete = block_ends || (!full_text.empty() && full_text.back() == '\n');
 
 				if(wrap_mode && line_complete && (float_size.y > 0) && (text_size.y > float_size.y)) {
