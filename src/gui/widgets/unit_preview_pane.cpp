@@ -225,12 +225,20 @@ void unit_preview_pane::print_attack_details(
 
 	for(const auto& a : attacks) {
 		const std::string range_png = std::string("icons/profiles/") + a.range() + "_attack.png~SCALE_INTO(16,16)";
-		const std::string type_png = std::string("icons/profiles/") + a.type() + ".png~SCALE_INTO(16,16)";
+		std::pair<std::string, std::set<std::string>> all_damage_types = a.damage_types();
+		std::string r_type = all_damage_types.first;
+		std::string alt_type = !all_damage_types.second.empty() ? *(all_damage_types.second).begin() : "";
+		const std::string type_png = std::string("icons/profiles/") + r_type + ".png~SCALE_INTO(16,16)";
+		const std::string alt_type_png = (!alt_type.empty() && (all_damage_types.second).size() <= 1) ? std::string("icons/profiles/") + alt_type + ".png~SCALE_INTO(16,16)" : "";
 		const bool range_png_exists = ::image::exists(range_png);
 		const bool type_png_exists = ::image::exists(type_png);
+		const bool alt_type_png_exists = ::image::exists(alt_type_png);
 
 		const t_string& range = string_table["range_" + a.range()];
-		const t_string& type = string_table["type_" + a.type()];
+		if (!alt_type.empty()) {
+			alt_type = ", " + string_table["type_" + alt_type];
+		}
+		const t_string& type = (all_damage_types.second).size() <= 1 ? string_table["type_" + r_type] + alt_type : string_table["type_" + r_type] + ", ...";
 
 		const std::string dmg_label = markup::span_color(
 			font::unit_type_color, a.damage(), font::weapon_numbers_sep, a.num_attacks(), " ", a.name());
@@ -240,6 +248,7 @@ void unit_preview_pane::print_attack_details(
 			{
 				{ "image_range", { { "label", range_png } } },
 				{ "image_type", { { "label", type_png } } },
+				{ "image_second_type", { { "label", alt_type_png } } },
 				{ "name", { { "label", dmg_label }, { "use_markup", "true" } } },
 			}
 		);
@@ -247,7 +256,7 @@ void unit_preview_pane::print_attack_details(
 		subsection.find_widget<styled_widget>("image_range", true).set_tooltip(range);
 		subsection.find_widget<styled_widget>("image_type", true).set_tooltip(type);
 
-		if(!range_png_exists || !type_png_exists) {
+		if(!range_png_exists || (!type_png_exists && !alt_type_png_exists)) {
 			add_name_tree_node(
 				subsection,
 				"item",
