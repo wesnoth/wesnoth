@@ -72,7 +72,7 @@ bool select_campaign(saved_game& state, jump_to_campaign_info jump_to_campaign)
 				difficulty = dlg.get_difficulty();
 			} else {
 				if (dlg.get_retval() == gui2::dialogs::campaign_selection::OPEN_ADDON_MANAGER) {
-					manage_addons();
+					manage_addons(ADDON_SP_CAMPAIGN);
 				}
 				return false;
 			}

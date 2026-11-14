@@ -78,7 +78,7 @@ bool get_addons_list(addons_client& client, addons_list& list)
 	return true;
 }
 
-bool addons_manager_ui(const std::string& remote_address)
+bool addons_manager_ui(const std::string& remote_address, const utils::optional<ADDON_TYPE> initial_type_filter)
 {
 	bool need_wml_cache_refresh = false;
 
@@ -88,7 +88,7 @@ bool addons_manager_ui(const std::string& remote_address)
 		addons_client client(remote_address);
 		client.connect();
 
-		gui2::dialogs::addon_manager dlg(client);
+		gui2::dialogs::addon_manager dlg(client, initial_type_filter);
 		dlg.show();
 
 		need_wml_cache_refresh = dlg.get_need_wml_cache_refresh();
@@ -241,7 +241,7 @@ bool uninstall_local_addons()
 
 } // end anonymous namespace
 
-bool manage_addons()
+bool manage_addons(const utils::optional<ADDON_TYPE> initial_type_filter)
 {
 	static const int addon_download  = 0;
 	// NOTE: the following two values are also known by WML, so don't change them.
@@ -260,7 +260,7 @@ bool manage_addons()
 
 	switch(res) {
 		case addon_download:
-			return addons_manager_ui(host_name);
+			return addons_manager_ui(host_name, initial_type_filter);
 		case addon_uninstall:
 			return uninstall_local_addons();
 		default:
