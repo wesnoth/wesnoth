@@ -314,6 +314,10 @@ variant make_callable(Args&&... args)
 	return variant{std::make_shared<T>(std::forward<Args>(args)...)};
 }
 
+/**
+ * This callable_cast<T> acts similarly to dynamic_cast<T>:  if the template type is a pointer,
+ * then a failed conversion is represented by returning nullptr.
+ */
 #ifdef __cpp_concepts
 template<typename T>
 requires std::is_pointer_v<T>
@@ -323,7 +327,10 @@ template<typename T>
 auto callable_cast(const variant& v) -> std::enable_if_t<std::is_pointer_v<T>, std::shared_ptr<const std::remove_pointer_t<T>>>
 #endif
 {
-	return std::dynamic_pointer_cast<const std::remove_pointer_t<T>>(v.as_callable());
+	if(v.is_callable()) {
+		return std::dynamic_pointer_cast<const std::remove_pointer_t<T>>(v.as_callable());
+	}
+	return std::shared_ptr<const std::remove_pointer_t<T>>{};
 }
 
 #ifdef __cpp_concepts
