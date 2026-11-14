@@ -5,7 +5,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# RatArmy, 2025
+# RatArmy, 2026
 #
 #, fuzzy
 msgid ""
@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-06-22 22:15-0500\n"
-"PO-Revision-Date: 2023-12-03 03:44+0000\n"
-"Last-Translator: RatArmy, 2025\n"
+"PO-Revision-Date: 2026-03-28 19:10+0000\n"
+"Last-Translator: RatArmy, 2026\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
 "ja/)\n"
 "Language: ja\n"
@@ -306,18 +306,12 @@ msgid "No editor time-of-day found."
 msgstr "エディタの時刻設定が見つかりません。"
 
 #: src/editor/controller/editor_controller.cpp:886
-#, fuzzy
-#| msgid "Add-on"
 msgid "Add-on Files"
-msgstr "アドオン"
+msgstr ""
 
 #: src/editor/controller/editor_controller.cpp:899
-#, fuzzy
-#| msgid "Clipboard support not found, contact your packager"
 msgid "Opening files is not supported, contact your packager"
 msgstr ""
-"クリップボードサポートが無効となっています。パッケージャーに連絡してくださ"
-"い。"
 
 #: src/editor/controller/editor_controller.cpp:1343
 msgid "Change Unit ID"
@@ -344,10 +338,8 @@ msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 msgstr ""
 
 #: src/editor/map/context_manager.cpp:217
-#, fuzzy
-#| msgid "Map loaded from scenario"
 msgid "Load Map or Scenario"
-msgstr "シナリオから読み込まれたマップ"
+msgstr ""
 
 #: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1141
 msgid "New Map"
@@ -405,10 +397,8 @@ msgid "Error"
 msgstr "エラー"
 
 #: src/editor/map/context_manager.cpp:705
-#, fuzzy
-#| msgid "Do you really want to save $type1 in $type2 folder?"
 msgid "Do you really want to save a map in the scenarios folder?"
-msgstr "本当に $type2 フォルダの中に $type1 を保存しますか？"
+msgstr ""
 
 #: src/editor/map/context_manager.cpp:713
 #: src/editor/map/context_manager.cpp:905
@@ -420,10 +410,8 @@ msgid "Save Scenario As"
 msgstr "名前を付けてシナリオを保存"
 
 #: src/editor/map/context_manager.cpp:754
-#, fuzzy
-#| msgid "Do you really want to save $type1 in $type2 folder?"
 msgid "Do you really want to save a scenario in the maps folder?"
-msgstr "本当に $type2 フォルダの中に $type1 を保存しますか？"
+msgstr ""
 
 #: src/editor/map/context_manager.cpp:762
 msgid "This scenario is already open."
@@ -451,10 +439,8 @@ msgid "Scenario saved."
 msgstr "シナリオを保存しました。"
 
 #: src/editor/map/context_manager.cpp:881
-#, fuzzy
-#| msgid "Map saved."
 msgid "Map saved"
-msgstr "マップを保存しました。"
+msgstr ""
 
 #: src/editor/map/context_manager.cpp:956
 msgid "Loaded embedded map data"
@@ -487,59 +473,39 @@ msgid "Empty file"
 msgstr "ファイルが空です"
 
 #: src/editor/map/map_context.cpp:204
-#, fuzzy
-#| msgid "File does not have .map or .cfg extension"
 msgid "File does not have .map, .cfg, or .mask extension"
-msgstr "ファイルの拡張子が .map か .cfg でありません"
+msgstr ""
 
 #: src/editor/map/map_context.cpp:227
-#, fuzzy
-#| msgid "Failed to load the scenario, attempting to load only the map."
 msgid ""
 "Failed to load the scenario: $error\n"
 "\n"
 "Attempting to load only the map."
-msgstr "シナリオの読み込みに失敗したため、マップのみの読み込みを試みます。"
+msgstr ""
 
 #: src/editor/map/map_context.cpp:253
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_data value does not point "
-#| "to an existing file"
 msgid ""
 "The file looks like a scenario, but the map_data attribute does not point to "
 "an existing file"
 msgstr ""
-"マップファイルはシナリオのようですが、map_data 値が存在するファイルを指し示し"
-"ていません"
 
 #: src/editor/map/map_context.cpp:268
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_file value does not point "
-#| "to an existing file"
 msgid ""
 "The file looks like a scenario, but the map_file attribute does not point to "
 "an existing file"
 msgstr ""
-"このマップファイルはシナリオのようですが、map_file の値が存在するファイルを指"
-"示していません"
 
 #: src/editor/map/map_context.cpp:448
 msgid "Confirm"
 msgstr ""
 
 #: src/editor/map/map_context.cpp:835 src/editor/map/map_context.cpp:875
-#, fuzzy
-#| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
-msgstr "シナリオを保存できませんでした: $msg"
+msgstr ""
 
 #: src/editor/map/map_context.cpp:869
-#, fuzzy
-#| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
-msgstr "タイムスケジュールメニュー"
+msgstr ""
 
 #: src/editor/map/map_context.cpp:915
 msgid "Could not save the scenario: $msg"
@@ -566,10 +532,8 @@ msgid "Will not work in game without extra care."
 msgstr "更に手を入れなければゲームで動作しません。"
 
 #: src/editor/palette/item_palette.cpp:33
-#, fuzzy
-#| msgid " | Right-click to remove"
 msgid "Left-click: Place item $item | Right-click to remove"
-msgstr " | 右クリックで削除"
+msgstr ""
 
 #: src/editor/palette/location_palette.cpp:247
 msgid "Go To"
@@ -617,27 +581,3 @@ msgstr "Cmd＋クリック：地形をコピー"
 #: src/editor/palette/terrain_palettes.cpp:237
 msgid "Ctrl + click: copy terrain"
 msgstr "Ctrl＋クリック：地形をコピー"
-
-#, fuzzy
-#~| msgid ""
-#~| "Found the characters '<<' indicating inline lua is present - aborting"
-#~ msgid ""
-#~ "Found the characters ‘<<’ indicating inline lua is present — aborting"
-#~ msgstr ""
-#~ "インライン Lua が存在することを示す文字列「<<」が見つかりました -  中止し"
-#~ "ます"
-
-#~ msgid "Unable to parse file to find map data"
-#~ msgstr "マップデータを探すためのファイルのパースができません"
-
-#~ msgid "Load Map"
-#~ msgstr "マップ読み込み"
-
-#~ msgid "Left-click: Place item "
-#~ msgstr "左クリック：アイテムの設置"
-
-#~ msgid "Choose File"
-#~ msgstr "ファイルを選択"
-
-#~ msgid "Select"
-#~ msgstr "選択"
