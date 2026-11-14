@@ -4,14 +4,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-09-21 00:25 UTC\n"
-"PO-Revision-Date: 2026-10-13 23:50+0800\n"
+"PO-Revision-Date: 2026-11-03 19:27+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: none\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.9\n"
+"X-Generator: Poedit 3.10\n"
 
 # 按照战役文本来解读，“欺天”指欺骗天子、欺骗天命、欺骗天道，与预言主题呼应。按照后来人写的注释，“天”也可以指代“天下、王权、天命所归”的含义。
 #. [editor_group]: id=the_deceivers_gambit
@@ -663,7 +663,7 @@ msgstr ""
 #. [lua]: display_skills_dialog
 #: data/campaigns/The_Deceivers_Gambit/lua/spellcasting.lua:131
 msgid "Confirm Spells <small><i>(can be changed every scenario)</i></small>"
-msgstr "确认法术 <small><i>（每个场景中都可以更改）</i></small>"
+msgstr "确认法术 <small><b>（每个场景中都可以更改）</b></small>"
 
 #. [lua]: display_skills_dialog
 #: data/campaigns/The_Deceivers_Gambit/lua/spellcasting.lua:134
@@ -1252,7 +1252,7 @@ msgid ""
 "are difficult to evade. They have few hitpoints and are highly vulnerable in "
 "melee combat, so take good care of them!"
 msgstr ""
-"法师是致命的远程攻击单位，他们的<i>魔法</i>攻击精准无比，难以闪避。他们的生命"
+"法师是致命的远程攻击单位，他们的<b>魔法</b>攻击精准无比，难以闪避。他们的生命"
 "值很低，近战时也极为脆弱，请务必好好保护他们！"
 
 #. [message]
@@ -1263,8 +1263,8 @@ msgid ""
 "Preferences menu (Ctrl-P), selecting “Display”, and unchecking “Animate "
 "Map.”</i>"
 msgstr ""
-"<i>雨仅为视觉效果，对游戏玩法无任何影响。若雨效干扰游戏或降低性能，可通过打开"
-"首选项菜单（Ctrl-P），选择“显示”并取消勾选“显示地图动画”来关闭。</i>"
+"<b>雨仅为视觉效果，对游戏玩法无任何影响。若雨效干扰游戏或降低性能，可通过打开"
+"首选项菜单（Ctrl-P），选择“显示”并取消勾选“显示地图动画”来关闭。</b>"
 
 #. [scenario]: id=01_Stirrings_of_War
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:493
@@ -1971,13 +1971,13 @@ msgid ""
 "with effective damage types!</b></i> To see more details, right-click on a "
 "wose and select <i>“Unit Type Description”.</i>"
 msgstr ""
-"树人拥有<i>伏击</i>能力，使其在森林中隐身。任何单位移动至树人相邻位置即可暂时"
-"将其显形，但执行此操作的单位将无法再移动——即使你拥有<i>散兵</i>能力。伏击者会"
+"树人拥有<b>伏击</b>能力，使其在森林中隐身。任何单位移动至树人相邻位置即可暂时"
+"将其显形，但执行此操作的单位将无法再移动——即使你拥有<b>散兵</b>能力。伏击者会"
 "在你移走的瞬间（即便伏击者本身未移动）重新隐身。\n"
 "\n"
-"此外，树人还拥有强大的<i>再生</i>能力，并对多种伤害类型具有极高的抗性。<i><b>"
+"此外，树人还拥有强大的<b>再生</b>能力，并对多种伤害类型具有极高的抗性。<i><b>"
 "请务必征募具备有效伤害类型的单位！</b></i>如需了解更多详情，请在一个树人上面"
-"右键点击并选择<i>“单位类型描述”。</i>"
+"右键点击并选择<b>“单位类型描述”。</b>"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/scenarios/03_The_Ambassador.cfg:266
@@ -2180,7 +2180,7 @@ msgid ""
 "honor of the friendship we have built over my many years here, I would hope "
 "Lintanir will as well."
 msgstr ""
-"当然，你们尽可蔑视我王的召唤；尽可在林塔尼尔闲荡；尽可生活、欢笑，<i>流连</i>"
+"当然，你们尽可蔑视我王的召唤；尽可在林塔尼尔闲荡；尽可生活、欢笑，<b>流连</b>"
 "不去，直到韦诺的国力在一场惨胜或一场血腥溃败中耗尽。\n"
 "\n"
 "但要知道，我必将响应我王的征召；我必将奔赴战场。念及我在此地多年与你们结下的"
@@ -2405,7 +2405,7 @@ msgstr "谜题在高难度下更为困难，在低难度下则简单很多。"
 #. [option]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:516
 msgid "Play the puzzle <i>(includes XP)</i>"
-msgstr "挑战谜题<i>（包含经验值）</i>"
+msgstr "挑战谜题<b>（包含经验值）</b>"
 
 #. [option]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:519
@@ -2481,7 +2481,7 @@ msgid ""
 "are exotic."
 msgstr ""
 "好吧——行吧，没错，可是德欧兰是个好人！睿智善良，还默默背负着远离族人的流放重"
-"担？而且他还是<i>人类</i>！就算是你这种古板的老精灵也得承认，圆耳朵和胡茬挺有"
+"担？而且他还是<b>人类</b>！就算是你这种古板的老精灵也得承认，圆耳朵和胡茬挺有"
 "异域风情的。"
 
 #. [message]: speaker=Kalenz
@@ -2609,7 +2609,7 @@ msgstr "德法多死亡"
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1418
 msgid ""
 "In this strange world, fate guides every strike. <i>(attacks never miss)</i>"
-msgstr "在这个奇异的世界里，命运指引着每一次攻击。<i>（攻击永不落空）</i>"
+msgstr "在这个奇异的世界里，命运指引着每一次攻击。<b>（攻击永不落空）</b>"
 
 #. [event]: id=always_hit
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1444
@@ -4004,7 +4004,7 @@ msgstr "其中一人已逃脱，去向兽人军队示警了！我本厌恶临阵
 #. an orc has just woken up and found Delfador fighting saurians
 #: data/campaigns/The_Deceivers_Gambit/scenarios/07_The_Great_River.cfg:1105
 msgid "<i>Yaawwnn</i> ...what’s all this noise about?"
-msgstr "<i>哈啊——欠——</i>……外头吵吵嚷嚷的，出什么事了？"
+msgstr "<b>哈啊——欠——</b>……外头吵吵嚷嚷的，出什么事了？"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/scenarios/07_The_Great_River.cfg:1109
@@ -4061,7 +4061,7 @@ msgid ""
 "And “<i>Sceptre of the Wesfolk</i>” is the worst of it all... as if it’s my "
 "fault Haldric’s dwarves lost the accursed thing."
 msgstr ""
-"而“<i>韦福克人之权杖</i>”才是最要命的……倒像是哈德里克的矮人弄丢了那该死的东"
+"而“<b>韦福克人之权杖</b>”才是最要命的……倒像是哈德里克的矮人弄丢了那该死的东"
 "西，也要怪我似的。"
 
 #. [message]: speaker=Garard
@@ -4567,8 +4567,8 @@ msgid ""
 "possess, but the gleaming light of truth instead.”</i> Surely this was not "
 "the event that she referred to?"
 msgstr ""
-"……数十年前，一位精灵预言家曾对我言及<i>“黑暗沼泽”</i>，并嘱我：<i>“所秉之火，"
-"非为毁世之焰，当化真理之耀光。”</i>这想必并非她所指之事吧？"
+"……数十年前，一位精灵预言家曾对我言及<b>“黑暗沼泽”</b>，并嘱我：<b>“所秉之火，"
+"非为毁世之焰，当化真理之耀光。”</b>这想必并非她所指之事吧？"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/scenarios/08_Ruins_of_Saurgrath.cfg:915
@@ -5661,7 +5661,7 @@ msgid ""
 "the spirits of the dead”</i>... Good riddance. His meddling in life and "
 "death has been the cause of great evil."
 msgstr ""
-"艾莲德的预言再次应验：<i>“一道暗影之身，披覆着亡者之魂”</i>……总算除掉了。他对"
+"艾莲德的预言再次应验：<b>“一道暗影之身，披覆着亡者之魂”</b>……总算除掉了。他对"
 "生死之事的干预，正是巨大邪恶的根源。"
 
 #. [message]
@@ -5759,7 +5759,7 @@ msgid ""
 "If you were <i>winning</i>, certainly, but then we wouldn’t be speaking "
 "together here, would we? You’ve never been one for sharing the spoils."
 msgstr ""
-"如果你<i>正在取胜</i>，那自然另说；可那样的话，我们也不会在这里交谈了，不是"
+"如果你<b>正在取胜</b>，那自然另说；可那样的话，我们也不会在这里交谈了，不是"
 "吗？你从来都不是愿意分享战利品的人。"
 
 #. [message]: speaker=Maddock
@@ -5935,7 +5935,7 @@ msgid ""
 msgstr ""
 "都给我闭嘴，你们这些家伙！我不知道你们为什么会在乎一头什么杂牌龙说的话，但别"
 "忘了，你们这些蜥蜴人跟我们谈好了条件，要和我们一起打韦诺。为了这份特权，你们"
-"甚至还付了<i>我们</i>钱，你们这些蠢虫子！\n"
+"甚至还付了<b>我们</b>钱，你们这些蠢虫子！\n"
 "\n"
 "现在给我列队站好，别逼我把纪律揍进你们骨头里！"
 
@@ -6178,7 +6178,7 @@ msgstr "嘎啊啊！！滚开，你们这帮臭烘烘的粉皮佬！现在不是
 #: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:659
 msgid ""
 "Hey, lay off my Shamans! Do you have any idea how hard it is to find those!?"
-msgstr "嘿，别碰老子的萨满！你知道找这帮家伙有多难吗？！"
+msgstr "嘿，别碰老子的萨满！你知道找这帮家伙有多难吗！？"
 
 #. [message]: speaker=Ghuvog
 #: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:671
@@ -6349,7 +6349,7 @@ msgid ""
 "We’re <i>definitely not</i> missing out on significant events happening "
 "elsewhere... events that we really should have been present for..."
 msgstr ""
-"我们<i>绝对没有</i>错过别处正在发生的重要事件……那些我们本应亲身在场的事件……"
+"我们<b>绝对没有</b>错过别处正在发生的重要事件……那些我们本应亲身在场的事件……"
 
 #. [scenario]: id=11x_Revelry
 #: data/campaigns/The_Deceivers_Gambit/scenarios/11x_Revelry.cfg:6
@@ -6433,7 +6433,7 @@ msgstr "许久以来第一次，世间终于一切安好。"
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/scenarios/11x_Revelry.cfg:223
 msgid "(<i>Yawn</i>)"
-msgstr "（<i>打哈欠</i>）"
+msgstr "（<b>哈欠</b>）"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/scenarios/11x_Revelry.cfg:227
@@ -6452,7 +6452,7 @@ msgid ""
 msgstr ""
 "恶心。奥渡因真该发明一个清洁茅厕的法术。\n"
 "\n"
-"或许身为高级顾问，我终于能找人研究这个了……（<i>哈欠</i>）"
+"或许身为高级顾问，我终于能找人研究这个了……（<b>哈欠</b>）"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/scenarios/11x_Revelry.cfg:265
@@ -6491,7 +6491,7 @@ msgid ""
 "finds themselves on the wrong end of your staff... yet I oft pity even more "
 "so the fool who rules behind it, so consumed by the minutiae of war."
 msgstr ""
-"你是个强大的人，一个<i>危险</i>的人，德法多。我怜悯那愚蠢到与你为敌、挡在你法"
+"你是个强大的人，一个<b>危险</b>的人，德法多。我怜悯那愚蠢到与你为敌、挡在你法"
 "杖前的人……但我更常怜悯的，是那在法杖背后掌权、被战争琐细耗尽心神的愚人。"
 
 #. [message]: speaker=Delfador
@@ -7143,7 +7143,7 @@ msgid ""
 "I admit, I was worried about you, son. <i>“Soft”</i> I thought — if I should "
 "fall, could you truly lead our people to victory? I wanted to toughen you up."
 msgstr ""
-"我承认，我曾为你担心，儿子。<i>“软弱”</i>我心想——若我倒下，你真能带领我们的人"
+"我承认，我曾为你担心，儿子。<b>“软弱”</b>我心想——若我倒下，你真能带领我们的人"
 "民走向胜利吗？我想让你变得坚强。"
 
 #. [message]: speaker=Garard
@@ -7341,7 +7341,7 @@ msgstr ""
 msgid ""
 "<i>Defeating enemy leaders will increase your starting gold in the next "
 "scenario.</i>"
-msgstr "<i>击败敌方首领将增加你在下一场景的初始金币。</i>"
+msgstr "<b>击败敌方首领将增加你在下一场景的初始金币。</b>"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:543
@@ -7381,7 +7381,7 @@ msgid ""
 "    <i>(each defeated leader yields bonus gold in the next scenario)</i>"
 msgstr ""
 "在德欧兰被击败之前，击败尽可能多的敌方首领\n"
-"    <i>（每个被击败的首领，都会在下一场景中提供额外的金币）</i>"
+"    <b>（每个被击败的首领，都会在下一场景中提供额外的金币）</b>"
 
 #. [objective]: condition=win
 #. $|escape_turns_remaining is probably between 0 and 10
@@ -7673,7 +7673,7 @@ msgstr "伽拉德算不上英雄，但你，士兵，却是个恶棍。愿你的
 msgid ""
 "(<i>spits</i>) Traitor. Kill me if you must, but I will never betray my "
 "country."
-msgstr "（<i>啐了一口</i>）叛徒。要杀就杀，但我绝不会背叛我的国家。"
+msgstr "（<b>啐了一口</b>）叛徒。要杀就杀，但我绝不会背叛我的国家。"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:957
@@ -7709,7 +7709,7 @@ msgid ""
 "truth? Maybe I need to get back to Dan’Tonk, away from all this fighting, "
 "and take time to think. Men, let’s get out of here!"
 msgstr ""
-"我<i>原以为</i>我了解你……可现在我不确定了。谁说的才是真话？也许我该回丹·冬克"
+"我<b>原以为</b>我了解你……可现在我不确定了。谁说的才是真话？也许我该回丹·冬克"
 "去，远离这一切争斗，花点时间好好想想。弟兄们，我们离开这里！"
 
 #. [message]: speaker=unit
@@ -7720,7 +7720,7 @@ msgid ""
 "truth? Maybe I need to get back to Dan’Tonk, away from all this fighting, "
 "and take time to think."
 msgstr ""
-"我<i>原以为</i>我了解你……可现在我不确定了。谁说的才是真话？也许我该回丹·冬克"
+"我<b>原以为</b>我了解你……可现在我不确定了。谁说的才是真话？也许我该回丹·冬克"
 "去，远离这一切争斗，花点时间好好想想。"
 
 #. [message]: speaker=unit
@@ -8119,11 +8119,11 @@ msgid ""
 "what nightmares are these that are prophesied to arise from my failure? The "
 "coming years will be dark indeed."
 msgstr ""
-"我曾受此警告……<i>“非为毁世之焰，当化真理之耀光”</i>；<i>“王统崩裂”</i>——若非"
+"我曾受此警告……<b>“非为毁世之焰，当化真理之耀光”</b>；<b>“王统崩裂”</b>——若非"
 "指我袭击阿兰德，预言家所指还能为何？\n"
 "\n"
-"时至今日，我仍一无所悟！<i>“枯朽王座之上，将升起艾烬天使”</i>——<i>“无名之子与"
-"艾烬之女”</i>——这些因我之败而注定兴起的，究竟是怎样的梦魇？此后岁月，定将晦暗"
+"时至今日，我仍一无所悟！<b>“枯朽王座之上，将升起艾烬天使”</b>——<b>“无名之子与"
+"艾烬之女”</b>——这些因我之败而注定兴起的，究竟是怎样的梦魇？此后岁月，定将晦暗"
 "无光。"
 
 #. [message]: speaker=Delfador
@@ -8461,7 +8461,7 @@ msgid ""
 "the saurians and orcs into working together, getting Lionel sent away, "
 "pitting Garard against Arand..."
 msgstr ""
-"玛拉尔很聪明；<i>确实</i>聪明，而且意志坚定。除了母亲，没人知道伽拉德做了什么"
+"玛拉尔很聪明；<b>确实</b>聪明，而且意志坚定。除了母亲，没人知道伽拉德做了什么"
 "才招来玛拉尔的怒火，但他们两人为了看到伽拉德丧命、声名尽毁，会不择手段。诱骗"
 "蜥蜴人和兽人联手，把莱昂内尔调走，让伽拉德与阿兰德反目……"
 
@@ -8482,7 +8482,7 @@ msgid ""
 "little wiser, so many lives might yet have been saved."
 msgstr ""
 "但愿能有更多人像我一样活下来，埃雷德。但愿我当时听了德欧兰的话，但愿我理解了"
-"那位先知！倘若我能稍微明智一点，那么多条性命或许本可保全。"
+"那位预言家！倘若我能稍微明智一点，那么多条性命或许本可保全。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:581
@@ -8535,7 +8535,7 @@ msgstr ""
 #: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:646
 msgid ""
 "Is that— are you holding <i>lich’s blood</i>!? How— Put it down, Eldred!"
-msgstr "那是——你手里拿的是<i>巫妖之血</i>！？怎么——快放下，埃雷德！"
+msgstr "那是——你手里拿的是<b>巫妖之血</b>！？怎么——快放下，埃雷德！"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:650
