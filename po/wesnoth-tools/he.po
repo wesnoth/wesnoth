@@ -2,15 +2,15 @@
 # Copyright (C) 2023 Wesnoth development team
 # This file is distributed under the same license as the PACKAGE package.
 # Automatically generated, 2023.
-# arikari <arielxfr@gmail.com>, 2026.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-tools\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-09-20 19:25-0500\n"
-"PO-Revision-Date: 2026-08-11 04:00+0300\n"
-"Last-Translator: arikari <arielxfr@gmail.com>\n"
-"Language-Team: Hebrew\n"
+"POT-Creation-Date: 2026-11-14 13:15+0100\n"
+"PO-Revision-Date: 2023-05-29 16:27-0500\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,22 +19,20 @@ msgstr ""
 
 #: data/tools/GUI.pyw:100
 msgid "Open a Graphical User Interface (GUI) to WML Tools"
-msgstr "פתיחת ממשק משתמש גרפי (GUI) לכלי WML"
+msgstr ""
 
 #: data/tools/GUI.pyw:104
 msgid ""
 "Launch GUI.pyw in the specified language. Language code is expected as a "
 "POSIX locale name, refer to gettext.wesnoth.org for a full list."
 msgstr ""
-"הפעלת GUI.pyw בשפה שצוינה. קוד השפה צריך להיות שם locale בתקן POSIX, ראו "
-"gettext.wesnoth.org לרשימה מלאה."
 
 #: data/tools/GUI.pyw:110 data/tools/GUI.pyw:124 data/tools/GUI.pyw:1424
 #: data/tools/GUI.pyw:1473 data/tools/GUI.pyw:1514 data/tools/GUI.pyw:1543
 #: data/tools/GUI.pyw:1579 data/tools/GUI.pyw:1603 data/tools/GUI.pyw:1646
 #: data/tools/GUI.pyw:1665 data/tools/GUI.pyw:1991
 msgid "Error"
-msgstr "שגיאה"
+msgstr ""
 
 #. TRANSLATORS: {0} is "translations", the directory where compiled translation files (.mo) are stored.
 #: data/tools/GUI.pyw:112
@@ -43,13 +41,12 @@ msgid ""
 "‘{0}’ directory not found. Please run the GUI.pyw program packaged with the "
 "Wesnoth installation."
 msgstr ""
-"התיקייה '{0}' לא נמצאה. נא להריץ את תוכנית GUI.pyw המצורפת להתקנת ווסנות'."
 
 #. TRANSLATORS: {0} is the language argument entered by the user.
 #: data/tools/GUI.pyw:126
 #, python-brace-format
 msgid "Locale {0} not recognized."
-msgstr "ה-locale {0} לא זוהה."
+msgstr ""
 
 #. TRANSLATORS: {0} is the name of command being executed.
 #: data/tools/GUI.pyw:407
@@ -58,309 +55,307 @@ msgid ""
 "Running: {0}\n"
 "Please wait..."
 msgstr ""
-"מריץ: {0}\n"
-"נא להמתין..."
 
 #: data/tools/GUI.pyw:421
 msgid "Terminate script"
-msgstr "עצירת הסקריפט"
+msgstr ""
 
 #: data/tools/GUI.pyw:472
 msgid "Cut"
-msgstr "גזירה"
+msgstr ""
 
 #: data/tools/GUI.pyw:477
 msgid "Copy"
-msgstr "העתקה"
+msgstr ""
 
 #: data/tools/GUI.pyw:483
 msgid "Paste"
-msgstr "הדבקה"
+msgstr ""
 
 #: data/tools/GUI.pyw:489
 msgid "Select All"
-msgstr "בחירת הכל"
+msgstr ""
 
 #: data/tools/GUI.pyw:562
 msgid "Working directory"
-msgstr "תיקיית עבודה"
+msgstr ""
 
 #: data/tools/GUI.pyw:574 data/tools/GUI.pyw:617
 msgid "Browse..."
-msgstr "עיון..."
+msgstr ""
 
 #. TRANSLATORS: Clear button for clearing the directory text box.
 #: data/tools/GUI.pyw:581 data/tools/GUI.pyw:624
 msgid "Clear"
-msgstr "ניקוי"
+msgstr ""
 
 #: data/tools/GUI.pyw:674
 msgid "wmllint mode"
-msgstr "מצב wmllint"
+msgstr ""
 
 #. TRANSLATORS: Normal run mode for the WML tool.
 #: data/tools/GUI.pyw:681 data/tools/GUI.pyw:1092
 msgid "Normal"
-msgstr "רגיל"
+msgstr ""
 
 #. TRANSLATORS: Tooltip explanation for normal run mode.
 #: data/tools/GUI.pyw:690 data/tools/GUI.pyw:1101
 msgid "Perform conversion and save changes to file"
-msgstr "ביצוע ההמרה ושמירת השינויים לקובץ"
+msgstr ""
 
 #: data/tools/GUI.pyw:693 data/tools/GUI.pyw:1104
 msgid "Dry run"
-msgstr "הרצה יבשה"
+msgstr ""
 
 #. TRANSLATORS: Tooltip explanation for dry run mode.
 #: data/tools/GUI.pyw:702 data/tools/GUI.pyw:1113
 msgid "Perform conversion without saving changes to file"
-msgstr "ביצוע ההמרה בלי לשמור את השינויים לקובץ"
+msgstr ""
 
 #: data/tools/GUI.pyw:705
 msgid "Clean"
-msgstr "ניקוי"
+msgstr ""
 
 #. TRANSLATORS: Tooltip explanation for clean mode.
 #: data/tools/GUI.pyw:714
 msgid "Delete back-up files"
-msgstr "מחיקת קבצי גיבוי"
+msgstr ""
 
 #: data/tools/GUI.pyw:717
 msgid "Diff"
-msgstr "השוואה (Diff)"
+msgstr ""
 
 #. TRANSLATORS: Tooltip explanation for diff run mode.
 #: data/tools/GUI.pyw:726
 msgid "Show differences in converted files"
-msgstr "הצגת הבדלים בקבצים שהומרו"
+msgstr ""
 
 #: data/tools/GUI.pyw:729
 msgid "Revert"
-msgstr "שחזור"
+msgstr ""
 
 #. TRANSLATORS: Tooltip explanation for revert run mode.
 #: data/tools/GUI.pyw:738
 msgid "Revert conversions using back-up files"
-msgstr "שחזור המרות באמצעות קבצי הגיבוי"
+msgstr ""
 
 #: data/tools/GUI.pyw:741 data/tools/GUI.pyw:1116
 msgid "Verbosity level"
-msgstr "רמת פירוט"
+msgstr ""
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:749 data/tools/GUI.pyw:1124
 msgid "Terse"
-msgstr "תמציתי"
+msgstr ""
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:760
 msgid "Show changes"
-msgstr "הצגת שינויים"
+msgstr ""
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:770
 msgid "Name files before processing"
-msgstr "ציון שם הקובץ לפני העיבוד"
+msgstr ""
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:780
 msgid "Show parse details"
-msgstr "הצגת פרטי ניתוח (parse)"
+msgstr ""
 
 #: data/tools/GUI.pyw:789
 msgid "wmllint options"
-msgstr "אפשרויות wmllint"
+msgstr ""
 
 #. TRANSLATORS: EOL = Special characters marking 'end-of-line'.
 #: data/tools/GUI.pyw:797
 msgid "Convert EOL characters to Unix format"
-msgstr "המרת תווי סוף-שורה (EOL) לפורמט Unix"
+msgstr ""
 
 #. TRANSLATORS: 'side=' in this context refers to WML and should not be
 #. translated.
 #: data/tools/GUI.pyw:808
 msgid "Warn about tags without side= keys"
-msgstr "אזהרה על תגיות ללא מפתחות side="
+msgstr ""
 
 #: data/tools/GUI.pyw:817
 msgid "Disable checks for unknown units"
-msgstr "ביטול בדיקות עבור יחידות לא ידועות"
+msgstr ""
 
 #: data/tools/GUI.pyw:826
 msgid "Disable spellchecking"
-msgstr "ביטול בדיקת איות"
+msgstr ""
 
 #: data/tools/GUI.pyw:835
 msgid "Skip core directory"
-msgstr "דילוג על תיקיית הליבה (core)"
+msgstr ""
 
 #: data/tools/GUI.pyw:862
 msgid "wmlscope options"
-msgstr "אפשרויות wmlscope"
+msgstr ""
 
 #: data/tools/GUI.pyw:874
 msgid "Check for duplicate macro definitions"
-msgstr "בדיקת הגדרות מאקרו כפולות"
+msgstr ""
 
 #: data/tools/GUI.pyw:883
 msgid "Check for duplicate resource files"
-msgstr "בדיקת קובצי משאבים כפולים"
+msgstr ""
 
 #: data/tools/GUI.pyw:892
 msgid "Make definition list"
-msgstr "יצירת רשימת הגדרות"
+msgstr ""
 
 #: data/tools/GUI.pyw:901
 msgid "List files that will be processed"
-msgstr "הצגת רשימת הקבצים שיעובדו"
+msgstr ""
 
 #: data/tools/GUI.pyw:910
 msgid "Report unresolved macro references"
-msgstr "דיווח על הפניות מאקרו לא פתורות"
+msgstr ""
 
 #: data/tools/GUI.pyw:919
 msgid "Extract help from macro definition comments"
-msgstr "חילוץ עזרה מהערות בהגדרות מאקרו"
+msgstr ""
 
 #: data/tools/GUI.pyw:928
 msgid "Report all macros with untyped formals"
-msgstr "דיווח על כל המאקרואים עם פרמטרים ללא-טיפוס"
+msgstr ""
 
 #: data/tools/GUI.pyw:948 data/tools/GUI.pyw:1160
 msgid "Exclude file names matching regular expression:"
-msgstr "החרגת שמות קבצים התואמים לביטוי רגולרי:"
+msgstr ""
 
 #: data/tools/GUI.pyw:966
 msgid "Exclude file names not matching regular expression:"
-msgstr "החרגת שמות קבצים שאינם תואמים לביטוי רגולרי:"
+msgstr ""
 
 #. TRANSLATORS: 'n' in this context refers to number, as in 'n number of
 #. files'.
 #: data/tools/GUI.pyw:986
 msgid "Report only on macros referenced in exactly n files:"
-msgstr "דיווח רק על מאקרואים שאליהם מפנים בדיוק n קבצים:"
+msgstr ""
 
 #: data/tools/GUI.pyw:1006
 msgid "Report macro definitions and usages in file:"
-msgstr "דיווח על הגדרות ושימושים במאקרואים בקובץ:"
+msgstr ""
 
 #: data/tools/GUI.pyw:1024
 msgid "Allow unused macros with names matching regular expression:"
-msgstr "אפשרו מאקרואים לא בשימוש ששמם תואם לביטוי רגולרי:"
+msgstr ""
 
 #: data/tools/GUI.pyw:1086
 msgid "wmlindent mode"
-msgstr "מצב wmlindent"
+msgstr ""
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:1134
 msgid "Verbose"
-msgstr "מפורט"
+msgstr ""
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:1144
 msgid "Report unchanged files"
-msgstr "דיווח על קבצים ללא שינוי"
+msgstr ""
 
 #: data/tools/GUI.pyw:1153
 msgid "wmlindent options"
-msgstr "אפשרויות wmlindent"
+msgstr ""
 
 #. TRANSLATORS: Option to run 'quietly'.
 #: data/tools/GUI.pyw:1180
 msgid "Quiet mode"
-msgstr "מצב שקט"
+msgstr ""
 
 #. TRANSLATORS: Tooltip explanation for quiet option.
 #: data/tools/GUI.pyw:1188
 msgid "Do not generate output messages"
-msgstr "לא ליצור הודעות פלט"
+msgstr ""
 
 #: data/tools/GUI.pyw:1208
 msgid "Output directory:"
-msgstr "תיקיית פלט:"
+msgstr ""
 
 #: data/tools/GUI.pyw:1214
 msgid "Options"
-msgstr "אפשרויות"
+msgstr ""
 
 #: data/tools/GUI.pyw:1219
 msgid "Scan subdirectories"
-msgstr "סריקת תת-תיקיות"
+msgstr ""
 
 #: data/tools/GUI.pyw:1224
 msgid "Show optional warnings"
-msgstr "הצגת אזהרות אופציונליות"
+msgstr ""
 
 #. TRANSLATORS: Also called "Needs work".
 #: data/tools/GUI.pyw:1230
 msgid "Mark all strings as fuzzy"
-msgstr "סימון כל המחרוזות כ-fuzzy"
+msgstr ""
 
 #: data/tools/GUI.pyw:1234
 msgid "Advanced options"
-msgstr "אפשרויות מתקדמות"
+msgstr ""
 
 #: data/tools/GUI.pyw:1238
 msgid "Package version"
-msgstr "גרסת חבילה"
+msgstr ""
 
 #: data/tools/GUI.pyw:1255
 msgid "Initial textdomain:"
-msgstr "תחום טקסט (textdomain) התחלתי:"
+msgstr ""
 
 #: data/tools/GUI.pyw:1301 data/tools/GUI.pyw:1407
 msgid "Run wmllint"
-msgstr "הרצת wmllint"
+msgstr ""
 
 #: data/tools/GUI.pyw:1308
 msgid "Save as text..."
-msgstr "שמירה כטקסט..."
+msgstr ""
 
 #: data/tools/GUI.pyw:1315
 msgid "Clear output"
-msgstr "ניקוי הפלט"
+msgstr ""
 
 #: data/tools/GUI.pyw:1322
 msgid "About..."
-msgstr "אודות..."
+msgstr ""
 
 #: data/tools/GUI.pyw:1329
 msgid "Exit"
-msgstr "יציאה"
+msgstr ""
 
 #: data/tools/GUI.pyw:1345 data/tools/GUI.pyw:1479
 msgid "wmllint"
-msgstr "wmllint"
+msgstr ""
 
 #: data/tools/GUI.pyw:1349 data/tools/GUI.pyw:1549
 msgid "wmlscope"
-msgstr "wmlscope"
+msgstr ""
 
 #: data/tools/GUI.pyw:1353 data/tools/GUI.pyw:1585
 msgid "wmlindent"
-msgstr "wmlindent"
+msgstr ""
 
 #: data/tools/GUI.pyw:1357 data/tools/GUI.pyw:1635
 msgid "wmlxgettext"
-msgstr "wmlxgettext"
+msgstr ""
 
 #: data/tools/GUI.pyw:1360
 msgid "Output"
-msgstr "פלט"
+msgstr ""
 
 #: data/tools/GUI.pyw:1410
 msgid "Run wmlscope"
-msgstr "הרצת wmlscope"
+msgstr ""
 
 #: data/tools/GUI.pyw:1413
 msgid "Run wmlindent"
-msgstr "הרצת wmlindent"
+msgstr ""
 
 #: data/tools/GUI.pyw:1416
 msgid "Run wmlxgettext"
-msgstr "הרצת wmlxgettext"
+msgstr ""
 
 #: data/tools/GUI.pyw:1424
 msgid ""
@@ -368,9 +363,6 @@ msgid ""
 "\n"
 "Please select a directory or disable the \"Skip core directory\" option."
 msgstr ""
-"לא נבחרה תיקייה.\n"
-"\n"
-"נא לבחור תיקייה או לבטל את האפשרות \"דילוג על תיקיית הליבה\"."
 
 #: data/tools/GUI.pyw:1459 data/tools/GUI.pyw:1529
 msgid ""
@@ -379,15 +371,12 @@ msgid ""
 "\n"
 "The tool will be run only on the Wesnoth core directory."
 msgstr ""
-"נבחרה תיקיית הליבה או אחת מתת-התיקיות שלה בתיבת בחירת התוסף.\n"
-"\n"
-"הכלי ירוץ רק על תיקיית הליבה של ווסנות'."
 
 #: data/tools/GUI.pyw:1459 data/tools/GUI.pyw:1467 data/tools/GUI.pyw:1529
 #: data/tools/GUI.pyw:1537 data/tools/GUI.pyw:1572 data/tools/GUI.pyw:1598
 #: data/tools/GUI.pyw:1617
 msgid "Warning"
-msgstr "אזהרה"
+msgstr ""
 
 #: data/tools/GUI.pyw:1467 data/tools/GUI.pyw:1537
 msgid ""
@@ -395,18 +384,15 @@ msgid ""
 "\n"
 "The tool will be run only on the Wesnoth core directory."
 msgstr ""
-"לא נבחרה תיקייה.\n"
-"\n"
-"הכלי ירוץ רק על תיקיית הליבה של ווסנות'."
 
 #: data/tools/GUI.pyw:1473 data/tools/GUI.pyw:1543 data/tools/GUI.pyw:1579
 #: data/tools/GUI.pyw:1603
 msgid "The selected directory does not exist."
-msgstr "התיקייה שנבחרה אינה קיימת."
+msgstr ""
 
 #: data/tools/GUI.pyw:1514
 msgid "Invalid value. Value must be an integer in the range 0-999."
-msgstr "ערך לא תקין. הערך חייב להיות מספר שלם בטווח 0-999."
+msgstr ""
 
 #: data/tools/GUI.pyw:1572
 msgid ""
@@ -414,9 +400,6 @@ msgid ""
 "\n"
 "The tool will be run on the Wesnoth core directory."
 msgstr ""
-"לא נבחרה תיקייה.\n"
-"\n"
-"הכלי ירוץ על תיקיית הליבה של ווסנות'."
 
 #: data/tools/GUI.pyw:1598
 msgid ""
@@ -424,14 +407,11 @@ msgid ""
 "\n"
 "The tool will not be run."
 msgstr ""
-"לא נבחרה תיקייה.\n"
-"\n"
-"הכלי לא ירוץ."
 
 #. TRANSLATORS: Dialogue box title.
 #: data/tools/GUI.pyw:1610
 msgid "Overwrite Confirmation"
-msgstr "אישור דריסה"
+msgstr ""
 
 #. TRANSLATORS: {0} is a placeholder for a file name, and not meant to be modified.
 #: data/tools/GUI.pyw:1612
@@ -440,8 +420,6 @@ msgid ""
 "File {0} already exists.\n"
 "Do you want to overwrite it?"
 msgstr ""
-"הקובץ {0} כבר קיים.\n"
-"האם לדרוס אותו?"
 
 #: data/tools/GUI.pyw:1617
 msgid ""
@@ -449,9 +427,6 @@ msgid ""
 "\n"
 "The tool will not be run."
 msgstr ""
-"לא נבחר קובץ פלט.\n"
-"\n"
-"הכלי לא ירוץ."
 
 #: data/tools/GUI.pyw:1646
 #, python-brace-format
@@ -460,13 +435,10 @@ msgid ""
 "\n"
 "Error code: {1}"
 msgstr ""
-"אירעה שגיאה בעת הרצת {0}.\n"
-"\n"
-"קוד שגיאה: {1}"
 
 #: data/tools/GUI.pyw:1657
 msgid "Text file"
-msgstr "קובץ טקסט"
+msgstr ""
 
 #: data/tools/GUI.pyw:1665
 #, python-brace-format
@@ -478,16 +450,10 @@ msgid ""
 "\n"
 "{2}"
 msgstr ""
-"שגיאה בעת כתיבה אל:\n"
-"{0}\n"
-"\n"
-"קוד שגיאה: {1}\n"
-"\n"
-"{2}"
 
 #: data/tools/GUI.pyw:1682
 msgid "About Maintenance Tools GUI"
-msgstr "אודות ממשק כלי התחזוקה"
+msgstr ""
 
 #. TRANSLATORS: {0} is a placeholder for Wesnoth's current version, and not meant to be modified.
 #: data/tools/GUI.pyw:1684
@@ -503,27 +469,16 @@ msgid ""
 "Icons are taken from the Tango Desktop Project (http://tango.freedesktop."
 "org), and are released in the Public Domain."
 msgstr ""
-"© Elvish_Hunter, 2014-2025\n"
-"\n"
-"גרסה: {0}\n"
-"\n"
-"חלק מפרויקט הקרב על ווסנות', מופץ תחת רישיון GNU GPL v2\n"
-"\n"
-"האייקונים נלקחו מפרויקט Tango Desktop (http://tango.freedesktop.org), "
-"ומופצים ברשות הציבור (Public Domain)."
 
 #. TRANSLATORS: Dialogue box title.
 #: data/tools/GUI.pyw:1698
 msgid "Exit Confirmation"
-msgstr "אישור יציאה"
+msgstr ""
 
 #: data/tools/GUI.pyw:1699
 msgid "Do you really want to quit?"
-msgstr "האם אתה בטוח שברצונך לצאת?"
+msgstr ""
 
 #: data/tools/GUI.pyw:1991
 msgid "This application must be placed into the wesnoth/data/tools directory."
-msgstr "יש למקם יישום זה בתוך התיקייה wesnoth/data/tools."
-
-#~ msgid "Show progress"
-#~ msgstr "הצגת התקדמות"
+msgstr ""
