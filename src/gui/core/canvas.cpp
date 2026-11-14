@@ -608,9 +608,13 @@ void text_shape::add_attribute(
 	}
 }
 
-void text_shape::add_attributes_from(text_shape& tshape2, const unsigned attr_start)
+void text_shape::add_attributes_from(const text_shape& tshape2, const unsigned attr_start, const unsigned src_start)
 {
-	text_attributes_.splice_into(tshape2.text_attributes_, attr_start);
+	if(src_start == 0) {
+		text_attributes_.splice_into(tshape2.text_attributes_, attr_start);
+	} else {
+		text_attributes_.splice_into(tshape2.text_attributes_.slice_from(src_start), attr_start);
+	}
 }
 
 void text_shape::draw(wfl::map_formula_callable& variables)

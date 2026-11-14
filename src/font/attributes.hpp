@@ -78,7 +78,23 @@ public:
 		pango_attr_list_splice(attributes_, target.attributes_, attr_start, 0);
 	}
 
+	/**
+	 * Copies the attributes for the text from byte index @a start onwards,
+	 * shifted so that @a start becomes index 0.
+	 */
+	attribute_list slice_from(const unsigned start) const
+	{
+		attribute_list slice(pango_attr_list_copy(attributes_));
+		pango_attr_list_update(slice.attributes_, 0, start, 0);
+		return slice;
+	}
+
 private:
+	explicit attribute_list(PangoAttrList* attributes)
+		: attributes_(attributes)
+	{
+	}
+
 	PangoAttrList* attributes_;
 };
 
