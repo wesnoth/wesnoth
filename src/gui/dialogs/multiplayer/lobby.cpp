@@ -45,6 +45,7 @@
 #include "chat_log.hpp"
 #include "desktop/open.hpp"
 #include "font/text_formatting.hpp"
+#include "font/pango/escape.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "preferences/game.hpp"
@@ -398,7 +399,7 @@ widget_data mp_lobby::make_game_row_data(const mp::game_info& game)
 	item["label"] = game.vacant_slots > 0 ? font::span_color(color_string, game.name) : game.name;
 	data.emplace("name", item);
 
-	item["label"] = font::span_color(font::GRAY_COLOR, game.type_marker + "<i>" + scenario_text + "</i>");
+	item["label"] = font::span_color(font::GRAY_COLOR, game.type_marker + "<i>" + font::escape_text(scenario_text) + "</i>");
 	data.emplace("scenario", item);
 
 	item["label"] = font::span_color(color_string, game.status);
