@@ -42,8 +42,10 @@ public:
 	{}
 	string_span(const char* begin, const char* end) : str_(begin), size_(end - begin)
 	{}
-	string_span(std::string str) : str_(str.c_str()), size_(str.size())
+	string_span(const std::string& str) : str_(str.c_str()), size_(str.size())
 	{}
+	// Disallow temporaries to avoid dangling references.
+	string_span(std::string&&) = delete;
 
 	typedef const char* const_iterator;
 	typedef const char* iterator;
@@ -247,6 +249,7 @@ public:
 	explicit document(string_span compressed_buf);
 	~document();
 	const char* dup_string(const char* str);
+	const char* dup_string(string_span str);
 	const char* esc_string(string_span str);
 	node& root() { if(!root_) { generate_root(); } return *root_; }
 	const node& root() const { if(!root_) { const_cast<document*>(this)->generate_root(); } return *root_; }
