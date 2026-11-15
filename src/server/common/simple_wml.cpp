@@ -1018,18 +1018,22 @@ document::~document()
 
 const char* document::dup_string(const char* str)
 {
-	const int len = strlen(str);
-	char* res = new char[len+1];
-	memcpy(res, str, len + 1);
+	return dup_string(string_span(str));
+}
+
+const char* document::dup_string(string_span str)
+{
+	char* res = new char[str.size() + 1];
+	std::memcpy(res, str.begin(), str.size());
+	res[str.size()] = '\0';
 	buffers_.push_back(res);
 	return res;
 }
 
 const char* document::esc_string(string_span str)
 {
-	char* res = string_span(utils::wml_escape_string(str)).duplicate();
-	buffers_.push_back(res);
-	return res;
+	const std::string escaped = utils::wml_escape_string(str);
+	return dup_string(string_span(escaped));
 }
 
 const char* document::output()
