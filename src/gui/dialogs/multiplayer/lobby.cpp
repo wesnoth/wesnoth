@@ -42,6 +42,7 @@
 #include "chat_log.hpp"
 #include "desktop/open.hpp"
 #include "serialization/markup.hpp"
+#include "font/pango/escape.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "preferences/preferences.hpp"
@@ -397,7 +398,7 @@ widget_data mp_lobby::make_game_row_data(const mp::game_info& game)
 	item["label"] = game.vacant_slots > 0 ? markup::span_color(color_string, game.name) : game.name;
 	data.emplace("name", item);
 
-	item["label"] = markup::span_color(font::GRAY_COLOR, game.type_marker, markup::italic(scenario_text));
+	item["label"] = markup::span_color(font::GRAY_COLOR, game.type_marker, markup::italic(font::escape_text(scenario_text)));
 	data.emplace("scenario", item);
 
 	item["label"] = markup::span_color(color_string, game.status);
