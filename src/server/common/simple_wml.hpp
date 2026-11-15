@@ -15,10 +15,11 @@
 
 #pragma once
 
-#include <cstring>
-
+#include <cassert>
 #include <cstddef>
+#include <cstring>
 #include <iosfwd>
+#include <limits>
 #include <memory>
 #include <string>
 #include <vector>
@@ -217,7 +218,10 @@ private:
 		node_pos(int child_map_index, int child_list_index)
 		  : child_map_index(static_cast<unsigned short>(child_map_index)),
 		  child_list_index(static_cast<unsigned short>(child_list_index))
-		{}
+		{
+			assert(child_map_index >= 0 && child_map_index <= std::numeric_limits<unsigned short>::max());
+			assert(child_list_index >= 0 && child_list_index <= std::numeric_limits<unsigned short>::max());
+		}
 		unsigned short child_map_index;
 		unsigned short child_list_index;
 	};
