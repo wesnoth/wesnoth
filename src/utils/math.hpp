@@ -33,11 +33,6 @@ constexpr bool is_even(T num) { return num % 2 == 0; }
 template<typename T>
 constexpr bool is_odd(T num) { return !is_even(num); }
 
-/** Guarantees portable results for division by 100; round half up, to the nearest integer. */
-constexpr int div100rounded(int num) {
-	return (num < 0) ? -(((-num) + 50) / 100) : (num + 50) / 100;
-}
-
 /**
  * Returns base + increment, but will not increase base above max_sum, nor
  * decrease it below min_sum.
