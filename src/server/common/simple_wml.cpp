@@ -255,10 +255,13 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 			}
 
 			const int list_index = get_children(string_span(s, end - s));
-			check_ordered_children();
+			if(children_[list_index].second.size() > std::numeric_limits<unsigned short>::max()) {
+				throw error("too many child elements");
+			}
 
 			s = end + 1;
 
+			check_ordered_children();
 			children_[list_index].second.push_back(new node(doc, this, str, depth+1));
 			ordered_children_.emplace_back(list_index, children_[list_index].second.size() - 1);
 			check_ordered_children();
@@ -450,6 +453,9 @@ node& node::add_child_at(const char* name, std::size_t index)
 
 	const int list_index = get_children(name);
 	child_list& list = children_[list_index].second;
+	if(list.size() > std::numeric_limits<unsigned short>::max()) {
+		throw error("too many child elements");
+	}
 	if(index > list.size()) {
 		index = list.size();
 	}
@@ -470,6 +476,9 @@ node& node::add_child(const char* name)
 	const int list_index = get_children(name);
 	check_ordered_children();
 	child_list& list = children_[list_index].second;
+	if(list.size() > std::numeric_limits<unsigned short>::max()) {
+		throw error("too many child elements");
+	}
 	list.push_back(new node(*doc_, this));
 	ordered_children_.emplace_back(list_index, list.size() - 1);
 	check_ordered_children();
@@ -657,6 +666,9 @@ int node::get_children(const string_span& name)
 		}
 	}
 
+	if(children_.size() > std::numeric_limits<unsigned short>::max()) {
+		throw error("too many child elements");
+	}
 	children_.emplace_back(string_span(name), child_list());
 	return children_.size() - 1;
 }

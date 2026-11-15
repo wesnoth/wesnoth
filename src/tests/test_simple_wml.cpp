@@ -15,6 +15,10 @@
 
 #define GETTEXT_DOMAIN "wesnoth-test"
 
+#include <limits>
+#include <string>
+#include <vector>
+
 #include <boost/test/unit_test.hpp>
 
 #include "server/common/simple_wml.hpp"
@@ -43,6 +47,54 @@ d="\"""
 	BOOST_CHECK((*test_node)["d"] == "\\\"\"");
 	BOOST_CHECK(node["blah"] == "blah");
 	BOOST_CHECK((*test_node)["e"] == "f");
+}
+
+BOOST_AUTO_TEST_CASE( simple_wml_child_limits )
+{
+	constexpr std::size_t max_children = std::numeric_limits<unsigned short>::max() + 1;
+
+	// 1. Test programmatic add_child limit for identical tag names (child_list_index)
+	{
+		simple_wml::document doc;
+		simple_wml::node& root = doc.root();
+
+		for(std::size_t i = 0; i < max_children; ++i) {
+			root.add_child("a");
+		}
+
+		BOOST_CHECK_EQUAL(root.children("a").size(), max_children);
+		BOOST_CHECK_THROW(root.add_child("a"), simple_wml::error);
+		BOOST_CHECK_THROW(root.add_child_at("a", 0), simple_wml::error);
+	}
+
+	// 2. Test programmatic add_child limit for distinct tag names (child_map_index)
+	{
+		simple_wml::document doc;
+		simple_wml::node& root = doc.root();
+
+		std::vector<std::string> names;
+		names.reserve(max_children + 1);
+		for(std::size_t i = 0; i <= max_children; ++i) {
+			names.push_back("t" + std::to_string(i));
+		}
+
+		for(std::size_t i = 0; i < max_children; ++i) {
+			root.add_child(names[i].c_str());
+		}
+
+		BOOST_CHECK_THROW(root.add_child(names[max_children].c_str()), simple_wml::error);
+	}
+
+	// 3. Test parser limit when reading WML text
+	{
+		std::string wml;
+		wml.reserve((max_children + 1) * 8);
+		for(std::size_t i = 0; i <= max_children; ++i) {
+			wml += "[a]\n[/a]\n";
+		}
+
+		BOOST_CHECK_THROW(simple_wml::document(wml.c_str(), INIT_STATE::INIT_STATIC), simple_wml::error);
+	}
 }
 
 /* vim: set ts=4 sw=4: */
