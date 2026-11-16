@@ -44,6 +44,11 @@ Building:
       - src/SConscript
       - src/SConstruct
 
+Campaign AOI:
+  - changed-files:
+    - any-glob-to-any-file:
+      - data/campaigns/An_Orcish_Incursion/**
+
 Campaign AToTB:
   - changed-files:
     - any-glob-to-any-file:
