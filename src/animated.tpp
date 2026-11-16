@@ -41,6 +41,7 @@ inline animated<T>::animated(const std::chrono::milliseconds& start_time)
 	, started_(false)
 	, paused_(false)
 	, finished_(false)
+	, needs_first_update_(false)
 	, cycles_(false)
 	, uses_acceleration_(false)
 	, animation_start_tick_()
@@ -59,6 +60,7 @@ inline animated<T>::animated(const animated<T>::anim_description& cfg, const std
 	, started_(false)
 	, paused_(false)
 	, finished_(false)
+	, needs_first_update_(false)
 	, cycles_(false)
 	, uses_acceleration_(false)
 	, animation_start_tick_()
@@ -104,6 +106,7 @@ inline void animated<T>::start_animation(const std::chrono::milliseconds& start_
 	animation_start_tick_ = current_tick - start_time_offset;
 	if(!frames_.empty()) {
 		next_frame_tick_ = animation_start_tick_ + frames_[0].start_time_ + frames_[0].duration_;
+		needs_first_update_ = true;
 	}
 }
 
@@ -137,6 +140,7 @@ inline void animated<T>::resume_animation()
 template<typename T>
 inline void animated<T>::advance_to_current_frame()
 {
+	needs_first_update_ = false;
 	if(frames_.empty()) {
 		return;
 	}
@@ -150,7 +154,9 @@ inline void animated<T>::advance_to_current_frame()
 		const std::chrono::milliseconds animation_duration = get_animation_duration();
 		if(animation_duration > std::chrono::milliseconds{0} && current_tick > (next_frame_tick_ + animation_duration)) {
 			const auto behind = current_tick - next_frame_tick_;
-			next_frame_tick_ += (behind / animation_duration) * animation_duration; // The int division truncates to whole cycles.
+			const auto skipped = (behind / animation_duration) * animation_duration; // The int division truncates to whole cycles.
+			next_frame_tick_ += skipped;
+			animation_start_tick_ += skipped;
 		}
 	}
 
@@ -166,6 +172,9 @@ inline void animated<T>::advance_to_current_frame()
 
 		// Advance to the next frame, wrapping around when looping
 		current_frame_index_ = next_index % frames_.size();
+		if(current_frame_index_ == 0) {
+			animation_start_tick_ += get_animation_duration();
+		}
 		next_frame_tick_ += frames_[current_frame_index_].duration_;
 	}
 }
@@ -178,6 +187,9 @@ inline void animated<T>::advance_to_current_frame()
 template<typename T>
 inline bool animated<T>::need_update() const
 {
+	if(needs_first_update_) {
+		return true;
+	}
 	if(is_static_ || !started_ || paused_ || finished_ || frames_.empty()) {
 		return false;
 	}
@@ -229,6 +241,7 @@ inline void animated<T>::apply_time_offset(const std::chrono::milliseconds& time
 	if(!frames_.empty()) {
 		current_frame_index_ = 0;
 		finished_ = false;
+		needs_first_update_ = true;
 		next_frame_tick_ = animation_start_tick_ + frames_[0].start_time_ + frames_[0].duration_;
 	}
 }
