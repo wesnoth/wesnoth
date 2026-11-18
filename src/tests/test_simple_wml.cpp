@@ -68,6 +68,9 @@ BOOST_AUTO_TEST_CASE( simple_wml_child_limits )
 	}
 
 	// 2. Test programmatic add_child limit for distinct tag names (child_map_index)
+	// node::get_children() does a linear look-up, so this part is quadratic and hits the
+	// time-out limit in unoptimised Xcode builds on CI.
+#if !defined(__APPLE__) || defined(__OPTIMIZE__)
 	{
 		simple_wml::document doc;
 		simple_wml::node& root = doc.root();
@@ -84,6 +87,7 @@ BOOST_AUTO_TEST_CASE( simple_wml_child_limits )
 
 		BOOST_CHECK_THROW(root.add_child(names[max_children].c_str()), simple_wml::error);
 	}
+#endif
 
 	// 3. Test parser limit when reading WML text
 	{
