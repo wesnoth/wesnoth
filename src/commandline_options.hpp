@@ -199,6 +199,8 @@ public:
 	bool strict_validation;
 	/** Non-empty if --test was given on the command line. Goes directly into test mode, into a scenario, if specified. */
 	utils::optional<std::string> test;
+	/** True if --list-wml-tests was given. */
+	bool list_wml_tests;
 	/** Non-empty if --unit was given on the command line. Goes directly into unit test mode, into a scenario, if specified. */
 	std::vector<std::string> unit_test;
 	/** True if --unit is used and --showgui is not present. */
