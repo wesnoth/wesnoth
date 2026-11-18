@@ -124,7 +124,7 @@ BOOST_AUTO_TEST_CASE(test_formula_function_length)
 
 BOOST_AUTO_TEST_CASE(test_formula_function_byte_index)
 {
-	BOOST_CHECK_EQUAL(formula("byte_index('À partir du niveau un', 1").evaluate().as_int(), 2);
+	BOOST_CHECK_EQUAL(formula("byte_index('À partir du niveau un', 1)").evaluate().as_int(), 2);
 }
 
 BOOST_AUTO_TEST_CASE(test_formula_function_concatenate)
