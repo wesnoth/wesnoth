@@ -370,6 +370,7 @@ static int process_command_args(commandline_options& cmdline_opts)
 			&& !cmdline_opts.render_image
 			&& !cmdline_opts.screenshot
 			&& !cmdline_opts.nogui
+			&& !cmdline_opts.list_wml_tests
 			&& !cmdline_opts.headless_unit_test
 			&& !cmdline_opts.validate_schema
 			&& !cmdline_opts.validate_wml
@@ -883,6 +884,16 @@ static int do_gameloop(commandline_options& cmdline_opts)
 
 		plugins.play_slice();
 		plugins.play_slice();
+
+		if(cmdline_opts.list_wml_tests) {
+			config_manager.load_game_config_for_create(false, true);
+			for(const config &sc : config_manager.game_config().child_range("test")) {
+				if(sc["is_unit_test"].to_bool(false)) {
+					std::cout << sc["id"] << std::endl;
+				}
+			}
+			return 0;
+		}
 
 		if(!cmdline_opts.unit_test.empty()) {
 			return static_cast<int>(game->unit_test());

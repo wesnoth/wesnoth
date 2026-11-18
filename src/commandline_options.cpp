@@ -138,6 +138,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	, script_unsafe_mode(false)
 	, strict_validation(false)
 	, test()
+	, list_wml_tests(false)
 	, unit_test()
 	, headless_unit_test(false)
 	, noreplaycheck(false)
@@ -285,6 +286,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	po::options_description testing_opts("Testing options");
 	testing_opts.add_options()
 		("test,t", po::value<std::string>()->implicit_value(std::string()), "runs the game in a small test scenario. If specified, scenario <arg> will be used instead.")
+		("list-wml-tests", "list the scenario IDs of every WML test.")
 		("unit,u", po::value<std::vector<std::string>>(), "runs a unit test scenario. The GUI is not shown and the exit code of the program reflects the victory / defeat conditions of the scenario.\n\t0 - PASS\n\t1 - FAIL\n\t3 - FAIL (INVALID REPLAY)\n\t4 - FAIL (ERRORED REPLAY)\n\t5 - FAIL (BROKE STRICT)\n\t6 - FAIL (WML EXCEPTION)\n\tMultiple tests can be run by giving this option multiple times, in this case the test run will stop immediately after any test which doesn't PASS and the return code will be the status of the test that caused the stop." IMPLY_TERMINAL)
 		("showgui", "don't run headlessly (for debugging a failing test)")
 		("log-strict", po::value<std::string>(), "sets the strict level of the logger. any messages sent to log domains of this level or more severe will cause the unit test to fail regardless of the victory result.")
@@ -492,6 +494,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 		multiplayer_side = parse_to_uint_string_tuples_(vm["side"].as<std::vector<std::string>>());
 	if(vm.count("test"))
 		test = vm["test"].as<std::string>();
+	if(vm.count("list-wml-tests")) list_wml_tests = true;
 	if(vm.count("unit"))
 	{
 		unit_test = vm["unit"].as<std::vector<std::string>>();
