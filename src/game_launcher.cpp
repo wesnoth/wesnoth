@@ -296,12 +296,14 @@ bool game_launcher::init_video()
 	// Handle special commandline launch flags
 	if(cmdline_opts_.nogui
 		|| cmdline_opts_.screenshot
+		|| cmdline_opts_.list_wml_tests
 		|| cmdline_opts_.headless_unit_test
 		|| cmdline_opts_.render_image)
 	{
 		if(!(cmdline_opts_.multiplayer
 			|| cmdline_opts_.screenshot
 			|| cmdline_opts_.plugin_file
+			|| cmdline_opts_.list_wml_tests
 			|| cmdline_opts_.headless_unit_test
 			|| cmdline_opts_.render_image))
 		{
