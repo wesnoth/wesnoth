@@ -162,137 +162,137 @@ BOOST_AUTO_TEST_CASE( test_help_markup_old )
 	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["text"], "some text");
 
 	// With explicit text attribute
-	output = markup::parse_text("<tt>text='some text'</tt>");
+	output = markup::parse_text("<format>text='some text'</format>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
-	BOOST_CHECK(output.has_child("tt"));
-	BOOST_CHECK(output.mandatory_child("tt").has_attribute("text"));
-	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["text"], "some text");
+	BOOST_CHECK(output.has_child("format"));
+	BOOST_CHECK(output.mandatory_child("format").has_attribute("text"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("format")["text"], "some text");
 
 	// With implicit text attribute and another attribute
-	output = markup::parse_text("<tt>attr='value' some text</tt>");
+	output = markup::parse_text("<format>bold='value' some text</format>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
-	BOOST_CHECK(output.has_child("tt"));
-	BOOST_CHECK(output.mandatory_child("tt").has_attribute("text"));
-	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["text"], "some text");
-	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
-	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "value");
+	BOOST_CHECK(output.has_child("format"));
+	BOOST_CHECK(output.mandatory_child("format").has_attribute("bold"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("format")["text"], "some text");
+	BOOST_CHECK(output.mandatory_child("format").has_attribute("bold"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("format")["bold"], "value");
 
 	// With explict text attribute and another attribute
-	output = markup::parse_text("<tt>attr='value' text='some text'</tt>");
+	output = markup::parse_text("<format>bold='value' text='some text'</format>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
-	BOOST_CHECK(output.has_child("tt"));
-	BOOST_CHECK(output.mandatory_child("tt").has_attribute("text"));
-	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["text"], "some text");
-	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
-	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "value");
+	BOOST_CHECK(output.has_child("format"));
+	BOOST_CHECK(output.mandatory_child("format").has_attribute("text"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("format")["text"], "some text");
+	BOOST_CHECK(output.mandatory_child("format").has_attribute("text"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("format")["bold"], "value");
 
 	// A tag in a larger span of text
-	output = markup::parse_text("Here we have <tt>attr='value' text='some text'</tt> with an unknown style applied!");
+	output = markup::parse_text("Here we have <format>bold='value' text='some text'</format> with an unknown style applied!");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 3);
-	BOOST_CHECK(output.has_child("tt"));
+	BOOST_CHECK(output.has_child("format"));
 	BOOST_CHECK_EQUAL(output.child_count("text"), 2);
-	BOOST_CHECK_EQUAL(output.find_total_first_of("tt"), 1);
-	BOOST_CHECK(output.mandatory_child("tt").has_attribute("text"));
-	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["text"], "some text");
-	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
-	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "value");
+	BOOST_CHECK_EQUAL(output.find_total_first_of("format"), 1);
+	BOOST_CHECK(output.mandatory_child("format").has_attribute("text"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("format")["text"], "some text");
+	BOOST_CHECK(output.mandatory_child("format").has_attribute("text"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("format")["bold"], "value");
 	BOOST_CHECK(output.mandatory_child("text").has_attribute("text"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("text")["text"], "Here we have ");
 	BOOST_CHECK(output.mandatory_child("text", 1).has_attribute("text"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("text", 1)["text"], " with an unknown style applied!");
 
 	// The attribute value can be unquoted
-	output = markup::parse_text("<tt>attr=value</tt>");
+	output = markup::parse_text("<format>text=value</format>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
-	BOOST_CHECK(output.has_child("tt"));
-	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
-	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "value");
+	BOOST_CHECK(output.has_child("format"));
+	BOOST_CHECK(output.mandatory_child("format").has_attribute("text"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("format")["text"], "value");
 
 	// Nonalphanumeric characters don't need to be quoted as long as they're not special
-	output = markup::parse_text("<tt>attr=!@#$%^</tt>");
+	output = markup::parse_text("<format>text=!@#$%^</format>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
-	BOOST_CHECK(output.has_child("tt"));
-	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
-	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "!@#$%^");
+	BOOST_CHECK(output.has_child("format"));
+	BOOST_CHECK(output.mandatory_child("format").has_attribute("text"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("format")["text"], "!@#$%^");
 
 	// Quoting with single quotes
-	output = markup::parse_text("<tt>attr='value with spaces'</tt>");
+	output = markup::parse_text("<format>text='value with spaces'</format>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
-	BOOST_CHECK(output.has_child("tt"));
-	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
-	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "value with spaces");
+	BOOST_CHECK(output.has_child("format"));
+	BOOST_CHECK(output.mandatory_child("format").has_attribute("text"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("format")["text"], "value with spaces");
 
 	// Quoting with double quotes
-	output = markup::parse_text(R"==(<tt>attr="value with spaces"</tt>)==");
+	output = markup::parse_text(R"==(<format>text="value with spaces"</format>)==");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
-	BOOST_CHECK(output.has_child("tt"));
-	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
-	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "value with spaces");
+	BOOST_CHECK(output.has_child("format"));
+	BOOST_CHECK(output.mandatory_child("format").has_attribute("text"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("format")["text"], "value with spaces");
 
 	// Quotes only count as quotes if they're the first non-whitespace character after the =
-	output = markup::parse_text("<tt>attr=O'Brien</tt>");
+	output = markup::parse_text("<format>text=O'Brien</format>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
-	BOOST_CHECK(output.has_child("tt"));
-	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
-	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "O'Brien");
+	BOOST_CHECK(output.has_child("format"));
+	BOOST_CHECK(output.mandatory_child("format").has_attribute("text"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("format")["text"], "O'Brien");
 
 	// Single quotes in double-quoted value
-	output = markup::parse_text(R"==(<tt>attr="'tis futile"</tt>)==");
+	output = markup::parse_text(R"==(<format>bold="'tis futile"</format>)==");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
-	BOOST_CHECK(output.has_child("tt"));
-	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
-	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "'tis futile");
+	BOOST_CHECK(output.has_child("format"));
+	BOOST_CHECK(output.mandatory_child("format").has_attribute("bold"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("format")["bold"], "'tis futile");
 
 	// Double quotes in single-quoted value
-	output = markup::parse_text(R"==(<tt>attr='the "mega" test'</tt>)==");
+	output = markup::parse_text(R"==(<format>bold='the "mega" test'</format>)==");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
-	BOOST_CHECK(output.has_child("tt"));
-	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
-	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], R"==(the "mega" test)==");
+	BOOST_CHECK(output.has_child("format"));
+	BOOST_CHECK(output.mandatory_child("format").has_attribute("bold"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("format")["bold"], R"==(the "mega" test)==");
 
 	// Spaces around the equals are allowed
-	output = markup::parse_text("<tt>attr = value</tt>");
+	output = markup::parse_text("<format>bold = value</format>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
-	BOOST_CHECK(output.has_child("tt"));
-	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
-	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "value");
+	BOOST_CHECK(output.has_child("format"));
+	BOOST_CHECK(output.mandatory_child("format").has_attribute("bold"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("format")["bold"], "value");
 
 	// Newlines are also allowed
-	output = markup::parse_text("<tt>attr=\nvalue\nthat=\nthis</tt>");
+	output = markup::parse_text("<format>bold=\nvalue\nitalic=\nthis</format>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
-	BOOST_CHECK(output.has_child("tt"));
-	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
-	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "value");
-	BOOST_CHECK(output.mandatory_child("tt").has_attribute("that"));
-	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["that"], "this");
+	BOOST_CHECK(output.has_child("format"));
+	BOOST_CHECK(output.mandatory_child("format").has_attribute("bold"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("format")["bold"], "value");
+	BOOST_CHECK(output.mandatory_child("format").has_attribute("italic"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("format")["italic"], "this");
 
 	// Escaping a single quote in a single-quoted value
-	output = markup::parse_text(R"==(<tt>attr='Let\'s go?'</tt>)==");
+	output = markup::parse_text(R"==(<format>bold='Let\'s go?'</format>)==");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
-	BOOST_CHECK(output.has_child("tt"));
-	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
-	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "Let's go?");
+	BOOST_CHECK(output.has_child("format"));
+	BOOST_CHECK(output.mandatory_child("format").has_attribute("bold"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("format")["bold"], "Let's go?");
 
 	// Using a simple character entity in a single-quoted value
-	output = markup::parse_text("<tt>attr='&apos;tis good'</tt>");
+	output = markup::parse_text("<format>bold='&apos;tis good'</format>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
-	BOOST_CHECK(output.has_child("tt"));
-	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
-	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "'tis good");
+	BOOST_CHECK(output.has_child("format"));
+	BOOST_CHECK(output.mandatory_child("format").has_attribute("bold"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("format")["bold"], "'tis good");
 
 	// A newline in a single-quoted value
-	output = markup::parse_text("<tt>attr='Line 1\nLine 2'</tt>");
+	output = markup::parse_text("<format>bold='Line 1\nLine 2'</format>");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
-	BOOST_CHECK(output.has_child("tt"));
-	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
-	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], "Line 1\nLine 2");
+	BOOST_CHECK(output.has_child("format"));
+	BOOST_CHECK(output.mandatory_child("format").has_attribute("bold"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("format")["bold"], "Line 1\nLine 2");
 
 	// Using a simple character entity in a double-quoted value
-	output = markup::parse_text(R"==(<tt>attr="&quot;Yes!&quot;"</tt>)==");
+	output = markup::parse_text(R"==(<format>bold="&quot;Yes!&quot;"</format>)==");
 	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
-	BOOST_CHECK(output.has_child("tt"));
-	BOOST_CHECK(output.mandatory_child("tt").has_attribute("attr"));
-	BOOST_CHECK_EQUAL(output.mandatory_child("tt")["attr"], R"==("Yes!")==");
+	BOOST_CHECK(output.has_child("format"));
+	BOOST_CHECK(output.mandatory_child("format").has_attribute("bold"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("format")["bold"], R"==("Yes!")==");
 }
 
 BOOST_AUTO_TEST_CASE( test_help_markup_new )
