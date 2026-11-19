@@ -465,6 +465,7 @@ public:
 private:
 	texture target_;
 	::rect viewport_;
+	::rect requested_viewport_;
 	::rect clip_;
 };
 
