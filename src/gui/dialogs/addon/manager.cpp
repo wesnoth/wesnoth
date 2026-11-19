@@ -556,6 +556,8 @@ void addon_manager::pre_show()
 			std::bind(&addon_manager::on_selected_version_change, this));
 	}
 
+	// Apply the selection from type_filter.select_option() above after initializing
+	// the remaining filters, sorting and list view.
 	if(initial_type_filter_.has_value()) {
 		apply_filters();
 	}
