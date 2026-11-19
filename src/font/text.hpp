@@ -94,6 +94,22 @@ public:
 	 */
 	texture render_and_get_texture();
 
+	/**
+	 * Renders only part of the text.
+	 *
+	 * Use this when only a small part of a large text will be visible, as
+	 * rendering all of it may exceed the maximum size of a cairo surface or
+	 * an SDL texture.
+	 *
+	 * @param viewport The area to render, in drawing co-ordinates relative to
+	 * the text's origin. It is clipped to the extent of the text, so the
+	 * returned texture may be smaller than requested.
+	 *
+	 * @returns A texture whose origin corresponds to viewport.x and
+	 * viewport.y, or an empty texture if nothing is visible.
+	 */
+	texture render_and_get_texture(const rect& viewport);
+
 private:
 	/**
 	 * Wrapper around render_surface which sets texture::w() and texture::h()

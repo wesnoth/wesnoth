@@ -129,6 +129,26 @@ texture pango_text::render_and_get_texture()
 	return with_draw_scale(texture(create_surface()));
 }
 
+texture pango_text::render_and_get_texture(const rect& viewport)
+{
+	recalculate();
+
+	// Convert to render-space and limit to the area create_surface() would use.
+	rect area{
+		viewport.x * pixel_scale_,
+		viewport.y * pixel_scale_,
+		viewport.w * pixel_scale_,
+		viewport.h * pixel_scale_
+	};
+	area.clip(rect{0, 0, rect_.x + rect_.width, rect_.y + rect_.height});
+
+	if(area.empty()) {
+		return texture{};
+	}
+
+	return render_texture(area);
+}
+
 surface pango_text::render_surface(const rect& viewport)
 {
 	recalculate();
@@ -785,6 +805,9 @@ void pango_text::render(PangoLayout& layout, const rect& viewport)
 
 		// Stroke path to draw outline.
 		cairo_stroke(cr);
+
+		// Stroking clears the current point, so move back to the top-left.
+		cairo_move_to(cr, -viewport.x, -viewport.y);
 	}
 
 	// Set main text color.
