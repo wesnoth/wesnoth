@@ -137,7 +137,6 @@ void menu_handler::objectives()
 		return;
 	}
 
-	pc_.refresh_objectives();
 	pc_.show_objectives();
 }
 
