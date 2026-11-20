@@ -22,6 +22,8 @@
 #include "gui/dialogs/modal_dialog.hpp"
 #include "gui/widgets/addon_list.hpp"
 
+#include "utils/optional_fwd.hpp"
+
 
 namespace gui2
 {
@@ -34,7 +36,7 @@ namespace dialogs
 class addon_manager : public modal_dialog
 {
 public:
-	explicit addon_manager(addons_client& client);
+	explicit addon_manager(addons_client& client, const utils::optional<ADDON_TYPE> initial_type_filter = utils::nullopt);
 
 	bool get_need_wml_cache_refresh() const
 	{
@@ -78,6 +80,8 @@ private:
 	config cfg_;
 
 	addons_client& client_;
+
+	utils::optional<ADDON_TYPE> initial_type_filter_;
 
 	addons_list addons_;
 
