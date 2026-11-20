@@ -34,6 +34,16 @@ See the header comment of wmllint for a description and invocation options.
 wmllint-1.4 is an older version of wmllint kept alive because wmllint is
 incompatible with pre-1.4 syntax.
 
+=== check_typography ===
+
+Checks translatable strings against the Typography Style Guide
+(https://wiki.wesnoth.org/Typography_Style_Guide): straight quotes,
+hyphens used as dashes or minus signs, quote direction, spacing, some
+common mis-spellings, and stray '^' characters that would cut off
+untranslated text. Run from the repository root to check mainline (as the
+CI does), or pass add-on directories or .pot files. It only reports
+problems; nothing is changed. See the header comment for details.
+
 === GUI.pyw ===
 
 A Tkinter based GUI interface for wmllint, wmlscope and wmllint, to aid WML

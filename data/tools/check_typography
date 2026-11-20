@@ -6,14 +6,18 @@ https://wiki.wesnoth.org/Typography_Style_Guide
 https://wiki.wesnoth.org/UI_Style_Guide#Typography_Summary
 See also https://github.com/wesnoth/wesnoth/issues/7967
 
-Strings are extracted straight from the source tree with the same extractors
-that pot-update uses (wmlxgettext for WML/Lua, xgettext for C++), so no
-build, CMake configure or committed .pot file is needed. Only the msgids
-(the English source strings) are checked. It only reports; nothing is changed.
+Strings are extracted straight from the source with the same extractors that
+pot-update uses (wmlxgettext for WML/Lua, xgettext for C++), so no build,
+CMake configure or committed .pot file is needed. Only the msgids (the English
+source strings) are checked. It only reports; nothing is changed.
 
-Usage, from the repository root:
-    utils/CI/check_typography.py            # extract and check
-    utils/CI/check_typography.py FILE.pot   # check existing .pot file(s)
+Usage:
+    data/tools/check_typography               # mainline, from the repository root
+    data/tools/check_typography DIR...        # WML/Lua under DIR, eg an add-on
+    data/tools/check_typography FILE.pot...   # existing .pot file(s)
+
+Use --domain to limit the check to particular text-domains. For core, this uses the
+domains listed in po/CMakeLists.txt by default, otherwise all domains found are checked.
 
 Exits non-zero if any problem is found. When run under GitHub Actions, problems
 are also emitted as annotations so they show up on the PR diff.
@@ -21,13 +25,13 @@ are also emitted as annotations so they show up on the PR diff.
 Intentional exceptions go in EXCEPTIONS below.
 """
 
+import argparse
 import ast
 import glob
 import os
 import re
 import subprocess
 import sys
-import tempfile
 from collections import defaultdict
 
 # (rule, sub-string of the msgid) pairs that are deliberately exempt.
@@ -110,36 +114,60 @@ RULES = [
 STRAY_CARET = re.compile(r"^(?:[^^]*[^\w^]|[^^]*\n[^^]*|[^^]{61,})\^")
 
 
-def domains():
-    """Normal (WML/C++/Python) text domains, as listed in po/CMakeLists.txt."""
-    with open("po/CMakeLists.txt", encoding="utf-8") as f:
-        m = re.search(r"set\(NORMAL_DOMAINS(.*?)\)", f.read(), re.S)
-    return m.group(1).split()
+TOOLS_DIR = os.path.dirname(os.path.abspath(__file__))
+XGETTEXT_KEYWORDS = ["_", "N_", "sgettext", "vgettext", "VGETTEXT", "_n:1,2", "N_n:1,2",
+                     "sngettext:1,2", "vngettext:1,2", "VNGETTEXT:1,2"]
 
 
-def extract(tmp):
-    """Run the extractors over the tree, return a list of .pot paths."""
-    wml = sorted(p for p in glob.glob("data/**/*.cfg", recursive=True)
-                 + glob.glob("data/**/*.lua", recursive=True)
-                 if not p.startswith("data/test/"))
-    subprocess.run([sys.executable, "data/tools/wmlxgettext", "--no-text-colors",
-                    "-o", os.path.join(tmp, "wml"), *wml, "--domain", *domains()],
-                   check=True, stderr=subprocess.DEVNULL)
+def mainline_domains():
+    """Normal text domains listed in po/CMakeLists.txt, or None outside a repository check-out."""
+    try:
+        with open("po/CMakeLists.txt", encoding="utf-8") as f:
+            m = re.search(r"set\(NORMAL_DOMAINS(.*?)\)", f.read(), re.S)
+    except OSError:
+        return None
+    return m.group(1).split() if m else None
 
-    # Python sources (data/tools) are left out: they are tools for content
-    # authors rather than player-facing text.
-    keywords = ["_", "N_", "sgettext", "vgettext", "VGETTEXT", "_n:1,2", "N_n:1,2",
-                "sngettext:1,2", "vngettext:1,2", "VNGETTEXT:1,2"]
-    xgettext = ["xgettext", "--force-po", "--from-code=UTF-8", "--sort-by-file",
-                *("--keyword=" + k for k in keywords)]
+
+def run(command):
+    """Run an extractor that writes a .pot to stdout, return its lines."""
+    result = subprocess.run(command, check=True, stdout=subprocess.PIPE,
+                            stderr=subprocess.DEVNULL, encoding="utf-8")
+    return result.stdout.splitlines()
+
+
+def extract_wml(paths, domains, skip=()):
+    """Extract strings from the .cfg and .lua files in (or at) paths."""
+    files = []
+    for path in paths:
+        if os.path.isfile(path):
+            files.append(path)
+        else:
+            files += glob.glob(os.path.join(path, "**", "*.cfg"), recursive=True)
+            files += glob.glob(os.path.join(path, "**", "*.lua"), recursive=True)
+    files = sorted(f for f in files if f.endswith((".cfg", ".lua")) and not f.startswith(skip))
+    if not files:
+        return []
+    command = [sys.executable, os.path.join(TOOLS_DIR, "wmlxgettext"),
+               "--no-text-colors", "-o", "-", *files]
+    if domains:
+        command += ["--domain", *domains]
+    return run(command)
+
+
+def extract_cpp():
+    """Extract strings from mainline C++.
+
+    Python sources (data/tools) are deliberately left out: they are tools for
+    content authors rather than player-visible text.
+    """
     cpp = sorted(glob.glob("src/**/*.cpp", recursive=True) + glob.glob("src/**/*.hpp", recursive=True))
-    subprocess.run([*xgettext, "-o", os.path.join(tmp, "cpp.pot"), *cpp],
-                   check=True, stderr=subprocess.DEVNULL)
-    return sorted(glob.glob(os.path.join(tmp, "**", "*.pot"), recursive=True))
+    return run(["xgettext", "--force-po", "--from-code=UTF-8", "--sort-by-file",
+                *("--keyword=" + k for k in XGETTEXT_KEYWORDS), "-o", "-", *cpp])
 
 
-def read_pot(path):
-    """Yield (references, msgid) for every msgid/msgid_plural in a .pot file."""
+def read_pot(lines):
+    """Yield (references, msgid) for every msgid/msgid_plural in .pot content."""
     refs, field, strs = [], None, {}
 
     def flush():
@@ -147,28 +175,27 @@ def read_pot(path):
             if strs.get(key):
                 yield refs, strs[key]
 
-    with open(path, encoding="utf-8") as f:
-        for line in f:
-            line = line.strip()
-            if line.startswith("#:"):
-                if strs:
-                    yield from flush()
-                    refs, strs = [], {}
-                refs.extend(line[2:].split())
-            elif line.startswith("#"):
-                continue
-            elif not line:
+    for line in lines:
+        line = line.strip()
+        if line.startswith("#:"):
+            if strs:
                 yield from flush()
-                refs, field, strs = [], None, {}
-            elif line.startswith('"'):
-                if field:
-                    strs[field] += ast.literal_eval(line)
-            else:
-                key, _, value = line.partition(" ")
-                field = key if key in ("msgid", "msgid_plural") else None
-                if field:
-                    strs[field] = ast.literal_eval(value)
-        yield from flush()
+                refs, strs = [], {}
+            refs.extend(line[2:].split())
+        elif line.startswith("#"):
+            continue
+        elif not line:
+            yield from flush()
+            refs, field, strs = [], None, {}
+        elif line.startswith('"'):
+            if field:
+                strs[field] += ast.literal_eval(line)
+        else:
+            key, _, value = line.partition(" ")
+            field = key if key in ("msgid", "msgid_plural") else None
+            if field:
+                strs[field] = ast.literal_eval(value)
+    yield from flush()
 
 
 def excerpt(text, match, width=25):
@@ -200,16 +227,37 @@ def check(msgid):
 
 
 def main():
-    with tempfile.TemporaryDirectory() as tmp:
-        pots = sys.argv[1:] or extract(tmp)
-        found = defaultdict(list)  # (rule, msgid) -> refs, merges duplicate msgids
-        messages, excerpts = {}, {}
-        for pot in pots:
-            for refs, msgid in read_pot(pot):
-                for rule, message, snippets in check(msgid):
-                    found[(rule, msgid)].extend(refs)
-                    messages[rule] = message
-                    excerpts[(rule, msgid)] = snippets
+    parser = argparse.ArgumentParser(
+        description="Check translatable strings against the Wesnoth Typography Style Guide.")
+    parser.add_argument("paths", nargs="*", metavar="PATH",
+                        help="directories or .cfg/.lua files to scan, or .pot files to check "
+                             "(default: mainline, run from the repository root)")
+    parser.add_argument("--domain", action="append",
+                        help="only check this textdomain (can be repeated)")
+    args = parser.parse_args()
+
+    sources = []  # lists of .pot lines
+    if not args.paths:
+        domains = args.domain or mainline_domains()
+        if domains is None:
+            parser.error("no PATH given, and this is not the root of a Wesnoth checkout")
+        sources.append(extract_wml(["data"], domains, skip=("data/test/",)))
+        sources.append(extract_cpp())
+    else:
+        for path in args.paths:
+            if path.endswith(".pot"):
+                with open(path, encoding="utf-8") as f:
+                    sources.append(f.read().splitlines())
+        sources.append(extract_wml([p for p in args.paths if not p.endswith(".pot")], args.domain))
+
+    found = defaultdict(list)  # (rule, msgid) -> refs, merges duplicate msgids
+    messages, excerpts = {}, {}
+    for lines in sources:
+        for refs, msgid in read_pot(lines):
+            for rule, message, snippets in check(msgid):
+                found[(rule, msgid)].extend(refs)
+                messages[rule] = message
+                excerpts[(rule, msgid)] = snippets
 
     github = os.environ.get("GITHUB_ACTIONS") == "true"
     for (rule, msgid), refs in sorted(found.items(), key=lambda i: i[1][0] if i[1] else ""):
