@@ -1,6 +1,4 @@
-## Version 1.19.29+dev
-### Add-ons client
-### Add-ons server
+## Version 1.19.30
 ### Campaigns
    * Heir to the Throne
      * Significantly improve speed/performance of Li'sar's AI.
@@ -11,19 +9,9 @@
      * Increased the Sceptre's damage from 20-4 to 25-4, but added the unwieldy special to it ("This attack can only be used offensively.")
    * The Sceptre of Fire
      * Increased the Sceptre's damage from 20-4 to 25-4, but added the unwieldy special to it ("This attack can only be used offensively.")
-### Editor
-### Multiplayer
-### Lua API
-### Packaging
-### Terrain
 ### Translations
    * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Hebrew, Hungarian, Italian, Japanese, Spanish
    * Fixed: gettext was marking strings including “50% accuracy” as fuzzy when the translation didn’t include “% a”.
-### Units
-### User interface
-### WML Engine
-### Miscellaneous and Bug Fixes
-### Android
 
 ## Version 1.19.29
 ### Campaigns
