@@ -73,6 +73,32 @@ RULES = [
      "ellipsis character (U+2026) used; the style guide uses three full stops"),
     ("double-space", re.compile(r"(?<=[^\d\s])[.!?]  +(?=\S)"),
      "two spaces after a full stop"),
+    # Speech cut off abruptly ("I can’t-"); a suspended hyphen ("double- or
+    # right-click") is followed by "or"/"and" and is left alone.
+    ("cut-off-hyphen", re.compile(r"[a-z]-(?=$|[”’\"!?…]|\s+(?!(?:or|and|nor|to)\b))", re.M),
+     "hyphen marking cut-off speech; use — (U+2014)"),
+    # An opening quote used as an apostrophe: inside a word ("I‘m"), or before
+    # a shortened word ("‘tis", "‘em"). Opening ’ (’great one’) cannot be told
+    # apart from dialect (’is, ’side) and is not checked.
+    ("quote-as-apostrophe", re.compile(
+        r"\w‘\w|(?<!\w)‘(?:tis|twas|twere|tweren|twill|twould|em|cause|cuz|bout|nuff)\b(?!’)"),
+     "‘ (U+2018) used as an apostrophe; use ’ (U+2019)"),
+    # "till" is the older word; "’til" is a false archaism.
+    ("til", re.compile(r"(?<!\w)[‘’']til\b"),
+     "’til is a false archaism; use “till” or “until”"),
+    ("misplaced-apostrophe", re.compile(r"(?<![\w’])’o\b(?!’)"),
+     "’o for “of”; the apostrophe replaces the dropped letter, so use o’"),
+    ("comma-no-space", re.compile(r"[A-Za-z]{2},(?=[a-z])"),
+     "no space after a comma"),
+    # Mis-spellings found previously, plus a few common ones.
+    # Not intended as a replacement for a proper spell-check pass.
+    ("mis-spelling", re.compile(r"\b(?:fufill\w*|maneuverabilty|musn[’']t|lackies|foreswear\w*|fortold"
+                               r"|seperat\w*|occured|recieve\w*|untill|definately|accomodat\w*"
+                               r"|existance|beleiv\w*|wierd\w*|thier|tommorow|neccessar\w*"
+                               r"|occassion\w*|sucessful\w*|truely|arguement\w*|embarras(?:ed|ing|ment)"
+                               r"|enviroment\w*|independant\w*|priviledge\w*|publically|rythm\w*"
+                               r"|tounge\w*|villian\w*|wich|alot|teh|goverment\w*)\b", re.I),
+     "common mis-spelling"),
 ]
 
 # Not a typography rule, but a real bug of the same kind: sgettext/dsgettext
@@ -165,6 +191,8 @@ def check(msgid):
     prose = QUOTED_VALUE.sub("", WML_FORMULA.sub("", HELP_ATTR.sub("", PANGO_TAG.sub("", text))))
     for name, pattern, message in RULES:
         target = text if name == "double-space" else prose
+        if name == "comma-no-space" and ", " not in target:
+            continue  # a comma-separated list (eg random names), not prose
         matches = list(pattern.finditer(target))
         if matches and not any(rule == name and s in msgid for rule, s in EXCEPTIONS):
             problems.append((name, message, [excerpt(target, x) for x in matches]))
