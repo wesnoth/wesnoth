@@ -670,10 +670,64 @@ PangoRectangle pango_text::calculate_size(PangoLayout& layout) const
 		? maximum_height * PANGO_SCALE
 		: -1);
 
-	pango_layout_set_width(&layout, maximum_width == -1
-		? -1
-		: maximum_width * PANGO_SCALE);
+	pango_layout_set_width(&layout, maximum_width == -1 ? -1 : maximum_width * PANGO_SCALE);
 	pango_layout_get_pixel_extents(&layout, nullptr, &size);
+
+	const int measured_width = size.x + size.width;
+	const int measured_height = size.y + size.height;
+
+	/*
+	 * Pango does not guarantee that a layout’s reported extent can be
+	 * reused as its width constraint while preserving line breaks.
+	 * (That is what GUI2 relies on though by using the resulting width
+	 * from the layout phase as the width constraint in the render phase
+	 * expecting the same layout.)
+	 * The extent describes the completed layout; the width is an input to
+	 * line breaking. Re-layout at the reported extent can therefore
+	 * produce different breaks.
+	 * If we have a width constraint and no ellipsization, check if a small
+	 * font-proportional slack prevents premature wrapping without pushing
+	 * the new width past maximum_width.
+	 */
+	if(ellipse_mode_ == PANGO_ELLIPSIZE_NONE && measured_width > 0 && measured_width != maximum_width) {
+		PangoRectangle test_size;
+		pango_layout_set_width(&layout, measured_width * PANGO_SCALE);
+		pango_layout_get_pixel_extents(&layout, nullptr, &test_size);
+
+		// If laying out at measured_width wrapped differently (e.g., height grew), find the smallest slack that preserves it
+		if(test_size.x + test_size.width != measured_width || test_size.y + test_size.height != measured_height) {
+		int max_slack = std::max(4, static_cast<int>(font_size_));
+		if(maximum_width != -1) { // make sure we don't exceed maximum_width while adding slack
+			max_slack = std::min(max_slack, maximum_width - measured_width);
+		}
+
+		int working_slack = 0;
+		for(int slack = 1; slack <= max_slack; ++slack) {
+			pango_layout_set_width(&layout, (measured_width + slack) * PANGO_SCALE);
+			pango_layout_get_pixel_extents(&layout, nullptr, &test_size);
+
+			if(test_size.x + test_size.width == measured_width && test_size.y + test_size.height == measured_height) {
+				working_slack = slack;
+				break;
+			}
+		}
+
+		if(working_slack > 0) {
+			DBG_GUI_L << "pango_text::" << __func__
+				  << " round-trip wrap mismatch for '" << gui2::debug_truncate(text_)
+				  << "' at measured_width " << measured_width
+				  << " (maximum_width " << maximum_width
+				  << ", font_size " << font_size_ << ") but fixed with " << working_slack << "px slack!\n";
+			size.width += working_slack;
+		} else {
+			WRN_GUI_L << "pango_text::" << __func__
+				  << " round-trip wrap mismatch for '" << gui2::debug_truncate(text_)
+				  << "' at measured_width " << measured_width
+				  << " (maximum_width " << maximum_width
+				  << ", font_size " << font_size_ << ").\n";
+			}
+		}
+	}
 
 	DBG_GUI_L << "pango_text::" << __func__
 		<< " text '" << gui2::debug_truncate(text_)
