@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-08-02 22:45-0500\n"
+"POT-Creation-Date: 2026-11-19 18:47-0600\n"
 "PO-Revision-Date: 2025-04-26 09:44+0100\n"
 "Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: none\n"
@@ -3132,7 +3132,7 @@ msgstr "قواعد اللعب"
 #. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:29 data/core/help.cfg:543
+#: data/core/help.cfg:29 data/core/help.cfg:541
 #: src/help/help_topic_generators.cpp:536
 #: src/help/help_topic_generators.cpp:541
 msgid "Traits"
@@ -3164,19 +3164,19 @@ msgstr "عصور"
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:70 data/core/help.cfg:558
+#: data/core/help.cfg:70 data/core/help.cfg:556
 msgid "Terrains"
 msgstr "تضاريس"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:78 data/core/help.cfg:606
+#: data/core/help.cfg:78 data/core/help.cfg:604
 msgid "Add-ons"
 msgstr "الإضافات"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:84 data/core/help.cfg:679
+#: data/core/help.cfg:84 data/core/help.cfg:677
 msgid "Commands"
 msgstr "أوامر التصحيح"
 
@@ -3810,42 +3810,13 @@ msgstr ""
 "<italic>text='اعدادات السيناريو'</italic> في مربع الحوار <italic>text='جدول "
 "الحالة'</italic> قيم السيناريو الحالي."
 
-#. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:226
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "There are two important exceptions to upkeep: units with the loyal trait "
-#| "and leaders never incur upkeep. Units you begin the scenario with (such "
-#| "as Delfador), or units who join you during a scenario (such as the "
-#| "horseman in the second scenario of <italic>text='Heir to the Throne'</"
-#| "italic>) will usually have the <italic>text='loyal'</italic> trait. The "
-#| "unit you are playing (such as Konrad) will almost always be a leader."
-msgid ""
-"There are two important exceptions to upkeep: units with the loyal trait and "
-"leaders never incur upkeep. Units you begin the scenario with (such as "
-"Delfador), or units who join you during a scenario (such as the horseman in "
-"the second scenario of <i>Heir to the Throne</i>) will usually have the "
-"<i>loyal</i> trait. The unit you are playing (such as Konrad) will almost "
-"always be a leader."
-msgstr ""
-"\n"
-"\n"
-"هناك استثناءان مهمان في الصيانة: الوحدات التي تحمل سمة الولاء والقادة لا "
-"يتحملون الصيانة أبدًا. الوحدات التي تبدأ السيناريو بها (مثل دلفادور)، أو "
-"الوحدات التي تنضم إليك أثناء السيناريو (مثل الفارس في السيناريو الثاني من "
-"<italic>text='وريث العرش'</italic>) عادة ما يكون لها سمة "
-"<italic>text='موالي'</italic>. الوحدة التي تلعب بها (مثل كونراد) ستكون دائمًا "
-"قائدًا."
-
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:233
+#: data/core/help.cfg:231
 msgid "Hitpoints and Experience"
 msgstr "نقاط الحياة والخبرة"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:234
+#: data/core/help.cfg:232
 #, fuzzy
 #| msgid ""
 #| "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). "
@@ -3865,7 +3836,7 @@ msgstr ""
 "نقاط خبرة، وتكتسب الخبرة من خلال قتال الأعداء."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:238
+#: data/core/help.cfg:236
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -3875,7 +3846,7 @@ msgstr ""
 "(القيمة الحالية والحد الأقصى للقيمة التي يمكن أن تمتلكها الوحدة)."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:240
+#: data/core/help.cfg:238
 #, fuzzy
 #| msgid ""
 #| "The hitpoints are also indicated by an energy bar next to each unit, "
@@ -3894,12 +3865,12 @@ msgstr ""
 "<ref>dst='advancement' text='التطور'</ref>."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:247
+#: data/core/help.cfg:245
 msgid "Advancement"
 msgstr "تطوّر"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:248
+#: data/core/help.cfg:246
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they’re fighting. If a unit kills another in "
@@ -3912,7 +3883,7 @@ msgstr ""
 "و16 لوحدة المستوى 2، و24 لوحدة المستوى 3، وهكذا."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:250
+#: data/core/help.cfg:248
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3935,7 +3906,7 @@ msgstr ""
 "خيارًا من خيارات التقدم."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:252
+#: data/core/help.cfg:250
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3977,12 +3948,12 @@ msgstr ""
 "تطوير وحدات المستوى الأدنى الخاصة بك."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:259
+#: data/core/help.cfg:257
 msgid "Movement"
 msgstr "الحركة"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:260
+#: data/core/help.cfg:258
 #, fuzzy
 #| msgid ""
 #| "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click "
@@ -4025,7 +3996,7 @@ msgstr ""
 "الوحدة، لكنه سيسمح لها بالهجوم."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:262
+#: data/core/help.cfg:260
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4062,7 +4033,7 @@ msgstr ""
 "الوحدة'</bold>، ثم النظر إلى <bold>text='معدلات التضاريس'</bold>."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:264
+#: data/core/help.cfg:262
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4092,7 +4063,7 @@ msgstr ""
 "يمكنهم تجاهل مناطق السيطرة."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:266
+#: data/core/help.cfg:264
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4112,12 +4083,12 @@ msgstr ""
 "تكن وحداتك على الخريطة تمنع تقدمه."
 
 #. [topic]: id=vision
-#: data/core/help.cfg:273
+#: data/core/help.cfg:271
 msgid "Vision"
 msgstr "الرؤية"
 
 #. [topic]: id=vision
-#: data/core/help.cfg:274
+#: data/core/help.cfg:272
 msgid ""
 "Vision determines how far a unit can see on the map. Normally, a unit’s "
 "vision range is calculated as its movement range plus one hex. Certain units "
@@ -4129,12 +4100,12 @@ msgstr ""
 "الفريدة من نوعها عن هذه القاعدة ولديها تكلفة رؤية مستقلة عن نطاق الحركة."
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:281
+#: data/core/help.cfg:279
 msgid "Shroud and Fog of War"
 msgstr "الحجاب وضباب الحرب"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:282
+#: data/core/help.cfg:280
 #, fuzzy
 #| msgid ""
 #| "In some scenarios, parts of the map will be hidden from you. There are "
@@ -4195,14 +4166,14 @@ msgstr ""
 "(أو نهاية دورك) وبالتالي الحفاظ على قدرتك على التراجع عن الحركة."
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:286
+#: data/core/help.cfg:284
 #, fuzzy
 #| msgid "<header>text='Multiplayer and undo'</header>"
 msgid "<header>Multiplayer and undo</header>"
 msgstr "<header>text='متعدد اللاعبين والتراجع'</header>"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:288
+#: data/core/help.cfg:286
 msgid ""
 "In multiplayer games, moves that have been sent to the network can’t be "
 "undone; the game delays sending data to try to preserve your undo ability. "
@@ -4219,12 +4190,12 @@ msgstr ""
 "عنها."
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:295
+#: data/core/help.cfg:293
 msgid "Save-loading"
 msgstr "حفظ-تحميل"
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:296
+#: data/core/help.cfg:294
 msgid ""
 "Random numbers are part of Wesnoth, attacks can fail and units can die due "
 "to bad luck — this is an expected part of the game. Going back to a previous "
@@ -4238,7 +4209,7 @@ msgstr ""
 "التحميل لمجرد تجربة الاستراتيجية نفسها مرة أخرى على أمل أن يحالفك حظ أفضل."
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:298
+#: data/core/help.cfg:296
 #, fuzzy
 #| msgid ""
 #| "One of the challenges of the game is to work out how to protect your "
@@ -4259,7 +4230,7 @@ msgstr ""
 "ستجتاز سيناريو دون أن يحدث ذلك."
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:301
+#: data/core/help.cfg:299
 msgid ""
 "Small risks build up for your non-hero units too. While the story and "
 "dialogue usually aim to give you some emotional bond with your troops, the "
@@ -4275,7 +4246,7 @@ msgstr ""
 "المعركة الخاصة بك توزيع المخاطر بناءً على القوات التي تريد استدعائها لاحقًا."
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:303
+#: data/core/help.cfg:301
 msgid ""
 "The difficulty levels are balanced assuming that the player won’t save-load. "
 "In the mainline campaigns, harder difficulties generally have more enemies "
@@ -4290,7 +4261,7 @@ msgstr ""
 "الثاني أو الثالث."
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:305
+#: data/core/help.cfg:303
 msgid ""
 "That said, it’s a game; the best way to play it is whichever way gives you "
 "the most enjoyment."
@@ -4299,17 +4270,17 @@ msgstr ""
 "المتعة."
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:312
+#: data/core/help.cfg:310
 msgid "Learning from Losses"
 msgstr "التعلم من الخسائر"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:313
+#: data/core/help.cfg:311
 msgid "<i>Why did I lose that scenario?</i>"
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:315
+#: data/core/help.cfg:313
 #, fuzzy
 #| msgid ""
 #| "<italic>text='Why did I lose that scenario?'</italic>\n"
@@ -4325,7 +4296,7 @@ msgstr ""
 "أحد أصعب الأجزاء في ويسنوث هو فهم سبب فقدان السيناريو."
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:317
+#: data/core/help.cfg:315
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4349,7 +4320,7 @@ msgstr ""
 "تشغيل السيناريو'</ref> وحاول مرة أخرى."
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:319
+#: data/core/help.cfg:317
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4362,7 +4333,7 @@ msgstr ""
 "بعض الأسباب الشائعة لخسارة السيناريو هي:"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:321
+#: data/core/help.cfg:319
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4379,7 +4350,7 @@ msgstr ""
 "ref> . حاول إعادة تشغيل السيناريو بصعوبة أسهل."
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:323
+#: data/core/help.cfg:321
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4400,7 +4371,7 @@ msgstr ""
 "الاستفادة من ميزات التضاريس أو القدرات الخاصة للوحدات وما إلى ذلك."
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:325
+#: data/core/help.cfg:323
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4422,7 +4393,7 @@ msgstr ""
 "إلى جانبك، خذ الوقت الكافي للاستماع إلى نصيحته؛ ربما ستحفظ حياتك."
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:327
+#: data/core/help.cfg:325
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4461,7 +4432,7 @@ msgstr ""
 "خاصة في ظل الصعوبات الأعلى.)"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:329
+#: data/core/help.cfg:327
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4489,7 +4460,7 @@ msgstr ""
 "التالي. (سيكون هذا مثالاً على عبارة \"بالكاد حقق النصر\".)"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:331
+#: data/core/help.cfg:329
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4502,7 +4473,7 @@ msgstr ""
 "<header>text='أسباب غير محتملة'</header>"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:333
+#: data/core/help.cfg:331
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4519,7 +4490,7 @@ msgstr ""
 "المحتملة، ولكنها ليست مستحيلة. هي:"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:335
+#: data/core/help.cfg:333
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4538,7 +4509,7 @@ msgstr ""
 "بمجموعة من الوحدات عالية المستوى غير مناسبة للسيناريو التالي."
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:337
+#: data/core/help.cfg:335
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4566,7 +4537,7 @@ msgstr ""
 "طلب الحظ فوق المتوسط يمكن أن يعتبر خطأ.)"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:339
+#: data/core/help.cfg:337
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4611,7 +4582,7 @@ msgstr ""
 "هنا هو الحظ السيئ للغاية، على مدار عدة دورات."
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:341
+#: data/core/help.cfg:339
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4636,7 +4607,7 @@ msgstr ""
 "إذا كنت لا تزال تعتقد أنك عثرت على خطأ ما، فأبلغ عنه بكل الوسائل!"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:343
+#: data/core/help.cfg:341
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4661,12 +4632,12 @@ msgstr ""
 "القليل من الحظ في النقاط الحرجة في الاشتباك."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:350
+#: data/core/help.cfg:348
 msgid "Combat"
 msgstr "قتال"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:351
+#: data/core/help.cfg:349
 #, fuzzy
 #| msgid ""
 #| "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
@@ -4702,7 +4673,7 @@ msgstr ""
 "italic>، والتي عادةً ما تتضمن أسلحة مثل الأقواس والرماح والكرات النارية."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:353
+#: data/core/help.cfg:351
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4715,7 +4686,7 @@ msgstr ""
 "<header>text='ترتيب وعدد الضربات'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:355
+#: data/core/help.cfg:353
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4746,12 +4717,12 @@ msgstr ""
 "ضرر لكل ضربة)."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:357
+#: data/core/help.cfg:355
 msgid "Chance to Hit"
 msgstr ""
 
 #. [topic]: id=combat
-#: data/core/help.cfg:359
+#: data/core/help.cfg:357
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4784,7 +4755,7 @@ msgstr ""
 "على التضاريس التي يتواجد فيها المهاجم."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:361
+#: data/core/help.cfg:359
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4810,12 +4781,12 @@ msgstr ""
 "للإصابة بغض النظر عن التضاريس."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:363
+#: data/core/help.cfg:361
 msgid "Damage"
 msgstr ""
 
 #. [topic]: id=combat
-#: data/core/help.cfg:365
+#: data/core/help.cfg:363
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4846,7 +4817,7 @@ msgstr ""
 "اختيار الهجوم."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:367
+#: data/core/help.cfg:365
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4870,12 +4841,12 @@ msgstr ""
 "يلحقه كل من المهاجم والمدافع عندما تهاجم الوحدة بالشحن."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:373
+#: data/core/help.cfg:371
 msgid "Damage Types and Resistance"
 msgstr "أنواع الضرر والمقاومة"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:374
+#: data/core/help.cfg:372
 #, fuzzy
 #| msgid ""
 #| "In Wesnoth, there are three types of damage usually associated with "
@@ -4898,7 +4869,7 @@ msgstr ""
 "المختلفة مقاومات تغير الضرر الذي تتلقاه من أنواع ضرر معينة."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:376
+#: data/core/help.cfg:374
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4924,7 +4895,7 @@ msgstr ""
 "الضرر."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:378
+#: data/core/help.cfg:376
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4944,7 +4915,7 @@ msgstr ""
 "السحرية."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:380
+#: data/core/help.cfg:378
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4963,12 +4934,12 @@ msgstr ""
 "حتى إذا كان المدافع لديه مقاومة 100% لنوع الضرر."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:386
+#: data/core/help.cfg:384
 msgid "Orbs and ellipses"
 msgstr "الكريات والخسف"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:387
+#: data/core/help.cfg:385
 #, fuzzy
 #| msgid ""
 #| "There are colored indicators above the energy bars of some units, "
@@ -4983,7 +4954,7 @@ msgstr ""
 
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
-#: data/core/help.cfg:398
+#: data/core/help.cfg:396
 #, fuzzy
 #| msgid ""
 #| "The orbs show whether the unit can move or attack. The statuses and their "
@@ -5057,14 +5028,14 @@ msgstr ""
 "المتقدم \"تخصيص ألوان الأجرام السماوية\"."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:410
+#: data/core/help.cfg:408
 #, fuzzy
 #| msgid "<header>text='Ellipses'</header>"
 msgid "<header>Ellipses</header>"
 msgstr "<header>text='الشكل البيضاوي'</header>"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:413
+#: data/core/help.cfg:411
 msgid ""
 "A team-colored shape is drawn on the ground under each unit. This is called "
 "the “ellipse”, although some units’ ellipses are not elliptical."
@@ -5074,7 +5045,7 @@ msgstr ""
 
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
-#: data/core/help.cfg:423
+#: data/core/help.cfg:421
 #, fuzzy
 #| msgid ""
 #| "• Most units have a circular ellipse.\n"
@@ -5106,12 +5077,12 @@ msgstr ""
 "منطقة السيطرة، هذه الوحدات لديها نسخة مخطط تفصيلي مكسور للنجمة السباعية."
 
 #. [topic]: id=crowns
-#: data/core/help.cfg:434
+#: data/core/help.cfg:432
 msgid "Crowns and loyal markers"
 msgstr "التيجان وعلامات الوفاء"
 
 #. [topic]: id=crowns
-#: data/core/help.cfg:435
+#: data/core/help.cfg:433
 #, fuzzy
 #| msgid ""
 #| "Some units have an additional marker superimposed on their "
@@ -5127,7 +5098,7 @@ msgstr ""
 
 #. [topic]: id=crowns
 #. The help page has a set of images above this paragraph, in the same order as the first set of bullet points, showing what the "loyal icon" is and the difference between "silver" and "blueish-silver".
-#: data/core/help.cfg:448
+#: data/core/help.cfg:446
 #, fuzzy
 #| msgid ""
 #| "• Leaders are shown with a <bold>text='gold crown'</bold>.\n"
@@ -5189,45 +5160,45 @@ msgstr ""
 "- لن تظهر هذه الوحدات أبدًا كمجندين عشوائيين."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:466
+#: data/core/help.cfg:464
 msgid "Time of Day"
 msgstr "الوقت من اليوم"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:467
+#: data/core/help.cfg:465
 msgid "The time of day affects the damage of certain units as follows:"
 msgstr ""
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:469
+#: data/core/help.cfg:467
 msgid ""
 "• <span weight='heavy' size='15'>LAWFUL</span> units get +25% damage in "
 "daytime, and −25% damage at night."
 msgstr ""
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:470
+#: data/core/help.cfg:468
 msgid ""
 "• <span weight='heavy' size='15'>CHAOTIC</span> units get +25% damage at "
 "night, and −25% in daytime."
 msgstr ""
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:471
+#: data/core/help.cfg:469
 msgid ""
 "• <span weight='heavy' size='15'>NEUTRAL</span> units are unaffected by the "
 "time of day."
 msgstr ""
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:472
+#: data/core/help.cfg:470
 msgid ""
 "• <span weight='heavy' size='15'>LIMINAL</span> units get +25% damage during "
 "twilight."
 msgstr ""
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:474
+#: data/core/help.cfg:472
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5249,45 +5220,45 @@ msgstr ""
 #. [topic]: id=time_of_day
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
-#: data/core/help.cfg:477 data/core/macros/schedules.cfg:16
+#: data/core/help.cfg:475 data/core/macros/schedules.cfg:16
 #: data/core/macros/schedules.cfg:290
 msgid "Dawn"
 msgstr "غروب"
 
 #. [topic]: id=time_of_day
 #. [time]: id=morning
-#: data/core/help.cfg:480 data/core/macros/schedules.cfg:28
+#: data/core/help.cfg:478 data/core/macros/schedules.cfg:28
 msgid "Morning"
 msgstr "الصباح"
 
 #. [topic]: id=time_of_day
 #. [time]: id=afternoon
-#: data/core/help.cfg:483 data/core/macros/schedules.cfg:46
+#: data/core/help.cfg:481 data/core/macros/schedules.cfg:46
 msgid "Afternoon"
 msgstr "الظهر"
 
 #. [topic]: id=time_of_day
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
-#: data/core/help.cfg:486 data/core/macros/schedules.cfg:55
+#: data/core/help.cfg:484 data/core/macros/schedules.cfg:55
 #: data/core/macros/schedules.cfg:411
 msgid "Dusk"
 msgstr "شفق"
 
 #. [topic]: id=time_of_day
 #. [time]: id=first_watch
-#: data/core/help.cfg:489 data/core/macros/schedules.cfg:67
+#: data/core/help.cfg:487 data/core/macros/schedules.cfg:67
 msgid "First Watch"
 msgstr "نصف الليلة الأول"
 
 #. [topic]: id=time_of_day
 #. [time]: id=second_watch
-#: data/core/help.cfg:492 data/core/macros/schedules.cfg:91
+#: data/core/help.cfg:490 data/core/macros/schedules.cfg:91
 msgid "Second Watch"
 msgstr "المراقبة الثانية"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:495
+#: data/core/help.cfg:493
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5301,7 +5272,7 @@ msgstr ""
 "ضع في اعتبارك أن بعض السيناريوهات تحدث تحت الأرض، حيث يكون الليل دائمًا!"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:497
+#: data/core/help.cfg:495
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5315,7 +5286,7 @@ msgstr ""
 "بعض المواقع تحت الأرض مضاءة. فهي دائمة التوسط بين الليل والنهار."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:499
+#: data/core/help.cfg:497
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5329,7 +5300,7 @@ msgstr ""
 "بعض سيناريوهات لعب الأدوار تحدث في الداخل — هذه المناطق متوسطة بالمثل."
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:501
+#: data/core/help.cfg:499
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5349,12 +5320,12 @@ msgstr ""
 "من اليوم حولها."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:508
+#: data/core/help.cfg:506
 msgid "Healing"
 msgstr "الشفاء"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:509
+#: data/core/help.cfg:507
 msgid ""
 "In combat, your units will inevitably take damage. There are several ways to "
 "heal your units. However, with the exception of resting, these do not stack; "
@@ -5365,7 +5336,7 @@ msgstr ""
 "في كل دور."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:511
+#: data/core/help.cfg:509
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5382,7 +5353,7 @@ msgstr ""
 "ستشفي 2 من نقاط الحياة في دورها التالي."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:512
+#: data/core/help.cfg:510
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5400,7 +5371,7 @@ msgstr ""
 "الوحدة مسمومة، سيتم شفاء السم بدلاً من ذلك."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:513
+#: data/core/help.cfg:511
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5418,7 +5389,7 @@ msgstr ""
 "علاج السم بدلاً من ذلك."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:514
+#: data/core/help.cfg:512
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5441,7 +5412,7 @@ msgstr ""
 "تمنع السم من التسبب في ضرر تلك الوحدة."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:515
+#: data/core/help.cfg:513
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5460,7 +5431,7 @@ msgstr ""
 "الوحدات المجاورة الحليفة (في أفضلية للشفاء، إذا كانت لديها تلك القدرة أيضًا)."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:516
+#: data/core/help.cfg:514
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5478,7 +5449,7 @@ msgstr ""
 "كافية، سواء كان دورك أم لا."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:518
+#: data/core/help.cfg:516
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5498,14 +5469,14 @@ msgstr ""
 "تتعافى الوحدات بشكل كامل بين السيناريوهات."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:520
+#: data/core/help.cfg:518
 #, fuzzy
 #| msgid "Advancement"
 msgid "Advanced"
 msgstr "تطوّر"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:522
+#: data/core/help.cfg:520
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5532,12 +5503,12 @@ msgstr ""
 "أدوار الأطراف الحليفة المذكورة."
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:528
+#: data/core/help.cfg:526
 msgid "Wrap Up"
 msgstr "اختتام"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:529
+#: data/core/help.cfg:527
 #, fuzzy
 #| msgid ""
 #| "This concludes the fundamentals of Wesnoth. You might want to read up on "
@@ -5559,12 +5530,12 @@ msgstr ""
 "للعب حملة <italic>text='وريث العرش'</italic>. استمتع، وحظًا موفقًا!"
 
 #. [topic]: id=license
-#: data/core/help.cfg:534
+#: data/core/help.cfg:532
 msgid "License"
 msgstr "الترخيص"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:545
+#: data/core/help.cfg:543
 #, fuzzy
 #| msgid ""
 #| "Traits are modifications that change a unit’s attributes slightly. They "
@@ -5581,7 +5552,7 @@ msgstr ""
 "<italic>text='العرق'</italic>."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:547
+#: data/core/help.cfg:545
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5603,7 +5574,7 @@ msgstr ""
 "أي سمات. "
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:549
+#: data/core/help.cfg:547
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5626,7 +5597,7 @@ msgstr ""
 "<ref>dst='traits_strong' text='قوية'</ref>."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:551
+#: data/core/help.cfg:549
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5657,7 +5628,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:559
+#: data/core/help.cfg:557
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
@@ -5666,7 +5637,7 @@ msgstr ""
 "والقدرة الدفاعية للوحدة في القتال."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:561
+#: data/core/help.cfg:559
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5681,7 +5652,7 @@ msgstr ""
 "italic>."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:563 data/core/help.cfg:596
+#: data/core/help.cfg:561 data/core/help.cfg:594
 #, fuzzy
 #| msgid "Basic terrain type: $types"
 #| msgid_plural "Basic terrain types: $types"
@@ -5689,7 +5660,7 @@ msgid "Basic Terrain Types"
 msgstr "نوع الارضية الأساس: $types"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:565
+#: data/core/help.cfg:563
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5711,7 +5682,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:568
+#: data/core/help.cfg:566
 msgid ""
 "Every unit has a defense rating and a movement cost for each of the basic "
 "terrain types, and these values are listed in the unit’s help page. Basic "
@@ -5722,7 +5693,7 @@ msgstr ""
 "الأساسية خصائص فريدة مثل تأثيرات الإضاءة أيضًا."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:570
+#: data/core/help.cfg:568
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5735,7 +5706,7 @@ msgstr ""
 "<header>text='أنواع التضاريس المختلطة'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:572
+#: data/core/help.cfg:570
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5765,7 +5736,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:575
+#: data/core/help.cfg:573
 #, fuzzy
 #| msgid ""
 #| "One notable exception is bridge terrains, such as <italic>bridges over "
@@ -5793,7 +5764,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:578
+#: data/core/help.cfg:576
 #, fuzzy
 #| msgid ""
 #| "Land-based villages generally give the best defense and movement as well. "
@@ -5811,7 +5782,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:581
+#: data/core/help.cfg:579
 #, fuzzy
 #| msgid ""
 #| "Finally, water villages are generally inhospitable to land units, and do "
@@ -5829,7 +5800,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:584
+#: data/core/help.cfg:582
 msgid ""
 "You can see what basic types a mixed terrain is comprised of by mousing over "
 "its hex and checking the terrain type icons displayed in the upper right "
@@ -5840,7 +5811,7 @@ msgstr ""
 "(في نمط العرض القياسي)."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:586
+#: data/core/help.cfg:584
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5861,14 +5832,14 @@ msgstr ""
 "الاختصار، أو النقر بزر الفأرة الأيمن والاختيار من قائمة السياق."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:588
+#: data/core/help.cfg:586
 #, fuzzy
 #| msgid "Defense Cap"
 msgid "Defense Caps"
 msgstr "حدّ الدفاع"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:590
+#: data/core/help.cfg:588
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5888,7 +5859,7 @@ msgstr ""
 "يتجاوز دفاعها الحد الأقصى."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:592
+#: data/core/help.cfg:590
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5911,7 +5882,7 @@ msgstr ""
 "المختلط لا يمكن أن يتجاوز الحد الأقصى."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:594
+#: data/core/help.cfg:592
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5928,7 +5899,7 @@ msgstr ""
 "تلك التضاريس (لا يمكن أن يكون أكبر)."
 
 #. [topic]: id=..addons
-#: data/core/help.cfg:607
+#: data/core/help.cfg:605
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -5941,12 +5912,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:617
+#: data/core/help.cfg:615
 msgid "Using Add-ons"
 msgstr "استخدام الإضافات"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:618
+#: data/core/help.cfg:616
 msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
@@ -5955,7 +5926,7 @@ msgstr ""
 "أوضاع اللعب."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:620
+#: data/core/help.cfg:618
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5968,7 +5939,7 @@ msgstr ""
 "<header>text='الحملات والسيناريوهات'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:622
+#: data/core/help.cfg:620
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5991,7 +5962,7 @@ msgstr ""
 "العنوان."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:624
+#: data/core/help.cfg:622
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6004,7 +5975,7 @@ msgstr ""
 "<header>text='حملات متعددة اللاعبين وسيناريوهات وحزم خرائط'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:626
+#: data/core/help.cfg:624
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6024,7 +5995,7 @@ msgstr ""
 "السيناريوهات الفردية متعددة اللاعبين."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:628
+#: data/core/help.cfg:626
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6037,7 +6008,7 @@ msgstr ""
 "<header>text='عصور وفصائل متعددة اللاعبين'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:630
+#: data/core/help.cfg:628
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6068,7 +6039,7 @@ msgstr ""
 "عند إعداد جوانبهم وفرقهم."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:632
+#: data/core/help.cfg:630
 msgid ""
 "In <i>Multiplayer</i> mode, you can choose an era when creating a new game, "
 "and players can pick from the available factions for that era when setting "
@@ -6076,7 +6047,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:634
+#: data/core/help.cfg:632
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6093,12 +6064,12 @@ msgstr ""
 "eras_section'</ref> للمساعدة."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:636
+#: data/core/help.cfg:634
 msgid "Modifications"
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:638
+#: data/core/help.cfg:636
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6118,14 +6089,14 @@ msgstr ""
 "إنشاء لعبة جديدة."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:640
+#: data/core/help.cfg:638
 #, fuzzy
 #| msgid "Forest"
 msgid "Cores"
 msgstr "غابة"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:642
+#: data/core/help.cfg:640
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6152,7 +6123,7 @@ msgstr ""
 "تحتوي على \"وحدات\" بطريقة ما."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:644
+#: data/core/help.cfg:642
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6179,7 +6150,7 @@ msgstr ""
 "تحتوي على \"وحدات\" بطريقة ما."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:646
+#: data/core/help.cfg:644
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6192,7 +6163,7 @@ msgstr ""
 "<header>text='موارد المنشئ'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:648
+#: data/core/help.cfg:646
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6217,12 +6188,12 @@ msgstr ""
 "الأخرى القابلة للعب وتقترح أو تتطلب تثبيتها أثناء التنزيل."
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:655
+#: data/core/help.cfg:653
 msgid "Installing Add-ons"
 msgstr "تثبيت الإضافات"
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:656
+#: data/core/help.cfg:654
 #, fuzzy
 #| msgid ""
 #| "User-made add-ons can be obtained and updated through the "
@@ -6292,12 +6263,12 @@ msgstr ""
 "تفاصيل إضافية حول الإضافة، مثل الوصف الكامل وحالة التثبيت والترجمات المتاحة."
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:669
+#: data/core/help.cfg:667
 msgid "Removing Add-ons"
 msgstr "إزالة الإضافات"
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:670
+#: data/core/help.cfg:668
 #, fuzzy
 #| msgid ""
 #| "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-"
@@ -6329,14 +6300,14 @@ msgstr ""
 "الذي توفره منصتك."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:685
+#: data/core/help.cfg:683
 msgid "General Commands"
 msgstr "الأوامر العامة"
 
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:686 data/core/help.cfg:733 data/core/help.cfg:773
+#: data/core/help.cfg:684 data/core/help.cfg:731 data/core/help.cfg:771
 #, fuzzy
 #| msgid ""
 #| "These commands can either be issued via the command line by prefixing "
@@ -6354,7 +6325,7 @@ msgstr ""
 " \n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:689
+#: data/core/help.cfg:687
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6372,7 +6343,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:692
+#: data/core/help.cfg:690
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6385,7 +6356,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:695
+#: data/core/help.cfg:693
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6404,12 +6375,12 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #. ':nodebug' is a command and should not be translated
-#: data/core/help.cfg:698
+#: data/core/help.cfg:696
 msgid "Debug mode is turned off by quitting the game or :nodebug."
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:701
+#: data/core/help.cfg:699
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6437,7 +6408,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:704
+#: data/core/help.cfg:702
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6450,7 +6421,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:707
+#: data/core/help.cfg:705
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6467,7 +6438,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:710
+#: data/core/help.cfg:708
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6480,7 +6451,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:713
+#: data/core/help.cfg:711
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6493,7 +6464,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:716
+#: data/core/help.cfg:714
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6506,7 +6477,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:719
+#: data/core/help.cfg:717
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6519,7 +6490,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:722
+#: data/core/help.cfg:720
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6532,7 +6503,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:725
+#: data/core/help.cfg:723
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6543,12 +6514,12 @@ msgstr ""
 "احفظ اللعبة وقم بإنهاء السيناريو (بدون مطالبة)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:732
+#: data/core/help.cfg:730
 msgid "Multiplayer Commands"
 msgstr "أوامر متعددة اللاعبين"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:736
+#: data/core/help.cfg:734
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6568,7 +6539,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:739
+#: data/core/help.cfg:737
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6595,7 +6566,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:742
+#: data/core/help.cfg:740
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6611,7 +6582,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:745
+#: data/core/help.cfg:743
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6630,7 +6601,7 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #. ':control' is a command and should not be translated
-#: data/core/help.cfg:750
+#: data/core/help.cfg:748
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6650,7 +6621,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:753
+#: data/core/help.cfg:751
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6669,7 +6640,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:756
+#: data/core/help.cfg:754
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6686,7 +6657,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:759
+#: data/core/help.cfg:757
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6699,7 +6670,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:762
+#: data/core/help.cfg:760
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6718,7 +6689,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:765
+#: data/core/help.cfg:763
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6733,12 +6704,12 @@ msgstr ""
 "المراقبين الذين تم كتم صوتهم."
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:772
+#: data/core/help.cfg:770
 msgid "Debug Mode Commands"
 msgstr "أوامر وضع التصحيح"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:776
+#: data/core/help.cfg:774
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6754,7 +6725,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:779
+#: data/core/help.cfg:777
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6767,7 +6738,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:782
+#: data/core/help.cfg:780
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6780,7 +6751,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:785
+#: data/core/help.cfg:783
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6793,7 +6764,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:788
+#: data/core/help.cfg:786
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6806,7 +6777,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:791
+#: data/core/help.cfg:789
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6819,7 +6790,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:794
+#: data/core/help.cfg:792
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6832,7 +6803,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:797
+#: data/core/help.cfg:795
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6846,7 +6817,7 @@ msgstr ""
 
 #. [topic]: id=debug_commands
 #. The example text is a command and should not be translated.
-#: data/core/help.cfg:802
+#: data/core/help.cfg:800
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -6863,7 +6834,7 @@ msgstr ""
 
 #. [topic]: id=debug_commands
 #. The example text is a command and should not be translated.
-#: data/core/help.cfg:807
+#: data/core/help.cfg:805
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -10422,6 +10393,33 @@ msgstr "كلفة الرؤية"
 #: src/help/help_topic_generators.cpp:837
 msgid "Jamming Cost"
 msgstr "كلفة القفز"
+
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "There are two important exceptions to upkeep: units with the loyal trait "
+#~| "and leaders never incur upkeep. Units you begin the scenario with (such "
+#~| "as Delfador), or units who join you during a scenario (such as the "
+#~| "horseman in the second scenario of <italic>text='Heir to the Throne'</"
+#~| "italic>) will usually have the <italic>text='loyal'</italic> trait. The "
+#~| "unit you are playing (such as Konrad) will almost always be a leader."
+#~ msgid ""
+#~ "There are two important exceptions to upkeep: units with the loyal trait "
+#~ "and leaders never incur upkeep. Units you begin the scenario with (such "
+#~ "as Delfador), or units who join you during a scenario (such as the "
+#~ "horseman in the second scenario of <i>Heir to the Throne</i>) will "
+#~ "usually have the <i>loyal</i> trait. The unit you are playing (such as "
+#~ "Konrad) will almost always be a leader."
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "هناك استثناءان مهمان في الصيانة: الوحدات التي تحمل سمة الولاء والقادة لا "
+#~ "يتحملون الصيانة أبدًا. الوحدات التي تبدأ السيناريو بها (مثل دلفادور)، أو "
+#~ "الوحدات التي تنضم إليك أثناء السيناريو (مثل الفارس في السيناريو الثاني من "
+#~ "<italic>text='وريث العرش'</italic>) عادة ما يكون لها سمة "
+#~ "<italic>text='موالي'</italic>. الوحدة التي تلعب بها (مثل كونراد) ستكون "
+#~ "دائمًا قائدًا."
 
 #~ msgid ""
 #~ "Allows the unit to heal adjacent allied units at the beginning of our "

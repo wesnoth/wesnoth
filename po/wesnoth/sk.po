@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-10-20 21:43-0500\n"
+"POT-Creation-Date: 2026-11-19 18:47-0600\n"
 "PO-Revision-Date: 2026-10-03 22:28+0200\n"
 "Last-Translator: Stanislav Hoferek <shoferek@gmail.com>\n"
 "Language-Team: none\n"
@@ -4607,8 +4607,8 @@ msgstr "neliečiteľný"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3771
-#: src/scripting/game_lua_kernel.cpp:3806
+#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3770
+#: src/scripting/game_lua_kernel.cpp:3805
 msgid "input"
 msgstr "vstup"
 
@@ -7223,7 +7223,7 @@ msgid "Error while reading the WML: "
 msgstr "Chyba pri čítaní WML: "
 
 #: src/game_initialization/playcampaign.cpp:210
-#: src/playsingle_controller.cpp:384
+#: src/playsingle_controller.cpp:391
 msgid "Game Over"
 msgstr "Koniec hry"
 
@@ -8609,18 +8609,18 @@ msgstr ""
 "neviete, čo táto správa znamená, potom s najväčšou pravdepodobnosťou niekto "
 "podvádza alebo niekto znovu načítal poškodenú hru."
 
-#: src/playsingle_controller.cpp:384
+#: src/playsingle_controller.cpp:391
 msgid "The game is over."
 msgstr "Hra skončila."
 
-#: src/playsingle_controller.cpp:461
+#: src/playsingle_controller.cpp:468
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
 "Prerušilo sa sieťové spojenie a hra nemôže pokračovať. Chceš ju uložiť?"
 
-#: src/playsingle_controller.cpp:465
+#: src/playsingle_controller.cpp:472
 msgid ""
 "\n"
 "Do you want to save the game?"
@@ -8628,7 +8628,7 @@ msgstr ""
 "\n"
 "Naozaj chceš uložiť túto hru?"
 
-#: src/playsingle_controller.cpp:465
+#: src/playsingle_controller.cpp:472
 msgid ""
 "This game has been ended.\n"
 "Reason: "
@@ -8636,7 +8636,7 @@ msgstr ""
 "Hra bola ukončená.\n"
 "Dôvod: "
 
-#: src/playsingle_controller.cpp:557
+#: src/playsingle_controller.cpp:564
 msgid "It is now $name|’s turn"
 msgstr "Na ťahu je $name"
 
@@ -9618,7 +9618,7 @@ msgstr[2] "<span color=\"$color\">$number_or_percent</span> útoky za kolo"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> cena za privolanie"
 
-#: src/units/unit.cpp:2566
+#: src/units/unit.cpp:2560
 msgid "$effect_description per level"
 msgstr "$effect_description za každú úroveň"
 

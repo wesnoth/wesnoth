@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-10-20 21:43-0500\n"
+"POT-Creation-Date: 2026-11-19 18:47-0600\n"
 "PO-Revision-Date: 2024-11-07 16:01+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nillguine@gmail.com>\n"
 "Language-Team: Turkish <->\n"
@@ -4665,8 +4665,8 @@ msgstr "iyileştirilemez"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3771
-#: src/scripting/game_lua_kernel.cpp:3806
+#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3770
+#: src/scripting/game_lua_kernel.cpp:3805
 msgid "input"
 msgstr "girdi"
 
@@ -7295,7 +7295,7 @@ msgid "Error while reading the WML: "
 msgstr "WML okunurken hata: "
 
 #: src/game_initialization/playcampaign.cpp:210
-#: src/playsingle_controller.cpp:384
+#: src/playsingle_controller.cpp:391
 msgid "Game Over"
 msgstr "Oyun Bitti"
 
@@ -8676,11 +8676,11 @@ msgstr ""
 "anlamını bilmiyorsanız, büyük olasılıkla ya birisi hile yapıyor veya birisi "
 "bozuk bir oyunu yeniden yükledi."
 
-#: src/playsingle_controller.cpp:384
+#: src/playsingle_controller.cpp:391
 msgid "The game is over."
 msgstr "Oyun sona erdi."
 
-#: src/playsingle_controller.cpp:461
+#: src/playsingle_controller.cpp:468
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -8688,7 +8688,7 @@ msgstr ""
 "Bir ağ bağlantı kopması oluştu ve oyun devam edemeyecek. Oyunu kaydetmek "
 "istiyor musunuz?"
 
-#: src/playsingle_controller.cpp:465
+#: src/playsingle_controller.cpp:472
 msgid ""
 "\n"
 "Do you want to save the game?"
@@ -8696,7 +8696,7 @@ msgstr ""
 "\n"
 "Oyunu kaydetmek ister misiniz?"
 
-#: src/playsingle_controller.cpp:465
+#: src/playsingle_controller.cpp:472
 msgid ""
 "This game has been ended.\n"
 "Reason: "
@@ -8704,7 +8704,7 @@ msgstr ""
 "Oyun bitirildi.\n"
 "Sebep: "
 
-#: src/playsingle_controller.cpp:557
+#: src/playsingle_controller.cpp:564
 msgid "It is now $name|’s turn"
 msgstr "Sıra $name|’de"
 
@@ -9756,7 +9756,7 @@ msgstr[1] "El başına <span color=\"$color\">$number_or_percent</span> saldır�
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> çağırma bedeli"
 
-#: src/units/unit.cpp:2566
+#: src/units/unit.cpp:2560
 msgid "$effect_description per level"
 msgstr "seviye başına $effect_description"
 

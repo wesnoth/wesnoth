@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-10-20 21:43-0500\n"
+"POT-Creation-Date: 2026-11-19 18:47-0600\n"
 "PO-Revision-Date: 2013-06-23 02:22-0000\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -4275,8 +4275,8 @@ msgstr "insanabilis"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3771
-#: src/scripting/game_lua_kernel.cpp:3806
+#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3770
+#: src/scripting/game_lua_kernel.cpp:3805
 msgid "input"
 msgstr ""
 
@@ -6823,7 +6823,7 @@ msgid "Error while reading the WML: "
 msgstr "Mendum in lusione: "
 
 #: src/game_initialization/playcampaign.cpp:210
-#: src/playsingle_controller.cpp:384
+#: src/playsingle_controller.cpp:391
 msgid "Game Over"
 msgstr "Ludus Finitus"
 
@@ -8159,18 +8159,18 @@ msgid ""
 "reloaded a corrupt game."
 msgstr ""
 
-#: src/playsingle_controller.cpp:384
+#: src/playsingle_controller.cpp:391
 msgid "The game is over."
 msgstr "Ludus finitus est."
 
-#: src/playsingle_controller.cpp:461
+#: src/playsingle_controller.cpp:468
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr "Disiunctio retis accedit et lusus non pergit. Visne lusum servare?"
 
-#: src/playsingle_controller.cpp:465
+#: src/playsingle_controller.cpp:472
 #, fuzzy
 #| msgid "Do you really want to dismiss him?"
 msgid ""
@@ -8178,7 +8178,7 @@ msgid ""
 "Do you want to save the game?"
 msgstr "Visne vere eum dimittere?"
 
-#: src/playsingle_controller.cpp:465
+#: src/playsingle_controller.cpp:472
 #, fuzzy
 #| msgid "The game has been saved"
 msgid ""
@@ -8186,7 +8186,7 @@ msgid ""
 "Reason: "
 msgstr "Ludus servatus est"
 
-#: src/playsingle_controller.cpp:557
+#: src/playsingle_controller.cpp:564
 msgid "It is now $name|’s turn"
 msgstr "Vicis iam $name|inis est"
 
@@ -9310,7 +9310,7 @@ msgstr[1] "invicem"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "invicem"
 
-#: src/units/unit.cpp:2566
+#: src/units/unit.cpp:2560
 msgid "$effect_description per level"
 msgstr "$effect_description per ordinem"
 

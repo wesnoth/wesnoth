@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-08-02 22:45-0500\n"
+"POT-Creation-Date: 2026-11-19 18:47-0600\n"
 "PO-Revision-Date: 2020-03-08 19:08+0100\n"
 "Last-Translator: Susanna Björverud <susanna.bjorverud@gmail.com>\n"
 "Language-Team: Swedish\n"
@@ -2304,7 +2304,7 @@ msgstr "Spelteknik"
 #. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:29 data/core/help.cfg:543
+#: data/core/help.cfg:29 data/core/help.cfg:541
 #: src/help/help_topic_generators.cpp:536
 #: src/help/help_topic_generators.cpp:541
 msgid "Traits"
@@ -2336,19 +2336,19 @@ msgstr "Eror"
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:70 data/core/help.cfg:558
+#: data/core/help.cfg:70 data/core/help.cfg:556
 msgid "Terrains"
 msgstr "Terräng"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:78 data/core/help.cfg:606
+#: data/core/help.cfg:78 data/core/help.cfg:604
 msgid "Add-ons"
 msgstr "Extramaterial"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:84 data/core/help.cfg:679
+#: data/core/help.cfg:84 data/core/help.cfg:677
 msgid "Commands"
 msgstr "Kommandon"
 
@@ -3014,41 +3014,13 @@ msgstr ""
 "<italic>text='Scenarioinställningar'</italic> kan du se vad som gäller för "
 "det scenario du spelar."
 
-#. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:226
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "There are two important exceptions to upkeep: units with the loyal trait "
-#| "and leaders never incur upkeep. Units you begin the scenario with (such "
-#| "as Delfador), or units who join you during a scenario (such as the "
-#| "horseman in the second scenario of <italic>text='Heir to the Throne'</"
-#| "italic>) will usually have the <italic>text='loyal'</italic> trait. The "
-#| "unit you are playing (such as Konrad) will almost always be a leader."
-msgid ""
-"There are two important exceptions to upkeep: units with the loyal trait and "
-"leaders never incur upkeep. Units you begin the scenario with (such as "
-"Delfador), or units who join you during a scenario (such as the horseman in "
-"the second scenario of <i>Heir to the Throne</i>) will usually have the "
-"<i>loyal</i> trait. The unit you are playing (such as Konrad) will almost "
-"always be a leader."
-msgstr ""
-"\n"
-"Det finns två viktiga undantag för underhåll: Lojala trupper samt ledare "
-"utkräver aldrig något underhåll. Trupper som du startar ett scenario med "
-"(som Delfador), eller trupper som förenar sig med dig under ett scenarios "
-"gång (som ryttaren i det andra scenariot i <italic>text='Tronarvingen'</"
-"italic>), är vanligtvis <italic>text='lojala'</italic>. Truppen du själv "
-"spelar (som Konrad) är nästan alltid en ledare."
-
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:233
+#: data/core/help.cfg:231
 msgid "Hitpoints and Experience"
 msgstr "Hälsopoäng och erfarenhet"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:234
+#: data/core/help.cfg:232
 #, fuzzy
 #| msgid ""
 #| "Each unit has a certain number of <italic>text='hitpoints'</italic> (HP). "
@@ -3069,7 +3041,7 @@ msgstr ""
 "dessa genom att strida."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:238
+#: data/core/help.cfg:236
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -3080,7 +3052,7 @@ msgstr ""
 "maximalt värde."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:240
+#: data/core/help.cfg:238
 #, fuzzy
 #| msgid ""
 #| "The hitpoints are also indicated by an energy bar next to each unit, "
@@ -3099,12 +3071,12 @@ msgstr ""
 "<ref>dst='advancement' text='befordras'</ref>."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:247
+#: data/core/help.cfg:245
 msgid "Advancement"
 msgstr "Befordran:"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:248
+#: data/core/help.cfg:246
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they’re fighting. If a unit kills another in "
@@ -3118,7 +3090,7 @@ msgstr ""
 "och så vidare."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:250
+#: data/core/help.cfg:248
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3142,7 +3114,7 @@ msgstr ""
 "nästa roll."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:252
+#: data/core/help.cfg:250
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3186,12 +3158,12 @@ msgstr ""
 "lägre nivåer."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:259
+#: data/core/help.cfg:257
 msgid "Movement"
 msgstr "Förflyttning"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:260
+#: data/core/help.cfg:258
 #, fuzzy
 #| msgid ""
 #| "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click "
@@ -3237,7 +3209,7 @@ msgstr ""
 "anfalla."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:262
+#: data/core/help.cfg:260
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3276,7 +3248,7 @@ msgstr ""
 "<bold>text='Terrängavdrag'</bold>."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:264
+#: data/core/help.cfg:262
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3308,7 +3280,7 @@ msgstr ""
 "sig obehindrat över dessa."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:266
+#: data/core/help.cfg:264
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3328,12 +3300,12 @@ msgstr ""
 "trupper inte fanns på kartan och blockerade framfarten."
 
 #. [topic]: id=vision
-#: data/core/help.cfg:273
+#: data/core/help.cfg:271
 msgid "Vision"
 msgstr ""
 
 #. [topic]: id=vision
-#: data/core/help.cfg:274
+#: data/core/help.cfg:272
 msgid ""
 "Vision determines how far a unit can see on the map. Normally, a unit’s "
 "vision range is calculated as its movement range plus one hex. Certain units "
@@ -3342,12 +3314,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:281
+#: data/core/help.cfg:279
 msgid "Shroud and Fog of War"
 msgstr "Slöja och stridsdimma"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:282
+#: data/core/help.cfg:280
 #, fuzzy
 #| msgid ""
 #| "In some scenarios, parts of the map will be hidden from you. There are "
@@ -3411,7 +3383,7 @@ msgstr ""
 "behålls möjligheten att ångra sina förflyttningar så länge som möjligt."
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:286
+#: data/core/help.cfg:284
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3424,7 +3396,7 @@ msgstr ""
 "<header>text='Gruppspelseror och -fraktioner'</header>"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:288
+#: data/core/help.cfg:286
 msgid ""
 "In multiplayer games, moves that have been sent to the network can’t be "
 "undone; the game delays sending data to try to preserve your undo ability. "
@@ -3435,12 +3407,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:295
+#: data/core/help.cfg:293
 msgid "Save-loading"
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:296
+#: data/core/help.cfg:294
 msgid ""
 "Random numbers are part of Wesnoth, attacks can fail and units can die due "
 "to bad luck — this is an expected part of the game. Going back to a previous "
@@ -3450,7 +3422,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:298
+#: data/core/help.cfg:296
 msgid ""
 "One of the challenges of the game is to work out how to protect your heroes. "
 "Small risks quickly build up: if you have five important units, and they "
@@ -3460,7 +3432,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:301
+#: data/core/help.cfg:299
 msgid ""
 "Small risks build up for your non-hero units too. While the story and "
 "dialogue usually aim to give you some emotional bond with your troops, the "
@@ -3471,7 +3443,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:303
+#: data/core/help.cfg:301
 msgid ""
 "The difficulty levels are balanced assuming that the player won’t save-load. "
 "In the mainline campaigns, harder difficulties generally have more enemies "
@@ -3481,31 +3453,31 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:305
+#: data/core/help.cfg:303
 msgid ""
 "That said, it’s a game; the best way to play it is whichever way gives you "
 "the most enjoyment."
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:312
+#: data/core/help.cfg:310
 msgid "Learning from Losses"
 msgstr "Lära sig av sina förluster"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:313
+#: data/core/help.cfg:311
 msgid "<i>Why did I lose that scenario?</i>"
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:315
+#: data/core/help.cfg:313
 msgid ""
 "One of the most difficult parts of Wesnoth is understanding why a scenario "
 "was lost."
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:317
+#: data/core/help.cfg:315
 msgid ""
 "When you first start playing, you will probably lose some scenarios. That is "
 "normal, and is part of learning the game. When that happens, try to learn "
@@ -3514,19 +3486,19 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:319
+#: data/core/help.cfg:317
 msgid "Some common reasons for losing a scenario are:"
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:321
+#: data/core/help.cfg:319
 msgid ""
 "• Playing a campaign at too high a <ref dst='..gameplay'>difficulty level</"
 "ref>. Try restarting the scenario at an easier difficulty."
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:323
+#: data/core/help.cfg:321
 msgid ""
 "• Playing a poor strategy: for example, recruiting the wrong types of units, "
 "fighting at the wrong <ref dst='time_of_day'>time of day</ref>, not taking "
@@ -3534,7 +3506,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:325
+#: data/core/help.cfg:323
 msgid ""
 "• Missing clues. Often there will be hints in the campaign’s story and "
 "dialog about what to expect from a difficult scenario and how to prepare for "
@@ -3543,7 +3515,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:327
+#: data/core/help.cfg:325
 msgid ""
 "• Barely scraping a victory in a previous scenario. Campaigns generally "
 "assume that you will have some <i>carryover gold</i> and some experienced "
@@ -3557,7 +3529,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:329
+#: data/core/help.cfg:327
 msgid ""
 "• Poor gold management. At higher difficulties, managing gold — capturing "
 "villages to increase the income, and using low-level units and fresh "
@@ -3568,7 +3540,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:331
+#: data/core/help.cfg:329
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3581,14 +3553,14 @@ msgstr ""
 "<header>text='Osannolika anledningar'</header>"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:333
+#: data/core/help.cfg:331
 msgid ""
 "In addition to the common reasons, listed above, there are a few other "
 "reasons which are unlikely, though not impossible. They are:"
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:335
+#: data/core/help.cfg:333
 msgid ""
 "• You may have played a strategy that the campaign developer did not "
 "anticipate, and ended up with a set of high-level units not suitable for the "
@@ -3596,7 +3568,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:337
+#: data/core/help.cfg:335
 msgid ""
 "• You may have found a scenario that can only be won on the second or third "
 "time through, whether by requiring above-average luck or by expecting the "
@@ -3607,7 +3579,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:339
+#: data/core/help.cfg:337
 msgid ""
 "• Unusually-bad luck. Whether an attack hits or misses is random, so it "
 "could happen that the enemy was very lucky and had many hits, while you were "
@@ -3622,7 +3594,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:341
+#: data/core/help.cfg:339
 msgid ""
 "Be wary of attributing a loss to any of these reasons. If you are not a "
 "veteran player, it is far more likely that your loss was caused by one of "
@@ -3632,7 +3604,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:343
+#: data/core/help.cfg:341
 msgid ""
 "The “Damage Calculations” dialog shows some statistics that can help "
 "determine whether a match was very lucky or very unlucky. However, reading "
@@ -3642,12 +3614,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=combat
-#: data/core/help.cfg:350
+#: data/core/help.cfg:348
 msgid "Combat"
 msgstr "Strid"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:351
+#: data/core/help.cfg:349
 #, fuzzy
 #| msgid ""
 #| "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
@@ -3686,7 +3658,7 @@ msgstr ""
 "eldklot används."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:353
+#: data/core/help.cfg:351
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3699,7 +3671,7 @@ msgstr ""
 "<header>text='Turordning och antal attacker'</header>"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:355
+#: data/core/help.cfg:353
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3731,12 +3703,12 @@ msgstr ""
 "bara har två atacker (men som ger 9 i skada vardera)."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:357
+#: data/core/help.cfg:355
 msgid "Chance to Hit"
 msgstr ""
 
 #. [topic]: id=combat
-#: data/core/help.cfg:359
+#: data/core/help.cfg:357
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3770,7 +3742,7 @@ msgstr ""
 "för alven av terrängen som den andra truppen står på."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:361
+#: data/core/help.cfg:359
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3797,12 +3769,12 @@ msgstr ""
 "terräng."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:363
+#: data/core/help.cfg:361
 msgid "Damage"
 msgstr ""
 
 #. [topic]: id=combat
-#: data/core/help.cfg:365
+#: data/core/help.cfg:363
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3834,7 +3806,7 @@ msgstr ""
 "<bold>text='Skadeberäkning'</bold> när du väljer attack."
 
 #. [topic]: id=combat
-#: data/core/help.cfg:367
+#: data/core/help.cfg:365
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3859,12 +3831,12 @@ msgstr ""
 "anfallaren och försvararen vållar varandra."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:373
+#: data/core/help.cfg:371
 msgid "Damage Types and Resistance"
 msgstr "Skadetyper och motståndskraft"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:374
+#: data/core/help.cfg:372
 #, fuzzy
 #| msgid ""
 #| "In Wesnoth, there are three types of damage usually associated with "
@@ -3887,7 +3859,7 @@ msgstr ""
 "motståndskraft kan förändra skadan de tar från olika skadetyper."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:376
+#: data/core/help.cfg:374
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3914,7 +3886,7 @@ msgstr ""
 "attack."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:378
+#: data/core/help.cfg:376
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3934,7 +3906,7 @@ msgstr ""
 "extremt sårbara för ockulta attacker."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:380
+#: data/core/help.cfg:378
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3954,12 +3926,12 @@ msgstr ""
 "attacktyp."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:386
+#: data/core/help.cfg:384
 msgid "Orbs and ellipses"
 msgstr ""
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:387
+#: data/core/help.cfg:385
 msgid ""
 "There are colored indicators above the energy bars of some units, consisting "
 "of a colored orb (and sometimes a <ref dst='crowns'>crown</ref>)."
@@ -3967,7 +3939,7 @@ msgstr ""
 
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
-#: data/core/help.cfg:398
+#: data/core/help.cfg:396
 msgid ""
 "The orbs show whether the unit can move or attack. The statuses and their "
 "standard colors are:\n"
@@ -3993,7 +3965,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:410
+#: data/core/help.cfg:408
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4006,7 +3978,7 @@ msgstr ""
 "<header>text='Kärnor'</header>"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:413
+#: data/core/help.cfg:411
 msgid ""
 "A team-colored shape is drawn on the ground under each unit. This is called "
 "the “ellipse”, although some units’ ellipses are not elliptical."
@@ -4014,7 +3986,7 @@ msgstr ""
 
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
-#: data/core/help.cfg:423
+#: data/core/help.cfg:421
 msgid ""
 "• Most units have a circular ellipse.\n"
 "• Units that can recruit have a seven-pointed star.\n"
@@ -4027,12 +3999,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=crowns
-#: data/core/help.cfg:434
+#: data/core/help.cfg:432
 msgid "Crowns and loyal markers"
 msgstr ""
 
 #. [topic]: id=crowns
-#: data/core/help.cfg:435
+#: data/core/help.cfg:433
 msgid ""
 "Some units have an additional marker superimposed on their <ref "
 "dst='orbs'>orb</ref>, and a corresponding shape to their <ref "
@@ -4041,7 +4013,7 @@ msgstr ""
 
 #. [topic]: id=crowns
 #. The help page has a set of images above this paragraph, in the same order as the first set of bullet points, showing what the "loyal icon" is and the difference between "silver" and "blueish-silver".
-#: data/core/help.cfg:448
+#: data/core/help.cfg:446
 msgid ""
 "• Leaders are shown with a <b>gold crown</b>.\n"
 "• Heroes have a <b>blueish-silver crown</b>.\n"
@@ -4064,45 +4036,45 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:466
+#: data/core/help.cfg:464
 msgid "Time of Day"
 msgstr "Dygnets gång"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:467
+#: data/core/help.cfg:465
 msgid "The time of day affects the damage of certain units as follows:"
 msgstr ""
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:469
+#: data/core/help.cfg:467
 msgid ""
 "• <span weight='heavy' size='15'>LAWFUL</span> units get +25% damage in "
 "daytime, and −25% damage at night."
 msgstr ""
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:470
+#: data/core/help.cfg:468
 msgid ""
 "• <span weight='heavy' size='15'>CHAOTIC</span> units get +25% damage at "
 "night, and −25% in daytime."
 msgstr ""
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:471
+#: data/core/help.cfg:469
 msgid ""
 "• <span weight='heavy' size='15'>NEUTRAL</span> units are unaffected by the "
 "time of day."
 msgstr ""
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:472
+#: data/core/help.cfg:470
 msgid ""
 "• <span weight='heavy' size='15'>LIMINAL</span> units get +25% damage during "
 "twilight."
 msgstr ""
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:474
+#: data/core/help.cfg:472
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4126,45 +4098,45 @@ msgstr ""
 #. [topic]: id=time_of_day
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
-#: data/core/help.cfg:477 data/core/macros/schedules.cfg:16
+#: data/core/help.cfg:475 data/core/macros/schedules.cfg:16
 #: data/core/macros/schedules.cfg:290
 msgid "Dawn"
 msgstr "Gryning"
 
 #. [topic]: id=time_of_day
 #. [time]: id=morning
-#: data/core/help.cfg:480 data/core/macros/schedules.cfg:28
+#: data/core/help.cfg:478 data/core/macros/schedules.cfg:28
 msgid "Morning"
 msgstr "Förmiddag"
 
 #. [topic]: id=time_of_day
 #. [time]: id=afternoon
-#: data/core/help.cfg:483 data/core/macros/schedules.cfg:46
+#: data/core/help.cfg:481 data/core/macros/schedules.cfg:46
 msgid "Afternoon"
 msgstr "Eftermiddag"
 
 #. [topic]: id=time_of_day
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
-#: data/core/help.cfg:486 data/core/macros/schedules.cfg:55
+#: data/core/help.cfg:484 data/core/macros/schedules.cfg:55
 #: data/core/macros/schedules.cfg:411
 msgid "Dusk"
 msgstr "Skymning"
 
 #. [topic]: id=time_of_day
 #. [time]: id=first_watch
-#: data/core/help.cfg:489 data/core/macros/schedules.cfg:67
+#: data/core/help.cfg:487 data/core/macros/schedules.cfg:67
 msgid "First Watch"
 msgstr "Första vakten"
 
 #. [topic]: id=time_of_day
 #. [time]: id=second_watch
-#: data/core/help.cfg:492 data/core/macros/schedules.cfg:91
+#: data/core/help.cfg:490 data/core/macros/schedules.cfg:91
 msgid "Second Watch"
 msgstr "Andra vakten"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:495
+#: data/core/help.cfg:493
 #, fuzzy
 #| msgid ""
 #| "Keep in mind that some scenarios take place underground, where it is "
@@ -4177,7 +4149,7 @@ msgstr ""
 "natt!\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:497
+#: data/core/help.cfg:495
 #, fuzzy
 #| msgid ""
 #| "Some underground locations are illuminated. They are perpetually "
@@ -4190,7 +4162,7 @@ msgstr ""
 "dag och natt.\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:499
+#: data/core/help.cfg:497
 #, fuzzy
 #| msgid ""
 #| "Some role-playing scenarios take place indoors — these regions are "
@@ -4203,7 +4175,7 @@ msgstr ""
 "mellan dag och natt.\n"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:501
+#: data/core/help.cfg:499
 #, fuzzy
 #| msgid ""
 #| "Finally, units with the <ref>dst='ability_illuminationilluminates' "
@@ -4221,12 +4193,12 @@ msgstr ""
 "påverkar den bonus som tid på dygnet ger till trupper runt dem."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:508
+#: data/core/help.cfg:506
 msgid "Healing"
 msgstr "Läkande"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:509
+#: data/core/help.cfg:507
 msgid ""
 "In combat, your units will inevitably take damage. There are several ways to "
 "heal your units. However, with the exception of resting, these do not stack; "
@@ -4237,7 +4209,7 @@ msgstr ""
 "kombineras, endast en metod används varje drag."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:511
+#: data/core/help.cfg:509
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4254,7 +4226,7 @@ msgstr ""
 "blir anfallen återfår 2 HP nästa drag."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:512
+#: data/core/help.cfg:510
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4272,7 +4244,7 @@ msgstr ""
 "Om truppen är förgiftad, botas den i stället från förgiftningen."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:513
+#: data/core/help.cfg:511
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4290,7 +4262,7 @@ msgstr ""
 "truppen är förgiftad, botas den i stället från förgiftningen."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:514
+#: data/core/help.cfg:512
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4313,7 +4285,7 @@ msgstr ""
 "eller hindrar en förgiftning från att göra skada."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:515
+#: data/core/help.cfg:513
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4333,7 +4305,7 @@ msgstr ""
 "även kan hela, så botar den förgiftningen i första hand."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:516
+#: data/core/help.cfg:514
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4351,7 +4323,7 @@ msgstr ""
 "truppen får tillräckligt med erfarenhet oavsett om det är ditt drag eller ej."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:518
+#: data/core/help.cfg:516
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4372,14 +4344,14 @@ msgstr ""
 "alla trupper återfår sin fulla styrka mellan scenarier."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:520
+#: data/core/help.cfg:518
 #, fuzzy
 #| msgid "Advancement"
 msgid "Advanced"
 msgstr "Befordran:"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:522
+#: data/core/help.cfg:520
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4407,12 +4379,12 @@ msgstr ""
 "sidas drag."
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:528
+#: data/core/help.cfg:526
 msgid "Wrap Up"
 msgstr "Slutord"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:529
+#: data/core/help.cfg:527
 #, fuzzy
 #| msgid ""
 #| "This concludes the fundamentals of Wesnoth. You might want to read up on "
@@ -4435,12 +4407,12 @@ msgstr ""
 "kampanjen <italic>text='Tronarvingen'</italic>. Ha roligt, och lycka till!"
 
 #. [topic]: id=license
-#: data/core/help.cfg:534
+#: data/core/help.cfg:532
 msgid "License"
 msgstr "Licens"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:545
+#: data/core/help.cfg:543
 #, fuzzy
 #| msgid ""
 #| "Traits are modifications that change a unit’s attributes slightly. They "
@@ -4457,7 +4429,7 @@ msgstr ""
 "trupp bestäms huvudsakligen av dess  <italic>text='ras'</italic>."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:547
+#: data/core/help.cfg:545
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4479,7 +4451,7 @@ msgstr ""
 "italic> samt enterna, som inte får några alls. "
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:549
+#: data/core/help.cfg:547
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4502,7 +4474,7 @@ msgstr ""
 "text='tålig'</ref> och <ref>dst='traits_strong' text='stark'</ref>."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:551
+#: data/core/help.cfg:549
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4534,7 +4506,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:559
+#: data/core/help.cfg:557
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
@@ -4544,7 +4516,7 @@ msgstr ""
 "är."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:561
+#: data/core/help.cfg:559
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4559,14 +4531,14 @@ msgstr ""
 "<italic>text='blandad'</italic>."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:563 data/core/help.cfg:596
+#: data/core/help.cfg:561 data/core/help.cfg:594
 #, fuzzy
 #| msgid "Terrain"
 msgid "Basic Terrain Types"
 msgstr "Terräng"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:565
+#: data/core/help.cfg:563
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4588,7 +4560,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:568
+#: data/core/help.cfg:566
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4610,7 +4582,7 @@ msgstr ""
 "effekten lysa upp."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:570
+#: data/core/help.cfg:568
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4623,7 +4595,7 @@ msgstr ""
 "<header>text='Blandade terrängtyper'</header>"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:572
+#: data/core/help.cfg:570
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4654,7 +4626,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:575
+#: data/core/help.cfg:573
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4688,7 +4660,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:578
+#: data/core/help.cfg:576
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4710,7 +4682,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:581
+#: data/core/help.cfg:579
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4732,7 +4704,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:584
+#: data/core/help.cfg:582
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4752,7 +4724,7 @@ msgstr ""
 "terrängtypsikoner som visas uppe till höger (med förvalt tema)."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:586
+#: data/core/help.cfg:584
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4774,14 +4746,14 @@ msgstr ""
 "från kontextmenyn."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:588
+#: data/core/help.cfg:586
 #, fuzzy
 #| msgid "Defense"
 msgid "Defense Caps"
 msgstr "Försvar"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:590
+#: data/core/help.cfg:588
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4802,7 +4774,7 @@ msgstr ""
 "ingår heller."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:592
+#: data/core/help.cfg:590
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4826,7 +4798,7 @@ msgstr ""
 "försvarsförmåga än hans försvarstak."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:594
+#: data/core/help.cfg:592
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4843,7 +4815,7 @@ msgstr ""
 "försvarsförmågan för denna terräng (det kan inte vara högre)."
 
 #. [topic]: id=..addons
-#: data/core/help.cfg:607
+#: data/core/help.cfg:605
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -4852,12 +4824,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:617
+#: data/core/help.cfg:615
 msgid "Using Add-ons"
 msgstr "Använda extramaterial"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:618
+#: data/core/help.cfg:616
 msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
@@ -4866,7 +4838,7 @@ msgstr ""
 "alla spellägen."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:620
+#: data/core/help.cfg:618
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4879,7 +4851,7 @@ msgstr ""
 "<header>text='Kampanjer och scenarion'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:622
+#: data/core/help.cfg:620
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4902,7 +4874,7 @@ msgstr ""
 "huvudskärmen."
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:624
+#: data/core/help.cfg:622
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4915,7 +4887,7 @@ msgstr ""
 "<header>text='Gruppspelskampanjer, -scenarion och -kartpaket'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:626
+#: data/core/help.cfg:624
 msgid ""
 "<i>Multiplayer</i> games can be played in fully customized, scripted "
 "scenarios or even specially designed campaigns. There are also packs "
@@ -4923,7 +4895,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:628
+#: data/core/help.cfg:626
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -4936,7 +4908,7 @@ msgstr ""
 "<header>text='Gruppspelseror och -fraktioner'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:630
+#: data/core/help.cfg:628
 msgid ""
 "For gameplay purposes, various races of creatures in the world cooperate "
 "with each other in factions. Factions are grouped in balanced sets with a "
@@ -4945,7 +4917,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:632
+#: data/core/help.cfg:630
 msgid ""
 "In <i>Multiplayer</i> mode, you can choose an era when creating a new game, "
 "and players can pick from the available factions for that era when setting "
@@ -4953,19 +4925,19 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:634
+#: data/core/help.cfg:632
 msgid ""
 "You can see what eras you have loaded in the <ref dst='..eras_section'>eras</"
 "ref> of the help."
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:636
+#: data/core/help.cfg:634
 msgid "Modifications"
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:638
+#: data/core/help.cfg:636
 msgid ""
 "Modifications are optional scenario- and era-independent scripts that can "
 "alter the default ruleset in various ways. You can choose and configure "
@@ -4973,14 +4945,14 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:640
+#: data/core/help.cfg:638
 #, fuzzy
 #| msgid "Forest"
 msgid "Cores"
 msgstr "Skog"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:642
+#: data/core/help.cfg:640
 msgid ""
 "Cores enable total conversion of The Battle for Wesnoth. A core can replace "
 "all the content in Wesnoth: when a different core is loaded, the regular "
@@ -4988,7 +4960,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:644
+#: data/core/help.cfg:642
 msgid ""
 "Cores allow a significantly different game experience: for example, a World "
 "War II campaign, or even a different game altogether, as long as it can be "
@@ -4996,7 +4968,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:646
+#: data/core/help.cfg:644
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5009,7 +4981,7 @@ msgstr ""
 "<header>text=Resurspaket för författare'</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:648
+#: data/core/help.cfg:646
 msgid ""
 "Content authors can use resource packs available on the add-ons server to "
 "enrich their own content with existing assets such as images, music, and "
@@ -5019,12 +4991,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:655
+#: data/core/help.cfg:653
 msgid "Installing Add-ons"
 msgstr "Installera extramaterial"
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:656
+#: data/core/help.cfg:654
 msgid ""
 "User-made add-ons can be obtained and updated through the <i>Add-ons</i> "
 "option in the main menu. After connecting to the add-ons server (by default "
@@ -5049,12 +5021,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:669
+#: data/core/help.cfg:667
 msgid "Removing Add-ons"
 msgstr ""
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:670
+#: data/core/help.cfg:668
 msgid ""
 "To remove add-ons, choose <b>Remove Add-ons</b> in the add-ons server "
 "connection dialog. You will be presented with options to remove any number "
@@ -5067,14 +5039,14 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:685
+#: data/core/help.cfg:683
 msgid "General Commands"
 msgstr "Allmänna kommandon"
 
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:686 data/core/help.cfg:733 data/core/help.cfg:773
+#: data/core/help.cfg:684 data/core/help.cfg:731 data/core/help.cfg:771
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ‘:’ (as shown here) or via the chat by prefixing them with ‘/’ (press "
@@ -5082,14 +5054,14 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:689
+#: data/core/help.cfg:687
 msgid ""
 "Similar to the ‘fps’ command, but also forces everything to redraw instead "
 "of only things that have changed."
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:692
+#: data/core/help.cfg:690
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5102,7 +5074,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:695
+#: data/core/help.cfg:693
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5123,12 +5095,12 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #. ':nodebug' is a command and should not be translated
-#: data/core/help.cfg:698
+#: data/core/help.cfg:696
 msgid "Debug mode is turned off by quitting the game or :nodebug."
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:701
+#: data/core/help.cfg:699
 msgid ""
 "Switch a side between human and AI control. The second parameter can be "
 "‘off’ to bring the side under human control, ‘on’ to watch the AI make its "
@@ -5138,12 +5110,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:704
+#: data/core/help.cfg:702
 msgid "Display the controller status of a side."
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:707
+#: data/core/help.cfg:705
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5158,7 +5130,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:710
+#: data/core/help.cfg:708
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5171,7 +5143,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:713
+#: data/core/help.cfg:711
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5184,7 +5156,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:716
+#: data/core/help.cfg:714
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5197,7 +5169,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:719
+#: data/core/help.cfg:717
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5210,7 +5182,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:722
+#: data/core/help.cfg:720
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5223,7 +5195,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:725
+#: data/core/help.cfg:723
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5234,12 +5206,12 @@ msgstr ""
 "Spara spelet och avsluta scenariot (utan bekräftelse)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:732
+#: data/core/help.cfg:730
 msgid "Multiplayer Commands"
 msgstr "Gruppspelskommandon"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:736
+#: data/core/help.cfg:734
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5260,7 +5232,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:739
+#: data/core/help.cfg:737
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5287,14 +5259,14 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:742
+#: data/core/help.cfg:740
 msgid ""
 "Launch a dialog to assist the host in changing the human controllers of "
 "sides."
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:745
+#: data/core/help.cfg:743
 msgid ""
 "Toggle the idle state for a side. The host may make a side idle after a "
 "network disconnection."
@@ -5302,7 +5274,7 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #. ':control' is a command and should not be translated
-#: data/core/help.cfg:750
+#: data/core/help.cfg:748
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5322,7 +5294,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:753
+#: data/core/help.cfg:751
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5342,7 +5314,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:756
+#: data/core/help.cfg:754
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5359,7 +5331,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:759
+#: data/core/help.cfg:757
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5372,7 +5344,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:762
+#: data/core/help.cfg:760
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5390,7 +5362,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:765
+#: data/core/help.cfg:763
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5405,14 +5377,14 @@ msgstr ""
 "listan av ignorerade användare."
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:772
+#: data/core/help.cfg:770
 #, fuzzy
 #| msgid "Debug mode commands"
 msgid "Debug Mode Commands"
 msgstr "Debugkommandon"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:776
+#: data/core/help.cfg:774
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5429,7 +5401,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:779
+#: data/core/help.cfg:777
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5442,7 +5414,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:782
+#: data/core/help.cfg:780
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5455,7 +5427,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:785
+#: data/core/help.cfg:783
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5468,7 +5440,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:788
+#: data/core/help.cfg:786
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5481,7 +5453,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:791
+#: data/core/help.cfg:789
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5494,7 +5466,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:794
+#: data/core/help.cfg:792
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5507,7 +5479,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:797
+#: data/core/help.cfg:795
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5521,7 +5493,7 @@ msgstr ""
 
 #. [topic]: id=debug_commands
 #. The example text is a command and should not be translated.
-#: data/core/help.cfg:802
+#: data/core/help.cfg:800
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -5539,7 +5511,7 @@ msgstr ""
 
 #. [topic]: id=debug_commands
 #. The example text is a command and should not be translated.
-#: data/core/help.cfg:807
+#: data/core/help.cfg:805
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -9416,6 +9388,32 @@ msgstr ""
 #: src/help/help_topic_generators.cpp:837
 msgid "Jamming Cost"
 msgstr ""
+
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "There are two important exceptions to upkeep: units with the loyal trait "
+#~| "and leaders never incur upkeep. Units you begin the scenario with (such "
+#~| "as Delfador), or units who join you during a scenario (such as the "
+#~| "horseman in the second scenario of <italic>text='Heir to the Throne'</"
+#~| "italic>) will usually have the <italic>text='loyal'</italic> trait. The "
+#~| "unit you are playing (such as Konrad) will almost always be a leader."
+#~ msgid ""
+#~ "There are two important exceptions to upkeep: units with the loyal trait "
+#~ "and leaders never incur upkeep. Units you begin the scenario with (such "
+#~ "as Delfador), or units who join you during a scenario (such as the "
+#~ "horseman in the second scenario of <i>Heir to the Throne</i>) will "
+#~ "usually have the <i>loyal</i> trait. The unit you are playing (such as "
+#~ "Konrad) will almost always be a leader."
+#~ msgstr ""
+#~ "\n"
+#~ "Det finns två viktiga undantag för underhåll: Lojala trupper samt ledare "
+#~ "utkräver aldrig något underhåll. Trupper som du startar ett scenario med "
+#~ "(som Delfador), eller trupper som förenar sig med dig under ett scenarios "
+#~ "gång (som ryttaren i det andra scenariot i <italic>text='Tronarvingen'</"
+#~ "italic>), är vanligtvis <italic>text='lojala'</italic>. Truppen du själv "
+#~ "spelar (som Konrad) är nästan alltid en ledare."
 
 #~ msgid ""
 #~ "Allows the unit to heal adjacent allied units at the beginning of our "

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-10-20 21:43-0500\n"
+"POT-Creation-Date: 2026-11-19 18:47-0600\n"
 "PO-Revision-Date: 2019-09-30 13:37+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -4812,8 +4812,8 @@ msgstr "치료불가"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3771
-#: src/scripting/game_lua_kernel.cpp:3806
+#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3770
+#: src/scripting/game_lua_kernel.cpp:3805
 msgid "input"
 msgstr "입력"
 
@@ -7512,7 +7512,7 @@ msgid "Error while reading the WML: "
 msgstr "WML을 읽는 중 오류 발생: "
 
 #: src/game_initialization/playcampaign.cpp:210
-#: src/playsingle_controller.cpp:384
+#: src/playsingle_controller.cpp:391
 msgid "Game Over"
 msgstr "게임 오버"
 
@@ -8951,17 +8951,17 @@ msgstr ""
 "이 멀티 플레이어 게임은 다른 난수 모드를 사용하고 있습니다.당신에게 짐작이 없"
 "다면, 누군가가 치트를 하고 있거나, 부정한 게임일 가능성이 있습니다."
 
-#: src/playsingle_controller.cpp:384
+#: src/playsingle_controller.cpp:391
 msgid "The game is over."
 msgstr "게임이 끝났습니다."
 
-#: src/playsingle_controller.cpp:461
+#: src/playsingle_controller.cpp:468
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr "연결이 끊어져서 게임을 더 이상 진행할 수 없습니다.저장하시겠습니까?"
 
-#: src/playsingle_controller.cpp:465
+#: src/playsingle_controller.cpp:472
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid ""
@@ -8971,7 +8971,7 @@ msgstr ""
 "\n"
 "게임을 저장하겠습니까?"
 
-#: src/playsingle_controller.cpp:465
+#: src/playsingle_controller.cpp:472
 #, fuzzy
 #| msgid "The game has been saved"
 msgid ""
@@ -8981,7 +8981,7 @@ msgstr ""
 "이 게임은 끝났습니다.\n"
 "이유: "
 
-#: src/playsingle_controller.cpp:557
+#: src/playsingle_controller.cpp:564
 msgid "It is now $name|’s turn"
 msgstr "지금 $name| 의 턴입니다"
 
@@ -10084,7 +10084,7 @@ msgstr[0] "<span color=\"$color\">$number_or_percent</span> 공격 횟수"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> 재소집 비용"
 
-#: src/units/unit.cpp:2566
+#: src/units/unit.cpp:2560
 msgid "$effect_description per level"
 msgstr "레벨에 따른 $effect_description"
 

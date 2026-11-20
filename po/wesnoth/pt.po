@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12 (wesnoth)\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-10-20 21:43-0500\n"
+"POT-Creation-Date: 2026-11-19 18:47-0600\n"
 "PO-Revision-Date: 2015-11-03 13:30+0000\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
@@ -4792,8 +4792,8 @@ msgstr "Incurável"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3771
-#: src/scripting/game_lua_kernel.cpp:3806
+#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3770
+#: src/scripting/game_lua_kernel.cpp:3805
 msgid "input"
 msgstr ""
 
@@ -7852,7 +7852,7 @@ msgstr "Erro na leitura do WML: "
 
 #
 #: src/game_initialization/playcampaign.cpp:210
-#: src/playsingle_controller.cpp:384
+#: src/playsingle_controller.cpp:391
 msgid "Game Over"
 msgstr "Fim do Jogo"
 
@@ -9473,12 +9473,12 @@ msgid ""
 msgstr ""
 
 #
-#: src/playsingle_controller.cpp:384
+#: src/playsingle_controller.cpp:391
 msgid "The game is over."
 msgstr "A partida terminou."
 
 #
-#: src/playsingle_controller.cpp:461
+#: src/playsingle_controller.cpp:468
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -9486,7 +9486,7 @@ msgstr ""
 "Ocorreu uma desconexão de rede, e a partida não pode prosseguir. Queres "
 "guardar-a?"
 
-#: src/playsingle_controller.cpp:465
+#: src/playsingle_controller.cpp:472
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid ""
@@ -9494,7 +9494,7 @@ msgid ""
 "Do you want to save the game?"
 msgstr "Tens mesmo a certeza de que queres sair?"
 
-#: src/playsingle_controller.cpp:465
+#: src/playsingle_controller.cpp:472
 #, fuzzy
 #| msgid "The game has been saved."
 msgid ""
@@ -9503,7 +9503,7 @@ msgid ""
 msgstr "A partida foi guardada."
 
 #
-#: src/playsingle_controller.cpp:557
+#: src/playsingle_controller.cpp:564
 msgid "It is now $name|’s turn"
 msgstr "É o turno de $name|"
 
@@ -10775,7 +10775,7 @@ msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "por turno"
 
 #
-#: src/units/unit.cpp:2566
+#: src/units/unit.cpp:2560
 msgid "$effect_description per level"
 msgstr "$effect_description por nível"
 

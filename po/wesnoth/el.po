@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-10-20 21:43-0500\n"
+"POT-Creation-Date: 2026-11-19 18:47-0600\n"
 "PO-Revision-Date: 2013-08-30 15:57+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -3837,8 +3837,8 @@ msgstr "αθεράπευτος"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3771
-#: src/scripting/game_lua_kernel.cpp:3806
+#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3770
+#: src/scripting/game_lua_kernel.cpp:3805
 msgid "input"
 msgstr "είσοδος"
 
@@ -6354,7 +6354,7 @@ msgid "Error while reading the WML: "
 msgstr "Σφάλμα στο διάβασμα του WML:"
 
 #: src/game_initialization/playcampaign.cpp:210
-#: src/playsingle_controller.cpp:384
+#: src/playsingle_controller.cpp:391
 msgid "Game Over"
 msgstr "Τέλος Παιχνιδιού"
 
@@ -7606,11 +7606,11 @@ msgid ""
 "reloaded a corrupt game."
 msgstr ""
 
-#: src/playsingle_controller.cpp:384
+#: src/playsingle_controller.cpp:391
 msgid "The game is over."
 msgstr "Το παιχνίδι τελείωσε."
 
-#: src/playsingle_controller.cpp:461
+#: src/playsingle_controller.cpp:468
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -7618,7 +7618,7 @@ msgstr ""
 "Έχει συμβεί αποσύνδεση δικτύου και το παιχνίδι δεν μπορεί να συνεχιστεί. "
 "Θέλετε να αποθηκεύσετε το παιχνίδι;"
 
-#: src/playsingle_controller.cpp:465
+#: src/playsingle_controller.cpp:472
 msgid ""
 "\n"
 "Do you want to save the game?"
@@ -7626,7 +7626,7 @@ msgstr ""
 "\n"
 "Θέλετε να αποθηκεύσετε το παιχνίδι;"
 
-#: src/playsingle_controller.cpp:465
+#: src/playsingle_controller.cpp:472
 msgid ""
 "This game has been ended.\n"
 "Reason: "
@@ -7634,7 +7634,7 @@ msgstr ""
 "Αυτό το παιχνίδι έχει τερματιστεί.\n"
 "Λόγος: "
 
-#: src/playsingle_controller.cpp:557
+#: src/playsingle_controller.cpp:564
 msgid "It is now $name|’s turn"
 msgstr "Είναι η σειρά του παίκτη $name|"
 
@@ -8571,7 +8571,7 @@ msgstr[1] "κάθε γύρο"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> κόστος ανάκλησης"
 
-#: src/units/unit.cpp:2566
+#: src/units/unit.cpp:2560
 msgid "$effect_description per level"
 msgstr "$effect_description ανά επίπεδο"
 

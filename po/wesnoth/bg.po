@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-10-20 21:43-0500\n"
+"POT-Creation-Date: 2026-11-19 18:47-0600\n"
 "PO-Revision-Date: 2026-07-11 23:56+0300\n"
 "Last-Translator: Ivan Petrov <vankata_petrov@abv.bg>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -4692,8 +4692,8 @@ msgstr "нелечим"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3771
-#: src/scripting/game_lua_kernel.cpp:3806
+#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3770
+#: src/scripting/game_lua_kernel.cpp:3805
 msgid "input"
 msgstr "подаване"
 
@@ -7335,7 +7335,7 @@ msgid "Error while reading the WML: "
 msgstr "Грешка при четене на WML: "
 
 #: src/game_initialization/playcampaign.cpp:210
-#: src/playsingle_controller.cpp:384
+#: src/playsingle_controller.cpp:391
 msgid "Game Over"
 msgstr "Край на играта"
 
@@ -8722,18 +8722,18 @@ msgstr ""
 "Тази мултиплеър игра използва алтернативен произволен режим. Ако не знаете "
 "какво означава съобщението, вероятно някой мами или е заредил повредена игра."
 
-#: src/playsingle_controller.cpp:384
+#: src/playsingle_controller.cpp:391
 msgid "The game is over."
 msgstr "Играта приключи."
 
-#: src/playsingle_controller.cpp:461
+#: src/playsingle_controller.cpp:468
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
 "Мрежата бе прекъсната и играта не може да продължи. Искате ли да я запазите?"
 
-#: src/playsingle_controller.cpp:465
+#: src/playsingle_controller.cpp:472
 msgid ""
 "\n"
 "Do you want to save the game?"
@@ -8741,7 +8741,7 @@ msgstr ""
 "\n"
 "Искате ли да запишете играта си?"
 
-#: src/playsingle_controller.cpp:465
+#: src/playsingle_controller.cpp:472
 msgid ""
 "This game has been ended.\n"
 "Reason: "
@@ -8749,7 +8749,7 @@ msgstr ""
 "Играта приключи.\n"
 "Причина: "
 
-#: src/playsingle_controller.cpp:557
+#: src/playsingle_controller.cpp:564
 msgid "It is now $name|’s turn"
 msgstr "Сега е ред на $name|"
 
@@ -9804,7 +9804,7 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> атаки на хо
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> цена за привикване"
 
-#: src/units/unit.cpp:2566
+#: src/units/unit.cpp:2560
 msgid "$effect_description per level"
 msgstr "$effect_description за всяко ниво"
 

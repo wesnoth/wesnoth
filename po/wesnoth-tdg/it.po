@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-09-21 00:25 UTC\n"
+"POT-Creation-Date: 2026-11-20 00:47 UTC\n"
 "PO-Revision-Date: 2026-09-27 21:58+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
@@ -1065,8 +1065,8 @@ msgid ""
 "(sigh) Not again! I suppose you’ll have to retry the exam next year... for "
 "the sixth time."
 msgstr ""
-"(sigh) Non di nuovo! Suppongo che dovrò riprovare l’esame il prossimo "
-"anno...per la sesta volta."
+"(sigh) Non di nuovo! Suppongo che dovrò riprovare l’esame il prossimo anno..."
+"per la sesta volta."
 
 #. [scenario]: id=01_Stirrings_of_War
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:10
@@ -1204,9 +1204,9 @@ msgid ""
 "“Kill the stragglers”, they says. “You’ll have our best warriors”, they "
 "says. N’ all I get are a bunch o’ lousy goblins? Lousy lazy lying—"
 msgstr ""
-"“Uccidete i ritardatari”, dicono. “Avrai i nostri guerrieri "
-"migliori”,dicono. E tutto quello che ottengo sono un branco di schifosi "
-"goblin? Schifosi pigri bugiardi—"
+"“Uccidete i ritardatari”, dicono. “Avrai i nostri guerrieri migliori”,"
+"dicono. E tutto quello che ottengo sono un branco di schifosi goblin? "
+"Schifosi pigri bugiardi—"
 
 #. [message]: role=gobbo1
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:210
@@ -9595,8 +9595,8 @@ msgstr ""
 #: data/campaigns/The_Deceivers_Gambit/units/Human_Delfador_L2.cfg:29
 #: data/campaigns/The_Deceivers_Gambit/units/Human_Delfador_L3.cfg:32
 #: data/campaigns/The_Deceivers_Gambit/units/Human_Delfador_L4.cfg:32
-#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Adept.cfg:31
-#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Shaman.cfg:31
+#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Adept.cfg:33
+#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Shaman.cfg:33
 #: data/campaigns/The_Deceivers_Gambit/units/Orcish_Sorceress.cfg:31
 #: data/campaigns/The_Deceivers_Gambit/units/Saurian_Devotee.cfg:45
 msgid "staff"
@@ -9929,12 +9929,14 @@ msgid "fist"
 msgstr "pugno"
 
 #. [unit_type]: id=Orcish Adept, race=orc, gender=female
-#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Adept.cfg:5
+#. in TDG and HttT, this is an exclusively female unit line which advances to Orcish Sorceress
+#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Adept.cfg:6
 msgid "Orcish Adept"
 msgstr "Orchessa Adepta"
 
 #. [unit_type]: id=Orcish Adept, race=orc, gender=female
-#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Adept.cfg:24
+#. in TDG and HttT, this is an exclusively female unit line which advances to Orcish Sorceress
+#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Adept.cfg:26
 msgid ""
 "Female orcs with spiritual leanings may find themselves inducted into the "
 "arts of orcish sorcery. Initially called Adepts, these newly-trained orcs "
@@ -9960,20 +9962,22 @@ msgstr ""
 
 #. [attack]: type=arcane
 #. [object]
-#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Adept.cfg:40
-#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Shaman.cfg:40
+#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Adept.cfg:42
+#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Shaman.cfg:42
 #: data/campaigns/The_Deceivers_Gambit/units/Orcish_Sorceress.cfg:52
 #: data/campaigns/The_Deceivers_Gambit/utils/spellcasting.cfg:828
 msgid "siphon"
 msgstr "risucchio"
 
 #. [unit_type]: id=Orcish Shaman, race=orc, gender=female
-#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Shaman.cfg:5
+#. in TDG and HttT, this is an exclusively female unit line which advances to Orcish Sorceress
+#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Shaman.cfg:6
 msgid "Orcish Shaman"
 msgstr "Orchessa Sciamana"
 
 #. [unit_type]: id=Orcish Shaman, race=orc, gender=female
-#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Shaman.cfg:24
+#. in TDG and HttT, this is an exclusively female unit line which advances to Orcish Sorceress
+#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Shaman.cfg:26
 msgid ""
 "Like most sapient races, orcs often ponder the workings of the world in "
 "which they live. Some endeavor to take this beyond idle musing, but the "

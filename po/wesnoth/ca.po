@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.6.0+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-10-20 21:43-0500\n"
+"POT-Creation-Date: 2026-11-19 18:47-0600\n"
 "PO-Revision-Date: 2025-12-14 19:08+0100\n"
 "Last-Translator: Arnau Vàzquez Palma <arnauvp@murena.io>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
@@ -4684,8 +4684,8 @@ msgstr "inguarible"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3771
-#: src/scripting/game_lua_kernel.cpp:3806
+#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3770
+#: src/scripting/game_lua_kernel.cpp:3805
 msgid "input"
 msgstr "entrada"
 
@@ -7377,7 +7377,7 @@ msgid "Error while reading the WML: "
 msgstr "S'ha produït un error mentre es llegia el WML: "
 
 #: src/game_initialization/playcampaign.cpp:210
-#: src/playsingle_controller.cpp:384
+#: src/playsingle_controller.cpp:391
 msgid "Game Over"
 msgstr "Partida perduda"
 
@@ -8777,11 +8777,11 @@ msgstr ""
 "sabeu què significa aquest missatge, és probable que algú estigui fent "
 "trampes o hagi recarregat una partida corrupta."
 
-#: src/playsingle_controller.cpp:384
+#: src/playsingle_controller.cpp:391
 msgid "The game is over."
 msgstr "La partida ha acabat."
 
-#: src/playsingle_controller.cpp:461
+#: src/playsingle_controller.cpp:468
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -8789,7 +8789,7 @@ msgstr ""
 "S'ha produït una desconnexió de la xarxa i la partida no pot continuar. "
 "Voleu desar la partida?"
 
-#: src/playsingle_controller.cpp:465
+#: src/playsingle_controller.cpp:472
 msgid ""
 "\n"
 "Do you want to save the game?"
@@ -8797,7 +8797,7 @@ msgstr ""
 "\n"
 "Voleu desar la partida?"
 
-#: src/playsingle_controller.cpp:465
+#: src/playsingle_controller.cpp:472
 msgid ""
 "This game has been ended.\n"
 "Reason: "
@@ -8805,7 +8805,7 @@ msgstr ""
 "S'ha finalitzat la partida.\n"
 "Motiu: "
 
-#: src/playsingle_controller.cpp:557
+#: src/playsingle_controller.cpp:564
 msgid "It is now $name|’s turn"
 msgstr "Ara és el torn de $name|"
 
@@ -9868,7 +9868,7 @@ msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr ""
 "<span color=\"$color\">$number_or_percent</span> cost per a reincorporar"
 
-#: src/units/unit.cpp:2566
+#: src/units/unit.cpp:2560
 msgid "$effect_description per level"
 msgstr "$effect_description per level"
 

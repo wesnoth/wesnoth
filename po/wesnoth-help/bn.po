@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-08-02 22:45-0500\n"
+"POT-Creation-Date: 2026-11-19 18:47-0600\n"
 "PO-Revision-Date: 2026-11-05 14:48+0530\n"
 "Last-Translator: Subhraman Sarkar <sbmskmm@protonmail.com>\n"
 "Language-Team: Bengali < >\n"
@@ -596,12 +596,12 @@ msgstr "সূচনাকালীন অবস্থান টুল"
 msgid ""
 "Defines the side leader starting position.\n"
 "This tool sets the side leaders’ default starting locations, and named "
-"special locations. Both types of location are enabled in both <ref "
-"dst='..editor_mode_terrain'>Terrain Editor</ref> and <ref "
-"dst='..editor_mode_scenario'>Scenario Editor</ref> modes. The location names "
-"are shown as a list in the editor palette, clicking on the map will place "
-"that name on a hex, each location can only be placed on a single hex, and "
-"the editor will only allow one location per hex.\n"
+"special locations. Both types of location are enabled in both <ref dst='.."
+"editor_mode_terrain'>Terrain Editor</ref> and <ref dst='.."
+"editor_mode_scenario'>Scenario Editor</ref> modes. The location names are "
+"shown as a list in the editor palette, clicking on the map will place that "
+"name on a hex, each location can only be placed on a single hex, and the "
+"editor will only allow one location per hex.\n"
 "\n"
 "To add named special locations, click “Add” at the bottom of the editor "
 "palette, and enter the name. These names must start with a letter and may "
@@ -671,9 +671,9 @@ msgstr ""
 #: data/core/editor/help.cfg:131
 msgid ""
 "editor^<header>Movement Overlays</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/impassable-"
-"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/"
-"unwalkable-editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/unwalkable-"
+"editor.png~O(0.5))'/>\n"
 "<b>Impassable and Unwalkable</b>\n"
 "\n"
 "While easily noticeable in the editor, these are invisible in the game, so "
@@ -682,9 +682,9 @@ msgid ""
 "respectively."
 msgstr ""
 "<header>স্থানান্তর অভিলেপন</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/impassable-"
-"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/"
-"unwalkable-editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/unwalkable-"
+"editor.png~O(0.5))'/>\n"
 "<b>অনতিক্রম্য এবং হাঁটার অযোগ্য</b>\n"
 "\n"
 "এগুলো পরিমার্জকে-এ সহজেই চোখে পড়ে, কিন্তু খেলায় অদৃশ্য, তাই এগুলোর মাধ্যমে তৈরি মিশ্র "
@@ -697,9 +697,9 @@ msgstr ""
 #: data/core/editor/help.cfg:140
 msgid ""
 "editor^<header>Castle Overlays</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-"
-"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/"
-"keep-overlay-editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/keep-"
+"overlay-editor.png~O(0.5))'/>\n"
 "Adding either of these overlays to a passable hex allows units to be "
 "recruited onto a hex. The keep also allows a leader to recruit from there.\n"
 "\n"
@@ -710,10 +710,10 @@ msgid ""
 "units being recruited onto them."
 msgstr ""
 "<header>প্রাসাদ অভিলেপন</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-"
-"editor.png~O(0.5))'/>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/castle/keep-overlay-"
-"editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/castle/keep-overlay-editor."
+"png~O(0.5))'/>\n"
 "এই দুই ওভারলের যেকোনোটি কোনো হাঁটার যোগ্য ষড়ভূজে-এ যোগ করলে ইউনিটগুলোকে ওই ষড়ভূজ-এ "
 "নিয়োগ করা যায়। দূর্গটি নেতাকে সেখান থেকে নিয়োগ করতেও দেয়।\n"
 "\n"
@@ -893,8 +893,8 @@ msgstr "বাতিল ভূমিরূপ"
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
 #: data/core/editor/help.cfg:203
 msgid ""
-"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-"
-"editor.png)'/>\n"
+"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
+"png)'/>\n"
 "The magenta ‘D’ (for “Deprecated”).\n"
 "\n"
 "This is shown in the editor over deprecated terrain codes. Examples are:\n"
@@ -1169,13 +1169,12 @@ msgstr ""
 "\n"
 "<header>সম্পাদনার মোড</header>\n"
 "\n"
-"পরিমার্জকে দুটি কাজের মোড আছে: ভূমি মোড এবং ঘটনাক্রম মোড।<ref "
-"dst='..editor_mode_terrain'>ভূমি মোড</ref> একটি সাধারণ অঙ্কন অ্যাপ্লিকেশনের মতো, "
-"যেখানে <ref dst='editor_tool_paint'>আঁকা</ref>, <ref "
-"dst='editor_tool_fill'>পূরণ করা</ref>, <ref dst='editor_tool_select'>নির্বাচন "
-"করা (ও কপি করা)</ref> এবং <ref dst='editor_tool_paste'>বসানোর</ref> টুল আছে। "
-"নেতাদের <ref dst='editor_tool_starting'>সূচনাকালীন অবস্থান</ref> ঠিক করার "
-"টুলটিও এখানে আছে।\n"
+"পরিমার্জকে দুটি কাজের মোড আছে: ভূমি মোড এবং ঘটনাক্রম মোড।<ref dst='.."
+"editor_mode_terrain'>ভূমি মোড</ref> একটি সাধারণ অঙ্কন অ্যাপ্লিকেশনের মতো, যেখানে "
+"<ref dst='editor_tool_paint'>আঁকা</ref>, <ref dst='editor_tool_fill'>পূরণ করা</"
+"ref>, <ref dst='editor_tool_select'>নির্বাচন করা (ও কপি করা)</ref> এবং <ref "
+"dst='editor_tool_paste'>বসানোর</ref> টুল আছে। নেতাদের <ref "
+"dst='editor_tool_starting'>সূচনাকালীন অবস্থান</ref> ঠিক করার টুলটিও এখানে আছে।\n"
 "\n"
 "<ref dst='..editor_mode_scenario'>ঘটনাক্রম মোডে</ref> ভূমি মোডের টুলগুলির "
 "পাশাপাশি যোগ করা যায় <ref dst='editor_tool_label'>লেবেল</ref>, <ref "
@@ -1330,10 +1329,10 @@ msgid ""
 "The map editor saves one file when in terrain mode (a .map) or two files "
 "when in scenario mode (both a .map and a .cfg).\n"
 "\n"
-"Loading a .cfg file has different results depending on the contents of "
-"the .cfg file. For .cfg files that were created by the scenario editor, it "
-"will open the .cfg in the scenario editor. However, for .cfg files that "
-"cannot be opened by the scenario editor, the editor will attempt to find the "
+"Loading a .cfg file has different results depending on the contents of the ."
+"cfg file. For .cfg files that were created by the scenario editor, it will "
+"open the .cfg in the scenario editor. However, for .cfg files that cannot be "
+"opened by the scenario editor, the editor will attempt to find the "
 "scenario’s map data and open the corresponding .map file in terrain-only "
 "mode, as if the .map file was chosen in the file selector. It is recommended "
 "in those cases to simply load the .map file directly instead."
@@ -1536,8 +1535,8 @@ msgid ""
 "\n"
 "• <span face='monospace'>map_file=maps/01_First_Map.map</span> <i>— "
 "supported since Wesnoth 1.14</i>\n"
-"• <span face='monospace'>map_data=&quot;&#0x7B;maps/"
-"01_First_Map.map&#0x7D;&quot;</span> <i>— a WML preprocessor include</i>\n"
+"• <span face='monospace'>map_data=&quot;&#0x7B;maps/01_First_Map.map&#0x7D;"
+"&quot;</span> <i>— a WML preprocessor include</i>\n"
 "\n"
 "The <i>map_file</i> method is preferred over using a preprocessor include."
 msgstr ""
@@ -1560,8 +1559,8 @@ msgstr ""
 "\n"
 "• <span face='monospace'>map_file=maps/01_First_Map.map</span> <i>— ওয়েসনথ "
 "1.14 থেকে সমর্থিত</i>\n"
-"• <span face='monospace'>map_data=&quot;&#0x7B;maps/"
-"01_First_Map.map&#0x7D;&quot;</span> <i>— একটি ডব্লুএমএল প্রিপ্রসেসর ইনক্লুড</i>\n"
+"• <span face='monospace'>map_data=&quot;&#0x7B;maps/01_First_Map.map&#0x7D;"
+"&quot;</span> <i>— একটি ডব্লুএমএল প্রিপ্রসেসর ইনক্লুড</i>\n"
 "\n"
 "প্রিপ্রসেসর ইনক্লুড ব্যবহারের চেয়ে <i>map_file</i> পদ্ধতিটি বেশি পছন্দনীয়।"
 
@@ -1613,11 +1612,11 @@ msgstr ""
 "<header>ঘটনাক্রম এডিটর দ্বারা তৈরি ফাইল</header>\n"
 "\n"
 "ঘটনাক্রম মোডে সম্পাদক ঘটনাক্রমের তথ্য একটি .cfg ফাইল হিসেবে এবং মানচিত্রের তথ্য "
-"আলাদা একটি .map ফাইল হিসেবে সংরক্ষণ করে। এরপর ঘটনাক্রমটি map_file-এর "
-"মাধ্যমে .map ফাইলটি উল্লেখ করে। একটি .cfg ফাইল লোড করার সময় ঘটনাক্রম সম্পাদক "
-"নিজের তৈরি করা ফাইল বুঝতে পারে, কিন্তু হাতে সম্পাদনা করা ফাইলে সমস্যায় পড়তে পারে; "
-"হাতে সম্পাদনা করা অংশগুলোর জন্য <ref dst='editor_separate_events_file'>আলাদা "
-"একটি .cfg ফাইল ব্যবহার করে</ref> এই সমস্যা এড়ানো যায়।"
+"আলাদা একটি .map ফাইল হিসেবে সংরক্ষণ করে। এরপর ঘটনাক্রমটি map_file-এর মাধ্যমে ."
+"map ফাইলটি উল্লেখ করে। একটি .cfg ফাইল লোড করার সময় ঘটনাক্রম সম্পাদক নিজের তৈরি "
+"করা ফাইল বুঝতে পারে, কিন্তু হাতে সম্পাদনা করা ফাইলে সমস্যায় পড়তে পারে; হাতে "
+"সম্পাদনা করা অংশগুলোর জন্য <ref dst='editor_separate_events_file'>আলাদা একটি ."
+"cfg ফাইল ব্যবহার করে</ref> এই সমস্যা এড়ানো যায়।"
 
 #. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
@@ -2241,8 +2240,8 @@ msgstr ""
 #: data/core/encyclopedia/geography.cfg:187
 msgid ""
 "<header>Notable land features:</header>\n"
-"    • Aethenwood: The largest southern forest, home to reclusive <ref "
-"dst='..race_elf'>elves</ref>.\n"
+"    • Aethenwood: The largest southern forest, home to reclusive <ref dst='.."
+"race_elf'>elves</ref>.\n"
 "    • Vale of Blossoming Trees: An elvish vale at the southern edge of the "
 "Aethenwood. It contains the sacred Isle of Elrath.\n"
 "    • Lake Aelin: An elvish lake at the edge of their territory along the "
@@ -2461,7 +2460,7 @@ msgstr "খেলা"
 #. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:29 data/core/help.cfg:543
+#: data/core/help.cfg:29 data/core/help.cfg:541
 #: src/help/help_topic_generators.cpp:536
 #: src/help/help_topic_generators.cpp:541
 msgid "Traits"
@@ -2493,19 +2492,19 @@ msgstr "যুগ"
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:70 data/core/help.cfg:558
+#: data/core/help.cfg:70 data/core/help.cfg:556
 msgid "Terrains"
 msgstr "ভূমি"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:78 data/core/help.cfg:606
+#: data/core/help.cfg:78 data/core/help.cfg:604
 msgid "Add-ons"
 msgstr "অ্যাড-অন"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:84 data/core/help.cfg:679
+#: data/core/help.cfg:84 data/core/help.cfg:677
 msgid "Commands"
 msgstr "কমান্ড"
 
@@ -2745,9 +2744,9 @@ msgid ""
 "ref>, for the first time."
 msgstr ""
 "খেলার সময় মনে রাখবেন, খেলার অনেক জিনিস, যেমন স্ট্যাটাস প্যানে দেখানো তথ্য ওপর "
-"মাউস নিয়ে গেলে, প্রতিটির একটি সংক্ষিপ্ত বিবরণ দেখা যায়। <ref "
-"dst='..abilities_section'>দক্ষতার</ref> মতো নতুন উপাদানের সঙ্গে প্রথমবার পরিচিত "
-"হওয়ার সময় এটি বিশেষভাবে কাজে লাগে।"
+"মাউস নিয়ে গেলে, প্রতিটির একটি সংক্ষিপ্ত বিবরণ দেখা যায়। <ref dst='.."
+"abilities_section'>দক্ষতার</ref> মতো নতুন উপাদানের সঙ্গে প্রথমবার পরিচিত হওয়ার "
+"সময় এটি বিশেষভাবে কাজে লাগে।"
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:177
@@ -2902,24 +2901,13 @@ msgid ""
 "shows the values for the current scenario."
 msgstr ""
 
-#. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:226
-msgid ""
-"There are two important exceptions to upkeep: units with the loyal trait and "
-"leaders never incur upkeep. Units you begin the scenario with (such as "
-"Delfador), or units who join you during a scenario (such as the horseman in "
-"the second scenario of <i>Heir to the Throne</i>) will usually have the "
-"<i>loyal</i> trait. The unit you are playing (such as Konrad) will almost "
-"always be a leader."
-msgstr ""
-
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:233
+#: data/core/help.cfg:231
 msgid "Hitpoints and Experience"
 msgstr "জীবনসংখ্যা ও অভিজ্ঞতা"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:234
+#: data/core/help.cfg:232
 msgid ""
 "Each unit has a certain number of <i>hitpoints</i> (HP). If the hitpoints of "
 "a unit drop below 1, the unit dies. Each unit also has a certain number of "
@@ -2928,7 +2916,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:238
+#: data/core/help.cfg:236
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -2936,7 +2924,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:240
+#: data/core/help.cfg:238
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -2945,12 +2933,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:247
+#: data/core/help.cfg:245
 msgid "Advancement"
 msgstr "উন্নয়ণ"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:248
+#: data/core/help.cfg:246
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they’re fighting. If a unit kills another in "
@@ -2959,7 +2947,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:250
+#: data/core/help.cfg:248
 msgid ""
 "Units have a certain amount of experience required to advance (this is 20% "
 "less for units with the Intelligent trait). Once they achieve this amount, "
@@ -2972,7 +2960,7 @@ msgstr ""
 "হতে পারে ।"
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:252
+#: data/core/help.cfg:250
 msgid ""
 "While most units have three levels, not all do. Occasional units (such as "
 "<ref dst='unit_Mage'>magi</ref>) may have four. Once a unit has reached its "
@@ -2987,12 +2975,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=movement
-#: data/core/help.cfg:259
+#: data/core/help.cfg:257
 msgid "Movement"
 msgstr "স্থানান্তর"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:260
+#: data/core/help.cfg:258
 msgid ""
 "Movement in <i>Battle for Wesnoth</i> is simple. Click on the unit you wish "
 "to move to select it, then click on the hex you wish to move it to. When a "
@@ -3009,7 +2997,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=movement
-#: data/core/help.cfg:262
+#: data/core/help.cfg:260
 msgid ""
 "Each unit has a certain number of movement points which are used up when "
 "moving into a new hex, depending on the Terrain of that particular hex. For "
@@ -3023,7 +3011,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=movement
-#: data/core/help.cfg:264
+#: data/core/help.cfg:262
 msgid ""
 "Another thing to keep in mind while moving is <i>zones of control</i>. Each "
 "unit — except for level 0 units — generates a zone of control in the hexes "
@@ -3034,7 +3022,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=movement
-#: data/core/help.cfg:266
+#: data/core/help.cfg:264
 msgid ""
 "To see where the enemy can move to during their next turn, press Ctrl-v or "
 "Cmd-v. Ctrl-b or Cmd-b shows where the enemy could move, if your units were "
@@ -3045,12 +3033,12 @@ msgstr ""
 "যেতে পারত ।"
 
 #. [topic]: id=vision
-#: data/core/help.cfg:273
+#: data/core/help.cfg:271
 msgid "Vision"
 msgstr "দৃষ্টি"
 
 #. [topic]: id=vision
-#: data/core/help.cfg:274
+#: data/core/help.cfg:272
 msgid ""
 "Vision determines how far a unit can see on the map. Normally, a unit’s "
 "vision range is calculated as its movement range plus one hex. Certain units "
@@ -3059,12 +3047,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:281
+#: data/core/help.cfg:279
 msgid "Shroud and Fog of War"
 msgstr "ছায়া ও যুদ্ধের কুয়াশা"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:282
+#: data/core/help.cfg:280
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
 "mechanisms that can be used separately or together. The <i>shroud</i> hides "
@@ -3087,12 +3075,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:286
+#: data/core/help.cfg:284
 msgid "<header>Multiplayer and undo</header>"
 msgstr ""
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:288
+#: data/core/help.cfg:286
 msgid ""
 "In multiplayer games, moves that have been sent to the network can’t be "
 "undone; the game delays sending data to try to preserve your undo ability. "
@@ -3103,12 +3091,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:295
+#: data/core/help.cfg:293
 msgid "Save-loading"
 msgstr "সেভ-লোডিং"
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:296
+#: data/core/help.cfg:294
 msgid ""
 "Random numbers are part of Wesnoth, attacks can fail and units can die due "
 "to bad luck — this is an expected part of the game. Going back to a previous "
@@ -3118,7 +3106,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:298
+#: data/core/help.cfg:296
 msgid ""
 "One of the challenges of the game is to work out how to protect your heroes. "
 "Small risks quickly build up: if you have five important units, and they "
@@ -3128,7 +3116,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:301
+#: data/core/help.cfg:299
 msgid ""
 "Small risks build up for your non-hero units too. While the story and "
 "dialogue usually aim to give you some emotional bond with your troops, the "
@@ -3139,7 +3127,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:303
+#: data/core/help.cfg:301
 msgid ""
 "The difficulty levels are balanced assuming that the player won’t save-load. "
 "In the mainline campaigns, harder difficulties generally have more enemies "
@@ -3149,31 +3137,31 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:305
+#: data/core/help.cfg:303
 msgid ""
 "That said, it’s a game; the best way to play it is whichever way gives you "
 "the most enjoyment."
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:312
+#: data/core/help.cfg:310
 msgid "Learning from Losses"
 msgstr "ভুল থেকে শেখা"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:313
+#: data/core/help.cfg:311
 msgid "<i>Why did I lose that scenario?</i>"
 msgstr "<i>আমি ওই ঘটনাক্রমটি কেন হারলাম?</i>"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:315
+#: data/core/help.cfg:313
 msgid ""
 "One of the most difficult parts of Wesnoth is understanding why a scenario "
 "was lost."
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:317
+#: data/core/help.cfg:315
 msgid ""
 "When you first start playing, you will probably lose some scenarios. That is "
 "normal, and is part of learning the game. When that happens, try to learn "
@@ -3182,19 +3170,19 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:319
+#: data/core/help.cfg:317
 msgid "Some common reasons for losing a scenario are:"
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:321
+#: data/core/help.cfg:319
 msgid ""
 "• Playing a campaign at too high a <ref dst='..gameplay'>difficulty level</"
 "ref>. Try restarting the scenario at an easier difficulty."
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:323
+#: data/core/help.cfg:321
 msgid ""
 "• Playing a poor strategy: for example, recruiting the wrong types of units, "
 "fighting at the wrong <ref dst='time_of_day'>time of day</ref>, not taking "
@@ -3202,7 +3190,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:325
+#: data/core/help.cfg:323
 msgid ""
 "• Missing clues. Often there will be hints in the campaign’s story and "
 "dialog about what to expect from a difficult scenario and how to prepare for "
@@ -3211,7 +3199,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:327
+#: data/core/help.cfg:325
 msgid ""
 "• Barely scraping a victory in a previous scenario. Campaigns generally "
 "assume that you will have some <i>carryover gold</i> and some experienced "
@@ -3225,7 +3213,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:329
+#: data/core/help.cfg:327
 msgid ""
 "• Poor gold management. At higher difficulties, managing gold — capturing "
 "villages to increase the income, and using low-level units and fresh "
@@ -3236,19 +3224,19 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:331
+#: data/core/help.cfg:329
 msgid "Unlikely reasons"
 msgstr "অসম্ভাব্য কারণ"
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:333
+#: data/core/help.cfg:331
 msgid ""
 "In addition to the common reasons, listed above, there are a few other "
 "reasons which are unlikely, though not impossible. They are:"
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:335
+#: data/core/help.cfg:333
 msgid ""
 "• You may have played a strategy that the campaign developer did not "
 "anticipate, and ended up with a set of high-level units not suitable for the "
@@ -3256,7 +3244,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:337
+#: data/core/help.cfg:335
 msgid ""
 "• You may have found a scenario that can only be won on the second or third "
 "time through, whether by requiring above-average luck or by expecting the "
@@ -3267,7 +3255,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:339
+#: data/core/help.cfg:337
 msgid ""
 "• Unusually-bad luck. Whether an attack hits or misses is random, so it "
 "could happen that the enemy was very lucky and had many hits, while you were "
@@ -3282,7 +3270,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:341
+#: data/core/help.cfg:339
 msgid ""
 "Be wary of attributing a loss to any of these reasons. If you are not a "
 "veteran player, it is far more likely that your loss was caused by one of "
@@ -3292,7 +3280,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:343
+#: data/core/help.cfg:341
 msgid ""
 "The “Damage Calculations” dialog shows some statistics that can help "
 "determine whether a match was very lucky or very unlucky. However, reading "
@@ -3302,12 +3290,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=combat
-#: data/core/help.cfg:350
+#: data/core/help.cfg:348
 msgid "Combat"
 msgstr "লড়াই"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:351
+#: data/core/help.cfg:349
 msgid ""
 "Combat in <i>Battle for Wesnoth</i> always takes place between units in "
 "adjacent hexes. Click on your unit, and click on the enemy you want to "
@@ -3322,12 +3310,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=combat
-#: data/core/help.cfg:353
+#: data/core/help.cfg:351
 msgid "Order and Number of Strikes"
 msgstr ""
 
 #. [topic]: id=combat
-#: data/core/help.cfg:355
+#: data/core/help.cfg:353
 msgid ""
 "The attacker gets the first strike, then the defender retaliates. Each "
 "strike either hits, doing a given amount of damage, or misses, doing no "
@@ -3339,12 +3327,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=combat
-#: data/core/help.cfg:357
+#: data/core/help.cfg:355
 msgid "Chance to Hit"
 msgstr "আঘাতের সম্ভাবনা"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:359
+#: data/core/help.cfg:357
 msgid ""
 "Every unit has a chance of being hit, based on the <i>terrain</i> it is in. "
 "This is shown in the status pane, and may also be found by right-clicking a "
@@ -3356,7 +3344,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=combat
-#: data/core/help.cfg:361
+#: data/core/help.cfg:359
 msgid ""
 "There are two exceptions to this rule: <ref "
 "dst='weaponspecial_magical'>magical attacks</ref> and <ref "
@@ -3366,12 +3354,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=combat
-#: data/core/help.cfg:363
+#: data/core/help.cfg:361
 msgid "Damage"
 msgstr "ক্ষতি"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:365
+#: data/core/help.cfg:363
 msgid ""
 "Each strike which hits causes a base amount of damage depending on the "
 "attack type. For instance, an elvish fighter with a 5×4 attack does 5 base "
@@ -3383,7 +3371,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=combat
-#: data/core/help.cfg:367
+#: data/core/help.cfg:365
 msgid ""
 "A few units have special <ref dst='..abilities_section'>abilities</ref> "
 "which affect damage dealt in combat. The most common of these is <ref "
@@ -3392,12 +3380,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:373
+#: data/core/help.cfg:371
 msgid "Damage Types and Resistance"
 msgstr "ক্ষতির প্রকৃতি এবং প্রতিরোধ"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:374
+#: data/core/help.cfg:372
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
 "attacks: <i>blade, pierce, and impact damage</i>. Additionally, there are "
@@ -3407,7 +3395,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:376
+#: data/core/help.cfg:374
 msgid ""
 "Resistances work very simply: if a unit has 40% resistance against a damage "
 "type, then it will suffer 40% less damage when hit with that damage type. It "
@@ -3417,7 +3405,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:378
+#: data/core/help.cfg:376
 msgid ""
 "For example, skeletons are highly resistant to blade and pierce damage, but "
 "are vulnerable to impact and fire damage, and extremely vulnerable to arcane "
@@ -3425,7 +3413,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:380
+#: data/core/help.cfg:378
 msgid ""
 "If a strike is determined to hit, it will always do at least 1 point of "
 "damage. This applies even if the defender has 100% resistance to the damage "
@@ -3433,12 +3421,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:386
+#: data/core/help.cfg:384
 msgid "Orbs and ellipses"
 msgstr "গোলক এবং উপবৃত্ত"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:387
+#: data/core/help.cfg:385
 msgid ""
 "There are colored indicators above the energy bars of some units, consisting "
 "of a colored orb (and sometimes a <ref dst='crowns'>crown</ref>)."
@@ -3446,7 +3434,7 @@ msgstr ""
 
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
-#: data/core/help.cfg:398
+#: data/core/help.cfg:396
 msgid ""
 "The orbs show whether the unit can move or attack. The statuses and their "
 "standard colors are:\n"
@@ -3472,12 +3460,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:410
+#: data/core/help.cfg:408
 msgid "<header>Ellipses</header>"
 msgstr "<header>উপবৃত্ত</header>"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:413
+#: data/core/help.cfg:411
 msgid ""
 "A team-colored shape is drawn on the ground under each unit. This is called "
 "the “ellipse”, although some units’ ellipses are not elliptical."
@@ -3485,7 +3473,7 @@ msgstr ""
 
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
-#: data/core/help.cfg:423
+#: data/core/help.cfg:421
 msgid ""
 "• Most units have a circular ellipse.\n"
 "• Units that can recruit have a seven-pointed star.\n"
@@ -3498,12 +3486,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=crowns
-#: data/core/help.cfg:434
+#: data/core/help.cfg:432
 msgid "Crowns and loyal markers"
 msgstr "মুকুট এবং বিশ্বস্ততার নির্দেশকগুলি"
 
 #. [topic]: id=crowns
-#: data/core/help.cfg:435
+#: data/core/help.cfg:433
 msgid ""
 "Some units have an additional marker superimposed on their <ref "
 "dst='orbs'>orb</ref>, and a corresponding shape to their <ref "
@@ -3512,7 +3500,7 @@ msgstr ""
 
 #. [topic]: id=crowns
 #. The help page has a set of images above this paragraph, in the same order as the first set of bullet points, showing what the "loyal icon" is and the difference between "silver" and "blueish-silver".
-#: data/core/help.cfg:448
+#: data/core/help.cfg:446
 msgid ""
 "• Leaders are shown with a <b>gold crown</b>.\n"
 "• Heroes have a <b>blueish-silver crown</b>.\n"
@@ -3535,19 +3523,19 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:466
+#: data/core/help.cfg:464
 msgid "Time of Day"
 msgstr "দিনের সময়"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:467
+#: data/core/help.cfg:465
 msgid "The time of day affects the damage of certain units as follows:"
 msgstr ""
 "দিনের সময় নিম্নলিখিতভাবে কিছু ইউনিটদের করা ক্ষতির পরিমাণ নিম্নলিখিতভাবে পরিবর্তন "
 "করে:"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:469
+#: data/core/help.cfg:467
 msgid ""
 "• <span weight='heavy' size='15'>LAWFUL</span> units get +25% damage in "
 "daytime, and −25% damage at night."
@@ -3556,7 +3544,7 @@ msgstr ""
 "রাত্রে −25% ক্ষতি করে।"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:470
+#: data/core/help.cfg:468
 msgid ""
 "• <span weight='heavy' size='15'>CHAOTIC</span> units get +25% damage at "
 "night, and −25% in daytime."
@@ -3565,7 +3553,7 @@ msgstr ""
 "এবং দিনে −25% ক্ষতি করে।"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:471
+#: data/core/help.cfg:469
 msgid ""
 "• <span weight='heavy' size='15'>NEUTRAL</span> units are unaffected by the "
 "time of day."
@@ -3574,7 +3562,7 @@ msgstr ""
 "প্রভাবিত হয় না।"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:472
+#: data/core/help.cfg:470
 msgid ""
 "• <span weight='heavy' size='15'>LIMINAL</span> units get +25% damage during "
 "twilight."
@@ -3583,7 +3571,7 @@ msgstr ""
 "করে।"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:474
+#: data/core/help.cfg:472
 msgid ""
 "The current time of day can be observed under the minimap in the status "
 "pane. For the usual day/night cycle, morning and afternoon count as day, "
@@ -3596,52 +3584,52 @@ msgstr ""
 #. [topic]: id=time_of_day
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
-#: data/core/help.cfg:477 data/core/macros/schedules.cfg:16
+#: data/core/help.cfg:475 data/core/macros/schedules.cfg:16
 #: data/core/macros/schedules.cfg:290
 msgid "Dawn"
 msgstr "ভোর"
 
 #. [topic]: id=time_of_day
 #. [time]: id=morning
-#: data/core/help.cfg:480 data/core/macros/schedules.cfg:28
+#: data/core/help.cfg:478 data/core/macros/schedules.cfg:28
 msgid "Morning"
 msgstr "সকাল"
 
 #. [topic]: id=time_of_day
 #. [time]: id=afternoon
-#: data/core/help.cfg:483 data/core/macros/schedules.cfg:46
+#: data/core/help.cfg:481 data/core/macros/schedules.cfg:46
 msgid "Afternoon"
 msgstr "বিকেল"
 
 #. [topic]: id=time_of_day
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
-#: data/core/help.cfg:486 data/core/macros/schedules.cfg:55
+#: data/core/help.cfg:484 data/core/macros/schedules.cfg:55
 #: data/core/macros/schedules.cfg:411
 msgid "Dusk"
 msgstr "সন্ধ্যা"
 
 #. [topic]: id=time_of_day
 #. [time]: id=first_watch
-#: data/core/help.cfg:489 data/core/macros/schedules.cfg:67
+#: data/core/help.cfg:487 data/core/macros/schedules.cfg:67
 msgid "First Watch"
 msgstr "রাত্রির প্রথমার্ধ"
 
 #. [topic]: id=time_of_day
 #. [time]: id=second_watch
-#: data/core/help.cfg:492 data/core/macros/schedules.cfg:91
+#: data/core/help.cfg:490 data/core/macros/schedules.cfg:91
 msgid "Second Watch"
 msgstr "রাত্রির দ্বিতীয়ার্ধ"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:495
+#: data/core/help.cfg:493
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
 msgstr "মনে রাখবেন কিছু ঘটনাক্রম ভুঅভ্যন্তরে ঘটে থাকে, যেখানে সবসময়েই রাত্রি!"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:497
+#: data/core/help.cfg:495
 msgid ""
 "Some underground locations are illuminated. They are perpetually "
 "intermediate between day and night."
@@ -3649,7 +3637,7 @@ msgstr ""
 "কিছু ভুগর্ভস্থ অবস্থান আলোকিত। সেগুলি সর্বদাই দিন এবং রাত্রের মাঝামাঝি অবস্থায় থাকে।"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:499
+#: data/core/help.cfg:497
 msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate."
@@ -3658,7 +3646,7 @@ msgstr ""
 "আলোকিত।"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:501
+#: data/core/help.cfg:499
 msgid ""
 "Finally, units with the <ref dst='ability_illumination'>illuminates</ref> "
 "ability and terrain features such as <ref dst='terrain_lava'>lava</ref> "
@@ -3669,12 +3657,12 @@ msgstr ""
 "দিনের সময়ের জন্য অতিরিক্ত ক্ষতির পরিমাণ পাল্টে দিতে পারে।"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:508
+#: data/core/help.cfg:506
 msgid "Healing"
 msgstr "চিকিৎসা"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:509
+#: data/core/help.cfg:507
 msgid ""
 "In combat, your units will inevitably take damage. There are several ways to "
 "heal your units. However, with the exception of resting, these do not stack; "
@@ -3682,14 +3670,14 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:511
+#: data/core/help.cfg:509
 msgid ""
 "• <b>Resting</b>: A unit which neither moves, attacks, nor is attacked will "
 "heal 2 HP in its next turn."
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:512
+#: data/core/help.cfg:510
 msgid ""
 "• <b>Villages</b>: A unit which starts a turn in a village or <ref "
 "dst='terrain_oasis'>oasis</ref> will heal 8HP. If the unit is poisoned, the "
@@ -3697,7 +3685,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:513
+#: data/core/help.cfg:511
 msgid ""
 "• <ref dst='ability_regenerates_8'>Regeneration</ref>: Certain units (such "
 "as trolls) will automatically heal 8HP every turn. If the unit is poisoned, "
@@ -3705,7 +3693,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:514
+#: data/core/help.cfg:512
 msgid ""
 "• <b>Healing units</b>: Units with the <ref dst='ability_heals_4'>Heals</"
 "ref> ability will heal each allied adjacent unit, usually <ref "
@@ -3714,7 +3702,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:515
+#: data/core/help.cfg:513
 msgid ""
 "• <b>Curing units</b>: Units with the <ref dst='ability_cures'>cures</ref> "
 "ability will cure Poison in all allied adjacent units (in preference to "
@@ -3722,7 +3710,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:516
+#: data/core/help.cfg:514
 msgid ""
 "• <b>Advancement</b>: When a unit <ref dst='advancement'>advances</ref>, it "
 "will heal fully. This can happen as soon as your unit gains enough "
@@ -3730,7 +3718,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:518
+#: data/core/help.cfg:516
 msgid ""
 "Resting can be combined with other forms of healing, but villages, "
 "regeneration, healing and curing cannot combine with each other: the best "
@@ -3741,12 +3729,12 @@ msgstr ""
 "ব্যবহৃত হবে। আর শেষে, ইউনিটগুলো দৃশ্যপটগুলোর মাঝে সম্পূর্ণভাবে সেরে ওঠে।"
 
 #. [topic]: id=healing
-#: data/core/help.cfg:520
+#: data/core/help.cfg:518
 msgid "Advanced"
 msgstr "উন্নীত হবে: "
 
 #. [topic]: id=healing
-#: data/core/help.cfg:522
+#: data/core/help.cfg:520
 msgid ""
 "Unlike other forms of healing, the heals ability will not take effect on the "
 "healed unit’s turn, but on the healer’s turn. This means that while a unit "
@@ -3761,28 +3749,27 @@ msgstr ""
 "সেই মিত্র পক্ষগুলোর প্রত্যেকের দানে একবার করে চিকিৎসা পাবে।"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:528
+#: data/core/help.cfg:526
 msgid "Wrap Up"
 msgstr "উপসংহার"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:529
+#: data/core/help.cfg:527
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
-"basic strategy, or familiarize yourself with <ref "
-"dst='..traits_section'>traits</ref> and <ref "
-"dst='..abilities_section'>abilities</ref>, but you now know everything you "
-"need to know to play the <i>Heir to the Throne</i> campaign. Have fun, and "
-"good luck!"
+"basic strategy, or familiarize yourself with <ref dst='.."
+"traits_section'>traits</ref> and <ref dst='..abilities_section'>abilities</"
+"ref>, but you now know everything you need to know to play the <i>Heir to "
+"the Throne</i> campaign. Have fun, and good luck!"
 msgstr ""
 
 #. [topic]: id=license
-#: data/core/help.cfg:534
+#: data/core/help.cfg:532
 msgid "License"
 msgstr "লাইসেন্স"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:545
+#: data/core/help.cfg:543
 msgid ""
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited. The traits "
@@ -3793,7 +3780,7 @@ msgstr ""
 "পদ্ধতি কার্যকর হতে পারে।"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:547
+#: data/core/help.cfg:545
 msgid ""
 "Most units have two traits. However, goblins have only one trait, undead "
 "units are always assigned the single trait <i>undead</i> and in some cases "
@@ -3804,7 +3791,7 @@ msgstr ""
 "এবং বৃক্ষাত্মাদের কোনো বৈশিষ্ট্যই থাকে না।"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:549
+#: data/core/help.cfg:547
 msgid ""
 "The traits that are available to most non‐undead units are <ref "
 "dst='traits_intelligent'>intelligent</ref>, <ref dst='traits_quick'>quick</"
@@ -3816,7 +3803,7 @@ msgstr ""
 "<ref dst='traits_strong'>শক্তিশালী</ref> বৈশিষ্ট্যগুলি পেয়ে থাকে।"
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:551
+#: data/core/help.cfg:549
 msgid ""
 "Elves may also receive <ref dst='traits_dextrous'>dextrous</ref>, and "
 "dwarves may receive <ref dst='traits_healthy'>healthy</ref>. Trolls and "
@@ -3832,7 +3819,7 @@ msgstr ""
 "dst='traits_feral'>বন্য</ref> এবং <ref dst='traits_undead'>না-মৃত</ref>."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:559
+#: data/core/help.cfg:557
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
@@ -3841,17 +3828,17 @@ msgstr ""
 "ইউনিটদের লড়াইয়ে রক্ষণাত্মক ক্ষমতাকে প্রভাবিত করে।"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:561
+#: data/core/help.cfg:559
 msgid "Terrains come in two types: <i>basic</i> and <i>mixed</i>."
 msgstr "ভূমিরূপ দুই প্রকারের হতে পারে: <i>মূল</i> এবং <i>মিশ্র</i>."
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:563 data/core/help.cfg:596
+#: data/core/help.cfg:561 data/core/help.cfg:594
 msgid "Basic Terrain Types"
 msgstr "মূল ভূমিরূপ"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:565
+#: data/core/help.cfg:563
 msgid ""
 "Basic terrain types include Flat, Hills, Mountains, Sands, Water and Swamps. "
 "There are many more besides these — a list of the terrain types you have "
@@ -3861,7 +3848,7 @@ msgstr ""
 "আরও অনেক রয়েছে — এই পাতার শেষে সেগুলির একটি তালিকা পাওয়া যাবে।"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:568
+#: data/core/help.cfg:566
 msgid ""
 "Every unit has a defense rating and a movement cost for each of the basic "
 "terrain types, and these values are listed in the unit’s help page. Basic "
@@ -3872,12 +3859,12 @@ msgstr ""
 "আলোকিতকরণের মতো বিশেষ বৈশিষ্ট্যও থাকতে পারে।"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:570
+#: data/core/help.cfg:568
 msgid "Mixed Terrain Types"
 msgstr "মিশ্র ভূমিরূপ"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:572
+#: data/core/help.cfg:570
 msgid ""
 "Mixed terrain types share the properties of multiple basic terrain types — "
 "units generally receive the <i>best defense</i> and <i>worst movement</i> of "
@@ -3887,7 +3874,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:575
+#: data/core/help.cfg:573
 msgid ""
 "One notable exception is bridge terrains, such as <i>bridges over shallow "
 "water</i>, <i>fords</i>, and <i>bridges over chasms</i>. Fords are easily "
@@ -3898,7 +3885,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:578
+#: data/core/help.cfg:576
 msgid ""
 "Land-based villages generally give the best defense and movement as well. "
 "These villages are mixed terrains, based on the village terrain type, "
@@ -3906,7 +3893,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:581
+#: data/core/help.cfg:579
 msgid ""
 "Finally, water villages are generally inhospitable to land units, and do not "
 "give defense or movement benefits associated with the village terrain type. "
@@ -3914,7 +3901,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:584
+#: data/core/help.cfg:582
 msgid ""
 "You can see what basic types a mixed terrain is comprised of by mousing over "
 "its hex and checking the terrain type icons displayed in the upper right "
@@ -3922,7 +3909,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:586
+#: data/core/help.cfg:584
 msgid ""
 "You can see what type of behavior the mixed terrain gives by mousing over "
 "its hex and viewing the <i>terrain description</i> by either pressing the "
@@ -3930,12 +3917,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:588
+#: data/core/help.cfg:586
 msgid "Defense Caps"
 msgstr "সুরক্ষার সীমা"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:590
+#: data/core/help.cfg:588
 msgid ""
 "Some units have <i>defense caps</i> for a particular basic terrain type. "
 "These units suffer a penalty on mixed terrains with that type — their "
@@ -3943,7 +3930,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:592
+#: data/core/help.cfg:590
 msgid ""
 "For example, the <ref dst='unit_Cavalryman'>Loyalist Cavalryman</ref> has a "
 "defense rating of 30% on forests, and a defense cap for forests. Thus, on "
@@ -3952,14 +3939,14 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:594
+#: data/core/help.cfg:592
 msgid ""
 "If a unit has a defense cap for some terrain, it is always the same as its "
 "defense rating on that terrain (it cannot be larger)."
 msgstr ""
 
 #. [topic]: id=..addons
-#: data/core/help.cfg:607
+#: data/core/help.cfg:605
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -3968,24 +3955,24 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:617
+#: data/core/help.cfg:615
 msgid "Using Add-ons"
 msgstr "অ্যাড-অন ব্যবহার করা"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:618
+#: data/core/help.cfg:616
 msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:620
+#: data/core/help.cfg:618
 msgid "Campaigns and Scenarios"
 msgstr "অভিযান এবং ঘটনাক্রম"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:622
+#: data/core/help.cfg:620
 msgid ""
 "Single-player campaigns are collections of scenarios that fit together to "
 "tell a story. Both stand-alone scenarios—if intended to be played as such—"
@@ -3994,12 +3981,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:624
+#: data/core/help.cfg:622
 msgid "Multiplayer Campaigns, Scenarios, and Map Packs"
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:626
+#: data/core/help.cfg:624
 msgid ""
 "<i>Multiplayer</i> games can be played in fully customized, scripted "
 "scenarios or even specially designed campaigns. There are also packs "
@@ -4007,12 +3994,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:628
+#: data/core/help.cfg:626
 msgid "Multiplayer Eras and Factions"
 msgstr "মাল্টিপ্লেয়ার ইরা এবং ফ্যাকশনগুলি"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:630
+#: data/core/help.cfg:628
 msgid ""
 "For gameplay purposes, various races of creatures in the world cooperate "
 "with each other in factions. Factions are grouped in balanced sets with a "
@@ -4021,7 +4008,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:632
+#: data/core/help.cfg:630
 msgid ""
 "In <i>Multiplayer</i> mode, you can choose an era when creating a new game, "
 "and players can pick from the available factions for that era when setting "
@@ -4029,19 +4016,19 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:634
+#: data/core/help.cfg:632
 msgid ""
 "You can see what eras you have loaded in the <ref dst='..eras_section'>eras</"
 "ref> of the help."
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:636
+#: data/core/help.cfg:634
 msgid "Modifications"
 msgstr "পরিবর্তন"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:638
+#: data/core/help.cfg:636
 msgid ""
 "Modifications are optional scenario- and era-independent scripts that can "
 "alter the default ruleset in various ways. You can choose and configure "
@@ -4049,12 +4036,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:640
+#: data/core/help.cfg:638
 msgid "Cores"
 msgstr "কোর"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:642
+#: data/core/help.cfg:640
 msgid ""
 "Cores enable total conversion of The Battle for Wesnoth. A core can replace "
 "all the content in Wesnoth: when a different core is loaded, the regular "
@@ -4062,7 +4049,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:644
+#: data/core/help.cfg:642
 msgid ""
 "Cores allow a significantly different game experience: for example, a World "
 "War II campaign, or even a different game altogether, as long as it can be "
@@ -4070,12 +4057,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:646
+#: data/core/help.cfg:644
 msgid "Creator Resources"
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:648
+#: data/core/help.cfg:646
 msgid ""
 "Content authors can use resource packs available on the add-ons server to "
 "enrich their own content with existing assets such as images, music, and "
@@ -4085,12 +4072,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:655
+#: data/core/help.cfg:653
 msgid "Installing Add-ons"
 msgstr "অ্যাড-অন ইনস্টল করা"
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:656
+#: data/core/help.cfg:654
 msgid ""
 "User-made add-ons can be obtained and updated through the <i>Add-ons</i> "
 "option in the main menu. After connecting to the add-ons server (by default "
@@ -4115,12 +4102,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:669
+#: data/core/help.cfg:667
 msgid "Removing Add-ons"
 msgstr "অ্যাড-অন মুছে ফেলা"
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:670
+#: data/core/help.cfg:668
 msgid ""
 "To remove add-ons, choose <b>Remove Add-ons</b> in the add-ons server "
 "connection dialog. You will be presented with options to remove any number "
@@ -4133,14 +4120,14 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:685
+#: data/core/help.cfg:683
 msgid "General Commands"
 msgstr "সাধারণ কমান্ড"
 
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:686 data/core/help.cfg:733 data/core/help.cfg:773
+#: data/core/help.cfg:684 data/core/help.cfg:731 data/core/help.cfg:771
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ‘:’ (as shown here) or via the chat by prefixing them with ‘/’ (press "
@@ -4148,19 +4135,19 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:689
+#: data/core/help.cfg:687
 msgid ""
 "Similar to the ‘fps’ command, but also forces everything to redraw instead "
 "of only things that have changed."
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:692
+#: data/core/help.cfg:690
 msgid "Clear chat messages."
 msgstr "চ্যাট ম্যাসেজ পরিস্কার করুন।"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:695
+#: data/core/help.cfg:693
 msgid ""
 "Switch debug mode on (does not work in multiplayer). See <ref "
 "dst='debug_commands'>debug mode commands</ref>."
@@ -4168,12 +4155,12 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #. ':nodebug' is a command and should not be translated
-#: data/core/help.cfg:698
+#: data/core/help.cfg:696
 msgid "Debug mode is turned off by quitting the game or :nodebug."
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:701
+#: data/core/help.cfg:699
 msgid ""
 "Switch a side between human and AI control. The second parameter can be "
 "‘off’ to bring the side under human control, ‘on’ to watch the AI make its "
@@ -4183,54 +4170,54 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:704
+#: data/core/help.cfg:702
 msgid "Display the controller status of a side."
 msgstr "একটি দলের কন্ট্রোলারের অবস্থা দেখান।"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:707
+#: data/core/help.cfg:705
 msgid ""
 "Toggle the display of the current frames per second. Also writes these "
 "values to a file in the userdata directory."
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:710
+#: data/core/help.cfg:708
 msgid "Switch a log domain to a different log level."
 msgstr "লগ ডোমেইন অন্য একটি লগ লেভেলে পাল্টান।"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:713
+#: data/core/help.cfg:711
 msgid "Redraws the screen and reloads any image files that have been changed."
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:716
+#: data/core/help.cfg:714
 msgid "Bring up theme selection menu."
 msgstr "থিম পছন্দ করার মেনু খুলুন।"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:719
+#: data/core/help.cfg:717
 msgid "Quit the scenario (without prompting)."
 msgstr "ঘটনাক্রম থেকে বেরিয়ে যান (প্রম্পট না করে)।"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:722
+#: data/core/help.cfg:720
 msgid "Save the game (without prompting)."
 msgstr "খেলা সঞ্চয় করুন (প্রম্পট না করে)।"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:725
+#: data/core/help.cfg:723
 msgid "Save the game and quit the scenario (without prompting)."
 msgstr "খেলা সঞ্চয় করুন ও ঘটনাক্রম থেকে বেরিয়ে যান (প্রম্পট না করে)।"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:732
+#: data/core/help.cfg:730
 msgid "Multiplayer Commands"
 msgstr "মাল্টিপ্লেয়ার কমান্ডসমূহ"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:736
+#: data/core/help.cfg:734
 msgid ""
 "Ban a user in a multiplayer game by the IP address used by that username and "
 "kick him. Can be used on users not in the game but on the server. (Of course "
@@ -4238,7 +4225,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:739
+#: data/core/help.cfg:737
 msgid ""
 "Change the controller for side (write here the number of the side) to "
 "username (write here the nickname of the player or observer). You can check "
@@ -4248,14 +4235,14 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:742
+#: data/core/help.cfg:740
 msgid ""
 "Launch a dialog to assist the host in changing the human controllers of "
 "sides."
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:745
+#: data/core/help.cfg:743
 msgid ""
 "Toggle the idle state for a side. The host may make a side idle after a "
 "network disconnection."
@@ -4263,7 +4250,7 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #. ':control' is a command and should not be translated
-#: data/core/help.cfg:750
+#: data/core/help.cfg:748
 msgid ""
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
 "just want to change control of their side(s) use the :control command "
@@ -4271,7 +4258,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:753
+#: data/core/help.cfg:751
 msgid ""
 "Send a private message to a user. When in a game, it is not possible to send "
 "private messages to players who are currently controlling a side in the same "
@@ -4279,81 +4266,81 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:756
+#: data/core/help.cfg:754
 msgid ""
 "Mute a specific observer. If no username is supplied the muted usernames are "
 "displayed."
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:759
+#: data/core/help.cfg:757
 msgid "Toggle muting/silencing of all observers on/off."
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:762
+#: data/core/help.cfg:760
 msgid ""
 "Unban a user in a multiplayer game by the IP address used by that username. "
 "Can be used on users not in the game but on the server."
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:765
+#: data/core/help.cfg:763
 msgid ""
 "Unmute a specific observer. If no username is supplied the list of muted "
 "observers is cleared."
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:772
+#: data/core/help.cfg:770
 msgid "Debug Mode Commands"
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:776
+#: data/core/help.cfg:774
 msgid ""
 "Brings up a menu for choosing a scenario to immediately advance to in a "
 "campaign."
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:779
+#: data/core/help.cfg:777
 msgid "Create a unit of the specified type on the selected hex."
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:782
+#: data/core/help.cfg:780
 msgid "Toggle fog/shroud for the current side."
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:785
+#: data/core/help.cfg:783
 msgid "Adds the specified amount to the current side’s gold."
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:788
+#: data/core/help.cfg:786
 msgid "Immediately advances to the next scenario in a campaign."
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:791
+#: data/core/help.cfg:789
 msgid "Manually set a gamestate variable to value."
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:794
+#: data/core/help.cfg:792
 msgid "Show a gamestate variable."
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:797
+#: data/core/help.cfg:795
 msgid "Manually fire the specified event."
 msgstr ""
 
 #. [topic]: id=debug_commands
 #. The example text is a command and should not be translated.
-#: data/core/help.cfg:802
+#: data/core/help.cfg:800
 msgid ""
 "Modifies the specified property of the selected unit. Example: :unit "
 "hitpoints=100"
@@ -4361,7 +4348,7 @@ msgstr ""
 
 #. [topic]: id=debug_commands
 #. The example text is a command and should not be translated.
-#: data/core/help.cfg:807
+#: data/core/help.cfg:805
 msgid "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
 

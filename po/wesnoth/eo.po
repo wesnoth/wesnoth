@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-10-20 21:43-0500\n"
+"POT-Creation-Date: 2026-11-19 18:47-0600\n"
 "PO-Revision-Date: 2025-05-14 18:12-0300\n"
 "Last-Translator: Mariano Street <mctpyt@proton.me>\n"
 "Language-Team: Esperanto <https://wiki.wesnoth.org/Esperanto_translation>\n"
@@ -4545,8 +4545,8 @@ msgstr "nesanigebla"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3771
-#: src/scripting/game_lua_kernel.cpp:3806
+#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3770
+#: src/scripting/game_lua_kernel.cpp:3805
 msgid "input"
 msgstr "enigo"
 
@@ -7129,7 +7129,7 @@ msgid "Error while reading the WML: "
 msgstr "Eraro dum legado de WML:"
 
 #: src/game_initialization/playcampaign.cpp:210
-#: src/playsingle_controller.cpp:384
+#: src/playsingle_controller.cpp:391
 msgid "Game Over"
 msgstr "Fino de ludo"
 
@@ -8454,11 +8454,11 @@ msgid ""
 "reloaded a corrupt game."
 msgstr ""
 
-#: src/playsingle_controller.cpp:384
+#: src/playsingle_controller.cpp:391
 msgid "The game is over."
 msgstr "La ludo finiĝis."
 
-#: src/playsingle_controller.cpp:461
+#: src/playsingle_controller.cpp:468
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -8466,7 +8466,7 @@ msgstr ""
 "Retmalkonektiĝo okazis kaj ludo ne povas daŭrigi. Ĉu vi volas konseriv la "
 "ludon?"
 
-#: src/playsingle_controller.cpp:465
+#: src/playsingle_controller.cpp:472
 msgid ""
 "\n"
 "Do you want to save the game?"
@@ -8474,7 +8474,7 @@ msgstr ""
 "\n"
 "Ĉu vi volas konservi la ludon?"
 
-#: src/playsingle_controller.cpp:465
+#: src/playsingle_controller.cpp:472
 msgid ""
 "This game has been ended.\n"
 "Reason: "
@@ -8482,7 +8482,7 @@ msgstr ""
 "Ĉi tiun ludon oni finis.\n"
 "Kialo: "
 
-#: src/playsingle_controller.cpp:557
+#: src/playsingle_controller.cpp:564
 msgid "It is now $name|’s turn"
 msgstr "Nun movo de $name"
 
@@ -9510,7 +9510,7 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> atakoj povice"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> de realvoka kosto"
 
-#: src/units/unit.cpp:2566
+#: src/units/unit.cpp:2560
 msgid "$effect_description per level"
 msgstr "$effect_description ponivele"
 

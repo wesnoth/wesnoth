@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-09-21 00:25 UTC\n"
+"POT-Creation-Date: 2026-11-20 00:47 UTC\n"
 "PO-Revision-Date: 2026-11-03 19:27+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: none\n"
@@ -4224,8 +4224,8 @@ msgid ""
 "$companion_name?"
 msgstr ""
 "前提是，我们能找到他们的营地。这片废墟曾是他们一族的一座伟大城市——可即便只剩"
-"残迹，也辽阔得让我们无法搜遍。你说过你的向导会在这里和我们会合，"
-"$companion_name？"
+"残迹，也辽阔得让我们无法搜遍。你说过你的向导会在这里和我们会"
+"合，$companion_name？"
 
 #. [message]: speaker=Delfador
 #. in this string, $companion_name is male
@@ -4236,8 +4236,8 @@ msgid ""
 "This is where you said your guides would meet us, $companion_name?"
 msgstr ""
 "前提是，我们能找到他们的营地。这片废墟曾是他们一族的一座伟大城市——可即便只剩"
-"残迹，也辽阔得让我们无法搜遍。你说过你的向导会在这里和我们会合，"
-"$companion_name？"
+"残迹，也辽阔得让我们无法搜遍。你说过你的向导会在这里和我们会"
+"合，$companion_name？"
 
 #. [message]: speaker=$companion_id
 #: data/campaigns/The_Deceivers_Gambit/scenarios/08_Ruins_of_Saurgrath.cfg:377
@@ -8778,8 +8778,8 @@ msgstr ""
 #: data/campaigns/The_Deceivers_Gambit/units/Human_Delfador_L2.cfg:29
 #: data/campaigns/The_Deceivers_Gambit/units/Human_Delfador_L3.cfg:32
 #: data/campaigns/The_Deceivers_Gambit/units/Human_Delfador_L4.cfg:32
-#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Adept.cfg:31
-#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Shaman.cfg:31
+#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Adept.cfg:33
+#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Shaman.cfg:33
 #: data/campaigns/The_Deceivers_Gambit/units/Orcish_Sorceress.cfg:31
 #: data/campaigns/The_Deceivers_Gambit/units/Saurian_Devotee.cfg:45
 msgid "staff"
@@ -9079,12 +9079,14 @@ msgid "fist"
 msgstr "拳头"
 
 #. [unit_type]: id=Orcish Adept, race=orc, gender=female
-#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Adept.cfg:5
+#. in TDG and HttT, this is an exclusively female unit line which advances to Orcish Sorceress
+#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Adept.cfg:6
 msgid "Orcish Adept"
 msgstr "兽人学徒"
 
 #. [unit_type]: id=Orcish Adept, race=orc, gender=female
-#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Adept.cfg:24
+#. in TDG and HttT, this is an exclusively female unit line which advances to Orcish Sorceress
+#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Adept.cfg:26
 msgid ""
 "Female orcs with spiritual leanings may find themselves inducted into the "
 "arts of orcish sorcery. Initially called Adepts, these newly-trained orcs "
@@ -9106,20 +9108,22 @@ msgstr ""
 
 #. [attack]: type=arcane
 #. [object]
-#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Adept.cfg:40
-#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Shaman.cfg:40
+#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Adept.cfg:42
+#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Shaman.cfg:42
 #: data/campaigns/The_Deceivers_Gambit/units/Orcish_Sorceress.cfg:52
 #: data/campaigns/The_Deceivers_Gambit/utils/spellcasting.cfg:828
 msgid "siphon"
 msgstr "虹吸"
 
 #. [unit_type]: id=Orcish Shaman, race=orc, gender=female
-#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Shaman.cfg:5
+#. in TDG and HttT, this is an exclusively female unit line which advances to Orcish Sorceress
+#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Shaman.cfg:6
 msgid "Orcish Shaman"
 msgstr "兽人萨满"
 
 #. [unit_type]: id=Orcish Shaman, race=orc, gender=female
-#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Shaman.cfg:24
+#. in TDG and HttT, this is an exclusively female unit line which advances to Orcish Sorceress
+#: data/campaigns/The_Deceivers_Gambit/units/Orcish_Shaman.cfg:26
 msgid ""
 "Like most sapient races, orcs often ponder the workings of the world in "
 "which they live. Some endeavor to take this beyond idle musing, but the "

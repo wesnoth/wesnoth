@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-10-20 21:43-0500\n"
+"POT-Creation-Date: 2026-11-19 18:47-0600\n"
 "PO-Revision-Date: 2026-05-10 21:36+0200\n"
 "Last-Translator: Jarom <jaromirb@op.pl>\n"
 "Language-Team: none\n"
@@ -4623,8 +4623,8 @@ msgstr "nie leczy się"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3771
-#: src/scripting/game_lua_kernel.cpp:3806
+#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3770
+#: src/scripting/game_lua_kernel.cpp:3805
 msgid "input"
 msgstr "wprowadź dane"
 
@@ -7263,7 +7263,7 @@ msgid "Error while reading the WML: "
 msgstr "Błąd podczas wczytywania kodu WML: "
 
 #: src/game_initialization/playcampaign.cpp:210
-#: src/playsingle_controller.cpp:384
+#: src/playsingle_controller.cpp:391
 msgid "Game Over"
 msgstr "Koniec gry"
 
@@ -8565,11 +8565,11 @@ msgstr ""
 "nie wiesz dlaczego tak jest, to oznacza, że ktoś załadował uszkodzony stan "
 "gry lub próbuje oszukiwać."
 
-#: src/playsingle_controller.cpp:384
+#: src/playsingle_controller.cpp:391
 msgid "The game is over."
 msgstr "Gra się skończyła."
 
-#: src/playsingle_controller.cpp:461
+#: src/playsingle_controller.cpp:468
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
@@ -8577,7 +8577,7 @@ msgstr ""
 "Utracono połączenie sieciowe, nie można kontynuować gry. Czy chcesz zapisać "
 "grę?"
 
-#: src/playsingle_controller.cpp:465
+#: src/playsingle_controller.cpp:472
 msgid ""
 "\n"
 "Do you want to save the game?"
@@ -8585,7 +8585,7 @@ msgstr ""
 "\n"
 "Czy chcesz zapisać grę?"
 
-#: src/playsingle_controller.cpp:465
+#: src/playsingle_controller.cpp:472
 msgid ""
 "This game has been ended.\n"
 "Reason: "
@@ -8593,7 +8593,7 @@ msgstr ""
 "Gra zakończona.\n"
 "Powód: "
 
-#: src/playsingle_controller.cpp:557
+#: src/playsingle_controller.cpp:564
 msgid "It is now $name|’s turn"
 msgstr "Tura gracza $name|"
 
@@ -9569,7 +9569,7 @@ msgstr[2] "<span color=\"$color\">$number_or_percent</span> ataków na turę"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> ceny przywołania"
 
-#: src/units/unit.cpp:2566
+#: src/units/unit.cpp:2560
 msgid "$effect_description per level"
 msgstr "$effect_description na poziom"
 

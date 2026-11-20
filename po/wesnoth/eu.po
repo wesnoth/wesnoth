@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-10-20 21:43-0500\n"
+"POT-Creation-Date: 2026-11-19 18:47-0600\n"
 "PO-Revision-Date: 2005-08-23 11:08+0100\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
@@ -3953,8 +3953,8 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3771
-#: src/scripting/game_lua_kernel.cpp:3806
+#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3770
+#: src/scripting/game_lua_kernel.cpp:3805
 msgid "input"
 msgstr ""
 
@@ -6391,7 +6391,7 @@ msgid "Error while reading the WML: "
 msgstr "Errorea jokuan jolasterakoan:"
 
 #: src/game_initialization/playcampaign.cpp:210
-#: src/playsingle_controller.cpp:384
+#: src/playsingle_controller.cpp:391
 msgid "Game Over"
 msgstr "Jokua bukatu da"
 
@@ -7752,11 +7752,11 @@ msgid ""
 "reloaded a corrupt game."
 msgstr ""
 
-#: src/playsingle_controller.cpp:384
+#: src/playsingle_controller.cpp:391
 msgid "The game is over."
 msgstr "Jokua bukatu da."
 
-#: src/playsingle_controller.cpp:461
+#: src/playsingle_controller.cpp:468
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -7765,7 +7765,7 @@ msgstr ""
 "Sareko deskonexio bat gertatu da, eta jokuak ezin du jarraitu. Jokua gorde "
 "nahi duzu?"
 
-#: src/playsingle_controller.cpp:465
+#: src/playsingle_controller.cpp:472
 #, fuzzy
 #| msgid "Do you really want to delete this game?"
 msgid ""
@@ -7773,7 +7773,7 @@ msgid ""
 "Do you want to save the game?"
 msgstr "Ziur al zaude joku hau ezabatu nahi duzula?"
 
-#: src/playsingle_controller.cpp:465
+#: src/playsingle_controller.cpp:472
 #, fuzzy
 #| msgid "The game has been saved"
 msgid ""
@@ -7781,7 +7781,7 @@ msgid ""
 "Reason: "
 msgstr "Jokua gordeta"
 
-#: src/playsingle_controller.cpp:557
+#: src/playsingle_controller.cpp:564
 #, fuzzy
 msgid "It is now $name|’s turn"
 msgstr "Zure txanda"
@@ -8854,7 +8854,7 @@ msgstr[1] "txandako"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "txandako"
 
-#: src/units/unit.cpp:2566
+#: src/units/unit.cpp:2560
 msgid "$effect_description per level"
 msgstr ""
 
