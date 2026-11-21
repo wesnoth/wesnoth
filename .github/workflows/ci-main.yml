@@ -286,6 +286,13 @@ jobs:
         with:
           submodules: "recursive"
 
+      # downgrade cmake to avoid an issue with building boost-locale: https://github.com/boostorg/boost/issues/1162
+      # can hopefully be removed once we switch to boost 1.93 (not out yet)
+      - name: Install CMake 4.4.5
+        uses: lukka/get-cmake@latest
+        with:
+          cmakeVersion: 4.4.5
+
       - name: Get dependencies
         run: |
           HOMEBREW_NO_AUTO_UPDATE=1 brew install autoconf autoconf-archive automake cmake libtool scons
@@ -352,6 +359,13 @@ jobs:
           path: vcpkg_installed  # vcpkg generates this dir next to vcpkg.json
           # the final key part needs to be changed if anything in the build process changes that is not already included here
           key: win-cache-master-${{ matrix.cfg }}-${{ env.IMAGE_VERSION }}-${{ hashFiles('vcpkg.json') }}-0001
+
+      # downgrade cmake to avoid an issue with building boost-locale: https://github.com/boostorg/boost/issues/1162
+      # can hopefully be removed once we switch to boost 1.93 (not out yet)
+      - name: Install CMake 4.4.5
+        uses: lukka/get-cmake@latest
+        with:
+          cmakeVersion: 4.4.5
 
       - name: Add msbuild to PATH
         uses: microsoft/setup-msbuild@v3
