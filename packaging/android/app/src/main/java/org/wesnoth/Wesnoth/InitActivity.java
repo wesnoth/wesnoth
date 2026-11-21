@@ -757,6 +757,7 @@ public class InitActivity extends Activity {
 				}
 			}
 			
+			deleteList.delete();
 			return true;
 		} catch (IOException e) {
 			Log.e("Unpack", "Deleting " + line + " failed.");
