@@ -19,7 +19,7 @@ local skill_set = {
             id          = "skill_magic_missile",
             label       = label(_"Magic Missile"),
             image       = "attacks/magic-missile.png",
-            description = header_attack().._"Ranged 7x3 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
+            description = header_attack().._"Ranged 7×3 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
         },
         -------------------------
         -- SHIELD
@@ -62,7 +62,7 @@ local skill_set = {
             id          = "skill_chill_touch",
             label       = label(_"Chill Touch"),
             image       = "icons/chill-touch.png",
-            description = header_attack().._"Melee 6x3 cold, <i><ref dst='weaponspecial_slow'>slows</ref></i>. Replaces your default melee attack.",
+            description = header_attack().._"Melee 6×3 cold, <i><ref dst='weaponspecial_slow'>slows</ref></i>. Replaces your default melee attack.",
         },
         -------------------------
         -- LEVITATE
@@ -104,7 +104,7 @@ local skill_set = {
             id          = "skill_fireball2",
             label       = label(_"Fireball"),
             image       = "attacks/fireball.png",
-            description = header_attack().._"Ranged 8x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
+            description = header_attack().._"Ranged 8×4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
         },
         -------------------------
         -- ENERVATE
@@ -113,7 +113,7 @@ local skill_set = {
             id          = "skill_enervate",
             label       = label(_"Siphon"),
             image       = "icons/enervate.png", -- better than fireball2 vs orcs or undead, but sarians resist arcane and are vulnerable to fire. You also get this a few scenarios later than fireball2.
-            description = header_attack().._"Ranged 8x4 arcane, <i><ref dst='weaponspecial_magical'>magical</ref></i> and <i><ref dst='weaponspecial_drains'>drains</ref></i>.",
+            description = header_attack().._"Ranged 8×4 arcane, <i><ref dst='weaponspecial_magical'>magical</ref></i> and <i><ref dst='weaponspecial_drains'>drains</ref></i>.",
         },
         -------------------------
         -- BLIZZARD
@@ -170,7 +170,7 @@ local skill_set = {
             id          = "skill_fireball3",
             label       = label(_"Fireball"),
             image       = "attacks/fireball.png",
-            description = header_attack().._"Ranged 12x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
+            description = header_attack().._"Ranged 12×4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
         },
         -------------------------
         -- DANCING DAGGERS
@@ -179,7 +179,7 @@ local skill_set = {
             id          = "skill_dancing_daggers",
             label       = label(_"Dancing Daggers"),
             image       = "icons/dancing-daggers.png",
-            description = header_attack().._"Ranged 5x8 blade, <i><ref dst='weaponspecial_backstab'>backstab</ref></i>",
+            description = header_attack().._"Ranged 5×8 blade, <i><ref dst='weaponspecial_backstab'>backstab</ref></i>",
         },
         -------------------------
         -- ILLUSION
@@ -221,7 +221,7 @@ local skill_set = {
             id          = "skill_fireball4",
             label       = label(_"Fireball"),
             image       = "attacks/fireball.png",
-            description = header_attack().._"Ranged 17x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
+            description = header_attack().._"Ranged 17×4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
         },
         -------------------------
         -- LIGHTNING
@@ -230,7 +230,7 @@ local skill_set = {
             id          = "skill_lightning",
             label       = label(_"Chain Lightning"),
             image       = "attacks/lightning.png",
-            description = header_attack().._"Ranged 14x3 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>. This attack can be used multiple times on offense, but\n              consecutive uses strike one fewer time.",
+            description = header_attack().._"Ranged 14×3 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>. This attack can be used multiple times on offense, but\n              consecutive uses strike one fewer time.",
         },
         -------------------------
         -- TIME DILATION

@@ -66,8 +66,12 @@ RULES = [
      "straight single quote/apostrophe used; use ’ (U+2019) or ‘ ’"),
     ("spaced-hyphen", re.compile(r"(?:^| )--? (?=\S)|\S --?(?: |$)", re.M),
      "hyphen used as a dash; use — (U+2014) or – (U+2013)"),
-    # Damage×strikes ("7-4 fire", "19-1 ranged-cold") is written several ways
-    # at present and is deliberately left out until that is agreed.
+    # Damage×strikes uses × (U+00D7), as the game UI does: "7-4 fire" or "7x4"
+    # is reported by the damage-strikes rule below, not as a range.
+    ("damage-strikes", re.compile(r"(?<![\w.#/-])\d+ ?[-xX*] ?\d+"
+                                  r"(?=\s+(?:blade|pierce|impact|fire|cold|arcane|melee|ranged)\b)"
+                                  r"|(?<![\w.#/-])\d+[xX]\d+\b"),
+     "damage×strikes written with a hyphen or letter x; use × (U+00D7), eg 7×4"),
     ("number-range", re.compile(r"(?<![\w.#/-])\d+-\d+(?![\w-]|\.\d)"
                                 r"(?!\s+(?:blade|pierce|impact|fire|cold|arcane|melee|ranged)\b)"),
      "hyphen between numbers; use – (U+2013) for ranges"),
