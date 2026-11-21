@@ -54,7 +54,7 @@ private:
 	// The speed of auto-scrolling, specified as px/s
 	int scroll_speed_;
 
-	uint32_t last_scroll_;
+	uint64_t last_scroll_;
 };
 
 } // namespace dialogs
