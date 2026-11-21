@@ -47,11 +47,14 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.provider.Settings;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowInsets;
@@ -80,6 +83,7 @@ public class InitActivity extends Activity {
 	protected void onCreate(Bundle savedState) {
 		super.onCreate(savedState);
 		setContentView(R.layout.activity_init);
+		updateMinSizeWarning();
 
 		// Keep the screen on while this activity runs
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -354,6 +358,35 @@ public class InitActivity extends Activity {
 				});
 			}
 		});
+	}
+
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		super.onConfigurationChanged(newConfig);
+		updateMinSizeWarning();
+	}
+
+	/** Shows a warning when the window is smaller than the game's minimum size. */
+	private void updateMinSizeWarning() {
+		int w, h;
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+			Rect bounds = getWindowManager().getCurrentWindowMetrics().getBounds();
+			w = bounds.width();
+			h = bounds.height();
+		} else {
+			DisplayMetrics metrics = new DisplayMetrics();
+			getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
+			w = metrics.widthPixels;
+			h = metrics.heightPixels;
+		}
+		TextView warning = findViewById(R.id.min_size_warning);
+		if (w >= BuildConfig.MIN_WINDOW_WIDTH && h >= BuildConfig.MIN_WINDOW_HEIGHT) {
+			warning.setVisibility(View.GONE);
+			return;
+		}
+		warning.setText("Minimum resolution is " + BuildConfig.MIN_WINDOW_WIDTH + "\u00d7" + BuildConfig.MIN_WINDOW_HEIGHT
+			+ " (current " + w + "\u00d7" + h + "), you may encounter issues");
+		warning.setVisibility(View.VISIBLE);
 	}
 
 	private void launchWesnoth() {
