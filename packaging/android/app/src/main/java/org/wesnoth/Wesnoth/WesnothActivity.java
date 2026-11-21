@@ -41,7 +41,7 @@ public class WesnothActivity extends SDLActivity
 
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
 			Rect bounds = activity.getWindowManager()
-					.getMaximumWindowMetrics().getBounds();
+					.getCurrentWindowMetrics().getBounds();
 			w = bounds.width();
 			h = bounds.height();
 		} else {
@@ -55,8 +55,14 @@ public class WesnothActivity extends SDLActivity
 	}
 	
 	/**
-	 * FIXME For some reason SDL3 migration broke the resolution detection.
-	 * Workaround: calculate resolution in Java then pass it to Wesnoth.
+	 * Passes the window size to the game as its resolution (-r).
+	 *
+	 * Added during the SDL3 migration (PR #8638, "inject fullscreen resolution
+	 * from Java Activity"): on some devices nothing was clickable and part of
+	 * the screen stayed black until the resolution was detected correctly. On
+	 * Android the game's drawing size is otherwise recomputed from the real
+	 * output size and pixel scale (video::update_framebuffer), so it isn't
+	 * clear why this was needed; keep it until that's understood.
 	 */
 	@Override
 	protected String[] getArguments() {
