@@ -98,7 +98,8 @@ mouse_motion::mouse_motion(widget& owner, const dispatcher::queue_position queue
 			this,
 			std::placeholders::_2,
 			std::placeholders::_3,
-			std::placeholders::_5
+			std::placeholders::_5,
+			std::placeholders::_6
 		));
 
 	owner_.connect_signal<event::SDL_WHEEL_DOWN>(
@@ -106,7 +107,8 @@ mouse_motion::mouse_motion(widget& owner, const dispatcher::queue_position queue
 			this,
 			std::placeholders::_2,
 			std::placeholders::_3,
-			std::placeholders::_5
+			std::placeholders::_5,
+			std::placeholders::_6
 		));
 
 	owner_.connect_signal<event::SDL_WHEEL_LEFT>(
@@ -114,7 +116,8 @@ mouse_motion::mouse_motion(widget& owner, const dispatcher::queue_position queue
 			this,
 			std::placeholders::_2,
 			std::placeholders::_3,
-			std::placeholders::_5
+			std::placeholders::_5,
+			std::placeholders::_6
 		));
 
 	owner_.connect_signal<event::SDL_WHEEL_RIGHT>(
@@ -122,7 +125,8 @@ mouse_motion::mouse_motion(widget& owner, const dispatcher::queue_position queue
 			this,
 			std::placeholders::_2,
 			std::placeholders::_3,
-			std::placeholders::_5
+			std::placeholders::_5,
+			std::placeholders::_6
 		));
 
 	owner.connect_signal<event::SHOW_HELPTIP>(
@@ -205,16 +209,16 @@ void mouse_motion::signal_handler_sdl_touch_motion(
 	handled = true;
 }
 
-void mouse_motion::signal_handler_sdl_wheel(const event::ui_event event, bool& handled, const point& coordinate)
+void mouse_motion::signal_handler_sdl_wheel(const event::ui_event event, bool& handled, const point& coordinate, const point& distance)
 {
 	DBG_GUI_E << LOG_HEADER << event << ".";
 
 	if(mouse_captured_) {
 		assert(mouse_focus_);
-		owner_.fire(event, *mouse_focus_, coordinate);
+		owner_.fire(event, *mouse_focus_, coordinate, distance);
 	} else {
 		if(widget* mouse_over = owner_.find_at(coordinate, true)) {
-			owner_.fire(event, *mouse_over, coordinate);
+			owner_.fire(event, *mouse_over, coordinate, distance);
 		}
 	}
 	handled = true;

@@ -66,8 +66,8 @@ struct dispatcher_implementation
 			return queue_check(dispatcher.signal_mouse_queue_);
 		case event_category::keyboard:
 			return queue_check(dispatcher.signal_keyboard_queue_);
-		case event_category::touch_motion:
-			return queue_check(dispatcher.signal_touch_motion_queue_);
+		case event_category::touch_and_wheel_motion:
+			return queue_check(dispatcher.signal_touch_wheel_motion_queue_);
 		case event_category::touch_gesture:
 			return queue_check(dispatcher.signal_touch_gesture_queue_);
 		case event_category::notification:
