@@ -95,6 +95,13 @@ void invalidate_region(const rect& region);
 void invalidate_all();
 
 /**
+ * Redraw the entire screen in the next two frames, for a new, blank window
+ * surface. SDL can drop the first frame presented to it on Android
+ * (https://github.com/libsdl-org/SDL/issues/11324).
+ */
+void invalidate_new_surface();
+
+/**
  * Request an extra render pass.
  *
  * This is used for blur effects, which need to first render what's
