@@ -888,7 +888,7 @@ end
 function wml_actions.deprecated_message(cfg)
 	if type(cfg.level) ~= "number" or cfg.level < 1 or cfg.level > 4 then
 		local _ = wesnoth.textdomain "wesnoth"
-		wml.error(_"Invalid deprecation level (should be 1-4)")
+		wml.error(_"Invalid deprecation level (should be 1–4)")
 	end
 	wesnoth.deprecated_message(cfg.what, cfg.level, cfg.version, cfg.message or '')
 end

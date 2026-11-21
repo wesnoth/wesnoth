@@ -682,7 +682,7 @@ bool game_launcher::load_game_prompt()
 		if(e.message.empty()) {
 			gui2::show_error_message(_("The file you have tried to load is corrupt"));
 		} else {
-			gui2::show_error_message(_("The file you have tried to load is corrupt: '") + e.message + '\'');
+			gui2::show_error_message(_("The file you have tried to load is corrupt: ‘") + e.message + "’");
 		}
 
 		return false;
@@ -693,7 +693,7 @@ bool game_launcher::load_game_prompt()
 		if(e.message.empty()) {
 			gui2::show_error_message(_("File I/O Error while reading the game"));
 		} else {
-			gui2::show_error_message(_("File I/O Error while reading the game: '") + e.message + '\'');
+			gui2::show_error_message(_("File I/O Error while reading the game: ‘") + e.message + "’");
 		}
 
 		return false;
@@ -701,7 +701,7 @@ bool game_launcher::load_game_prompt()
 		if(e.message.empty()) {
 			gui2::show_error_message(_("The file you have tried to load is corrupt"));
 		} else {
-			gui2::show_error_message(_("The file you have tried to load is corrupt: '") + e.message + '\'');
+			gui2::show_error_message(_("The file you have tried to load is corrupt: ‘") + e.message + "’");
 		}
 
 		return false;
