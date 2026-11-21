@@ -42,6 +42,7 @@ end_credits::end_credits(const std::string& campaign)
 	, text_widget_(nullptr)
 	, scroll_speed_(100)
 	, last_scroll_(std::numeric_limits<uint64_t>::max())
+	, scroll_remainder_(0)
 {
 }
 
@@ -114,20 +115,20 @@ void end_credits::update()
 		return;
 	}
 
-	// Calculate how far the text should have scrolled by now, in whole pixels.
-	// The division by 1000 is to convert milliseconds to seconds.
-	const uint64_t needed_dist = (now - last_scroll_) * scroll_speed_ / 1000;
-	if(needed_dist == 0) {
-		// Wait until enough time has passed to scroll at least one pixel, otherwise
-		// high frame rates or slow speeds would never scroll at all.
-		return;
+	// Accumulate the distance due in pixel-milliseconds. Only whole pixels can be
+	// scrolled, so divide by 1000 (rounding down) and carry the remainder over to
+	// the next frame. Otherwise high frame rates or low speeds could scroll slower
+	// than intended, or not at all.
+	scroll_remainder_ += (now - last_scroll_) * scroll_speed_;
+	last_scroll_ = now;
+
+	const uint64_t needed_dist = scroll_remainder_ / 1000;
+	scroll_remainder_ %= 1000;
+
+	if(needed_dist > 0) {
+		text_widget_->set_vertical_scrollbar_item_position(
+			text_widget_->get_vertical_scrollbar_item_position() + static_cast<unsigned>(needed_dist));
 	}
-
-	text_widget_->set_vertical_scrollbar_item_position(
-		text_widget_->get_vertical_scrollbar_item_position() + static_cast<unsigned>(needed_dist));
-
-	// Only consume the time that was used, carrying the remainder over to the next frame.
-	last_scroll_ += needed_dist * 1000 / scroll_speed_;
 }
 
 void end_credits::key_press_callback(const SDL_Keycode key)

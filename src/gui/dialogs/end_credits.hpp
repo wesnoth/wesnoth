@@ -55,6 +55,9 @@ private:
 	int scroll_speed_;
 
 	uint64_t last_scroll_;
+
+	/** Scrolling that is due but less than a whole pixel, in pixel-milliseconds. */
+	uint64_t scroll_remainder_;
 };
 
 } // namespace dialogs
