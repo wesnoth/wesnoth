@@ -66,7 +66,7 @@ RULES = [
     ("backquote", re.compile(r"`"),
      "backquote (`) used; use ‘ ’ (U+2018, U+2019)"),
     ("straight-double-quote", re.compile(r'"'),
-     "straight double quote used; use “ ” (U+201C, U+201D) or ‘ ’"),
+     "straight double quote used; use “ ” (U+201C, U+201D) or ‘ ’ (U+2018, U+2019)"),
     ("straight-apostrophe", re.compile(r"'"),
      "straight single quote/apostrophe used; use ’ (U+2019) or ‘ ’"),
     ("spaced-hyphen", re.compile(r"(?:^| )--? (?=\S)|\S --?(?: |$)", re.M),
