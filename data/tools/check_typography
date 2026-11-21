@@ -44,6 +44,11 @@ EXCEPTIONS = [
     ("straight-apostrophe", "is corrupt: '"),             # game_launcher.cpp, quote
     ("straight-apostrophe", "while reading the game: '"), # closed by a later string
     ("straight-apostrophe", "Mandatory widget "),         # GUI definition error
+    ("straight-apostrophe", "Linked group '$id'"),        # GUI definition error
+    ("straight-apostrophe", "has an invalid id '$addon_id'"),  # add-on publishing
+    ("straight-apostrophe", "Unknown debug level: '"),    # debug commands
+    ("straight-apostrophe", "Unknown debug domain: '"),
+    ("straight-apostrophe", "Switched domain: '"),
     # A command to be typed literally in the console.
     ("straight-double-quote", 'Use "help all"'),
 ]
@@ -52,9 +57,11 @@ EXCEPTIONS = [
 PANGO_TAG = re.compile(r"<[^<>]*>")                    # <span color='red'>, </i>
 HELP_ATTR = re.compile(r"\b\w+='[^']*'")               # <ref>text='Orcs' dst='..race_orc'</ref>
 WML_FORMULA = re.compile(r"\$\((?:[^()]|\([^()]*\))*\)")  # $( $a - $b )
-# Straight quotes delimiting a value rather than prose, typical of error and
-# diagnostic messages: '$addon|', '$id', 'fixed_width', '..'
-QUOTED_VALUE = re.compile(r"'(?:\$[\w.]+\|?|\w+_\w+|[^\w\s']+)'")
+# Straight quotes delimiting a literal value rather than prose, typical of
+# error and diagnostic messages: 'fixed_width', '..'. Quoted placeholders such
+# as '$addon|' are still checked, since they often appear in player-visible
+# text; diagnostics that need them are listed in EXCEPTIONS.
+QUOTED_VALUE = re.compile(r"'(?:\w+_\w+|[^\w\s']+)'")
 
 RULES = [
     # rule name, pattern, message

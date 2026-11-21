@@ -705,7 +705,7 @@ bool addons_client::do_check_before_overwriting_addon(const addon_info& addon)
 	std::string text;
 	std::vector<std::string> extra_items;
 
-	text = VGETTEXT("The add-on '$addon|' is already installed and contains additional information that will be permanently lost if you continue:", symbols);
+	text = VGETTEXT("The add-on ‘$addon|’ is already installed and contains additional information that will be permanently lost if you continue:", symbols);
 	text += "\n\n";
 
 	if(pbl) {
