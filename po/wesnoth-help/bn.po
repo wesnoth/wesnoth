@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-11-19 18:47-0600\n"
-"PO-Revision-Date: 2026-11-05 14:48+0530\n"
+"PO-Revision-Date: 2026-11-19 16:08+0530\n"
 "Last-Translator: Subhraman Sarkar <sbmskmm@protonmail.com>\n"
 "Language-Team: Bengali < >\n"
 "Language: bn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 48.0\n"
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
@@ -596,12 +596,12 @@ msgstr "সূচনাকালীন অবস্থান টুল"
 msgid ""
 "Defines the side leader starting position.\n"
 "This tool sets the side leaders’ default starting locations, and named "
-"special locations. Both types of location are enabled in both <ref dst='.."
-"editor_mode_terrain'>Terrain Editor</ref> and <ref dst='.."
-"editor_mode_scenario'>Scenario Editor</ref> modes. The location names are "
-"shown as a list in the editor palette, clicking on the map will place that "
-"name on a hex, each location can only be placed on a single hex, and the "
-"editor will only allow one location per hex.\n"
+"special locations. Both types of location are enabled in both <ref "
+"dst='..editor_mode_terrain'>Terrain Editor</ref> and <ref "
+"dst='..editor_mode_scenario'>Scenario Editor</ref> modes. The location names "
+"are shown as a list in the editor palette, clicking on the map will place "
+"that name on a hex, each location can only be placed on a single hex, and "
+"the editor will only allow one location per hex.\n"
 "\n"
 "To add named special locations, click “Add” at the bottom of the editor "
 "palette, and enter the name. These names must start with a letter and may "
@@ -671,9 +671,9 @@ msgstr ""
 #: data/core/editor/help.cfg:131
 msgid ""
 "editor^<header>Movement Overlays</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
-"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/unwalkable-"
-"editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/impassable-"
+"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/"
+"unwalkable-editor.png~O(0.5))'/>\n"
 "<b>Impassable and Unwalkable</b>\n"
 "\n"
 "While easily noticeable in the editor, these are invisible in the game, so "
@@ -682,9 +682,9 @@ msgid ""
 "respectively."
 msgstr ""
 "<header>স্থানান্তর অভিলেপন</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
-"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/unwalkable-"
-"editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/impassable-"
+"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/"
+"unwalkable-editor.png~O(0.5))'/>\n"
 "<b>অনতিক্রম্য এবং হাঁটার অযোগ্য</b>\n"
 "\n"
 "এগুলো পরিমার্জকে-এ সহজেই চোখে পড়ে, কিন্তু খেলায় অদৃশ্য, তাই এগুলোর মাধ্যমে তৈরি মিশ্র "
@@ -697,9 +697,9 @@ msgstr ""
 #: data/core/editor/help.cfg:140
 msgid ""
 "editor^<header>Castle Overlays</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
-"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/keep-"
-"overlay-editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-"
+"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/"
+"keep-overlay-editor.png~O(0.5))'/>\n"
 "Adding either of these overlays to a passable hex allows units to be "
 "recruited onto a hex. The keep also allows a leader to recruit from there.\n"
 "\n"
@@ -710,10 +710,10 @@ msgid ""
 "units being recruited onto them."
 msgstr ""
 "<header>প্রাসাদ অভিলেপন</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
-"png~O(0.5))'/>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/castle/keep-overlay-editor."
-"png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-"
+"editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/castle/keep-overlay-"
+"editor.png~O(0.5))'/>\n"
 "এই দুই ওভারলের যেকোনোটি কোনো হাঁটার যোগ্য ষড়ভূজে-এ যোগ করলে ইউনিটগুলোকে ওই ষড়ভূজ-এ "
 "নিয়োগ করা যায়। দূর্গটি নেতাকে সেখান থেকে নিয়োগ করতেও দেয়।\n"
 "\n"
@@ -735,7 +735,7 @@ msgstr ""
 "<header>গ্রাম অভিলেপন</header>\n"
 "<img src='terrain/grass/green.png~BLIT(terrain/village/village-overlay-"
 "editor.png~O(0.5))'/>\n"
-"যেক‌োনো মূল ভূমিকে গ্রামে পরিণত করে, যেখান থেকে আয় এবং চিকিৎসা পাওয়া যাবে।"
+"যেকোনো মূল ভূমিকে গ্রামে পরিণত করে, যেখান থেকে আয় এবং চিকিৎসা পাওয়া যাবে।"
 
 #. [topic]: id=editor_terrain_overlays
 #. The image is an “S” on a solid black background.
@@ -893,8 +893,8 @@ msgstr "বাতিল ভূমিরূপ"
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
 #: data/core/editor/help.cfg:203
 msgid ""
-"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
-"png)'/>\n"
+"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-"
+"editor.png)'/>\n"
 "The magenta ‘D’ (for “Deprecated”).\n"
 "\n"
 "This is shown in the editor over deprecated terrain codes. Examples are:\n"
@@ -934,10 +934,10 @@ msgid ""
 "implemented in the scenario using WML’s <i>[label]</i> tag."
 msgstr ""
 "মানচিত্রে টেক্সট লেবেল বসান।\n"
-"- বাম-ক্লিক করলে নতুন লেবেল তৈরি করতে বা বিদ্যমান লেবেল সম্পাদনা করতে একটি "
+"• বাম-ক্লিক করলে নতুন লেবেল তৈরি করতে বা বিদ্যমান লেবেল সম্পাদনা করতে একটি "
 "ডায়ালগ বক্স খুলবে।\n"
-"- ডান-ক্লিক করলে লেবেল মুছে যাবে।\n"
-"- বাম মাউস বোতাম দিয়ে টেনে এনে ছাড়লে লেবেল সরানো যাবে।\n"
+"• ডান-ক্লিক করলে লেবেল মুছে যাবে।\n"
+"• বাম মাউস বোতাম দিয়ে টেনে এনে ছাড়লে লেবেল সরানো যাবে।\n"
 "\n"
 "এই টুলটি শুধুমাত্র ঘটনাক্রম মোডে পাওয়া যায়; লেবেলগুলো সিনারিওতে WML-এর <i>[label]</"
 "i> ট্যাগ ব্যবহার করে বাস্তবায়িত হয়।"
@@ -1169,12 +1169,13 @@ msgstr ""
 "\n"
 "<header>সম্পাদনার মোড</header>\n"
 "\n"
-"পরিমার্জকে দুটি কাজের মোড আছে: ভূমি মোড এবং ঘটনাক্রম মোড।<ref dst='.."
-"editor_mode_terrain'>ভূমি মোড</ref> একটি সাধারণ অঙ্কন অ্যাপ্লিকেশনের মতো, যেখানে "
-"<ref dst='editor_tool_paint'>আঁকা</ref>, <ref dst='editor_tool_fill'>পূরণ করা</"
-"ref>, <ref dst='editor_tool_select'>নির্বাচন করা (ও কপি করা)</ref> এবং <ref "
-"dst='editor_tool_paste'>বসানোর</ref> টুল আছে। নেতাদের <ref "
-"dst='editor_tool_starting'>সূচনাকালীন অবস্থান</ref> ঠিক করার টুলটিও এখানে আছে।\n"
+"পরিমার্জকে দুটি কাজের মোড আছে: ভূমি মোড এবং ঘটনাক্রম মোড।<ref "
+"dst='..editor_mode_terrain'>ভূমি মোড</ref> একটি সাধারণ অঙ্কন অ্যাপ্লিকেশনের মতো, "
+"যেখানে <ref dst='editor_tool_paint'>আঁকা</ref>, <ref "
+"dst='editor_tool_fill'>পূরণ করা</ref>, <ref dst='editor_tool_select'>নির্বাচন "
+"করা (ও কপি করা)</ref> এবং <ref dst='editor_tool_paste'>বসানোর</ref> টুল আছে। "
+"নেতাদের <ref dst='editor_tool_starting'>সূচনাকালীন অবস্থান</ref> ঠিক করার "
+"টুলটিও এখানে আছে।\n"
 "\n"
 "<ref dst='..editor_mode_scenario'>ঘটনাক্রম মোডে</ref> ভূমি মোডের টুলগুলির "
 "পাশাপাশি যোগ করা যায় <ref dst='editor_tool_label'>লেবেল</ref>, <ref "
@@ -1329,10 +1330,10 @@ msgid ""
 "The map editor saves one file when in terrain mode (a .map) or two files "
 "when in scenario mode (both a .map and a .cfg).\n"
 "\n"
-"Loading a .cfg file has different results depending on the contents of the ."
-"cfg file. For .cfg files that were created by the scenario editor, it will "
-"open the .cfg in the scenario editor. However, for .cfg files that cannot be "
-"opened by the scenario editor, the editor will attempt to find the "
+"Loading a .cfg file has different results depending on the contents of "
+"the .cfg file. For .cfg files that were created by the scenario editor, it "
+"will open the .cfg in the scenario editor. However, for .cfg files that "
+"cannot be opened by the scenario editor, the editor will attempt to find the "
 "scenario’s map data and open the corresponding .map file in terrain-only "
 "mode, as if the .map file was chosen in the file selector. It is recommended "
 "in those cases to simply load the .map file directly instead."
@@ -1535,8 +1536,8 @@ msgid ""
 "\n"
 "• <span face='monospace'>map_file=maps/01_First_Map.map</span> <i>— "
 "supported since Wesnoth 1.14</i>\n"
-"• <span face='monospace'>map_data=&quot;&#0x7B;maps/01_First_Map.map&#0x7D;"
-"&quot;</span> <i>— a WML preprocessor include</i>\n"
+"• <span face='monospace'>map_data=&quot;&#0x7B;maps/"
+"01_First_Map.map&#0x7D;&quot;</span> <i>— a WML preprocessor include</i>\n"
 "\n"
 "The <i>map_file</i> method is preferred over using a preprocessor include."
 msgstr ""
@@ -1559,8 +1560,8 @@ msgstr ""
 "\n"
 "• <span face='monospace'>map_file=maps/01_First_Map.map</span> <i>— ওয়েসনথ "
 "1.14 থেকে সমর্থিত</i>\n"
-"• <span face='monospace'>map_data=&quot;&#0x7B;maps/01_First_Map.map&#0x7D;"
-"&quot;</span> <i>— একটি ডব্লুএমএল প্রিপ্রসেসর ইনক্লুড</i>\n"
+"• <span face='monospace'>map_data=&quot;&#0x7B;maps/"
+"01_First_Map.map&#0x7D;&quot;</span> <i>— একটি ডব্লুএমএল প্রিপ্রসেসর ইনক্লুড</i>\n"
 "\n"
 "প্রিপ্রসেসর ইনক্লুড ব্যবহারের চেয়ে <i>map_file</i> পদ্ধতিটি বেশি পছন্দনীয়।"
 
@@ -1612,11 +1613,11 @@ msgstr ""
 "<header>ঘটনাক্রম এডিটর দ্বারা তৈরি ফাইল</header>\n"
 "\n"
 "ঘটনাক্রম মোডে সম্পাদক ঘটনাক্রমের তথ্য একটি .cfg ফাইল হিসেবে এবং মানচিত্রের তথ্য "
-"আলাদা একটি .map ফাইল হিসেবে সংরক্ষণ করে। এরপর ঘটনাক্রমটি map_file-এর মাধ্যমে ."
-"map ফাইলটি উল্লেখ করে। একটি .cfg ফাইল লোড করার সময় ঘটনাক্রম সম্পাদক নিজের তৈরি "
-"করা ফাইল বুঝতে পারে, কিন্তু হাতে সম্পাদনা করা ফাইলে সমস্যায় পড়তে পারে; হাতে "
-"সম্পাদনা করা অংশগুলোর জন্য <ref dst='editor_separate_events_file'>আলাদা একটি ."
-"cfg ফাইল ব্যবহার করে</ref> এই সমস্যা এড়ানো যায়।"
+"আলাদা একটি .map ফাইল হিসেবে সংরক্ষণ করে। এরপর ঘটনাক্রমটি map_file-এর "
+"মাধ্যমে .map ফাইলটি উল্লেখ করে। একটি .cfg ফাইল লোড করার সময় ঘটনাক্রম সম্পাদক "
+"নিজের তৈরি করা ফাইল বুঝতে পারে, কিন্তু হাতে সম্পাদনা করা ফাইলে সমস্যায় পড়তে পারে; "
+"হাতে সম্পাদনা করা অংশগুলোর জন্য <ref dst='editor_separate_events_file'>আলাদা "
+"একটি .cfg ফাইল ব্যবহার করে</ref> এই সমস্যা এড়ানো যায়।"
 
 #. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
@@ -2086,7 +2087,6 @@ msgstr ""
 #. [topic]: id=elensefar
 #. Geography of Elensefar area
 #: data/core/encyclopedia/geography.cfg:142
-#, fuzzy
 msgid ""
 "<header>Notable cities:</header>\n"
 "    • Elensefar: The capital, located on an island in the Great River delta, "
@@ -2096,8 +2096,8 @@ msgid ""
 msgstr ""
 "<header>উল্লেখযোগ্য শহর:</header>\n"
 "    • এলেনসেফার: রাজধানী, বিরাট নদীর মোহনার একটি দ্বীপে অবস্থিত, যদিও আশপাশের "
-"কিছু কৃষিজমি নদীর দুই পাড়েই সামান্য বিস্তৃত।    • কারসিন: ওয়েসনথ–এলেনসেফার "
-"সীমান্তের শহর, যা নিয়ে ওয়েসনথের সঙ্গে বিরোধ আছে।"
+"কিছু কৃষিজমি নদীর দুই পাড়েই সামান্য বিস্তৃত।\n"
+"    • কারসিন: ওয়েসনথ–এলেনসেফার সীমান্তের শহর, যা নিয়ে ওয়েসনথের সঙ্গে বিরোধ আছে।"
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:147
@@ -2160,7 +2160,7 @@ msgid ""
 "ref>, where these villages were located, was named the Annuvin province by "
 "men but was known by the elves as Wesmere."
 msgstr ""
-"header>উল্লেখযোগ্য শহর:</header>\n"
+"<header>উল্লেখযোগ্য শহর:</header>\n"
 "    • গ্লামড্রল: একটি ওর্ক উপজাতির রাজধানী।\n"
 "    • ওয়েসমেয়ার: কা’লিয়ানের — এল্ফ পরিষদের — অবস্থানস্থল\n"
 "    • ডোয়ার্ফ দরজা: দক্ষিণ হৃদয় পর্বতের নালগা অঞ্চলে অবস্থিত মানুষ ও ডোয়ার্ফদের মিশ্র "
@@ -2240,8 +2240,8 @@ msgstr ""
 #: data/core/encyclopedia/geography.cfg:187
 msgid ""
 "<header>Notable land features:</header>\n"
-"    • Aethenwood: The largest southern forest, home to reclusive <ref dst='.."
-"race_elf'>elves</ref>.\n"
+"    • Aethenwood: The largest southern forest, home to reclusive <ref "
+"dst='..race_elf'>elves</ref>.\n"
 "    • Vale of Blossoming Trees: An elvish vale at the southern edge of the "
 "Aethenwood. It contains the sacred Isle of Elrath.\n"
 "    • Lake Aelin: An elvish lake at the edge of their territory along the "
@@ -2744,9 +2744,9 @@ msgid ""
 "ref>, for the first time."
 msgstr ""
 "খেলার সময় মনে রাখবেন, খেলার অনেক জিনিস, যেমন স্ট্যাটাস প্যানে দেখানো তথ্য ওপর "
-"মাউস নিয়ে গেলে, প্রতিটির একটি সংক্ষিপ্ত বিবরণ দেখা যায়। <ref dst='.."
-"abilities_section'>দক্ষতার</ref> মতো নতুন উপাদানের সঙ্গে প্রথমবার পরিচিত হওয়ার "
-"সময় এটি বিশেষভাবে কাজে লাগে।"
+"মাউস নিয়ে গেলে, প্রতিটির একটি সংক্ষিপ্ত বিবরণ দেখা যায়। <ref "
+"dst='..abilities_section'>দক্ষতার</ref> মতো নতুন উপাদানের সঙ্গে প্রথমবার পরিচিত "
+"হওয়ার সময় এটি বিশেষভাবে কাজে লাগে।"
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:177
@@ -2823,6 +2823,10 @@ msgid ""
 "You may only recruit as many units as you have free hexes in your castle, "
 "and you cannot spend more gold than you actually have on recruiting."
 msgstr ""
+"আপনি যদি একটি দূর্গের ষড়ভূজে ডান-ক্লিক করে নিয়োগ নির্বাচন করেন, তবে নতুন ইউনিটটি "
+"সেই ষড়ভূজেই দেখা যাবে। অন্যথায়, এটি প্রাসাদের কাছে একটি খালি ষড়ভূজে দেখা যাবে। "
+"আপনার দূর্গে যতগুলো খালি ষড়ভূজ আছে, ততগুলো ইউনিটই আপনি নিয়োগ করতে পারবেন, এবং "
+"নিয়োগের জন্য আপনার কাছে যত স্বর্ণ আছে তার চেয়ে বেশি খরচ করতে পারবেন না।"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:202
@@ -2830,6 +2834,8 @@ msgid ""
 "Recruited units come with two random <ref dst='..traits_section'>traits</"
 "ref> which modify their statistics."
 msgstr ""
+"নিয়োগকৃত ইউনিট দুইটি এলোমেলো <ref dst='..traits_section'>বৈশিষ্ট্য</ref> নিয়ে "
+"আসে, যা তাদের পরিসংখ্যান পরিবর্তন করে।"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:204
@@ -2838,6 +2844,9 @@ msgid ""
 "Recalling costs a standard 20 gold and presents you with a list of all "
 "surviving units from previous scenarios."
 msgstr ""
+"পরবর্তী ঘটনাক্রমে, আপনি আগের যুদ্ধে বেঁচে থাকা ইউনিটদেরও পুনরায় ডেকে আনতে পারেন। "
+"পুনরায় ডেকে আনার খরচ সাধারণত ২০ স্বর্ণ, এবং এতে আগের ঘটনাক্রমগুলো থেকে বেঁচে থাকা "
+"সব ইউনিটের একটি তালিকা আপনাকে দেখানো হয়।"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:206
@@ -2862,6 +2871,9 @@ msgid ""
 "gold over from one scenario to the next. There are two aspects to this; "
 "<i>income</i> and <i>upkeep</i>."
 msgstr ""
+"ওয়েসনথে শুধু ইউনিট নিয়োগ করে লড়াই করাই যথেষ্ট নয়। আপনার স্বর্ণের দিকেও নজর রাখতে "
+"হবে, বিশেষ করে অভিযানে, যেখানে আপনি এক ঘটনাক্রম থেকে পরের ঘটনাক্রমে অতিরিক্ত "
+"স্বর্ণ নিয়ে যেতে পারেন। এ ক্ষেত্রে দুটি বিষয় গুরুত্বপূর্ণ; <i>আয়</i> এবং <i>ব্যয়</i>।"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:216
@@ -2871,6 +2883,10 @@ msgid ""
 "have ten villages, you would normally gain 12 gold each turn. Your upkeep "
 "costs are subtracted from this income, as detailed below."
 msgstr ""
+"আয় বোঝা সহজ। প্রতি দানে আপনার মৌলিক আয় ২ স্বর্ণ। আপনি যতটি গ্রাম নিয়ন্ত্রণ করেন, "
+"প্রতিটি গ্রামের জন্য প্রতি দানেয় আপনি আরও ১ স্বর্ণ পান। তাই, আপনার যদি দশটি গ্রাম "
+"থাকে, তবে সাধারণত প্রতি দানে আপনি ১২ স্বর্ণ পাবেন। নিচে বিস্তারিতভাবে দেখানো "
+"অনুযায়ী, আপনার খরচ এই ব্যয় থেকে বাদ দেওয়া হয়।"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:219
@@ -2882,6 +2898,11 @@ msgid ""
 "example, if you have twelve level one units and ten villages, you would have "
 "to pay two gold each turn in upkeep."
 msgstr ""
+"প্রতি ইউনিটের পর্যায় অনুযায়ী খরচ দিতে হয়। আপনার যতগুলি গ্রাম আছে, ততগুলি পর্যায় "
+"পর্যন্ত ইউনিট আপনি কোনো খরচ ছাড়াই রাখতে পারবেন। তবে আপনার গ্রামের সংখ্যার চেয়ে "
+"বেশি যে প্রতিটি পর্যায় থাকবে, তার জন্য প্রতি দানে ১ স্বর্ণ করে ব্যয় হবে। "
+"উদাহরণস্বরূপ, আপনার যদি বারোটি পর্যায় ১-এর ইউনিট এবং দশটি গ্রাম থাকে, তবে ব্যয় "
+"বাবদ জন্য আপনাকে প্রতি দানে ২ স্বর্ণ খরচ করতে হবে।"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:221
@@ -2890,6 +2911,8 @@ msgid ""
 "levels of units and ten villages, your resultant Income would be 10 gold per "
 "turn."
 msgstr ""
+"ব্যয় আপনায় আয় থেকে বাদ যায়, তাই আপনার যদি বারোটি পর্যায় 1-এর ইউনিট এবং দশটি "
+"গ্রাম থাকে, তবে প্রতি দানে আপনার মোট আয় 10 স্বর্ণ হবে।"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:224
@@ -2900,6 +2923,10 @@ msgid ""
 "above. The <i>Scenario Settings</i> tab of the <i>Status Table</i> dialog "
 "shows the values for the current scenario."
 msgstr ""
+"সাধারণভাবে, মৌলিক আয়, প্রতি গ্রামে প্রতি দায়ে আপনি যত স্বর্ণ পান, এবং প্রতিটি গ্রাম "
+"কতটি ইউনিট-পর্যায় সমর্থন করতে পারে—এসবই পরিবর্তনযোগ্য; তবে অভিযানে প্রায় সবসময়ই "
+"এগুলো উপরে বর্ণিত মানেই থাকে। <i>অবস্থার টেবিল</i> ডায়ালগের <i>ঘটনাক্রমের "
+"সেটিংগুলি</i> ট্যাবে বর্তমান ঘটনাক্রমের মানগুলো দেখানো হয়।"
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:231
@@ -2914,6 +2941,10 @@ msgid ""
 "<i>experience points</i> (XP). A freshly recruited unit starts with no "
 "experience points, and gains experience by fighting enemies."
 msgstr ""
+"প্রতিটি ইউনিটের নির্দিষ্ট পরিমাণ <i>জীবনসংখ্যা</i> (HP) থাকে। কোনো ইউনিটের "
+"জীবনসংখ্যা ১-এর নিচে নেমে গেলে, ইউনিটটি মারা যায়। প্রতিটি ইউনিটের নির্দিষ্ট "
+"পরিমাণ <i>অভিজ্ঞতা সংখ্যা</i> (XP)-ও থাকে। সদ্য নিয়োগ করা একটি ইউনিট কোনো "
+"অভিজ্ঞতা পয়েন্ট ছাড়াই শুরু করে, এবং শত্রুর সঙ্গে লড়াই করে অভিজ্ঞতা অর্জন করে।"
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:236
@@ -2922,6 +2953,8 @@ msgid ""
 "using two numbers (the current value and the maximum value the unit can "
 "have)."
 msgstr ""
+"জীবন এবং অভিজ্ঞতা সংখ্যা —দুটিই স্ট্যাটাস প্যানে দুটি সংখ্যা দিয়ে দেখানো হয় (বর্তমান "
+"মান এবং ইউনিটটির সর্বোচ্চ সম্ভাব্য মান)।"
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:238
@@ -2931,6 +2964,10 @@ msgid ""
 "experience bar, which turns white as the unit is about to <ref "
 "dst='advancement'>advance</ref>."
 msgstr ""
+"জীবনসংখ্যা প্রতিটি ইউনিটের পাশে থাকা একটি শক্তি-বার দিয়েও দেখানো হয়, যা সবুজ, "
+"হলুদ বা লাল হতে পারে। অন্তত ১টি অভিজ্ঞতা পয়েন্ট থাকা একটি ইউনিটের নীল অভিজ্ঞতা-"
+"বার থাকে, যা ইউনিটটি <ref dst='advancement'>উন্নীত</ref> হওয়ার কাছাকাছি এলে "
+"সাদা হয়ে যায়।"
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:245
@@ -2945,6 +2982,10 @@ msgid ""
 "combat, however, it gains much more experience — 4 for a level 0 unit, 8 for "
 "level 1, 16 for level 2, 24 for level 3, and so forth."
 msgstr ""
+"যদি দুই ইউনিটই কোনো লড়াই থেকে বেঁচে যায়, তাহলে তারা যে ইউনিটের সঙ্গে লড়ছে তার "
+"পর্যায়ের সমান সংখ্যক অভিজ্ঞতা সংখ্যা লাভ করে। তবে কোনো ইউনিট যদি লড়াইয়ে আরেকটি "
+"ইউনিটকে হত্যা করে, তাহলে সে অনেক বেশি অভিজ্ঞতা পায় — পর্যায় 0 ইউনিটের জন্য 4, "
+"পর্যায় 1-এর জন্য 8, পর্যায় 2-এর জন্য 16, পর্যায় 3-এর জন্য 24, এবং এভাবেই চলতে থাকে।"
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:248
@@ -2973,6 +3014,15 @@ msgid ""
 "for each AMLA the unit receives, and so it is usually more useful to try to "
 "advance your lower level units."
 msgstr ""
+"অধিকাংশ ইউনিটের তিনটি পর্যায় থাকে, তবে সবগুলোর তা নয়। কিছু কিছু ইউনিট (যেমন <ref "
+"dst='unit_Mage'>জাদুবিদ</ref>) চারটি পর্যায়ও পেতে পারে। কোনো ইউনিট তার সর্বোচ্চ "
+"পর্যায়ে পৌঁছে গেলে, তার জন্য একটি <i>সর্বোচ্চ পর্যায়ের পরবর্তী উন্নয়ন</i> (AMLA) "
+"উপলভ্য হতে পারে। AMLA প্রতিবার ইউনিটটি অভিজ্ঞতার লক্ষ্য পূরণ করলে তাকে পরিবর্তন "
+"করবে, কিন্তু ইউনিটটি একই পর্যায়েই থাকবে। সাধারণ AMLA প্রভাব হলো ইউনিটের সর্বোচ্চ "
+"জীবনসংখ্যা 3 বাড়ানো এবং তাকে পুরোপুরি সুস্থ করা। প্রথম AMLA সাধারণত 150 অভিজ্ঞতা "
+"অর্জনের পর পাওয়া যায় (বুদ্ধিমান ইউনিটের ক্ষেত্রে 120 অভিজ্ঞতা)। তবে প্রতিটি AMLA "
+"পাওয়ার সঙ্গে সঙ্গে পরবর্তী AMLA পাওয়া আরও কঠিন হয়ে যায়, তাই সাধারণত আপনার নিচু "
+"পর্যায়ের ইউনিটগুলোকেই উন্নীত করার চেষ্টা করা বেশি উপকারী।"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:257
@@ -2995,6 +3045,17 @@ msgid ""
 "movement. Ending a move in a village you don’t already own will also use up "
 "a unit’s movement, but will still allow it to attack."
 msgstr ""
+"<i>ব্যাটল ফর ওয়েসনথে</i> চলাচল সহজ। যে ইউনিটটি সরাতে চান, সেটিতে ক্লিক করে "
+"সেটি নির্বাচন করুন, তারপর যে ষড়ভূজে সেটিকে সরাতে চান, সেখানে ক্লিক করুন। কোনো "
+"ইউনিট নির্বাচিত থাকলে, এই দানে সে যেখানে যেতে পারে সেই সব জায়গা উজ্জ্বল দেখানো "
+"হবে, আর মানচিত্রের বাকি সব ষড়ভূজ ম্লান হয়ে যাবে। উজ্জ্বল কোনো ষড়ভূজের ওপর মাউস "
+"নিলে, সেখানে সরালে ইউনিটটির প্রতিরক্ষা মান কত হবে তা দেখাবে। ম্লান কোনো ষড়ভূজের "
+"ওপর মাউস নিলে সেখানে পৌঁছাতে কত দান লাগবে তা-ও দেখাবে, আর ক্লিক করলে ইউনিটটি "
+"এই ও পরবর্তী দানগুলোতে সবচেয়ে দ্রুত পথে সেখানে যেতে শুরু করবে। আপনি যদি প্রথমে কোনো "
+"ইউনিটের সব স্থানান্তর সংখ্যা ব্যবহার না করেন, তাহলে সেটিকে আবারও সরাতে পারেন। দুই "
+"ইউনিটের জায়গা বদলানোর সময় এটি কাজে লাগে। কোনো ইউনিট দিয়ে আক্রমণ করলে তার "
+"স্থানান্তর সংখ্যা শেষ হয়ে যায়। আপনি আগে থেকে নিজের না-থাকা কোনো গ্রামে গিয়ে দান "
+"শেষ করলেও ইউনিটটির চলাচল শেষ হয়ে যাবে, তবে সেটি তখনও আক্রমণ করতে পারবে।"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:260
@@ -3009,6 +3070,14 @@ msgid ""
 "it, selecting <b>Unit Description</b>, and then looking at <b>Terrain "
 "Modifiers</b>."
 msgstr ""
+"প্রতিটি ইউনিটের নির্দিষ্ট সংখ্যক স্থানান্তর সংখ্যা থাকে, যা নতুন কোনো ষড়ভূজে ঢোকার "
+"সময় সেই ষড়ভূজের ভূমির ওপর নির্ভর করে খরচ হয়। উদাহরণস্বরূপ, তৃণভূমিতে ঢুকতে প্রায় "
+"সবসময় ১টি স্থানান্তর সংখ্যা লাগে। কোনো ষড়ভূজে ঢোকার জন্য ঠিক কত চলাচল পয়েন্ট "
+"লাগবে, তা ইউনিটের ধরনের ওপর নির্ভর করে — বনে এল্ফ ইউনিট মাত্র ১টি স্থানান্তর "
+"সংখ্যা খরচ করে, বেশিরভাগ মানব ও ওর্ক ইউনিট ২টি খরচ করে, আর অশ্বারোহী ইউনিট ৩টি "
+"খরচ করে। কোনো নির্দিষ্ট ভূমির ধরনে ঢুকতে একটি ইউনিটের কত চলাচল পয়েন্ট লাগে তা "
+"জানতে, সেটির ওপর ডান-ক্লিক করে <b>Unit Description</b> নির্বাচন করুন, তারপর "
+"<b>Terrain Modifiers</b> দেখুন।"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:262
@@ -3020,6 +3089,12 @@ msgid ""
 "advantage is an important part of Wesnoth, as only <ref "
 "dst='ability_skirmisher'>skirmishers</ref> can ignore zones of control."
 msgstr ""
+"আরেকটি বিষয় যা চলাচলের সময় মনে রাখা দরকার তা হলো <i>নিয়ন্ত্রণের ক্ষেত্র</i>। "
+"প্রতিটি ইউনিট — স্তর ০ ইউনিট ছাড়া — নিজের চারপাশের সঙ্গে লাগোয়া ষড়ভূজগুলোতে একটি "
+"নিয়ন্ত্রণের ক্ষেত্র তৈরি করে, এবং কোনো শত্রু ইউনিট সেই ষড়ভূজগুলোতে প্রবেশ করলেই তার "
+"স্থানান্তর সংখ্যা সঙ্গে সঙ্গে শেষ হয়ে যায়। নিয়ন্ত্রণের ক্ষেত্রকে নিজের সুবিধার জন্য "
+"কীভাবে ব্যবহার করতে হয় তা শেখা ওয়েসনথের একটি গুরুত্বপূর্ণ অংশ, কারণ কেবল <ref "
+"dst='ability_skirmisher'>সংঘর্ষকরাই</ref> নিয়ন্ত্রণের ক্ষেত্র উপেক্ষা করতে পারে।"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:264
@@ -3045,6 +3120,10 @@ msgid ""
 "with unique vision capabilities deviate from this rule and have vision cost "
 "independent of movement range."
 msgstr ""
+"দৃষ্টিসীমা নির্ধারণ করে মানচিত্রে একটি ইউনিট কত দূর পর্যন্ত দেখতে পারে। সাধারণভাবে, "
+"একটি ইউনিটের দৃষ্টিসীমা সে কতগুলি ষড়ভুজ যেতে পারে তার থেকে এক বেশী ধরে গণনা করা "
+"হয়। কিছু ইউনিটের অনন্য দৃষ্টিশক্তি-ক্ষমতা এই নিয়ম থেকে ব্যতিক্রম, এবং তাদের "
+"দৃষ্টিসীমার খরচ চলাচলের পরিসরের ওপর নির্ভর করে না।"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:279
@@ -3073,11 +3152,27 @@ msgid ""
 "a manual update via <b>Update Shroud Now</b> (or the end of your turn) and "
 "thereby preserve your ability to undo movement."
 msgstr ""
+"কিছু ঘটনাক্রমে মানচিত্রের অংশ আপনার কাছে গোপন থাকবে। এখানে দুটি ব্যবস্থা আছে, "
+"যেগুলো আলাদা করে বা একসাথেও ব্যবহার করা যায়। <i>ছায়া</i> কোনো স্থানের ভূমি এবং "
+"সেখানে থাকা যেকোনো ইউনিট দুটোকেই লুকিয়ে রাখে। তবে একবার তা সরিয়ে ফেলা হলে, "
+"আপনি সবসময় সেই স্থানটি দেখতে পারবেন। <i>যুদ্ধের কুয়াশা</i> শুধু ইউনিট এবং গ্রামের "
+"মালিকানা লুকিয়ে রাখে (আপনি বা আপনার মিত্রদের ছাড়া অন্যদের)। আশপাশে আপনার ইউনিট "
+"থাকলে যুদ্ধ-কুয়াশা সাময়িকভাবে সরে যায়, কিন্তু তারা চলে গেলে আবার ফিরে আসে। ছায়া "
+"এবং যুদ্ধ-কুয়াশা — দুটিই ইউনিট দ্বারা দূর হয়। প্রতিটি ইউনিট তার এক টার্নের চলাচলের "
+"মধ্যে থাকা সংলগ্ন স্থানগুলো উন্মুক্ত করে (নিয়ন্ত্রণ-অঞ্চল ও শত্রু ইউনিট উপেক্ষা করে)।\n"
+"\n"
+"সাধারণভাবে, কোনো ইউনিটের চলাচল আপনি বাতিল করতে পারেন, যতক্ষণ না কোনো এলোমেলো "
+"ফলযুক্ত ঘটনা ঘটে—যেমন যুদ্ধ বা নিয়োগ (কারণ অধিকাংশ ইউনিট নিয়োগের সময় এলোমেলো গুণ "
+"পায়)। ছায়া বা যুদ্ধ-কুয়াশা সরিয়ে গোপন ভূমি অন্বেষণ করলেও আগের অবস্থায় ফিরিয়ে নেওয়া "
+"যাবে না। আপনি <b>Delay Shroud Updates</b> বিকল্পটি actions মেনুতে সক্রিয় করতে "
+"পারেন। এতে ইউনিটগুলো পরবর্তী এলোমেলো ঘটনা বা <b>Update Shroud Now</b> দিয়ে "
+"হাতে আপডেট করা পর্যন্ত (অথবা আপনার টার্ন শেষ হওয়া পর্যন্ত) আবরণ বা যুদ্ধ-কুয়াশা "
+"সরাবে না, ফলে চলাচল বাতিল করার ক্ষমতা বজায় থাকবে।"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:284
 msgid "<header>Multiplayer and undo</header>"
-msgstr ""
+msgstr "<header>মাল্টিপ্লেয়ার এবং আনডু</header>"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:286
@@ -3089,6 +3184,11 @@ msgid ""
 "move. Chat messages and map labels are sent immediately, however they don’t "
 "cause the undoable moves to be sent."
 msgstr ""
+"মাল্টিপ্লেয়ার খেলায়, যে চালগুলো নেটওয়ার্কে পাঠানো হয়ে গেছে সেগুলো আর বাতিল করা "
+"যায় না; তাই খেলা আপনার আনডু করার ক্ষমতা বজায় রাখতে তথ্য পাঠানো দেরি করে। "
+"সতীর্থদের সঙ্গে আলোচনা করার সময় মনে রাখবেন, অন্য খেলোয়াড়রা সাধারণত শেষ যুদ্ধ বা "
+"কুয়াশা-উন্মোচনকারী চালের সময়ের একটি স্ন্যাপশট দেখছেন। চ্যাট বার্তা এবং মানচিত্রের "
+"লেবেল সঙ্গে সঙ্গেই পাঠানো হয়, তবে এগুলো আনডু-যোগ্য চালগুলোকে পাঠিয়ে দেয় না।"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:293
@@ -3104,6 +3204,10 @@ msgid ""
 "recommend against reloading merely to try the same strategy again while "
 "hoping for better luck."
 msgstr ""
+"এলোমেলো (Random) সংখ্যা ওয়েসনথ-এর একটি অংশ; আক্রমণ ব্যর্থ হতে পারে এবং দুর্ভাগ্যের "
+"কারণে ইউনিট মরেও যেতে পারে — এটি খেলারই স্বাভাবিক অংশ। ভিন্ন কৌশল চেষ্টা করার "
+"জন্য আগের টার্নে ফিরে যাওয়া খেলা শেখার একটি অংশ, কিন্তু কেবল একই কৌশল আবার চেষ্টা "
+"করে ভাগ্য একটু ভালো পাওয়ার আশায় রিলোড করার পরামর্শ আমরা দিই না।"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:296
@@ -3114,6 +3218,11 @@ msgid ""
 "them to die about every 20 turns. So, you’ll rarely make it through a "
 "scenario without having it happen."
 msgstr ""
+"খেলার একটি চ্যালেঞ্জ হলো কীভাবে আপনার নায়কদের সুরক্ষিত রাখবেন তা বের করা। ছোট "
+"ঝুঁকিগুলো দ্রুত জমে ওঠে: যদি আপনার পাঁচটি গুরুত্বপূর্ণ ইউনিট থাকে, এবং তাদের প্রত্যেকটির "
+"প্রতি টার্নে মৃত্যুর সম্ভাবনা মাত্র ১% হয়, তাহলে আপনি প্রায় প্রতি ২০ টার্নে একজনের "
+"মারা যাওয়ার <i>আশা</i> করতে পারেন। তাই, একবারও এমন ঘটনা ছাড়া কোনো ঘটনাক্রম "
+"শেষ করা আপনার জন্য বিরলই হবে।"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:299
@@ -3125,6 +3234,11 @@ msgid ""
 "them in future scenarios. Your battle plan should distribute the risks based "
 "on which troops you want to recall later."
 msgstr ""
+"আপনার নায়ক-নন এমন ইউনিটগুলোর ক্ষেত্রেও ছোট ঝুঁকি জমে ওঠে। গল্প আর সংলাপ সাধারণত "
+"আপনার সৈন্যদের সঙ্গে কিছুটা আবেগের সম্পর্ক তৈরি করতে চাইলেও, খেলার নিয়ম আপনাকে "
+"মনে রাখতে উৎসাহ দেয় যে এটা শুধু একটি খেলা — ভবিষ্যৎ ঘটনাক্রমগুলিতে তাদের পুনরায় "
+"ডাকতে না পারা ছাড়া এসব ইউনিট মারা গেলে সাধারণত আর কোনো শাস্তি নেই। আপনার যুদ্ধ-"
+"পরিকল্পনায় কোন সৈন্যদের পরে ডাকতে চান, তার ভিত্তিতে ঝুঁকি ভাগ করে দেওয়া উচিত।"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:301
@@ -3135,6 +3249,10 @@ msgid ""
 "assuming that the player will be able to train enough troops to cope with "
 "losing some level two or level three units."
 msgstr ""
+"কঠিনতার স্তরগুলো ভারসাম্য করা হয়েছে ধরে নিয়ে যে খেলোয়াড় সেভ-লোড করবে না। "
+"মূলধারার ঘটনাক্রমে, বেশি কঠিন স্তরে সাধারণত শত্রু বেশি থাকে এবং তাই বেশি অভিজ্ঞতা "
+"সংখ্যা পাওয়া যায়; এর ফলে ভারসাম্যটি এভাবে ধরা হয় যে কিছু পর্যায় 2 বা পর্যায় 3 "
+"ইউনিট হারালেও খেলোয়াড় তা সামলানোর মতো যথেষ্ট সৈন্য প্রশিক্ষণ দিতে পারবে।"
 
 #. [topic]: id=saveload
 #: data/core/help.cfg:303
@@ -3142,6 +3260,8 @@ msgid ""
 "That said, it’s a game; the best way to play it is whichever way gives you "
 "the most enjoyment."
 msgstr ""
+"সবশেষে, এটা একটা খেলা; তাই যেভাবে খেললে আপনি সবচেয়ে বেশি আনন্দ পান, সেটাই "
+"খেলার সবচেয়ে ভালো উপায়।"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:310
@@ -3159,6 +3279,7 @@ msgid ""
 "One of the most difficult parts of Wesnoth is understanding why a scenario "
 "was lost."
 msgstr ""
+"ওয়েসনথের সবচেয়ে কঠিন দিকগুলোর একটি হলো কেন একটি ঘটনাক্রমে পরাজয় ঘটেছিল তা বোঝা।"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:315
@@ -3172,7 +3293,7 @@ msgstr ""
 #. [topic]: id=whylost
 #: data/core/help.cfg:317
 msgid "Some common reasons for losing a scenario are:"
-msgstr ""
+msgstr "একটি ঘটনাক্রম হারার কতগুলি সাধারণ কারণ হল:"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:319
@@ -3180,6 +3301,8 @@ msgid ""
 "• Playing a campaign at too high a <ref dst='..gameplay'>difficulty level</"
 "ref>. Try restarting the scenario at an easier difficulty."
 msgstr ""
+"• খুব বেশী <ref dst='..gameplay'>কঠিনতার স্তরে</ref> একটি অভিযান খেলা। সহজতর "
+"কঠিনতার স্তরে ঘটনাক্রমটি আবার শুরু করে দেখুন।"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:321
@@ -3234,6 +3357,8 @@ msgid ""
 "In addition to the common reasons, listed above, there are a few other "
 "reasons which are unlikely, though not impossible. They are:"
 msgstr ""
+"উপরে বলা সাধারণ কারণগুলি ছাড়াও আরও কতগুলি কারণ রয়েছে যেগুলির সম্ভাবনা কম, তবে "
+"অসম্ভব নয়। সেগুলি হল:"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:333
@@ -3312,7 +3437,7 @@ msgstr ""
 #. [topic]: id=combat
 #: data/core/help.cfg:351
 msgid "Order and Number of Strikes"
-msgstr ""
+msgstr "ক্রম এবং আঘাতের সংখ্যা"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:353
@@ -3431,6 +3556,8 @@ msgid ""
 "There are colored indicators above the energy bars of some units, consisting "
 "of a colored orb (and sometimes a <ref dst='crowns'>crown</ref>)."
 msgstr ""
+"কিছু ইউনিটের শক্তি-বারের উপরে রঙিন সূচক থাকে, যেখানে একটি রঙিন গোলক (এবং কখনও "
+"কখনও একটি <ref dst='crowns'>মুকুট</ref>) থাকে।"
 
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
@@ -3757,10 +3884,11 @@ msgstr "উপসংহার"
 #: data/core/help.cfg:527
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
-"basic strategy, or familiarize yourself with <ref dst='.."
-"traits_section'>traits</ref> and <ref dst='..abilities_section'>abilities</"
-"ref>, but you now know everything you need to know to play the <i>Heir to "
-"the Throne</i> campaign. Have fun, and good luck!"
+"basic strategy, or familiarize yourself with <ref "
+"dst='..traits_section'>traits</ref> and <ref "
+"dst='..abilities_section'>abilities</ref>, but you now know everything you "
+"need to know to play the <i>Heir to the Throne</i> campaign. Have fun, and "
+"good luck!"
 msgstr ""
 
 #. [topic]: id=license
@@ -7025,6 +7153,21 @@ msgstr "দৃষ্টিমূল্য"
 #: src/help/help_topic_generators.cpp:837
 msgid "Jamming Cost"
 msgstr "জ্যামিং মূল্য"
+
+#~ msgid ""
+#~ "There are two important exceptions to upkeep: units with the loyal trait "
+#~ "and leaders never incur upkeep. Units you begin the scenario with (such "
+#~ "as Delfador), or units who join you during a scenario (such as the "
+#~ "horseman in the second scenario of <i>Heir to the Throne</i>) will "
+#~ "usually have the <i>loyal</i> trait. The unit you are playing (such as "
+#~ "Konrad) will almost always be a leader."
+#~ msgstr ""
+#~ "ভরণপোষণের দুটি গুরুত্বপূর্ণ ব্যতিক্রম আছে: বিশ্বস্ত বৈশিষ্ট্যযুক্ত ইউনিট এবং দলনেতাদের "
+#~ "কখনোই খরচ লাগে না। আপনি যেসব ইউনিট দিয়ে ঘটনাক্রম শুরু করেন (যেমন ডেলফাডোর), "
+#~ "অথবা ঘটনাক্রম চলাকালে যারা আপনার দলে যোগ দেয় (যেমন <i>সিংহাসনের "
+#~ "উত্তরাধিকারীর</i>-এর দ্বিতীয় ঘটনাক্রমের ঘোড়সওয়ার), তাদের সাধারণত <i>বিশ্বস্ত</"
+#~ "i> বৈশিষ্ট্য থাকে। আপনি যে ইউনিটটি নিয়ে খেলেন (যেমন কনরাড) সেটি প্রায় সবসময়ই "
+#~ "একজন দলনেতা হবে।"
 
 #~ msgid ""
 #~ "Each year in the Wesnoth calendar is composed of 12 months. These are, in "
