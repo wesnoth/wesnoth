@@ -55,6 +55,11 @@ static lg::log_domain log_gameloaddlg{"gui/dialogs/game_load_dialog"};
 namespace gui2::dialogs
 {
 
+namespace
+{
+enum class rng_mode { normal, deterministic, biased };
+}
+
 REGISTER_DIALOG(game_load)
 
 bool game_load::execute(savegame::load_game_metadata& data)
@@ -82,9 +87,10 @@ game_load::game_load(savegame::load_game_metadata& data)
 	: modal_dialog(window_id())
 	, filename_(data.filename)
 	, save_index_manager_(data.manager)
-	, change_difficulty_(register_bool("change_difficulty", true, data.select_difficulty))
 	, show_replay_(register_bool("show_replay", true, data.show_replay))
 	, cancel_orders_(register_bool("cancel_orders", true, data.cancel_orders))
+	, difficulty_(data.difficulty)
+	, random_mode_(data.random_mode)
 	, summary_(data.summary)
 	, games_()
 	, cache_config_(game_config_manager::get()->game_config())
@@ -136,6 +142,29 @@ void game_load::pre_show()
 	display_savegame();
 }
 
+void game_load::post_show()
+{
+	if(get_retval() != retval::OK) {
+		return;
+	}
+
+	const menu_button& difficulty_menu = find_widget<menu_button>("difficulty_menu");
+	if(difficulty_menu.get_active()) {
+		difficulty_ = difficulty_menu.get_value_config()["define"].str();
+	}
+
+	const menu_button& rng_menu = find_widget<menu_button>("rng_menu");
+	if(rng_menu.get_active()) {
+		const auto mode = static_cast<rng_mode>(rng_menu.get_value());
+		random_mode_ = "";
+		if(mode == rng_mode::deterministic) {
+			random_mode_ = "deterministic";
+		} else if(mode == rng_mode::biased) {
+			random_mode_ = "biased";
+		}
+	}
+}
+
 void game_load::set_save_dir_list(menu_button& dir_list)
 {
 	const auto other_dirs = filesystem::find_other_version_saves_dirs();
@@ -157,6 +186,31 @@ void game_load::set_save_dir_list(menu_button& dir_list)
 	}
 
 	dir_list.set_values(options);
+}
+
+bool game_load::set_difficulty_list(menu_button& difficulty_menu)
+{
+	std::vector<config> options;
+
+	// If this save is attached to a campaign, load the campaign's difficulty option
+	if(const auto campaign = cache_config_.find_child("campaign", "id", summary_["campaign"].str())) {
+		for(const config& cfg : campaign->child_range("difficulty")) {
+			options.emplace_back("label", cfg["label"].str() + " (" + cfg["description"].str() + ")", "define", cfg["define"].str());
+		}
+	}
+
+	// If this save doesn't have difficulty options (multiplayer scenarios, add-on that's since been uninstalled, etc), show a blank option.
+	if(options.empty()) {
+		difficulty_menu.set_values({config{"label", ""}});
+		return false;
+	}
+
+	// By default, select the save's current difficulty
+	const std::size_t selected = std::distance(options.begin(),
+		utils::ranges::find(options, summary_["difficulty"].str(), [](const config& option) { return option["define"].str(); }));
+
+	difficulty_menu.set_values(options, selected < options.size() ? selected : 0);
+	return true;
 }
 
 void game_load::populate_game_list()
@@ -259,7 +313,8 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 
 	toggle_button& replay_toggle            = dynamic_cast<toggle_button&>(*show_replay_->get_widget());
 	toggle_button& cancel_orders_toggle     = dynamic_cast<toggle_button&>(*cancel_orders_->get_widget());
-	toggle_button& change_difficulty_toggle = dynamic_cast<toggle_button&>(*change_difficulty_->get_widget());
+	menu_button& difficulty_menu            = find_widget<menu_button>("difficulty_menu");
+	menu_button& rng_menu                   = find_widget<menu_button>("rng_menu");
 
 	const bool is_replay = savegame::is_replay_save(summary_);
 	const bool is_scenario_start = summary_["turn"].empty();
@@ -272,7 +327,18 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 	cancel_orders_toggle.set_active(!is_replay && !is_scenario_start);
 
 	// Changing difficulty doesn't make sense on non-start-of-scenario saves
-	change_difficulty_toggle.set_active(!is_replay && is_scenario_start);
+	const bool has_difficulties = set_difficulty_list(difficulty_menu);
+	difficulty_menu.set_active(has_difficulties && !is_replay && is_scenario_start);
+
+	// Only allow changing RNG mode on start-of-scenario save
+	rng_mode mode = rng_mode::normal;
+	if(summary_["random_mode"].str() == "deterministic") {
+		mode = rng_mode::deterministic;
+	} else if(summary_["random_mode"].str() == "biased") {
+		mode = rng_mode::biased;
+	}
+	rng_menu.set_selected(static_cast<unsigned>(mode));
+	rng_menu.set_active(!is_replay && is_scenario_start);
 }
 
 // This is a wrapper that prevents a corrupted save file (if it happens to be
@@ -309,11 +375,11 @@ void game_load::display_savegame()
 
 		toggle_button& replay_toggle            = dynamic_cast<toggle_button&>(*show_replay_->get_widget());
 		toggle_button& cancel_orders_toggle     = dynamic_cast<toggle_button&>(*cancel_orders_->get_widget());
-		toggle_button& change_difficulty_toggle = dynamic_cast<toggle_button&>(*change_difficulty_->get_widget());
 
 		replay_toggle.set_active(false);
 		cancel_orders_toggle.set_active(false);
-		change_difficulty_toggle.set_active(false);
+		find_widget<menu_button>("difficulty_menu").set_active(false);
+		find_widget<menu_button>("rng_menu").set_active(false);
 	}
 
 	// Disable Load button if nothing is selected or if the currently selected file can't be loaded
@@ -418,6 +484,19 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 			break;
 		}
 	} else {
+	}
+
+	if(campaign_type_enum == campaign_type::type::scenario && !savegame::is_replay_save(cfg_summary)) {
+		const std::string random_mode = cfg_summary["random_mode"].str();
+
+		str << "\n" << _("Combat:") << " ";
+		if(random_mode == "deterministic") {
+			str << _("Predictable RNG");
+		} else if(random_mode == "biased") {
+			str << _("Reduced RNG");
+		} else {
+			str << _("Default RNG");
+		}
 	}
 
 	if(!cfg_summary["version"].empty()) {

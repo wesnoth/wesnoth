@@ -57,7 +57,7 @@ struct load_game_metadata
 	/** Name of the savefile to be loaded (not including the directory). */
 	std::string filename = "";
 
-	/** The difficulty the save is meant to be loaded with. */
+	/** Value of the "difficulty_menu" dropdown in the load-game dialog. */
 	std::string difficulty = "";
 
 	/** State of the "show_replay" checkbox in the load-game dialog. */
@@ -66,8 +66,8 @@ struct load_game_metadata
 	/** State of the "cancel_orders" checkbox in the load-game dialog. */
 	bool cancel_orders = false;
 
-	/** State of the "change_difficulty" checkbox in the load-game dialog. */
-	bool select_difficulty = false;
+	/** Value of the "rng_menu" dropdown in the load-game dialog. */
+	utils::optional<std::string> random_mode {};
 
 	/** Summary config of the save selected in the load game dialog. */
 	config summary {};
