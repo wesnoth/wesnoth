@@ -39,27 +39,12 @@ EXCEPTIONS = [
     # These list the characters that are forbidden in file names, so the
     # straight double quote is meant literally.
     ("straight-double-quote", '" * / : < > ? \\ | ~'),
-    # Error and diagnostic messages, not held to the style guide.
-    ("straight-apostrophe", "is corrupt: '"),             # game_launcher.cpp, quote
-    ("straight-apostrophe", "while reading the game: '"), # closed by a later string
-    ("straight-apostrophe", "Linked group '$id'"),        # GUI definition error
-    ("straight-apostrophe", "has an invalid id '$addon_id'"),  # add-on publishing
-    ("straight-apostrophe", "Unknown debug level: '"),    # debug commands
-    ("straight-apostrophe", "Unknown debug domain: '"),
-    ("straight-apostrophe", "Switched domain: '"),
-    # A command to be typed literally in the console.
-    ("straight-double-quote", 'Use "help all"'),
 ]
 
 # Mark-up whose contents are not prose, removed before the character checks.
 PANGO_TAG = re.compile(r"<[^<>]*>")                    # <span color='red'>, </i>
 HELP_ATTR = re.compile(r"\b\w+='[^']*'")               # <ref>text='Orcs' dst='..race_orc'</ref>
 WML_FORMULA = re.compile(r"\$\((?:[^()]|\([^()]*\))*\)")  # $( $a - $b )
-# Straight quotes delimiting a literal value rather than prose, typical of
-# error and diagnostic messages: 'fixed_width', '..'. Quoted placeholders such
-# as '$addon|' are still checked, since they often appear in player-visible
-# text; diagnostics that need them are listed in EXCEPTIONS.
-QUOTED_VALUE = re.compile(r"'(?:\w+_\w+|[^\w\s']+)'")
 
 RULES = [
     # rule name, pattern, message
@@ -224,7 +209,7 @@ def check(msgid):
                          [excerpt(msgid, re.search(r"\^", msgid))]))
     # What the player sees: dsgettext drops everything up to the first '^'.
     text = msgid.split("^", 1)[1] if "^" in msgid else msgid
-    prose = QUOTED_VALUE.sub("", WML_FORMULA.sub("", HELP_ATTR.sub("", PANGO_TAG.sub("", text))))
+    prose = WML_FORMULA.sub("", HELP_ATTR.sub("", PANGO_TAG.sub("", text)))
     for name, pattern, message in RULES:
         target = text if name == "double-space" else prose
         if name == "comma-no-space" and ", " not in target:

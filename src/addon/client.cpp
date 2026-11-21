@@ -309,7 +309,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 	if(!addon_name_legal(id)){
 		i18n_symbols["addon_id"] = font::escape_text(id);
 		last_error_ =
-			VGETTEXT("The add-on <i>$addon_title</i> has an invalid id '$addon_id' "
+			VGETTEXT("The add-on <i>$addon_title</i> has an invalid id ‘$addon_id’ "
 				"and cannot be published.", i18n_symbols);
 		return false;
 	}
@@ -332,7 +332,7 @@ bool addons_client::upload_addon(const std::string& id, std::string& response_me
 			VGETTEXT("The add-on <i>$addon_title</i> has an invalid file or directory "
 				"name and cannot be published. "
 
-				"File or directory names may not contain '..' or end with '.' or be longer than 255 characters. "
+				"File or directory names may not contain ‘..’ or end with ‘.’ or be longer than 255 characters. "
 				"It also may not contain whitespace, control characters, or any of the following characters:\n\n&quot; * / : &lt; &gt; ? \\ | ~"
 				, i18n_symbols);
 		last_error_data_ = font::escape_text(utils::join(badnames, "\n"));
