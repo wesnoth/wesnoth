@@ -68,7 +68,7 @@ RULES = [
     ("straight-double-quote", re.compile(r'"'),
      "straight double quote used; use “ ” (U+201C, U+201D) or ‘ ’ (U+2018, U+2019)"),
     ("straight-apostrophe", re.compile(r"'"),
-     "straight single quote/apostrophe used; use ’ (U+2019) or ‘ ’"),
+     "straight single quote/apostrophe used; use ’ (U+2019) for apostrophes or ‘ ’ (U+2018, U+2019) for quotations"),
     ("spaced-hyphen", re.compile(r"(?:^| )--? (?=\S)|\S --?(?: |$)", re.M),
      "hyphen used as a dash; use — (U+2014) or – (U+2013)"),
     # Damage×strikes uses × (U+00D7), as the game UI does: "7-4 fire" or "7x4"
