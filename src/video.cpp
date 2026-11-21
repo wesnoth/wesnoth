@@ -767,7 +767,8 @@ std::vector<point> get_available_resolutions(const bool include_current)
 	std::vector<point> result;
 
 #ifdef __ANDROID__
-	result.push_back(prefs::get().resolution());
+	// The game fills the Android window, so the current draw size is the only option.
+	result.push_back(current_resolution());
 	return result;
 #endif
 
