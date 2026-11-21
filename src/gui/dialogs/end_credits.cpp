@@ -42,8 +42,6 @@ end_credits::end_credits(const std::string& campaign)
 	, text_widget_(nullptr)
 	, scroll_speed_(100)
 	, last_scroll_(std::numeric_limits<uint32_t>::max())
-	, first_idx_(0)
-	, last_idx_(first_idx_ + sliding_size_)
 {
 }
 
@@ -93,30 +91,10 @@ void end_credits::pre_show()
 	text_widget_->set_use_markup(true);
 	text_widget_->set_link_aware(false);
 
-	content_ = focus_ss.str().empty() ? ss.str() : focus_ss.str();
+	// Text shapes only render their visible part, so the whole text can go in
+	// one label without exceeding the maximum surface or texture size.
+	text_widget_->set_label(focus_ss.str().empty() ? ss.str() : focus_ss.str());
 
-	// splits the content text by newline, leaving blanks
-	// also truncates the length of the line to 200 characters
-	// 200 characters is completely arbitrary, just prevent the possibility of ridiculously wide lines
-	// NOTE: this depends on the assumption that the <span>s added above only ever wrap a single line
-	std::vector<std::string> lines = utils::split(content_, '\n', 0);
-	int i = 0;
-	for(const std::string& line : lines) {
-		if(i % lines_per_chunk_ == 0) {
-			chunks_.emplace_back();
-		}
-		std::vector<std::string>& last_chunk = chunks_[chunks_.size()-1];
-		last_chunk.emplace_back(line.size() < 200 ? line : line.substr(0, 200));
-		i++;
-	}
-
-	sliding_content_.clear();
-	for(std::size_t i = 0; i <= sliding_size_; i++){
-		sliding_content_ += utils::join(chunks_.at(i), "\n") + "\n";
-	}
-
-	//concat substring strings
-	text_widget_->set_label(sliding_content_);
 	// HACK: always hide the scrollbar, even if it's needed.
 	// This should probably be implemented as a scrollbar mode.
 	// Also, for some reason hiding the whole grid doesn't work, and the elements need to be hidden manually
@@ -144,27 +122,7 @@ void end_credits::update()
 	// The division by 1000 is to convert milliseconds to seconds.
 	unsigned int needed_dist = missed_time * scroll_speed_ / 1000;
 
-	// TODO: this doesn't allow for scrolling up again after been scrolled down
-	// only the content in the current sliding window can be scrolled up
-	if(cur_pos <= text_widget_->get_height()){
-		text_widget_->set_vertical_scrollbar_item_position(cur_pos + needed_dist);
-	} else {
-		if(first_idx_ < chunks_.size() - sliding_size_ - 1){
-			first_idx_++;
-			last_idx_ = first_idx_ + sliding_size_;
-			sliding_content_.clear();
-
-			if(last_idx_ <= chunks_.size()){
-				for(std::size_t i = first_idx_; i <= last_idx_; i++) {
-					sliding_content_ += utils::join(chunks_[i], "\n") + "\n";
-				}
-			}
-
-			// updates the sliding window
-			text_widget_->set_label(sliding_content_);
-			cur_pos = 0;
-		}
-	}
+	text_widget_->set_vertical_scrollbar_item_position(cur_pos + needed_dist);
 
 	last_scroll_ = now;
 }
