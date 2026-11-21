@@ -40,10 +40,8 @@ EXCEPTIONS = [
     # straight double quote is meant literally.
     ("straight-double-quote", '" * / : < > ? \\ | ~'),
     # Error and diagnostic messages, not held to the style guide.
-    ("number-range", "(should be 1-4)"),                  # deprecation level
     ("straight-apostrophe", "is corrupt: '"),             # game_launcher.cpp, quote
     ("straight-apostrophe", "while reading the game: '"), # closed by a later string
-    ("straight-apostrophe", "Mandatory widget "),         # GUI definition error
     ("straight-apostrophe", "Linked group '$id'"),        # GUI definition error
     ("straight-apostrophe", "has an invalid id '$addon_id'"),  # add-on publishing
     ("straight-apostrophe", "Unknown debug level: '"),    # debug commands
