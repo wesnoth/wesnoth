@@ -51,7 +51,7 @@ public class WesnothActivity extends SDLActivity
 			h = metrics.heightPixels;
 		}
 
-		return w + "x" + h;
+		return Math.max(w, h) + "x" + Math.min(w, h);
 	}
 	
 	/**
