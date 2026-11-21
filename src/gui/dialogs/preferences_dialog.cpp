@@ -105,7 +105,7 @@ preferences_dialog::preferences_dialog(const pref_constants::PREFERENCE_VIEW ini
 // Helper function to refresh resolution list
 void preferences_dialog::set_resolution_list(menu_button& res_list)
 {
-	resolutions_ = video::get_available_resolutions(true);
+	resolutions_ = video::get_available_resolutions();
 
 	std::vector<config> options;
 	for(const point& res : resolutions_) {

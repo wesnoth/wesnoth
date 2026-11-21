@@ -762,7 +762,7 @@ bool window_has_mouse_focus()
 	return window_has_flags(SDL_WINDOW_MOUSE_FOCUS);
 }
 
-std::vector<point> get_available_resolutions(const bool include_current)
+std::vector<point> get_available_resolutions()
 {
 	std::vector<point> result;
 
@@ -807,9 +807,7 @@ std::vector<point> get_available_resolutions(const bool include_current)
 		result.push_back(min_res);
 	}
 
-	if(include_current) {
-		result.push_back(current_resolution());
-	}
+	result.push_back(current_resolution());
 
 	std::sort(result.begin(), result.end());
 	result.erase(std::unique(result.begin(), result.end()), result.end());

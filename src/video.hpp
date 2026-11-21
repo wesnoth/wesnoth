@@ -120,8 +120,8 @@ bool set_resolution(const point& resolution);
 /** The current window size in desktop coordinates. */
 point current_resolution();
 
-/** Returns the list of available screen resolutions. */
-std::vector<point> get_available_resolutions(bool include_current = false);
+/** Returns the list of available screen resolutions, including the current one. */
+std::vector<point> get_available_resolutions();
 
 /** The current video driver in use, or else "<not initialized>". */
 std::string current_driver();
