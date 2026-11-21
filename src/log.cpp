@@ -63,9 +63,10 @@ class android_log_buf : public std::streambuf
 	std::string output;
 	void write() {
 		auto newline { output.find_first_of("\n") };
-		if(newline != std::string::npos) {
+		while(newline != std::string::npos) {
 			__android_log_write(ANDROID_LOG_INFO, "wesnoth", output.substr(0, newline).c_str());
 			output = output.substr(newline+1);
+			newline = output.find_first_of("\n");
 		}
 	}
 protected:
