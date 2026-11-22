@@ -246,7 +246,7 @@ bool update_framebuffer()
 		int min_scale = std::min(
 			osize.x / (pref_constants::max_window_width+1) + 1,
 			osize.y / (pref_constants::max_window_height+1) + 1);
-		scale = std::max(scale, min_scale);
+		scale = std::min(max_scale_, std::max(scale, min_scale));
 	} else {
 		scale = std::min(max_scale_, prefs::get().pixel_scale());
 	}
