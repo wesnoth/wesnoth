@@ -1,0 +1,11 @@
+--- a/glib/gnulib/meson.build
++++ b/glib/gnulib/meson.build
+@@ -315,7 +315,7 @@
+ if not gl_cv_func_frexp_works and gl_cv_func_frexp_broken_beyond_repair
+   error ('frexp() is missing or broken beyond repair, and we have nothing to replace it with')
+ endif
+-if not gl_cv_func_frexpl_works and gl_cv_func_frexpl_broken_beyond_repair
++if not gl_cv_func_frexpl_works and gl_cv_func_frexpl_broken_beyond_repair and host_machine.system() != 'darwin'
+   error ('frexpl() is missing or broken beyond repair, and we have nothing to replace it with')
+ endif
+ 

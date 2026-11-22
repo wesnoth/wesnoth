@@ -16,6 +16,9 @@ vcpkg_root=${VCPKG_ROOT:-$root_dir/projectfiles/Xcode/temp/vcpkg-ios}
 overlay_ports_root="$ios_deps_base/overlay-ports"
 gettext_overlay_port="$overlay_ports_root/gettext-libintl"
 gettext_port_patch="$manifest_root/patches/gettext-libintl-ios.patch"
+glib_overlay_port="$overlay_ports_root/glib"
+glib_port_patch="$manifest_root/patches/glib-ios.patch"
+glib_port_patch_patch="$manifest_root/patches/glib-fix-ios-frexpl.patch"
 
 sim_prefix="$ios_deps_base/${ios_sim_triplet}"
 device_prefix="$ios_deps_base/${ios_device_triplet}"
@@ -34,6 +37,15 @@ prepare_gettext_overlay() {
 	mkdir -p "$overlay_ports_root"
 	rsync -a "$vcpkg_root/ports/gettext-libintl/" "$gettext_overlay_port/"
 	git -C "$gettext_overlay_port" apply "$gettext_port_patch"
+}
+
+prepare_glib_overlay() {
+	echo "==> Preparing glib overlay from the current vcpkg port"
+	rm -rf "$glib_overlay_port"
+	mkdir -p "$overlay_ports_root"
+	rsync -a "$vcpkg_root/ports/glib/" "$glib_overlay_port/"
+	git -C "$glib_overlay_port" apply "$glib_port_patch"
+	rsync -a "$glib_port_patch_patch" "$glib_overlay_port/"
 }
 
 install_triplet() {
@@ -91,12 +103,18 @@ create_dylib_shim() {
 	empty_archive_name=$4
 	dylib_name=$5
 	archive_name=$6
+	shift 6
 
 	archive_path="$prefix_dir/lib/$archive_name"
 	if [ ! -f "$archive_path" ]; then
 		echo "Warning: missing $archive_name for shim $dylib_name, using empty archive" >&2
 		archive_path="$prefix_dir/lib/$empty_archive_name"
 	fi
+
+	extra_archives=()
+	for extra in "$@"; do
+		extra_archives+=("$prefix_dir/lib/$extra")
+	done
 
 	sdk_path=$(xcrun --sdk "$sdk_name" --show-sdk-path)
 	clang_bin=$(xcrun --sdk "$sdk_name" -f clang)
@@ -109,6 +127,7 @@ create_dylib_shim() {
 		"$min_flag" \
 		-Wl,-all_load \
 		"$archive_path" \
+		"${extra_archives[@]}" \
 		-Wl,-undefined,dynamic_lookup \
 		-install_name "@rpath/$dylib_name" \
 		-o "$prefix_dir/lib/$dylib_name"
@@ -165,9 +184,9 @@ create_all_shims_for_prefix() {
 	create_dylib_shim "$prefix_dir" "$sdk_name" "$min_flag" "$empty_archive_name" "libpixman-1.0.dylib" "libpixman-1.a"
 	create_dylib_shim "$prefix_dir" "$sdk_name" "$min_flag" "$empty_archive_name" "libpng16.16.dylib" "libpng16.a"
 	create_dylib_shim "$prefix_dir" "$sdk_name" "$min_flag" "$empty_archive_name" "libreadline.8.2.dylib" "libreadline.a"
-	create_dylib_shim "$prefix_dir" "$sdk_name" "$min_flag" "$empty_archive_name" "libSDL2-2.0.0.dylib" "libSDL2.a"
-	create_dylib_shim "$prefix_dir" "$sdk_name" "$min_flag" "$empty_archive_name" "libSDL2_image-2.0.0.dylib" "libSDL2_image.a"
-	create_dylib_shim "$prefix_dir" "$sdk_name" "$min_flag" "$empty_archive_name" "libSDL2_mixer-2.0.0.dylib" "libSDL2_mixer.a"
+	create_dylib_shim "$prefix_dir" "$sdk_name" "$min_flag" "$empty_archive_name" "libSDL3.dylib" "libSDL3.a"
+	create_dylib_shim "$prefix_dir" "$sdk_name" "$min_flag" "$empty_archive_name" "libSDL3_image.dylib" "libSDL3_image.a" "libwebpmux.a" "libwebpdemux.a" "libwebp.a" "libsharpyuv.a" "libjpeg.a" "libpng16.a" "libz.a"
+	create_dylib_shim "$prefix_dir" "$sdk_name" "$min_flag" "$empty_archive_name" "libSDL3_mixer.dylib" "libSDL3_mixer.a" "libvorbisfile.a" "libvorbis.a" "libogg.a"
 	create_dylib_shim "$prefix_dir" "$sdk_name" "$min_flag" "$empty_archive_name" "libsharpyuv.0.dylib" "libsharpyuv.a"
 	create_dylib_shim "$prefix_dir" "$sdk_name" "$min_flag" "$empty_archive_name" "libssl.1.1.dylib" "libssl.a"
 	create_dylib_shim "$prefix_dir" "$sdk_name" "$min_flag" "$empty_archive_name" "libvorbis.0.dylib" "libvorbis.a"
@@ -183,7 +202,7 @@ build_prefix() {
 	sdk_name=$3
 	min_flag=$4
 
-	install_triplet "$triplet_name"
+	install_triplet "$triplet_name" || exit
 	sync_prefix_from_vcpkg "$triplet_name" "$prefix_dir"
 
 	empty_archive=$(create_empty_archive_for_prefix "$prefix_dir" "$sdk_name" "$min_flag")
@@ -212,7 +231,8 @@ if [ ! -f "$gettext_port_patch" ]; then
 	exit 1
 fi
 
-prepare_gettext_overlay
+prepare_gettext_overlay || exit
+prepare_glib_overlay || exit
 
 if [ "$ios_build_simulator_deps" = "1" ]; then
 	build_prefix "$ios_sim_triplet" "$sim_prefix" "iphonesimulator" "-mios-simulator-version-min=${ios_deployment_target}"
@@ -224,8 +244,8 @@ fi
 
 if [ "$ios_build_simulator_deps" = "1" ]; then
 	echo "==> Linking convenience simulator include/lib symlinks"
-	ln -sfn "temp/iOSCompileStuff-${ios_tag}/${ios_sim_triplet}/include" "$root_dir/projectfiles/Xcode/Headers.iOS"
-	ln -sfn "temp/iOSCompileStuff-${ios_tag}/${ios_sim_triplet}/lib" "$root_dir/projectfiles/Xcode/lib.iOS"
+	ln -sfn "temp/iOSCompileStuff-${ios_tag}/${ios_sim_triplet}/include" "$root_dir/projectfiles/Xcode/Headers.sim"
+	ln -sfn "temp/iOSCompileStuff-${ios_tag}/${ios_sim_triplet}/lib" "$root_dir/projectfiles/Xcode/lib.sim"
 fi
 
 if [ "$ios_build_device_deps" = "1" ]; then
@@ -236,12 +256,12 @@ fi
 
 if [ "$ios_activate_xcode_links" = "1" ]; then
 	echo "==> Activating iOS dependency symlinks for the Xcode project"
-	if [ "$ios_build_simulator_deps" = "1" ]; then
-		ln -sfn "temp/iOSCompileStuff-${ios_tag}/${ios_sim_triplet}/include" "$root_dir/projectfiles/Xcode/Headers"
-		ln -sfn "temp/iOSCompileStuff-${ios_tag}/${ios_sim_triplet}/lib" "$root_dir/projectfiles/Xcode/lib"
-	elif [ "$ios_build_device_deps" = "1" ]; then
-		ln -sfn "temp/iOSCompileStuff-${ios_tag}/${ios_device_triplet}/include" "$root_dir/projectfiles/Xcode/Headers"
-		ln -sfn "temp/iOSCompileStuff-${ios_tag}/${ios_device_triplet}/lib" "$root_dir/projectfiles/Xcode/lib"
+	if [ "$ios_build_device_deps" = "1" ]; then
+		ln -sfnv Headers.device "$root_dir/projectfiles/Xcode/Headers"
+		ln -sfnv lib.device "$root_dir/projectfiles/Xcode/lib"
+	elif [ "$ios_build_simulator_deps" = "1" ]; then
+		ln -sfnv Headers.sim "$root_dir/projectfiles/Xcode/Headers"
+		ln -sfnv lib.sim "$root_dir/projectfiles/Xcode/lib"
 	fi
 fi
 

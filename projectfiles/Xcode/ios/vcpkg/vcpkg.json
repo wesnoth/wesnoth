@@ -1,11 +1,11 @@
 {
   "name": "wesnoth-ios-deps",
   "version": "0.0.1",
-  "builtin-baseline": "96fb8cef5522c747f34006fc5c34a0bf6a4b4d28",
+  "builtin-baseline": "93ad765c7b66ab9ce97469ec23a90b15c3a14ee5",
   "dependencies": [
-    "sdl2",
-    { "name": "sdl2-image", "features": ["libjpeg-turbo", "libwebp"] },
-    "sdl2-mixer",
+    "sdl3",
+    { "name": "sdl3-image", "features": ["jpeg", "png", "webp"] },
+    "sdl3-mixer",
     "libwebp",
     "libvorbis",
     "libogg",
