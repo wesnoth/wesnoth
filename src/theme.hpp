@@ -284,6 +284,11 @@ public:
 
 	events::generic_event& theme_reset_event() { return theme_reset_event_; }
 
+	const config& cfg() const
+	{
+		return *cfg_;
+	}
+
 private:
 	theme::object& find_element(const std::string& id);
 	void add_object(std::size_t sw, std::size_t sh, const config& cfg);
