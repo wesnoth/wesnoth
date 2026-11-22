@@ -14,7 +14,7 @@ need_cmd() {
 
 need_cmd xcodebuild
 need_cmd xcrun
-need_cmd rg
+need_cmd grep
 
 if [ -z "$log_file" ]; then
 	log_file=$(mktemp -t wesnoth-ios-link-audit.XXXXXX.log)
@@ -46,16 +46,16 @@ fi
 
 echo
 echo "==> First linker errors"
-rg -n "ld: |clang\\+\\+: error: linker command failed" "$log_file" | head -n 12 || echo "(no linker error lines found)"
+grep -Fn -e 'ld: ' -e 'clang++: error: linker command failed' "$log_file" | head -n 12 || echo "(no linker error lines found)"
 
 echo
 echo "==> Link command markers"
-if rg -q " -framework Cocoa " "$log_file"; then
+if grep -q " -framework Cocoa " "$log_file"; then
 	echo "found: -framework Cocoa"
 else
 	echo "missing: -framework Cocoa"
 fi
-if rg -q " -lcurl " "$log_file"; then
+if grep -q " -lcurl " "$log_file"; then
 	echo "found: -lcurl"
 else
 	echo "missing: -lcurl"

@@ -1,0 +1,10 @@
+--- a/portfile.cmake	2026-11-22 12:17:32
++++ b/portfile.cmake	2026-11-22 12:50:47
+@@ -18,6 +18,7 @@
+     PATCHES
+         use-libiconv-on-windows.patch
+         libintl.patch
++		glib-fix-ios-frexpl.patch
+ )
+ 
+ set(LANGUAGES C CXX)
