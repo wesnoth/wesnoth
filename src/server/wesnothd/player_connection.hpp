@@ -89,14 +89,22 @@ struct game_t {};
 
 namespace bmi = boost::multi_index;
 
-using player_connections = bmi::multi_index_container<player_record, bmi::indexed_by<
-	bmi::ordered_unique<bmi::tag<socket_t>,
-		bmi::const_mem_fun<player_record, const any_socket_ptr, &player_record::socket>>,
-	bmi::hashed_unique<bmi::tag<name_t>,
-		bmi::const_mem_fun<player_record, const std::string&, &player_record::name>>,
-	bmi::ordered_non_unique<bmi::tag<game_t>,
-		bmi::const_mem_fun<player_record, int, &player_record::game_id>>
->>;
+// Key extraction declarations for use by key-based indices to obtain the indexing keys from the elements of the multi_index_container.
+// const_mem_fun is a Key Extractor returning as key the result of invoking a given constant member function of a class.
+using extract_by_socket = bmi::const_mem_fun<player_record, const any_socket_ptr, &player_record::socket>;
+using extract_by_name   = bmi::const_mem_fun<player_record, const std::string&,   &player_record::name>;
+using extract_by_game   = bmi::const_mem_fun<player_record, int,                  &player_record::game_id>;
+
+// Index declarations with assigned tags for easier access.
+using index_by_socket = bmi::ordered_unique<bmi::tag<socket_t>, extract_by_socket>;
+using index_by_name   = bmi::hashed_unique<bmi::tag<name_t>, extract_by_name>;
+using index_by_game   = bmi::ordered_non_unique<bmi::tag<game_t>, extract_by_game>;
+
+using player_connections = boost::multi_index_container<player_record, bmi::indexed_by<index_by_socket, index_by_name, index_by_game>>;
+
+typedef player_connections::index<socket_t>::type player_by_socket;
+typedef player_connections::index<name_t>  ::type player_by_name;
+typedef player_connections::index<game_t>  ::type player_by_game;
 
 typedef player_connections::const_iterator player_iterator;
 
