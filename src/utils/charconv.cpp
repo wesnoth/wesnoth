@@ -53,7 +53,7 @@ namespace utils::charconv
 		// Make a copy to make sure its null terminated.
 		std::string buffer = std::string(first, last);
 		// from_chars doesnt support leading whitespace or plus signs.
-		if(buffer.empty() || std::isspace(buffer.front()) || buffer.front() == '+' ) {
+		if(buffer.empty() || utils::portable_isspace(buffer.front()) || buffer.front() == '+' ) {
 			return { first, std::errc::invalid_argument };
 		}
 

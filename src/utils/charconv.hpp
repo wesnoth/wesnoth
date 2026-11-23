@@ -14,13 +14,14 @@
 
 #pragma once
 
+#include "serialization/string_utils.hpp"
+#include "utils/optional_fwd.hpp"
+
 #include <boost/version.hpp>
 
 #include <array>
 #include <assert.h>
-#include <cctype>
 #include <charconv>
-#include "utils/optional_fwd.hpp"
 #include <string_view>
 #include <string>
 #include <stdexcept>
@@ -85,7 +86,7 @@ namespace utils
 	// from_chars doesnt support leading whitespaces, call this before from_chars if you want to accept leading whitespaces.
 	inline void trim_for_from_chars(std::string_view& v)
 	{
-		while(!v.empty() && std::isspace(v.front())) {
+		while(!v.empty() && utils::portable_isspace(v.front())) {
 			v.remove_prefix(1);
 		}
 		if(v.size() >= 2 && v[0] == '+' && v[1] != '-' ) {

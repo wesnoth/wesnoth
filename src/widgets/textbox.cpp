@@ -101,7 +101,7 @@ void textbox::append_text(const std::string& text, bool auto_scroll, const color
 	}
 
 	//disallow adding multi-line text to a single-line text box
-	if(wrap_ == false && std::find_if(text.begin(),text.end(),utils::isnewline) != text.end()) {
+	if(wrap_ == false && std::find_if(text.begin(),text.end(),utils::portable_isnewline) != text.end()) {
 		return;
 	}
 
@@ -559,7 +559,7 @@ bool textbox::handle_key_down(const SDL_Event &event)
 				std::string str = desktop::clipboard::copy_from_clipboard();
 
 				//cut off anything after the first newline
-				str.erase(std::find_if(str.begin(),str.end(),utils::isnewline),str.end());
+				str.erase(std::find_if(str.begin(),str.end(),utils::portable_isnewline),str.end());
 
 				std::u32string s = unicode_cast<std::u32string>(str);
 

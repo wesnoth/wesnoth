@@ -15,7 +15,8 @@
 
 #include "formula/tokenizer.hpp"
 
-#include <locale>
+#include "serialization/string_utils.hpp"
+
 #include <sstream>
 
 namespace wfl
@@ -50,8 +51,7 @@ token get_token(iterator& i1, const iterator i2) {
 		// check if we parse now token_type::identifier or token_type::operator_token/keyword based on string
 		if( *i1 <= 'Z' || ( *i1 >= 'a' && *it <= 'z' ) || *i1 == '_' ) {
 
-			while(i1 != i2 && (std::isalpha(*i1, std::locale::classic()) || *i1 == '_'))
-				++i1;
+			while(i1 != i2 && (utils::portable_isalpha(*i1) || *i1 == '_')) ++i1;
 
 			int diff = i1 - it;
 			token_type t = token_type::identifier;

@@ -35,7 +35,6 @@
 #include <boost/range/algorithm_ext/erase.hpp>
 
 #include <array>
-#include <locale>
 #include <vector>
 
 static lg::log_domain log_config("config");
@@ -1483,7 +1482,7 @@ void unit_type::check_id(std::string& id)
 
 	for(std::size_t pos = 0; pos < id.size(); ++pos) {
 		const char c = id[pos];
-		const bool valid = std::isalnum(c, std::locale::classic()) || c == '_' || c == ' ';
+		const bool valid = utils::portable_isalnum(c) || c == '_' || c == ' ';
 
 		if(!valid) {
 			if(!gave_warning) {

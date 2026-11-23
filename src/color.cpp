@@ -71,7 +71,7 @@ color_t color_t::from_hex_string(std::string_view c)
 		throw std::invalid_argument("Color hex string should be exactly 6 digits (leading '#' optional)");
 	}
 
-	if(std::any_of(c.begin(), c.end(), [](const char& ch) { return std::isxdigit(ch) == 0; })) {
+	if(std::any_of(c.begin(), c.end(), [](const char& ch) { return utils::portable_isxdigit(ch) == 0; })) {
 		throw std::invalid_argument("Color hex string contains invalid characters");
 	}
 

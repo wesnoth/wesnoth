@@ -16,6 +16,7 @@
 #include "scripting/lua_color.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/push_check.hpp"
+#include "serialization/string_utils.hpp"
 #include "log.hpp"
 #include "game_config.hpp"
 
@@ -135,7 +136,7 @@ static int impl_colors_table_dir(lua_State* L)
 {
 	std::vector<std::string> all_colours;
 	for(const auto& [key, value] : game_config::team_rgb_range) {
-		if(std::all_of(key.begin(), key.end(), [](char c) {return isdigit(c);})) {
+		if(std::all_of(key.begin(), key.end(), [](char c) {return utils::portable_isdigit(c);})) {
 			// These colors are deprecated, don't show them
 			continue;
 		}

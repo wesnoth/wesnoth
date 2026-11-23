@@ -39,26 +39,6 @@ static lg::log_domain log_engine("engine");
 
 namespace utils {
 
-bool isnewline(const char c)
-{
-	return c == '\r' || c == '\n';
-}
-
-// Make sure that we can use Mac, DOS, or Unix style text files on any system
-// and they will work, by making sure the definition of whitespace is consistent
-bool portable_isspace(const char c)
-{
-	// returns true only on ASCII spaces
-	return c == '\r' || c == '\n' || c == ' ' || c == '\t' || c == '\v' || c == '\f';
-}
-
-// Make sure we regard '\r' and '\n' as a space, since Mac, Unix, and DOS
-// all consider these differently.
-bool notspace(const char c)
-{
-	return !portable_isspace(c);
-}
-
 void trim(std::string_view& s)
 {
 	s.remove_prefix(std::min(s.find_first_not_of(" \t\r\n"), s.size()));
@@ -624,7 +604,7 @@ static bool is_wildcard_char(char c) {
 }
 
 bool isvalid_username(const std::string& username) {
-	const std::size_t alnum = std::count_if(username.begin(), username.end(), isalnum);
+	const std::size_t alnum = std::count_if(username.begin(), username.end(), portable_isalnum);
 	const std::size_t valid_char =
 			std::count_if(username.begin(), username.end(), is_username_char);
 	if ((alnum + valid_char != username.size())
@@ -636,7 +616,7 @@ bool isvalid_username(const std::string& username) {
 }
 
 bool isvalid_wildcard(const std::string& username) {
-	const std::size_t alnum = std::count_if(username.begin(), username.end(), isalnum);
+	const std::size_t alnum = std::count_if(username.begin(), username.end(), portable_isalnum);
 	const std::size_t valid_char =
 		std::count_if(username.begin(), username.end(), is_username_char);
 	const std::size_t wild_char =

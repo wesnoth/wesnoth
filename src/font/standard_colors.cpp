@@ -17,6 +17,7 @@
 
 #include "color.hpp"
 #include "gui/core/log.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <algorithm>
 #include <pango/pango-color.h>
@@ -45,9 +46,7 @@ color_t string_to_color(const std::string& color_str)
 	std::string cstr = color_str;
 	// Hex rrggbb string with no leading '#'.
 	// Pango can't deal with this, so we prepend '#'.
-	if(cstr.size() == 6
-		&& std::all_of(cstr.begin(), cstr.end(), [](int i) { return isxdigit(i); }))
-	{
+	if(cstr.size() == 6 && std::all_of(cstr.begin(), cstr.end(), [](int i) { return utils::portable_isxdigit(i); })) {
 		cstr = '#' + cstr;
 	}
 

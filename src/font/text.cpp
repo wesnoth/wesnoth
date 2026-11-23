@@ -287,7 +287,7 @@ std::vector<std::pair<point, int>> pango_text::get_line_spans(const unsigned sta
 
 		// Leave out the whitespace where the line wraps. Only ASCII whitespace is checked;
 		// the last byte of a multi-byte character is never ASCII.
-		while(span_end > span_start && std::isspace(static_cast<unsigned char>(text[span_end - 1]))) {
+		while(span_end > span_start && utils::portable_isspace(text[span_end - 1])) {
 			--span_end;
 		}
 

@@ -283,7 +283,7 @@ ter_map read_game_map(std::string_view str, starting_positions& starting_positio
 	int x = 0, y = 0, width = 0;
 
 	// Skip the leading newlines
-	while(!str.empty() && utils::isnewline(str.front())) {
+	while(!str.empty() && utils::portable_isnewline(str.front())) {
 		str.remove_prefix(1);
 	}
 
@@ -323,7 +323,7 @@ ter_map read_game_map(std::string_view str, starting_positions& starting_positio
 		result.get(x, y) = tile;
 
 		// Evaluate the separator
-		if(pos_separator == std::string::npos || utils::isnewline(str[pos_separator])) {
+		if(pos_separator == std::string::npos || utils::portable_isnewline(str[pos_separator])) {
 			// the first line we set the with the other lines we check the width
 			if(y == 0) {
 				// x contains the offset in the map
@@ -351,7 +351,7 @@ ter_map read_game_map(std::string_view str, starting_positions& starting_positio
 
 				offset = pos_separator + 1;
 				// Skip the following newlines
-				while(offset < str.length() && utils::isnewline(str[offset])) {
+				while(offset < str.length() && utils::portable_isnewline(str[offset])) {
 					++offset;
 				}
 			}
@@ -589,7 +589,7 @@ ter_map read_builder_map(const std::string& str)
 {
 	std::size_t offset = 0;
 	// Skip the leading newlines
-	while(offset < str.length() && utils::isnewline(str[offset])) {
+	while(offset < str.length() && utils::portable_isnewline(str[offset])) {
 		++offset;
 	}
 	// Did we get an empty map?
@@ -632,14 +632,14 @@ ter_map read_builder_map(const std::string& str)
 			// but here it's defined at max u32 which with +1 gives 0
 			// and make a nice infinite loop.
 			offset = str.length();
-		} else if(utils::isnewline(str[pos_separator])) {
+		} else if(utils::portable_isnewline(str[pos_separator])) {
 			// Prepare next iteration
 			++y;
 			x = 0;
 
 			offset =  pos_separator + 1;
 			// Skip the following newlines
-			while(offset < str.length() && utils::isnewline(str[offset])) {
+			while(offset < str.length() && utils::portable_isnewline(str[offset])) {
 				++offset;
 			}
 

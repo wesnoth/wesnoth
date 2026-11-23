@@ -19,6 +19,7 @@
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "serialization/chrono.hpp"
+#include "serialization/string_utils.hpp"
 #include "server/wesnothd/player_network.hpp"
 #include "server/wesnothd/server.hpp"
 #include "utils/math.hpp"
@@ -1772,7 +1773,7 @@ void game::send_chat_history(player_iterator player) const
 
 static bool is_invalid_filename_char(char c)
 {
-	return !(isalnum(c) ||
+	return !(utils::portable_isalnum(c) ||
 		(c == '_') ||
 		(c == '-') ||
 		(c == '.') ||

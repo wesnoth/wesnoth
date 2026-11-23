@@ -290,7 +290,7 @@ map_location gamemap_base::starting_position(int n) const
 
 namespace {
 	bool is_number(const std::string& id) {
-		return std::find_if(id.begin(), id.end(), [](char c) { return !std::isdigit(c); }) == id.end();
+		return std::find_if(id.begin(), id.end(), [](char c) { return !utils::portable_isdigit(c); }) == id.end();
 	}
 }
 
