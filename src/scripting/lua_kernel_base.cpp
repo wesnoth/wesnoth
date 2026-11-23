@@ -21,6 +21,7 @@
 #include "log.hpp"
 #include "lua_jailbreak_exception.hpp"  // for lua_jailbreak_exception
 #include "seed_rng.hpp"
+#include "serialization/string_utils.hpp"
 #include "deprecation.hpp"
 #include "language.hpp"                 // for get_language
 #include "team.hpp" // for shroud_map
@@ -169,7 +170,7 @@ static int intf_make_version(lua_State* L)
 		std::string sep, special;
 		if(lua_type(L, -1) == LUA_TSTRING) {
 			special = lua_tostring(L, -1);
-			if(!special.empty() && std::isalpha(special[0])) {
+			if(!special.empty() && utils::portable_isalpha(special[0])) {
 				sep.push_back('+');
 			} else {
 				sep.push_back(special[0]);
@@ -1714,11 +1715,11 @@ std::vector<std::string> lua_kernel_base::get_attribute_names(const std::string 
 					if(attr.empty()) {
 						continue;
 					}
-					if(!isalpha(attr[0]) && attr[0] != '_') {
+					if(!utils::portable_isalpha(attr[0]) && attr[0] != '_') {
 						continue;
 					}
 					if(std::any_of(attr.begin(), attr.end(), [](char c){
-						return !isalpha(c) && !isdigit(c) && c != '_';
+						return !utils::portable_isalpha(c) && !utils::portable_isdigit(c) && c != '_';
 					})) {
 						continue;
 					}

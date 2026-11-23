@@ -128,7 +128,7 @@ static config parse_entity(std::string::const_iterator& beg, std::string::const_
 		case UNKNOWN:
 			if(*beg == '#') {
 				type = DECIMAL;
-			} else if(isalnum(*beg) || *beg == '_') {
+			} else if(utils::portable_isalnum(*beg) || *beg == '_') {
 				type = NAMED;
 				s << *beg;
 			} else {
@@ -136,7 +136,7 @@ static config parse_entity(std::string::const_iterator& beg, std::string::const_
 			}
 			break;
 		case NAMED:
-			if(!isalnum(*beg)) {
+			if(!utils::portable_isalnum(*beg)) {
 				throw parse_error(beg, "invalid entity: non-alphanumeric characters after '&'.");
 			}
 			s << *beg;
@@ -144,14 +144,14 @@ static config parse_entity(std::string::const_iterator& beg, std::string::const_
 		case DECIMAL:
 			if(*beg == 'x') {
 				type = HEX;
-			} else if(isdigit(*beg)) {
+			} else if(utils::portable_isdigit(*beg)) {
 				s << *beg;
 			} else {
 				throw parse_error(beg, "invalid entity: unexpected characters after '&#', numbers or 'x' expected.");
 			}
 			break;
 		case HEX:
-			if(isxdigit(*beg)) {
+			if(utils::portable_isxdigit(*beg)) {
 				s << *beg;
 			} else {
 				throw parse_error(beg, "invalid entity: unexpected characters after '&#x', hexadecimal digits expected.");
@@ -248,7 +248,7 @@ static config parse_text_until(std::string::const_iterator& beg, std::string::co
 static std::string parse_name(std::string::const_iterator& beg, std::string::const_iterator end)
 {
 	std::ostringstream s;
-	for(; beg != end && (isalnum(*beg) || *beg == '_'); ++beg) {
+	for(; beg != end && (utils::portable_isalnum(*beg) || *beg == '_'); ++beg) {
 		s << *beg;
 	}
 	return s.str();
@@ -264,7 +264,7 @@ static std::pair<std::string, std::string> parse_attribute(std::string::const_it
 		throw parse_error(beg, "dummy error: not an old-style attribute name"); // old-style=true caller ignores parse errors
 	}
 
-	while(isspace(*beg)) ++beg;
+	while(utils::portable_isspace(*beg)) ++beg;
 
 	if(*beg != '=') {
 		if(old_style) {
@@ -277,7 +277,7 @@ static std::pair<std::string, std::string> parse_attribute(std::string::const_it
 		}
 	}
 	++beg;
-	while(isspace(*beg)) ++beg;
+	while(utils::portable_isspace(*beg)) ++beg;
 
 	std::string value;
 	if(*beg == '\'' || *beg == '"') {
@@ -293,7 +293,7 @@ static std::pair<std::string, std::string> parse_attribute(std::string::const_it
 	} else {
 		std::ostringstream s;
 		bool found_slash = false;
-		for(; beg != end && *beg != '>' && *beg != '<' && !isspace(*beg); ++beg) {
+		for(; beg != end && *beg != '>' && *beg != '<' && !utils::portable_isspace(*beg); ++beg) {
 			if(*beg == '&') {
 				auto entity = parse_entity(beg, end);
 				if(beg == end) {
@@ -356,14 +356,14 @@ static config parse_tag_contents(std::string::const_iterator& beg, std::string::
 	// This also parses the matching closing tag!
 	config res;
 	for(; check_for_attributes && beg != end && *beg != '<'; ++beg) {
-		if(isspace(*beg)) continue;
+		if(utils::portable_isspace(*beg)) continue;
 		auto save_beg = beg;
 		try {
 			auto [key, val] = parse_attribute(beg, end, true);
 			res[key] = val;
 		} catch(parse_error&) {
 			beg = save_beg;
-			while(beg != end && isspace(*beg)) ++beg;
+			while(beg != end && utils::portable_isspace(*beg)) ++beg;
 			break;
 		}
 	}
@@ -416,10 +416,10 @@ static std::pair<std::string, config> parse_tag(std::string::const_iterator& beg
 	bool auto_closed = false;
 	config elem;
 	for(; beg != end && *beg != '>'; ++beg) {
-		if(isspace(*beg)) continue;
+		if(utils::portable_isspace(*beg)) continue;
 		if(*beg == '/' && (beg + 1) != end && *(beg + 1) == '>') {
 			auto_closed = true;
-		} else if(isalnum(*beg) || *beg == '_') {
+		} else if(utils::portable_isalnum(*beg) || *beg == '_') {
 			const auto& [key, value] = parse_attribute(beg, end, false);
 			if(beg == end) {
 				throw parse_error(beg, "unexpected end of stream following attribute");

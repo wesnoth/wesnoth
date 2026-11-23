@@ -154,8 +154,7 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 					break;
 				}
 			}
-			// isascii() breaks on mingw with -std=c++0x
-			else if (!(((c) & ~0x7f) == 0)/*isascii(c)*/ || (!isalnum(c) && c != '.' && c != '_')) {
+			else if(!utils::portable_isalnum(c) && c != '.' && c != '_') {
 				break;
 			}
 		}

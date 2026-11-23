@@ -19,6 +19,7 @@
 #include "filesystem.hpp"
 #include "gettext.hpp"
 #include "hash.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <algorithm>
 #include <array>
@@ -46,7 +47,7 @@ struct addon_name_char_illegal
 			case '_':		// low line
 				return false;
 			default:
-				return !isalnum(c);
+				return !utils::portable_isalnum(c);
 		}
 	}
 };

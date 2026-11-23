@@ -905,7 +905,7 @@ void editor_edit_unit::update_image(const std::string& id_stem) {
 
 bool editor_edit_unit::check_id(const std::string& id) {
 	for(char c : id) {
-		if (!(std::isalnum(c) || c == '_' || c == ' ')) {
+		if (!(utils::portable_isalnum(c) || c == '_' || c == ' ')) {
 			// One bad char means entire id string is invalid
 			return false;
 		}

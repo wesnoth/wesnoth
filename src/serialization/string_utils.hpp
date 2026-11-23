@@ -51,9 +51,20 @@ struct res_compare {
 
 using string_map_res = std::map<std::string, t_string, res_compare>;
 
-bool isnewline(const char c);
-bool portable_isspace(const char c);
-bool notspace(char c);
+/**
+ * Portable, locale-independent classification of ASCII characters.
+ *
+ * The `int` parameter accepts values promoted from `char`, `signed char`, or
+ * `unsigned char` without narrowing; only ASCII values match these predicates.
+ * Bytes outside ASCII return false, so these functions are suitable for
+ * parsing ASCII syntax in text that may be UTF-8 encoded.
+ */
+constexpr bool portable_isdigit(int c) { return c >= '0' && c <= '9'; }
+constexpr bool portable_isalpha(int c) { return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'); }
+constexpr bool portable_isalnum(int c) { return portable_isalpha(c) || portable_isdigit(c); }
+constexpr bool portable_isxdigit(int c) { return portable_isdigit(c) || (c >= 'A' && c <= 'F') || (c >= 'a' && c <= 'f'); }
+constexpr bool portable_isspace(int c) { return c == ' ' || (c >= '\t' && c <= '\r'); }
+constexpr bool portable_isnewline(int c) { return c == '\r' || c == '\n'; }
 
 enum {
 	REMOVE_EMPTY = 0x01, /** REMOVE_EMPTY: remove empty elements. */

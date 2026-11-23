@@ -205,8 +205,7 @@ std::size_t rich_label::get_split_location(std::string_view text, const point& p
 	}
 
 	// break only at word boundary
-	char c;
-	while(!std::isspace(c = text[len])) {
+	while(!utils::portable_isspace(text[len])) {
 		len--;
 		if(len == 0) {
 			break;

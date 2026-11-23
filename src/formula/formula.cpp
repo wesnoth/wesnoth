@@ -540,7 +540,7 @@ public:
 			std::string key = key_variant.as_string();
 			bool valid = true;
 			for(char c : key) {
-				if(!isalpha(c) && c != '_') {
+				if(!utils::portable_isalpha(c) && c != '_') {
 					valid = false;
 					break;
 				}

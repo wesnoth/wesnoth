@@ -26,11 +26,12 @@
 #include "gettext.hpp"
 #include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <boost/regex.hpp>
 
 static bool is_positive_integer(const std::string& str) {
-	return str != "0" && std::find_if(str.begin(), str.end(), [](char c) { return !std::isdigit(c); }) == str.end();
+	return str != "0" && std::find_if(str.begin(), str.end(), [](char c) { return !utils::portable_isdigit(c); }) == str.end();
 }
 
 class location_palette_item : public gui::widget
