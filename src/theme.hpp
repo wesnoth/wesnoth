@@ -284,7 +284,8 @@ public:
 
 	events::generic_event& theme_reset_event() { return theme_reset_event_; }
 
-	const config& cfg() const
+	// different name as below becasue Access control (public vs. private) is checked after overload reolution
+	const config& get_cfg() const
 	{
 		return *cfg_;
 	}
