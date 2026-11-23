@@ -482,7 +482,7 @@ private:
 	 */
 	bool set_markup(std::string_view text, PangoLayout& layout);
 
-	bool validate_markup(std::string_view text, char** raw_text, std::string& semi_escaped) const;
+	bool validate_markup(std::string_view text, std::string& semi_escaped) const;
 
 	static void copy_layout_properties(PangoLayout& src, PangoLayout& dst);
 

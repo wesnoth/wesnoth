@@ -865,9 +865,8 @@ surface pango_text::create_surface(const SDL_Rect& viewport)
 
 bool pango_text::set_markup(std::string_view text, PangoLayout& layout)
 {
-	char* raw_text;
 	std::string semi_escaped;
-	bool valid = validate_markup(text, &raw_text, semi_escaped);
+	bool valid = validate_markup(text, semi_escaped);
 	if(semi_escaped != "") {
 		text = semi_escaped;
 	}
@@ -931,10 +930,10 @@ std::string pango_text::format_links(std::string_view text) const
 	return result.str();
 }
 
-bool pango_text::validate_markup(std::string_view text, char** raw_text, std::string& semi_escaped) const
+bool pango_text::validate_markup(std::string_view text, std::string& semi_escaped) const
 {
 	if(pango_parse_markup(text.data(), text.size(),
-		0, nullptr, raw_text, nullptr, nullptr)) {
+		0, nullptr, nullptr, nullptr, nullptr)) {
 		return true;
 	}
 
@@ -955,7 +954,7 @@ bool pango_text::validate_markup(std::string_view text, char** raw_text, std::st
 	 */
 	if(text.size() == semi_escaped.size()
 			|| !pango_parse_markup(semi_escaped.c_str(), semi_escaped.size()
-				, 0, nullptr, raw_text, nullptr, nullptr)) {
+				, 0, nullptr, nullptr, nullptr, nullptr)) {
 
 		/* Fixing the ampersands didn't work. */
 		return false;
