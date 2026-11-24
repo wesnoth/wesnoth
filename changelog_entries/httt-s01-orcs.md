@@ -7,3 +7,4 @@
      * Increased Konrad's melee damage at higher levels.
      * Lightfoot achievement: increased time limit by 1.
      * Fixed several incorrect references to "seventeen years ago".
+     * Fixed several typos.
