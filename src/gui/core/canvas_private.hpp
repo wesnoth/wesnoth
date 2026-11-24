@@ -291,7 +291,8 @@ public:
 		std::size_t start = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING,
 		std::size_t end = PANGO_ATTR_INDEX_TO_TEXT_END);
 	void add_attributes(font::attribute_list&& other_attrs);
-	void add_attributes_from(text_shape& tshape2, const unsigned attr_start);
+	/** Adds the attributes of @a tshape2 from byte index @a src_start onwards, starting at @a attr_start. */
+	void add_attributes_from(const text_shape& tshape2, const unsigned attr_start, const unsigned src_start = 0);
 	void set_wrap_width(const unsigned wrap_width);
 
 	void draw(wfl::map_formula_callable& variables) override;
