@@ -44,9 +44,8 @@ BOOST_AUTO_TEST_CASE(pango_text_wraps_at_maximum_width)
 	BOOST_REQUIRE(renderer.set_text(text, true));
 
 	const auto configure = [&](int width) {
-		renderer.clear_attributes();
 		renderer
-			.set_family_class(font::family_class::sans_serif)
+			.set_family_class(font::FONT_SANS_SERIF)
 			.set_font_size(15)
 			.set_font_style(font::pango_text::STYLE_NORMAL)
 			.set_alignment(PANGO_ALIGN_LEFT)
