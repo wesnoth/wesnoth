@@ -25,6 +25,7 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/styled_widget.hpp"
 #include "gui/widgets/window.hpp"
+#include "log.hpp"
 #include "serialization/string_utils.hpp"
 
 #include "gettext.hpp"
@@ -140,29 +141,32 @@ wml_error::wml_error(const std::string& summary,
 	, have_post_summary_(!post_summary.empty())
 	, report_()
 {
-	const std::string& file_list_text = format_file_list(files);
+	const std::string file_list_text = lg::sanitize_log(format_file_list(files));
+	const std::string sanitized_summary = lg::sanitize_log(summary);
+	const std::string sanitized_post_summary = lg::sanitize_log(post_summary);
+	const std::string sanitized_details = lg::sanitize_log(details);
 
-	report_ = summary;
+	report_ = sanitized_summary;
 
 	if(!file_list_text.empty()) {
 		report_ += "\n" + file_list_text;
 	}
 
-	if(!post_summary.empty()) {
-		report_ += "\n\n" + post_summary;
+	if(!sanitized_post_summary.empty()) {
+		report_ += "\n\n" + sanitized_post_summary;
 	}
 
 	report_ += "\n\n";
 	report_ += _("Details:");
-	report_ += "\n\n" + utils::indent(details);
+	report_ += "\n\n" + utils::indent(sanitized_details);
 	// Since this is likely to be pasted into a text file, add a final line
 	// break for convenience, since otherwise the report ends mid-line.
 	report_ += "\n";
 
-	register_label("summary", true, summary);
-	register_label("post_summary", true, post_summary);
+	register_label("summary", true, sanitized_summary);
+	register_label("post_summary", true, sanitized_post_summary);
 	register_label("files", true, file_list_text);
-	register_label("details", true, details);
+	register_label("details", true, sanitized_details);
 }
 
 void wml_error::pre_show()
