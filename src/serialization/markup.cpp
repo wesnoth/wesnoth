@@ -254,6 +254,28 @@ static std::string parse_name(std::string::const_iterator& beg, std::string::con
 	return s.str();
 }
 
+/**
+ * Parses a single attribute of the form name=value, name='value' or name="value".
+ * In a new-style tag, a bare name with no value is also accepted.
+ *
+ * A value should be either quoted or unquoted. A value that starts with a single or double quote is considered
+ * quoted and must end with the same quote; an unquoted value must not start with a quote. A quoted value may
+ * contain white-space, `<` and `>`, but not a blank line. An unquoted value ends at white-space, `<`, `>`,
+ * or the end of the input. In both cases, a backslash makes the next character literal, and only the entities
+ * `&lt;` `&gt;` `&apos;` `&quot;` `&amp;` and numeric ones are allowed.
+ *
+ * @param[in,out] beg Points to the first character of the attribute name.
+ *                    On successful return, it points to the last character of the attribute:
+ *                    the closing quote of a quoted value, or the last byte of an unquoted value or bare name.
+ *                    It never equals @p end on successful return, so the caller may safely increment it.
+ * @param end         Points just past the end of the input.
+ * @param old_style   Whether this attribute belongs to an old-style tag (eg `<header>text="..."</header>`).
+ *                    Old-style attributes must be one of a known set of names and must have a value.
+ * @return            A pair with the attribute name as first and its value as second.
+ *
+ * @throws parse_error If the attribute is malformed, including a quoted value with no closing quote
+ *                     (in either style of tag). The value of @p beg is unspecified when this happens.
+ */
 static std::pair<std::string, std::string> parse_attribute(std::string::const_iterator& beg, std::string::const_iterator end, bool old_style)
 {
 	std::string attr = parse_name(beg, end);
@@ -264,9 +286,9 @@ static std::pair<std::string, std::string> parse_attribute(std::string::const_it
 		throw parse_error(beg, "dummy error: not an old-style attribute name"); // old-style=true caller ignores parse errors
 	}
 
-	while(utils::portable_isspace(*beg)) ++beg;
+	while(beg != end && utils::portable_isspace(*beg)) ++beg;
 
-	if(*beg != '=') {
+	if(beg == end || *beg != '=') {
 		if(old_style) {
 			throw parse_error(beg, "attribute missing value in old-style tag");
 		} else {
@@ -277,11 +299,16 @@ static std::pair<std::string, std::string> parse_attribute(std::string::const_it
 		}
 	}
 	++beg;
-	while(utils::portable_isspace(*beg)) ++beg;
+	while(beg != end && utils::portable_isspace(*beg)) ++beg;
 
 	std::string value;
-	if(*beg == '\'' || *beg == '"') {
+	if(beg != end && (*beg == '\'' || *beg == '"')) {
 		config res = parse_text_until(beg, end, *beg++);
+		if(beg == end) {
+			// No closing quote. Throw rather than return with beg == end,
+			// as the caller would increment beg past end.
+			throw parse_error(beg, "unterminated quoted attribute value");
+		}
 		if(res.has_child("character_entity")) {
 			throw parse_error(beg, "unsupported entity in attribute value");
 		} else if(res.all_children_count() > 1) {
