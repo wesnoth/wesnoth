@@ -56,9 +56,10 @@ def parse_terrain(data):
         # This avoids problems due to additional = in strings. Exact string
         # removal does not matter as long as we do not print help_topic_text
         # in the wiki page.
-        removeus = ("<italic>text='", "'</italic>", "<ref>dst='", "text='", "'</ref>")
+        removeus = ("<italic>", "</italic>", "</ref>")
         for text in removeus:
             i = [a.replace(text, "") for a in i]
+        i = [re.sub(r"<ref dst='[^']*'>", "", a) for a in i]
         # Create a dictionary of key and values
         content = {k: v for (k, v) in [p.strip().split("=", 1) for p in i]}
         # Hidden things shouldn't be displayed
