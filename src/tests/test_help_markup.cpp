@@ -602,6 +602,15 @@ BOOST_AUTO_TEST_CASE( test_help_markup_errors )
 	BOOST_CHECK_THROW(markup::parse_text("<ref dst='unit_Mage>magi</ref> gain experience"), markup::parse_error);
 	BOOST_CHECK_THROW(markup::parse_text("<ref dst='unit_Mage>magi</ref> d'expérience"), markup::parse_error);
 	BOOST_CHECK_THROW(markup::parse_text("<img src='a.png'"), markup::parse_error);
+	BOOST_CHECK_THROW(markup::parse_text("<header>text='Geografia"), markup::parse_error);
+
+	// Nor must an attribute cut off at the end of the text, before or after its '='
+	BOOST_CHECK_THROW(markup::parse_text("<img src"), markup::parse_error);
+	BOOST_CHECK_THROW(markup::parse_text("<img src "), markup::parse_error);
+	BOOST_CHECK_THROW(markup::parse_text("<img src="), markup::parse_error);
+	BOOST_CHECK_THROW(markup::parse_text("<img src= "), markup::parse_error);
+	BOOST_CHECK_THROW(markup::parse_text("<format>bold="), markup::parse_error);
+	BOOST_CHECK_THROW(markup::parse_text("<format>bold "), markup::parse_error);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

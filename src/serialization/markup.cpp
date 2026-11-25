@@ -254,6 +254,23 @@ static std::string parse_name(std::string::const_iterator& beg, std::string::con
 	return s.str();
 }
 
+/**
+ * Parses a single attribute of the form name=value, name='value' or name="value".
+ * In a new-style tag, a bare name with no value is also accepted.
+ *
+ * @param beg       Must point to the first character of the attribute name.
+ *                  On successful return, it points to the last character of the attribute:
+ *                  the closing quote of a quoted value, or the last character of an unquoted value or bare name.
+ *                  It never equals @p end on successful return, so the caller may safely increment it.
+ *                  If a quoted value has no closing quote, the value runs to the end of the input, and
+ *                  @p beg points to the last character of the input; the caller then finds no end to the tag.
+ * @param end       The end of the input.
+ * @param old_style Whether this attribute belongs to an old-style tag (eg `<header>text="..."</header>`).
+ *                  Old-style attributes must be one of a known set of names and must have a value.
+ *
+ * @throws parse_error If the attribute is malformed.
+ *                     The value of @p beg is unspecified when this happens.
+ */
 static std::pair<std::string, std::string> parse_attribute(std::string::const_iterator& beg, std::string::const_iterator end, bool old_style)
 {
 	std::string attr = parse_name(beg, end);
@@ -264,9 +281,9 @@ static std::pair<std::string, std::string> parse_attribute(std::string::const_it
 		throw parse_error(beg, "dummy error: not an old-style attribute name"); // old-style=true caller ignores parse errors
 	}
 
-	while(utils::portable_isspace(*beg)) ++beg;
+	while(beg != end && utils::portable_isspace(*beg)) ++beg;
 
-	if(*beg != '=') {
+	if(beg == end || *beg != '=') {
 		if(old_style) {
 			throw parse_error(beg, "attribute missing value in old-style tag");
 		} else {
@@ -277,11 +294,17 @@ static std::pair<std::string, std::string> parse_attribute(std::string::const_it
 		}
 	}
 	++beg;
-	while(utils::portable_isspace(*beg)) ++beg;
+	while(beg != end && utils::portable_isspace(*beg)) ++beg;
 
 	std::string value;
-	if(*beg == '\'' || *beg == '"') {
+	if(beg != end && (*beg == '\'' || *beg == '"')) {
 		config res = parse_text_until(beg, end, *beg++);
+		if(beg == end) {
+			// No closing quote, so the value runs to the end of the input.
+			// Step back so beg points to the last character, as the caller expects; returning end
+			// would let the caller increment beg past it.
+			--beg;
+		}
 		if(res.has_child("character_entity")) {
 			throw parse_error(beg, "unsupported entity in attribute value");
 		} else if(res.all_children_count() > 1) {
