@@ -1,0 +1,440 @@
+#!/usr/bin/env python3
+"""
+Check the mark-up in translatable strings and their translations.
+
+Translatable strings can contain Pango mark-up (<b>, <i>, <span>…) and help
+mark-up (<ref>, <italic>, <header>, <img>…). A mistake in either can show the
+mark-up as text, show nothing at all, or stop a help page from loading.
+See https://github.com/wesnoth/wesnoth/issues/11728
+
+Two modes:
+    data/tools/check_markup                  # source strings from the repository root
+    data/tools/check_markup DIR...           # source strings in WML/Lua under DIR, eg an add-on
+    data/tools/check_markup FILE.pot...      # source strings in existing .pot file(s)
+    data/tools/check_markup --translations [FILE.po...]
+                                             # translations (default: po/*/*.po)
+
+Source strings are extracted with the same extractors that pot-update uses
+(wmlxgettext for WML/Lua, xgettext for C++; see wesnoth/gettext_strings.py),
+so no build is needed. Problems
+in source strings make the check fail.
+
+Translations are checked where either the source string or the translation
+contains mark-up, and only for active, non-fuzzy entries, since the game
+ignores the others. The manual and man pages are skipped, since the game
+doesn't show them. Problems in translations are reported but never make the
+check fail: translations are committed directly, not through pull requests.
+
+What is checked:
+  - every tag is closed, and closing tags match their opening tags
+  - attribute values have matching straight quotes (not ’ or ‘), and tag names
+    are separated from their attributes
+  - no old-style help mark-up (<italic>text='…'</italic>); use <italic>…</italic>
+  - in translations, a <ref dst='…'> target that isn't in the source string is
+    a known topic: one linked from some other source string, a [topic] in
+    data/core, or a terrain; anything else is probably a typo or a stale link
+
+When run under GitHub Actions, problems are also emitted as annotations, and
+the translation report is written to the job summary.
+
+Intentional exceptions go in EXCEPTIONS below.
+"""
+
+import argparse
+import ast
+import glob
+import os
+import re
+import sys
+from collections import defaultdict
+
+from wesnoth import gettext_strings
+
+# (problem, sub-string of the msgid) pairs that are deliberately exempt.
+EXCEPTIONS = [
+]
+
+# Tags recognised by Pango and by the help mark-up parser (src/serialization/markup.cpp and
+# src/gui/widgets/rich_label.cpp). Anything else in angle brackets, such as "<side>" in a usage
+# message, is treated as text.
+PANGO_TAGS = {"b", "big", "i", "s", "small", "span", "sub", "sup", "tt", "u"}
+HELP_TAGS = {"bold", "italic", "underline", "header", "h", "format", "img", "ref", "jump",
+             "table", "row", "col", "br", "clear"}
+KNOWN_TAGS = PANGO_TAGS | HELP_TAGS
+
+# Must match old_style_tags and old_style_attr in src/serialization/markup.cpp
+OLD_STYLE_TAGS = ("bold", "italic", "header", "format", "img", "ref", "jump")
+OLD_STYLE_ATTR = ("dst", "text", "force", "to", "amount", "src", "align", "float",
+                  "bold", "italic", "color", "font_size")
+OLD_STYLE_RE = re.compile(r"<(" + "|".join(OLD_STYLE_TAGS) + r")>\s*(" + "|".join(OLD_STYLE_ATTR) + r")\s*=")
+
+TYPOGRAPHIC_QUOTES = "‘’“”«»„‚"
+NAME_RE = re.compile(r"[A-Za-z_][A-Za-z0-9_]*")
+DST_RE = re.compile(r"""\bdst\s*=\s*(?:'([^']*)'|"([^"]*)"|([^\s>/]+))""")
+# A known tag missing its '<', eg "ref>dst='unit_Mage'": a tag name directly before '>' and an attribute
+MISSING_LT_RE = re.compile(r"(?<![<\w/])(" + "|".join(sorted(HELP_TAGS)) + r")>\s*(" + "|".join(OLD_STYLE_ATTR) + r")\s*=")
+
+
+
+# Tags that never have content, so are never closed
+EMPTY_TAGS = ("img", "br", "clear", "jump")
+# Attribute names that may end up joined to a tag name, eg <refdst='x'>
+JOINABLE_ATTR = OLD_STYLE_ATTR + ("color", "font_size", "size", "weight", "style")
+
+
+class MarkupScanner:
+    """Walks through one string's mark-up, collecting (problem, detail) pairs."""
+
+    def __init__(self, text):
+        self.text = text
+        self.pos = 0
+        self.problems = []
+        self.open_tags = []  # (tag name, position of its '<') for each tag not closed yet
+
+    def report(self, problem, detail):
+        self.problems.append((problem, detail))
+
+    def at(self, prefix):
+        return self.text.startswith(prefix, self.pos)
+
+    def skip_spaces(self):
+        while self.pos < len(self.text) and self.text[self.pos].isspace():
+            self.pos += 1
+
+    def excerpt(self, start):
+        return excerpt_at(self.text, start)
+
+    def scan(self):
+        text = self.text
+        while self.pos < len(text):
+            char = text[self.pos]
+            if char == "\\":
+                self.pos += 2  # help mark-up escape
+            elif char == "<":
+                self.read_tag()
+            else:
+                self.pos += 1
+        for tag_name, tag_start in self.open_tags:
+            self.report("unclosed-tag", "<{}> is not closed: {}".format(tag_name, self.excerpt(tag_start)))
+
+        for match in OLD_STYLE_RE.finditer(text):
+            self.report("old-style-markup", "use <{0}>…</{0}> with ordinary attributes: {1}".format(
+                match.group(1), self.excerpt(match.start())))
+        for match in MISSING_LT_RE.finditer(text):
+            self.report("missing-less-than", "{}> has no '<': {}".format(match.group(1), self.excerpt(match.start())))
+        return self.problems
+
+    def read_tag(self):
+        """Read the tag starting at the '<' at self.pos."""
+        tag_start = self.pos
+        closing = self.text.startswith("/", tag_start + 1)
+        name_match = NAME_RE.match(self.text, tag_start + 2 if closing else tag_start + 1)
+        if not name_match:
+            self.pos += 1  # a '<' in ordinary text
+            return
+        tag_name = name_match.group(0)
+        self.pos = name_match.end()
+        if tag_name not in KNOWN_TAGS:
+            self.read_unknown_tag(tag_name, tag_start, closing)
+        elif closing:
+            self.read_closing_tag(tag_name, tag_start)
+        else:
+            self.read_opening_tag(tag_name, tag_start)
+
+    def read_unknown_tag(self, tag_name, tag_start, closing):
+        if closing and self.at(">"):
+            # Text rarely contains "</word>", so this is most likely a mistyped closing tag
+            self.report("unknown-closing-tag", "</{}> is not a known tag: {}".format(tag_name, self.excerpt(tag_start)))
+            return
+        joined_tag = next((known for known in sorted(KNOWN_TAGS, key=len, reverse=True)
+                           if tag_name.startswith(known) and tag_name[len(known):] in JOINABLE_ATTR), None)
+        if joined_tag and self.at("="):
+            self.report("tag-name-joined", "no space after the tag name: " + self.excerpt(tag_start))
+            self.open_tags.append((joined_tag, tag_start))  # so its closing tag isn't also reported
+        # Anything else, such as "<side>" in a usage message, is ordinary text
+
+    def read_closing_tag(self, tag_name, tag_start):
+        if not self.at(">"):
+            self.report("malformed-closing-tag", self.excerpt(tag_start))
+            return
+        self.pos += 1
+        open_names = [name for name, _ in self.open_tags]
+        if open_names and open_names[-1] == tag_name:
+            self.open_tags.pop()
+        elif tag_name in open_names:
+            # Tags opened inside this one weren't closed
+            while self.open_tags[-1][0] != tag_name:
+                inner_name, inner_start = self.open_tags.pop()
+                self.report("unclosed-tag", "<{}> is not closed: {}".format(inner_name, self.excerpt(inner_start)))
+            self.open_tags.pop()
+        else:
+            self.report("stray-closing-tag", "</{}> has no opening tag: {}".format(tag_name, self.excerpt(tag_start)))
+
+    def read_opening_tag(self, tag_name, tag_start):
+        result = self.read_attributes(tag_name, tag_start)
+        if result == "broken":
+            # Carry on from the next '<', but still track the tag, so its closing tag isn't also reported
+            next_tag = self.text.find("<", tag_start + 1)
+            self.pos = next_tag if next_tag >= 0 else len(self.text)
+        if result != "self-closing" and tag_name not in EMPTY_TAGS:
+            self.open_tags.append((tag_name, tag_start))
+
+    def read_attributes(self, tag_name, tag_start):
+        """Read attributes up to the end of the tag. Returns "open", "self-closing" or "broken"."""
+        text = self.text
+        while True:
+            self.skip_spaces()
+            if self.pos >= len(text):
+                self.report("unterminated-tag", "<{}> has no '>': {}".format(tag_name, self.excerpt(tag_start)))
+                return "broken"
+            if self.at(">"):
+                self.pos += 1
+                return "open"
+            if self.at("/>"):
+                self.pos += 2
+                return "self-closing"
+            attr_match = NAME_RE.match(text, self.pos)
+            if not attr_match:
+                self.report("malformed-tag", "unexpected {!r} in <{}>: {}".format(text[self.pos], tag_name, self.excerpt(tag_start)))
+                return "broken"
+            attr_name = attr_match.group(0)
+            self.pos = attr_match.end()
+            self.skip_spaces()
+            if not self.at("="):
+                if tag_name in PANGO_TAGS or tag_name == "ref":
+                    self.report("attribute-without-value", "{!r} in <{}>: {}".format(attr_name, tag_name, self.excerpt(tag_start)))
+                continue
+            self.pos += 1
+            self.skip_spaces()
+            if not self.read_value(tag_name, tag_start, attr_name):
+                return "broken"
+
+    def read_value(self, tag_name, tag_start, attr_name):
+        """Read one attribute value. Returns False if the rest of the tag can't be read."""
+        text = self.text
+        described = "{}= in <{}>".format(attr_name, tag_name)
+        next_char = text[self.pos] if self.pos < len(text) else ""
+        if next_char in ("'", '"'):
+            quote = next_char
+            value_end = self.pos + 1
+            while value_end < len(text) and text[value_end] != quote:
+                value_end += 2 if text[value_end] == "\\" else 1
+            value = text[self.pos + 1:value_end]
+            if value_end >= len(text) or "<" in value or "\n" in value:
+                typographic_close = re.search("[" + TYPOGRAPHIC_QUOTES + "]>", value)
+                if typographic_close:
+                    self.report("typographic-quote", "{} is closed with {!r}; use {}: {}".format(
+                        described, typographic_close.group(0)[0], quote, self.excerpt(tag_start)))
+                else:
+                    self.report("missing-closing-quote", "{}: {}".format(described, self.excerpt(tag_start)))
+                return False
+            self.pos = value_end + 1
+        elif next_char and next_char in TYPOGRAPHIC_QUOTES:
+            self.report("typographic-quote", "{} uses {!r}; use ' or \": {}".format(described, next_char, self.excerpt(tag_start)))
+            return False
+        else:
+            value_start = self.pos
+            while (self.pos < len(text) and not text[self.pos].isspace()
+                   and text[self.pos] not in "<>" and not self.at("/>")):
+                self.pos += 1
+            value = text[value_start:self.pos]
+            if tag_name in PANGO_TAGS:
+                self.report("unquoted-value", "Pango needs {} quoted: {}".format(described, self.excerpt(tag_start)))
+        if value and value[-1] in TYPOGRAPHIC_QUOTES:
+            self.report("typographic-quote", "{} ends with {!r}: {}".format(described, value[-1], self.excerpt(tag_start)))
+        return True
+
+
+def check_markup(text):
+    """Return a list of (problem, detail) found in the mark-up of one string."""
+    return MarkupScanner(text).scan()
+
+
+def has_markup(text):
+    return any(match.group(1) in KNOWN_TAGS for match in re.finditer(r"</?([A-Za-z_]\w*)", text))
+
+
+def dst_targets(text):
+    """The link targets of the <ref dst=…> tags in text."""
+    return {next(group for group in match.groups() if group is not None) for match in DST_RE.finditer(text)}
+
+
+def excerpt_at(text, start, width=40):
+    snippet = text[start:start + width].replace("\n", "⏎")
+    return snippet + ("…" if start + width < len(text) else "")
+
+
+def exempt(problem, msgid):
+    return any(exempt_problem == problem and substring in msgid for exempt_problem, substring in EXCEPTIONS)
+
+
+#
+# Source strings
+#
+
+def check_sources(args, github):
+    try:
+        # The parser's unit tests contain deliberately broken mark-up
+        sources = gettext_strings.extract_sources(args.paths, args.domain, cpp_skip=("src/tests/",))
+    except gettext_strings.NotACheckout as error:
+        sys.exit("check_markup: " + str(error))
+
+    found = defaultdict(list)  # (problem, detail) -> refs; merges duplicate msgids
+    for lines in sources:
+        for refs, msgid in gettext_strings.read_pot(lines):
+            if not has_markup(msgid):
+                continue
+            for problem, detail in check_markup(msgid):
+                if not exempt(problem, msgid):
+                    found[(problem, detail)].extend(refs)
+
+    for (problem, detail), refs in sorted(found.items(), key=lambda item: item[1][0] if item[1] else ""):
+        refs = list(dict.fromkeys(refs)) or ["?"]
+        print("{}: {}: {}".format(refs[0], problem, detail))
+        for ref in refs[1:]:
+            print("    also at " + ref)
+        if github:
+            for ref in refs:
+                annotation = gettext_strings.github_annotation("error", ref, "Mark-up ({})".format(problem), detail)
+                if annotation:
+                    print(annotation)
+    if found:
+        sys.stdout.flush()
+        print("\n{} mark-up problem(s) found in source strings.".format(len(found)), file=sys.stderr)
+        return 1
+    return 0
+
+
+#
+# Translations
+#
+
+FIELD_RE = re.compile(r'^(msgctxt|msgid_plural|msgid|msgstr(?:\[\d+\])?) (".*")$')
+
+
+def read_po(path):
+    """Yield (msgstr line number, msgid text, msgstr text) for active, non-fuzzy, translated entries."""
+    with open(path, encoding="utf-8") as po_file:
+        lines = po_file.read().split("\n")
+    entry = {}
+    flags = ""
+    field = None
+    field_lines = {}
+
+    def flush():
+        msgid = entry.get("msgid", "") + "\n" + entry.get("msgid_plural", "")
+        if entry.get("msgid") and "fuzzy" not in flags:
+            for key, value in entry.items():
+                if key.startswith("msgstr") and value:
+                    yield field_lines[key], msgid, value
+
+    for line_number, line in enumerate(lines, 1):
+        if line.startswith("#,"):
+            flags += line
+        elif line.startswith("#"):
+            continue
+        elif line == "":
+            yield from flush()
+            entry, flags, field, field_lines = {}, "", None, {}
+        elif line.startswith('"'):
+            if field:
+                entry[field] += ast.literal_eval(line)
+        else:
+            field_match = FIELD_RE.match(line)
+            if field_match:
+                field = field_match.group(1)
+                entry[field] = ast.literal_eval(field_match.group(2))
+                field_lines[field] = line_number
+    yield from flush()
+
+
+def help_topic_ids():
+    """Some topic IDs that are valid link targets: the [topic] IDs in data/core and terrain_<id> for each terrain."""
+    ids = set()
+    for path in glob.glob("data/core/help.cfg") + glob.glob("data/core/encyclopedia/*.cfg"):
+        with open(path, encoding="utf-8") as cfg_file:
+            ids |= set(re.findall(r"^\s*id\s*=\s*\"?([\w.]+)", cfg_file.read(), re.M))
+    if os.path.exists("data/core/terrain.cfg"):
+        with open("data/core/terrain.cfg", encoding="utf-8") as cfg_file:
+            ids |= {"terrain_" + terrain_id for terrain_id in re.findall(r"^\s*id\s*=\s*(\w+)", cfg_file.read(), re.M)}
+    return {topic_id.lstrip(".") for topic_id in ids}
+
+
+def check_translations(args, github):
+    # The manual and man pages aren't shown by the game, and use their own formatting (eg B<bold>)
+    paths = args.paths or sorted(path for path in glob.glob("po/*/*.po")
+                                 if not path.startswith(("po/wesnoth-manpages/", "po/wesnoth-manual/")))
+    entries = {path: list(read_po(path)) for path in paths}
+    # Translators may link to topics the English text doesn't, so only flag a target that no source
+    # string links to at all; that is most likely a typo. ("..topic" is the same topic as "topic".)
+    known_targets = {target.lstrip(".") for file_entries in entries.values()
+                     for _, msgid, _ in file_entries for target in dst_targets(msgid)}
+    known_targets |= help_topic_ids()
+    results = defaultdict(list)  # path -> [(line, problem, detail)]
+    for path in paths:
+        for line, msgid, msgstr in entries[path]:
+            # Translators sometimes add mark-up the source string doesn't have, so check either
+            if not has_markup(msgid) and not has_markup(msgstr):
+                continue
+            source_problems = {problem for problem, _ in check_markup(msgid)}
+            for problem, detail in check_markup(msgstr):
+                # Report a problem the source string also has against the source, not every translation
+                if problem in source_problems or exempt(problem, msgid):
+                    continue
+                results[path].append((line, problem, detail))
+            for target in sorted(dst_targets(msgstr) - dst_targets(msgid)):
+                # A target with quotes or angle brackets in it is already reported as a quoting problem
+                if target.lstrip(".") not in known_targets and not re.search("[<>'\"" + TYPOGRAPHIC_QUOTES + "]", target):
+                    results[path].append((line, "unknown-link-target",
+                                          "<ref dst='{}'> is not linked from any source string".format(target)))
+
+    total = sum(len(file_results) for file_results in results.values())
+    for path in sorted(results):
+        for line, problem, detail in results[path]:
+            print("{}:{}: {}: {}".format(path, line, problem, detail))
+            if github:
+                print(gettext_strings.github_annotation("warning", "{}:{}".format(path, line),
+                                                        "Translation mark-up ({})".format(problem), detail))
+
+    summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
+    if summary_path and total:
+        with open(summary_path, "a", encoding="utf-8") as summary:
+            summary.write("## Translation mark-up problems\n\n")
+            summary.write("{} problem(s) in {} file(s). These don't fail the check; "
+                          "they need fixing by the translation teams.\n\n".format(total, len(results)))
+            summary.write("| File | Problems |\n|---|---|\n")
+            for path in sorted(results):
+                summary.write("| `{}` | {} |\n".format(path, len(results[path])))
+            summary.write("\n<details><summary>Details</summary>\n\n```\n")
+            for path in sorted(results):
+                for line, problem, detail in results[path]:
+                    summary.write("{}:{}: {}: {}\n".format(path, line, problem, detail))
+            summary.write("```\n\n</details>\n")
+    if total:
+        sys.stdout.flush()
+        print("\n{} mark-up problem(s) found in {} translation file(s).".format(total, len(results)), file=sys.stderr)
+    return 1 if total and args.strict else 0
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Check the mark-up in translatable strings and their translations.")
+    parser.add_argument("paths", nargs="*", metavar="PATH",
+                        help="directories, .cfg/.lua or .pot files to check (default: mainline); "
+                             "with --translations, .po files (default: po/*/*.po)")
+    parser.add_argument("--domain", action="append",
+                        help="only check this textdomain (can be repeated)")
+    parser.add_argument("--translations", action="store_true",
+                        help="check translations instead of source strings; problems don't fail the check")
+    parser.add_argument("--strict", action="store_true",
+                        help="with --translations, exit non-zero if any problem is found")
+    args = parser.parse_args()
+
+    github = gettext_strings.running_on_github()
+    if args.translations:
+        return check_translations(args, github)
+    return check_sources(args, github)
+
+
+if __name__ == "__main__":
+    sys.exit(main())

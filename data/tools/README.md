@@ -27,6 +27,16 @@ in a specified way.  Now supports only flipping the map around the Y
 axis, but provides a framework that should make other transformations
 easy.
 
+=== check_markup ===
+
+Checks the Pango and help mark-up in translatable strings: unclosed or
+mismatched tags, badly quoted attributes, and old-style help mark-up. Run
+from the repository root to check mainline (as the CI does), or pass add-on
+directories or .pot files. With --translations, it checks the translations
+in po/ instead; translation problems are only reported, since translations
+don't come in through pull requests. It only reports problems; nothing is
+changed. See the header comment for details.
+
 === wmllint and wmllint-1.4 ===
 
 This tool lifts WML from older dialects to current and performs sanity checks.

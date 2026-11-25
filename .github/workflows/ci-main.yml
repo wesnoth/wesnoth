@@ -44,6 +44,12 @@ jobs:
       - name: WML missing images check
         if: success() || failure()
         run: utils/CI/check_wml_images.sh
+      - name: Mark-up check
+        if: success() || failure()
+        run: data/tools/check_markup
+      - name: Translation mark-up report
+        if: success() || failure()
+        run: data/tools/check_markup --translations
       - name: Run luacheck
         if: success() || failure()
         run: luacheck .
