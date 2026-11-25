@@ -293,6 +293,40 @@ BOOST_AUTO_TEST_CASE( test_help_markup_old )
 	BOOST_CHECK(output.has_child("format"));
 	BOOST_CHECK(output.mandatory_child("format").has_attribute("bold"));
 	BOOST_CHECK_EQUAL(output.mandatory_child("format")["bold"], R"==("Yes!")==");
+
+	// A missing closing quote ends the value at the closing tag, rather than showing the mark-up as text
+	// GitHub #10838
+	output = markup::parse_text("<header>text='Geografia</header>");
+	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
+	BOOST_CHECK(output.has_child("header"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("header")["text"], "Geografia");
+
+	// ... even with white-space before the attribute
+	output = markup::parse_text("<header> text='Modificadores do teclado</header>");
+	BOOST_CHECK_EQUAL(output.all_children_count(), 1);
+	BOOST_CHECK(output.has_child("header"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("header")["text"], "Modificadores do teclado");
+
+	// ... when an apostrophe follows later in the text
+	output = markup::parse_text("<italic>text='Rantariutat</italic> l'autre");
+	BOOST_CHECK_EQUAL(output.all_children_count(), 2);
+	BOOST_CHECK(output.has_child("italic"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("italic")["text"], "Rantariutat");
+	BOOST_CHECK_EQUAL(output.mandatory_child("text")["text"], " l'autre");
+
+	// ... when another tag with a properly quoted value follows
+	output = markup::parse_text("<italic>text='actualitzables</italic> o <italic>text='obsolets'</italic> al");
+	BOOST_CHECK_EQUAL(output.all_children_count(), 4);
+	BOOST_CHECK_EQUAL(output.child_count("italic"), 2);
+	BOOST_CHECK_EQUAL(output.mandatory_child("italic")["text"], "actualitzables");
+	BOOST_CHECK_EQUAL(output.mandatory_child("italic", 1)["text"], "obsolets");
+
+	// ... when a paragraph break follows later in the text
+	output = markup::parse_text("<header>text='Geografia</header>\n\nOs dracos vieram de Morogor.");
+	BOOST_CHECK(output.has_child("header"));
+	BOOST_CHECK_EQUAL(output.mandatory_child("header")["text"], "Geografia");
+	BOOST_CHECK_EQUAL(output.child_count("text"), 2);
+	BOOST_CHECK_EQUAL(output.mandatory_child("text", 1)["text"], "Os dracos vieram de Morogor.");
 }
 
 BOOST_AUTO_TEST_CASE( test_help_markup_new )

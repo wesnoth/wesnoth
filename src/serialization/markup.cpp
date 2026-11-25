@@ -262,8 +262,8 @@ static std::string parse_name(std::string::const_iterator& beg, std::string::con
  *                  On successful return, it points to the last character of the attribute:
  *                  the closing quote of a quoted value, or the last character of an unquoted value or bare name.
  *                  It never equals @p end on successful return, so the caller may safely increment it.
- *                  If a quoted value has no closing quote, the value runs to the end of the input, and
- *                  @p beg points to the last character of the input; the caller then finds no end to the tag.
+ *                  If a quoted value has no closing quote, the value runs to the end of the input, or in an
+ *                  old-style tag to the next '<' (the closing tag), and @p beg points to its last character.
  * @param end       The end of the input.
  * @param old_style Whether this attribute belongs to an old-style tag (eg `<header>text="..."</header>`).
  *                  Old-style attributes must be one of a known set of names and must have a value.
@@ -298,9 +298,14 @@ static std::pair<std::string, std::string> parse_attribute(std::string::const_it
 
 	std::string value;
 	if(beg != end && (*beg == '\'' || *beg == '"')) {
-		config res = parse_text_until(beg, end, *beg++);
-		if(beg == end) {
-			// No closing quote, so the value runs to the end of the input.
+		const char quote = *beg++;
+		// Old-style tags can't be nested, so a '<' always starts the closing tag.
+		// Stop the value there, so a missing closing quote (a common slip in translations) doesn't capture
+		// the closing tag and whatever text follows it.
+		const auto value_end = old_style ? std::find(beg, end, '<') : end;
+		config res = parse_text_until(beg, value_end, quote);
+		if(beg == value_end) {
+			// No closing quote, so the value runs to the closing tag or the end of the input.
 			// Step back so beg points to the last character, as the caller expects; returning end
 			// would let the caller increment beg past it.
 			--beg;
