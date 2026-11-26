@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-06-22 22:15-0500\n"
-"PO-Revision-Date: 2026-06-19 13:27+0200\n"
+"PO-Revision-Date: 2026-11-11 07:55+0100\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
 "Language: gl\n"
@@ -78,12 +78,12 @@ msgstr "decoración"
 #. [editor_group]: id=forest
 #: data/core/editor/terrain-groups.cfg:45
 msgid "forest"
-msgstr "fraga"
+msgstr "bosque"
 
 #. [editor_group]: id=fall
 #: data/core/editor/terrain-groups.cfg:52
 msgid "fall"
-msgstr "caída"
+msgstr "outono"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:59
@@ -93,7 +93,7 @@ msgstr "xeo"
 #. [editor_group]: id=rough
 #: data/core/editor/terrain-groups.cfg:66
 msgid "rough"
-msgstr "montaña"
+msgstr "terreo accidentado"
 
 #. [editor_group]: id=cave
 #: data/core/editor/terrain-groups.cfg:73
@@ -103,12 +103,12 @@ msgstr "cova"
 #. [editor_group]: id=obstacle
 #: data/core/editor/terrain-groups.cfg:80
 msgid "obstacle"
-msgstr "obstáculos"
+msgstr "obstáculo"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:87
 msgid "village"
-msgstr "aldeas"
+msgstr "aldea"
 
 #. [editor_group]: id=castle
 #: data/core/editor/terrain-groups.cfg:94
@@ -139,7 +139,7 @@ msgstr "Ningunha"
 #. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:11
 msgid "Test"
-msgstr "Probar"
+msgstr "Proba"
 
 #. [editor_times]: id=default
 #: data/core/editor/time-of-day.cfg:22
@@ -169,7 +169,7 @@ msgstr "Tras a caída"
 #. [editor_group]: id=urban_jungle
 #: data/internal/Urban_Jungle/terrain-groups.cfg:5
 msgid "Urban Jungle (Internal)"
-msgstr "Xungla Urbana (interna)"
+msgstr "Xungla urbana (interna)"
 
 #. [theme]: id=editor
 #: data/themes/editor.cfg:11
@@ -316,7 +316,7 @@ msgstr "Ficheiros de engadidos"
 #: src/editor/controller/editor_controller.cpp:899
 msgid "Opening files is not supported, contact your packager"
 msgstr ""
-"A apertura de ficheiros non está admitida, contacte con seu empaquetador"
+"A apertura de ficheiros non está admitida, contacta co teu empaquetador"
 
 #: src/editor/controller/editor_controller.cpp:1343
 msgid "Change Unit ID"
@@ -403,7 +403,7 @@ msgstr "Houbo un erro"
 
 #: src/editor/map/context_manager.cpp:705
 msgid "Do you really want to save a map in the scenarios folder?"
-msgstr "Realmente queres gardar un mapa no cartafol de escenarios?"
+msgstr "Seguro que queres gardar un mapa no cartafol de escenarios?"
 
 #: src/editor/map/context_manager.cpp:713
 #: src/editor/map/context_manager.cpp:905
@@ -416,7 +416,7 @@ msgstr "Gardar o escenario como"
 
 #: src/editor/map/context_manager.cpp:754
 msgid "Do you really want to save a scenario in the maps folder?"
-msgstr "Realmente queres gardar un escenario no cartafol de mapas?"
+msgstr "Seguro que queres gardar un escenario no cartafol de mapas?"
 
 #: src/editor/map/context_manager.cpp:762
 msgid "This scenario is already open."
@@ -438,8 +438,8 @@ msgstr "Cambios sen gardar"
 #: src/editor/map/context_manager.cpp:813
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
-"Quere desbotar todos os cambios que fixo no mapa desde a última vez que o "
-"gardou?"
+"Queres desbotar todos os cambios que fixeches no mapa desde a última vez que "
+"o gardaches?"
 
 #: src/editor/map/context_manager.cpp:866
 msgid "Scenario saved."
@@ -491,7 +491,7 @@ msgid ""
 msgstr ""
 "Fallou ao cargar o escenario: $error\n"
 "\n"
-" Tentando cargar só o mapa."
+"Tentando cargar só o mapa."
 
 #: src/editor/map/map_context.cpp:253
 msgid ""
@@ -519,7 +519,7 @@ msgstr "Non foi posíbel gardar o horario: $msg"
 
 #: src/editor/map/map_context.cpp:869
 msgid "Time schedule saved."
-msgstr "Menú do horario gardado."
+msgstr "Gardouse o horario."
 
 #: src/editor/map/map_context.cpp:915
 msgid "Could not save the scenario: $msg"
@@ -547,9 +547,7 @@ msgstr "Só funcionará na partida se se ten sumo coidado."
 
 #: src/editor/palette/item_palette.cpp:33
 msgid "Left-click: Place item $item | Right-click to remove"
-msgstr ""
-"Clic esquerdo: colocar o elemento $item | Preme co botón dereito para "
-"eliminar"
+msgstr "Clic esquerdo: colocar o elemento $item | Clic dereito para eliminar"
 
 #: src/editor/palette/location_palette.cpp:247
 msgid "Go To"

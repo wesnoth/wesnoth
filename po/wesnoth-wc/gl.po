@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-06-23 03:16 UTC\n"
-"PO-Revision-Date: 2026-06-24 11:05+0200\n"
+"PO-Revision-Date: 2026-11-19 20:06+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: gl\n"
@@ -65,7 +65,7 @@ msgstr "épica"
 #. [trait]: id=epic
 #: data/campaigns/World_Conquest/era/campaign/heroes.cfg:114
 msgid "Always AMLA with 60 XP and raises maximum health by 6 HP."
-msgstr "Sempre AMLA con 60 XP e aumenta a saúde máxima en 6 HP."
+msgstr "Sempre AMLA con 60 P.Exp e aumenta a saúde máxima en 6 HP."
 
 #. [advancement]: id=amla_default
 #: data/campaigns/World_Conquest/era/campaign/heroes.cfg:150
@@ -119,7 +119,7 @@ msgstr "O Culto"
 #. [world_conquest_data]
 #: data/campaigns/World_Conquest/era/factions/The_Cult.cfg:16
 msgid "Young Ogre, Drakes and Northerners"
-msgstr "Novos ogros, dracos e norteños"
+msgstr "Novos ogros, draconiáns e nórdicos"
 
 #. [multiplayer_side]: id=The_Defiance, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Defiance.cfg:8
@@ -139,7 +139,7 @@ msgstr "A banda"
 #. [world_conquest_data]
 #: data/campaigns/World_Conquest/era/factions/The_Gang.cfg:16
 msgid "Dune Herbalist, Loyalists and Knalgan Alliance"
-msgstr "Dune Herbalist, Lealistas e Knalgan Alliance"
+msgstr "Herbalista das dunas, Leais e Alianza de Neilga"
 
 #. [multiplayer_side]: id=The Guild, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Guild.cfg:6
@@ -149,7 +149,7 @@ msgstr "O Gremio"
 #. [world_conquest_data]
 #: data/campaigns/World_Conquest/era/factions/The_Guild.cfg:16
 msgid "Dune Soldier, Loyalists and Drakes"
-msgstr "Dune Soldier, Leais e Drakes"
+msgstr "Soldado das dunas, Leais e Draconiáns"
 
 #. [multiplayer_side]: id=The Hand, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Hand.cfg:6
@@ -159,7 +159,7 @@ msgstr "A man"
 #. [world_conquest_data]
 #: data/campaigns/World_Conquest/era/factions/The_Hand.cfg:16
 msgid "Dune Rider, Knalgan Alliance and Drakes"
-msgstr "Dune Rider, Knalgan Alliance e Drakes"
+msgstr "Xinete das dunas, Alianza de Neilga e Draconiáns"
 
 #. [multiplayer_side]: id=The Horde, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Horde.cfg:6
@@ -169,7 +169,7 @@ msgstr "A horda"
 #. [world_conquest_data]
 #: data/campaigns/World_Conquest/era/factions/The_Horde.cfg:16
 msgid "Dune Rider, Knalgan Alliance and Rebels"
-msgstr "Dune Rider, Knalgan Alliance e Rebels"
+msgstr "Xinete das dunas, Alianza de Neilga e Rebeldes"
 
 #. [multiplayer_side]: id=The_Marauders, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Marauders.cfg:8
@@ -184,7 +184,7 @@ msgstr "A milicia"
 #. [world_conquest_data]
 #: data/campaigns/World_Conquest/era/factions/The_Militia.cfg:16
 msgid "Dune Rover, Undead and Loyalists"
-msgstr "Dune Rover, non mortos e leais"
+msgstr "Vadío das dunas, non mortos e leais"
 
 #. [multiplayer_side]: id=The Scourge, type=random
 #: data/campaigns/World_Conquest/era/factions/The_Scourge.cfg:7
@@ -231,7 +231,7 @@ msgstr "Comandantes"
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:501
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:74
 msgid "Heroes"
-msgstr "Heroes."
+msgstr "Heroes"
 
 #. [label]: id=title_random_leaders
 #: data/campaigns/World_Conquest/gui/help_dialog.cfg:520
@@ -293,7 +293,7 @@ msgstr "Obter este elemento"
 #: data/campaigns/World_Conquest/gui/invest_dialog.cfg:327
 #: data/campaigns/World_Conquest/gui/invest_tellunit.cfg:58
 msgid "OK"
-msgstr "DACORDO"
+msgstr "ACEPTAR"
 
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/invest_tellunit.cfg:24
@@ -343,7 +343,7 @@ msgstr "Tamaño do mapa:"
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:61
 msgid "Village Density:"
-msgstr "densidade da aldea:"
+msgstr "Densidade da aldea:"
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:62
@@ -358,7 +358,7 @@ msgstr "Iteracións:"
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:64
 msgid "Terrain Factor:"
-msgstr "factor de terreo:"
+msgstr "Factor de terreo:"
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:65
@@ -400,7 +400,7 @@ msgstr ""
 #. [lua]: carryover.remaining_gold_message
 #: data/campaigns/World_Conquest/lua/campaign/scenario.lua:87
 msgid "Average remaining gold: "
-msgstr "Promedio de ouro restante: "
+msgstr "Media de ouro restante: "
 
 #: data/campaigns/World_Conquest/lua/era/era.lua:12
 msgid "Tell me how my recruit works"
@@ -828,7 +828,7 @@ msgstr "Bog"
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:59
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:61
 msgid "Hideout"
-msgstr "Escondite"
+msgstr "Agocho"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:21
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:25
@@ -1095,7 +1095,7 @@ msgstr "Ben"
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:57
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:93
 msgid "Cliff"
-msgstr "Cantíl"
+msgstr "Cantil"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:53
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:77
@@ -1179,7 +1179,7 @@ msgstr "Hórreo"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 msgid "Grassland"
-msgstr "pradeira"
+msgstr "Pradeira"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
@@ -1352,12 +1352,12 @@ msgstr "Outro"
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:143
 msgid "+70 gold and +1 village"
-msgstr "+70 ouro e +1 vila"
+msgstr "+70 ouro e +1 aldea"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:148
 msgid "Stock up supplies"
-msgstr "Abastece os suministros"
+msgstr "Abastece os subministracións"
 
 #. [lua]: gui.widget.add_invest_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/invest/invest_show_dialog.lua:153
@@ -1472,7 +1472,7 @@ msgid ""
 "You look like you could use some help. Mind if I join in? It’s been a while "
 "since I had a good fight!"
 msgstr ""
-"Parece que podería usar algunha axuda. ¿Os importa se me sumo? Hai tempo que "
+"Parece que podería usar algunha axuda. Os importa se me sumo? Hai tempo que "
 "non tiña unha boa pelexa!"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:6
@@ -1633,7 +1633,7 @@ msgid ""
 "Ho there, friends! I am but a soldier of humble circumstances, yet long have "
 "I dreamed of joining great wars beyond our shores. Let me join your mission!"
 msgstr ""
-"¡Hola, amigos! Non son máis que un soldado de humildes circunstancias, pero "
+"Hola, amigos! Non son máis que un soldado de humildes circunstancias, pero "
 "hai tempo que soño con unirme a grandes guerras máis aló das nosas costas. "
 "Déixame unir á túa misión!"
 
@@ -2113,7 +2113,7 @@ msgstr ""
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:44
 msgid "Factions"
-msgstr "Faccións."
+msgstr "Faccións"
 
 #. [lua]: preshow
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:44
@@ -2128,12 +2128,12 @@ msgid ""
 msgstr ""
 "A era Conquista Mundial consiste en faccións que se constrúen a partir de "
 "parellas de faccións principais. Unha facción terá un cura dispoñible "
-"(Drakes, Dunefolk, Rebeldes e Leais) e outra non (Orcos, Ananos e Non-"
-"mortos). A lista de recrutamentos tamén está organizada por parellas, polo "
-"que ás veces terás que contratar unha unidade diferente antes de poder "
-"contratar as unidades que queiras. Os heroes dispoñibles, os desertores e os "
-"líderes aleatorios tamén dependen das túas faccións; os elementos que podes "
-"conseguir non dependen da facción que elixas."
+"(Draconiáns, Moradores das dunas, Rebeldes e Leais) e outra non (Orcos, "
+"Ananos e Non-mortos). A lista de recrutamentos tamén está organizada por "
+"parellas, polo que ás veces terás que contratar unha unidade diferente antes "
+"de poder contratar as unidades que queiras. Os heroes dispoñibles, os "
+"desertores e os líderes aleatorios tamén dependen das túas faccións; os "
+"elementos que podes conseguir non dependen da facción que elixas."
 
 #. [lua]: type_icon
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:169
@@ -2143,7 +2143,7 @@ msgstr " (non dispoñible para os inimigos)"
 #. [lua]: type_icon
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:170
 msgid " (not available for players)"
-msgstr "(non dispoñible para xogadores)"
+msgstr " (non dispoñible para xogadores)"
 
 #. [lua]: wc_ii_generate_scenario
 #. [lua]: wct_store_possible_encampment_ford
@@ -2205,7 +2205,7 @@ msgstr "Térmico"
 #. [lua]: world_conquest_tek_map_repaint_4b
 #: data/campaigns/World_Conquest/lua/map/postgeneration/4B_Volcanic.lua:416
 msgid "Volcanic"
-msgstr "volcánica"
+msgstr "Volcánica"
 
 #. [lua]: wct_map_4d_post_bunus_decoration
 #: data/campaigns/World_Conquest/lua/map/postgeneration/4D_Podzol.lua:135
@@ -2257,7 +2257,7 @@ msgid ""
 "Foolish upstarts. You will never defeat us! Come, my allies. Let us crush "
 "them!"
 msgstr ""
-"Parvos parvos. Nunca nos derrotarás! Veña, meus aliados. ¡Déixanos esmagar!"
+"Parvos parvos. Nunca nos derrotarás! Veña, meus aliados. Déixanos esmagar!"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:51
@@ -2317,7 +2317,7 @@ msgid ""
 "What’s this? It is a long time since strangers have set foot upon Moragdu — "
 "and in such great numbers too!"
 msgstr ""
-"Que é isto? Hai moito tempo que os descoñecidos pisan Moragdu, ¡e tamén en "
+"Que é isto? Hai moito tempo que os descoñecidos pisan Moragdu, e tamén en "
 "número tan grande!"
 
 #. [lua]: end_message
@@ -2362,7 +2362,7 @@ msgid ""
 "destroy you as we have destroyed all that have stood before us!"
 msgstr ""
 "Hah! Non viñemos todo este camiño só para desistir e volver a casa. "
-"¡Destruirémoste como destruímos todo o que nos enfrontou!"
+"Destruirémoste como destruímos todo o que nos enfrontou!"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:79
@@ -2453,7 +2453,7 @@ msgstr "Inimigos"
 #. [lua]: add_player_side
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:61
 msgid "Allies"
-msgstr "Aliados:"
+msgstr "Aliados"
 
 #: data/campaigns/World_Conquest/lua/optional_mechanics/unitmarker.lua:12
 msgid "Special Overlay"
@@ -2508,7 +2508,7 @@ msgid ""
 "Full movement and up to 60% defense in water or swamp and up to 70% defense "
 "in reef."
 msgstr ""
-"Movemento total e ata 60% ddefensa en auga ou pantano e ata 70% ddefensa en "
+"Movemento total e ata 60% defensa en auga ou pantano e ata 70% defensa en "
 "arrecife."
 
 #. [artifact]
@@ -2611,7 +2611,7 @@ msgstr "Arco longo de ollo de aguia"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:195
 msgid "ranged: marksman and +25% damage"
-msgstr "a distancia: tirador e +25% dimaxe"
+msgstr "a distancia: tirador e +25% dano"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:196
@@ -2704,7 +2704,7 @@ msgstr "Corazón de lume"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:292
 msgid "melee: fire and +25% damage, +30 resistance vs fire"
-msgstr "corpo a corpo: lume e +25% dimaxe, +30 de resistencia fronte ao lume"
+msgstr "corpo a corpo: lume e +25% dano, +30 de resistencia fronte ao lume"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:293
@@ -2774,7 +2774,7 @@ msgid ""
 "target upon hit."
 msgstr ""
 "Debuxa este arco máxico para convocar unha frecha de xeo que se conxelará e "
-"ralentizará o seu obxectivo ao golpear."
+"minorará o seu obxectivo ao golpear."
 
 #. [effect]: type=cold
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:380
@@ -2832,7 +2832,7 @@ msgstr "Pomada de veleno"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:471
 msgid "blade/pierce: poison and +20% damage"
-msgstr "lámina/perforación: veleno e +20% dimaxe"
+msgstr "lámina/perforación: veleno e +20% dano"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:472
@@ -2886,7 +2886,7 @@ msgstr ""
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:526
 msgid "Root of the Elder Wose"
-msgstr "Raíz do vello Wose"
+msgstr "Raíz do vello arboán"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:528
@@ -3038,15 +3038,14 @@ msgid ""
 "if it were dusk when it is day, and as if it were night when it is dusk."
 msgstr ""
 "Esta unidade escurece a área circundante, facendo que as unidades caóticas "
-"loitan mellor e as unidades legais peor.\n"
-"\n"
-"Calquera unidade adxacente a esta unidade loitará coma se fose o solpor "
-"cando é de día, e coma se fose de noite cando é o solpor."
+"loitan mellor e as unidades legais peor. Calquera unidade adxacente a esta "
+"unidade loitará coma se fose o solpor cando é de día, e coma se fose de "
+"noite cando é o solpor."
 
 #. [dummy]: id=wc2_corruption
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:681
 msgid "corruption"
-msgstr "Corrupción"
+msgstr "corrupción"
 
 #. [dummy]: id=wc2_corruption
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
@@ -3116,7 +3115,7 @@ msgstr "tridente de tormenta"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:757
 msgid "Trolls blood potion"
-msgstr "Poción de sangue trolls"
+msgstr "Poción de sangue de trol"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:762
@@ -3174,7 +3173,7 @@ msgid ""
 "Full movement and up to 50% defense in all terrains but cave or mushroom "
 "grove."
 msgstr ""
-"Movemento total e ata 50% ddefensa en todos os terreos, excepto cova ou "
+"Movemento total e ata 50% defensa en todos os terreos, excepto cova ou "
 "cogomelo."
 
 #. [artifact]
@@ -3362,7 +3361,7 @@ msgstr "Movemento total na quenda de contratación ou retirada"
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:313
 msgid "$range|: $special|"
-msgstr "$rango|: $especial|"
+msgstr "$range|: $special|"
 
 #. [chance]
 #. [skirmisher]: id=distract
@@ -3413,12 +3412,12 @@ msgstr "+$boost| movementos"
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:559
 msgid "$range|: +$boost| damage"
-msgstr "$rango|: +$aumento| danos"
+msgstr "$range|: +$boost| danos"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:575
 msgid "$range|: +1 damage per level"
-msgstr "$rango|: +1 dano por nivel"
+msgstr "$range|: +1 dano por nivel"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:591
@@ -3433,7 +3432,7 @@ msgstr "+$hitpoints| puntos de vida por nivel"
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:622
 msgid "$value| XP to advance"
-msgstr "$valor| XP para avanzar"
+msgstr "$value| XP para avanzar"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:636
@@ -3479,7 +3478,7 @@ msgstr "corpo a corpo: ataque opcional"
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:753
 msgid "$range|: arcane and +25% damage"
-msgstr "$range|: arcano e +25% dimaxe"
+msgstr "$range|: arcano e +25% dano"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:5
 msgid "World Conquest 1p"
