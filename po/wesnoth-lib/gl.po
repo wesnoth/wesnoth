@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-11-19 18:47-0600\n"
-"PO-Revision-Date: 2026-06-19 13:15+0200\n"
+"PO-Revision-Date: 2026-11-23 11:10+0100\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
 "Language: gl\n"
@@ -28,28 +28,27 @@ msgstr ""
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
 msgid "Multiplayer_AI^Default AI (RCA)"
-msgstr "Multiplayer_AI^IA predeterminada (RCA)"
+msgstr "IA predeterminada (RCA)"
 
 #. [ai]: id=ai_default_rca_1_14
 #: data/ai/ais/ai_default_rca_1_14.cfg:9
 msgid "Multiplayer_AI^Old Default AI (1.14 version)"
-msgstr "Multiplayer_AI^Antiga IA predeterminada (versión 1.14)"
+msgstr "Antiga IA predeterminada (versión 1.14)"
 
 #. [ai]: id=experimental_ai
 #: data/ai/ais/ai_experimental.cfg:11
 msgid "Multiplayer_AI^Experimental AI"
-msgstr "Multiplayer_AI^IA experimental"
+msgstr "IA experimental"
 
 #. [ai]: id=idle_ai
 #: data/ai/ais/idle_ai.cfg:4
 msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr "AI Dev: IA inactiva"
+msgstr "IA Dev: IA inactiva"
 
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
-msgstr ""
-"Multiplayer_AI^Dev AI: IA predeterminada (RCA) con recrutamento alternativo"
+msgstr "IA Dev: IA predeterminada (RCA) con recrutamento alternativo"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -166,7 +165,7 @@ msgstr "Braña"
 #. [terrain_type]: id=sea_kelp
 #: data/core/terrain.cfg:135
 msgid "Kelp Forest"
-msgstr "Bosque de Kelp"
+msgstr "Bosque de algas"
 
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:150
@@ -278,7 +277,7 @@ msgstr "Lousado con herba"
 #. [terrain_type]: id=road_icy
 #: data/core/terrain.cfg:294
 msgid "Icy Cobbles"
-msgstr "Icy Cobbles"
+msgstr "Lousado xeado"
 
 #. [terrain_type]: id=ice
 #: data/core/terrain.cfg:307
@@ -354,7 +353,7 @@ msgid ""
 "stationed in a village, but provides no income or defensive advantage."
 msgstr ""
 "Os oasis, o soño de calquera viaxante, permiten ás unidades sandar como se "
-"estivesen nunha vila, pero non fornecen ingresos ou vantaxe defensiva."
+"estivesen nunha aldea, pero non fornecen ingresos ou vantaxe defensiva."
 
 #. [terrain_type]: id=sand_rubble
 #: data/core/terrain.cfg:366
@@ -384,7 +383,7 @@ msgstr "Pedras"
 #. [terrain_type]: id=snowbits_small
 #: data/core/terrain.cfg:418
 msgid "Snowbits"
-msgstr "Bocadillos de neve"
+msgstr "Anaquiños de neve"
 
 #. [terrain_type]: id=mushrooms_small
 #: data/core/terrain.cfg:427
@@ -489,7 +488,7 @@ msgstr "Xanela"
 #: data/core/terrain.cfg:626 data/core/terrain.cfg:638
 #: data/core/terrain.cfg:650
 msgid "Great Tree"
-msgstr "Árbore grande"
+msgstr "Gran árbore"
 
 #. [terrain_type]: id=great_tree_snowy
 #: data/core/terrain.cfg:627
@@ -499,7 +498,7 @@ msgstr "Gran árbore nevada"
 #. [terrain_type]: id=great_tree_dead
 #: data/core/terrain.cfg:639
 msgid "Dead Great Tree"
-msgstr "Árbore grande morta"
+msgstr "Gran árbore morta"
 
 #. [terrain_type]: id=great_tree_dead_oak
 #: data/core/terrain.cfg:651
@@ -789,7 +788,7 @@ msgstr "Colonia de cogomelos"
 #. [terrain_type]: id=fungus_grove_old
 #: data/core/terrain.cfg:1062
 msgid "Non-mixed Mushroom Grove"
-msgstr "Colonia de cogomelos non mesturados"
+msgstr "Colonia de cogomelos sen mestura"
 
 #. [terrain_type]: id=fungus_grove_old
 #. [terrain_type]: id=fungus_beam_old
@@ -805,7 +804,7 @@ msgid ""
 "fungus are wanted, ‘Tb’ is a mushroom base terrain, which can be used with "
 "or without ‘^Tf’ on top."
 msgstr ""
-"editor^As superposicións '^Uf' e '^Ufi' están obsoletas porque, aínda que os "
+"As superposicións '^Uf' e '^Ufi' están obsoletas porque, aínda que os "
 "gráficos mostran unha superposición con outro terreo debaixo, as "
 "estatísticas de movemento e defensa son un terreo puramente fungoso, "
 "ignorando o terreo subxacente. Os substitutos recomendados son '^Tf' e "
@@ -835,7 +834,7 @@ msgstr ""
 #. [terrain_type]: id=fungus_beam_old
 #: data/core/terrain.cfg:1081
 msgid "Lit Non-mixed Mushroom Grove"
-msgstr "Colonia de cogomelos alumada non mesturados"
+msgstr "Colonia de cogomelos alumada sen mestura"
 
 #. [terrain_type]: id=fungus_beam
 #: data/core/terrain.cfg:1113
@@ -874,7 +873,7 @@ msgstr ""
 "vento, que arrastran partículas erosivas que roen a rocha. Semellan cavernas "
 "subterráneas estreitas, o que potencia a defensa, pero dificulta o movemento "
 "á maioría das unidades. Só os habitantes de covas, como os ananos e os "
-"trolles, son completamente capaces de moverse por semellante topografía.\n"
+"troles, son completamente capaces de moverse por semellante topografía.\n"
 "\n"
 "A maioría das unidades teñen arredor dun 50% de defensa nas covas rochosas, "
 "mentres que a cabalería está limitada ao 40%. Os ananos, grazas ao seu "
@@ -899,12 +898,12 @@ msgstr "Raís de mina"
 #. [terrain_type]: id=high_border
 #: data/core/terrain.cfg:1214
 msgid "Bluff"
-msgstr "Bluff"
+msgstr "Cantil"
 
 #. [terrain_type]: id=high_canyon
 #: data/core/terrain.cfg:1224
 msgid "Gulch"
-msgstr "Gulch"
+msgstr "Barranco"
 
 #. [terrain_type]: id=high_canyon_obst
 #: data/core/terrain.cfg:1235
@@ -914,12 +913,12 @@ msgstr "Canón intransitábel"
 #. [terrain_type]: id=high_border_woods
 #: data/core/terrain.cfg:1249
 msgid "Wooded Bluffs"
-msgstr "Acantilados boscosos"
+msgstr "Cantís boscosos"
 
 #. [terrain_type]: id=high_canyon_woods
 #: data/core/terrain.cfg:1259
 msgid "Wooded Gulch"
-msgstr "Quebrada boscosa"
+msgstr "Barranco boscoso"
 
 #. [terrain_type]: id=canyon
 #. [terrain_type]: id=chasm_earthy
@@ -1233,17 +1232,17 @@ msgstr "Baleiro"
 #: data/core/terrain.cfg:2187 data/core/terrain.cfg:3425
 #: data/core/terrain.cfg:3426
 msgid "Village"
-msgstr "Vila"
+msgstr "Aldea"
 
 #. [terrain_type]: id=desert_village
 #: data/core/terrain.cfg:1783
 msgid "Adobe Village"
-msgstr "Vila de adobe"
+msgstr "Aldea de adobe"
 
 #. [terrain_type]: id=desert_village_ruin
 #: data/core/terrain.cfg:1796
 msgid "Ruined Adobe Village"
-msgstr "Vila de adobe en ruínas"
+msgstr "Aldea de adobe en ruínas"
 
 #. [terrain_type]: id=desert_village_tent
 #: data/core/terrain.cfg:1809
@@ -1258,22 +1257,22 @@ msgstr "Tenda"
 #. [terrain_type]: id=orcish_village
 #: data/core/terrain.cfg:1837
 msgid "Orcish Village"
-msgstr "Vila dos orcos"
+msgstr "Aldea dos orcos"
 
 #. [terrain_type]: id=orcish_snow_village
 #: data/core/terrain.cfg:1850
 msgid "Snowy Orcish Village"
-msgstr "Vila dos orcos nevada"
+msgstr "Aldea dos orcos nevada"
 
 #. [terrain_type]: id=elven_snow_village
 #: data/core/terrain.cfg:1865
 msgid "Snowy Elven Village"
-msgstr "Vila dos elfos nevada"
+msgstr "Aldea dos elfos nevada"
 
 #. [terrain_type]: id=elven_village
 #: data/core/terrain.cfg:1878
 msgid "Elven Village"
-msgstr "Vila dos elfos"
+msgstr "Aldea dos elfos"
 
 # Empregando «vivenda» como termo oposto a «casa» (vivenda máis grande ou superior).
 #. [terrain_type]: id=human_village
@@ -1299,7 +1298,7 @@ msgstr "Cidade dos humanos"
 #. [terrain_type]: id=windmill_village
 #: data/core/terrain.cfg:1945
 msgid "Windmill Village"
-msgstr "Vila cun muíño de vento"
+msgstr "Aldea cun muíño de vento"
 
 #. [terrain_type]: id=city_village_wno
 #: data/core/terrain.cfg:1958
@@ -1314,42 +1313,42 @@ msgstr "Cidade dos humanos en ruínas"
 #. [terrain_type]: id=hill_village
 #: data/core/terrain.cfg:1984
 msgid "Hill Stone Village"
-msgstr "Vila de pedra elevada"
+msgstr "Aldea de pedra elevada"
 
 #. [terrain_type]: id=snow-hill_village
 #: data/core/terrain.cfg:1997
 msgid "Snowy Hill Stone Village"
-msgstr "Vila de pedra elevada nevada"
+msgstr "Aldea de pedra elevada nevada"
 
 #. [terrain_type]: id=hill_village_ruin
 #: data/core/terrain.cfg:2010
 msgid "Ruined Hill Stone Village"
-msgstr "Vila de pedra elevada en ruínas"
+msgstr "Aldea de pedra elevada en ruínas"
 
 #. [terrain_type]: id=tropical_forest_village
 #: data/core/terrain.cfg:2023
 msgid "Tropical Village"
-msgstr "Vila tropical"
+msgstr "Aldea tropical"
 
 #. [terrain_type]: id=drake_village
 #: data/core/terrain.cfg:2036
 msgid "Drake Village"
-msgstr "Vila dos draconiáns"
+msgstr "Aldea dos draconiáns"
 
 #. [terrain_type]: id=drake_snow_village
 #: data/core/terrain.cfg:2049
 msgid "Snowy Drake Village"
-msgstr "Vila dos draconiáns nevada"
+msgstr "Aldea dos draconiáns nevada"
 
 #. [terrain_type]: id=underground_village
 #: data/core/terrain.cfg:2064
 msgid "Cave Village"
-msgstr "Vila de cova"
+msgstr "Aldea de cova"
 
 #. [terrain_type]: id=dwarven_village
 #: data/core/terrain.cfg:2077
 msgid "Dwarven Village"
-msgstr "Vila dos ananos"
+msgstr "Aldea dos ananos"
 
 #. [terrain_type]: id=hut_village
 #: data/core/terrain.cfg:2090
@@ -1379,12 +1378,12 @@ msgstr "Iglú"
 #. [terrain_type]: id=swamp_village
 #: data/core/terrain.cfg:2157
 msgid "Swamp Village"
-msgstr "Vila lamacenta"
+msgstr "Aldea lamacenta"
 
 #. [terrain_type]: id=mermen-village
 #: data/core/terrain.cfg:2170
 msgid "Merfolk Village"
-msgstr "Vila da xente do mar"
+msgstr "Aldea dos sirenios"
 
 #. [terrain_type]: id=mermen-village
 #: data/core/terrain.cfg:2171
@@ -1399,21 +1398,21 @@ msgid ""
 "Merfolk and nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
-"As <italic>text='vilas somerxidas'</italic> son o fogar da xente do mar e "
-"dos nagas. Se ben se trata do medio natural para as criaturas acuáticas, as "
-"terrestres teñen grandes dificultades para percorrer e defender estas vilas. "
-"Non obstante, como en calquera outra vila, as instalacións están dispoñíbeis "
-"para todas as criaturas, o que permite que as unidades poidan sandar as súas "
-"feridas. Calquera unidade situada nunha vila pode sandar ata oito puntos de "
-"vida por rolda, ou ser curada do envelenamento.\n"
+"As <italic>text='aldeas somerxidas'</italic> son o fogar do sirenios e dos "
+"nagas. Se ben se trata do medio natural para as criaturas acuáticas, as "
+"terrestres teñen grandes dificultades para percorrer e defender estas "
+"aldeas. Non obstante, como en calquera outra aldea, as instalacións están "
+"dispoñíbeis para todas as criaturas, o que permite que as unidades poidan "
+"sandar as súas feridas. Calquera unidade situada nunha aldea pode sandar ata "
+"oito puntos de vida por quenda, ou ser curada do envelenamento.\n"
 "\n"
-"A xente do mar e mailos nagas teñen un 60% de defensa nas vilas somerxidas, "
+"Os sirenios e mailos nagas teñen un 60% de defensa nas aldeas somerxidas, "
 "mentres que as unidades terrestres teñen normalmente pouca defensa nelas."
 
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:2188
 msgid "Village Overlay"
-msgstr "Revestimento de vila"
+msgstr "Revestimento de aldea"
 
 #. [terrain_type]: id=encampment
 #. [terrain_type]: id=encampment_ruin
@@ -1495,12 +1494,12 @@ msgstr "Castelo dos elfos en ruínas"
 #. [terrain_type]: id=elven_castle_winter
 #: data/core/terrain.cfg:2312
 msgid "Winter Elven Castle"
-msgstr "Castelo élfico invernal"
+msgstr "Castelo dos elfos invernal"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:2324
 msgid "Dwarven Underground Castle"
-msgstr "Castelo dos ananos subterráneo"
+msgstr "Castelo subterráneo dos ananos"
 
 #. [terrain_type]: id=dwarven_castle2
 #: data/core/terrain.cfg:2336
@@ -1510,7 +1509,7 @@ msgstr "Castelo dos ananos"
 #. [terrain_type]: id=dwarven_castle_ruin
 #: data/core/terrain.cfg:2348
 msgid "Dwarven Castle Ruins"
-msgstr "Castelo dos ananos en ruinas"
+msgstr "Castelo dos ananos en ruínas"
 
 #. [terrain_type]: id=dwarven_castle_winter
 #: data/core/terrain.cfg:2360
@@ -1554,7 +1553,7 @@ msgstr "Castelo do deserto en ruínas"
 #. [terrain_type]: id=troll_encampment
 #: data/core/terrain.cfg:2434
 msgid "Troll Encampment"
-msgstr "Campamento de trolles"
+msgstr "Campamento de troles"
 
 #. [terrain_type]: id=aquatic_camp
 #: data/core/terrain.cfg:2446
@@ -1590,7 +1589,7 @@ msgstr "Torre dun campamento elevado"
 #. [terrain_type]: id=encampment_snow_keep
 #: data/core/terrain.cfg:2513
 msgid "Snowy Encampment Keep"
-msgstr "Torre dun campamento nevada"
+msgstr "Torre dun campamento nevado"
 
 #. [terrain_type]: id=orcish_keep
 #. [terrain_type]: id=snow_orcish_keep
@@ -1664,7 +1663,7 @@ msgstr "Torre de castelo dos ananos"
 #. [terrain_type]: id=dwarven_keep_ruin
 #: data/core/terrain.cfg:2643
 msgid "Dwarven Ruin Keep"
-msgstr "Torre dos ananos en ruinas"
+msgstr "Torre dos ananos en ruínas"
 
 #. [terrain_type]: id=dwarven_keep_winter
 #: data/core/terrain.cfg:2656
@@ -1713,7 +1712,7 @@ msgstr "Torre dun campamento acuático"
 #. [terrain_type]: id=troll_campkeep
 #: data/core/terrain.cfg:2747
 msgid "Troll Encampment Keep"
-msgstr "Torre dun campamento de trolles"
+msgstr "Torre dun campamento de troles"
 
 #. [terrain_type]: id=merman_castlekeep
 #: data/core/terrain.cfg:2760
@@ -1863,7 +1862,7 @@ msgstr "Ponte de táboas"
 #. [terrain_type]: id=mark_high
 #: data/core/terrain.cfg:3138
 msgid "Marker High"
-msgstr "Marcador Alto"
+msgstr "Marcador alto"
 
 #. [terrain_type]: id=mark_high2
 #: data/core/terrain.cfg:3148
@@ -1936,13 +1935,12 @@ msgid ""
 "receive only 20%."
 msgstr ""
 "As <italic>text='colonias de cogomelos'</italic> son vastos bosques "
-"subterráneos de cogomelos xigantes\n"
-"que medran na húmida escuridade. A maioría das unidades teñen problemas ao "
-"franquear o chan esponxoso dos pequenos fungos, pero teñen moito abeiro tras "
-"os grandes talos. As unidades montadas, en troques, quedan totalmente "
-"atoadas e carecen de liberdade de movemento para o combate. As unidades non "
-"mortas teñen unha afinidade natural pola podremia e desenvólvense moi ben "
-"nos bosques de cogomelos.\n"
+"subterráneos de cogomelos xigantes que medran na húmida escuridade. A "
+"maioría das unidades teñen problemas ao franquear o chan esponxoso dos "
+"pequenos fungos, pero teñen moito abeiro tras os grandes talos. As unidades "
+"montadas, en troques, quedan totalmente atoadas e carecen de liberdade de "
+"movemento para o combate. As unidades non mortas teñen unha afinidade "
+"natural pola podremia e desenvólvense moi ben nos bosques de cogomelos.\n"
 "\n"
 "A maioría das unidades reciben entre un 50% e un 60% de defensa nas colonias "
 "de cogomelos, mentres que a cabalería só recibe un 20%."
@@ -1971,11 +1969,10 @@ msgstr ""
 "subterránea ampla dabondo como para que pase unha unidade.\n"
 "A meirande parte das unidades non están familiarizadas co terreo, e polo "
 "tanto avanzarán máis amodo e terán maiores dificultades para defenderse. Os "
-"ananos e mailos trolles, que habitan en covas, desenvólvense relativamente "
+"ananos e mailos troles, que habitan en covas, desenvólvense relativamente "
 "ben neste tipo de terreo, en especial os ananos, que grazas ao seu reducido "
 "tamaño son capaces de superar moitos obstáculos que outras especies non "
-"poderían. Ás veces as covas poden estar <italic>text='illuminadas'</"
-"italic>.\n"
+"poderían. Ás veces as covas poden estar <italic>text='iluminadas'</italic>.\n"
 "\n"
 "É pouca a frecuencia coa que no mundo subterráneo se ven zonas bañadas con "
 "luz da superficie. Estas zonas fornecen ás unidades legais unha bonificación "
@@ -2003,7 +2000,7 @@ msgstr ""
 "mellor neste terreo que ao vadear augas pouco profundas, e ademais "
 "garántelles ás criaturas acuáticas unha defensa excepcional.\n"
 "\n"
-"A xente do mar e os nagas obteñen un 70% de defensa nos arrecifes costeiros."
+"Os sirenios e os nagas obteñen un 70% de defensa nos arrecifes costeiros."
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:3308
@@ -2019,11 +2016,11 @@ msgid ""
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
 "Os <italic>text='outeiros'</italic> representan calquera terreo "
-"razoablemente esgrevio, con altos e baixos que sirvan de abeiro.\n"
-"A maioría das tropas teñen dificultades para moverse por eles. Os ananos, "
-"trolles e orcos están tan familiarizados co terreo que poden atravesalo sen "
-"reducir a marcha, porén a cabalería ten tantos problemas ao desprazarse por "
-"el que calquera vantaxe defensiva queda contrarrestada.\n"
+"razoablemente esgrevio, con altos e baixos que sirvan de abeiro. A maioría "
+"das tropas teñen dificultades para moverse por eles. Os ananos, troles e "
+"orcos están tan familiarizados co terreo que poden atravesalo sen reducir a "
+"marcha, porén a cabalería ten tantos problemas ao desprazarse por el que "
+"calquera vantaxe defensiva queda contrarrestada.\n"
 "\n"
 "Case todas as unidades teñen arredor dun 50% de defensa nos outeiros, "
 "mentres que a cabalería está limitada ao 40%, e os ananos gozan dun 60%."
@@ -2048,8 +2045,8 @@ msgstr ""
 "brañas unha liberdade de movemento completa e mais unha bonificación "
 "defensiva. Quen nos lameiros habita, nos lameiros se agocha.\n"
 "\n"
-"Case todas as unidades teñen un 30% de defensa nas brañas, salvo a xente do "
-"mar, os nagas e mailos saurios, que adoitan gozar do 60%."
+"Case todas as unidades teñen un 30% de defensa nas brañas, salvo os "
+"sirenios, os nagas e mailos saurios, que adoitan gozar do 60%."
 
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:3335
@@ -2074,7 +2071,7 @@ msgstr ""
 "auga, ademais de gañar unha bonificación defensiva considerable.\n"
 "\n"
 "A maioría das unidades teñen entre un 20% e un 30% de defensa nas augas "
-"pouco profundas, mentres que os nagas e a xente do mar gozan dun 60%."
+"pouco profundas, mentres que os nagas e os sirenios gozan dun 60%."
 
 #. [terrain_type]: id=castle
 #: data/core/terrain.cfg:3350
@@ -2121,7 +2118,7 @@ msgstr ""
 "pero tamén limitan bastante o seu avance. As unidades cargadas con armaduras "
 "pesadas, coma a cabalería e as tropas de infantería pesada do Noroeste,rara "
 "vez pode atravesar os terreos montañosos, As razas acuáticas e criaturas "
-"como a xente do mar teñen corpos pisciformes que tamén lles impiden subir "
+"como os sirenios teñen corpos pisciformes que tamén lles impiden subir "
 "pendentes escarpadas. Os nagas son unha excepción debido aos seus fortes "
 "brazos e ás súas escamas resistentes. Tanto os ananos como os troles son "
 "nativos do terreo montañoso e teñen facilidade para cruzalo.\n"
@@ -2144,7 +2141,7 @@ msgstr ""
 "non poden entrar nas augas profundas, nas que se desenvolven ben as que "
 "poden voar ou nadar moi ben.\n"
 "\n"
-"A xente do mar e mailos nagas teñen un 50% de defensa nas profundidades, con "
+"Os sirenios e mailos nagas teñen un 50% de defensa nas profundidades, con "
 "total liberdade de movemento."
 
 #. [terrain_type]: id=flat
@@ -2246,14 +2243,14 @@ msgid ""
 "Most units have 50 to 60% defense in villages, whereas cavalry receive only "
 "40%."
 msgstr ""
-"As <italic>text='vilas'</italic> representan calquera grupo de edificios. "
+"As <italic>text='aldeas'</italic> representan calquera grupo de edificios. "
 "Case todas as unidades, incluso as montadas a cabalo, se moven perfectamente "
-"polas vilas, e a maioría das unidades obteñen unha bonificación defensiva "
-"por estar nelas. As vilas ofrecen ás unidades os recursos necesarios para "
+"polas aldeas, e a maioría das unidades obteñen unha bonificación defensiva "
+"por estar nelas. As aldeas ofrecen ás unidades os recursos necesarios para "
 "limpar e curar as feridas, o que lle permite ás unidades situadas nelas "
-"sandar oito puntos de vida cada rolda, ou curar do envelenamento.\n"
+"sandar oito puntos de vida cada quenda, ou curar do envelenamento.\n"
 "\n"
-"A maioría das unidades teñen dun 50% a un 60% de defensa nas vilas, mentres "
+"A maioría das unidades teñen dun 50% a un 60% de defensa nas aldeas, mentres "
 "que a cabalería só recibe un 40%."
 
 #. [terrain_type]: id=impassable
@@ -2273,7 +2270,7 @@ msgstr ""
 "Os obstáculos que incluso o viaxeiro máis determinado non podería superar "
 "son as paredes de pedra sólida e montañas tan altas e empinadas que están "
 "constantemente cubertas de nubes. Nin as criaturas voadoras poden "
-"desprazarse por picos tan elevados, e nin o troll máis feroz pode atravesar "
+"desprazarse por picos tan elevados, e nin o trol máis feroz pode atravesar "
 "as grosas paredes de pedra."
 
 #. [terrain_type]: id=unwalkable
@@ -2598,7 +2595,7 @@ msgstr "Copiar"
 #. The heavy checkmark character is available in the DejaVu Sans font, but not in the default Lato font
 #: data/gui/themes/celes/widgets/button_success.cfg:269
 msgid "page^<b><span font_family='DejaVu Sans'>✔</span> Copied</b>"
-msgstr "páxina^<b><span font_family='DejaVu Sans'>✔</span> Copiada</b>"
+msgstr "<b><span font_family='DejaVu Sans'>✔</span> Copiada</b>"
 
 #. [button]: id=click_dismiss
 #. [button]: id=ok
@@ -3047,38 +3044,38 @@ msgstr "Eliminar"
 #. [grid]
 #: data/gui/themes/default/dialogs/attack_predictions.cfg:86
 msgid "Base damage"
-msgstr "Dano base:"
+msgstr "Dano base"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/attack_predictions.cfg:88
 msgid "Time of day modifier"
-msgstr "Modificador do momento do día:"
+msgstr "Modificador do momento do día"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/attack_predictions.cfg:89
 msgid "Leadership bonus"
-msgstr "Bonificación de liderado:"
+msgstr "Bonificación de liderado"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/attack_predictions.cfg:90
 msgid "Slowed penalty"
-msgstr "Penalización por ralentización:"
+msgstr "Penalización por minoración"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/attack_predictions.cfg:94
 msgid "Total damage"
-msgstr "Dano total:"
+msgstr "Dano total"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/attack_predictions.cfg:98
 msgid "Chance to hit"
-msgstr "Probabilidade de atinar:"
+msgstr "Probabilidade de atinar"
 
 # Úsase «indemne» en vez de «ileso» para evitar problemas de concordancia de xénero.
 #. [grid]
 #: data/gui/themes/default/dialogs/attack_predictions.cfg:99
 msgid "Chance of being unscathed"
-msgstr "Probabilidade de saír indemne:"
+msgstr "Probabilidade de saír indemne"
 
 #. [label]
 #: data/gui/themes/default/dialogs/attack_predictions.cfg:188
@@ -3120,9 +3117,9 @@ msgid ""
 "story and the game mechanics is to play the campaigns in that order."
 msgstr ""
 "<b>Se es novo no Noroeste</b>, o arco narrativo arrinca con <span "
-"color='#e1e119' style='italic'>A Garda do Sur</span> e segue as campañas "
+"color='#e1e119' style='italic'>A garda do sur</span> e segue as campañas "
 "pola orde que tes á esquerda, e remata cincuenta anos máis tarde con <span "
-"color='#e1e119' style='italic'>O Herdeiro do Trono</span>. Xogar as campañas "
+"color='#e1e119' style='italic'>O herdeiro ao trono</span>. Xogar as campañas "
 "nesa orde é o mellor xeito de aprender a historia e as mecánicas do xogo."
 
 #. [label]
@@ -3142,10 +3139,10 @@ msgid ""
 "Konrad unique recruits, companions, or items. The original campaign is still "
 "available as <i>Heir to the Throne, Classic</i>."
 msgstr ""
-"<span color='#e1e119' style='italic'>O Herdeiro do Trono</span> agora ten un "
+"<span color='#e1e119' style='italic'>O herdeiro ao trono</span> agora ten un "
 "mundo aberto con 33 escenarios con diferentes camiños, e en cada un deles "
 "Conrad pode conseguir recrutas, compañeiros ou obxectos especiais. A campaña "
-"de sempre segue estando dispoñible como <i>O Herdeiro do Trono, Clásica</i>."
+"de sempre segue estando dispoñible como <i>O herdeiro ao trono (clásica)</i>."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:216
@@ -3156,7 +3153,7 @@ msgid ""
 "orcs of the north. Choose between 23 magic spells as you bear witness to the "
 "rise of a tyrant."
 msgstr ""
-"<span color='#e1e119' style='italic'>O Gambito da Enganadora</span> "
+"<span color='#e1e119' style='italic'>O gambito da enganadora</span> "
 "substitúe a <i>Memorias de Delfador</i>. Acompaña a unha nova meiga dende as "
 "costas de Alduin ata os salóns do Rei, na súa guerra contra os feros orcos "
 "do norte. Elixe entre 23 feitizos mentres asistes ao auxe dun tirano."
@@ -3170,7 +3167,7 @@ msgid ""
 msgstr ""
 "<span color='#e1e119' style='italic'>Crepúsculo do Albor</span> é a nosa "
 "primeira campaña de troles. Lidera a Tribo da Chama Dourada dende as "
-"entrañas de Irdya ata o mundo superficial — pero coidado co que te agarda "
+"entrañas de Irdia ata o mundo superficial — pero coidado co que te agarda "
 "alí."
 
 #. [label]
@@ -3181,10 +3178,10 @@ msgid ""
 "the Bay of Pearls. When corsairs strike, the villagers must join forces with "
 "the local merfolk and take the fight to the pirates."
 msgstr ""
-"<span color='#e1e119' style='italic'>De Perlas e Piratas</span> é unha nova "
-"campaña orientada a principiantes, ambientada nunha vila pesqueira "
+"<span color='#e1e119' style='italic'>De perlas e piratas</span> é unha nova "
+"campaña orientada a principiantes, ambientada nunha aldea pesqueira "
 "adormecida na Baía das Perlas. Cando os corsarios atacan, os aldeáns deben "
-"unir forzas coa xente do mar locais e levar a loita contra os piratas."
+"unir forzas cos sirenios locais e levar a loita contra os piratas."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:222
@@ -3195,11 +3192,11 @@ msgid ""
 "original tutorial is still available as part of <i>Heir to the Throne, "
 "Classic</i>."
 msgstr ""
-"<span color='#e1e119' style='italic'>A Garda do Sur</span> foi revisada de "
+"<span color='#e1e119' style='italic'>A garda do sur</span> foi revisada de "
 "xeito significativo, e agora substitúe o clásico titorial <i>Adestramento de "
 "Batalla</i>. Para os xogadores que sintan nostalxia pola titoría de "
 "Delfador, o titorial orixinal aínda está dispoñible como parte de <i>O "
-"Herdeiro ao Trono, Clásica</i>."
+"herdeiro ao trono (clásica)</i>."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:224
@@ -3209,7 +3206,7 @@ msgid ""
 "AI, a new Thunderer advancement, a redesign of <i>High Pass</i>, and the re-"
 "addition of the formerly removed <i>Mages and Drakes</i>."
 msgstr ""
-"<span color='#e1e119' style='italic'>O Martelo de Dursagan</span> foi "
+"<span color='#e1e119' style='italic'>O martelo de Dursagan</span> foi "
 "mellorado con axustes na historia, unha intelixencia artificial inimiga "
 "mellorada, unha nova evolución do Tronante, un redeseño de <i>Alto Portelo</"
 "i> e a reincorporación de <i>Meigos e Draconiáns</i>, que fora retirada "
@@ -3224,7 +3221,7 @@ msgid ""
 "and dialogue sequences were changed for better continuity with other "
 "campaigns."
 msgstr ""
-"<span color='#e1e119' style='italic'>Ventos do Destino</span> foi "
+"<span color='#e1e119' style='italic'>Ventos do destino</span> foi "
 "reequilibrado con custos de recuperación moi inferiores, xeradores de vida "
 "salvaxe e IA redeseñados, e unha batalla intermedia moito máis grande. "
 "Varios personaxes e secuencias de diálogo foron modificados para mellorar a "
@@ -3264,7 +3261,7 @@ msgid ""
 "package manager, there’s probably a separate package to install the complete "
 "game data."
 msgstr ""
-"Wesnoth normalmente inclúe máis de 15 campañas principais, mesmo antes de "
+"O Noroeste normalmente inclúe máis de 15 campañas principais, mesmo antes de "
 "instalar calquera desde o servidor de complementos. Se instalaches o xogo a "
 "través dun xestor de paquetes, probablemente haxa un paquete separado para "
 "instalar os datos completos do xogo."
@@ -3379,12 +3376,7 @@ msgstr "Xerador aleatorio predeterminado (RNG)"
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:446
 #: src/gui/dialogs/attack_predictions.cpp:95
-#, fuzzy, no-c-format
-#| msgid ""
-#| "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
-#| "\n"
-#| "Example: if you strike twice with 50% accuracy, you’re most likely to hit "
-#| "once and miss once, but might also hit twice or miss twice."
+#, no-c-format
 msgid ""
 "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
 "\n"
@@ -3394,8 +3386,8 @@ msgstr ""
 "Aleatoriedade pura e imparcial; o xeito no que se pretende xogar ao Reino do "
 "Noroeste.\n"
 "\n"
-"Exemplo: se golpeas dúas veces cunha precisión do 50%, o máis probable é que "
-"acertes unha vez e falles unha, pero tamén podes acertar dúas veces ou "
+"Exemplo: se golpeas dúas veces cun 50% de precisión, o máis probable é que "
+"acertes unha vez e falles outra, pero tamén podes acertar dúas veces ou "
 "fallar dúas veces."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
@@ -3434,13 +3426,7 @@ msgstr "RNG reducido"
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:458
 #: src/gui/dialogs/attack_predictions.cpp:90
-#, fuzzy, no-c-format
-#| msgid ""
-#| "Hits and misses are much more consistent. This tends to make small-scale "
-#| "engagements easier to plan.\n"
-#| "\n"
-#| "Example: if you strike three times with 50% accuracy, you will always hit "
-#| "at least once and miss at least once."
+#, no-c-format
 msgid ""
 "Hits and misses are much more consistent. This tends to make small-scale "
 "engagements easier to plan.\n"
@@ -3545,7 +3531,7 @@ msgstr "Copiar"
 #: data/gui/themes/default/dialogs/chat_log.cfg:188
 #: data/gui/themes/default/dialogs/lua_interpreter.cfg:106
 msgid "Copy this log to clipboard"
-msgstr "Copiar este rexistro no portapapeis."
+msgstr "Copiar este rexistro no portapapeis"
 
 #. [label]
 #: data/gui/themes/default/dialogs/core_dialog.cfg:44
@@ -3849,12 +3835,12 @@ msgstr "A descrición do complemento que se mostrará no xestor de complementos.
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:162
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:667
 msgid "Icon:"
-msgstr "Ícona:"
+msgstr "Icona:"
 
 #. [button]: id=select_icon
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:182
 msgid "Select an icon file"
-msgstr "Selecciona un ficheiro de ícona"
+msgstr "Selecciona un ficheiro de icona"
 
 #. [text_box]: id=icon
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:195
@@ -3862,7 +3848,7 @@ msgid ""
 "The path to the icon image to display in the add-ons manager. Must be an "
 "image from mainline."
 msgstr ""
-"A ruta á imaxe do icono que se mostrará no xestor de complementos. Debe ser "
+"A ruta á imaxe da icona que se mostrará no xestor de complementos. Debe ser "
 "unha imaxe da liña principal."
 
 #. [grid]
@@ -3906,8 +3892,8 @@ msgid ""
 "The numeric topic ID of a thread on the Wesnoth forums where players can "
 "post feedback."
 msgstr ""
-"A ID numérica do tema dun fío no foro de Wesnoth onde os xogadores poden "
-"publicar comentarios."
+"A ID numérica do tema dun fío no foro de Noroeste (westnoth) onde os "
+"xogadores poden publicar comentarios."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:212
@@ -4037,7 +4023,7 @@ msgstr "Tradución"
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_pbl_translation.cfg:84
 msgid "* Required"
-msgstr "Requírido"
+msgstr "Requirido"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl_translation.cfg:97
@@ -4153,7 +4139,7 @@ msgstr "Ouro:"
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:303
 #: src/gui/dialogs/multiplayer/lobby.cpp:456
 msgid "Gold per village:"
-msgstr "Ouro por vila:"
+msgstr "Ouro por aldea:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:331
@@ -4164,7 +4150,7 @@ msgstr "Ingresos:"
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:359
 msgid "Support per village:"
-msgstr "Abastecemento por vila:"
+msgstr "Abastecemento por aldea:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:389
@@ -4322,12 +4308,12 @@ msgstr "Dano:"
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:766
 msgid "Hits:"
-msgstr "Golpes"
+msgstr "Golpes:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:794
 msgid "Specials:"
-msgstr "Especiais: "
+msgstr "Especiais:"
 
 #. [grid]: id=grid_adv
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:836
@@ -4629,7 +4615,7 @@ msgstr "Baleirar"
 #. [button]: id=purge
 #: data/gui/themes/default/dialogs/game_cache_options.cfg:208
 msgid "Purge the entire contents of the cache"
-msgstr "Baleirar todo o contido da caché."
+msgstr "Baleirar todo o contido da caché"
 
 #. [label]: id=lblTitle
 #: data/gui/themes/default/dialogs/game_delete.cfg:40
@@ -4670,7 +4656,7 @@ msgstr "Abrir o cartafol de partidas"
 #. [menu_button]: id=dirList
 #: data/gui/themes/default/dialogs/game_load.cfg:361
 msgid "Show saves from a different version of Wesnoth"
-msgstr "Mostrar gardados dunha versión diferente de Wesnoth"
+msgstr "Mostrar gardados dunha versión diferente de Noroeste"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/themes/default/dialogs/game_load.cfg:537
@@ -4755,7 +4741,7 @@ msgstr "Ouro"
 #: data/gui/themes/default/dialogs/game_stats.cfg:76
 #: src/generators/default_map_generator.cpp:198
 msgid "Villages"
-msgstr "Vilas"
+msgstr "Aldeas"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/themes/default/dialogs/game_stats.cfg:90
@@ -4810,7 +4796,7 @@ msgid ""
 "Village"
 msgstr ""
 "Ouro\n"
-"por vila"
+"por aldea"
 
 #. [toggle_button]: id=sort_5
 #: data/gui/themes/default/dialogs/game_stats.cfg:355
@@ -4819,7 +4805,7 @@ msgid ""
 "Village"
 msgstr ""
 "Abastecemento\n"
-"por vila"
+"por aldea"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -4953,7 +4939,7 @@ msgstr "Rexistros:"
 #. [grid]
 #: data/gui/themes/default/dialogs/game_version.cfg:412
 msgid "Screenshots:"
-msgstr "Capturasdo xogo:"
+msgstr "Capturas do xogo:"
 
 #. [button]: id=open_stderr
 #: data/gui/themes/default/dialogs/game_version.cfg:446
@@ -5032,7 +5018,7 @@ msgstr "Doar"
 #: data/gui/themes/default/dialogs/game_version.cfg:852
 msgid "An open source, turn-based strategy game with a high fantasy theme."
 msgstr ""
-"Un xogo de estratexia por roldas de código aberto con temática de gran "
+"Un xogo de estratexia por quendas de código aberto con temática de gran "
 "fantasía."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
@@ -5075,7 +5061,7 @@ msgstr "Licenza"
 #. [label]
 #: data/gui/themes/default/dialogs/gamestate_inspector.cfg:16
 msgid "inspector tree item^•"
-msgstr "elemento da árbore do inspector^•"
+msgstr "•"
 
 #. [label]
 #: data/gui/themes/default/dialogs/gamestate_inspector.cfg:94
@@ -5123,7 +5109,7 @@ msgstr "Tamaño máximo dos outeiros:"
 #. [grid]
 #: data/gui/themes/default/dialogs/generator_settings.cfg:115
 msgid "Villages:"
-msgstr "Vilas:"
+msgstr "Aldeas:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/generator_settings.cfg:117
@@ -5172,9 +5158,9 @@ msgid ""
 "including translation. Translations may drift behind or even become "
 "abandoned."
 msgstr ""
-"<i>A batalla por Wesnoth</i> depende de voluntarios para o desenvolvemento, "
-"incluída a tradución. As traducións poden quedar atrás ou incluso quedar "
-"abandonadas."
+"<i>A batalla polo Noroeste</i> depende de voluntarios para o "
+"desenvolvemento, incluída a tradución. As traducións poden quedar atrás ou "
+"incluso quedar abandonadas."
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -5365,7 +5351,7 @@ msgstr "Repeticións rápidas"
 #. [option]
 #: data/gui/themes/default/dialogs/lobby_main.cfg:704
 msgid "Skip quickly to the active turn when observing"
-msgstr "Saltar rapidamente á rolda activa ao observar"
+msgstr "Saltar rapidamente á quenda activa ao observar"
 
 #. [option]
 #: data/gui/themes/default/dialogs/lobby_main.cfg:708
@@ -5492,27 +5478,27 @@ msgstr "Dominio do rexistro"
 #. [row]
 #: data/gui/themes/default/dialogs/logging.cfg:196
 msgid "log_level^Debug"
-msgstr "nivel_de_rexistro^Depuración"
+msgstr "Depuración"
 
 #. [row]
 #: data/gui/themes/default/dialogs/logging.cfg:197
 msgid "log_level^Info"
-msgstr "nivel_de_rexistro^Información"
+msgstr "Información"
 
 #. [row]
 #: data/gui/themes/default/dialogs/logging.cfg:198
 msgid "log_level^Warning"
-msgstr "nivel_de_rexistro^Aviso"
+msgstr "Aviso"
 
 #. [row]
 #: data/gui/themes/default/dialogs/logging.cfg:199
 msgid "log_level^Error"
-msgstr "nivel_de_rexistro^Erro"
+msgstr "Erro"
 
 #. [row]
 #: data/gui/themes/default/dialogs/logging.cfg:200
 msgid "log_level^None"
-msgstr "nivel_de_rexistro^Ningún"
+msgstr "Ningún"
 
 #. [button]: id=clear
 #: data/gui/themes/default/dialogs/lua_interpreter.cfg:117
@@ -5535,8 +5521,8 @@ msgid ""
 "Choose which version of Wesnoth to import your data from.\n"
 "Some settings will not take effect until Wesnoth is restarted."
 msgstr ""
-"Escolle que versión de Wesnoth usar para importar os teus datos.\n"
-"Algunhas configuracións non terán efecto até que Wesnoth se reinicie."
+"Escolle que versión de Noroeste a usar para importar os teus datos.\n"
+"Algunhas configuracións non terán efecto até que Noroeste se reinicie."
 
 #. [button]: id=cancel
 #: data/gui/themes/default/dialogs/migrate_version_selection.cfg:127
@@ -5649,7 +5635,7 @@ msgstr "Listo para comezar"
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:190
 msgid "When the game you are hosting is ready to start"
-msgstr "Cando a partida da que vostede é o anfitrión está lista para comezar"
+msgstr "Cando a partida da que es o anfitrión está lista para comezar"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:191
@@ -5659,17 +5645,17 @@ msgstr "Comezou a partida"
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:191
 msgid "When the host (not you) has started the game"
-msgstr "Cando o anfitrión inicia a partida (e vostede non é o anfitrión)"
+msgstr "Cando o anfitrión inicia a partida (e ti non es o anfitrión)"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:192
 msgid "Turn changed"
-msgstr "Cambiou a rolda"
+msgstr "Cambiou a quenda"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:192
 msgid "When a new turn has begun"
-msgstr "Cando comeza a súa rolda"
+msgstr "Cando comeza a súa quenda"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:193
@@ -5735,7 +5721,7 @@ msgstr "Independente"
 #. [option]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:167
 msgid "Independent: Random factions assigned independently"
-msgstr "Indepentente: repartir as faccións de maneira independente"
+msgstr "Independente: repartir as faccións de maneira independente"
 
 #. [option]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:171
@@ -5772,12 +5758,12 @@ msgstr "Usar a configuración específica do escenario"
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:336
 msgid "Number of Turns"
-msgstr "Número de roldas"
+msgstr "Número de quendas"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:336
 msgid "The maximum number of turns the game can last"
-msgstr "O número máximo de roldas que pode durar a partida."
+msgstr "O número máximo de quendas que pode durar a partida."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:337
@@ -5787,22 +5773,22 @@ msgstr "ilimitado"
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:340
 msgid "The amount of income each village yields per turn"
-msgstr "A cantidade de ingresos que cada vila fornece por rolda"
+msgstr "A cantidade de ingresos que cada aldea fornece por quenda"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:340
 msgid "Village Gold"
-msgstr "Ouro por vila"
+msgstr "Ouro por aldea"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:342
 msgid "The number of unit levels each village can support"
-msgstr "O número de niveis de unidades que permite cada vila"
+msgstr "O número de niveis de unidades que permite cada aldea"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:342
 msgid "Village Support"
-msgstr "Niveis por vila"
+msgstr "Niveis por aldea"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:344
@@ -5824,7 +5810,7 @@ msgstr "Néboa da guerra"
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:375
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
-"As unidades inimigas non poden verse a menos que estén ao alcance das túas "
+"As unidades inimigas non poden verse a menos que estean ao alcance das túas "
 "unidades"
 
 #. [toggle_button]: id=shroud
@@ -5862,22 +5848,22 @@ msgstr "Límite inicial"
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:482
 msgid "Longest time allowed for first turn (seconds)"
-msgstr "Tempo máximo permitido para a primeira rolda, en segundos."
+msgstr "Tempo máximo permitido para a primeira quenda, en segundos."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:484
 msgid "Time for general tasks each turn (seconds)"
-msgstr "Tempo para tarefas xerais cada rolda, en segundos."
+msgstr "Tempo para tarefas xerais cada quenda, en segundos."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:484
 msgid "Turn Bonus"
-msgstr "Bonificación por rolda"
+msgstr "Bonificación por quenda"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:486
 msgid "Longest time possible for any turn (seconds)"
-msgstr "Tempo máximo posíbel por rolda, en segundos."
+msgstr "Tempo máximo posíbel por quenda, en segundos."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:486
@@ -5953,7 +5939,7 @@ msgstr "Repetición privada"
 
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:972
 msgid "Whether the replay will be publicly available"
-msgstr "Se a repetición estará dispoñible públicamente"
+msgstr "Se a repetición estará dispoñible publicamente"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:988
@@ -6009,7 +5995,7 @@ msgstr "Recrutamentos"
 #. [label]
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:338
 msgid "Choose Your Leader"
-msgstr "Selecciona o teu lider"
+msgstr "Selecciona o teu líder"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_host_game_prompt.cfg:40
@@ -6130,8 +6116,8 @@ msgid ""
 "A registered account on the Wesnoth forums is required to join the official "
 "server."
 msgstr ""
-"Necesítase unha conta rexistrada no foro de Wesnoth para unirse ao servidor "
-"oficial."
+"Necesítase unha conta rexistrada no foro de Noroeste (Wesnoth) para unirse "
+"ao servidor oficial."
 
 #. [button]: id=register
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:152
@@ -6149,7 +6135,7 @@ msgid ""
 "Join\n"
 "Official Server"
 msgstr ""
-"Únirse\n"
+"Unirse\n"
 "Ao servidor oficial"
 
 # Mensaxe de axuda da segunda opción do menú de «Varios xogadores», «Conectarse a outro servidor».
@@ -6311,17 +6297,17 @@ msgstr "Desactivar os movementos automáticos"
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:101
 msgid "Do not allow automatic movements at the beginning of a turn"
-msgstr "Non permitir movementos automáticos ao comezo dunha rolda"
+msgstr "Non permitir movementos automáticos ao comezo dunha quenda"
 
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:114
 msgid "Turn prompt"
-msgstr "Aviso de rolda"
+msgstr "Aviso de quenda"
 
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:115
 msgid "Display a prompt at the beginning of your turn"
-msgstr "Amosar un aviso ao comezo da túa rolda"
+msgstr "Amosar un aviso ao comezo da túa quenda"
 
 # Configuración → Xeral.
 #. [toggle_button]: id=whiteboard_on_start
@@ -6601,7 +6587,7 @@ msgstr ""
 #. [toggle_button]: id=auto_pixel_scale
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:269
 msgid "pixel_scale_multiplier^Automatic scale"
-msgstr "pixel_scale_multiplier^Escala automática"
+msgstr "Escala automática"
 
 #. [toggle_button]: id=auto_pixel_scale
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:270
@@ -6645,27 +6631,23 @@ msgstr "Aplicar"
 
 #. [button]: id=custom_orb_color
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:375
-#, fuzzy
-#| msgid "Adjust orb colors"
 msgid "Customize orb colors"
-msgstr "Axustar as cores das esferas"
+msgstr "Personalizar as cores das esferas"
 
 #. [button]: id=custom_orb_color
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:377
 msgid "Change the appearance of the unit movement status indicators"
-msgstr ""
+msgstr "Cambiar o aspecto dos indicadores do estado do movemento das unidades"
 
 #. [button]: id=custom_reach_map
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:391
-#, fuzzy
-#| msgid "Custom Maps"
 msgid "Customize reach map"
-msgstr "Mapas personalizados"
+msgstr "Personalizar o mapa de alcance"
 
 #. [button]: id=custom_reach_map
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:392
 msgid "Change the appearance of the unit movement UI overlay"
-msgstr ""
+msgstr "Cambiar o aspecto da capa de interface do movemento das unidades"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:410
@@ -6752,7 +6734,7 @@ msgstr "Cambiar o volume da música"
 #. [column]
 #: data/gui/themes/default/dialogs/preferences/04_sound.cfg:123
 msgid "Play a bell sound at the beginning of your turn"
-msgstr "Reproducir un son de campá ao comezo de cada rolda propia"
+msgstr "Reproducir un son de campá ao comezo de cada quenda propia"
 
 #. [column]
 #: data/gui/themes/default/dialogs/preferences/04_sound.cfg:123
@@ -6925,15 +6907,13 @@ msgstr "Opacidade do ton:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:148
-#, fuzzy
-#| msgid "Border Opacity:"
 msgid "Darken Opacity:"
-msgstr "Opacidade do bordo:"
+msgstr "Opacidade do escurecemento:"
 
 #. [toggle_button]: id=reachmap_darken_tex
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:157
 msgid "Textured darken"
-msgstr ""
+msgstr "Escurecemento con textura"
 
 #. [button]: id=open
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:49
@@ -6993,7 +6973,7 @@ msgstr "Mostrar as orbes dos aliados"
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:154
 msgid "During ally’s turn, use a two-color orb to show movement"
 msgstr ""
-"Durante a rolda do aliado, usa unha orbe de dúas cores para mostrar o "
+"Durante a quenda do aliado, usa unha orbe de dúas cores para mostrar o "
 "movemento"
 
 #. [grid]
@@ -7003,7 +6983,7 @@ msgid ""
 "ally orb color, and the other half shows whether the unit is unmoved, "
 "partially moved or fully moved."
 msgstr ""
-"Durante os turnos dos teus aliados, as súas unidades teñen un orbe de dúas "
+"Durante as quendas dos teus aliados, as súas unidades teñen un orbe de dúas "
 "cores. Unha metade é a cor do orbe aliado, e a outra metade mostra se a "
 "unidade está inmóbil, se move parcialmente ou se move completamente."
 
@@ -7055,17 +7035,16 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hitpoints inflicted/taken."
 msgstr ""
-"diálogo de estatísticas^Diferenza entre o resultado real e o esperado, como "
-"porcentaxe.\n"
-"O primeiro número entre parénteses é o número esperado de hitpoints "
+"Diferenza entre o resultado real e o esperado, como porcentaxe.\n"
+"O primeiro número entre parénteses é o número esperado de puntos de vida "
 "inflixidos/tomados.\n"
 "A suma (ou diferenza) dos dous números entre parénteses é o número real de "
-"hitpoints inflixidos/tomados."
+"puntos de vida inflixidos/tomados."
 
 #. [column]
 #: data/gui/themes/default/dialogs/statistics_dialog.cfg:561
 msgid "stats dialog^Ratio of actual to expected"
-msgstr "diálogo de estatísticas^Proporción entre real e esperado"
+msgstr "Proporción entre real e esperado"
 
 #. [column]
 #: data/gui/themes/default/dialogs/statistics_dialog.cfg:576
@@ -7086,13 +7065,18 @@ msgid ""
 "Green values indicate this side fared better than expected.\n"
 "Red values indicate this side fared worse than expected."
 msgstr ""
-"diálogo de estatísticas^A probabilidade <i>a priori</i> de inflixir/tomar "
-"como máximo estes golpes, en porcentaxe. Intuitivamente, esta é unha medida "
-"de como a aleatoriedade afectou a este lado. Os valores entre 0 e 50 suxiren "
-"que o número de accesos foi menor do esperado. Os valores entre 50 e 100 "
-"suxiren que o número de accesos foi superior ao esperado. Os valores verdes "
-"indican que este lado foi mellor do esperado. Os valores vermellos indican "
-"que este lado foi peor do esperado."
+"A probabilidade <i>a priori</i> de inflixir/tomar como máximo estes golpes, "
+"en porcentaxe.\n"
+"\n"
+"Intuitivamente, esta é unha medida de como a aleatoriedade afectou a este "
+"lado.\n"
+"Os valores entre 0 e 50 suxiren que o número de golpes foi menor do "
+"esperado.\n"
+"Os valores entre 50 e 100 suxiren que o número de golpes foi superior ao "
+"esperado.\n"
+"\n"
+"Os valores verdes indican que este lado foi mellor do esperado.\n"
+"Os valores vermellos indican que este lado foi peor do esperado."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -7241,7 +7225,7 @@ msgstr "PV"
 #. [toggle_button]: id=unit_xp
 #: data/gui/themes/default/dialogs/units_dialog.cfg:118
 msgid "XP"
-msgstr "Exp."
+msgstr "P.Exp."
 
 #. [toggle_button]: id=unit_status
 #: data/gui/themes/default/dialogs/units_dialog.cfg:133
@@ -7318,7 +7302,7 @@ msgstr "Descargas"
 #. The heavy checkmark character is available in the DejaVu Sans font, but not in the default Lato font
 #: data/gui/themes/default/widgets/button_success.cfg:250
 msgid "page^<span font_family='DejaVu Sans'>✔</span> Copied"
-msgstr "páxina^<span font_family='DejaVu Sans'>✔</span> Copiouse"
+msgstr "<span font_family='DejaVu Sans'>✔</span> Copiouse"
 
 #. [image]: id=pending_messages
 #: data/gui/themes/default/widgets/chatbox.cfg:40
@@ -7352,7 +7336,7 @@ msgstr ""
 #: data/internal/Urban_Jungle/terrain.cfg:33
 #: data/internal/Urban_Jungle/terrain.cfg:34
 msgid "Urban Jungle"
-msgstr "Xungla Urbana"
+msgstr "Xungla urbana"
 
 #: src/build_info.cpp:281
 msgid "feature^Lua console completion"
@@ -7372,7 +7356,7 @@ msgstr "Infraestrutura de notificacións de Cocoa"
 
 #: src/build_info.cpp:342 src/desktop/version.cpp:129
 msgid "cpu_architecture^<unknown>"
-msgstr "arquitectura_cpu^<unknown>"
+msgstr "<unknown>"
 
 #: src/desktop/paths.cpp:96
 msgid "filesystem_path_system^Volumes"
@@ -7627,22 +7611,21 @@ msgstr "Envío inicial ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:207
 msgid "addon_tag^Cooperative"
-msgstr "addon_tag^Cooperativa"
+msgstr "Cooperativa"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:209
 msgid "addon_tag^All human players are on the same team, versus the AI"
-msgstr ""
-"addon_tag^Todos os xogadores humanos están no mesmo equipo, fronte á IA"
+msgstr "Todos os xogadores humanos están no mesmo equipo, fronte á IA"
 
 #: src/gui/dialogs/addon/manager.cpp:210
 msgid "addon_tag^Cosmetic"
-msgstr "addon_tag^Cosmético"
+msgstr "Cosmético"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:212
 msgid "addon_tag^These make the game look different, without changing gameplay"
-msgstr "addon_tag^Estes fan que o xogo pareza diferente, sen cambiar o xogo"
+msgstr "Estes fan que o xogo pareza diferente, sen cambiar o xogo"
 
 #: src/gui/dialogs/addon/manager.cpp:213
 msgid "addon_tag^Difficulty"
@@ -7651,11 +7634,11 @@ msgstr "Dificultade"
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:215
 msgid "addon_tag^Can make campaigns easier or harder"
-msgstr "addon_tag^Pode facer as campañas máis fáciles ou máis difíciles"
+msgstr "Pode facer as campañas máis fáciles ou máis difíciles"
 
 #: src/gui/dialogs/addon/manager.cpp:216
 msgid "addon_tag^RNG"
-msgstr "addon_tag^RNG"
+msgstr "RNG"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:218
@@ -7663,26 +7646,25 @@ msgid ""
 "addon_tag^Modify the randomness in the combat mechanics, or remove it "
 "entirely"
 msgstr ""
-"addon_tag^Modifica a aleatoriedade na mecánica de combate ou elimínaa por "
-"completo"
+"Modifica a aleatoriedade na mecánica de combate ou elimínaa por completo"
 
 #: src/gui/dialogs/addon/manager.cpp:219
 msgid "addon_tag^Survival"
-msgstr "addon_tag^Supervivencia"
+msgstr "Supervivencia"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:221
 msgid "addon_tag^Fight against waves of enemies"
-msgstr "addon_tag^Loita contra ondas de inimigos"
+msgstr "Loita contra ondas de inimigos"
 
 #: src/gui/dialogs/addon/manager.cpp:222
 msgid "addon_tag^Terraforming"
-msgstr "addon_tag^Terraformación"
+msgstr "Terraformación"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:224
 msgid "addon_tag^Players can change the terrain"
-msgstr "addon_tag^Os xogadores poden cambiar o terreo"
+msgstr "Os xogadores poden cambiar o terreo"
 
 #: src/gui/dialogs/addon/manager.cpp:248 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
@@ -7800,7 +7782,7 @@ msgid ""
 "uploaded. Do you really wish to continue?"
 msgstr ""
 "A versión remota deste complemento é superior ou igual á versión que está a "
-"enviar. Quere continuar?"
+"enviar. Queres continuar?"
 
 #: src/gui/dialogs/addon/manager.cpp:997
 msgid "The passphrase attribute cannot be present when forum_auth is used."
@@ -8119,7 +8101,7 @@ msgstr "O seguinte ficheiro eliminarase de maneira permanente:"
 
 #: src/gui/dialogs/file_dialog.cpp:797
 msgid "Do you wish to continue?"
-msgstr "Quere continuar?"
+msgstr "Queres continuar?"
 
 #: src/gui/dialogs/file_dialog.cpp:809
 msgid ""
@@ -8150,7 +8132,7 @@ msgstr "Limpouse a caché"
 
 #: src/gui/dialogs/game_cache_options.cpp:121
 msgid "The game data cache has been cleaned."
-msgstr "Limpouse a cachñe de datos do xogo."
+msgstr "Limpouse a caché de datos do xogo."
 
 #: src/gui/dialogs/game_cache_options.cpp:123
 msgid "The game data cache could not be completely cleaned."
@@ -8162,7 +8144,7 @@ msgstr "Baleirouse a caché"
 
 #: src/gui/dialogs/game_cache_options.cpp:140
 msgid "The game data cache has been purged."
-msgstr "Baleirouse a cachñe de datos do xogo."
+msgstr "Baleirouse a caché de datos do xogo."
 
 #: src/gui/dialogs/game_cache_options.cpp:142
 msgid "The game data cache could not be purged."
@@ -8187,7 +8169,7 @@ msgstr "O Noroeste $version"
 #. TRANSLATORS: "reserve" refers to units on the recall list
 #: src/gui/dialogs/game_load.cpp:240
 msgid "$active active, $reserve reserve"
-msgstr "$activo activo, $reserva reserva"
+msgstr "$active activo, $reserve reserva"
 
 #: src/gui/dialogs/game_load.cpp:295
 msgid "The selected file is corrupt: "
@@ -8537,22 +8519,12 @@ msgid "Random Maps"
 msgstr "Mapas aleatorios"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:167
-#, fuzzy
-#| msgid "Scenario Editor"
 msgid "Scenario not found: "
-msgstr "Editor de escenarios"
+msgstr "Non se atopou o escenario: "
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:237
-#, fuzzy
-#| msgid ""
-#| "Modifications:\n"
-#| "\n"
-#| "None found."
 msgid "Modification(s) not found: "
-msgstr ""
-"Modificacións:\n"
-"\n"
-"Non se atopou ningunha."
+msgstr "Modificación(s) non atopada(s): "
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:294
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:295
@@ -8573,7 +8545,7 @@ msgstr "Non hai eras dispoñíbeis para esta partida."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:886
 msgid "number of players^$min to $max"
-msgstr "número de xogadores^$min a $max"
+msgstr "$min a $max"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:1039
 msgid "The selected game has no sides!"
@@ -8709,7 +8681,7 @@ msgstr "Todos os escenarios"
 #: src/gui/dialogs/statistics_dialog.cpp:174
 #: src/gui/dialogs/statistics_dialog.cpp:309
 msgid "This Turn"
-msgstr "Esta rolda"
+msgstr "Esta quenda"
 
 #: src/gui/dialogs/statistics_dialog.cpp:210
 msgid "Actual hit rates, by chance to hit:"
@@ -8766,7 +8738,7 @@ msgstr "Recibido"
 
 #: src/gui/dialogs/statistics_dialog.cpp:427
 msgid "$count|× $name"
-msgstr "$conto|× $nome"
+msgstr "$count|× $name"
 
 #: src/gui/dialogs/title_screen.cpp:132 src/hotkey/hotkey_command.cpp:98
 msgid "Screenshot"
@@ -8812,7 +8784,7 @@ msgstr "Despedir a unidade"
 
 #: src/gui/dialogs/units_dialog.cpp:440
 msgid "unit_variation^Default Variation"
-msgstr "unit_variation^Variación predeterminada"
+msgstr "Variación predeterminada"
 
 #: src/gui/dialogs/units_dialog.cpp:476
 msgid "Create Unit"
@@ -9013,7 +8985,7 @@ msgstr "Restante: $left/$max"
 
 #: src/gui/widgets/unit_preview_pane.cpp:223
 msgid "This unit can attack multiple times per turn."
-msgstr "Esta unidade pode atacar varias veces por rolda."
+msgstr "Esta unidade pode atacar varias veces por quenda."
 
 #: src/gui/widgets/unit_preview_pane.cpp:275
 msgid "uses $num attack"
@@ -9060,7 +9032,7 @@ msgstr "Habilidades"
 
 #: src/gui/widgets/window.cpp:287
 msgid "Linked ‘$id’ group has multiple definitions."
-msgstr "O grupo ligado «$id|» ten múltiples definicións."
+msgstr "O grupo ligado «$id» ten múltiples definicións."
 
 #: src/gui/widgets/window.cpp:884
 msgid "Click dismiss needs a ‘click_dismiss’ or ‘ok’ button."
@@ -9181,11 +9153,11 @@ msgstr "Manter a posición"
 
 #: src/hotkey/hotkey_command.cpp:89
 msgid "End Unit Turn"
-msgstr "Rematar a rolda da unidade"
+msgstr "Rematar a quenda da unidade"
 
 #: src/hotkey/hotkey_command.cpp:90
 msgid "Scroll to Leader"
-msgstr "Desplazar al líder"
+msgstr "Desprazar ao líder"
 
 #: src/hotkey/hotkey_command.cpp:91
 msgid "Undo"
@@ -9244,7 +9216,7 @@ msgstr "Gardar o mapa"
 
 #: src/hotkey/hotkey_command.cpp:110
 msgid "Load Turn..."
-msgstr "Cargando rolda…"
+msgstr "Cargando quenda…"
 
 #: src/hotkey/hotkey_command.cpp:112
 msgid "Repeat Recruit"
@@ -9256,7 +9228,7 @@ msgstr "Mostrar ou ocultar as etiquetas"
 
 #: src/hotkey/hotkey_command.cpp:115
 msgid "End Turn"
-msgstr "Rematar a rolda"
+msgstr "Rematar a quenda"
 
 #: src/hotkey/hotkey_command.cpp:117
 msgid "Toggle Ellipses"
@@ -9348,7 +9320,7 @@ msgstr "Deter a repetición"
 
 #: src/hotkey/hotkey_command.cpp:144
 msgid "Next Turn"
-msgstr "Seguinte rolda"
+msgstr "Seguinte quenda"
 
 #: src/hotkey/hotkey_command.cpp:145
 msgid "Next Side"
@@ -9594,12 +9566,12 @@ msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Needs a defined side."
 msgstr ""
-"O botón principal establece a propiedade da vila ao bando actual, o "
+"O botón principal establece a propiedade da aldea ao bando actual, o "
 "secundario quita a propiedade. É necesario ter un bando definido."
 
 #: src/hotkey/hotkey_command.cpp:211
 msgid "Village Tool"
-msgstr "Ferramenta de vilas"
+msgstr "Ferramenta de aldeas"
 
 #: src/hotkey/hotkey_command.cpp:213
 msgid "Can Recruit"
@@ -9643,7 +9615,7 @@ msgstr "Cambiar o debuxado de unidades do minimapa"
 
 #: src/hotkey/hotkey_command.cpp:226
 msgid "Toggle Minimap Village Drawing"
-msgstr "Cambiar o debuxado de vilas do minimapa"
+msgstr "Cambiar o debuxado de aldeas do minimapa"
 
 #: src/hotkey/hotkey_command.cpp:227
 msgid "Toggle Minimap Terrain Drawing"
@@ -9992,6 +9964,9 @@ msgstr ""
 #: src/wml_exception.cpp:104
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 msgstr "Na sección ‘[$section|]’ falta a subetiqueta obrigatoria ‘[$tag|]’."
+
+#~ msgid "Accessibility:"
+#~ msgstr "Accesibilidade:"
 
 # Configuración → Xeral.
 #~ msgid "Turn dialog"
