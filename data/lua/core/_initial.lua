@@ -35,7 +35,7 @@ function wesnoth.deprecate_api(elem_name, replacement_name, level, version, elem
 		local err_params = {level = level}
 		-- Note: This message is duplicated in src/deprecation.cpp
 		-- Any changes should be mirrored there.
-		error((_"Invalid deprecation level $level (should be 1-4)"):vformat(err_params))
+		error((_"Invalid deprecation level $level (should be 1–4)"):vformat(err_params))
 	end
 	local msg_shown = false
 	if level == 4 then
