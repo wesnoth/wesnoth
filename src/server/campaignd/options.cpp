@@ -62,7 +62,7 @@ command_line::command_line(const std::vector<std::string>& args)
 
 	po::options_description opts_log{"Logging options"};
 	opts_log.add_options()
-		("logdomains", "lists defined log domains and exits")
+		("logdomains", "lists defined log domains and the severity each has at startup, then exits. Each line is '<domain> <level>'.")
 		("log-error", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'error'. <arg> should be given as a comma-separated list of domains.")
 		("log-warning", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'warning'. This is the default for all log domains other than 'campaignd' and 'server'.")
 		("log-info", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'info'. This is the default for the 'campaignd' and 'server' log domains.")

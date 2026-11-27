@@ -2156,7 +2156,7 @@ static int run_campaignd(int argc, char** argv)
 	}
 
 	if(cmdline.show_log_domains) {
-		std::cout << lg::list_log_domains("");
+		std::cout << lg::list_log_domains("", true);
 		return 0;
 	}
 

@@ -162,9 +162,14 @@ of the victory result. Only relevant when used with
 .BR -u .
 .TP
 .BI --logdomains[ =filter ]
-lists defined log domains (only the ones containing
+lists defined log domains and the severity each has at startup (only the ones containing
 .I filter
-if used) and exits
+if used) and exits.
+Each line has the form
+.I "domain level"
+where
+.I level
+is one of none, error, warning, info, or debug.
 .TP
 .B --no-log-to-file
 prevents redirecting logged output to a file. The environment variable WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created in the logs directory under the userdata folder.

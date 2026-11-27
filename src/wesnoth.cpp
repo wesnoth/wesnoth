@@ -395,7 +395,7 @@ static int process_command_args(commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.logdomains) {
-		std::cout << lg::list_log_domains(*cmdline_opts.logdomains);
+		std::cout << lg::list_log_domains(*cmdline_opts.logdomains, true);
 		return 0;
 	}
 

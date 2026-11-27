@@ -131,7 +131,17 @@ public:
 bool set_log_domain_severity(const std::string& name, severity severity);
 bool set_log_domain_severity(const std::string& name, const logger &lg);
 bool get_log_domain_severity(const std::string& name, severity &severity);
-std::string list_log_domains(const std::string& filter);
+
+/**
+ * Lists log domains whose names contain @a filter.
+ *
+ * When @a with_severity is false, each line is only the domain name. The log
+ * settings dialog parses that form as whitespace-separated names.
+ * When @a with_severity is true, each line is "domain level", using the same
+ * level names as the command line: none, error, warning, info, debug.
+ * The level is the one stored at the time of the call.
+ */
+std::string list_log_domains(const std::string& filter, bool with_severity = false);
 
 void set_strict_severity(severity severity);
 void set_strict_severity(const logger &lg);

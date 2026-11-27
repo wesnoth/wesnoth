@@ -250,7 +250,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 
 	po::options_description logging_opts("Logging options");
 	logging_opts.add_options()
-		("logdomains", po::value<std::string>()->implicit_value(std::string()), "lists defined log domains (only the ones containing <arg> filter if such is provided) and exits." IMPLY_TERMINAL)
+		("logdomains", po::value<std::string>()->implicit_value(std::string()), "lists defined log domains and the severity each has at startup (only the ones containing <arg> filter if such is provided) and exits. Each line is '<domain> <level>'." IMPLY_TERMINAL)
 		("log-error", po::value<std::vector<std::string>>()->composing(), "sets the severity level of the specified log domain(s) to 'error'. <arg> should be given as a comma-separated list of domains, wildcards are allowed. Example: --log-error=network,gui/*,engine/enemies")
 		("log-warning", po::value<std::vector<std::string>>()->composing(), "sets the severity level of the specified log domain(s) to 'warning'. Similar to --log-error.")
 		("log-info", po::value<std::vector<std::string>>()->composing(), "sets the severity level of the specified log domain(s) to 'info'. Similar to --log-error.")
