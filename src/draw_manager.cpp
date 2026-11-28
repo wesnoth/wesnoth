@@ -47,6 +47,7 @@ bool drawing_ = false;
 bool tlds_need_tidying_ = false;
 steady_clock::time_point last_sparkle_;
 bool extra_pass_requested_ = false;
+int full_redraws_pending_ = 0;
 } // namespace
 
 namespace draw_manager {
@@ -122,6 +123,11 @@ void invalidate_all()
 	invalidate_region(video::game_canvas());
 }
 
+void invalidate_new_surface()
+{
+	full_redraws_pending_ = 2;
+}
+
 void request_extra_render_pass()
 {
 	extra_pass_requested_ = true;
@@ -132,6 +138,13 @@ void sparkle()
 	if (drawing_) {
 		ERR_DM << "Draw recursion detected";
 		throw game::error("recursive draw");
+	}
+
+	// Full redraws requested by invalidate_new_surface(). Before update(), as
+	// invalidation is not allowed during the draw.
+	if (full_redraws_pending_ > 0) {
+		--full_redraws_pending_;
+		invalidate_all();
 	}
 
 	// Remove any invalidated TLDs from previous iterations or events.

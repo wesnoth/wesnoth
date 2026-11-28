@@ -631,6 +631,11 @@ void pump()
 			case SDL_EVENT_WINDOW_RESTORED:
 				LOG_DP << "events/RESTORED";
 				prefs::get().set_maximized(prefs::get().fullscreen());
+#ifdef __ANDROID__
+				// Back from the background on a new, blank surface, and SDL
+				// sends no expose event for it: redraw everything.
+				draw_manager::invalidate_new_surface();
+#endif
 				break;
 			case SDL_EVENT_WINDOW_SHOWN:
 			case SDL_EVENT_WINDOW_MOVED:

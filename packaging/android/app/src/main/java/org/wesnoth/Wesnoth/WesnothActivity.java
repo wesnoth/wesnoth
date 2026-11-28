@@ -23,6 +23,7 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.BatteryManager;
 import android.os.Build;
+import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -36,6 +37,25 @@ import org.libsdl.app.SDLActivity;
 
 public class WesnothActivity extends SDLActivity
 {
+	/** Whether the game activity exists in this process (see InitActivity.onCreate). */
+	private static volatile boolean sRunning;
+
+	static boolean isRunning() {
+		return sRunning;
+	}
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		sRunning = !isFinishing();
+	}
+
+	@Override
+	protected void onDestroy() {
+		sRunning = false;
+		super.onDestroy();
+	}
+
 	public static String getFullscreenResolution(Activity activity) {
 		int w, h;
 

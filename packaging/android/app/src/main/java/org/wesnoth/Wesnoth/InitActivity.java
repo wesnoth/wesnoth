@@ -79,6 +79,16 @@ public class InitActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedState) {
 		super.onCreate(savedState);
+
+		// When the app icon is clicked, foreground the running game if possible.
+		if (WesnothActivity.isRunning()) {
+			Intent intent = new Intent(this, WesnothActivity.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
+			finish();
+			return;
+		}
+
 		setContentView(R.layout.activity_init);
 
 		// Keep the screen on while this activity runs
