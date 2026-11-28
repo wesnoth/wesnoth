@@ -1,0 +1,13 @@
+###Changes in Campaing Northern Rebirth
+* In all scenarios after 7 removed lich brother dialogue or moved to another speaker
+* S2 make finding dwarves easier
+* S4 Treasyry (including rod of Justice) and Malifor's prisoners (Father Morvin, Sister Thera and Ersyssa) are moved there from S5_01 and are guarded by death Knights with area_guardian micro_ai. Now only lawful unit which isn't Tallin can take Rod of Justice.
+* S05_01 is removed. S05_02 is renamed as S5
+* S7 lich brothers and fog is removed. Now player need to move Tallin next to Stalrag and Father Morvin next to Trakark (an ogre leader) to win
+* S8 stay same (lack of lich brothers may affect balance, but we have anyway immortal mages there)
+* S9 now dialogue only
+* S10 add time_over event that make player win if Eeryssa was killed in S8 (to make victory conditions not lie)
+* S12 make Death of Eryssa defeat condition in victory conditions (it is already actually because of HERODEATH_EVERYONE macro)
+* S13 if Krash is dead use Trakark with ogres, gryphons and trolls as Northern side.
+* If player failed to rescue Eryssa in S8, Hidel leads elves to get revenge for orcs killing Eryssa. If eryssa_hostile=yes, Southern side is taken by Trakark or drakes depending which one is free.
+* Also make Death of Eryssa defeat condition in victory conditions (it is already actually because of HERODEATH_EVERYONE macro)
