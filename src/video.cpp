@@ -762,12 +762,13 @@ bool window_has_mouse_focus()
 	return window_has_flags(SDL_WINDOW_MOUSE_FOCUS);
 }
 
-std::vector<point> get_available_resolutions(const bool include_current)
+std::vector<point> get_available_resolutions()
 {
 	std::vector<point> result;
 
 #ifdef __ANDROID__
-	result.push_back(prefs::get().resolution());
+	// The game fills the Android window, so the current draw size is the only option.
+	result.push_back(current_resolution());
 	return result;
 #endif
 
@@ -806,9 +807,7 @@ std::vector<point> get_available_resolutions(const bool include_current)
 		result.push_back(min_res);
 	}
 
-	if(include_current) {
-		result.push_back(current_resolution());
-	}
+	result.push_back(current_resolution());
 
 	std::sort(result.begin(), result.end());
 	result.erase(std::unique(result.begin(), result.end()), result.end());

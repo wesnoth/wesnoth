@@ -50,6 +50,20 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"/>
 	</LinearLayout>
+
+	<!-- Overlaid along the bottom, outside the centred column (on small
+	     screens the column runs off the bottom). -->
+	<TextView
+		android:id="@+id/min_size_warning"
+		android:visibility="gone"
+		android:textColor="#ffff00"
+		android:background="#c0000000"
+		android:textSize="16sp"
+		android:padding="10dp"
+		android:gravity="center"
+		android:layout_alignParentBottom="true"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"/>
 	
 	<ImageButton
 			android:id="@+id/settings_btn"

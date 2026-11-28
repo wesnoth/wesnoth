@@ -13,6 +13,17 @@ android {
         targetSdk 35
         versionCode 1210000 // version 1.xx.yy, patch zz
         versionName "1.21.0-dev"
+
+        // The game's minimum window size, read from the C++ source so the
+        // splash screen can warn when the window is smaller.
+        def prefsHpp = file("../../../src/preferences/preferences.hpp").text
+        ["width", "height"].each { dim ->
+            def m = prefsHpp =~ /(?m)^\s*const int min_window_${dim}\s*=\s*(\d+);/
+            if (!m.find()) {
+                throw new GradleException("src/preferences/preferences.hpp has no 'const int min_window_${dim} = <number>;' (read for the splash screen's minimum size warning)")
+            }
+            buildConfigField "int", "MIN_WINDOW_${dim.toUpperCase()}", m.group(1)
+        }
     }
 
     buildFeatures {
