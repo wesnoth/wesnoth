@@ -408,12 +408,39 @@ bool get_log_domain_severity(const std::string& name, severity &severity)
 	return true;
 }
 
-std::string list_log_domains(const std::string& filter)
+namespace {
+
+const char* severity_name(severity level)
+{
+	switch(level) {
+	case severity::LG_NONE:
+		return "none";
+	case severity::LG_ERROR:
+		return "error";
+	case severity::LG_WARN:
+		return "warning";
+	case severity::LG_INFO:
+		return "info";
+	case severity::LG_DEBUG:
+		return "debug";
+	}
+	return "unknown";
+}
+
+} // end anonymous namespace
+
+std::string list_log_domains(const std::string& filter, bool with_severity)
 {
 	std::ostringstream res;
-	for(logd &l : *domains) {
-		if(l.first.find(filter) != std::string::npos)
-			res << l.first << "\n";
+	for(const logd& domain : *domains) {
+		if(domain.first.find(filter) == std::string::npos) {
+			continue;
+		}
+		res << domain.first;
+		if(with_severity) {
+			res << ' ' << severity_name(domain.second);
+		}
+		res << '\n';
 	}
 	return res.str();
 }

@@ -107,7 +107,7 @@ public:
 	utils::optional<int> log_strict_level;
 	/** Non-empty if --load was given on the command line. Savegame specified to load after start. */
 	utils::optional<std::string> load;
-	/** Non-empty if --logdomains was given on the command line. Prints possible logdomains filtered by given string and exits. */
+	/** Non-empty if --logdomains was given on the command line. Prints log domains and their startup severity, filtered by the given string, and exits. */
 	utils::optional<std::string> logdomains;
 	/** True if --log-precise was given on the command line. Shows timestamps in log with more precision. */
 	bool log_precise_timestamps;
