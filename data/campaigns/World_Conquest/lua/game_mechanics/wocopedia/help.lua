@@ -31,7 +31,7 @@ function wesnoth.wml_actions.wc2_show_wocopedia(cfg)
 			_ "<b>Recall Cost</b>\n" ..
 			_ "Units costing less than 17 gold are cheaper to recall.\n\n" ..
 			_ "<b>Training</b>\n" ..
-			_ "Every time you recruit a new unit, your training levels will be applied. If a unit gains training benefits, you can see them with the trait \"trained\". Each unit’s chance of gaining training benefits is independent of another’s.\n\n" ..
+			_ "Every time you recruit a new unit, your training levels will be applied. If a unit gains training benefits, you can see them with the trait “trained”. Each unit’s chance of gaining training benefits is independent of another’s.\n\n" ..
 			_ "<b>Upkeep</b>\n" ..
 			_ "Units with the <b>heroic</b> trait or holding any magic <b>item</b> have free upkeep.\n\n" ..
 			_ "<b>Bonus Points</b>\n" ..

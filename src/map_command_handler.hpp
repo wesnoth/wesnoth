@@ -252,7 +252,7 @@ protected:
 	{
 		register_command("help", &map_command_handler<Worker>::help,
 			_("Available commands list and command-specific help. "
-				"Use \"help all\" to include currently unavailable commands."),
+				"Use “help all” to include currently unavailable commands."),
 			// TRANSLATORS: These are the arguments accepted by the "help" command,
 			// which are either "all" or the name of another command.
 			// As with the command's name, "all" is hardcoded, and shouldn't change in the translation.

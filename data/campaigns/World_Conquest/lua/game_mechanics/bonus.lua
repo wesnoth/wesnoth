@@ -30,7 +30,7 @@ function wesnoth.wml_actions.wc2_place_bonus(cfg)
 	wesnoth.wml_actions.label {
 		x = x,
 		y = y,
-		text = span_font_family(stringx.vformat(_ "$name's $type", {name = name1, type = name2}), "Lucida Sans Unicode")
+		text = span_font_family(stringx.vformat(_ "$name’s $type", {name = name1, type = name2}), "Lucida Sans Unicode")
 	}
 end
 

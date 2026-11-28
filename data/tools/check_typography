@@ -1,0 +1,184 @@
+#!/usr/bin/env python3
+"""
+Check translatable strings against the Typography Style Guide.
+
+https://wiki.wesnoth.org/Typography_Style_Guide
+https://wiki.wesnoth.org/UI_Style_Guide#Typography_Summary
+See also https://github.com/wesnoth/wesnoth/issues/7967
+
+Strings are extracted straight from the source with the same extractors that
+pot-update uses (wmlxgettext for WML/Lua, xgettext for C++; see
+wesnoth/gettext_strings.py), so no build, CMake configure or committed .pot file
+is needed. Only the msgids (the English source strings) are checked. It only
+reports; nothing is changed.
+
+Usage:
+    data/tools/check_typography               # mainline, from the repository root
+    data/tools/check_typography DIR...        # WML/Lua under DIR, eg an add-on
+    data/tools/check_typography FILE.pot...   # existing .pot file(s)
+
+Use --domain to limit the check to particular text-domains. For core, this uses the
+domains listed in po/CMakeLists.txt by default, otherwise all domains found are checked.
+
+Exits non-zero if any problem is found. When run under GitHub Actions, problems
+are also emitted as annotations so they show up on the PR diff.
+
+Intentional exceptions go in EXCEPTIONS below.
+"""
+
+import argparse
+import re
+import sys
+from collections import defaultdict
+
+from wesnoth import gettext_strings
+
+# (rule, sub-string of the msgid) pairs that are deliberately exempt.
+EXCEPTIONS = [
+    # These list the characters that are forbidden in file names, so the
+    # straight double quote is meant literally.
+    ("straight-double-quote", '" * / : < > ? \\ | ~'),
+]
+
+# Mark-up whose contents are not prose, removed before the character checks.
+PANGO_TAG = re.compile(r"<[^<>]*>")                    # <span color='red'>, </i>
+HELP_ATTR = re.compile(r"\b\w+='[^']*'")               # <ref>text='Orcs' dst='..race_orc'</ref>
+WML_FORMULA = re.compile(r"\$\((?:[^()]|\([^()]*\))*\)")  # $( $a - $b )
+
+RULES = [
+    # rule name, pattern, message
+    ("backquote", re.compile(r"`"),
+     "backquote (`) used; use ‘ ’ (U+2018, U+2019)"),
+    ("straight-double-quote", re.compile(r'"'),
+     "straight double quote used; use “ ” (U+201C, U+201D) or ‘ ’ (U+2018, U+2019)"),
+    ("straight-apostrophe", re.compile(r"'"),
+     "straight single quote/apostrophe used; use ’ (U+2019) for apostrophes or ‘ ’ (U+2018, U+2019) for quotations"),
+    ("spaced-hyphen", re.compile(r"(?:^| )--? (?=\S)|\S --?(?: |$)", re.M),
+     "hyphen used as a dash; use — (U+2014) or – (U+2013)"),
+    # Damage×strikes uses × (U+00D7), as the game UI does: "7-4 fire" or "7x4"
+    # is reported by the damage-strikes rule below, not as a range.
+    ("damage-strikes", re.compile(r"(?<![\w.#/-])\d+ ?[-xX*] ?\d+"
+                                  r"(?=\s+(?:blade|pierce|impact|fire|cold|arcane|melee|ranged)\b)"
+                                  r"|(?<![\w.#/-])\d+[xX]\d+\b"),
+     "damage×strikes written with a hyphen or letter x; use × (U+00D7), eg 7×4"),
+    ("number-range", re.compile(r"(?<![\w.#/-])\d+-\d+(?![\w-]|\.\d)"
+                                r"(?!\s+(?:blade|pierce|impact|fire|cold|arcane|melee|ranged)\b)"),
+     "hyphen between numbers; use – (U+2013) for ranges"),
+    ("hyphen-minus-number", re.compile(r"(?:^|[\s(])-\d"),
+     "hyphen-minus before a number; use − (U+2212)"),
+    ("unicode-ellipsis", re.compile("…"),
+     "ellipsis character (U+2026) used; the style guide uses three full stops"),
+    ("double-space", re.compile(r"(?<=[^\d\s])[.!?]  +(?=\S)"),
+     "two spaces after a full stop"),
+    # Speech cut off abruptly ("I can’t-"); a suspended hyphen ("double- or
+    # right-click") is followed by "or"/"and" and is left alone.
+    ("cut-off-hyphen", re.compile(r"[a-z]-(?=$|[”’\"!?…]|\s+(?!(?:or|and|nor|to)\b))", re.M),
+     "hyphen marking cut-off speech; use — (U+2014)"),
+    # An opening quote used as an apostrophe: inside a word ("I‘m"), or before
+    # a shortened word ("‘tis", "‘em"). Opening ’ (’great one’) cannot be told
+    # apart from dialect (’is, ’side) and is not checked.
+    ("quote-as-apostrophe", re.compile(
+        r"\w‘\w|(?<!\w)‘(?:tis|twas|twere|tweren|twill|twould|em|cause|cuz|bout|nuff)\b(?!’)"),
+     "‘ (U+2018) used as an apostrophe; use ’ (U+2019)"),
+    # "till" is the older word; "’til" is a false archaism.
+    ("til", re.compile(r"(?<!\w)[‘’']til\b"),
+     "’til is a false archaism; use “till” or “until”"),
+    ("misplaced-apostrophe", re.compile(r"(?<![\w’])’o\b(?!’)"),
+     "’o for “of”; the apostrophe replaces the dropped letter, so use o’"),
+    ("comma-no-space", re.compile(r"[A-Za-z]{2},(?=[a-z])"),
+     "no space after a comma"),
+    # Mis-spellings found previously, plus a few common ones.
+    # Not intended as a replacement for a proper spell-check pass.
+    ("mis-spelling", re.compile(r"\b(?:fufill\w*|maneuverabilty|musn[’']t|lackies|foreswear\w*|fortold"
+                               r"|seperat\w*|occured|recieve\w*|untill|definately|accomodat\w*"
+                               r"|existance|beleiv\w*|wierd\w*|thier|tommorow|neccessar\w*"
+                               r"|occassion\w*|sucessful\w*|truely|arguement\w*|embarras(?:ed|ing|ment)"
+                               r"|enviroment\w*|independant\w*|priviledge\w*|publically|rythm\w*"
+                               r"|tounge\w*|villian\w*|wich|alot|teh|goverment\w*)\b", re.I),
+     "common mis-spelling"),
+]
+
+# Not a typography rule, but a real bug of the same kind: sgettext/dsgettext
+# strip everything up to the first '^' when no translation exists, so a caret
+# that is not a "context^" marker eats the start of the English string.
+# Context markers are short and single-line ("editor^", "race+female^");
+# flag a first caret after a non-word character ("(^Qhh)"), or after a long or
+# multi-line run of text ("... the Gg^Efm terrain").
+STRAY_CARET = re.compile(r"^(?:[^^]*[^\w^]|[^^]*\n[^^]*|[^^]{61,})\^")
+
+
+def excerpt(text, match, width=25):
+    """A single-line excerpt of text around a match."""
+    start, end = max(match.start() - width, 0), min(match.end() + width, len(text))
+    snippet = text[start:end].replace("\n", "⏎")
+    return ("…" if start else "") + snippet + ("…" if end < len(text) else "")
+
+
+def check(msgid):
+    """Return the list of (rule, message, excerpts) problems found in one msgid."""
+    problems = []
+    if STRAY_CARET.search(msgid):
+        problems.append(("stray-caret", "'^' that is not a context marker; the text before it "
+                         "is cut off when untranslated (add a context, eg 'editor^…')",
+                         [excerpt(msgid, re.search(r"\^", msgid))]))
+    # What the player sees: dsgettext drops everything up to the first '^'.
+    text = msgid.split("^", 1)[1] if "^" in msgid else msgid
+    prose = WML_FORMULA.sub("", HELP_ATTR.sub("", PANGO_TAG.sub("", text)))
+    for name, pattern, message in RULES:
+        target = text if name == "double-space" else prose
+        if name == "comma-no-space" and ", " not in target:
+            continue  # a comma-separated list (eg random names), not prose
+        matches = list(pattern.finditer(target))
+        if matches and not any(rule == name and substring in msgid for rule, substring in EXCEPTIONS):
+            problems.append((name, message, [excerpt(target, match) for match in matches]))
+    return problems
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Check translatable strings against the Wesnoth Typography Style Guide.")
+    parser.add_argument("paths", nargs="*", metavar="PATH",
+                        help="directories or .cfg/.lua files to scan, or .pot files to check "
+                             "(default: mainline, run from the repository root)")
+    parser.add_argument("--domain", action="append",
+                        help="only check this textdomain (can be repeated)")
+    args = parser.parse_args()
+
+    try:
+        sources = gettext_strings.extract_sources(args.paths, args.domain)  # lists of .pot lines
+    except gettext_strings.NotACheckout as error:
+        parser.error(str(error))
+
+    found = defaultdict(list)  # (rule, msgid) -> refs, merges duplicate msgids
+    messages, excerpts = {}, {}
+    for lines in sources:
+        for refs, msgid in gettext_strings.read_pot(lines):
+            for rule, message, snippets in check(msgid):
+                found[(rule, msgid)].extend(refs)
+                messages[rule] = message
+                excerpts[(rule, msgid)] = snippets
+
+    github = gettext_strings.running_on_github()
+    for (rule, msgid), refs in sorted(found.items(), key=lambda item: item[1][0] if item[1] else ""):
+        refs = list(dict.fromkeys(refs)) or ["?"]
+        print(f"{refs[0]}: {rule}: {messages[rule]}")
+        for snippet in excerpts[(rule, msgid)]:
+            print(f"    {snippet}")
+        for ref in refs[1:]:
+            print(f"    also at {ref}")
+        if github:
+            for ref in refs:
+                annotation = gettext_strings.github_annotation("error", ref, f"Typography ({rule})", messages[rule])
+                if annotation:
+                    print(annotation)
+
+    if found:
+        sys.stdout.flush()
+        print(f"\n{len(found)} typography problem(s) found. "
+              "See https://wiki.wesnoth.org/Typography_Style_Guide", file=sys.stderr)
+        return 1
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -27,12 +27,32 @@ in a specified way.  Now supports only flipping the map around the Y
 axis, but provides a framework that should make other transformations
 easy.
 
+=== check_markup ===
+
+Checks the Pango and help mark-up in translatable strings: unclosed or
+mismatched tags, badly quoted attributes, and old-style help mark-up. Run
+from the repository root to check mainline (as the CI does), or pass add-on
+directories or .pot files. With --translations, it checks the translations
+in po/ instead; translation problems are only reported, since translations
+don't come in through pull requests. It only reports problems; nothing is
+changed. See the header comment for details.
+
 === wmllint and wmllint-1.4 ===
 
 This tool lifts WML from older dialects to current and performs sanity checks.
 See the header comment of wmllint for a description and invocation options.
 wmllint-1.4 is an older version of wmllint kept alive because wmllint is
 incompatible with pre-1.4 syntax.
+
+=== check_typography ===
+
+Checks translatable strings against the Typography Style Guide
+(https://wiki.wesnoth.org/Typography_Style_Guide): straight quotes,
+hyphens used as dashes or minus signs, quote direction, spacing, some
+common mis-spellings, and stray '^' characters that would cut off
+untranslated text. Run from the repository root to check mainline (as the
+CI does), or pass add-on directories or .pot files. It only reports
+problems; nothing is changed. See the header comment for details.
 
 === GUI.pyw ===
 
@@ -92,6 +112,14 @@ See the header comment of wmltools.py for details
 A WML codewalker class.  Not a full parser, but that's useful because
 it doesn't get confused by unbalanced macros; instead it lets you
 walk through lines in a text file parsing out tags and elements
+
+### gettext_strings.py
+
+Extracts translatable strings for checking tools such as check_typography,
+using the same extractors as pot-update (wmlxgettext for WML/Lua, xgettext
+for C++), so no build or committed .pot file is needed. It also reads .pot
+content and formats GitHub Actions annotations. See its header comment for
+an example.
 
 ### wmlparser3.py
 
