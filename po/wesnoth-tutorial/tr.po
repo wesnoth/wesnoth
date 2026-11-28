@@ -75,18 +75,18 @@ msgid ""
 "<i>Heir to the Throne, Classic</i> optionally includes the old <i>Battle "
 "Training</i> tutorial. Play <i>Battle Training</i>?"
 msgstr ""
+"<i>Tahtın Varisi, Klasik</i> isteğe bağlı olarak eski <i>Savaş Eğitimi</i> "
+"öğreticisini içerir. <i>Savaş Eğitimi</i> oynansın mı?"
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:113
 msgid "Yes"
-msgstr ""
+msgstr "Evet"
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:118
-#, fuzzy
-#| msgid "Note"
 msgid "No"
-msgstr "Not"
+msgstr "Hayır"
 
 #. [objectives]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:149
@@ -544,10 +544,11 @@ msgid ""
 "to use them next turn. For this scenario, you have only one type of unit to "
 "choose from: the Elvish Fighter."
 msgstr ""
-"Bir <i>içkale</i>de iken kale altıgenlerine sağ tıklayarak birimleri "
-"<i>Askere al</i> seçeneği ile <i>askere alabilirsiniz<i>. Yeni alınmış "
-"askerler o el bir şey yapamazlar; bir sonraki el onları kullanabilirsiniz. "
-"Bu senaryoda askere alabileceğiniz tek çeşit birim var: Elf Savaşçı."
+"Bir <i>burç</i>tayken etrafındaki kale altıgenlerine sağ tıklayıp <b>Askere "
+"Al</b>’ı seçerek birimleri <i>askere alabilirsiniz</i>. Yeni alınan "
+"askerlerin alındıkları el bir şey yapamayacağını unutmayın; onları bir "
+"sonraki el kullanabileceksiniz. Bu senaryoda seçebileceğiniz tek bir birim "
+"türü var: Elf Savaşçı."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:785
@@ -2290,7 +2291,7 @@ msgstr "Aah! Sizi şimdi zafere kim yönlendirecek?"
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1506
 msgid "You have beaten the orcs! Well done."
-msgstr ""
+msgstr "Orkları yendiniz! Aferin."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1511
@@ -2304,7 +2305,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1521
 msgid "Now, continue onwards to play “Heir to the Throne, Classic”..."
-msgstr ""
+msgstr "Şimdi “Tahtın Varisi, Klasik” ile devam edin..."
 
 #. [unit_type]: id=Tutorial_Fighter, race=human
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Tutorial_Fighter.cfg:4
@@ -2380,16 +2381,8 @@ msgstr ""
 "alabilirsiniz."
 
 #: data/campaigns/Heir_To_The_Throne_Classic/utils/tutorial_utils.cfg:128
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<big>Click a mouse button or press the spacebar to continue...</big>"
 msgid "Click a mouse button or press the spacebar to continue..."
-msgstr ""
-"\n"
-"\n"
-"<big>Devam etmek için fareye tıklayın veya boşluk tuşuna basın...</big>"
+msgstr "Devam etmek için fareye tıklayın veya boşluk tuşuna basın..."
 
 #, fuzzy
 #~| msgid "Tutorial"

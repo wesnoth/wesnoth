@@ -28,7 +28,7 @@ msgstr "Hürriyet"
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:20
 msgid "1x enemies"
-msgstr ""
+msgstr "1 kat düşman"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:20
@@ -38,7 +38,7 @@ msgstr "Kolay"
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:21
 msgid "2x enemies"
-msgstr ""
+msgstr "2 kat düşman"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:21
@@ -48,12 +48,12 @@ msgstr "Normal"
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:22
 msgid "3x enemies"
-msgstr ""
+msgstr "3 kat düşman"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:22
 msgid "Hard"
-msgstr ""
+msgstr "Zor"
 
 #. [campaign]: id=Liberty
 #. "marchlander" is archaic English for an inhabitant of a border region, not to be confused with "marshlander"
@@ -83,6 +83,8 @@ msgid ""
 "The saga continues in\n"
 "<i>Heir to the Throne</i>"
 msgstr ""
+"Destan şurada sürüyor:\n"
+"<i>Tahtın Varisi</i>"
 
 #. [about]
 #: data/campaigns/Liberty/_main.cfg:35
@@ -111,24 +113,19 @@ msgstr "Ya Özgürlük Ya Ölüm!"
 
 #. [achievement]: id=liberty_or_death
 #: data/campaigns/Liberty/achievements.cfg:8
-#, fuzzy
-#| msgid "Complete Civil Disobedience with at least 3 peasants remaining."
 msgid "Complete <i>Civil Disobedience</i> with at least 3 peasants remaining."
-msgstr "En az 3 köylü kalarak Sivil İtaatsizliği tamamlayın."
+msgstr ""
+"<i>Sivil İtaatsizlik</i> senaryosunu en az 3 köylü hayatta kalarak tamamla."
 
 #. [achievement]: id=liberty_nameless
 #: data/campaigns/Liberty/achievements.cfg:14
-#, fuzzy
-#| msgid "The Nameless General"
 msgid "The Nameless Guard"
-msgstr "Adsız General"
+msgstr "İsimsiz Muhafız"
 
 #. [achievement]: id=liberty_nameless
 #: data/campaigns/Liberty/achievements.cfg:15
-#, fuzzy
-#| msgid "Find out the name of the general in Unlawful Orders."
 msgid "Discover the name of the royal guard in <i>Unlawful Orders</i>."
-msgstr "Hukuksuz Emirler senaryosundaki generalin adını öğren."
+msgstr "<i>Hukuksuz Emirler</i> senaryosunda kraliyet muhafızının adını öğren."
 
 #. [achievement]: id=liberty_iron
 #: data/campaigns/Liberty/achievements.cfg:21
@@ -137,10 +134,8 @@ msgstr "Harper ve Golyat"
 
 #. [achievement]: id=liberty_iron
 #: data/campaigns/Liberty/achievements.cfg:22
-#, fuzzy
-#| msgid "Defeat an Iron Mauler with Harper in Hide and Seek."
 msgid "Defeat an Iron Mauler with Harper in <i>Hide and Seek</i>."
-msgstr "Saklambaç senaryosunda Harper ile bir Demir Balyozu yen."
+msgstr "<i>Saklambaç</i> senaryosunda Harper ile bir Demir Balyozcu’yu yen."
 
 #. [achievement]: id=liberty_hunter
 #. this is the achievement for the scenario The Hunters
@@ -150,10 +145,8 @@ msgstr "Mükemmel Avcı"
 
 #. [achievement]: id=liberty_hunter
 #: data/campaigns/Liberty/achievements.cfg:30
-#, fuzzy
-#| msgid "Complete The Hunters with no losses"
 msgid "Complete <i>The Hunters</i> with no losses."
-msgstr "Avcılar seneryosunu hiç kayıp vermeden tamamla"
+msgstr "<i>Avcılar</i> senaryosunu hiç kayıp vermeden tamamla."
 
 #. [achievement]: id=liberty_army
 #: data/campaigns/Liberty/achievements.cfg:36
@@ -162,10 +155,8 @@ msgstr "Strateji Olmadan Silah Gücünün Anlamı Yoktur"
 
 #. [achievement]: id=liberty_army
 #: data/campaigns/Liberty/achievements.cfg:37
-#, fuzzy
-#| msgid "On Challenging difficulty, defeat Dommel in Glory."
 msgid "On Challenging difficulty, defeat Dommel in <i>Glory</i>."
-msgstr "Zorlu zorluk seviyesinde, Zafer senaryosunda Dommel'i yen."
+msgstr "Zorlu seviyede <i>Zafer</i> senaryosunda Dommel’i yen."
 
 #. [scenario]: id=01_The_Raid
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:4
@@ -319,7 +310,7 @@ msgstr "Gorok"
 #. [event]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:173
 msgid "Gruk"
-msgstr ""
+msgstr "Gruk"
 
 #. [message]: speaker=Fal Khag
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:195
@@ -533,21 +524,17 @@ msgstr "Şapşal goblin."
 
 #. [message]: speaker=unit
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:406
-#, fuzzy
-#| msgid ""
-#| "Hey, someone left their pack here. I could use it to carry some more "
-#| "rocks."
 msgid ""
 "Hey, someone left their pack here. I could use it to carry some heavier "
 "rocks."
 msgstr ""
-"Hey, biri buraya bir paket bırakmış. Biraz daha taş taşımak için bunu "
+"Hey, biri çantasını burada bırakmış. Daha ağır taşlar taşımak için "
 "kullanabilirim."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:433
 msgid "Your footpad has gained +1 ranged damage!"
-msgstr ""
+msgstr "Yankesicin +1 menzilli hasar kazandı!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:445
@@ -896,7 +883,7 @@ msgstr "Evet, kanun kaçağı."
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:527
 msgid "Your units — formerly <i>neutral</i> — are now <i>chaotic</i>!"
-msgstr ""
+msgstr "Birimlerin — önceden <i>tarafsız</i> — artık <i>kaypak</i>!"
 
 #. [message]: speaker=Reinforcement Knight
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:561
@@ -1192,7 +1179,7 @@ msgstr "Biraz taze lezzetli su. Mmm!"
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:445
 msgid "Your unit has gained +1 maximum hitpoints!"
-msgstr ""
+msgstr "Birimin +1 azami yaşam puanı kazandı!"
 
 #. [message]: speaker=Urk Delek
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:461
@@ -1308,10 +1295,8 @@ msgstr "Elensefar"
 
 #. [objective]: condition=win
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:194
-#, fuzzy
-#| msgid "Defeat both enemy leaders"
 msgid "Defeat the enemy leader"
-msgstr "İki düşman liderini de öldür"
+msgstr "Düşman liderini yen"
 
 #. [objective]: condition=lose
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:206
@@ -1322,14 +1307,14 @@ msgstr "Madok’un ölümü"
 #. "Daneth" is the name of Lord Maddock's late son. This ship also appears in HttT's S10, with the same name.
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:255
 msgid "The Daneth"
-msgstr ""
+msgstr "Danet"
 
 #. [event]
 #. [unit]: type=Skiff, id=Skiff
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:256
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:330
 msgid "Mary’s Minnow"
-msgstr ""
+msgstr "Mary’nin Minnosu"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:315
@@ -1358,21 +1343,14 @@ msgstr ""
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:328
-#, fuzzy
-#| msgid ""
-#| "That was partially my fault, since I was not able to send a messenger to "
-#| "you in time. I shall have to inform you now. Five weeks ago, at the Ford "
-#| "of Abez, Queen Asheviere’s men allied themselves with the northern orcs "
-#| "and betrayed King Garard II."
 msgid ""
 "That was partially my fault, since I was not able to send a messenger to you "
 "in time. I shall have to inform you now. Five weeks ago, at the Ford of "
 "Abez, King Garard II of Wesnoth was murdered."
 msgstr ""
-"Bu kısmen benim hatamdı, çünkü size zamanında bir haberci gönderemedim. "
-"Hemen size haber vermem gerekirdi. Beş hafta önce, Kraliçe Aşivye'nin "
-"adamları Abez Geçidi'nde kuzey orklarıyla ittifak yaptılar ve Kral 2. "
-"Garard'a ihanet ettiler."
+"Size zamanında bir haberci gönderemediğim için bu kısmen benim hatamdı. "
+"Şimdi size bildirmem gerekecek. Beş hafta önce Abez Geçidi’nde Vesnot Kralı "
+"II. Garard öldürüldü."
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:332
@@ -1382,24 +1360,22 @@ msgid ""
 "Prince Eldred fell in battle not long after, upon which Asheviere claimed "
 "the throne."
 msgstr ""
+"Resmî olarak suçu yüzbaşılarından biri işledi. Gayriresmî olarak Kraliçe "
+"Aşivye ile oğlu Eldred’in işin içinde olduğu söyleniyor. Her iki durumda da "
+"Prens Eldred kısa süre sonra savaşta düştü ve bunun üzerine Aşivye tahtı "
+"ele geçirdi."
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:336
-#, fuzzy
-#| msgid ""
-#| "Since Prince Eldred died in the battle, the Queen took the throne and has "
-#| "been consolidating her power. Part of that has been bringing the elders "
-#| "from the local villages here, forcing them to swear allegiance to her. "
-#| "That was the purpose of that patrol."
 msgid ""
 "The Queen is not popular. She is at war with supporters of the old king, and "
 "searches far and wide for new conscripts. Part of that has been taking "
 "elders from the local villages, forcing them to swear allegiance to her. "
 "That was the purpose of that patrol."
 msgstr ""
-"Prens Eldred savaşta ölünce Kraliçe tahta geçti, şimdi de gücünü "
-"pekiştiriyor. Yerel köylerden yaşlıları buraya getirerek onları ona biat "
-"etmeye zorluyor. O devriyenin amacı buydu."
+"Kraliçe sevilmiyor. Eski kralın destekçileriyle savaş halinde ve dört bir "
+"yanda yeni askerler arıyor. Bunun bir kısmı yerel köylerden yaşlıları alıp "
+"onları ona biat etmeye zorlamak. O devriyenin amacı buydu."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:340
@@ -1434,6 +1410,10 @@ msgid ""
 "maintains a large garrison south at the great fortress of Halstead, but even "
 "should they mobilize all their troops, I doubt they could take Elensefar."
 msgstr ""
+"Gelmeyecekler. Vesnot’un çatışmasında taraf tutmaya niyetim yok ve Kraliçe "
+"beni zorlamaya kalkmayacak kadar akıllı. Güneyde büyük Halstead kalesinde "
+"büyük bir garnizon tuttuğu doğru, ama bütün birliklerini harekete "
+"geçirseler bile Elensefar’ı alabileceklerinden şüpheliyim."
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:356
@@ -1453,6 +1433,11 @@ msgid ""
 "and we are not in the habit of maintaining a large standing army. It will "
 "take time to assemble mercenaries of the right caliber."
 msgstr ""
+"Evet, Kraliçe Aşivye’nin güçlerini desteklemek için ork kiralamaya meyilli "
+"olduğunun farkındayım. Ben de ordumu genişletmeye başladım, gerçi çatışma "
+"çıkmasını pek olası görmüyorum. Ama Elensefar’ın nüfusu az ve büyük bir "
+"daimi ordu tutmak alışkanlığımız değil. Uygun nitelikte paralı askerler "
+"toplamak zaman alacak."
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:364
@@ -1463,6 +1448,11 @@ msgid ""
 "wizard and his rebels have suffered several defeats. I have some concessions "
 "that I shall have to make..."
 msgstr ""
+"Elensefar ile Vesnot arasındaki antlaşma çok eski ve Majestelerinin onu "
+"bozmaya niyetli olduğunu sanmıyorum. Ama elbette anlayacağınız gibi "
+"Weldyn’i düşman edinmeyi göze alamam. Aşivye iç savaşı kazanıyor gibi "
+"görünüyor. Büyücü ve isyancıları birkaç yenilgi aldı. Yapmam gereken bazı "
+"tavizler var..."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:368
@@ -1476,6 +1466,9 @@ msgid ""
 "arise. I am already in covert communication with— ...listen, there is a "
 "bigger picture here, Baldras."
 msgstr ""
+"Ağzıma laf koyma. Gerekirse harekete geçmeye fazlasıyla hazırım. Zaten "
+"gizlice iletişim halindeyim— ...dinle, burada daha büyük bir resim var, "
+"Baldras."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:376
@@ -1516,16 +1509,12 @@ msgstr "Hey, bak! Gömülmüş hazineler var!"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:440
-#, fuzzy
-#| msgid ""
-#| "It says, “Here lies Daneth, child of the Light, loyal defender of Lord "
-#| "and Land.” Whoever that was."
 msgid ""
 "It says, “Here lies Daneth, child of the Light, loyal defender of Lord and "
 "Land.”"
 msgstr ""
-"\"Burada Işığın çocuğu Danet yatıyor, Lord ve topraklarının sadık "
-"koruyucusu\" diyor. Kimdiyse."
+"“Burada Işığın çocuğu, Lordunun ve Toprağının sadık savunucusu Danet "
+"yatıyor” yazıyor."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:444
@@ -1614,10 +1603,8 @@ msgstr ""
 
 #. [modify_unit]
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:890
-#, fuzzy
-#| msgid "General Kestrel"
 msgid "Kestrel"
-msgstr "General Kestrel"
+msgstr "Kestrel"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:897
@@ -1626,22 +1613,14 @@ msgstr "Siz kimsiniz, nesiniz?"
 
 #. [message]: speaker=Kestrel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:901
-#, fuzzy
-#| msgid ""
-#| "We... are accursed. We were the soldiers of Prince Eldred, the King’s son "
-#| "and betrayer... when the Prince was slain at the hands of the mage "
-#| "Delfador, those of us who bore witness to it were warped into these "
-#| "twisted forms. Now, our mortal bodies pass... into another plane of "
-#| "hellish existence..."
 msgid ""
 "We... are accursed. We were the soldiers of Prince Eldred, the King’s son "
 "and betrayer... when the Prince stooped to black magic, we were damned... "
 "those of us who bore witness were warped into these twisted forms."
 msgstr ""
-"Biz... lanetlendik. Evvelce kralın hain oğlu Prens Eldred’in emrindeydik... "
-"Prens, büyücü Delfador'un ellerinde öldürüldüğünde, buna tanık olan bizler, "
-"bu çarpık biçimlere dönüştük. Şimdi, ölümlü bedenlerimiz... cehennemi "
-"varoluşun başka bir boyutuna geçiyor..."
+"Biz... lanetliyiz. Kralın oğlu ve haini Prens Eldred’in askerleriydik... "
+"Prens kara büyüye tenezzül ettiğinde lanetlendik... buna tanık olanlarımız "
+"bu çarpık biçimlere dönüştü."
 
 #. [message]: speaker=Kestrel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:905
@@ -1649,6 +1628,8 @@ msgid ""
 "The Queen sent us away... sent us west. Now, our mortal bodies pass... into "
 "another plane of hellish existence..."
 msgstr ""
+"Kraliçe bizi uzaklaştırdı... batıya gönderdi. Şimdi ölümlü bedenlerimiz... "
+"cehennemi bir varoluşun başka bir düzlemine geçiyor..."
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:928
@@ -2865,15 +2846,12 @@ msgstr "Emredersiniz, beyim."
 
 #. [message]: speaker=Sir Gwydion
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:394
-#, fuzzy
-#| msgid ""
-#| "Ready thy lances! Let us trample the armies of Weldyn beneath our steeds!"
 msgid ""
 "Lo, Knights of Elensefar, the battle hath begun ere our arrival. Ready thy "
 "lances! Let us trample the armies of Weldyn beneath our steeds!"
 msgstr ""
-"Mızraklarınızı hazırlayın kardeşlerim. Veldin ordularını atlarımızın altında "
-"çiğneyelim!"
+"İşte, Elensefar Şövalyeleri, savaş biz gelmeden başlamış. Mızraklarınızı "
+"hazırlayın! Weldyn ordularını atlarımızın altında çiğneyelim!"
 
 #. [message]: role=farseer
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:407
@@ -3084,13 +3062,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/08_Epilogue.cfg:22
-#, fuzzy
-#| msgid ""
-#| "I’m sure them Wesnothians will come back in time and with Maddock holed "
-#| "up in his stupid tower, they’ll eventually siege Elensefar and take the "
-#| "city... but that don’t be my problem anymore. I has me a village to worry "
-#| "about. I need to get back, consult myself with Relana and figure out what "
-#| "to do next. We gots some more time now, but we can’t wait forever."
 msgid ""
 "I’m sure them Wesnothians will come back in time. Maddock sounded like he "
 "had a plan... we’ll see. But that don’t be my problem anymore. I has me a "
@@ -3098,11 +3069,11 @@ msgid ""
 "figure out what to do next. We gots some more time now, but we can’t wait "
 "forever."
 msgstr ""
-"Eminim o Vesnotlular zamanında geri dönecekler ve Madok aptal kulesinde "
-"kapana kısılmışken sonunda Elensefar'ı kuşatıp şehri alacaklar... ama bu "
-"artık benim sorunum değil. Endişelenmem gereken bir köy var. Geri dönmem, "
-"Relana'ya danışmam ve sonra ne yapacağıma karar vermem gerekiyor. Şimdi "
-"biraz daha zamanımız var ama sonsuza kadar bekleyemeyiz."
+"Eminim o Vesnotlular zamanla geri gelecek. Madok’un bi’ planı varmış gibi "
+"konuşuyordu... göreceğiz. Ama bu artık benim derdim değil. Benim "
+"kaygılanacak bi’ köyüm var. Geri dönüp Relana’yla danışmam ve sonra ne "
+"yapacağımıza karar vermem lazım. Artık biraz daha zamanımız var, ama "
+"sonsuza dek bekleyemeyiz."
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/08_Epilogue.cfg:25
@@ -3218,10 +3189,8 @@ msgstr ""
 
 #. [unit_type]: id=Lord of Elensefar, race=human
 #: data/campaigns/Liberty/units/Maddock.cfg:4
-#, fuzzy
-#| msgid "Port of Elensefar"
 msgid "Lord of Elensefar"
-msgstr "Elensefar Limanı"
+msgstr "Elensefar Lordu"
 
 #. [unit_type]: id=Lord of Elensefar, race=human
 #: data/campaigns/Liberty/units/Maddock.cfg:7
@@ -3234,6 +3203,13 @@ msgid ""
 "lies a fierce independence, a trait that sometimes puts them at odds with "
 "the aristocrats of other regions."
 msgstr ""
+"Büyük şehir devleti Elensefar, Büyük Kıta’daki en zengin insan yerleşimidir "
+"ve görece küçük nüfusuyla bağdaşmayan bir şöhret ve güce sahiptir. Daha "
+"savaşçı ruhlu iç bölge soylularının aksine Elensefar valileri ticaret "
+"sanatında ve denizcilik becerisinde ustadır ve özellikle uzlaşmacı "
+"oldukları bilinir. Yine de bu tüccar cazibesinin ardında, onları bazen "
+"diğer bölgelerin aristokratlarıyla karşı karşıya getiren güçlü bir "
+"bağımsızlık duygusu yatar."
 
 #. [unit_type]: id=Thug_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:20

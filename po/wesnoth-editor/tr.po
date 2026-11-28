@@ -164,7 +164,7 @@ msgstr "Düşüşten Sonra"
 #. [editor_group]: id=urban_jungle
 #: data/internal/Urban_Jungle/terrain-groups.cfg:5
 msgid "Urban Jungle (Internal)"
-msgstr ""
+msgstr "Kent Ormanı (Dahili)"
 
 #. [theme]: id=editor
 #: data/themes/editor.cfg:11
@@ -224,7 +224,7 @@ msgstr "Yerel Zaman Çizelgesini Ata"
 #. [menu]: id=menu-editor-unit
 #: data/themes/editor.cfg:141
 msgid "Unit"
-msgstr ""
+msgstr "Birim"
 
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:151
@@ -305,16 +305,12 @@ msgid "No editor time-of-day found."
 msgstr "Bir vakit düzenleyici yok."
 
 #: src/editor/controller/editor_controller.cpp:886
-#, fuzzy
-#| msgid "Add-on"
 msgid "Add-on Files"
-msgstr "Eklenti"
+msgstr "Eklenti Dosyaları"
 
 #: src/editor/controller/editor_controller.cpp:899
-#, fuzzy
-#| msgid "Clipboard support not found, contact your packager"
 msgid "Opening files is not supported, contact your packager"
-msgstr "Pano desteği yok, paketleyicinize başvurun"
+msgstr "Dosya açma desteklenmiyor, paketçinizle iletişime geçin"
 
 #: src/editor/controller/editor_controller.cpp:1343
 msgid "Change Unit ID"
@@ -334,17 +330,15 @@ msgstr "Ad:"
 
 #: src/editor/editor_display.cpp:170
 msgid "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
-msgstr ""
+msgstr "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
 
 #: src/editor/editor_display.cpp:172
 msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
-msgstr ""
+msgstr "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 
 #: src/editor/map/context_manager.cpp:217
-#, fuzzy
-#| msgid "Map loaded from scenario"
 msgid "Load Map or Scenario"
-msgstr "Harita senaryodan yüklendi"
+msgstr "Harita veya Senaryo Yükle"
 
 #: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1141
 msgid "New Map"
@@ -402,10 +396,8 @@ msgid "Error"
 msgstr "Hata"
 
 #: src/editor/map/context_manager.cpp:705
-#, fuzzy
-#| msgid "Do you really want to save $type1 in $type2 folder?"
 msgid "Do you really want to save a map in the scenarios folder?"
-msgstr "Gerçekten $type1'i $type2 dizinine kaydetmek istiyor musunuz?"
+msgstr "Bir haritayı gerçekten senaryolar klasörüne kaydetmek istiyor musunuz?"
 
 #: src/editor/map/context_manager.cpp:713
 #: src/editor/map/context_manager.cpp:905
@@ -417,10 +409,8 @@ msgid "Save Scenario As"
 msgstr "Senaryoyu Şöyle Kaydet"
 
 #: src/editor/map/context_manager.cpp:754
-#, fuzzy
-#| msgid "Do you really want to save $type1 in $type2 folder?"
 msgid "Do you really want to save a scenario in the maps folder?"
-msgstr "Gerçekten $type1'i $type2 dizinine kaydetmek istiyor musunuz?"
+msgstr "Bir senaryoyu gerçekten haritalar klasörüne kaydetmek istiyor musunuz?"
 
 #: src/editor/map/context_manager.cpp:762
 msgid "This scenario is already open."
@@ -450,10 +440,8 @@ msgid "Scenario saved."
 msgstr "Senaryo kaydedildi."
 
 #: src/editor/map/context_manager.cpp:881
-#, fuzzy
-#| msgid "Map saved."
 msgid "Map saved"
-msgstr "Harita kaydedildi."
+msgstr "Harita kaydedildi"
 
 #: src/editor/map/context_manager.cpp:956
 msgid "Loaded embedded map data"
@@ -486,59 +474,46 @@ msgid "Empty file"
 msgstr "Boş dosya"
 
 #: src/editor/map/map_context.cpp:204
-#, fuzzy
-#| msgid "File does not have .map or .cfg extension"
 msgid "File does not have .map, .cfg, or .mask extension"
-msgstr "Dosyanın .map veya .cfg uzantısı yok"
+msgstr "Dosyanın .map, .cfg veya .mask uzantısı yok"
 
 #: src/editor/map/map_context.cpp:227
-#, fuzzy
-#| msgid "Failed to load the scenario, attempting to load only the map."
 msgid ""
 "Failed to load the scenario: $error\n"
 "\n"
 "Attempting to load only the map."
-msgstr "Senaryo yüklenemedi, yalnızca harita yüklenmeye çalışılıyor."
+msgstr ""
+"Senaryo yüklenemedi: $error\n"
+"\n"
+"Yalnızca harita yüklenmeye çalışılıyor."
 
 #: src/editor/map/map_context.cpp:253
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_data value does not point "
-#| "to an existing file"
 msgid ""
 "The file looks like a scenario, but the map_data attribute does not point to "
 "an existing file"
 msgstr ""
-"Harita dosyası bir senaryo gibi görünüyor, fakat map_data değeri mevcut bir "
-"dosyaya ait değil"
+"Dosya bir senaryoya benziyor, ancak map_data özniteliği var olan bir "
+"dosyayı göstermiyor"
 
 #: src/editor/map/map_context.cpp:268
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_file value does not point "
-#| "to an existing file"
 msgid ""
 "The file looks like a scenario, but the map_file attribute does not point to "
 "an existing file"
 msgstr ""
-"Harita dosyası bir senaryo gibi görünüyor, fakat map_file değeri mevcut bir "
-"dosyaya ait değil"
+"Dosya bir senaryoya benziyor, ancak map_file özniteliği var olan bir "
+"dosyayı göstermiyor"
 
 #: src/editor/map/map_context.cpp:448
 msgid "Confirm"
-msgstr ""
+msgstr "Onayla"
 
 #: src/editor/map/map_context.cpp:835 src/editor/map/map_context.cpp:875
-#, fuzzy
-#| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
-msgstr "Senaryo kaydedilemedi: $msg"
+msgstr "Zaman çizelgesi kaydedilemedi: $msg"
 
 #: src/editor/map/map_context.cpp:869
-#, fuzzy
-#| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
-msgstr "Zaman Çizelgesi Menüsü"
+msgstr "Zaman çizelgesi kaydedildi."
 
 #: src/editor/map/map_context.cpp:915
 msgid "Could not save the scenario: $msg"
@@ -565,10 +540,8 @@ msgid "Will not work in game without extra care."
 msgstr "Elden geçirilmedikçe oyunda çalışmaz."
 
 #: src/editor/palette/item_palette.cpp:33
-#, fuzzy
-#| msgid " | Right-click to remove"
 msgid "Left-click: Place item $item | Right-click to remove"
-msgstr " | Sağ tuş siler"
+msgstr "Sol tık: $item eşyasını yerleştir | Kaldırmak için sağ tık"
 
 #: src/editor/palette/location_palette.cpp:247
 msgid "Go To"

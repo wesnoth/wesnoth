@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-10-20 21:43-0500\n"
+"POT-Creation-Date: 2026-11-19 18:47-0600\n"
 "PO-Revision-Date: 2024-11-07 16:06+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nillguine@gmail.com>\n"
 "Language-Team: Turkish <->\n"
@@ -261,7 +261,7 @@ msgstr "Temiz Gri Çakıllar"
 #. [terrain_type]: id=road_desert
 #: data/core/terrain.cfg:274
 msgid "Gravel"
-msgstr ""
+msgstr "Çakıl"
 
 #. [terrain_type]: id=stone_path
 #: data/core/terrain.cfg:284
@@ -788,15 +788,6 @@ msgstr "Sade Mantar Korusu"
 #. this hint is only shown in the map editor, the ^Uf, ^Tf and Tb are all terrain codes and should be left as-is
 #. this hint is only shown in the map editor, the ^Uf, ^Tf and Tb are all terrain codes and should be left as-is
 #: data/core/terrain.cfg:1070 data/core/terrain.cfg:1090
-#, fuzzy
-#| msgid ""
-#| "editor^The overlays '^Uf' and '^Ufi' are deprecated because, although the "
-#| "graphics show an overlay with another terrain underneath, the movement "
-#| "and defense stats are purely fungus terrain, ignoring the underlying "
-#| "terrain. The recommended replacements are '^Tf' and '^Tfi' which look the "
-#| "same but have the stats implied by the graphics. For hexes where the "
-#| "stats of purely fungus are wanted, 'Tb' is a mushroom base terrain, which "
-#| "can be used with or without '^Tf' on top."
 msgid ""
 "editor^The overlays ‘^Uf’ and ‘^Ufi’ are deprecated because, although the "
 "graphics show an overlay with another terrain underneath, the movement and "
@@ -806,13 +797,13 @@ msgid ""
 "fungus are wanted, ‘Tb’ is a mushroom base terrain, which can be used with "
 "or without ‘^Tf’ on top."
 msgstr ""
-"'^Uf' ve '^Ufi' örtüleri kullanımdan kaldırılmıştır, çünkü grafikler altta "
-"başka bir arazi katmanı gösterse de, hareket ve savunma istatistikleri, "
-"alttaki araziyi göz ardı ederek tamamen mantar arazisi görmektedir.  "
-"Önerilen örtüler, aynı görünen ancak grafiklerle aynı istatistiklere sahip "
-"olan '^Tf' ve '^Tfi'dir. Tamamen mantar istatistiklerinin istendiği "
-"altıgenler için, 'Tb', üstünde '^Tf' olsa da olmasa da kullanılabilen mantar "
-"temelli bir arazidir."
+"‘^Uf’ ve ‘^Ufi’ örtüleri kullanımdan kaldırılmıştır; çünkü grafikler altta "
+"başka bir arazi olan bir örtü gösterse de hareket ve savunma değerleri, "
+"alttaki araziyi yok sayarak tamamen mantar arazisine aittir. Önerilen "
+"yerine geçenler, aynı görünen ancak grafiklerin ima ettiği değerlere sahip "
+"olan ‘^Tf’ ve ‘^Tfi’dir. Tamamen mantar değerlerinin istendiği altıgenler "
+"için ‘Tb’, üstünde ‘^Tf’ olsun ya da olmasın kullanılabilen mantar temelli "
+"bir arazidir."
 
 #. [terrain_type]: id=fungus_grove_old
 #. [terrain_type]: id=fungus_beam_old
@@ -2363,33 +2354,27 @@ msgstr "Sonraki günlük ipucunu göster"
 
 #. [button]: id=toggle_tip_panel
 #: data/gui/themes/celes/dialogs/title_screen.cfg:215
-#, fuzzy
-#| msgid "Next Tip of the Day"
 msgid "Tip of the Day"
-msgstr "Günün Sonraki Saati"
+msgstr "Günün İpucu"
 
 #. [button]: id=toggle_tip_panel
 #. [toggle_button]: id=show_tips
 #: data/gui/themes/celes/dialogs/title_screen.cfg:216
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:95
-#, fuzzy
-#| msgid "Show next tip of the day"
 msgid "Show tip of the day"
-msgstr "Sonraki günlük ipucunu göster"
+msgstr "Günün ipucunu göster"
 
 #. [button]: id=about
 #: data/gui/themes/celes/dialogs/title_screen.cfg:229
 #: data/gui/themes/default/dialogs/title_screen.cfg:472
 msgid "About"
-msgstr ""
+msgstr "Hakkında"
 
 #. [button]: id=about
 #: data/gui/themes/celes/dialogs/title_screen.cfg:230
 #: data/gui/themes/default/dialogs/title_screen.cfg:473
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
 msgid "General information about Battle for Wesnoth"
-msgstr "Vesnot Savaşı"
+msgstr "Vesnot Savaşı hakkında genel bilgi"
 
 #. [button]: id=language
 #. [label]
@@ -2541,10 +2526,8 @@ msgstr "Yardım"
 
 #. [grid]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:297
-#, fuzzy
-#| msgid "Change the in-game theme"
 msgid "Visit the in-game help"
-msgstr "Oyun için temayı değiştir"
+msgstr "Oyun içi yardıma git"
 
 #. [grid]
 #. [button]: id=cancel
@@ -2578,7 +2561,7 @@ msgstr "Kopyala"
 #. The heavy checkmark character is available in the DejaVu Sans font, but not in the default Lato font
 #: data/gui/themes/celes/widgets/button_success.cfg:269
 msgid "page^<b><span font_family='DejaVu Sans'>✔</span> Copied</b>"
-msgstr ""
+msgstr "<b><span font_family='DejaVu Sans'>✔</span> Kopyalandı</b>"
 
 #. [button]: id=click_dismiss
 #. [button]: id=ok
@@ -2984,36 +2967,32 @@ msgstr "Çık"
 #. [button]: id=downloads_by_version
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:59
 msgid "Add-on download count by version"
-msgstr ""
+msgstr "Sürüme göre eklenti indirme sayısı"
 
 #. [button]: id=addon_count_by_forum_auth
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:77
 msgid "Count of add-ons using forum_auth"
-msgstr ""
+msgstr "forum_auth kullanan eklenti sayısı"
 
 #. [button]: id=admin_delete_addon
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:95
-#, fuzzy
-#| msgid "Select the add-on version"
 msgid "Delete selected add-on (admin)"
-msgstr "Eklenti sürümünü seç"
+msgstr "Seçili eklentiyi sil (yönetici)"
 
 #. [button]: id=admin_hide_addon
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:113
-#, fuzzy
-#| msgid "Select the add-on version"
 msgid "Hide selected add-on (admin)"
-msgstr "Eklenti sürümünü seç"
+msgstr "Seçili eklentiyi gizle (yönetici)"
 
 #. [button]: id=admin_unhide_addon
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:131
 msgid "Unhide add-on by ID (admin)"
-msgstr ""
+msgstr "Kimliğe göre eklentinin gizlenmesini kaldır (yönetici)"
 
 #. [button]: id=admin_list_hidden
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:149
 msgid "List hidden add-ons (admin)"
-msgstr ""
+msgstr "Gizli eklentileri listele (yönetici)"
 
 #. [scroll_label]
 #: data/gui/themes/default/dialogs/addon_uninstall_list.cfg:68
@@ -3089,7 +3068,7 @@ msgstr "Savunan"
 #. This one is the page title, shown in bold.
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:208
 msgid "campaign_landing^Welcome to Wesnoth v1.20"
-msgstr ""
+msgstr "Vesnot v1.20’ye Hoş Geldiniz"
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:210
@@ -3101,6 +3080,12 @@ msgid ""
 "style='italic'>Heir to the Throne</span>. The intended way to learn both the "
 "story and the game mechanics is to play the campaigns in that order."
 msgstr ""
+"<b>Vesnot’ta yeniyseniz</b>, açılış hikâyesi <span color='#e1e119' "
+"style='italic'>Güney Karakolu</span> ile başlar ve soldaki listede "
+"sıralandıkları düzende seferberlikleri takip ederek yarım asır sonra <span "
+"color='#e1e119' style='italic'>Tahtın Varisi</span> ile sona erer. Hem "
+"hikâyeyi hem de oyun mekaniklerini öğrenmenin amaçlanan yolu, "
+"seferberlikleri bu sırayla oynamaktır."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:212
@@ -3108,6 +3093,8 @@ msgid ""
 "campaign_landing^<b>If you’re a returning player</b>, you’ll notice a number "
 "of changes since v1.18:"
 msgstr ""
+"<b>Oyuna geri dönen bir oyuncuysanız</b>, v1.18’den bu yana birçok "
+"değişiklik fark edeceksiniz:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:214
@@ -3117,6 +3104,10 @@ msgid ""
 "Konrad unique recruits, companions, or items. The original campaign is still "
 "available as <i>Heir to the Throne, Classic</i>."
 msgstr ""
+"<span color='#e1e119' style='italic'>Tahtın Varisi</span> artık her biri "
+"Konrad’a benzersiz askerler, yoldaşlar ya da eşyalar kazandıran 33 dallanan "
+"senaryodan oluşan açık bir dünyaya sahip. Özgün seferberlik hâlâ <i>Tahtın "
+"Varisi, Klasik</i> adıyla oynanabilir."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:216
@@ -3127,6 +3118,11 @@ msgid ""
 "orcs of the north. Choose between 23 magic spells as you bear witness to the "
 "rise of a tyrant."
 msgstr ""
+"<span color='#e1e119' style='italic'>Aldatıcının Gambiti</span>, "
+"<i>Delfador’un Anıları</i>nın yerini alıyor. Kuzeyin vahşi orklarına karşı "
+"savaşan genç bir büyücüyü Alduin kıyılarından Kral’ın salonlarına kadar "
+"takip edin. Bir zorbanın yükselişine tanıklık ederken 23 büyü arasından "
+"seçim yapın."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:218
@@ -3135,6 +3131,9 @@ msgid ""
 "our first troll campaign. Lead the Golden Flame Tribe out from the bowels of "
 "Irdya and up to the surface world — but beware what awaits you there."
 msgstr ""
+"<span color='#e1e119' style='italic'>Şafağın Alacakaranlığı</span> ilk trol "
+"seferberliğimiz. Altın Alev Kabilesi’ni Irdya’nın derinliklerinden "
+"yeryüzüne çıkarın — ama orada sizi bekleyenlere dikkat edin."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:220
@@ -3144,6 +3143,11 @@ msgid ""
 "the Bay of Pearls. When corsairs strike, the villagers must join forces with "
 "the local merfolk and take the fight to the pirates."
 msgstr ""
+"<span color='#e1e119' style='italic'>İnciler ve Korsanlar</span>, İnciler "
+"Körfezi’ndeki uykulu bir balıkçı kasabasında geçen, yeni başlayanlara "
+"yönelik yeni bir seferberlik. Korsanlar saldırdığında köylüler yerel deniz "
+"halkıyla güçlerini birleştirip savaşı korsanların ayağına götürmek "
+"zorundadır."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:222
@@ -3154,6 +3158,10 @@ msgid ""
 "original tutorial is still available as part of <i>Heir to the Throne, "
 "Classic</i>."
 msgstr ""
+"<span color='#e1e119' style='italic'>Güney Karakolu</span> büyük ölçüde "
+"elden geçirildi ve artık klasik <i>Savaş Eğitimi</i> öğreticisinin yerini "
+"alıyor. Delfador’un öğretmenliğini özleyen oyuncular için özgün öğretici, "
+"<i>Tahtın Varisi, Klasik</i>in bir parçası olarak hâlâ oynanabilir."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:224
@@ -3163,6 +3171,10 @@ msgid ""
 "AI, a new Thunderer advancement, a redesign of <i>High Pass</i>, and the re-"
 "addition of the formerly removed <i>Mages and Drakes</i>."
 msgstr ""
+"<span color='#e1e119' style='italic'>Thursagan’ın Çekici</span> hikâye "
+"düzenlemeleri, geliştirilmiş düşman yapay zekâsı, yeni bir Gök Gürleten "
+"terfisi, <i>Yüksek Geçit</i>in yeniden tasarımı ve daha önce çıkarılan "
+"<i>Büyücüler ve Ejderimsiler</i>in geri eklenmesiyle zenginleştirildi."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:226
@@ -3173,6 +3185,11 @@ msgid ""
 "and dialogue sequences were changed for better continuity with other "
 "campaigns."
 msgstr ""
+"<span color='#e1e119' style='italic'>Kaderin Rüzgârları</span> çok daha "
+"düşük geri çağırma bedelleri, yeniden tasarlanan vahşi yaşam üreticileri ve "
+"yapay zekâ ile çok daha büyük bir seferberlik ortası savaşıyla yeniden "
+"dengelendi. Diğer seferberliklerle daha iyi süreklilik için birkaç karakter "
+"ve diyalog bölümü değiştirildi."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:228
@@ -3180,6 +3197,8 @@ msgid ""
 "campaign_landing^For a full list of changes, consult our official changelog "
 "at https://www.wesnoth.org/start/1.20/"
 msgstr ""
+"Değişikliklerin tam listesi için https://www.wesnoth.org/start/1.20/ "
+"adresindeki resmî değişiklik günlüğümüze bakın"
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:249
@@ -3190,6 +3209,10 @@ msgid ""
 "multiplayer maps, additional media and various other content! Be sure to "
 "give it a try!"
 msgstr ""
+"Ana seferberliklerin yanı sıra Vesnot’un, diğer oyuncuların oluşturduğu ve "
+"Eklenti sunucusu üzerinden ulaşılabilen, sürekli büyüyen bir eklenti "
+"içeriği listesi de vardır: daha fazla tek ve çok oyunculu seferberlik, çok "
+"oyunculu haritalar, ek medya ve çok daha fazlası! Mutlaka bir göz atın!"
 
 #. [label]
 #. "more than 15" gives a little leeway to add or remove one without changing the translatable text.
@@ -3239,68 +3262,58 @@ msgstr "Hikaye olaylarının yaklaşık zamanına göre diz"
 #. [multimenu_button]: id=filter_completion
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:329
 msgid "Filter by campaign completion status"
-msgstr ""
+msgstr "Seferberlik tamamlanma durumuna göre süz"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:332
-#, fuzzy
-#| msgid "Completed"
 msgid "Not Completed"
-msgstr "Tamamlandı"
+msgstr "Tamamlanmadı"
 
 #. [option]
 #. campaigns which the player hasn't beaten, rather than campaigns which the author hasn't finished writing
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:334
 msgid "Show campaigns not completed by player"
-msgstr ""
+msgstr "Oyuncunun tamamlamadığı seferberlikleri göster"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:338
-#, fuzzy
-#| msgid "Completed"
 msgid "Completed: Bronze"
-msgstr "Tamamlandı"
+msgstr "Tamamlandı: Bronz"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:339
 msgid "Show campaigns completed at easiest difficulty"
-msgstr ""
+msgstr "En kolay zorlukta tamamlanan seferberlikleri göster"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:343
-#, fuzzy
-#| msgid "Completed"
 msgid "Completed: Silver"
-msgstr "Tamamlandı"
+msgstr "Tamamlandı: Gümüş"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:344
 msgid "Show campaigns completed at intermediate difficulties"
-msgstr ""
+msgstr "Orta zorluklarda tamamlanan seferberlikleri göster"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:348
-#, fuzzy
-#| msgid "Completed"
 msgid "Completed: Gold"
-msgstr "Tamamlandı"
+msgstr "Tamamlandı: Altın"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:349
 msgid "Show campaigns completed at hardest difficulty"
-msgstr ""
+msgstr "En zor zorlukta tamamlanan seferberlikleri göster"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:353
-#, fuzzy
-#| msgid "Completed"
 msgid "Completed: All"
-msgstr "Tamamlandı"
+msgstr "Tamamlandı: Tümü"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:354
 msgid "Show completed campaigns"
-msgstr ""
+msgstr "Tamamlanan seferberlikleri göster"
 
 #. [label]
 #. [label]: id=mods_header
@@ -3324,14 +3337,19 @@ msgstr "Öntanımlı RSÜ"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:446
-#: src/gui/dialogs/attack_predictions.cpp:93
-#, c-format
+#: src/gui/dialogs/attack_predictions.cpp:95
+#, no-c-format
 msgid ""
 "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
 "\n"
 "Example: if you strike twice with 50% accuracy, you’re most likely to hit "
 "once and miss once, but might also hit twice or miss twice."
 msgstr ""
+"Saf, yansız rastgelelik; Vesnot’un oynanması amaçlanan şekil.\n"
+"\n"
+"Örnek: %50 isabetle iki kez vurursanız büyük olasılıkla bir kez isabet "
+"ettirip bir kez ıskalarsınız, ama iki kez isabet ettirebilir ya da iki kez "
+"de ıskalayabilirsiniz."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
@@ -3343,7 +3361,7 @@ msgstr "Öngürülebilir RSÜ"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:452
-#: src/gui/dialogs/attack_predictions.cpp:91
+#: src/gui/dialogs/attack_predictions.cpp:92
 msgid ""
 "Identical to Default RNG, except loading a saved game will not change the "
 "outcome of an attack.\n"
@@ -3351,21 +3369,25 @@ msgid ""
 "Example: you strike twice and get lucky, hitting both strikes. You then load "
 "an earlier save and make the same attack again. Both strikes will still hit."
 msgstr ""
+"Varsayılan RSÜ ile aynıdır; tek farkı, kayıtlı bir oyunu yüklemenin bir "
+"saldırının sonucunu değiştirmemesidir.\n"
+"\n"
+"Örnek: iki kez vurursunuz ve şansınız yaver gider, iki darbe de isabet "
+"eder. Sonra daha önceki bir kaydı yükleyip aynı saldırıyı yeniden "
+"yaparsınız. İki darbe yine isabet eder."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:457
 #: src/gui/dialogs/attack_predictions.cpp:72
-#, fuzzy
-#| msgid "Predictable RNG"
 msgid "Reduced RNG"
-msgstr "Öngürülebilir RSÜ"
+msgstr "Azaltılmış RSÜ"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:458
-#: src/gui/dialogs/attack_predictions.cpp:89
-#, c-format
+#: src/gui/dialogs/attack_predictions.cpp:90
+#, no-c-format
 msgid ""
 "Hits and misses are much more consistent. This tends to make small-scale "
 "engagements easier to plan.\n"
@@ -3373,6 +3395,11 @@ msgid ""
 "Example: if you strike three times with 50% accuracy, you will always hit at "
 "least once and miss at least once."
 msgstr ""
+"İsabetler ve ıskalar çok daha tutarlıdır. Bu, küçük ölçekli çatışmaları "
+"planlamayı genellikle kolaylaştırır.\n"
+"\n"
+"Örnek: %50 isabetle üç kez vurursanız her zaman en az bir kez isabet "
+"ettirir, en az bir kez de ıskalarsınız."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:475
@@ -3518,17 +3545,13 @@ msgstr "Bu konuma dosya yöneticisi ile gözat"
 #. [button]: id=preview_
 #: data/gui/themes/default/dialogs/custom_tod.cfg:98
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:102
-#, fuzzy
-#| msgid "Previous page"
 msgid "Preview image"
-msgstr "Önceki sayfa"
+msgstr "Görüntü önizlemesi"
 
 #. [button]: id=preview_
 #: data/gui/themes/default/dialogs/custom_tod.cfg:118
-#, fuzzy
-#| msgid "Player joins"
 msgid "Play sound"
-msgstr "Oyuncu katılıyor"
+msgstr "Sesi çal"
 
 #. [label]
 #: data/gui/themes/default/dialogs/custom_tod.cfg:196
@@ -3620,7 +3643,7 @@ msgstr "Gün Vaktini sil"
 #. [button]: id=preview_color
 #: data/gui/themes/default/dialogs/custom_tod.cfg:508
 msgid "Preview color changes on map"
-msgstr ""
+msgstr "Renk değişikliklerini haritada önizle"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -3691,10 +3714,8 @@ msgstr "Sadece takım"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_choose_addon.cfg:47
-#, fuzzy
-#| msgid "Add-on selection"
 msgid "Add-on Selection"
-msgstr "Eklenti seçimi"
+msgstr "Eklenti Seçimi"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_choose_addon.cfg:64
@@ -3860,23 +3881,17 @@ msgstr ""
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:214
-#, fuzzy
-#| msgid ""
-#| "Comma delimited list of forum usernames of other people who are allowed "
-#| "to upload updates for this add-on."
 msgid ""
 "Comma delimited list of forum usernames of other people who are allowed to "
 "upload updates for this add-on or delete this add-on."
 msgstr ""
-"Bu eklenti için güncelleme yükleme izni olan diğer kişilerin forum kullanıcı "
-"adlarının virgülle ayrılmış listesi."
+"Bu eklenti için güncelleme yüklemesine veya eklentiyi silmesine izin "
+"verilen diğer kişilerin forum kullanıcı adlarının virgülle ayrılmış listesi."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:214
-#, fuzzy
-#| msgid "Secondary Authors:"
 msgid "Primary Authors:"
-msgstr "İkincil Yazarlar:"
+msgstr "Birincil Yazarlar:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:215
@@ -4011,7 +4026,7 @@ msgstr "Tanımlayıcı:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_scenario.cfg:170
-#: src/gui/dialogs/multiplayer/lobby.cpp:454
+#: src/gui/dialogs/multiplayer/lobby.cpp:455
 msgid "Experience modifier:"
 msgstr "Tecrübe niteleyicisi:"
 
@@ -4079,7 +4094,7 @@ msgstr "Altın:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:303
-#: src/gui/dialogs/multiplayer/lobby.cpp:455
+#: src/gui/dialogs/multiplayer/lobby.cpp:456
 msgid "Gold per village:"
 msgstr "Köy başına altın:"
 
@@ -4139,92 +4154,74 @@ msgstr "Kimse"
 #. [button]: id=load_unit_type
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:180
 msgid "Load Unit Type"
-msgstr ""
+msgstr "Birim Türünü Yükle"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:214
-#, fuzzy
-#| msgid "Image:"
 msgid "Unit Image:"
-msgstr "Resim:"
+msgstr "Birim Görseli:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:216
 msgid "Portrait:"
-msgstr ""
+msgstr "Portre:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:227
 msgid "Level:"
-msgstr ""
+msgstr "Seviye:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:252
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:197
 #: data/gui/themes/default/dialogs/mp_staging.cfg:200
-#, fuzzy
-#| msgid "<b>Gender:</b>"
 msgid "Gender:"
-msgstr "<b>Cinsiyet:</b>"
+msgstr "Cinsiyet:"
 
 #. [row]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:260
-#, fuzzy
-#| msgid "gender^Random"
 msgid "gender^Male"
-msgstr "Rastgele"
+msgstr "Erkek"
 
 #. [row]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:261
-#, fuzzy
-#| msgid "Female"
 msgid "gender^Female"
 msgstr "Dişi"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:276
-#, fuzzy
-#| msgid "Advance Unit"
 msgid "Advances to:"
-msgstr "Birimi Terfi Et"
+msgstr "Terfi ettiği birimler:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:302
-#, fuzzy
-#| msgid "Race"
 msgid "Race:"
-msgstr "Irk"
+msgstr "Irk:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:355
 msgid "Alignment:"
-msgstr ""
+msgstr "Yönelim:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:381
-#, fuzzy
-#| msgid "HP: "
 msgid "HP:"
-msgstr "YP: "
+msgstr "YP:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:411
-#, fuzzy
-#| msgid "XP: "
 msgid "XP:"
-msgstr "TP: "
+msgstr "TP:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:441
 msgid "Cost:"
-msgstr ""
+msgstr "Bedel:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:471
-#, fuzzy
-#| msgid "Movement Costs:"
 msgid "Movement:"
-msgstr "Hareket Bedelleri:"
+msgstr "Hareket:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -4237,72 +4234,58 @@ msgstr "Saldırılar"
 
 #. [button]: id=atk_new
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:595
-#, fuzzy
-#| msgid "Attack"
 msgid "New Attack"
-msgstr "Saldır"
+msgstr "Yeni Saldırı"
 
 #. [button]: id=atk_delete
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:608
-#, fuzzy
-#| msgid "Select/Move/Attack"
 msgid "Delete Attack"
-msgstr "Seç/İlerle/Saldır"
+msgstr "Saldırıyı Sil"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:678
 msgid "Range:"
-msgstr ""
+msgstr "Menzil:"
 
 #. [option]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:693
 msgid "range^Melee"
-msgstr ""
+msgstr "Yakın dövüş"
 
 #. [option]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:698
 msgid "range^Ranged"
-msgstr ""
+msgstr "Menzilli"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:739
-#, fuzzy
-#| msgid "Damage"
 msgid "Damage:"
-msgstr "Hasar"
+msgstr "Hasar:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:766
-#, fuzzy
-#| msgid "Hits"
 msgid "Hits:"
-msgstr "İsabet sayısı"
+msgstr "İsabet sayısı:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:794
 msgid "Specials:"
-msgstr ""
+msgstr "Özeller:"
 
 #. [grid]: id=grid_adv
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:836
-#, fuzzy
-#| msgid "Profile"
 msgid "Small Profile"
-msgstr "Profil"
+msgstr "Küçük Profil"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:847
-#, fuzzy
-#| msgid "Abilities"
 msgid "Abilities:"
-msgstr "Yetenekler"
+msgstr "Yetenekler:"
 
 #. [label]: id=movetype_label
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:873
-#, fuzzy
-#| msgid "Content Type:"
 msgid "Movetype:"
-msgstr "İçerik Türü:"
+msgstr "Hareket türü:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=movement_costs_label
@@ -4313,38 +4296,28 @@ msgstr "Hareket Bedelleri:"
 
 #. [label]: id=defense_label
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:969
-#, fuzzy
-#| msgid "Defender"
 msgid "Defense:"
-msgstr "Savunan"
+msgstr "Savunma:"
 
 #. [label]: id=resistance_label
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1022
-#, fuzzy
-#| msgid "Resistances: "
 msgid "Resistances:"
-msgstr "Dayanıklılıklar: "
+msgstr "Dirençler:"
 
 #. [label]: id=usage_label
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1075
-#, fuzzy
-#| msgid "Image:"
 msgid "AI Usage:"
-msgstr "Resim:"
+msgstr "YZ Kullanımı:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1178
-#, fuzzy
-#| msgid "Map Editor"
 msgid "Unit Type Editor"
-msgstr "Harita Düzenleyici"
+msgstr "Birim Türü Düzenleyici"
 
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1200
-#, fuzzy
-#| msgid "Game Stats"
 msgid "Main Stats"
-msgstr "Oyun İstatistiği"
+msgstr "Ana Değerler"
 
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1207
@@ -4355,7 +4328,7 @@ msgstr "Gelişmiş"
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1221
 msgid "WML View"
-msgstr ""
+msgstr "WML Görünümü"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -4374,7 +4347,7 @@ msgstr "Harita üreteci seçin:"
 #. [button]: id=random_map_settings
 #: data/gui/themes/default/dialogs/editor_generate_map.cfg:128
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:908
-#: src/gui/dialogs/multiplayer/lobby.cpp:453
+#: src/gui/dialogs/multiplayer/lobby.cpp:454
 msgid "Settings"
 msgstr "Ayarlar"
 
@@ -4486,12 +4459,12 @@ msgstr "Varolan işareti kaldırır"
 #. [button]: id=open_ext
 #: data/gui/themes/default/dialogs/file_dialog.cfg:319
 msgid "Open External"
-msgstr ""
+msgstr "Dışarıda Aç"
 
 #. [button]: id=open_ext
 #: data/gui/themes/default/dialogs/file_dialog.cfg:320
 msgid "Open selected using platform’s default applications"
-msgstr ""
+msgstr "Seçileni platformun varsayılan uygulamalarıyla aç"
 
 #. [button]: id=new_dir
 #. [label]: id=title
@@ -4814,33 +4787,35 @@ msgstr "Şuraya Kaydır"
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:130
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Version:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Sürüm:</b>"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:158
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Running on:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Çalıştığı sistem:</b>"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:187
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Architecture:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Mimari:</b>"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:215
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Homepage:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Ana sayfa:</b>"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:247
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Wiki:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Viki:</b>"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:287
 msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Copy a full report here:</i>"
 msgstr ""
+"<i><span font_family='DejaVu Sans'>➤</span> Tam raporu buradan "
+"kopyalayın:</i>"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:307
@@ -4848,22 +4823,26 @@ msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Report an issue or request a "
 "feature:</i>"
 msgstr ""
+"<i><span font_family='DejaVu Sans'>➤</span> Bir sorun bildirin ya da "
+"özellik isteyin:</i>"
 
 #. [button]: id=issue
 #: data/gui/themes/default/dialogs/game_version.cfg:320
 msgid "Report Issue"
-msgstr ""
+msgstr "Sorun Bildir"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:329
 msgid "<i><span font_family='DejaVu Sans'>➤</span> View Game Manual:</i>"
 msgstr ""
+"<i><span font_family='DejaVu Sans'>➤</span> Oyun Kılavuzunu "
+"Görüntüleyin:</i>"
 
 #. [button]: id=view_manual
 #. button to open the game manual in the platform's browser.
 #: data/gui/themes/default/dialogs/game_version.cfg:342
 msgid "View Manual"
-msgstr ""
+msgstr "Kılavuzu Görüntüle"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:350
@@ -4871,6 +4850,8 @@ msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Re-open the version migrator "
 "dialog:</i>"
 msgstr ""
+"<i><span font_family='DejaVu Sans'>➤</span> Sürüm taşıma penceresini "
+"yeniden açın:</i>"
 
 #. [button]: id=run_migrator
 #. button to open the version migration dialog manually to re-migrate add-ons and the preferences file
@@ -4988,6 +4969,7 @@ msgstr "Bağış yap"
 #: data/gui/themes/default/dialogs/game_version.cfg:852
 msgid "An open source, turn-based strategy game with a high fantasy theme."
 msgstr ""
+"Yüksek fantastik temalı, açık kaynaklı, sıra tabanlı bir strateji oyunu."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [tab]
@@ -5024,7 +5006,7 @@ msgstr "Teşekkür"
 #. [button]: id=license
 #: data/gui/themes/default/dialogs/game_version.cfg:980
 msgid "License"
-msgstr ""
+msgstr "Lisans"
 
 #. [label]
 #: data/gui/themes/default/dialogs/gamestate_inspector.cfg:16
@@ -5101,15 +5083,13 @@ msgstr "Etiketleri Göster"
 
 #. [toggle_button]: id=contents
 #: data/gui/themes/default/dialogs/help_browser.cfg:125
-#, fuzzy
-#| msgid "Show Credits"
 msgid "Show Topics"
-msgstr "Jeneriği Göster"
+msgstr "Konuları Göster"
 
 #. [text_box]: id=filter_box
 #: data/gui/themes/default/dialogs/help_browser.cfg:163
 msgid "Search help topic names"
-msgstr ""
+msgstr "Yardım konu adlarında ara"
 
 #. [label]
 #: data/gui/themes/default/dialogs/hotkey_bind.cfg:35
@@ -5183,7 +5163,7 @@ msgstr "Çöpçatanlık"
 #: data/gui/themes/default/dialogs/lobby_main.cfg:102
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:129
 msgid "Presets"
-msgstr ""
+msgstr "Hazır Ayarlar"
 
 #. [label]: id=map
 #: data/gui/themes/default/dialogs/lobby_main.cfg:153
@@ -5197,10 +5177,8 @@ msgstr "Katılmak için parola gerekiyor"
 
 #. [button]: id=delete_preset
 #: data/gui/themes/default/dialogs/lobby_main.cfg:305
-#, fuzzy
-#| msgid "Delete Unit"
 msgid "Delete this preset"
-msgstr "Birimi Sil"
+msgstr "Bu hazır ayarı sil"
 
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/themes/default/dialogs/lobby_main.cfg:477
@@ -5255,14 +5233,14 @@ msgstr "Oyun Oluştur"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:561
-#: src/gui/dialogs/multiplayer/lobby.cpp:1018
+#: src/gui/dialogs/multiplayer/lobby.cpp:1019
 msgid "Join"
 msgstr "Katıl"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:573
-#: src/gui/dialogs/multiplayer/lobby.cpp:988
+#: src/gui/dialogs/multiplayer/lobby.cpp:989
 msgid "Observe"
 msgstr "Gözlemle"
 
@@ -5323,14 +5301,12 @@ msgstr "Bir tarafın denetimi verilmedikçe haritayı gösterme"
 #. [button]: id=join_queue
 #: data/gui/themes/default/dialogs/lobby_main.cfg:728
 msgid "Join Queue"
-msgstr ""
+msgstr "Sıraya Katıl"
 
 #. [button]: id=leave_queue
 #: data/gui/themes/default/dialogs/lobby_main.cfg:738
-#, fuzzy
-#| msgid "Leave"
 msgid "Leave Queue"
-msgstr "Terk et"
+msgstr "Sıradan Ayrıl"
 
 #. [label]
 #: data/gui/themes/default/dialogs/lobby_main.cfg:844
@@ -5901,7 +5877,7 @@ msgstr ""
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:176
 #: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:181
 #: data/gui/themes/default/dialogs/mp_create_game/tiny_resolution.cfg:164
-#: src/gui/dialogs/multiplayer/lobby.cpp:456
+#: src/gui/dialogs/multiplayer/lobby.cpp:457
 msgid "Map size:"
 msgstr "Harita Boyutları:"
 
@@ -5909,10 +5885,8 @@ msgstr "Harita Boyutları:"
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:460
 #: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:378
 #: data/gui/themes/default/dialogs/mp_create_game/tiny_resolution.cfg:335
-#, fuzzy
-#| msgid "Saved Games"
 msgid "Save Preset"
-msgstr "Kayıtlı Oyunlar"
+msgstr "Hazır Ayarı Kaydet"
 
 #. [row]
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:210
@@ -5968,10 +5942,8 @@ msgstr "Bu taraf için birliğinizi ve liderini seçiniz"
 #. [label]
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:155
 #: data/gui/themes/default/dialogs/mp_staging.cfg:157
-#, fuzzy
-#| msgid "Faction"
 msgid "Faction:"
-msgstr "Birlik"
+msgstr "Birlik:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=status_label
@@ -6028,7 +6000,7 @@ msgstr "Yok"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:401
-#: src/gui/dialogs/multiplayer/lobby.cpp:432
+#: src/gui/dialogs/multiplayer/lobby.cpp:433
 msgid "Modifications"
 msgstr "Değişiklikler"
 
@@ -6076,12 +6048,12 @@ msgstr "Resmi Vesnot çok oyunculu sunucusuna gir"
 
 #. [widget]: id=name
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:261
-#, fuzzy
-#| msgid "Join Official Server"
 msgid ""
 "Join\n"
 "Official Server"
-msgstr "Resmi Sunucuya Bağlan"
+msgstr ""
+"Resmî Sunucuya\n"
+"Katıl"
 
 #. [column]
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:272
@@ -6090,12 +6062,12 @@ msgstr "Başka bir sunucuya bağlan"
 
 #. [widget]: id=name
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:281
-#, fuzzy
-#| msgid "Connect to Server"
 msgid ""
 "Connect to\n"
 "Server"
-msgstr "Sunucuya Bağlan"
+msgstr ""
+"Sunucuya\n"
+"Bağlan"
 
 #. [column]
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:292
@@ -6104,12 +6076,12 @@ msgstr "Adanmış sunucu kullanarak bir oyun sun"
 
 #. [widget]: id=name
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:301
-#, fuzzy
-#| msgid "Host Networked Game"
 msgid ""
 "Host Networked\n"
 "Game"
-msgstr "Sunucuyu Başlat"
+msgstr ""
+"Ağ Oyunu\n"
+"Kur"
 
 #. [column]
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:312
@@ -6239,12 +6211,10 @@ msgstr "Elin başında otomatik hareketlere izin verme"
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:114
 msgid "Turn prompt"
-msgstr ""
+msgstr "Sıra uyarısı"
 
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:115
-#, fuzzy
-#| msgid "Display a dialog at the beginning of your turn"
 msgid "Display a prompt at the beginning of your turn"
 msgstr "Sıranız geldiğinde bir uyarı gösterir"
 
@@ -6439,10 +6409,8 @@ msgstr ""
 
 #. [toggle_button]: id=show_tips
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:96
-#, fuzzy
-#| msgid "Show next tip of the day"
 msgid "Show gameplay tips on the main menu"
-msgstr "Sonraki günlük ipucunu göster"
+msgstr "Ana menüde oyun ipuçlarını göster"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:109
@@ -6526,10 +6494,8 @@ msgstr "Mevcut çözünürlüğe göre piksel ölçek çarpanını otomatik olar
 
 #. [label]
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:294
-#, fuzzy
-#| msgid "Interface theme:"
 msgid "In-game theme:"
-msgstr "Arayüz teması:"
+msgstr "Oyun içi tema:"
 
 #. [menu_button]: id=choose_theme
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:308
@@ -6542,50 +6508,42 @@ msgstr ""
 
 #. [label]
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:320
-#, fuzzy
-#| msgid "Interface theme:"
 msgid "UI theme:"
 msgstr "Arayüz teması:"
 
 #. [menu_button]: id=choose_gui2_theme
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:337
-#, fuzzy
-#| msgid ""
-#| "Change the in-game interface theme. Additional themes may be provided by "
-#| "community-made add-ons"
 msgid ""
 "Change the UI (GUI2) theme. Additional themes may be provided by community-"
 "made add-ons"
 msgstr ""
-"Oyun içi arayüz temasını değiştirir. Topluluk yapımı eklentiler tarafından "
-"ek temalar sağlanabilir"
+"Arayüz (GUI2) temasını değiştirir. Topluluk yapımı eklentilerle ek temalar "
+"sağlanabilir"
 
 #. [button]: id=apply
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:346
 msgid "Apply"
-msgstr ""
+msgstr "Uygula"
 
 #. [button]: id=custom_orb_color
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:375
 msgid "Customize orb colors"
-msgstr ""
+msgstr "Küre renklerini özelleştir"
 
 #. [button]: id=custom_orb_color
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:377
 msgid "Change the appearance of the unit movement status indicators"
-msgstr ""
+msgstr "Birim hareket durumu göstergelerinin görünümünü değiştir"
 
 #. [button]: id=custom_reach_map
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:391
-#, fuzzy
-#| msgid "Custom Maps"
 msgid "Customize reach map"
-msgstr "Özel Haritalar"
+msgstr "Erişim haritasını özelleştir"
 
 #. [button]: id=custom_reach_map
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:392
 msgid "Change the appearance of the unit movement UI overlay"
-msgstr ""
+msgstr "Birim hareketi arayüz katmanının görünümünü değiştir"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:410
@@ -6812,40 +6770,38 @@ msgstr "Henüz hiç kimseyi engellemediniz veya arkadaş edinmediniz."
 
 #. [label]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:101
-#, fuzzy
-#| msgid "Random map options: "
 msgid "Reach Map Options"
-msgstr "Rasgele harita ayarları: "
+msgstr "Erişim Haritası Seçenekleri"
 
 #. [label]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:112
 msgid "Highlight Color"
-msgstr ""
+msgstr "Vurgu Rengi"
 
 #. [label]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:130
 msgid "Enemy Highlight Color"
-msgstr ""
+msgstr "Düşman Vurgu Rengi"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:142
 msgid "Border Opacity:"
-msgstr ""
+msgstr "Kenarlık Opaklığı:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:144
 msgid "Tint Opacity:"
-msgstr ""
+msgstr "Renk Tonu Opaklığı:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:148
 msgid "Darken Opacity:"
-msgstr ""
+msgstr "Karartma Opaklığı:"
 
 #. [toggle_button]: id=reachmap_darken_tex
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:157
 msgid "Textured darken"
-msgstr ""
+msgstr "Dokulu karartma"
 
 #. [button]: id=open
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:49
@@ -7125,7 +7081,7 @@ msgstr "Düşmana Saldır"
 #: data/gui/themes/default/dialogs/units_dialog.cfg:24
 #: data/gui/themes/default/dialogs/units_dialog.cfg:573
 msgid "★"
-msgstr ""
+msgstr "★"
 
 #. [toggle_button]: id=unit_details
 #. [toggle_button]: id=sort_4
@@ -7185,7 +7141,7 @@ msgstr "İsmini değiştir"
 #. [button]: id=mark_favorite
 #: data/gui/themes/default/dialogs/units_dialog.cfg:574
 msgid "Mark/unmark the selected unit as favorite"
-msgstr ""
+msgstr "Seçili birimi gözde olarak işaretle/işareti kaldır"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -7198,8 +7154,8 @@ msgstr "Hata"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
 #: data/gui/themes/default/dialogs/wml_error.cfg:112
-#: src/gui/dialogs/multiplayer/lobby.cpp:180
-#: src/gui/dialogs/multiplayer/lobby.cpp:196 src/gui/dialogs/wml_error.cpp:156
+#: src/gui/dialogs/multiplayer/lobby.cpp:181
+#: src/gui/dialogs/multiplayer/lobby.cpp:197 src/gui/dialogs/wml_error.cpp:156
 msgid "Details:"
 msgstr "Ayrıntılar:"
 
@@ -7227,7 +7183,7 @@ msgstr "İndirme"
 #. The heavy checkmark character is available in the DejaVu Sans font, but not in the default Lato font
 #: data/gui/themes/default/widgets/button_success.cfg:250
 msgid "page^<span font_family='DejaVu Sans'>✔</span> Copied"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✔</span> Kopyalandı"
 
 #. [image]: id=pending_messages
 #: data/gui/themes/default/widgets/chatbox.cfg:40
@@ -7238,7 +7194,7 @@ msgstr "Bekleyen iletiler"
 #: data/internal/Urban_Jungle/terrain.cfg:8
 #: data/internal/Urban_Jungle/terrain.cfg:9
 msgid "Urban"
-msgstr ""
+msgstr "Kentsel"
 
 #. [terrain_type]: id=urbanjungle
 #: data/internal/Urban_Jungle/terrain.cfg:10
@@ -7247,6 +7203,9 @@ msgid ""
 "villages, providing no income or healing. They are difficult to navigate "
 "quickly, but offer significant protection."
 msgstr ""
+"Sık yerleşik yapılar, geleneksel köylere göre garnizon için daha az "
+"uygundur; gelir veya iyileşme sağlamazlar. İçlerinde hızla ilerlemek "
+"zordur, ancak önemli bir koruma sunarlar."
 
 #. [terrain_type]: id=urbanjungleA
 #. [terrain_type]: id=urbanjungle{ID}
@@ -7257,7 +7216,7 @@ msgstr ""
 #: data/internal/Urban_Jungle/terrain.cfg:33
 #: data/internal/Urban_Jungle/terrain.cfg:34
 msgid "Urban Jungle"
-msgstr ""
+msgstr "Kent Ormanı"
 
 #: src/build_info.cpp:281
 msgid "feature^Lua console completion"
@@ -7366,20 +7325,16 @@ msgid "disjunct end^$prefix, or $last"
 msgstr "$prefix veya $last"
 
 #: src/gui/core/canvas.cpp:289
-#, fuzzy
-#| msgid "Image doesn't fit on canvas."
 msgid "Image doesn’t fit on canvas."
-msgstr "Resim tuvale sığmıyor."
+msgstr "Görüntü tuvale sığmıyor."
 
 #: src/gui/core/widget_definition.cpp:29
 msgid "No draw section defined for state."
 msgstr "Durum için belirlenmiş bir çizim bölümü yok."
 
 #: src/gui/core/widget_definition.cpp:67 src/gui/core/window_builder.cpp:113
-#, fuzzy
-#| msgid "No resolution defined."
 msgid "No resolution defined for "
-msgstr "Tanımlı bir çözünürlük yok."
+msgstr "Şunun için tanımlı bir çözünürlük yok: "
 
 #: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:432
 #: src/gui/widgets/multi_page.cpp:181 src/gui/widgets/panel.cpp:131
@@ -7389,33 +7344,24 @@ msgid "No grid defined."
 msgstr "Tanımlı bir ızgara yok."
 
 #: src/gui/core/window_builder.cpp:201
-#, fuzzy
-#| msgid "Grid '$grid' row $row must have at least one column."
 msgid "Grid ‘$grid’ row $row must have at least one column."
-msgstr ""
-"'$grid' ızgarasının $row numaralı satırı an azından bir sütun içermelidir."
+msgstr "‘$grid’ ızgarasının $row numaralı satırında en az bir sütun olmalıdır."
 
 #: src/gui/core/window_builder.cpp:213
-#, fuzzy
-#| msgid ""
-#| "Grid '$grid' row $row has a differing number of columns ($found found, "
-#| "$expected expected)"
 msgid ""
 "Grid ‘$grid’ row $row has a differing number of columns ($found found, "
 "$expected expected)"
 msgstr ""
-"'$grid' ızgarasında $row numaralı satırdaki sütun sayısı farklı ($expected "
-"beklenirken $found bulundu)"
+"‘$grid’ ızgarasının $row numaralı satırındaki sütun sayısı farklı "
+"($expected beklenirken $found bulundu)"
 
 #: src/gui/dialogs/achievements_dialog.cpp:97
 msgid "$title ($count/$total)"
-msgstr ""
+msgstr "$title ($count/$total)"
 
 #: src/gui/dialogs/achievements_dialog.cpp:138
-#, fuzzy
-#| msgid "Completed"
 msgid "Completed $count/$total"
-msgstr "Tamamlandı"
+msgstr "Tamamlandı $count/$total"
 
 #: src/gui/dialogs/addon/addon_server_info.cpp:95
 #: src/gui/dialogs/addon/addon_server_info.cpp:120
@@ -7435,10 +7381,8 @@ msgstr "Yanıt"
 #: src/gui/dialogs/addon/addon_server_info.cpp:115
 #: src/gui/dialogs/addon/addon_server_info.cpp:143
 #: src/gui/dialogs/addon/addon_server_info.cpp:167
-#, fuzzy
-#| msgid "Password Required"
 msgid "Password not provided"
-msgstr "Parola Gerekiyor"
+msgstr "Parola girilmedi"
 
 #: src/gui/dialogs/addon/manager.cpp:145
 msgid "addons_view^All Add-ons"
@@ -7501,10 +7445,8 @@ msgid "addons_of_type^Cores"
 msgstr "Çekirdekler"
 
 #: src/gui/dialogs/addon/manager.cpp:163
-#, fuzzy
-#| msgid "addons_of_type^Cores"
 msgid "addons_of_type^Themes"
-msgstr "Çekirdekler"
+msgstr "Temalar"
 
 #: src/gui/dialogs/addon/manager.cpp:164
 msgid "addons_of_type^Resources"
@@ -7761,44 +7703,40 @@ msgstr "%d %B %Y, %H:%M"
 msgid "url^None"
 msgstr "Yok"
 
-#: src/gui/dialogs/attack_predictions.cpp:157
+#: src/gui/dialogs/attack_predictions.cpp:159
 msgid "No usable weapon"
 msgstr "Kullanılabilir silah yok"
 
-#: src/gui/dialogs/attack_predictions.cpp:233
+#: src/gui/dialogs/attack_predictions.cpp:235
 msgid "Defender resistance vs"
 msgstr "Savunanın direnci vs"
 
-#: src/gui/dialogs/attack_predictions.cpp:235
+#: src/gui/dialogs/attack_predictions.cpp:237
 msgid "Defender vulnerability vs"
 msgstr "Savunanın yaralanabilirliği vs"
 
-#: src/gui/dialogs/attack_predictions.cpp:239
+#: src/gui/dialogs/attack_predictions.cpp:241
 msgid "Attacker resistance vs"
 msgstr "Saldıranın direnci vs"
 
-#: src/gui/dialogs/attack_predictions.cpp:241
+#: src/gui/dialogs/attack_predictions.cpp:243
 msgid "Attacker vulnerability vs"
 msgstr "Saldıranın yaralanabilirliği vs"
 
 #: src/gui/dialogs/campaign_selection.cpp:85
-#, fuzzy
-#| msgid "Remove Add-ons"
 msgid "game^Get Add-ons"
-msgstr "Eklentileri Sil"
+msgstr "Eklenti Edin"
 
 #: src/gui/dialogs/campaign_selection.cpp:409
-#, fuzzy
-#| msgid "Campaigns"
 msgid "More campaigns..."
-msgstr "Seferberlikler"
+msgstr "Diğer seferberlikler..."
 
 #: src/gui/dialogs/campaign_selection.cpp:424
 msgid "Missing Campaigns"
 msgstr "Eksik Seferberlikler"
 
 #: src/gui/dialogs/campaign_selection.cpp:458
-#: src/gui/dialogs/multiplayer/lobby.cpp:437
+#: src/gui/dialogs/multiplayer/lobby.cpp:438
 msgid "active_modifications^None"
 msgstr "Yok"
 
@@ -7836,10 +7774,8 @@ msgstr ""
 
 #: src/gui/dialogs/editor/custom_tod.cpp:171
 #: src/gui/dialogs/editor/edit_unit.cpp:295
-#, fuzzy
-#| msgid "Choose Test"
 msgid "Choose File"
-msgstr "Testi Seç"
+msgstr "Dosya Seç"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:182
 #: src/gui/dialogs/editor/edit_unit.cpp:306
@@ -7847,6 +7783,8 @@ msgid ""
 "This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
 "add-on?"
 msgstr ""
+"Bu dosya Vesnot’un veri klasörlerinin dışında. Eklentinize kopyalamak ister "
+"misiniz?"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:178
 msgid "Core"
@@ -7877,7 +7815,7 @@ msgid "Faction"
 msgstr "Birlik"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:185
-#: src/gui/dialogs/multiplayer/lobby.cpp:425
+#: src/gui/dialogs/multiplayer/lobby.cpp:426
 msgid "Era"
 msgstr "Çağ"
 
@@ -7923,7 +7861,7 @@ msgstr "Tarlalaştırma"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:402
 msgid "The icon’s file size is too large"
-msgstr ""
+msgstr "Simge dosyası çok büyük"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:404
 msgid "No validation errors"
@@ -7939,41 +7877,35 @@ msgstr "Bir simge seçin"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:180
 msgid "scout"
-msgstr ""
+msgstr "gözcü"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:181
 msgid "fighter"
-msgstr ""
+msgstr "savaşçı"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:182
-#, fuzzy
-#| msgid "Search"
 msgid "archer"
-msgstr "Ara"
+msgstr "okçu"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:183
 msgid "mixed fighter"
-msgstr ""
+msgstr "karma savaşçı"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:184
 msgid "healer"
-msgstr ""
+msgstr "şifacı"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:927
-#, fuzzy
-#| msgid "Save already exists. Do you want to overwrite it?"
 msgid "Unsaved changes will be lost. Do you want to leave?"
-msgstr "Kayıt zaten var. Üstüne yazmak ister misiniz?"
+msgstr "Kaydedilmemiş değişiklikler kaybolacak. Çıkmak istiyor musunuz?"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:946
 msgid "Unit type saved."
-msgstr ""
+msgstr "Birim türü kaydedildi."
 
 #: src/gui/dialogs/editor/generator_settings.cpp:38
-#, fuzzy
-#| msgid "/1000 tiles"
 msgid "$count/1000 tiles"
-msgstr "/1000 tuğla"
+msgstr "$count/1000 karo"
 
 #: src/gui/dialogs/editor/generator_settings.cpp:43
 msgid "Coastal"
@@ -7992,28 +7924,24 @@ msgid "Find File"
 msgstr "Dosya Bul"
 
 #: src/gui/dialogs/file_dialog.cpp:191
-#, fuzzy
-#| msgid "Winter Elven Castle"
 msgid "enter filename"
-msgstr "Elf Kış Kalesi"
+msgstr "dosya adını girin"
 
 #: src/gui/dialogs/file_dialog.cpp:201
 msgid "invalid extension (use $extensions)"
-msgstr ""
+msgstr "geçersiz uzantı ($extensions kullanın)"
 
 #: src/gui/dialogs/file_dialog.cpp:208
 msgid "filename contains whitespace"
-msgstr ""
+msgstr "dosya adında boşluk var"
 
 #: src/gui/dialogs/file_dialog.cpp:237
 msgid "Open"
 msgstr "Aç"
 
 #: src/gui/dialogs/file_dialog.cpp:313
-#, fuzzy
-#| msgid "Opening links is not supported, contact your packager"
 msgid "Opening files is not supported, contact your packager"
-msgstr "Bağlantı açma desteklenmiyor, paketçiniz ile irtibata geçin"
+msgstr "Dosya açma desteklenmiyor, paketçinizle iletişime geçin"
 
 #: src/gui/dialogs/file_dialog.cpp:370
 msgid "The file already exists. Do you wish to overwrite it?"
@@ -8176,12 +8104,12 @@ msgid "Unknown"
 msgstr "Bilinmeyen"
 
 #: src/gui/dialogs/game_stats.cpp:188 src/gui/dialogs/game_stats.cpp:191
-#: src/gui/dialogs/multiplayer/lobby.cpp:451
+#: src/gui/dialogs/multiplayer/lobby.cpp:452
 msgid "no"
 msgstr "hayır"
 
 #: src/gui/dialogs/game_stats.cpp:188 src/gui/dialogs/game_stats.cpp:191
-#: src/gui/dialogs/multiplayer/lobby.cpp:451
+#: src/gui/dialogs/multiplayer/lobby.cpp:452
 msgid "yes"
 msgstr "evet"
 
@@ -8287,61 +8215,55 @@ msgid "Downloading lobby data"
 msgstr "Salon verisi iniriliyor"
 
 #: src/gui/dialogs/lua_interpreter.cpp:628
-#, fuzzy
-#| msgid "The lua console can only be used in debug mode! (Run ':debug' first)"
 msgid "The lua console can only be used in debug mode! (Run ‘:debug’ first)"
 msgstr ""
-"Lua konsolu sadece hata ayıklama kipinde kullanılabilir! (önce ':debug' "
-"yazın)"
+"Lua konsolu yalnızca hata ayıklama kipinde kullanılabilir! (Önce ‘:debug’ "
+"çalıştırın)"
 
 #: src/gui/dialogs/lua_interpreter.cpp:629
 msgid "lua console"
 msgstr "lua konsolu"
 
 #: src/gui/dialogs/migrate_version_selection.cpp:52
-#, fuzzy
-#| msgid "No eras found"
 msgid "No Other Version Found"
-msgstr "Hiç çağ bulunamadı"
+msgstr "Başka Sürüm Bulunamadı"
 
 #: src/gui/dialogs/migrate_version_selection.cpp:52
 msgid ""
 "This would import settings from a previous version of Wesnoth, but no other "
 "version was found on this device"
 msgstr ""
+"Bu işlem Vesnot’un önceki bir sürümünden ayarları içe aktarırdı, ancak bu "
+"cihazda başka bir sürüm bulunamadı"
 
 #: src/gui/dialogs/multiplayer/faction_select.cpp:200
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:499
 msgid "Random"
 msgstr "Rastgele"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:66
+#: src/gui/dialogs/multiplayer/lobby.cpp:67
 msgid "Do you really want to log out?"
 msgstr "Gerçekten çıkmak istiyor musunuz?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:176
+#: src/gui/dialogs/multiplayer/lobby.cpp:177
 msgid "Incompatible User-made Content"
 msgstr "Uyumsuz Kullanıcı Yapımı İçerik"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:177
-#, fuzzy
-#| msgid ""
-#| "This game cannot be joined because the host has out-of-date add-ons that "
-#| "are incompatible with your version. You might wish to suggest that the "
-#| "host's add-ons be updated."
+#: src/gui/dialogs/multiplayer/lobby.cpp:178
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host’s "
 "add-ons be updated."
 msgstr ""
-"Sunucunun eklenti sürümleri sizin sürümünüzle uyuşmuyor diye oyuna "
-"katılınamıyor. Sunucudan eklentilerini güncellemesini isteyebilirsiniz."
+"Bu oyuna katılınamıyor, çünkü oyunu kuranın sizin sürümünüzle uyumsuz, "
+"güncel olmayan eklentileri var. Oyunu kurana eklentilerini güncellemesini "
+"önerebilirsiniz."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:192
+#: src/gui/dialogs/multiplayer/lobby.cpp:193
 msgid "Missing User-made Content"
 msgstr "Eksik Kullanıcı Yapımı İçerik"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:193
+#: src/gui/dialogs/multiplayer/lobby.cpp:194
 msgid ""
 "This game requires one or more user-made addons to be installed or updated "
 "in order to join.\n"
@@ -8351,39 +8273,39 @@ msgstr ""
 "indirilmesi veya güncellenmesi lazım.\n"
 "Yüklemeyi denemek istiyor musunuz?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:370
+#: src/gui/dialogs/multiplayer/lobby.cpp:371
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Oyunlar: $num_shown / $num_total gösteriliyor"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:392
+#: src/gui/dialogs/multiplayer/lobby.cpp:393
 msgid "$game_name (Era: $era_name)"
 msgstr "$game_name (Çağ: $era_name)"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:422
+#: src/gui/dialogs/multiplayer/lobby.cpp:423
 msgid "era_or_mod^not installed"
 msgstr "kurulu değil"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:457
+#: src/gui/dialogs/multiplayer/lobby.cpp:458
 msgid "Reloaded:"
 msgstr "Geri yüklenmiş:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:458
+#: src/gui/dialogs/multiplayer/lobby.cpp:459
 msgid "Shared vision:"
 msgstr "Paylaşılan görüntü:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:459
+#: src/gui/dialogs/multiplayer/lobby.cpp:460
 msgid "Shuffle sides:"
 msgstr "Tarafları karıştır:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:460
+#: src/gui/dialogs/multiplayer/lobby.cpp:461
 msgid "Time limit:"
 msgstr "Zaman sınırı:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:461
+#: src/gui/dialogs/multiplayer/lobby.cpp:462
 msgid "Use map settings:"
 msgstr "Harita ayarlarını kullan:"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:469
+#: src/gui/dialogs/multiplayer/lobby.cpp:470
 msgid ""
 "One or more add-ons need to be installed\n"
 "in order to join this game."
@@ -8391,29 +8313,26 @@ msgstr ""
 "Oyuna katılmak için\n"
 "bir veya daha fazla eklentinin indirilmesi laızm."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:494
+#: src/gui/dialogs/multiplayer/lobby.cpp:495
 msgid "Observers allowed"
 msgstr "Seyirciler kabul edilir"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:497
+#: src/gui/dialogs/multiplayer/lobby.cpp:498
 msgid "Observers not allowed"
 msgstr "Seyirciler yasak"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:643
+#: src/gui/dialogs/multiplayer/lobby.cpp:644
 msgid "lobby"
 msgstr "salon"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:988
-#, fuzzy
-#| msgid ""
-#| "This game doesn't allow observers. Observe using moderator rights anyway?"
+#: src/gui/dialogs/multiplayer/lobby.cpp:989
 msgid ""
 "This game doesn’t allow observers. Observe using moderator rights anyway?"
 msgstr ""
-"Bu oyun gözlemcilere izin vermiyor. Yine de yönetici haklarını kullanmaya "
-"dikkat ediyor musunuz?"
+"Bu oyun gözlemcilere izin vermiyor. Yine de moderatör haklarınızı "
+"kullanarak gözlemlemek ister misiniz?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:999
+#: src/gui/dialogs/multiplayer/lobby.cpp:1000
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -8422,7 +8341,7 @@ msgstr ""
 "destekleyen veri tabanını kontrol edin. Lütfen bunu https://bugs.wesnoth.org "
 "sitesine bildirin."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:1018
+#: src/gui/dialogs/multiplayer/lobby.cpp:1019
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
 "Bu oyun parola korumalıdır. Yine de yönetici haklarını kullanarak katılacak "
@@ -8469,16 +8388,12 @@ msgid "Random Maps"
 msgstr "Rastgele Haritalar"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:167
-#, fuzzy
-#| msgid "Scenario Editor"
 msgid "Scenario not found: "
-msgstr "Senaryo Düzenleyicisi"
+msgstr "Senaryo bulunamadı: "
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:237
-#, fuzzy
-#| msgid "Modifications: "
 msgid "Modification(s) not found: "
-msgstr "Değişiklikler: "
+msgstr "Değişiklik(ler) bulunamadı: "
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:294
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:295
@@ -8553,13 +8468,11 @@ msgstr "Oyun"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:81
 msgid "Hotkey(s): $bindings"
-msgstr ""
+msgstr "Kısayol tuş(lar)ı: $bindings"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:308
-#, fuzzy
-#| msgid "(Invalid)"
 msgid "Invalid Color"
-msgstr "(Geçersiz)"
+msgstr "Geçersiz Renk"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:516
 msgid "Waiting for players to choose factions..."
@@ -8691,15 +8604,15 @@ msgstr "Alınan"
 msgid "$count|× $name"
 msgstr "$count|×$name"
 
-#: src/gui/dialogs/title_screen.cpp:131 src/hotkey/hotkey_command.cpp:98
+#: src/gui/dialogs/title_screen.cpp:132 src/hotkey/hotkey_command.cpp:98
 msgid "Screenshot"
 msgstr "Ekran görüntüsü"
 
-#: src/gui/dialogs/title_screen.cpp:396
+#: src/gui/dialogs/title_screen.cpp:400
 msgid "Version $version"
 msgstr "Sürüm $version"
 
-#: src/gui/dialogs/title_screen.cpp:486 src/hotkey/hotkey_command.cpp:311
+#: src/gui/dialogs/title_screen.cpp:490 src/hotkey/hotkey_command.cpp:311
 msgid "Choose Test Scenario"
 msgstr "Deneme Senaryosunu Seçin"
 
@@ -8708,10 +8621,8 @@ msgid "Rename Unit"
 msgstr "Birim ismini değiştir"
 
 #: src/gui/dialogs/units_dialog.cpp:281
-#, fuzzy
-#| msgid "This unit is loyal and requires no upkeep."
 msgid "This unit requires no upkeep."
-msgstr "Bu birimin sadık olduğu için bakım masrafı yok."
+msgstr "Bu birimin bakım masrafı yok."
 
 #: src/gui/dialogs/units_dialog.cpp:282 src/gui/dialogs/units_dialog.cpp:287
 #: src/gui/dialogs/units_dialog.cpp:292
@@ -8801,7 +8712,7 @@ msgstr "Sunucudan eklentiyi sil"
 #. TRANSLATORS: This is the new chat text indicator
 #: src/gui/widgets/chatbox.cpp:95
 msgid "NEW"
-msgstr ""
+msgstr "YENİ"
 
 #: src/gui/widgets/chatbox.cpp:298
 msgid "whisper to $receiver"
@@ -8820,10 +8731,8 @@ msgstr ""
 "istemiyorsanız, <i>/ignore $name</i> yazın"
 
 #: src/gui/widgets/helper.cpp:147
-#, fuzzy
-#| msgid "Mandatory widget '$id' hasn't been defined."
 msgid "Mandatory widget ‘$id’ hasn't been defined."
-msgstr "Zorunlu pencere gereci '$id' tanımlı değil."
+msgstr "Zorunlu pencere gereci ‘$id’ tanımlanmamış."
 
 #: src/gui/widgets/label.cpp:137 src/gui/widgets/multiline_text.cpp:429
 msgid "Open link?"
@@ -8834,34 +8743,29 @@ msgid "Copied link!"
 msgstr "Bağlantı kopyalandı!"
 
 #: src/gui/widgets/listbox.cpp:696 src/gui/widgets/multi_page.cpp:224
-#, fuzzy
-#| msgid ""
-#| "'list_data' must have the same number of columns as the 'list_definition'."
 msgid ""
 "‘list_data’ must have the same number of columns as the ‘list_definition’."
-msgstr "'list_data', 'list_definition' ile aynı sütun sayısında olmalı."
+msgstr "‘list_data’, ‘list_definition’ ile aynı sayıda sütuna sahip olmalıdır."
 
 #: src/gui/widgets/listbox.cpp:731 src/gui/widgets/scrollbar_panel.cpp:86
 msgid "No list defined."
 msgstr "Tanımlı bir liste yok."
 
 #: src/gui/widgets/listbox.cpp:736
-#, fuzzy
-#| msgid "A 'list_definition' should contain one row."
 msgid "A ‘list_definition’ should contain one row."
-msgstr "Bir 'list_definition' tek bir satır içermelidir."
+msgstr "Bir ‘list_definition’ tek bir satır içermelidir."
 
 #: src/gui/widgets/multi_page.cpp:200
 msgid "No page defined."
 msgstr "Tanımlı bir sayfa yok."
 
 #: src/gui/widgets/multiline_text.cpp:434
-#, fuzzy
-#| msgid "Opening links is not supported, contact your packager"
 msgid ""
 "Opening links is not supported, contact your packager. Link URL has been "
 "copied to the clipboard."
-msgstr "Bağlantı açma desteklenmiyor, paketçiniz ile irtibata geçin"
+msgstr ""
+"Bağlantı açma desteklenmiyor, paketçinizle iletişime geçin. Bağlantı adresi "
+"panoya kopyalandı."
 
 #: src/gui/widgets/multimenu_button.cpp:171
 msgid "multimenu^All Selected"
@@ -8894,10 +8798,8 @@ msgid "No widget defined."
 msgstr "Tanımlı bir gereç yok."
 
 #: src/gui/widgets/slider.cpp:356
-#, fuzzy
-#| msgid "The number of value_labels and values don't match."
 msgid "The number of value_labels and values don’t match."
-msgstr "Değer etiketleri ile değerlerin sayısı aynı değil."
+msgstr "value_labels ve values sayıları uyuşmuyor."
 
 #: src/gui/widgets/stacked_widget.cpp:242
 msgid "No stack layers defined."
@@ -8908,20 +8810,16 @@ msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Yardım ipucu olan ama küçük ipucu olmayan bir gereç bulundu."
 
 #: src/gui/widgets/tab_container.cpp:172
-#, fuzzy
-#| msgid "No nodes defined for a tree view."
 msgid "No grid defined for tab container control"
-msgstr "Ağaç görünümü için tanımlı düğüm yok."
+msgstr "Sekme kabı denetimi için tanımlı ızgara yok"
 
 #: src/gui/widgets/tree_view.cpp:289
 msgid "No nodes defined for a tree view."
 msgstr "Ağaç görünümü için tanımlı düğüm yok."
 
 #: src/gui/widgets/tree_view.cpp:319
-#, fuzzy
-#| msgid "[node]id 'root' is reserved for the implementation."
 msgid "[node]id ‘root’ is reserved for the implementation."
-msgstr "[node] kimlikli 'kök' gerçekleme için ayrılmış."
+msgstr "[node] kimliği ‘root’ gerçekleme için ayrılmıştır."
 
 #: src/gui/widgets/tree_view_node.cpp:57
 msgid "Unknown builder id for tree view node."
@@ -8937,17 +8835,17 @@ msgstr "(Sald / Sav)"
 
 #: src/gui/widgets/unit_preview_pane.cpp:220
 msgid "Remaining: $left/$max"
-msgstr ""
+msgstr "Kalan: $left/$max"
 
 #: src/gui/widgets/unit_preview_pane.cpp:223
 msgid "This unit can attack multiple times per turn."
-msgstr ""
+msgstr "Bu birim bir elde birden çok kez saldırabilir."
 
 #: src/gui/widgets/unit_preview_pane.cpp:275
 msgid "uses $num attack"
 msgid_plural "uses $num attacks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$num saldırı kullanır"
+msgstr[1] "$num saldırı kullanır"
 
 #: src/gui/widgets/unit_preview_pane.cpp:318
 #: src/gui/widgets/unit_preview_pane.cpp:349
@@ -8987,22 +8885,16 @@ msgid "Abilities"
 msgstr "Yetenekler"
 
 #: src/gui/widgets/window.cpp:287
-#, fuzzy
-#| msgid "Linked '$id' group has multiple definitions."
 msgid "Linked ‘$id’ group has multiple definitions."
-msgstr "Bağlantılı '$id' grubunun birden fazla tanımı var."
+msgstr "Bağlantılı ‘$id’ grubunun birden fazla tanımı var."
 
 #: src/gui/widgets/window.cpp:884
-#, fuzzy
-#| msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgid "Click dismiss needs a ‘click_dismiss’ or ‘ok’ button."
-msgstr "Tıklayarak kapatmak için 'kapama-tıkı' veya 'tamam' tuşu lazım."
+msgstr "Tıklayarak kapatma için bir ‘click_dismiss’ ya da ‘ok’ düğmesi gerekir."
 
 #: src/gui/widgets/window.cpp:909 src/gui/widgets/window.cpp:945
-#, fuzzy
-#| msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgid "Failed to show a dialog, which doesn’t fit on the screen."
-msgstr "Ekrana sığmadığı için diyalog gösterilemiyor."
+msgstr "Ekrana sığmayan bir pencere gösterilemedi."
 
 #: src/hotkey/hotkey_command.cpp:52
 msgid "Saved Games"
@@ -9089,10 +8981,8 @@ msgid "Select/Move/Attack"
 msgstr "Seç/İlerle/Saldır"
 
 #: src/hotkey/hotkey_command.cpp:84
-#, fuzzy
-#| msgid "Touch"
 msgid "Touch Hex"
-msgstr "Dokun"
+msgstr "Altıgene Dokun"
 
 #: src/hotkey/hotkey_command.cpp:85
 msgid "Animate Map"
@@ -9155,10 +9045,8 @@ msgid "Terrain Description"
 msgstr "Arazi Tanımı"
 
 #: src/hotkey/hotkey_command.cpp:102
-#, fuzzy
-#| msgid "Unit Description"
 msgid "Unit Type Description"
-msgstr "Birim Tanımı"
+msgstr "Birim Türü Açıklaması"
 
 #: src/hotkey/hotkey_command.cpp:104
 msgid "Delete Unit"
@@ -9173,10 +9061,8 @@ msgid "Save Map"
 msgstr "Haritayı Kaydet"
 
 #: src/hotkey/hotkey_command.cpp:110
-#, fuzzy
-#| msgid "Loading..."
 msgid "Load Turn..."
-msgstr "Yükleniyor..."
+msgstr "El Yükle..."
 
 #: src/hotkey/hotkey_command.cpp:112
 msgid "Repeat Recruit"
@@ -9227,10 +9113,8 @@ msgid "Kill Unit (Debug!)"
 msgstr "Birim Öldür (Hata Ayıklama!)"
 
 #: src/hotkey/hotkey_command.cpp:126
-#, fuzzy
-#| msgid "Create Unit (Debug!)"
 msgid "Teleport Unit (Debug!)"
-msgstr "Birim Oluştur (Hata Ayıklama!)"
+msgstr "Birimi Işınla (Hata Ayıklama!)"
 
 #: src/hotkey/hotkey_command.cpp:128
 msgid "Objectives"
@@ -9368,10 +9252,8 @@ msgid "Assign Local Time"
 msgstr "Yerel Zamanı Ata"
 
 #: src/hotkey/hotkey_command.cpp:178
-#, fuzzy
-#| msgid "Next Unit"
 msgid "New Unit Type"
-msgstr "Sonraki Birim"
+msgstr "Yeni Birim Türü"
 
 #: src/hotkey/hotkey_command.cpp:180
 msgid "Time Schedule Editor"
@@ -9386,20 +9268,16 @@ msgid "New Scenario"
 msgstr "Yeni Senaryo"
 
 #: src/hotkey/hotkey_command.cpp:184
-#, fuzzy
-#| msgid "Edit Scenario"
 msgid "Load Map/Scenario"
-msgstr "Senaryoyu Düzenle"
+msgstr "Harita/Senaryo Yükle"
 
 #: src/hotkey/hotkey_command.cpp:186
 msgid "Save Map As"
 msgstr "Haritayı Şöyle Kaydet"
 
 #: src/hotkey/hotkey_command.cpp:187
-#, fuzzy
-#| msgid "Choose Test Scenario"
 msgid "Convert To Scenario"
-msgstr "Deneme Senaryosunu Seçin"
+msgstr "Senaryoya Dönüştür"
 
 #: src/hotkey/hotkey_command.cpp:188
 msgid "Save Scenario As"
@@ -9746,16 +9624,12 @@ msgid "Change Add-on ID"
 msgstr "Eklenti Kimliğini Değiştir"
 
 #: src/hotkey/hotkey_command.cpp:279
-#, fuzzy
-#| msgid "Select the add-on version"
 msgid "Select active Add-on"
-msgstr "Eklenti sürümünü seç"
+msgstr "Etkin Eklentiyi Seç"
 
 #: src/hotkey/hotkey_command.cpp:280
-#, fuzzy
-#| msgid "Open saves folder"
 msgid "Open Add-on folder"
-msgstr "Kayıtlar dosyasını aç"
+msgstr "Eklenti klasörünü aç"
 
 #: src/hotkey/hotkey_command.cpp:283
 msgid "Edit Side"
@@ -9818,10 +9692,8 @@ msgid "Change Language"
 msgstr "Dili Değiştir"
 
 #: src/hotkey/hotkey_command.cpp:301
-#, fuzzy
-#| msgid "Starting game"
 msgid "Start Game (MP)"
-msgstr "Oyun başlatılıyor"
+msgstr "Oyunu Başlat (ÇO)"
 
 #: src/hotkey/hotkey_command.cpp:302
 msgid "Refresh WML"
@@ -9912,28 +9784,20 @@ msgstr ""
 "unutmayın:"
 
 #: src/wml_exception.cpp:89
-#, fuzzy
-#| msgid ""
-#| "In section '[$section|]' where '$primary_key| = $primary_value' the "
-#| "mandatory key '$key|' isn't set."
 msgid ""
 "In section ‘[$section|]’ where ‘$primary_key|’ = ‘$primary_value’ the "
 "mandatory key ‘$key|’ isn’t set."
 msgstr ""
-"‘[$section|]’ bölümünde ‘$primary_key| = $primary_value’ olan yerde zorunlu "
+"‘$primary_key|’ = ‘$primary_value’ olan ‘[$section|]’ bölümünde zorunlu "
 "‘$key|’ anahtarı belirtilmemiş."
 
 #: src/wml_exception.cpp:92
-#, fuzzy
-#| msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgid "In section ‘[$section|]’ the mandatory key ‘$key|’ isn’t set."
 msgstr "‘[$section|]’ bölümünde zorunlu ‘$key|’ anahtarı belirtilmemiş."
 
 #: src/wml_exception.cpp:104
-#, fuzzy
-#| msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
-msgstr "‘[$section|]’ bölümünde zorunlu ‘$key|’ anahtarı belirtilmemiş."
+msgstr "‘[$section|]’ bölümünde zorunlu ‘[$tag|]’ alt etiketi eksik."
 
 #~ msgid "Turn dialog"
 #~ msgstr "Sıra Gelme Kutusu"
