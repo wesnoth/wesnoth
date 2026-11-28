@@ -141,18 +141,13 @@ config replay_helper::get_init_side()
 	return init_side;
 }
 
-config replay_helper::get_event(const std::string& name, const map_location& loc, const map_location*  last_select_loc)
+config replay_helper::get_event(const std::string& name, const map_location& loc)
 {
 	config ev;
 	ev["raise"] = name;
 	if(loc.valid()) {
 		config& source = ev.add_child("source");
 		loc.write(source);
-	}
-	if(last_select_loc != nullptr && last_select_loc->valid())
-	{
-		config& source = ev.add_child("last_select");
-		last_select_loc->write(source);
 	}
 	return ev;
 }
