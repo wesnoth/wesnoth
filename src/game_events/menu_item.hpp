@@ -141,6 +141,16 @@ public:
 		return is_synced_;
 	}
 
+	bool is_toggle_item() const
+	{
+		return toggle_state_variable_.has_value();
+	}
+
+	std::string toggle_state_variable() const
+	{
+		return toggle_state_variable_.value();
+	}
+
 private:
 	/**
 	 * Updates *this based on @a vcfg.
@@ -163,6 +173,9 @@ private:
 
 	/** Controls the lifetime of the associate hotkey's hotkey_command. */
 	utils::optional<hotkey::wml_hotkey_record> hotkey_record_;
+
+	/** The name of WML variable which holds the menu item's toggle state. */
+	utils::optional<std::string> toggle_state_variable_;
 
 	/** The image to display in the menu next to this item's description. */
 	std::string image_;
