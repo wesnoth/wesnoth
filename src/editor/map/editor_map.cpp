@@ -13,7 +13,7 @@
 	See the COPYING file for more details.
 */
 
-#define GETTEXT_DOMAIN "wesnoth-editor"
+#define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "editor/action/action_base.hpp"
 #include "editor/map/editor_map.hpp"

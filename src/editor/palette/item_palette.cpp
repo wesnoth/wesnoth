@@ -17,7 +17,7 @@
  * Manage the item-palette in the editor.
  */
 
-#define GETTEXT_DOMAIN "wesnoth-editor"
+#define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "editor/palette/item_palette.hpp"
 #include "formula/string_utils.hpp"
