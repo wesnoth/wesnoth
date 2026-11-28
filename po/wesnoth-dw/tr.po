@@ -70,15 +70,6 @@ msgstr "Çatalcı"
 
 #. [campaign]: id=Dead_Water
 #: data/campaigns/Dead_Water/_main.cfg:24
-#, fuzzy
-#| msgid ""
-#| "You are Kai Krellis, son and heir of the last merman king but only a "
-#| "child. A necromancer is turning your subjects into undead slaves! Lead "
-#| "your people on a mission to convince a powerful mer-sorceress to help you "
-#| "repel the invasion. The oceans near the Northern Lands are perilous, so "
-#| "you will need cunning and bravery to survive. But first you need to gain "
-#| "the respect of your troops!\n"
-#| "\n"
 msgid ""
 "You are Kai Krellis, son and heir of the last merman king but only a child. "
 "A necromancer is turning your subjects into undead slaves! Lead your people "
@@ -88,12 +79,12 @@ msgid ""
 "your troops!\n"
 "\n"
 msgstr ""
-"Siz susal şahının tek oğlu ve tahtının varisi Şah Krellis'siniz. Bir kara "
-"büyücü halkınızı köle haline getirmeye çalışıyor! İstilacıları kovmanıza "
-"yardımcı olacak güçlü bir büyücüyü ikna etme görevine gönderildiniz. Kuzey "
-"Toprakları yakınındaki okyanuslar tehlikelidir, bu yüzden hayatta kalmak "
-"için kurnaz ve cesaretli olmanız gerekir. Ama önce askerlerinizin saygısını "
-"kazanmalısınız!\n"
+"Son susal kralının oğlu ve varisi Kai Krellis’siniz, ama henüz bir "
+"çocuksunuz. Bir kara büyücü uyruklarınızı yarı ölü kölelere dönüştürüyor! "
+"Halkınızı, istilayı püskürtmenize yardım etmesi için güçlü bir susal büyücü "
+"kadını ikna etme görevine götürün. Uzak Kuzey yakınlarındaki okyanuslar "
+"tehlikelidir, hayatta kalmak için kurnazlığa ve cesarete ihtiyacınız "
+"olacak. Ama önce birliklerinizin saygısını kazanmanız gerek!\n"
 "\n"
 
 #. [campaign]: id=Dead_Water
@@ -2145,17 +2136,17 @@ msgstr "Büyücü Kaladon'u bul"
 #. [objective]: condition=win
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:82
 msgid "Move a merfolk unit to Caladon’s shack and talk to him"
-msgstr ""
+msgstr "Bir susal birimini Kaladon’un kulübesine götür ve onunla konuş"
 
 #. [objective]: condition=win
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:92
 msgid "You can also visit Caladon with Keshan"
-msgstr ""
+msgstr "Kaladon’u Keşan ile de ziyaret edebilirsin"
 
 #. [objective]: condition=win
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:105
 msgid "You can also visit Caladon with Inky"
-msgstr ""
+msgstr "Kaladon’u Mürekkep ile de ziyaret edebilirsin"
 
 #. [unit]: type=Silver Mage, id=Caladon
 #. [side]
@@ -2218,45 +2209,45 @@ msgstr "Viik, viik, viik!"
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:458
 msgid "Another of these ACCURSED bats! BEGONE!"
-msgstr ""
+msgstr "Bu LANETLİ yarasalardan biri daha! DEFOL!"
 
 #. [floating_text]
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:478
 msgid "SHRIEK!"
-msgstr ""
+msgstr "ÇIĞLIK!"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:503
 msgid "Caladon does not seem to be very happy about the bat infestation."
-msgstr ""
+msgstr "Kaladon yarasa istilasından pek memnun görünmüyor."
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:503
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:574
 msgid "He might be more welcoming of one of our people."
-msgstr ""
+msgstr "Bizim halkımızdan birini daha iyi karşılayabilir."
 
 #. [message]: speaker=Kai Krellis
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:507
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:578
 msgid "Let’s go, men!"
-msgstr ""
+msgstr "Gidelim, adamlar!"
 
 #. [label]
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:511
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:582
 msgid "Caladon’s shack"
-msgstr ""
+msgstr "Kaladon’un kulübesi"
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:536
 msgid "What kind of abomination is THAT!?!"
-msgstr ""
+msgstr "BU da nasıl bir iğrençlik!?!"
 
 #. [message]: speaker=Cylanna
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:574
 msgid "It appears that Caladon does not want to deal with the undead."
-msgstr ""
+msgstr "Görünüşe göre Kaladon yarı ölülerle uğraşmak istemiyor."
 
 #. [message]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:624
@@ -2266,7 +2257,7 @@ msgstr "Burada biri var."
 #. [message]: speaker=unit
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:630
 msgid "Gllllbbbg!"
-msgstr ""
+msgstr "Glllllbbbg!"
 
 #. [message]: speaker=Caladon
 #: data/campaigns/Dead_Water/scenarios/09_The_Mage.cfg:636
@@ -3248,19 +3239,15 @@ msgstr "Savaşçı Şah"
 
 #. [unit_type]: id=Merman Warrior King, race=merman
 #: data/campaigns/Dead_Water/units/Warrior_King.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Warrior kings often become legendary in their own time. Their skill and "
-#| "strength allows them to be truly formidable in battle. They are also fast "
-#| "despite their heavy armor. Even skilled soldiers look upon them with awe."
 msgid ""
 "Warrior Kings often become legendary in their own time. Their skill and "
 "strength allows them to be truly formidable in battle. They are also fast "
 "despite their heavy armor. Even skilled soldiers look upon them with awe."
 msgstr ""
-"Savaşçı şahlar genellikle kendi zamanlarında efsanevi hale gelir. Becerileri "
-"ve güçleri, savaşta gerçekten zorlayıcı olmalarını sağlar. Ağır zırhlarına "
-"rağmen hızlıldırlar. Yetenekli askerler bile onlara huşu ile bakar."
+"Savaşçı şahlar genellikle kendi zamanlarında efsanevi hale gelir. "
+"Becerileri ve güçleri, savaşta gerçekten zorlayıcı olmalarını sağlar. Ağır "
+"zırhlarına rağmen hızlıldırlar. Yetenekli askerler bile onlara huşu ile "
+"bakar."
 
 #. [unit_type]: id=Merman Young King, race=merman
 #: data/campaigns/Dead_Water/units/Young_King.cfg:4
@@ -3269,11 +3256,6 @@ msgstr "Genç Şah"
 
 #. [unit_type]: id=Merman Young King, race=merman
 #: data/campaigns/Dead_Water/units/Young_King.cfg:20
-#, fuzzy
-#| msgid ""
-#| "A young king with some battle experience will be treated with some "
-#| "respect. Common citizens will be inspired to do their utmost when the "
-#| "king is nearby, but battle-hardened veterans will be less impressed."
 msgid ""
 "A Young King with some battle experience will be treated with some respect. "
 "Common citizens will be inspired to do their utmost when the king is nearby, "
