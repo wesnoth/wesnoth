@@ -40,6 +40,16 @@ Builds for maximum (runtime) speed and compatibility; it builds for 64-bit, with
 * **Debug**:
 Builds for maximum compiling speed, and uses the current OS as the SDK. If you just want to compile for testing things yourself, this is the way to go.
 
+## Local Build Overrides
+The project loads `projectfiles/Xcode/wesnoth.xcconfig`, which optionally includes a gitignored `projectfiles/Xcode/local.xcconfig` file if present. You can create `local.xcconfig` to override signing and bundle settings locally (such as for iOS device builds) without modifying tracked project files:
+
+```xcconfig
+DEVELOPMENT_TEAM = YOUR_TEAM_ID
+APP_BUNDLE_ID = com.example.Wesnoth
+```
+
+*(Avoid changing Team or Bundle Identifier directly in Xcode's **Signing & Capabilities** tab, as Xcode will write those values back into `project.pbxproj`.)*
+
 ## Translations
 To compile translations you need `gettext-tools` and `scons`. You can obtain these tools using `brew install gettext scons`. Building the dependencies also requires `cmake`, `autoconf`, `autoconf-archive`, `automake`, and `libtool`. You also have to force-link Homebrew's `gettext` tools using `brew link --force gettext` command. In the Terminal, `cd /PATH/TO/PROJECT` and run `scons translations`. This will compile all the translations into a translations directory.
 

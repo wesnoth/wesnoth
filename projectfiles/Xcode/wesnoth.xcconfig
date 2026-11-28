@@ -1,0 +1,5 @@
+// Shared Xcode build configuration for Wesnoth.
+APP_BUNDLE_ID = org.wesnoth.Wesnoth
+
+// Optionally includes local.xcconfig (gitignored) for local developer build setting overrides.
+#include? "local.xcconfig"

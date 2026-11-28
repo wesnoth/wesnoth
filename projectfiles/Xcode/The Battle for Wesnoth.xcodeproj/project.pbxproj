@@ -2497,6 +2497,7 @@
 		95EB8A51287A02B800B09F95 /* draw_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = draw_manager.hpp; sourceTree = "<group>"; };
 		95EB8A53287A02EC00B09F95 /* top_level_drawable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = top_level_drawable.hpp; path = gui/core/top_level_drawable.hpp; sourceTree = "<group>"; };
 		95EB8A54287A02EC00B09F95 /* top_level_drawable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = top_level_drawable.cpp; path = gui/core/top_level_drawable.cpp; sourceTree = "<group>"; };
+		95F88AAA30BA358700C45B8F /* wesnoth.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = wesnoth.xcconfig; sourceTree = "<group>"; };
 		9EC324240DB23D8921BB0FFE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A03A423AB502FE015C91F1C9 /* charconv.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = charconv.hpp; sourceTree = "<group>"; };
 		A05D48F0A2C022FC128C8B3E /* edit_unit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = edit_unit.cpp; sourceTree = "<group>"; };
@@ -3259,6 +3260,7 @@
 		29B97314FDCFA39411CA2CEA /* Wesnoth */ = {
 			isa = PBXGroup;
 			children = (
+				95F88AA930BA351900C45B8F /* Config */,
 				378E8FBC2F88A9C700E38FF0 /* translations */,
 				080E96DDFE201D6D7F000001 /* Mac-specific */,
 				B597C49D0FACD3F900CE81F5 /* tests */,
@@ -4683,6 +4685,14 @@
 				B55999FF0EC62181008DD061 /* map.hpp */,
 			);
 			path = map;
+			sourceTree = "<group>";
+		};
+		95F88AA930BA351900C45B8F /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				95F88AAA30BA358700C45B8F /* wesnoth.xcconfig */,
+			);
+			name = Config;
 			sourceTree = "<group>";
 		};
 		B52EE8FD12135AC300CFBDAB /* whiteboard */ = {
@@ -6743,6 +6753,7 @@
 /* Begin XCBuildConfiguration section */
 		460F21C92858F72100EE2131 /* SignedRelease */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95F88AAA30BA358700C45B8F /* wesnoth.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -6994,7 +7005,7 @@
 					"-Wl",
 					"$(LD_CLASSIC_$(XCODE_VERSION_MAJOR))",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.wesnoth.Wesnoth;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "The Battle for Wesnoth";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = NO;
@@ -7309,7 +7320,6 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = "";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -7363,7 +7373,6 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
-				DEVELOPMENT_TEAM = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"LOCALEDIR=\\\"translations\\\"",
 					"FIFODIR=\\\"/var/run/wesnothd\\\"",
@@ -7417,7 +7426,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
 				"EXCLUDED_ARCHS[sdk=iphoneos*]" = arm64e;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = x86_64;
@@ -7586,7 +7594,7 @@
 					"-Wl",
 					"$(LD_CLASSIC_$(XCODE_VERSION_MAJOR))",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.wesnoth.Wesnoth;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "The Battle for Wesnoth";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = NO;
@@ -7620,7 +7628,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
 				"EXCLUDED_ARCHS[sdk=iphoneos*]" = arm64e;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = x86_64;
@@ -7788,7 +7795,7 @@
 					"-Wl",
 					"$(LD_CLASSIC_$(XCODE_VERSION_MAJOR))",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.wesnoth.Wesnoth;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_ID)";
 				PRODUCT_NAME = "The Battle for Wesnoth";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = NO;
@@ -7804,6 +7811,7 @@
 		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95F88AAA30BA358700C45B8F /* wesnoth.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -7890,6 +7898,7 @@
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95F88AAA30BA358700C45B8F /* wesnoth.xcconfig */;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_CXX_LIBRARY = "libc++";
