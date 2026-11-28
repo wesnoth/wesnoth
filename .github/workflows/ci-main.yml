@@ -35,6 +35,9 @@ jobs:
           excludes=(data/lan_server.cfg data/test/scenarios/cve_tests/test_cve_2018_1999023_2.cfg data/schema data/languages data/test/test/filesystem/enum)
           data/tools/wmllint "${excludes[@]/*/--exclude=^&$}" data/ > ./wmllint.log 2>&1
           if [ "$(wc -l < wmllint.log)" != "0" ]; then cat wmllint.log; exit 1; fi
+      - name: Typography check
+        if: success() || failure()
+        run: data/tools/check_typography
       - name: Whitespace and WML indentation check
         if: success() || failure()
         run: ./utils/CI/fix_whitespace.sh && git status && git diff --exit-code

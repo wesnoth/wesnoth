@@ -437,7 +437,7 @@ std::string addon_check_status_desc(unsigned int code)
 			"\n"
 			"    \" * / : < > ? \\ | ~\n"
 			"\n"
-			"Additionally, names may not be longer than 255 characters, contain '..', or end with '.'.")
+			"Additionally, names may not be longer than 255 characters, contain ‘..’, or end with ‘.’.")
 		},
 		{
 			ADDON_CHECK_STATUS::FILENAME_CASE_CONFLICT,

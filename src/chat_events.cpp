@@ -54,7 +54,7 @@ void chat_handler::change_logging(const std::string& data) {
 		utils::string_map symbols;
 		symbols["level"] = level;
 		const std::string& msg =
-			VGETTEXT("Unknown debug level: '$level'.", symbols);
+			VGETTEXT("Unknown debug level: ‘$level’.", symbols);
 		ERR_NG << msg;
 		add_chat_message(std::chrono::system_clock::now(), _("error"), 0, msg);
 		return;
@@ -63,7 +63,7 @@ void chat_handler::change_logging(const std::string& data) {
 		utils::string_map symbols;
 		symbols["domain"] = domain;
 		const std::string& msg =
-			VGETTEXT("Unknown debug domain: '$domain'.", symbols);
+			VGETTEXT("Unknown debug domain: ‘$domain’.", symbols);
 		ERR_NG << msg;
 		add_chat_message(std::chrono::system_clock::now(), _("error"), 0, msg);
 		return;
@@ -73,7 +73,7 @@ void chat_handler::change_logging(const std::string& data) {
 		symbols["level"] = level;
 		symbols["domain"] = domain;
 		const std::string& msg =
-			VGETTEXT("Switched domain: '$domain' to level: '$level'.", symbols);
+			VGETTEXT("Switched domain: ‘$domain’ to level: ‘$level’.", symbols);
 		LOG_NG << msg;
 		add_chat_message(std::chrono::system_clock::now(), "log", 0, msg);
 	}

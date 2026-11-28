@@ -5,8 +5,8 @@ are for checking, analysing and maintenance of WML-files.
 
 The modules intended to be imported by other programs are
 documented in the parent directory's README.md. These are
-version.py, wmltools3.py, wmldata.py, wmlparser.py, wmlparser3.py and
-wmliterator3.py.
+version.py, wmltools3.py, wmldata.py, wmlparser.py, wmlparser3.py,
+wmliterator3.py and gettext_strings.py.
 
 `__init__.py`
   Cause Python to execute any code in this directory on "import wesnoth".
